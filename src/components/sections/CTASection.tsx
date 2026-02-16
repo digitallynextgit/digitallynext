@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
 
 export default function CTASection() {
@@ -12,15 +13,11 @@ export default function CTASection() {
         >
             {/* Gradient blob background */}
             <div className="absolute inset-0 pointer-events-none overflow-hidden">
-                <div
-                    className="absolute top-0 left-1/2 -translate-x-1/2 w-[120%] h-[80%]"
-                    style={{
-                        background:
-                            "radial-gradient(ellipse 60% 50% at 30% 20%, rgba(229,57,53,0.35) 0%, transparent 60%), " +
-                            "radial-gradient(ellipse 50% 50% at 70% 30%, rgba(40,80,200,0.25) 0%, transparent 55%), " +
-                            "radial-gradient(ellipse 40% 40% at 50% 10%, rgba(0,0,0,0.6) 0%, transparent 60%)",
-                        filter: "blur(60px)",
-                    }}
+                <Image
+                    src="/news.webp"
+                    alt="CTA Background"
+                    fill
+                    className="object-cover"
                 />
             </div>
 
@@ -28,7 +25,7 @@ export default function CTASection() {
                 {/* Heading */}
                 <motion.h2
                     className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-white leading-tight tracking-tight mb-8"
-                    style={{ fontStyle: "italic" }}
+                    // style={{ fontStyle: "italic" }}
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: "-100px" }}
