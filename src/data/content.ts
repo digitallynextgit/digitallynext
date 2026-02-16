@@ -68,7 +68,7 @@ export const caseStudies = [
       "Transforming Legacy (more than 3 decades old organization) Brand Image to the New Age evolved Brand Positioning.",
     category: "IT & ITES",
     color: "#E53935",
-    image: "/case-studies/1.webp",
+    image: "/case/c1.webp",
   },
   {
     id: 2,
@@ -77,7 +77,7 @@ export const caseStudies = [
       "Complete Brand makeover of a global brand (Post M&A) to a new name and digital brand communication.",
     category: "Genomics",
     color: "#00BCD4",
-    image: "/case-studies/2.webp",
+    image: "/case/c2.webp",
   },
   {
     id: 3,
@@ -86,7 +86,7 @@ export const caseStudies = [
       "Launch of a high end Judaica Art gallery and 5 Artists for International Markets-US",
     category: "UK",
     color: "#00BCD4",
-    image: "/case-studies/3.webp",
+    image: "/case/c3.webp",
   },
   {
     id: 4,
@@ -95,7 +95,7 @@ export const caseStudies = [
       "Digital Campaign on Social Cause for a world leader in wearable hearing devices",
     category: "Hearing Aids",
     color: "#E53935",
-    image: "/case-studies/4.webp",
+    image: "/case/c4.webp",
   },
 ];
 

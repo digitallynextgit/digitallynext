@@ -2,13 +2,13 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-
+import Image from "next/image";
 export default function Hero() {
     return (
         <section className="hero-section" style={{ position: "sticky", top: 0, zIndex: 0 }}>
             {/* Full-bleed background video */}
             <div className="hero-bg">
-                <video
+                {/* <video
                     autoPlay
                     loop
                     muted
@@ -22,9 +22,10 @@ export default function Hero() {
                     }}
                 >
                     <source src="/banner.mp4" type="video/mp4" />
-                </video>
+                </video> */}
+                <Image src="/banner/b1.webp" alt="Hero" width={1920} height={1080} />
                 {/* Overlay for readability if needed, though mix-blend-mode text might handle it */}
-                <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.3)" }} />
+                {/* <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.3)" }} /> */}
             </div>
 
             {/* Content overlay */}
@@ -88,16 +89,11 @@ export default function Hero() {
                     </p>
                 </motion.div>
 
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.8 }}
-                    style={{ textAlign: "left" }}
-                >
-                    <Link href="#contact" className="btn-green text-accent">
+           
+                    <Link href="#contact" className="btn-green text-red-500">
                         GET IN TOUCH
                     </Link>
-                </motion.div>
+                
             </div>
         </section>
     );

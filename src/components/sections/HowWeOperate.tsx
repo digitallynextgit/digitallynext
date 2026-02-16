@@ -2,20 +2,21 @@
 
 import { dadPillars } from "@/data/content";
 import AnimatedSection from "@/components/ui/AnimatedSection";
+import Image from "next/image";
 
 export default function HowWeOperate() {
     return (
         <section
             id="how-we-operate"
-            className="section section-light"
+            className="section section-light flex justify-center"
         >
-            <div className="container" style={{ textAlign: "center" }}>
+            <div className="max-w-7xl text-center justify-center" style={{ textAlign: "center" }}>
                 {/* Modern DAD heading */}
                 <AnimatedSection>
                     <h2
                         style={{
-                            fontSize: "clamp(2rem, 16vw, 12rem)",
-                            fontFamily: "var(--font-heading)",
+                            fontSize: "clamp(2rem, 14vw, 14rem)",
+                            fontFamily: "Stack Sans Text",
                             fontWeight: 900,
                             letterSpacing: "-0.04em",
                             lineHeight: 0.95,
@@ -44,7 +45,7 @@ export default function HowWeOperate() {
                     <p
                         style={{
                             fontSize: 16,
-                            color: "#777",
+                            color: "#000",
                             marginBottom: 64,
                         }}
                     >
@@ -59,7 +60,7 @@ export default function HowWeOperate() {
                         gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
                         gap: 48,
                         marginBottom: 64,
-                        maxWidth: 800,
+                        maxWidth: 900,
                         margin: "0 auto 64px",
                     }}
                 >
@@ -70,40 +71,32 @@ export default function HowWeOperate() {
                                     display: "flex",
                                     flexDirection: "column",
                                     alignItems: "center",
-                                    gap: 20,
+                                    gap: 10,
                                 }}
                             >
                                 {/* Animated Video Icon */}
                                 <div
-                                    className="pillar-icon border-2 border-black"
+                                    className="pillar-icon "
                                     style={{
-                                        background: "#000", // Fallback
-                                        boxShadow: "0 10px 30px rgba(0,0,0,0.1)",
+                                        // background: "#", 
+                                        // boxShadow: "0 10px 30px rgba(0,0,0,0.1)",
                                     }}
                                 >
-                                    <video
-                                        autoPlay
-                                        loop
-                                        muted
-                                        playsInline
+                                    <Image
+                                        src={
+                                            i === 0
+                                                ? "/icons/dad1.webp"
+                                                : i === 1
+                                                    ? "/icons/dad2.webp"
+                                                    : "/icons/dad3.webp"
+                                        }
+                                        alt="Dad"
+                                        fill
                                         style={{
-                                            width: "100%",
-                                            height: "100%",
                                             objectFit: "cover",
                                             borderRadius: 16,
                                         }}
-                                    >
-                                        <source
-                                            src={
-                                                i === 0
-                                                    ? "/ani-icons/data.mp4"
-                                                    : i === 1
-                                                        ? "/ani-icons/ai-acce.mp4"
-                                                        : "/ani-icons/digital.mp4"
-                                            }
-                                            type="video/mp4"
-                                        />
-                                    </video>
+                                    />
                                 </div>
 
                                 <div>

@@ -40,16 +40,11 @@ export default function RootLayout({
           crossOrigin="anonymous"
         />
         <link
-          href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Stack+Sans+Text:wght@200..700&display=swap"
           rel="stylesheet"
         />
       </head>
-      <body
-        style={{
-          fontFamily:
-            "'Stack Sans Text', 'Space Grotesk', system-ui, -apple-system, sans-serif",
-        }}
-      >
+      <body>
         <ClientWrapper>{children}</ClientWrapper>
         <Footer />
       </body>

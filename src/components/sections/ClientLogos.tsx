@@ -7,8 +7,8 @@ import Image from "next/image";
 
 export default function ClientLogos() {
     const logoFiles = [
-        "/logos/1.png", "/logos/3.png", "/logos/5.png", "/logos/7.png", "/logos/9.png",
-        "/logos/11.png", "/logos/13.png", "/logos/15.png", "/logos/17.png", "/logos/19.png"
+        "/logos/1.png", "/logos/3.png", "/logos/5.png", "/logos/7.png", 
+        "/logos/11.png", "/logos/13.png", "/logos/17.png", "/logos/19.png"
     ];
     // const duplicatedLogos = [...clientLogos, ...clientLogos, ...clientLogos, ...clientLogos];
 

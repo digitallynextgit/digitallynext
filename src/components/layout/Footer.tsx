@@ -1,221 +1,112 @@
-import { siteConfig, navLinks } from "@/data/content";
-import { ArrowUpRight } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
 
-const footerServices = [
-    "Digital Branding",
-    "Performance Marketing",
-    "Content & Media",
-    "Web & UX Design",
-    "AI & Analytics",
+const navItems = [
+    { label: "Home", href: "/" },
+    { label: "Contact", href: "#contact" },
+    { label: "About", href: "#about" },
+    { label: "Case Studies", href: "#case-studies" },
 ];
 
-const socialLinks = [
-    { label: "LinkedIn", href: "https://linkedin.com" },
+const socialItems = [
     { label: "Instagram", href: "https://instagram.com" },
-    { label: "Twitter / X", href: "https://x.com" },
+    { label: "YouTube", href: "https://youtube.com" },
+    { label: "LinkedIn", href: "https://linkedin.com" },
 ];
 
 export default function Footer() {
     return (
-        <footer
-            style={{
-                background: "var(--bg-secondary)",
-                borderTop: "1px solid var(--border)",
-                padding: "80px 0 40px",
-            }}
-        >
-            <div className="container">
-                {/* Top Grid */}
-                <div
-                    style={{
-                        display: "grid",
-                        gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
-                        gap: 48,
-                        marginBottom: 64,
-                    }}
-                >
-                    {/* Brand */}
+        <footer className="bg-black border-t border-white/8">
+            {/* Main footer content */}
+            <div className="w-full max-w-7xl mx-auto py-16 md:py-20">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8 mb-12">
+                    {/* Left — Tagline */}
                     <div>
-                        <div
-                            style={{
-                                display: "flex",
-                                alignItems: "center",
-                                gap: 10,
-                                marginBottom: 16,
-                            }}
-                        >
-                            <span
-                                style={{
-                                    fontSize: 24,
-                                    fontWeight: 800,
-                                    color: "var(--accent)",
-                                }}
-                            >
-                                ✕
-                            </span>
-                            <span style={{ fontSize: 16, fontWeight: 700 }}>
-                                {siteConfig.name}
-                            </span>
-                        </div>
-                        <p
-                            style={{
-                                fontSize: 14,
-                                color: "var(--text-secondary)",
-                                lineHeight: 1.7,
-                                maxWidth: 280,
-                            }}
-                        >
-                            {siteConfig.description}
-                        </p>
+                        <h3 className="text-xl md:text-4xl font-bold text-white leading-snug">
+                            Modern DAD-enabled.
+                            <br />
+                            Decision-led.
+                            <br />
+                            Built for{" "}
+                            <span className="text-red-600">global scale.</span>
+                        </h3>
                     </div>
 
-                    {/* Navigation */}
+                    {/* Center — Navigation */}
                     <div>
-                        <h4
-                            style={{
-                                fontSize: 13,
-                                fontWeight: 600,
-                                textTransform: "uppercase",
-                                letterSpacing: "0.08em",
-                                color: "var(--text-muted)",
-                                marginBottom: 20,
-                            }}
-                        >
-                            Navigation
+                        <h4 className="text-xl font-semibold uppercase tracking-widest text-white mb-5">
+                            NAVIGATION
                         </h4>
-                        <div
-                            style={{
-                                display: "flex",
-                                flexDirection: "column",
-                                gap: 12,
-                            }}
-                        >
-                            {navLinks.map((link) => (
-                                <a
-                                    key={link.label}
-                                    href={link.href}
-                                    style={{
-                                        fontSize: 14,
-                                        color: "var(--text-secondary)",
-                                        transition: "color 0.2s",
-                                    }}
-                                >
-                                    {link.label}
-                                </a>
+                        <ul className="space-y-3">
+                            {navItems.map((item) => (
+                                <li key={item.label}>
+                                    <Link
+                                        href={item.href}
+                                        className="text-sm text-gray-300 hover:text-white transition-colors duration-200"
+                                    >
+                                        {item.label}
+                                    </Link>
+                                </li>
                             ))}
-                        </div>
+                        </ul>
                     </div>
 
-                    {/* Services */}
+                    {/* Right — Social Media */}
                     <div>
-                        <h4
-                            style={{
-                                fontSize: 13,
-                                fontWeight: 600,
-                                textTransform: "uppercase",
-                                letterSpacing: "0.08em",
-                                color: "var(--text-muted)",
-                                marginBottom: 20,
-                            }}
-                        >
-                            Services
+                        <h4 className="text-xl font-semibold uppercase tracking-widest text-white mb-5">
+                            SOCIAL MEDIA
                         </h4>
-                        <div
-                            style={{
-                                display: "flex",
-                                flexDirection: "column",
-                                gap: 12,
-                            }}
-                        >
-                            {footerServices.map((s) => (
-                                <span
-                                    key={s}
-                                    style={{
-                                        fontSize: 14,
-                                        color: "var(--text-secondary)",
-                                    }}
-                                >
-                                    {s}
-                                </span>
+                        <ul className="space-y-3">
+                            {socialItems.map((item) => (
+                                <li key={item.label}>
+                                    <a
+                                        href={item.href}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="text-sm text-gray-300 hover:text-white transition-colors duration-200"
+                                    >
+                                        {item.label}
+                                    </a>
+                                </li>
                             ))}
-                        </div>
-                    </div>
-
-                    {/* Social */}
-                    <div>
-                        <h4
-                            style={{
-                                fontSize: 13,
-                                fontWeight: 600,
-                                textTransform: "uppercase",
-                                letterSpacing: "0.08em",
-                                color: "var(--text-muted)",
-                                marginBottom: 20,
-                            }}
-                        >
-                            Connect
-                        </h4>
-                        <div
-                            style={{
-                                display: "flex",
-                                flexDirection: "column",
-                                gap: 12,
-                            }}
-                        >
-                            {socialLinks.map((link) => (
-                                <a
-                                    key={link.label}
-                                    href={link.href}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    style={{
-                                        fontSize: 14,
-                                        color: "var(--text-secondary)",
-                                        display: "flex",
-                                        alignItems: "center",
-                                        gap: 6,
-                                        transition: "color 0.2s",
-                                    }}
-                                >
-                                    {link.label} <ArrowUpRight size={12} />
-                                </a>
-                            ))}
-                        </div>
+                        </ul>
                     </div>
                 </div>
 
-                {/* Divider */}
-                <div className="divider" />
-
-                {/* Bottom */}
-                <div
-                    style={{
-                        display: "flex",
-                        justifyContent: "space-between",
-                        alignItems: "center",
-                        paddingTop: 24,
-                        flexWrap: "wrap",
-                        gap: 16,
-                    }}
-                >
-                    <span
-                        style={{
-                            fontSize: 13,
-                            color: "var(--text-muted)",
-                        }}
-                    >
-                        © {new Date().getFullYear()} {siteConfig.name}. All rights reserved.
+                {/* Divider + Bottom row */}
+                <div className="border-t border-white/8 pt-6 flex flex-col sm:flex-row justify-between items-center gap-4">
+                    <span className="text-lg text-white/80">
+                        © 2026 Digitally Next. All Rights Reserved.
                     </span>
-                    <span
-                        style={{
-                            fontSize: 13,
-                            color: "var(--text-muted)",
-                        }}
-                    >
-                        Crafted with purpose.
-                    </span>
+                    <div className="flex gap-6">
+                        <Link
+                            href="#"
+                            className="text-lg text-white/80 hover:text-white transition-colors duration-200"
+                        >
+                            Terms of Use
+                        </Link>
+                        <Link
+                            href="#"
+                            className="text-lg text-white/80 hover:text-white transition-colors duration-200"
+                        >
+                            Privacy Policy
+                        </Link>
+                    </div>
                 </div>
             </div>
-        </footer>
+
+            {/* Large colored logo */}
+            <div className="w-full flex justify-center items-center pt-12 md:pt-16 px-10 bg-black"
+             style={{ WebkitMaskImage: "linear-gradient(to bottom, white 20%, transparent 100%)", maskImage: "linear-gradient(to bottom, black 20%, transparent 100%)", }}>
+                <Image
+                    src="/logo1-white.webp"
+                    alt="Digitally Next Logo"
+                    width={800}
+                    height={200}
+                    className="w-full max-w-8xl h-auto object-contain"
+                priority={false}
+            />
+        </div>
+        </footer >
     );
 }

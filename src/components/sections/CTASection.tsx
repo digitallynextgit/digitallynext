@@ -1,101 +1,78 @@
 "use client";
 
-import AnimatedSection from "@/components/ui/AnimatedSection";
-import { ArrowRight } from "lucide-react";
+import { motion } from "framer-motion";
+import Link from "next/link";
 
 export default function CTASection() {
     return (
         <section
             id="contact"
-            className="section"
-            style={{
-                background: "var(--bg-primary)",
-                position: "relative",
-                overflow: "hidden",
-            }}
+            className="relative overflow-hidden py-24 md:py-32"
+            style={{ background: "var(--bg-primary)" }}
         >
-            {/* Background glow */}
-            <div
-                style={{
-                    position: "absolute",
-                    bottom: "-40%",
-                    left: "50%",
-                    transform: "translateX(-50%)",
-                    width: "100%",
-                    height: "100%",
-                    background:
-                        "radial-gradient(ellipse at center, rgba(229,57,53,0.06) 0%, transparent 60%)",
-                    pointerEvents: "none",
-                }}
-            />
+            {/* Gradient blob background */}
+            <div className="absolute inset-0 pointer-events-none overflow-hidden">
+                <div
+                    className="absolute top-0 left-1/2 -translate-x-1/2 w-[120%] h-[80%]"
+                    style={{
+                        background:
+                            "radial-gradient(ellipse 60% 50% at 30% 20%, rgba(229,57,53,0.35) 0%, transparent 60%), " +
+                            "radial-gradient(ellipse 50% 50% at 70% 30%, rgba(40,80,200,0.25) 0%, transparent 55%), " +
+                            "radial-gradient(ellipse 40% 40% at 50% 10%, rgba(0,0,0,0.6) 0%, transparent 60%)",
+                        filter: "blur(60px)",
+                    }}
+                />
+            </div>
 
-            <div
-                className="container"
-                style={{
-                    position: "relative",
-                    zIndex: 2,
-                    textAlign: "center",
-                }}
-            >
-                <AnimatedSection>
-                    <h2
-                        style={{
-                            fontSize: "clamp(2.5rem, 7vw, 5rem)",
-                            fontWeight: 800,
-                            marginBottom: 24,
-                            lineHeight: 1.1,
-                        }}
-                    >
-                        Let&apos;s Build
-                        <br />
-                        <span className="gradient-text-red">Something</span>
-                    </h2>
-                </AnimatedSection>
+            <div className="relative z-10 w-[85%] max-w-3xl mx-auto text-center">
+                {/* Heading */}
+                <motion.h2
+                    className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-white leading-tight tracking-tight mb-8"
+                    style={{ fontStyle: "italic" }}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-100px" }}
+                    transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+                >
+                    Let&apos;s Build Something{" "}
+                    <br className="hidden md:block" />
+                    That <span className="text-cyan-400">Lasts.</span>
+                </motion.h2>
 
-                <AnimatedSection delay={0.1}>
-                    <p
-                        style={{
-                            fontSize: "clamp(1rem, 2vw, 1.2rem)",
-                            color: "var(--text-secondary)",
-                            maxWidth: 560,
-                            margin: "0 auto 40px",
-                            lineHeight: 1.7,
-                        }}
-                    >
-                        Ready to transform your brand&apos;s digital presence? Let&apos;s talk
-                        strategy, creativity, and results.
+                {/* Description */}
+                <motion.div
+                    className="space-y-5 mb-10"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-80px" }}
+                    transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+                >
+                    <p className="text-sm md:text-base text-white font-bold">
+                        We work best with teams that value structure, clarity, and long-term thinking.
                     </p>
-                </AnimatedSection>
-
-                <AnimatedSection delay={0.2}>
-                    <div
-                        style={{
-                            display: "flex",
-                            gap: 16,
-                            justifyContent: "center",
-                            flexWrap: "wrap",
-                        }}
-                    >
-                        <a href="mailto:hello@digitallynext.com" className="btn-primary">
-                            Get in Touch <ArrowRight size={16} />
-                        </a>
-                        <a href="tel:+919999999999" className="btn-outline">
-                            Book a Call
-                        </a>
-                    </div>
-                </AnimatedSection>
-
-                <AnimatedSection delay={0.35}>
-                    <p
-                        style={{
-                            fontSize: 13,
-                            color: "var(--text-muted)",
-                            marginTop: 32,
-                        }}
-                    >
-                        Typically respond within 24 hours
+                    <p className="text-sm md:text-base text-gray-300 leading-relaxed">
+                        If you&apos;re looking for shortcuts, quick hacks, or transactional execution, we may
+                        not be the right fit.
                     </p>
-                </AnimatedSection>
+                    <p className="text-sm md:text-base text-gray-300 leading-relaxed">
+                        If you&apos;re building something meant to scale, <span className="font-bold text-white">let&apos;s talk.</span>
+                    </p>
+                </motion.div>
+
+                {/* CTA Button */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-80px" }}
+                    transition={{ duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+                >
+                    <Link
+                        href="#contact"
+                        className="inline-block border border-[#E53935] text-white font-semibold text-sm tracking-widest uppercase px-8 py-4 hover:bg-[#E53935] transition-all duration-300"
+                    >
+                        GET IN TOUCH
+                    </Link>
+                </motion.div>
             </div>
         </section>
     );
