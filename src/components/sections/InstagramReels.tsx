@@ -74,23 +74,23 @@ export default function InstagramReels() {
     };
 
     return (
-        <section className="py-24 md:py-32 overflow-hidden" ref={sectionRef}>
-            <div className="max-w-7xl mx-auto px-6 md:px-12">
+        <section className="bg-white py-16 lg:py-32 overflow-hidden" ref={sectionRef}>
+            <div className="max-w-7xl mx-auto px-5 md:px-12">
                 {/* Header */}
-                <div className="text-center mb-16 md:mb-20">
+                <div className="text-center mb-10 lg:mb-20">
                     <motion.h2
-                        className="font-extrabold text-white tracking-tight leading-none mb-4"
+                        className="font-extrabold text-[#1a1a1a] tracking-tight leading-none mb-4"
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true, margin: "-100px" }}
                         transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
                     >
-                        <span className="text-4xl md:text-6xl lg:text-7xl">People & Culture</span>
-                        <span className="text-[#E53935] text-4xl md:text-6xl lg:text-7xl">.</span>
+                        <span className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl">People & Culture</span>
+                        <span className="text-[#E53935] text-3xl sm:text-4xl md:text-6xl lg:text-7xl">.</span>
                     </motion.h2>
 
                     <motion.p
-                        className="text-lg md:text-xl font-semibold text-white mb-3"
+                        className="text-base lg:text-xl font-semibold text-[#1a1a1a] mb-2 lg:mb-3"
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true, margin: "-100px" }}
@@ -100,7 +100,7 @@ export default function InstagramReels() {
                     </motion.p>
 
                     <motion.p
-                        className="text-sm md:text-base text-white/70 max-w-2xl mx-auto"
+                        className="text-sm md:text-base text-gray-500 max-w-2xl mx-auto"
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true, margin: "-100px" }}
@@ -111,10 +111,10 @@ export default function InstagramReels() {
                 </div>
 
                 {/* Navigation arrows */}
-                <div className="flex justify-end gap-3 mb-6">
+                <div className="flex justify-end gap-3 mb-4 lg:mb-6">
                     <button
                         onClick={() => scroll("left")}
-                        className="w-11 h-11 rounded-full border border-white/15 bg-white/5 backdrop-blur-sm flex items-center justify-center text-white/70 hover:text-white hover:border-[#E53935] hover:bg-[#E53935]/10 transition-all duration-300 group"
+                        className="w-10 h-10 lg:w-11 lg:h-11 rounded-full border border-gray-300 bg-gray-50 flex items-center justify-center text-gray-500 hover:text-[#E53935] hover:border-[#E53935] hover:bg-red-50 transition-all duration-300 group"
                         aria-label="Scroll left"
                     >
                         <svg className="w-4 h-4 transition-transform duration-300 group-hover:-translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
@@ -123,7 +123,7 @@ export default function InstagramReels() {
                     </button>
                     <button
                         onClick={() => scroll("right")}
-                        className="w-11 h-11 rounded-full border border-white/15 bg-white/5 backdrop-blur-sm flex items-center justify-center text-white/70 hover:text-white hover:border-[#E53935] hover:bg-[#E53935]/10 transition-all duration-300 group"
+                        className="w-10 h-10 lg:w-11 lg:h-11 rounded-full border border-gray-300 bg-gray-50 flex items-center justify-center text-gray-500 hover:text-[#E53935] hover:border-[#E53935] hover:bg-red-50 transition-all duration-300 group"
                         aria-label="Scroll right"
                     >
                         <svg className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
@@ -133,10 +133,10 @@ export default function InstagramReels() {
                 </div>
             </div>
 
-            {/* Reels carousel — full-width with edge-to-edge scroll */}
+            {/* Reels carousel — full-width with edge-to-edge scroll on both mobile & desktop */}
             <div
                 ref={scrollRef}
-                className="flex gap-6 px-6 md:px-12 overflow-x-auto pb-4"
+                className="flex gap-4 lg:gap-6 px-5 md:px-12 overflow-x-auto pb-4"
                 style={{
                     scrollbarWidth: "none",
                     msOverflowStyle: "none",
@@ -149,20 +149,18 @@ export default function InstagramReels() {
                 {INSTAGRAM_REELS.map((reel, index) => (
                     <motion.div
                         key={reel.id}
-                        className="reel-card flex-shrink-0"
+                        className="reel-card flex-shrink-0 w-[85%] sm:w-[60%] md:w-[calc(33%-16px)] lg:w-[calc(25%-18px)]"
                         custom={index}
                         // variants={cardVariants}
                         initial="hidden"
                         animate={isInView ? "visible" : "hidden"}
                         style={{
-                            width: "calc(25% - 18px)",
-                            minWidth: "240px",
                             scrollSnapAlign: "start",
                             perspective: "1000px",
                         }}
                     >
                         <div
-                            className="relative w-full rounded-2xl overflow-hidden border border-white/10 bg-[#1a1a1a] hover:border-white/25 transition-all duration-500 hover:shadow-[0_0_40px_rgba(229,57,53,0.15)]"
+                            className="relative w-full rounded-xl lg:rounded-2xl overflow-hidden border border-gray-200 bg-gray-50 hover:border-gray-400 transition-all duration-500 hover:shadow-lg"
                             style={{ aspectRatio: "9 / 16" }}
                         >
                             <iframe
@@ -179,9 +177,9 @@ export default function InstagramReels() {
             </div>
 
             {/* Instagram CTA */}
-            <div className="max-w-7xl mx-auto px-6 md:px-12">
+            <div className="max-w-7xl mx-auto px-5 md:px-12">
                 <motion.div
-                    className="text-center mt-12 md:mt-16"
+                    className="text-center mt-10 lg:mt-16"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: "-60px" }}
@@ -191,7 +189,7 @@ export default function InstagramReels() {
                         href="https://www.instagram.com/digitallynext/"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-3 px-8 py-4 rounded-full border border-white/15 text-white font-semibold text-sm tracking-wide hover:border-[#E53935] hover:text-[#E53935] transition-all duration-300 group"
+                        className="inline-flex items-center gap-3 px-6 py-3 lg:px-8 lg:py-4 rounded-full border border-gray-300 text-[#1a1a1a] font-semibold text-sm tracking-wide hover:border-[#E53935] hover:text-[#E53935] transition-all duration-300 group"
                     >
                         <svg
                             className="w-5 h-5 transition-transform duration-300 group-hover:scale-110"

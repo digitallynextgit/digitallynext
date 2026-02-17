@@ -3,6 +3,7 @@
 import { clientLogos } from "@/data/content";
 import AnimatedSection from "@/components/ui/AnimatedSection";
 import Image from "next/image";
+import Link from "next/link";
 
 
 export default function ClientLogos() {
@@ -35,17 +36,12 @@ export default function ClientLogos() {
                         }}
                     >
                         <p
-                            style={{
-                                fontSize: "clamp(2.15rem, 2vw, 8rem)",
-                                color: "var(--text-secondary)",
-                                maxWidth: 620,
-                                // fontStyle: "italic",
-                            }}
+                            className="text-2xl lg:text-4xl lg:w-[65%] w-full "
                         >
-                            <strong style={{ color: "var(--text-primary)" }}>Trusted</strong>{" "}
+                            <strong className="text-2xl lg:text-4xl" >Trusted</strong>{" "}
                             by ambitious brands across industries and geographies.
                         </p>
-                        <a
+                        <Link  
                             href="#contact"
                             style={{
                                 display: "flex",
@@ -58,21 +54,22 @@ export default function ClientLogos() {
                             }}
                         >
                             <span className="text-red-500 "><Image src="/icons/enter.svg" alt="arrow-right" width={40} height={40} /></span> Work With Us
-                        </a>
+                        </Link>
                     </div>
                 </AnimatedSection>
             </div>
 
             {/* Marquee */}
             <div style={{ overflow: "hidden" }}>
-                <div className="marquee-track">
+                <div className="marquee-track ">
                     {/* Duplicate set of logos for infinite scroll */}
                     {[...logoFiles, ...logoFiles, ...logoFiles, ...logoFiles].map((logo, i) => (
                         <div
                             key={i}
-                            className="client-logo-card"
+                            className="client-logo-card border-2 border-white "
                         >
-                            <div style={{ position: "relative", width: 140, height: 140 }}>
+                            <div className="" 
+                            style={{ position: "relative", width: 160, height: 160 }}>
                                 <Image
                                     src={logo}
                                     alt="Client Logo"

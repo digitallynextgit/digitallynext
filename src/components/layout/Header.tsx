@@ -67,7 +67,7 @@ export default function Header() {
                     {/* 3. Center Logo */}
                     <div style={{ display: "flex", justifyContent: "center" }}>
                         <Link href="/" className="header-logo">
-                            <Image src="/logo-complete-white.webp" alt="Logo" width={1200} height={120} className="w-[16vw]" />
+                            <Image src="/logo-complete-white.webp" alt="Logo" width={1200} height={120} className="lg:w-[16vw] w-[60vw] -ml-[50%] lg:ml-0" />
                         </Link>
                     </div>
 

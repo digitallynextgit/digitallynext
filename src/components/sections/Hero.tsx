@@ -23,13 +23,13 @@ export default function Hero() {
                 >
                     <source src="/banner.mp4" type="video/mp4" />
                 </video> */}
-                <Image src="/banner/b1.webp" alt="Hero" width={1920} height={1080} />
+                <Image src="/banner/b1.webp" alt="Hero" width={1920} height={1080} className="w-[100vw] h-[100vh] object-cover"/>
                 {/* Overlay for readability if needed, though mix-blend-mode text might handle it */}
                 {/* <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.3)" }} /> */}
             </div>
 
             {/* Content overlay */}
-            <div className="hero-content">
+            <div className="hero-content ">
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -55,15 +55,8 @@ export default function Hero() {
                     style={{ mixBlendMode: "difference" }}
                 >
                     <h1
-                        style={{
-                            fontSize: "clamp(4.5rem, 14vw, 11rem)",
-                            fontWeight: 900,
-                            color: "#fff",
-                            lineHeight: 0.9,
-                            letterSpacing: "-0.04em",
-                            marginBottom: 24,
-                            textTransform: "uppercase",
-                        }}
+                        
+                        className="text-[14vw] lg:text-[12vw] font-bold text-white mb-6 uppercase"
                     >
                         CAMPAIGNS.
                     </h1>

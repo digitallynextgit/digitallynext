@@ -13,7 +13,7 @@ export default function HowWeOperate() {
             <div className="max-w-7xl text-center justify-center" style={{ textAlign: "center" }}>
                 {/* Modern DAD heading */}
                 <AnimatedSection>
-                    <h2
+                    <h2 className="mt-[-40px] sm:mt-[-100px]"
                         style={{
                             fontSize: "clamp(2rem, 14vw, 14rem)",
                             fontFamily: "Stack Sans Text",
@@ -21,7 +21,7 @@ export default function HowWeOperate() {
                             letterSpacing: "-0.04em",
                             lineHeight: 0.95,
                             marginBottom: 48,
-                            marginTop: -100,
+                            // marginTop: -100,
                             WebkitMaskImage: "linear-gradient(to bottom, black 20%, transparent 100%)",
                             maskImage: "linear-gradient(to bottom, black 20%, transparent 100%)",
                         }}
@@ -42,26 +42,22 @@ export default function HowWeOperate() {
                     >
                         HOW WE OPERATE<span style={{ color: "#e53935" }}>.</span>
                     </h3>
-                    <p
-                        style={{
-                            fontSize: 16,
-                            color: "#000",
-                            marginBottom: 64,
-                        }}
+                    <p className="lg:text-2xl font-medium text-[#787878] mb-10"
+                        
                     >
                         An operating model where
                     </p>
                 </AnimatedSection>
 
                 {/* Three pillars */}
-                <div
+                <div className="flex flex-col lg:flex-row justify-center gap-8 mb-20"
                     style={{
-                        display: "grid",
-                        gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
-                        gap: 48,
-                        marginBottom: 64,
-                        maxWidth: 900,
-                        margin: "0 auto 64px",
+                        // display: "grid",
+                        // gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
+                        // gap: 48,
+                        // marginBottom: 64,
+                        // maxWidth: 900,
+                        // margin: "0 auto 64px",
                     }}
                 >
                     {dadPillars.map((pillar, i) => (
@@ -99,17 +95,14 @@ export default function HowWeOperate() {
                                     />
                                 </div>
 
-                                <div>
-                                    <p
-                                        style={{
-                                            fontSize: 17,
-                                            fontWeight: 600,
-                                        }}
+                                <div className="w-full ">
+                                    <p className="text-2xl font-semibold"
+                                        
                                     >
-                                        <span className="text-[2vw]" style={{ color: "#e53935", fontWeight: 700 }}>
+                                        <span className="lg:text-[2vw] text-[5vw]" style={{ color: "#e53935", fontWeight: 700 }}>
                                             {pillar.word}
                                         </span>{" "}
-                                        <span className="text-[2vw]" style={{ color: "#1a1a1a" }}>
+                                        <span className="lg:text-[2vw] text-[5vw]" style={{ color: "#1a1a1a" }}>
                                             {pillar.tagline}
                                         </span>
                                     </p>
@@ -121,14 +114,16 @@ export default function HowWeOperate() {
 
                 {/* Tagline bar */}
                 <AnimatedSection delay={0.5}>
-                    <div className="tagline-bar-light">
-                        <p>
+                    <div className="px-4">
+                    <div className="border border-2 lg:w-[60%] p-4 w-full mx-auto">
+                       <span className="font-semibold bg-gradient-to-r from-black to-red-600 bg-clip-text text-transparent text-2xl ">
                             Decide with data.{" "}
                             <strong>Move with intelligence.</strong>{" "}
-                            <strong style={{ color: "#e53935", fontWeight: 800 }}>
+                            <strong >
                                 Build digitally.
                             </strong>
-                        </p>
+                        </span>
+                    </div>
                     </div>
                 </AnimatedSection>
             </div>

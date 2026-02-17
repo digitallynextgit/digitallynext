@@ -18,11 +18,11 @@ export default function Footer() {
     return (
         <footer className="bg-black border-t border-white/8">
             {/* Main footer content */}
-            <div className="w-full max-w-7xl mx-auto py-16 md:py-20">
+            <div className="w-full max-w-7xl mx-auto py-16 md:py-20 px-4">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8 mb-12">
                     {/* Left — Tagline */}
                     <div>
-                        <h3 className="text-xl md:text-4xl font-bold text-white leading-snug">
+                        <h3 className="text-3xl md:text-4xl font-bold text-white leading-snug">
                             Modern DAD-enabled.
                             <br />
                             Decision-led.
@@ -34,7 +34,7 @@ export default function Footer() {
 
                     {/* Center — Navigation */}
                     <div>
-                        <h4 className="text-xl font-semibold uppercase tracking-widest text-white mb-5">
+                        <h4 className="text-2xl font-semibold uppercase tracking-widest text-white mb-5">
                             NAVIGATION
                         </h4>
                         <ul className="space-y-3">
@@ -42,7 +42,7 @@ export default function Footer() {
                                 <li key={item.label}>
                                     <Link
                                         href={item.href}
-                                        className="text-sm text-gray-300 hover:text-white transition-colors duration-200"
+                                        className="text-lg text-gray-300 hover:text-white transition-colors duration-200"
                                     >
                                         {item.label}
                                     </Link>
@@ -53,7 +53,7 @@ export default function Footer() {
 
                     {/* Right — Social Media */}
                     <div>
-                        <h4 className="text-xl font-semibold uppercase tracking-widest text-white mb-5">
+                        <h4 className="text-2xl font-semibold uppercase tracking-widest text-white mb-5">
                             SOCIAL MEDIA
                         </h4>
                         <ul className="space-y-3">
@@ -63,7 +63,7 @@ export default function Footer() {
                                         href={item.href}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="text-sm text-gray-300 hover:text-white transition-colors duration-200"
+                                        className="text-lg text-gray-300 hover:text-white transition-colors duration-200"
                                     >
                                         {item.label}
                                     </a>
@@ -74,8 +74,8 @@ export default function Footer() {
                 </div>
 
                 {/* Divider + Bottom row */}
-                <div className="border-t border-white/8 pt-6 flex flex-col sm:flex-row justify-between items-center gap-4">
-                    <span className="text-lg text-white/80">
+                <div className="border-t border-white/8 pt-6 flex lg:flex-row flex-col-reverse lg:justify-between justify-center items-center gap-4">
+                    <span className="lg:text-lg text-sm text-white/80">
                         © 2026 Digitally Next. All Rights Reserved.
                     </span>
                     <div className="flex gap-6">
