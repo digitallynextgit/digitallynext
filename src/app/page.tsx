@@ -5,6 +5,7 @@ import Services from "@/components/sections/Services";
 import CaseStudies from "@/components/sections/CaseStudies";
 import ADAC from "@/components/sections/ADAC";
 import GlobalServicingModel from "@/components/sections/GlobalServicingModel";
+import InstagramReels from "@/components/sections/InstagramReels";
 import Stats from "@/components/sections/Stats";
 import PeopleCulture from "@/components/sections/PeopleCulture";
 import Insights from "@/components/sections/Insights";
@@ -22,6 +23,7 @@ export default function Home() {
         <CaseStudies />
         <ADAC />
         <GlobalServicingModel />
+        <InstagramReels />
         {/* <Stats />
         <PeopleCulture />
         <Insights /> */}

@@ -21,7 +21,7 @@ export default function CTASection() {
                 />
             </div>
 
-            <div className="relative z-10 w-[85%] max-w-3xl mx-auto text-center">
+            <div className="relative z-10 w-[95%] max-w-6xl mx-auto text-center">
                 {/* Heading */}
                 <motion.h2
                     className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-white leading-tight tracking-tight mb-8"
@@ -44,14 +44,14 @@ export default function CTASection() {
                     viewport={{ once: true, margin: "-80px" }}
                     transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
                 >
-                    <p className="text-sm md:text-base text-white font-bold">
+                    <p className="text-sm md:text-2xl text-white font-bold">
                         We work best with teams that value structure, clarity, and long-term thinking.
                     </p>
-                    <p className="text-sm md:text-base text-gray-300 leading-relaxed">
+                    <p className="text-sm md:text-2xl text-gray-300 leading-relaxed">
                         If you&apos;re looking for shortcuts, quick hacks, or transactional execution, we may
                         not be the right fit.
                     </p>
-                    <p className="text-sm md:text-base text-gray-300 leading-relaxed">
+                    <p className="text-sm md:text-2xl text-gray-300 leading-relaxed">
                         If you&apos;re building something meant to scale, <span className="font-bold text-white">let&apos;s talk.</span>
                     </p>
                 </motion.div>
