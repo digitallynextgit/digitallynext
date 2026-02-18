@@ -45,7 +45,7 @@ function MobileServices() {
                                     className={`text-2xl sm:text-3xl font-bold tracking-tight transition-colors duration-400 ${isOpen ? "text-white" : "text-white/30"
                                         } group-hover:text-white/70`}
                                 >
-                                    {service.title}
+                                    {service.title}     
                                 </h3>
                                 <span
                                     className={`ml-4 flex items-center gap-0.5 text-sm font-mono shrink-0 transition-colors duration-400 ${isOpen ? "text-[#E53935]" : "text-white/30"
