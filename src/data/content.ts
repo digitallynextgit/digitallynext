@@ -14,7 +14,7 @@ export const navLinksLeft = [
 
 export const navLinksRight = [
   { label: "CASE STUDIES", href: "#case-studies" },
-  { label: "CONTACT", href: "#contact" },
+  { label: "BLOG", href: "/blog" },
 ];
 
 export const navLinks = [...navLinksLeft, ...navLinksRight];

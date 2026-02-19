@@ -3,6 +3,7 @@
 import { insights } from "@/data/content";
 import AnimatedSection from "@/components/ui/AnimatedSection";
 import { ArrowRight } from "lucide-react";
+import Link from "next/link";
 
 export default function Insights() {
     return (
@@ -27,7 +28,7 @@ export default function Insights() {
                             Latest Insights
                             <span style={{ color: "var(--accent)" }}>.</span>
                         </h2>
-                        <a
+                        <Link
                             href="/blog"
                             style={{
                                 display: "flex",
@@ -40,7 +41,7 @@ export default function Insights() {
                             }}
                         >
                             View All <ArrowRight size={14} />
-                        </a>
+                        </Link>
                     </div>
                 </AnimatedSection>
 

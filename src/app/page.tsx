@@ -16,7 +16,6 @@ export default function Home() {
     <>
       <Hero />
       <div style={{ position: "relative", zIndex: 10, background: "var(--bg-primary)" }}>
-
         <HowWeOperate />
         <ClientLogos />
         <Services />

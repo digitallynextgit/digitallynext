@@ -6,11 +6,14 @@ import { Menu, X } from "lucide-react";
 import { navLinksLeft, navLinksRight, navLinks, siteConfig } from "@/data/content";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 
 export default function Header() {
     const [scrolled, setScrolled] = useState(false);
     const [mobileOpen, setMobileOpen] = useState(false);
+    const pathname = usePathname();
+    const isCaseStudy = pathname === "/case-study" || pathname.startsWith("/case-study/");
 
     useEffect(() => {
         const onScroll = () => setScrolled(window.scrollY > 50);
@@ -29,6 +32,7 @@ export default function Header() {
     return (
         <>
             <header
+                className={isCaseStudy ? "header--light" : undefined}
                 style={{
                     position: "fixed",
                     top: 0,
@@ -36,11 +40,17 @@ export default function Header() {
                     right: 0,
                     zIndex: 100,
                     transition: "all 0.4s cubic-bezier(0.16, 1, 0.3, 1)",
-                    background: scrolled ? "rgba(10, 10, 10, 0.85)" : "transparent",
+                    background: scrolled
+                        ? isCaseStudy
+                            ? "rgba(255, 255, 255, 0.85)"
+                            : "rgba(10, 10, 10, 0.85)"
+                        : "transparent",
                     backdropFilter: scrolled ? "blur(20px)" : "none",
                     WebkitBackdropFilter: scrolled ? "blur(20px)" : "none",
                     borderBottom: scrolled
-                        ? "1px solid rgba(255,255,255,0.08)"
+                        ? isCaseStudy
+                            ? "1px solid rgba(0,0,0,0.08)"
+                            : "1px solid rgba(255,255,255,0.08)"
                         : "1px solid transparent",
                 }}
             >
@@ -67,7 +77,13 @@ export default function Header() {
                     {/* 3. Center Logo */}
                     <div style={{ display: "flex", justifyContent: "center" }}>
                         <Link href="/" className="header-logo">
-                            <Image src="/logo-complete-white.webp" alt="Logo" width={1200} height={120} className="lg:w-[16vw] w-[60vw] -ml-[50%] lg:ml-0" />
+                            <Image
+                                src={isCaseStudy ? "/logo1.webp" : "/logo-complete-white.webp"}
+                                alt="Logo"
+                                width={1200}
+                                height={120}
+                                className="lg:w-[16vw] w-[60vw] -ml-[50%] lg:ml-0"
+                            />
                         </Link>
                     </div>
 
@@ -76,9 +92,11 @@ export default function Header() {
                         <Link href="#case-studies" className="header-nav-link">CASE STUDIES</Link>
                     </div>
 
-                    {/* 5. Contact */}
+                    {/* 5. Blog */}
                     <div style={{ display: "flex", justifyContent: "center" }} className="desktop-nav">
-                        <Link href="#contact" className="header-nav-link">CONTACT</Link>
+                        <Link href={isCaseStudy ? "#contact" : "/blog"} className="header-nav-link">
+                            {isCaseStudy ? "CONTACT" : "BLOG"}
+                        </Link>
                     </div>
 
                     {/* Hamburger for mobile - Absolute positioned since grid disrupts it */}
@@ -90,7 +108,7 @@ export default function Header() {
                                 display: "none",
                                 background: "none",
                                 border: "none",
-                                color: "var(--text-primary)",
+                                color: isCaseStudy ? "#000" : "var(--text-primary)",
                                 cursor: "pointer",
                                 padding: 4,
                             }}
