@@ -89,7 +89,7 @@ export default function Header() {
 
                     {/* 4. Case Studies */}
                     <div style={{ display: "flex", justifyContent: "center" }} className="desktop-nav">
-                        <Link href="#case-studies" className="header-nav-link">CASE STUDIES</Link>
+                        <Link href="case-study" className="header-nav-link">CASE STUDIES</Link>
                     </div>
 
                     {/* 5. Blog */}
