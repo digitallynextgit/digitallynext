@@ -40,7 +40,7 @@ export default function CaseStudies() {
                         <span className="cs-label-corner">¬</span> SELECTED WORK
                     </div>
                     <h2 className="cs-heading">
-                        Case Studies<span className="cs-heading-dot">.</span>
+                        Case Studies<span className="cs-heading-dot !text-[#0EC8C5]">.</span>
                     </h2>
                 </motion.div>
             </div>

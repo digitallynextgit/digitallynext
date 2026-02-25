@@ -153,7 +153,8 @@ const AnimatedList: React.FC<AnimatedListProps> = ({
         });
       }
     }
-    setKeyboardNav(false);
+    const timeoutId = window.setTimeout(() => setKeyboardNav(false), 0);
+    return () => window.clearTimeout(timeoutId);
   }, [selectedIndex, keyboardNav]);
 
   return (

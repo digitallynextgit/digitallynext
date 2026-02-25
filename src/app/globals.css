@@ -192,8 +192,8 @@
   padding: 16px 36px;
   background: rgba(0, 255, 255, 0.826);
   color: red;
-  font-weight: 700;
-  font-size: 1.25rem;
+  font-weight: 400;
+  font-size: 1.30rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   border: none;
@@ -1080,7 +1080,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, var(--bg-surface) 0%, #E5393515 100%);
+  background: linear-gradient(135deg, var(--bg-surface) 0%, #e5393515 100%);
 }
 
 .blog-card-image-placeholder span {

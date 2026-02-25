@@ -86,7 +86,7 @@ export default function InstagramReels() {
                         transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
                     >
                         <span className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl">People & Culture</span>
-                        <span className="text-[#E53935] text-3xl sm:text-4xl md:text-6xl lg:text-7xl">.</span>
+                        <span className="text-[#0EC8C5] text-3xl sm:text-4xl md:text-6xl lg:text-7xl">.</span>
                     </motion.h2>
 
                     <motion.p
