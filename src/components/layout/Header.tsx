@@ -3,17 +3,68 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
-import { navLinksLeft, navLinksRight, navLinks, siteConfig } from "@/data/content";
+import { navLinks } from "@/data/content";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
+type RouteHeaderTheme = {
+    linkColor: string;
+    logo: "light" | "dark" | "white";
+    bgStatic?: string;
+};
+
+const ROUTE_THEMES: Record<string, RouteHeaderTheme> = {
+    "/": {
+        linkColor: "#FFFFFF",
+        logo: "light",
+    },
+    "/services/": {
+        linkColor: "#FFFFFF",
+        logo: "white",
+    },
+    "/case-studies": {
+        linkColor: "#000000",
+        logo: "dark",
+    },
+    "/case-studies/": {
+        linkColor: "#FFFFFF",
+        logo: "white",
+    },
+    "/contact": {
+        linkColor: "#000000",
+        logo: "dark",
+    },
+    "/about": {
+        linkColor: "#000000",
+        logo: "dark",
+    },
+};
+
+const DEFAULT_THEME: RouteHeaderTheme = {
+    linkColor: "#000000",
+    logo: "dark",
+};
+
+const LOGO_SRCS: Record<RouteHeaderTheme["logo"], string> = {
+    light: "/logo-complete-white.webp",
+    dark: "/logo1.webp",
+    white: "/logo1-white.webp",
+};
+
+function resolveRouteTheme(pathname: string): RouteHeaderTheme {
+    if (ROUTE_THEMES[pathname]) return ROUTE_THEMES[pathname];
+    const prefixMatch = Object.keys(ROUTE_THEMES).find(
+        (key) => key.endsWith("/") && key !== "/" && pathname.startsWith(key)
+    );
+    if (prefixMatch) return ROUTE_THEMES[prefixMatch];
+    return DEFAULT_THEME;
+}
 
 export default function Header() {
     const [scrolled, setScrolled] = useState(false);
     const [mobileOpen, setMobileOpen] = useState(false);
     const pathname = usePathname();
-    const isHome = pathname === "/";
 
     useEffect(() => {
         const onScroll = () => setScrolled(window.scrollY > 50);
@@ -22,20 +73,20 @@ export default function Header() {
     }, []);
 
     useEffect(() => {
-        if (mobileOpen) {
-            document.body.style.overflow = "hidden";
-        } else {
-            document.body.style.overflow = "";
-        }
+        document.body.style.overflow = mobileOpen ? "hidden" : "";
     }, [mobileOpen]);
 
-    // Dynamic visual logic
-    const headerBg = scrolled ? "rgba(10, 10, 10, 0.85)" : "transparent";
-    const linkColor = isHome ? "#fff" : (scrolled ? "#fff" : "#000");
-    const logoLight = "/logo-complete-white.webp";
-    const logoDark = "/logo1.webp";
-    const logoWhite = "/logo1-white.webp";
-    const logoSrc = isHome ? (scrolled ? logoWhite : logoLight) : (scrolled ? logoWhite : logoDark);
+    useEffect(() => {
+        setMobileOpen(false);
+    }, [pathname]);
+
+    const routeTheme = resolveRouteTheme(pathname);
+
+    const linkColor = scrolled ? "#FFFFFF" : routeTheme.linkColor;
+    const logoSrc = scrolled ? LOGO_SRCS.white : LOGO_SRCS[routeTheme.logo];
+    const headerBg = scrolled
+        ? "rgba(10, 10, 10, 0.85)"
+        : (routeTheme.bgStatic ?? "transparent");
 
     return (
         <>
@@ -50,7 +101,9 @@ export default function Header() {
                     background: headerBg,
                     backdropFilter: scrolled ? "blur(20px)" : "none",
                     WebkitBackdropFilter: scrolled ? "blur(20px)" : "none",
-                    borderBottom: scrolled ? "1px solid rgba(255,255,255,0.08)" : "1px solid transparent",
+                    borderBottom: scrolled
+                        ? "1px solid rgba(255,255,255,0.08)"
+                        : "1px solid transparent",
                 }}
             >
                 <div
@@ -67,94 +120,54 @@ export default function Header() {
                     }}
                 >
                     {/* 1. Home */}
-                    <div
-                        style={{ display: "flex", justifyContent: "center" }}
-                        className="desktop-nav"
-                    >
-                        <Link
-                            href="/"
-                            className="header-nav-link"
-                            style={{ color: linkColor }}
-                        >
+                    <div style={{ display: "flex", justifyContent: "center" }} className="desktop-nav">
+                        <Link href="/" className="header-nav-link" style={{ color: linkColor }}>
                             HOME
                         </Link>
                     </div>
 
                     {/* 2. Services */}
-                    <div
-                        style={{ display: "flex", justifyContent: "center" }}
-                        className="desktop-nav"
-                    >
-                        <Link
-                            href="/#services"
-                            className="header-nav-link"
-                            style={{ color: linkColor }}
-                        >
+                    <div style={{ display: "flex", justifyContent: "center" }} className="desktop-nav">
+                        <Link href="/#services" className="header-nav-link" style={{ color: linkColor }}>
                             SERVICES
                         </Link>
                     </div>
 
-                    {/* 3. Center Logo (desktop) / Left logo (mobile) */}
-                    <div
-                        style={{
-                            display: "flex",
-                            justifyContent: "center",
-                        }}
-                    >
-                        <Link
-                            href="/"
-                            className="header-logo"
-                            style={{
-                                display: "flex",
-                                alignItems: "center",
-                            }}
-                        >
+                    {/* 3. Center Logo */}
+                    <div style={{ display: "flex", justifyContent: "center" }}>
+                        <Link href="/" className="header-logo" style={{ display: "flex", alignItems: "center" }}>
                             <Image
                                 src={logoSrc}
                                 alt="Logo"
                                 width={1200}
                                 height={120}
                                 className="w-[44vw] sm:w-[36vw] md:w-[28vw] lg:w-[16vw]"
+                                priority
                             />
                         </Link>
                     </div>
 
                     {/* 4. Case Studies */}
-                    <div
-                        style={{ display: "flex", justifyContent: "center" }}
-                        className="desktop-nav"
-                    >
-                        <Link
-                            href="/case-study"
-                            className="header-nav-link"
-                            style={{ color: linkColor }}
-                        >
+                    <div style={{ display: "flex", justifyContent: "center" }} className="desktop-nav">
+                        <Link href="/case-studies" className="header-nav-link" style={{ color: linkColor }}>
                             CASE STUDIES
                         </Link>
                     </div>
 
                     {/* 5. Contact */}
-                    <div
-                        style={{ display: "flex", justifyContent: "center" }}
-                        className="desktop-nav"
-                    >
-                        <Link
-                            href="/#contact"
-                            className="header-nav-link"
-                            style={{ color: linkColor }}
-                        >
+                    <div style={{ display: "flex", justifyContent: "center" }} className="desktop-nav">
+                        <Link href="/#contact" className="header-nav-link" style={{ color: linkColor }}>
                             CONTACT
                         </Link>
                     </div>
 
-                    {/* Hamburger for mobile - Absolute positioned since grid disrupts it */}
+                    {/* Hamburger */}
                     <div
                         style={{
                             position: "absolute",
                             right: 20,
                             top: "50%",
                             transform: "translateY(-50%)",
-                            display: "none",
                         }}
                         className="mobile-menu-btn-container"
                     >
@@ -162,7 +175,6 @@ export default function Header() {
                             className="mobile-menu-btn"
                             onClick={() => setMobileOpen(!mobileOpen)}
                             style={{
-                                display: "none",
                                 background: "none",
                                 border: "none",
                                 color: linkColor,
