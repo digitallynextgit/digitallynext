@@ -46,7 +46,7 @@ function MobileGSM() {
         <div className="lg:hidden">
             {/* Frameworks heading */}
             <motion.h3
-                className="text-2xl font-bold text-white mb-8"
+                className="text-xl sm:text-2xl font-bold text-white mb-6 sm:mb-8"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
@@ -55,39 +55,40 @@ function MobileGSM() {
                 Our Operating Frameworks
             </motion.h3>
 
-            <p className="text-sm text-white/60 mb-8 leading-relaxed">
+            <p className="text-[12px] sm:text-sm text-white/60 mb-6 sm:mb-8 leading-relaxed">
                 All frameworks are powered by Modern DAD thinking and governed by the AI Decision & Acceleration Center.
             </p>
 
             {/* All framework cards stacked */}
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-3 sm:gap-4">
                 {frameworks.map((fw, i) => (
                     <motion.div
                         key={fw.name}
-                        className="bg-black border border-white/15 rounded-xl p-5 backdrop-blur-sm"
+                        className="bg-black border border-white/15 rounded-xl p-4 sm:p-5 backdrop-blur-sm"
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true, margin: "-40px" }}
                         transition={{ duration: 0.5, delay: i * 0.08, ease: [0.16, 1, 0.3, 1] }}
                     >
-                        <div className="flex items-start gap-4">
+                        <div className="flex items-start gap-3 sm:gap-4">
                             {/* Icon */}
-                            <div className="w-14 h-14 flex-shrink-0 flex items-center justify-center rounded-lg bg-orange-500/10">
+                            <div className="w-12 h-12 sm:w-14 sm:h-14 flex-shrink-0 flex items-center justify-center rounded-lg bg-orange-500/10">
                                 {fw.icon}
                             </div>
                             <div className="flex-1 min-w-0">
-                                <div className="flex items-center justify-between mb-1">
-                                    <h4 className="text-lg font-bold text-white tracking-tight">
+                                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 mb-1">
+                                    <h4 className="text-base sm:text-lg font-bold text-white tracking-tight break-words">
                                         {fw.name}
                                     </h4>
                                     <Link
                                         href="#"
-                                        className="inline-flex items-center gap-1 text-[#E53935] font-semibold text-xs shrink-0 hover:gap-2 transition-all duration-300"
+                                        className="mt-0.5 sm:mt-0 inline-flex items-center gap-1 text-[#E53935] font-semibold text-[11px] sm:text-xs shrink-0 hover:gap-2 transition-all duration-300"
                                     >
-                                        <span>↳</span> <span className="text-white/70">{fw.cta}</span>
+                                        <span>↳</span>
+                                        <span className="text-white/70">{fw.cta}</span>
                                     </Link>
                                 </div>
-                                <p className="text-xs text-gray-400 leading-relaxed">
+                                <p className="text-[12px] sm:text-xs text-gray-400 leading-relaxed">
                                     {fw.description}
                                 </p>
                             </div>
@@ -198,25 +199,27 @@ function DesktopGSM() {
 /* ===== Main Export ===== */
 export default function GlobalServicingModel() {
     return (
-        <section className="py-24 md:py-32">
-            <div className="w-[90%] lg:w-auto max-w-6xl mx-auto">
+        <section className="py-16 sm:py-24 md:py-32">
+            <div className="w-[92%] sm:w-[90%] lg:w-auto max-w-6xl mx-auto">
                 <div className="flex justify-between items-center flex-col">
                     {/* Heading */}
                     <motion.div
-                        className="mb-6"
+                        className="mb-5 sm:mb-6"
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true, margin: "-100px" }}
                         transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
                     >
-                        <h2 className=" font-extrabold text-white tracking-tight leading-none">
-                            <span className="text-[#E53935] text-4xl md:text-6xl lg:text-7xl">Global</span> <span className="text-4xl md:text-6xl lg:text-7xl">Servicing Model</span><span className="text-[#E53935] text-4xl md:text-6xl lg:text-7xl">.</span>
+                        <h2 className="font-extrabold text-white tracking-tight leading-none">
+                            <span className="text-[#E53935] text-3xl sm:text-4xl md:text-6xl lg:text-7xl">Global</span>{" "}
+                            <span className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl">Servicing Model</span>
+                            <span className="text-[#E53935] text-3xl sm:text-4xl md:text-6xl lg:text-7xl">.</span>
                         </h2>
                     </motion.div>
 
                     {/* Subtitle */}
                     <motion.p
-                        className="text-sm md:text-base text-white/80 mb-16 md:mb-20"
+                        className="text-[12px] sm:text-sm md:text-base text-white/80 mb-10 sm:mb-16 md:mb-20 text-center"
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true, margin: "-100px" }}

@@ -9,12 +9,12 @@ export const siteConfig = {
 
 export const navLinksLeft = [
   { label: "HOME", href: "/" },
-  { label: "SERVICES", href: "#services" },
+  { label: "SERVICES", href: "/#services" },
 ];
 
 export const navLinksRight = [
-  { label: "CASE STUDIES", href: "#case-studies" },
-  { label: "BLOG", href: "/blog" },
+  { label: "CASE STUDIES", href: "/case-study" },
+  { label: "CONTACT", href: "/#contact" },
 ];
 
 export const navLinks = [...navLinksLeft, ...navLinksRight];

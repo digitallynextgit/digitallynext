@@ -13,7 +13,7 @@ export default function Header() {
     const [scrolled, setScrolled] = useState(false);
     const [mobileOpen, setMobileOpen] = useState(false);
     const pathname = usePathname();
-    const isCaseStudy = pathname === "/case-study" || pathname.startsWith("/case-study/");
+    const isHome = pathname === "/";
 
     useEffect(() => {
         const onScroll = () => setScrolled(window.scrollY > 50);
@@ -29,10 +29,17 @@ export default function Header() {
         }
     }, [mobileOpen]);
 
+    // Dynamic visual logic
+    const headerBg = scrolled ? "rgba(10, 10, 10, 0.85)" : "transparent";
+    const linkColor = isHome ? "#fff" : (scrolled ? "#fff" : "#000");
+    const logoLight = "/logo-complete-white.webp";
+    const logoDark = "/logo1.webp";
+    const logoWhite = "/logo1-white.webp";
+    const logoSrc = isHome ? (scrolled ? logoWhite : logoLight) : (scrolled ? logoWhite : logoDark);
+
     return (
         <>
             <header
-                className={isCaseStudy ? "header--light" : undefined}
                 style={{
                     position: "fixed",
                     top: 0,
@@ -40,67 +47,117 @@ export default function Header() {
                     right: 0,
                     zIndex: 100,
                     transition: "all 0.4s cubic-bezier(0.16, 1, 0.3, 1)",
-                    background: scrolled
-                        ? isCaseStudy
-                            ? "rgba(255, 255, 255, 0.85)"
-                            : "rgba(10, 10, 10, 0.85)"
-                        : "transparent",
+                    background: headerBg,
                     backdropFilter: scrolled ? "blur(20px)" : "none",
                     WebkitBackdropFilter: scrolled ? "blur(20px)" : "none",
-                    borderBottom: scrolled
-                        ? isCaseStudy
-                            ? "1px solid rgba(0,0,0,0.08)"
-                            : "1px solid rgba(255,255,255,0.08)"
-                        : "1px solid transparent",
+                    borderBottom: scrolled ? "1px solid rgba(255,255,255,0.08)" : "1px solid transparent",
                 }}
             >
-                <div className="header-container" style={{
-                    display: "grid",
-                    gridTemplateColumns: "repeat(5, 1fr)",
-                    alignItems: "center",
-                    height: 80,
-                    width: "100%",
-                    maxWidth: 1440,
-                    margin: "0 auto",
-                    padding: "0 40px",
-                }}>
+                <div
+                    className="header-container"
+                    style={{
+                        display: "grid",
+                        gridTemplateColumns: "repeat(5, 1fr)",
+                        alignItems: "center",
+                        height: 80,
+                        width: "100%",
+                        maxWidth: 1440,
+                        margin: "0 auto",
+                        padding: "0 32px",
+                    }}
+                >
                     {/* 1. Home */}
-                    <div style={{ display: "flex", justifyContent: "center" }} className="desktop-nav">
-                        <Link href="/" className="header-nav-link">HOME</Link>
+                    <div
+                        style={{ display: "flex", justifyContent: "center" }}
+                        className="desktop-nav"
+                    >
+                        <Link
+                            href="/"
+                            className="header-nav-link"
+                            style={{ color: linkColor }}
+                        >
+                            HOME
+                        </Link>
                     </div>
 
                     {/* 2. Services */}
-                    <div style={{ display: "flex", justifyContent: "center" }} className="desktop-nav">
-                        <Link href="#services" className="header-nav-link">SERVICES</Link>
+                    <div
+                        style={{ display: "flex", justifyContent: "center" }}
+                        className="desktop-nav"
+                    >
+                        <Link
+                            href="/#services"
+                            className="header-nav-link"
+                            style={{ color: linkColor }}
+                        >
+                            SERVICES
+                        </Link>
                     </div>
 
-                    {/* 3. Center Logo */}
-                    <div style={{ display: "flex", justifyContent: "center" }}>
-                        <Link href="/" className="header-logo">
+                    {/* 3. Center Logo (desktop) / Left logo (mobile) */}
+                    <div
+                        style={{
+                            display: "flex",
+                            justifyContent: "center",
+                        }}
+                    >
+                        <Link
+                            href="/"
+                            className="header-logo"
+                            style={{
+                                display: "flex",
+                                alignItems: "center",
+                            }}
+                        >
                             <Image
-                                src={isCaseStudy ? "/logo1.webp" : "/logo-complete-white.webp"}
+                                src={logoSrc}
                                 alt="Logo"
                                 width={1200}
                                 height={120}
-                                className="lg:w-[16vw] w-[60vw] -ml-[50%] lg:ml-0"
+                                className="w-[44vw] sm:w-[36vw] md:w-[28vw] lg:w-[16vw]"
                             />
                         </Link>
                     </div>
 
                     {/* 4. Case Studies */}
-                    <div style={{ display: "flex", justifyContent: "center" }} className="desktop-nav">
-                        <Link href="case-study" className="header-nav-link">CASE STUDIES</Link>
+                    <div
+                        style={{ display: "flex", justifyContent: "center" }}
+                        className="desktop-nav"
+                    >
+                        <Link
+                            href="/case-study"
+                            className="header-nav-link"
+                            style={{ color: linkColor }}
+                        >
+                            CASE STUDIES
+                        </Link>
                     </div>
 
-                    {/* 5. Blog */}
-                    <div style={{ display: "flex", justifyContent: "center" }} className="desktop-nav">
-                        <Link href={isCaseStudy ? "#contact" : "/blog"} className="header-nav-link">
-                            {isCaseStudy ? "CONTACT" : "BLOG"}
+                    {/* 5. Contact */}
+                    <div
+                        style={{ display: "flex", justifyContent: "center" }}
+                        className="desktop-nav"
+                    >
+                        <Link
+                            href="/#contact"
+                            className="header-nav-link"
+                            style={{ color: linkColor }}
+                        >
+                            CONTACT
                         </Link>
                     </div>
 
                     {/* Hamburger for mobile - Absolute positioned since grid disrupts it */}
-                    <div style={{ position: "absolute", right: 20, top: "50%", transform: "translateY(-50%)", display: "none" }} className="mobile-menu-btn-container">
+                    <div
+                        style={{
+                            position: "absolute",
+                            right: 20,
+                            top: "50%",
+                            transform: "translateY(-50%)",
+                            display: "none",
+                        }}
+                        className="mobile-menu-btn-container"
+                    >
                         <button
                             className="mobile-menu-btn"
                             onClick={() => setMobileOpen(!mobileOpen)}
@@ -108,7 +165,7 @@ export default function Header() {
                                 display: "none",
                                 background: "none",
                                 border: "none",
-                                color: isCaseStudy ? "#000" : "var(--text-primary)",
+                                color: linkColor,
                                 cursor: "pointer",
                                 padding: 4,
                             }}

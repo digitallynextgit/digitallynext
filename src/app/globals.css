@@ -347,6 +347,16 @@
   text-transform: uppercase;
 }
 
+@media (max-width: 1024px) {
+  .header-container {
+    padding: 0 28px !important;
+  }
+  .header-nav-link {
+    font-size: 11px;
+    letter-spacing: 0.06em;
+  }
+}
+
 @media (max-width: 768px) {
   .desktop-nav {
     display: none !important;
@@ -360,7 +370,7 @@
   .header-container {
     padding: 0 20px !important;
     display: flex !important;
-    justify-content: center !important;
+    justify-content: flex-start !important;
     position: relative !important;
   }
 }
