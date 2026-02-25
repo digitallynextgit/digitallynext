@@ -169,7 +169,7 @@ export default function Header() {
                             top: "50%",
                             transform: "translateY(-50%)",
                         }}
-                        className="mobile-menu-btn-container"
+                        className="mobile-menu-btn-container md:hidden"
                     >
                         <button
                             className="mobile-menu-btn"

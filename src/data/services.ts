@@ -224,31 +224,31 @@ export const services: ServiceDetail[] = [
             title: "SEO, AEO & GEO",
             description:
               "Search engine optimisation, answer engine optimisation, and generative engine optimisation, unified discoverability.",
-            imageSrc: "/figma/services/scope-seo.jpg",
+            imageSrc: "/figma/services/seo.svg",
           },
           {
             title: "Paid Media",
             description:
               "Performance media buying across search, social, and programmatic, governed by attribution and ROI frameworks.",
-            imageSrc: "/figma/services/scope-paid.jpg",
+            imageSrc: "/figma/services/seo.svg",
           },
           {
             title: "UGC",
             description:
               "User-generated content strategy and production, creator-led assets built for conversion and brand alignment.",
-            imageSrc: "/figma/services/scope-ugc.jpg",
+            imageSrc: "/figma/services/seo.svg",
           },
           {
             title: "Digital PR",
             description:
               "Earned media, authority placements, and strategic narrative distribution, building trust at scale.",
-            imageSrc: "/figma/services/scope-pr.jpg",
+            imageSrc: "/figma/services/seo.svg",
           },
           {
             title: "ORM",
             description:
               "Online reputation management, monitoring, response frameworks, and brand perception governance.",
-            imageSrc: "/figma/services/scope-orm.jpg",
+            imageSrc: "/figma/services/seo.svg",
           },
         ],
       },
@@ -389,32 +389,32 @@ export const services: ServiceDetail[] = [
             title: "SEO, AEO & GEO",
             description:
               "Search engine optimisation, answer engine optimisation, and generative engine optimisation, unified discoverability.",
-            imageSrc: "/figma/services/scope-seo.jpg",
+            imageSrc: "/figma/services/seo.svg",
           },
           {
             title: "Video & visual production",
             description: "(short-form, long-form, campaign-led)",
-            imageSrc: "/figma/services/scope-video.jpg",
+            imageSrc: "/figma/services/seo.svg",
           },
           {
             title: "Podcast production",
             description: "(end-to-end) \u2013 from concept to distribution",
-            imageSrc: "/figma/services/scope-podcast.jpg",
+            imageSrc: "/figma/services/seo.svg",
           },
           {
             title: "UGC programs",
             description: "designed for scale and performance",
-            imageSrc: "/figma/services/scope-ugc.jpg",
+            imageSrc: "/figma/services/seo.svg",
           },
           {
             title: "Social content systems",
             description: "across platforms",
-            imageSrc: "/figma/services/scope-social.jpg",
+            imageSrc: "/figma/services/seo.svg",
           },
           {
             title: "Creative asset libraries",
             description: "built for reuse and consistency",
-            imageSrc: "/figma/services/scope-assets.jpg",
+            imageSrc: "/figma/services/seo.svg",
           },
         ],
       },
@@ -564,31 +564,31 @@ export const services: ServiceDetail[] = [
             title: "Brand & Marketing Websites",
             description:
               "High-performance sites built for brand authority, lead generation, and conversion \u2014 not just aesthetics.",
-            imageSrc: "/figma/services/scope-brand-site.jpg",
+            imageSrc: "/figma/services/seo.svg",
           },
           {
             title: "E-commerce & D2C Platforms",
             description:
               "Full-stack commerce ecosystems built for scale \u2014 with attribution, inventory, and CX built in from day one.",
-            imageSrc: "/figma/services/scope-ecommerce.jpg",
+            imageSrc: "/figma/services/seo.svg",
           },
           {
             title: "Web Applications",
             description:
               "Custom web apps and dashboards designed for operational efficiency, user retention, and data visibility.",
-            imageSrc: "/figma/services/scope-webapp.jpg",
+            imageSrc: "/figma/services/seo.svg",
           },
           {
             title: "CMS & Headless Architecture",
             description:
               "Flexible, scalable content infrastructure that lets your teams move fast without breaking structure.",
-            imageSrc: "/figma/services/scope-cms.jpg",
+            imageSrc: "/figma/services/seo.svg",
           },
           {
             title: "Analytics & Conversion Optimisation",
             description:
               "Data pipelines, heatmaps, A/B frameworks, and CRO strategies that turn traffic into measurable outcomes.",
-            imageSrc: "/figma/services/scope-analytics.jpg",
+            imageSrc: "/figma/services/seo.svg",
           },
         ],
       },
