@@ -84,8 +84,8 @@ function MobileGSM() {
                                         href="#"
                                         className="mt-0.5 sm:mt-0 inline-flex items-center gap-1 text-[#E53935] font-semibold text-[11px] sm:text-xs shrink-0 hover:gap-2 transition-all duration-300"
                                     >
-                                        <span>↳</span>
-                                        <span className="text-white/70">{fw.cta}</span>
+                                        <Image src="/icons/enter.svg" alt="arrow-right" width={40} height={40} />
+                                        <span className="text-white/70 whitespace-nowrap">{fw.cta}</span>
                                     </Link>
                                 </div>
                                 <p className="text-[12px] sm:text-xs text-gray-400 leading-relaxed">
@@ -164,9 +164,9 @@ function DesktopGSM() {
                                 {/* CTA */}
                                 <Link
                                     href="#"
-                                    className="inline-flex items-center gap-2 text-[#E53935] font-semibold text-sm mb-4 hover:gap-3 transition-all duration-300"
+                                    className="inline-flex items-center gap-1 text-[#E53935] font-semibold text-sm mb-4 hover:gap-3 transition-all duration-300"
                                 >
-                                    <span className="text-red-500">↳</span> <span className="text-white">{active.cta}</span>
+                                    <Image src="/icons/enter.svg" alt="arrow-right" width={20} height={20} /> <span className="text-white whitespace-nowrap">{active.cta}</span>
                                 </Link>
                             </div>
                             {/* Description */}

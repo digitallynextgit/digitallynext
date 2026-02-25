@@ -145,9 +145,9 @@ function DesktopADAC() {
                     </h3>
                     <Link
                         href="#"
-                        className="inline-flex items-center gap-2 text-red-500 font-semibold text-sm md:text-base hover:gap-3 transition-all duration-300 shrink-0"
+                        className="inline-flex items-center gap-2 text-black font-semibold !text-xl md:text-base hover:gap-3 transition-all duration-300 shrink-0"
                     >
-                        <span className="text-lg">↳</span> Read More
+                        <Image src="/icons/enter.svg" alt="arrow-right" width={30} height={30} /> Read More
                     </Link>
                 </div>
 
