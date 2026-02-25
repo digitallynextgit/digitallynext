@@ -60,7 +60,7 @@ export default function ClientLogos() {
             </div>
 
             {/* Marquee */}
-            <div style={{ overflow: "hidden" }}>
+            <div style={{ overflow: "hidden", paddingTop: "1rem", paddingBottom: "1rem" }}>
                 <div className="marquee-track ">
                     {/* Duplicate set of logos for infinite scroll */}
                     {[...logoFiles, ...logoFiles, ...logoFiles, ...logoFiles].map((logo, i) => (

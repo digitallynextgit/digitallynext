@@ -64,24 +64,43 @@ export default function CTASection() {
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
         >
-          <div
-            className="group inline-block rounded-md p-[2px] 
-               bg-[linear-gradient(90deg,#E21F26_0%,#FFFFFF_50%,#0EC8C5_100%)] 
-               transition-all duration-300
-               hover:bg-white"
+          <Link
+            href="#contact"
+            className="group relative inline-block px-8 py-4
+               text-white font-semibold text-sm tracking-widest uppercase
+               bg-transparent transition-all duration-300
+               hover:text-black"
           >
-            <Link
-              href="#contact"
-              className="block rounded-md px-8 py-4
-                 text-white font-semibold text-sm tracking-widest uppercase
-                 bg-transparent
-                 transition-all duration-300
-                 group-hover:bg-[linear-gradient(90deg,#E21F26_0%,#FFFFFF_50%,#0EC8C5_100%)]
-                 group-hover:text-white"
-            >
-              GET IN TOUCH
-            </Link>
-          </div>
+            {/* Gradient border (default) — hidden on hover */}
+            <span
+              className="absolute inset-0 pointer-events-none transition-opacity duration-300
+                         group-hover:opacity-0"
+              style={{
+                background:
+                  "linear-gradient(90deg, #0EC8C5 0%, #FFFFFF 50%, #E21F26 100%)",
+                padding: "2px",
+                WebkitMask:
+                  "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
+                WebkitMaskComposite: "xor",
+                maskComposite: "exclude",
+              }}
+            />
+            {/* White border (hover) — hidden by default */}
+            <span
+              className="absolute inset-0 pointer-events-none transition-opacity duration-300
+                         opacity-0 group-hover:opacity-100 border-2 border-white"
+            />
+            {/* Hover gradient fill */}
+            <span
+              className="absolute inset-0 opacity-0 transition-opacity duration-300
+                         group-hover:opacity-100 pointer-events-none"
+              style={{
+                background:
+                  "linear-gradient(90deg, #0EC8C5 0%, #FFFFFF 50%, #E21F26 100%)",
+              }}
+            />
+            <span className="relative z-10">GET IN TOUCH</span>
+          </Link>
         </motion.div>
       </div>
     </section>

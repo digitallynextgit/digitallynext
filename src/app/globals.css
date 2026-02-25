@@ -193,7 +193,7 @@
   background: rgba(0, 255, 255, 0.826);
   color: red;
   font-weight: 400;
-  font-size: 1.30rem;
+  font-size: 1.3rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   border: none;
@@ -488,7 +488,6 @@
   align-items: center;
   justify-content: center;
   position: relative;
-  overflow: hidden;
 }
 
 .pillar-icon img {
@@ -528,13 +527,13 @@
   justify-content: center;
   height: 120px;
   min-width: 200px;
+  margin-top: 2rem;
 }
 
 .client-logo-card:hover {
   border-radius: 9999px;
   background: var(--bg-surface-hover);
   border-color: rgba(255, 255, 255, 0.25);
-  transform: translateY(-2px);
 }
 
 .client-logo-img {
@@ -913,11 +912,6 @@
   border: 1.5px solid;
   border-radius: 20px;
   transition: all var(--transition-fast);
-}
-
-.cs-card:hover .cs-card-tag {
-  background: currentColor;
-  color: #fff !important;
 }
 
 /* ===== CASE STUDIES RESPONSIVE ===== */

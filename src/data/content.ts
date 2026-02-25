@@ -81,7 +81,7 @@ export const caseStudies = [
   },
   {
     id: 3,
-    title: "NeoTech", // Kept as NeoTech based on image text, though description implies Judaica Gallery
+    title: "", // Kept as NeoTech based on image text, though description implies Judaica Gallery
     description:
       "Launch of a high end Judaica Art gallery and 5 Artists for International Markets-US",
     category: "UK",
