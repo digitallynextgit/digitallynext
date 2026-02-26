@@ -13,7 +13,7 @@ export const navLinksLeft = [
 ];
 
 export const navLinksRight = [
-  { label: "CASE STUDIES", href: "/case-study" },
+  { label: "CASE STUDIES", href: "/#case-studies" },
   { label: "CONTACT", href: "/#contact" },
 ];
 
@@ -81,12 +81,13 @@ export const caseStudies = [
   },
   {
     id: 3,
-    title: "NeoTech", // Kept as NeoTech based on image text, though description implies Judaica Gallery
+    title: "", // Kept as NeoTech based on image text, though description implies Judaica Gallery
     description:
       "Launch of a high end Judaica Art gallery and 5 Artists for International Markets-US",
     category: "UK",
     color: "#00BCD4",
     image: "/case/c3.webp",
+    href: "/case-study",
   },
   {
     id: 4,

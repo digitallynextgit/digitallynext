@@ -213,7 +213,7 @@ export default function GlobalServicingModel() {
                         <h2 className="font-extrabold text-white tracking-tight leading-none">
                             <span className="text-[#E53935] text-3xl sm:text-4xl md:text-6xl lg:text-7xl">Global</span>{" "}
                             <span className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl">Servicing Model</span>
-                            <span className="text-[#E53935] text-3xl sm:text-4xl md:text-6xl lg:text-7xl">.</span>
+                            <span className="text-[#0EC8C5] text-3xl sm:text-4xl md:text-6xl lg:text-7xl">.</span>
                         </h2>
                     </motion.div>
 

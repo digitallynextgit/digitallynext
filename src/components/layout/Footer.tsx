@@ -79,19 +79,28 @@ export default function Footer() {
                     <span className="lg:text-lg text-sm text-white/80">
                         © 2026 Digitally Next. All Rights Reserved.
                     </span>
-                    <div className="flex gap-6">
+                    <div className="flex gap-6 items-center">
                         <Link
-                            href="#"
+                            href="/terms-of-use"
                             className="text-lg text-white/80 hover:text-white transition-colors duration-200"
                         >
                             Terms of Use
                         </Link>
-                        <Link
-                            href="#"
-                            className="text-lg text-white/80 hover:text-white transition-colors duration-200"
-                        >
-                            Privacy Policy
-                        </Link>
+                        <div className="inline-flex items-center gap-2">
+                            <Link
+                                href="/privacy-policy"
+                                className="text-lg text-white/80 hover:text-white transition-colors duration-200"
+                            >
+                                Privacy Policy
+                            </Link>
+                            <a
+                                href="#top"
+                                className="text-white/80 hover:text-white transition-colors duration-200 inline-flex items-center ml-4"
+                                aria-label="Back to top"
+                            >
+                                <Image src="/ani-icons/up_arrow.svg" alt="Back to top" width={10} height={10} />
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>

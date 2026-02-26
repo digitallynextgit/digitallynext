@@ -6,10 +6,10 @@ import Header from "@/components/layout/Header";
 
 export default function ClientWrapper({ children }: { children: ReactNode }) {
     return (
-        <>
+        <div id="top">
             <Preloader />
             <Header />
             <main>{children}</main>
-        </>
+        </div>
     );
 }

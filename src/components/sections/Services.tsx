@@ -284,7 +284,7 @@ export default function Services() {
         {/* Heading */}
         <h2 className="text-2xl font-extrabold text-white mb-16 tracking-tight">
           <span className="text-5xl md:text-[6vw]">Services</span>
-          <span className="text-[#0EC8C5]">.</span>
+          <span className="text-[#0EC8C5] text-[5rem]">.</span>
         </h2>
 
         {/* Desktop layout */}

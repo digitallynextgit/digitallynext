@@ -257,7 +257,7 @@ export const services: ServiceDetail[] = [
         heading:
           'How this shows up in the real world<span style="color:#0EC8C5">.</span>',
         ctaLabel: "View Case Study",
-        ctaHref: "/case-studies",
+        ctaHref: "/case-study",
         cards: [
           {
             imageSrc: "/case/c1.webp",
@@ -265,7 +265,7 @@ export const services: ServiceDetail[] = [
             description:
               "Transforming Legacy ( more than 3 decades old organization) Brand Image to the New Age evolved Brand Positioning.",
             tag: "IT & ITES",
-            href: "/figma/case-study/advent-case-study-69de24.png",
+            href: "/case-study/advent-global",
           },
         ],
       },
@@ -423,7 +423,7 @@ export const services: ServiceDetail[] = [
         heading:
           'How this shows up in the real world<span style="color:#0EC8C5">.</span>',
         ctaLabel: "View Case Study",
-        ctaHref: "/case-studies",
+        ctaHref: "/case-study",
         cards: [
           {
             imageSrc: "/case/c1.webp",
@@ -431,7 +431,7 @@ export const services: ServiceDetail[] = [
             description:
               "Transforming Legacy ( more than 3 decades old organization) Brand Image to the New Age evolved Brand Positioning.",
             tag: "IT & ITES",
-            href: "/figma/case-study/advent-case-study-69de24.png",
+            href: "/case-study/advent-global",
           },
         ],
       },
@@ -599,7 +599,7 @@ export const services: ServiceDetail[] = [
         heading:
           'How this shows up in the real world<span style="color:#0EC8C5">.</span>',
         ctaLabel: "View Case Study",
-        ctaHref: "/case-studies",
+        ctaHref: "/case-study",
         cards: [
           {
             imageSrc: "/case/c1.webp",
@@ -607,7 +607,7 @@ export const services: ServiceDetail[] = [
             description:
               "Transforming Legacy ( more than 3 decades old organization) Brand Image to the New Age evolved Brand Positioning.",
             tag: "IT & ITES",
-            href: "/figma/case-study/advent-case-study-69de24.png",
+            href: "/case-study/advent-global",
           },
         ],
       },
