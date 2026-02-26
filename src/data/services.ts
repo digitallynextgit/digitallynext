@@ -59,35 +59,35 @@ export type ServiceCaseStudyCard = {
 
 export type ServiceSection =
   | {
-      type: "realBrief";
-      eyebrow: string;
-      heading: string;
-      description: string;
-      list: ServiceListItem[];
-      highlightText: string;
-    }
+    type: "realBrief";
+    eyebrow: string;
+    heading: string;
+    description: string;
+    list: ServiceListItem[];
+    highlightText: string;
+  }
   | {
-      type: "featureGrid";
-      eyebrow: string;
-      headingLines: string[];
-      description: string;
-      cards: ServiceFeatureCard[];
-      footerText?: string;
-    }
+    type: "featureGrid";
+    eyebrow: string;
+    headingLines: string[];
+    description: string;
+    cards: ServiceFeatureCard[];
+    footerText?: string;
+  }
   | {
-      type: "scope";
-      eyebrow: string;
-      heading: string;
-      description?: string;
-      items: ServiceScopeItem[];
-    }
+    type: "scope";
+    eyebrow: string;
+    heading: string;
+    description?: string;
+    items: ServiceScopeItem[];
+  }
   | {
-      type: "caseStudy";
-      heading: string;
-      ctaLabel: string;
-      ctaHref: string;
-      cards: ServiceCaseStudyCard[];
-    };
+    type: "caseStudy";
+    heading: string;
+    ctaLabel: string;
+    ctaHref: string;
+    cards: ServiceCaseStudyCard[];
+  };
 
 export type ServiceCTA = {
   heading: string;
@@ -257,7 +257,7 @@ export const services: ServiceDetail[] = [
         heading:
           'How this shows up in the real world<span style="color:#0EC8C5">.</span>',
         ctaLabel: "View Case Study",
-        ctaHref: "/case-studies",
+        ctaHref: "/case-study",
         cards: [
           {
             imageSrc: "/case/c1.webp",
@@ -265,7 +265,7 @@ export const services: ServiceDetail[] = [
             description:
               "Transforming Legacy ( more than 3 decades old organization) Brand Image to the New Age evolved Brand Positioning.",
             tag: "IT & ITES",
-            href: "/case-studies/advent-global",
+            href: "/case-study/advent-global",
           },
         ],
       },
@@ -423,15 +423,15 @@ export const services: ServiceDetail[] = [
         heading:
           'How this shows up in the real world<span style="color:#0EC8C5">.</span>',
         ctaLabel: "View Case Study",
-        ctaHref: "/case-studies",
+        ctaHref: "/case-study",
         cards: [
           {
-            imageSrc: "/figma/case-studies/advent-global.jpg",
+            imageSrc: "/case/c1.webp",
             title: 'Advent <span style="color:#E21F26">Global</span>',
             description:
               "Transforming Legacy ( more than 3 decades old organization) Brand Image to the New Age evolved Brand Positioning.",
             tag: "IT & ITES",
-            href: "/case-studies/advent-global",
+            href: "/case-study/advent-global",
           },
         ],
       },
@@ -456,7 +456,7 @@ export const services: ServiceDetail[] = [
     theme: {
       heroBg: "#0A0A0A",
       heroText: "#FFFFFF",
-      heroMutedText: "#C9C9C9",
+      heroMutedText: "rgba(255,255,255,0.7)",   // ✅ matched CCMC (was #C9C9C9)
       accent: "#E21F26",
       accentAlt: "#0EC8C5",
       surfaceBg: "#FAFAFA",
@@ -468,13 +468,14 @@ export const services: ServiceDetail[] = [
       breadcrumb: "Services > Platforms, Web & Digital Experience.",
       titleLines: ["Platforms, Web &", "Digital Experience."],
       layout: "stacked",
+      backgroundVideo: "/services/service-hero-video.mp4",   // ✅ added (was missing)
       overlay:
-        "linear-gradient(180deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.85) 100%)",
+        "linear-gradient(180deg, rgba(0,0,0,0.65) 0%, rgba(14,200,197,0.85) 100%)",  // ✅ teal (was black)
       subtitle: "Where digital foundations are built for scale",
       quoteLead: "We often see brands say things like this",
       quoteText:
         "\u201cLooking for a reliable website development partner \u2014 not just a one-time build.\u201d",
-      quoteColor: "#1BB9B4",
+      quoteColor: "#000",                        // ✅ matched CCMC (was #1BB9B4)
       body: [
         "These are familiar asks.",
         "What they\u2019re really asking for is <strong>a system, not a site.</strong>",
@@ -483,6 +484,7 @@ export const services: ServiceDetail[] = [
       ctaLabel: "Inquire Now",
       ctaHref: "/contact",
       ctaVariant: "light",
+      arrowSrc: "/figma/services/arrow1.svg",    // ✅ added (was missing)
     },
     sections: [
       {
@@ -597,15 +599,15 @@ export const services: ServiceDetail[] = [
         heading:
           'How this shows up in the real world<span style="color:#0EC8C5">.</span>',
         ctaLabel: "View Case Study",
-        ctaHref: "/case-studies",
+        ctaHref: "/case-study",
         cards: [
           {
-            imageSrc: "/figma/case-studies/advent-global.jpg",
+            imageSrc: "/case/c1.webp",
             title: 'Advent <span style="color:#E21F26">Global</span>',
             description:
               "Transforming Legacy ( more than 3 decades old organization) Brand Image to the New Age evolved Brand Positioning.",
             tag: "IT & ITES",
-            href: "/case-studies/advent-global",
+            href: "/case-study/advent-global",
           },
         ],
       },

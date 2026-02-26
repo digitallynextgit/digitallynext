@@ -1,5 +1,4 @@
 import type { ServiceDetail, ServiceSection } from "@/data/services";
-import CTASection from "./CTASection";
 import FeatureGridSection from "./FeatureGridSection";
 import HeroSection from "./HeroSection";
 import RealBriefSection from "./RealBriefSection";

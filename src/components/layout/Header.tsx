@@ -23,11 +23,11 @@ const ROUTE_THEMES: Record<string, RouteHeaderTheme> = {
         linkColor: "#FFFFFF",
         logo: "white",
     },
-    "/case-studies": {
+    "/case-study": {
         linkColor: "#000000",
         logo: "dark",
     },
-    "/case-studies/": {
+    "/case-study/": {
         linkColor: "#FFFFFF",
         logo: "white",
     },
@@ -149,7 +149,7 @@ export default function Header() {
 
                     {/* 4. Case Studies */}
                     <div style={{ display: "flex", justifyContent: "center" }} className="desktop-nav">
-                        <Link href="/case-studies" className="header-nav-link" style={{ color: linkColor }}>
+                        <Link href="/#case-studies" className="header-nav-link" style={{ color: linkColor }}>
                             CASE STUDIES
                         </Link>
                     </div>

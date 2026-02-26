@@ -4,6 +4,7 @@ import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { caseStudies } from "@/data/content";
 import AnimatedSection from "@/components/ui/AnimatedSection";
+import Link from "next/link";
 
 export default function CaseStudies() {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -49,8 +50,18 @@ export default function CaseStudies() {
       {/* Cards that scroll up and overlap the heading */}
       <div className="cs-cards-container">
         <div className="cs-cards-grid">
-          {caseStudies.map((cs, i) => (
+          {caseStudies.map((cs, i) => {
+            const CardWrapper = cs.href
+              ? ({ children }: { children: React.ReactNode }) => (
+                  <Link href={cs.href!} className="block no-underline text-inherit">
+                    {children}
+                  </Link>
+                )
+              : ({ children }: { children: React.ReactNode }) => <>{children}</>;
+
+            return (
             <AnimatedSection key={cs.id} delay={i * 0.05} direction="up">
+              <CardWrapper>
               <div
                 className="cs-card"
                 onMouseEnter={(e) => {
@@ -126,8 +137,10 @@ export default function CaseStudies() {
                   </span>
                 </div>
               </div>
+              </CardWrapper>
             </AnimatedSection>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

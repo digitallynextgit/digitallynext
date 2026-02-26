@@ -164,6 +164,7 @@ const MenuItem: React.FC<MenuItemProps> = ({
       <a
         className="flex items-center justify-center h-full relative cursor-pointer uppercase no-underline font-semibold text-[4vh]"
         href={link}
+        onClick={(e) => { if (link === "#") e.preventDefault(); }}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
         style={{ color: textColor }}
