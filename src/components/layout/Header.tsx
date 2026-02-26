@@ -39,6 +39,14 @@ const ROUTE_THEMES: Record<string, RouteHeaderTheme> = {
         linkColor: "#000000",
         logo: "dark",
     },
+    "/terms-of-use": {
+        linkColor: "#FFFFFF",
+        logo: "white",
+    },
+    "/privacy-policy": {
+        linkColor: "#FFFFFF",
+        logo: "white",
+    },
 };
 
 const DEFAULT_THEME: RouteHeaderTheme = {
@@ -75,10 +83,6 @@ export default function Header() {
     useEffect(() => {
         document.body.style.overflow = mobileOpen ? "hidden" : "";
     }, [mobileOpen]);
-
-    useEffect(() => {
-        setMobileOpen(false);
-    }, [pathname]);
 
     const routeTheme = resolveRouteTheme(pathname);
 
@@ -157,7 +161,7 @@ export default function Header() {
                     {/* 5. Contact */}
                     <div style={{ display: "flex", justifyContent: "center" }} className="desktop-nav">
                         <Link href="/#contact" className="header-nav-link" style={{ color: linkColor }}>
-                            CONTACT
+                            CAREERS
                         </Link>
                     </div>
 
