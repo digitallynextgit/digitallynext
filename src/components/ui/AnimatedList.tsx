@@ -163,7 +163,7 @@ const AnimatedList: React.FC<AnimatedListProps> = ({
         ref={listRef}
         tabIndex={0}
         onKeyDown={handleKeyDown}
-        className={`max-h-[420px] overflow-y-auto pr-4 ${
+        className={`max-h-[450px] overflow-y-auto pr-4 ${
           displayScrollbar
             ? "[&::-webkit-scrollbar]:w-[6px] [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-[#D9D9D9] [&::-webkit-scrollbar-thumb]:rounded-full"
             : "scrollbar-hide"

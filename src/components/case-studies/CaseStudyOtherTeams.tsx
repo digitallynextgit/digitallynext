@@ -9,7 +9,9 @@ export default function CaseStudyOtherTeams({ detail }: { detail: CaseStudyDetai
     <section className="w-full mt-14 md:mt-[118px]">
       <div className="w-full px-4 sm:px-6 md:px-[57px]">
         <div className="mx-auto w-full max-w-[1327px] flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
-          <div className={isLight ? "text-[32px] sm:text-[44px] md:text-[56px] lg:text-[72px] leading-[1.1] md:leading-[1.3] font-bold" : "text-[32px] sm:text-[44px] md:text-[56px] lg:text-[72px] leading-[1.1] md:leading-[1.3] font-bold text-white"}>
+          <div className={isLight ? "text-[32px] sm:text-[44px] md:text-[56px] leading-[1.1] md:leading-[1.3] font-bold" : "text-[32px] sm:text-[44px] md:text-[56px] leading-[1.1] md:leading-[1.3] font-bold text-white"}>
+            <p className="font-normal">See how other teams are</p>
+            <span className="font-normal">winning with</span>{"   "}
             {detail.otherTeams.heading.split("\\n").map((line, idx) => (
               <span key={idx}>
                 {line}

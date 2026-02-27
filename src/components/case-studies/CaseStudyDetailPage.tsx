@@ -17,9 +17,6 @@ export default function CaseStudyDetailPage({ caseStudy }: { caseStudy: CaseStud
   return (
     <div className={detail.theme === "light" ? "bg-white text-black" : "bg-black text-white"}>
       <div className="mx-auto w-full max-w-[1440px]">
-        <div className="mx-auto w-full max-w-[1265px] px-4 sm:px-6 md:px-12">
-          <CaseStudyBreadcrumb theme={detail.theme} />
-        </div>
         <CaseStudyDetailHero detail={detail} metaTitle={caseStudy.metaTitle} />
         <CaseStudyAboutAndApproach detail={detail} />
         <CaseStudyFocusArea detail={detail} />

@@ -23,15 +23,6 @@ const ROUTE_THEMES: Record<string, RouteHeaderTheme> = {
         linkColor: "#FFFFFF",
         logo: "white",
     },
-    "/case-studies": {
-        linkColor: "#FFFFFF",
-        logo: "white",
-        bgStatic: "#000000",
-    },
-    "/case-studies/": {
-        linkColor: "#000000",
-        logo: "dark",
-    },
     "/contact": {
         linkColor: "#FFFFFF",
         logo: "white",

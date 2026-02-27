@@ -7,16 +7,13 @@ export default function CaseStudyCoreDigitalAssets({ detail }: { detail: CaseStu
   return (
     <section className={isLight ? "w-full bg-[#FAFAFA] mt-[-10px] md:mt-[-25px] relative" : "w-full bg-[#0A0A0A] mt-[-10px] md:mt-[-25px] relative"}>
       <div className="w-full px-4 sm:px-6 md:px-[59px] py-10 md:py-[40px] relative">
-        <div className="w-full flex flex-col lg:flex-row gap-10 lg:gap-[142px] items-start">
+        <div className="w-full flex flex-col lg:flex-row gap-10 lg:gap-[142px] justify-center">
           <div className="w-full max-w-[463px] flex flex-col gap-6 md:gap-[54px]">
             <div className={isLight ? "text-[44px] sm:text-[56px] md:text-[80px] leading-[1.1] md:leading-[1.3] font-normal text-black" : "text-[44px] sm:text-[56px] md:text-[80px] leading-[1.1] md:leading-[1.3] font-normal text-white"}>
-              <span className="text-[#E21F26]">{detail.coreDigitalAssets.headingPrefix}</span> Core
-              <br />
-              Digital
-              <br />
+              <span className="text-[#E21F26]">{detail.coreDigitalAssets.headingPrefix}</span>{" "}
               {detail.coreDigitalAssets.headingHighlight}
             </div>
-            <div className={isLight ? "text-[18px] md:text-[32px] leading-[1.4] md:leading-[1.3] font-normal text-[#787878]" : "text-[18px] md:text-[32px] leading-[1.4] md:leading-[1.3] font-normal text-[#BFBFBF]"}>
+            <div className={isLight ? "text-xl" : "text-xl]"}>
               {detail.coreDigitalAssets.subheading}
             </div>
           </div>

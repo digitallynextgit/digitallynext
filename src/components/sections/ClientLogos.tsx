@@ -1,27 +1,43 @@
 "use client";
 
-import { clientLogos } from "@/data/content";
 import AnimatedSection from "@/components/ui/AnimatedSection";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function ClientLogos() {
+interface ClientLogosProps {
+    theme?: "dark" | "light";
+}
+
+export default function ClientLogos({ theme = "dark" }: ClientLogosProps) {
     const logoFiles = [
         "/logos/1.png", "/logos/3.png", "/logos/5.png", "/logos/7.png",
-        "/logos/11.png", "/logos/13.png", "/logos/17.png", "/logos/19.png"
+        "/logos/11.png", "/logos/13.png", "/logos/17.png", "/logos/19.png",
     ];
-    // const duplicatedLogos = [...clientLogos, ...clientLogos, ...clientLogos, ...clientLogos];
+
+    const isDark = theme === "dark";
+
+    const styles = {
+        section: {
+            background: isDark ? "#000000" : "#FFFFFF",
+            borderTop: isDark ? "1px solid rgba(255,255,255,0.1)" : "1px solid rgba(0,0,0,0.08)",
+            borderBottom: isDark ? "1px solid rgba(255,255,255,0.1)" : "1px solid rgba(0,0,0,0.08)",
+            padding: "80px 0",
+            overflow: "hidden" as const,
+        },
+        heading: {
+            color: isDark ? "#FFFFFF" : "#000000",
+        },
+        logoCard: {
+            border: isDark ? "2px solid rgba(255,255,255,0.15)" : "2px solid rgba(0,0,0,0.08)",
+            background: isDark ? "rgba(255,255,255,0.03)" : "rgba(0,0,0,0.02)",
+        },
+        linkText: {
+            color: isDark ? "#FFFFFF" : "#000000",
+        },
+    };
 
     return (
-        <section
-            style={{
-                background: "#000000",
-                borderTop: "1px solid var(--border)",
-                borderBottom: "1px solid var(--border)",
-                padding: "80px 0",
-                overflow: "hidden",
-            }}
-        >
+        <section style={styles.section}>
             <div className="container">
                 <AnimatedSection>
                     <div
@@ -35,30 +51,42 @@ export default function ClientLogos() {
                         }}
                     >
                         <p
-                            className="text-2xl lg:text-4xl lg:w-[65%] w-full "
+                            className="text-2xl lg:text-4xl lg:w-[65%] w-full"
+                            style={styles.heading}
                         >
-                            <strong className="text-2xl lg:text-4xl" >Trusted</strong>{" "}
-                            <span className="font-light">by ambitious brands across industries and geographies.</span>
+                            <strong className="text-2xl lg:text-4xl">Trusted</strong>{" "}
+                            <span className="font-light">
+                                by ambitious brands across industries and geographies.
+                            </span>
                         </p>
+
                         <Link
                             href="#contact"
                             style={{
                                 display: "flex",
                                 alignItems: "center",
                                 gap: 8,
-                                color: "var(--text-secondary)",
                                 fontSize: 24,
                                 fontWeight: 500,
                                 transition: "color 0.2s",
+                                textDecoration: "none",
                             }}
                             className="group"
                         >
-                            <span
-                                className="text-[#E21F26] transition-transform duration-300 ease-out group-hover:-translate-x-2"
-                            >
-                                <Image src="/icons/enter.svg" alt="arrow-right" width={32} height={32} />
+                            <span className="text-[#E21F26] transition-transform duration-300 ease-out group-hover:-translate-x-2">
+                                <Image
+                                    src="/icons/enter.svg"
+                                    alt="arrow-right"
+                                    width={32}
+                                    height={32}
+                                />
                             </span>
-                            <span className="mt-1 font-light text-white hover:text-[#E21F26]">Work With Us</span>
+                            <span
+                                style={styles.linkText}
+                                className="mt-1 font-light hover:text-[#E21F26] transition-colors duration-200"
+                            >
+                                Work With Us
+                            </span>
                         </Link>
                     </div>
                 </AnimatedSection>
@@ -66,20 +94,22 @@ export default function ClientLogos() {
 
             {/* Marquee */}
             <div style={{ overflow: "hidden", paddingTop: "1rem", paddingBottom: "1rem" }}>
-                <div className="marquee-track ">
-                    {/* Duplicate set of logos for infinite scroll */}
+                <div className="marquee-track">
                     {[...logoFiles, ...logoFiles, ...logoFiles, ...logoFiles].map((logo, i) => (
                         <div
                             key={i}
-                            className="client-logo-card border-2 border-white "
+                            className="client-logo-card"
+                            style={styles.logoCard}
                         >
-                            <div className=""
-                                style={{ position: "relative", width: 160, height: 160 }}>
+                            <div style={{ position: "relative", width: 160, height: 160 }}>
                                 <Image
                                     src={logo}
                                     alt="Client Logo"
                                     fill
                                     className="client-logo-img"
+                                    style={{
+                                        filter: isDark ? "brightness(1)" : "brightness(0.85) contrast(1.1)",
+                                    }}
                                 />
                             </div>
                         </div>
