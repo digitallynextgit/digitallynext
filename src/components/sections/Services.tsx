@@ -27,17 +27,19 @@ function MobileServices() {
                 className="w-full flex items-baseline justify-between py-6 px-1 text-left group"
               >
                 <h3
-                  className={`text-2xl sm:text-3xl font-bold tracking-tight transition-colors duration-300 ${isOpen
-                      ? "text-[#E53935]"        
+                  className={`text-2xl sm:text-3xl font-bold tracking-tight transition-colors duration-300 ${
+                    isOpen
+                      ? "text-[#E53935]"
                       : "text-white/30 group-hover:text-white/70"
-                    }`}
+                  }`}
                 >
                   {service.title}
                 </h3>
 
                 <span
-                  className={`ml-4 flex items-center gap-0.5 text-sm font-mono shrink-0 transition-colors duration-300 ${isOpen ? "text-[#E53935]" : "text-white/30"
-                    }`}
+                  className={`ml-4 flex items-center gap-0.5 text-sm font-mono shrink-0 transition-colors duration-300 ${
+                    isOpen ? "text-[#E53935]" : "text-white/30"
+                  }`}
                 >
                   {"{ "}
                   {String(i + 1).padStart(2, "0")}
@@ -87,7 +89,11 @@ function MobileServices() {
                         <motion.div
                           className="inline-flex text-xs text-white/40 font-medium"
                           animate={{ x: ["0%", "-50%"] }}
-                          transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+                          transition={{
+                            duration: 25,
+                            repeat: Infinity,
+                            ease: "linear",
+                          }}
                         >
                           <span className="shrink-0">{service.sliderText}</span>
                           <span className="shrink-0 mx-4 opacity-40">·</span>
@@ -123,7 +129,7 @@ function DesktopServices() {
         ([entry]) => {
           if (entry.isIntersecting) setActiveIndex(index);
         },
-        { root: null, rootMargin: "-35% 0px -60% 0px", threshold: 0 }
+        { root: null, rootMargin: "-35% 0px -60% 0px", threshold: 0 },
       );
       observer.observe(ref);
       observers.push(observer);
@@ -166,7 +172,9 @@ function DesktopServices() {
           {services.map((service, i) => (
             <div
               key={service.id}
-              ref={(el) => { itemRefs.current[i] = el; }}
+              ref={(el) => {
+                itemRefs.current[i] = el;
+              }}
               className="transition-all duration-500"
             >
               <Link
@@ -185,23 +193,25 @@ function DesktopServices() {
                   transition={{ duration: 0.2, ease: "easeOut" }}
                   className="shrink-0 mt-5"
                 >
-                  <Image
-                    src="/icons/enter.svg"
-                    alt="arrow"
-                    width={52}
-                    height={52}
-                  />
+                    <Image
+                      src="/icons/enter.svg"
+                      alt="arrow"
+                      width={52}
+                      height={52}
+                      className="transition-transform duration-300 ease-out group-hover:-translate-x-1"
+                    />
                 </motion.div>
 
                 <h3
-                  className={`text-3xl md:text-7xl font-bold leading-tight tracking-tight transition-colors duration-300 ${hoveredIndex === i
-                    ? "text-[#E53935]"        // ✅ hover pe red
-                    : activeIndex === i
-                      ? "text-[#E53935]"      // active pe red
-                      : activeIndex + 1 === i
-                        ? "text-white"
-                        : "text-white/20"
-                    }`}
+                  className={`text-3xl md:text-7xl font-bold leading-tight tracking-tight transition-colors duration-300 ${
+                    hoveredIndex === i
+                      ? "text-[#E53935]" // ✅ hover pe red
+                      : activeIndex === i
+                        ? "text-[#E53935]" // active pe red
+                        : activeIndex + 1 === i
+                          ? "text-white"
+                          : "text-white/20"
+                  }`}
                 >
                   {service.title}
                 </h3>
@@ -220,7 +230,11 @@ function DesktopServices() {
                 <motion.div
                   className="inline-flex text-lg text-white/60 font-medium"
                   animate={{ x: ["0%", "-50%"] }}
-                  transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+                  transition={{
+                    duration: 25,
+                    repeat: Infinity,
+                    ease: "linear",
+                  }}
                 >
                   <span className="shrink-0">{service.sliderText}</span>
                   <span className="shrink-0 mx-4 opacity-40">·</span>
@@ -238,14 +252,19 @@ function DesktopServices() {
           ))}
 
           {/* Request Quote CTA */}
-          <div className="pt-8 w-full">
+          <div className="pt-8 w-full flex justify-start pl-8">
             <Link
               href="#contact"
-              className="group inline-flex items-center gap-2"
+              className="group inline-flex items-center gap-1 pl-1"
             >
               {/* Arrow — hover pe left slide */}
-              <span className="text-[#E21F26] transition-transform duration-300 ease-out group-hover:-translate-x-2">
-                <Image src="/icons/enter.svg" alt="arrow-right" width={32} height={32} />
+                <span className="text-[#E21F26] transition-transform duration-300 ease-out group-hover:-translate-x-1">
+                <Image
+                  src="/icons/enter.svg"
+                  alt="arrow-right"
+                  width={32}
+                  height={32}
+                />
               </span>
 
               {/* ✅ group-hover use karo — inline style hataya */}
@@ -282,14 +301,18 @@ export default function Services() {
             className="group inline-flex items-center gap-2 transition-all duration-300 hover:gap-4"
           >
             <span className="text-[#E21F26] transition-transform duration-300 ease-out group-hover:-translate-x-2">
-              <Image src="/icons/enter.svg" alt="arrow-right" width={24} height={24} />
+              <Image
+                src="/icons/enter.svg"
+                alt="arrow-right"
+                width={24}
+                height={24}
+              />
             </span>
             <span className="text-sm font-semibold tracking-wide text-white transition-colors duration-200 group-hover:text-[#E21F26]">
               Request Quote
             </span>
           </Link>
         </div>
-
       </div>
     </section>
   );
