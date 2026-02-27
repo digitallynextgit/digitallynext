@@ -152,8 +152,7 @@ export default function CaseStudies() {
         <div className="flex justify-center mt-12">
           <Link
             href="/case-study"
-            className="inline-flex items-center gap-2 text-xl font-semibold tracking-wide transition-all duration-300 hover:gap-4"
-            style={{ color: "#1a1a1a" }}
+            className="group inline-flex items-center gap-2 text-xl font-semibold tracking-wide transition-all duration-300 hover:gap-4 text-[#1a1a1a]"
           >
             <Image
               src="/icons/enter.svg"
@@ -161,7 +160,7 @@ export default function CaseStudies() {
               width={30}
               height={30}
             />
-            <span>View All</span>
+            <span className="transition-colors duration-200 group-hover:text-[#E21F26]">View All</span>
           </Link>
         </div>
       </div>

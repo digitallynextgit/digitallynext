@@ -44,7 +44,7 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body>
+      <body style={{ fontFamily: "Stack Sans Text" }}>
         <ClientWrapper>{children}</ClientWrapper>
         <Footer />
       </body>

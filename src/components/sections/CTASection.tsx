@@ -12,26 +12,30 @@ export default function CTASection() {
       style={{ background: "#000000" }}
     >
       {/* Video background */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+      <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
         <video
           autoPlay
           loop
           muted
           playsInline
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-          style={{
-            objectFit: "cover",
-            width: "180%",
-            height: "180%",
-            minWidth: "100%",
-            minHeight: "100%",
-          }}
+          className="cta-video absolute inset-0 w-full h-full object-cover"
         >
           <source src="/videos/CTA video.mp4" type="video/mp4" />
         </video>
       </div>
 
-      <div className="relative z-10 w-[95%] max-w-6xl mx-auto text-center">
+      {/* Gradient / texture overlay (above video, below text) */}
+      <div className="absolute inset-0 z-10 pointer-events-none">
+        <Image
+          src="/CTA/overlay.png"
+          alt=""
+          fill
+          priority
+          className="object-cover"
+        />
+      </div>
+
+      <div className="relative z-20 w-[95%] max-w-6xl mx-auto text-center">
         {/* Heading */}
         <motion.h2
           className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-white leading-tight tracking-tight mb-8"
