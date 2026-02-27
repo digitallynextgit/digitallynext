@@ -37,12 +37,9 @@ export default function CaseStudies() {
             visibility: headingVisibility,
           }}
         >
-          <div className="cs-label">
-            <span className="cs-label-corner">¬</span> SELECTED WORK
-          </div>
           <h2 className="cs-heading">
             Case Studies
-            <span className="cs-heading-dot !text-[#0EC8C5]">.</span>
+            <span className="cs-heading-dot text-[#0EC8C5]!">.</span>
           </h2>
         </motion.div>
       </div>

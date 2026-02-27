@@ -160,7 +160,7 @@ export default function Header() {
 
                     {/* 5. Contact */}
                     <div style={{ display: "flex", justifyContent: "center" }} className="desktop-nav">
-                        <Link href="/#contact" className="header-nav-link" style={{ color: linkColor }}>
+                        <Link href="/careers" className="header-nav-link" style={{ color: linkColor }}>
                             CAREERS
                         </Link>
                     </div>

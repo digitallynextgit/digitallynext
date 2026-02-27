@@ -31,7 +31,7 @@ export default function Hero() {
           alt="Hero"
           width={1920}
           height={1080}
-          className="w-[100vw] h-[100vh] object-cover"
+          className="w-screen h-screen object-cover"
         />
         {/* Overlay for readability if needed, though mix-blend-mode text might handle it */}
         {/* <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.3)" }} /> */}
@@ -78,7 +78,7 @@ export default function Hero() {
               fontSize: "clamp(1.95rem, 2vw, 1.2rem)",
               color: "rgba(255,255,255,0.85)",
               marginBottom: 40,
-              fontWeight: 400,
+              fontWeight: 300,
             }}
           >
             We build what tomorrow will{" "}
@@ -88,7 +88,7 @@ export default function Hero() {
           </p>
         </motion.div>
 
-        <Link href="#contact" className="btn-green text-red-500 text-[1.2rem] !text-xxl">
+        <Link href="#contact" className="btn-green text-red-500 text-[1.2rem] text-xxl!">
           GET IN TOUCH
         </Link>
       </div>

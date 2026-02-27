@@ -1,11 +1,16 @@
 "use client";
 
-import { ReactNode } from "react";
+import { ReactNode, useEffect } from "react";
 import Preloader from "@/components/ui/Preloader";
 import Header from "@/components/layout/Header";
 import NextTopLoader from "nextjs-toploader";
+import { usePathname } from "next/navigation";
 
 export default function ClientWrapper({ children }: { children: ReactNode }) {
+    const pathname = usePathname();
+    useEffect(() => {
+        window.scrollTo({ top: 0, behavior: "instant" });
+    }, [pathname]);
     return (
         <div id="top">
             <NextTopLoader

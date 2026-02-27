@@ -3,6 +3,7 @@
 import { dadPillars } from "@/data/content";
 import AnimatedSection from "@/components/ui/AnimatedSection";
 import Image from "next/image";
+import { useEffect, useRef } from "react";
 
 type HowWeOperateProps = {
   theme?: "dark" | "light";
@@ -10,8 +11,25 @@ type HowWeOperateProps = {
 
 export default function HowWeOperate({ theme = "light" }: HowWeOperateProps) {
   const isDark = theme === "dark";
+  const headingRef = useRef<HTMLHeadingElement>(null);
 
-  // ── Theme tokens ──────────────────────────────────────────────
+  useEffect(() => {
+    const fit = () => {
+      const el = headingRef.current;
+      if (!el) return;
+      el.style.fontSize = "19vw";
+      const containerWidth = window.innerWidth;
+      const textWidth = el.scrollWidth;
+      if (textWidth > containerWidth) {
+        const ratio = (containerWidth / textWidth) * 0.96;
+        el.style.fontSize = `${19 * ratio}vw`;
+      }
+    };
+    fit();
+    window.addEventListener("resize", fit);
+    return () => window.removeEventListener("resize", fit);
+  }, []);
+
   const tokens = {
     sectionBg: isDark ? "#000000" : "#FFFFFF",
     modernGradient: isDark
@@ -32,59 +50,48 @@ export default function HowWeOperate({ theme = "light" }: HowWeOperateProps) {
     <section
       id="how-we-operate"
       style={{ backgroundColor: tokens.sectionBg }}
-      className="w-full flex justify-center overflow-x-hidden py-16 lg:py-24"
+      className="w-full flex flex-col items-center pb-16 lg:pb-24"
     >
-      <div className="w-full max-w-7xl px-6 mt-16 lg:mt-24 text-center">
-        {/* ── "Modern DAD" heading ── */}
-        <AnimatedSection>
+      {/* ── Modern DAD ── */}
+      <AnimatedSection className="w-full">
+        <div style={{ width: "100%", display: "flex", justifyContent: "center", overflow: "hidden" }}>
           <h2
-            className="mt-[-20px] sm:mt-[-60px] lg:mt-[-100px] select-none pointer-events-none"
+            ref={headingRef}
+            className="select-none pointer-events-none"
             style={{
-              fontSize: "clamp(2rem, 13.88vw, 14rem)",
+              fontSize: "19vw",
               fontFamily: "Stack Sans Text",
               fontWeight: 900,
-              letterSpacing: "-0.04em",
-              lineHeight: 0.95,
-              marginBottom: 48,
+              letterSpacing: "-0.03em",
+              lineHeight: 1,
+              paddingTop: "clamp(32px, 5vw, 80px)",
+              marginBottom: "clamp(24px, 3vw, 48px)",
               whiteSpace: "nowrap",
-              WebkitMaskImage:
-                "linear-gradient(to bottom, black 20%, transparent 100%)",
-              maskImage:
-                "linear-gradient(to bottom, black 20%, transparent 100%)",
+              display: "flex",
+              alignItems: "center",
+              gap: "0.2em",
+              WebkitMaskImage: "linear-gradient(to bottom, black 40%, transparent 100%)",
+              maskImage: "linear-gradient(to bottom, black 40%, transparent 100%)",
             }}
           >
-            {/* "Modern" — white→gray (dark) / black→gray (light) */}
-            <span
-              style={{
-                backgroundImage: tokens.modernGradient,
-                WebkitBackgroundClip: "text",
-                backgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                color: "transparent",
-              }}
-            >
+            <span style={{ backgroundImage: tokens.modernGradient, WebkitBackgroundClip: "text", backgroundClip: "text", WebkitTextFillColor: "transparent", color: "transparent" }}>
               Modern
-            </span>{" "}
-            {/* "DAD" — always red gradient */}
-            <span
-              style={{
-                backgroundImage: tokens.dadGradient,
-                WebkitBackgroundClip: "text",
-                backgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                color: "transparent",
-              }}
-            >
+            </span>
+            <span style={{ backgroundImage: tokens.dadGradient, WebkitBackgroundClip: "text", backgroundClip: "text", WebkitTextFillColor: "transparent", color: "transparent" }}>
               DAD
             </span>
           </h2>
-        </AnimatedSection>
+        </div>
+      </AnimatedSection>
 
-        {/* ── "HOW WE OPERATE." ── */}
+      {/* ── Baaki content ── */}
+      <div className="w-full max-w-7xl mx-auto px-6 text-center">
+
+        {/* HOW WE OPERATE */}
         <AnimatedSection delay={0.2}>
           <h3
             style={{
-              fontSize: "clamp(1.5rem, 5vw, 4rem)",
+              fontSize: "clamp(1.5rem, 5vw, 5rem)",
               fontWeight: 800,
               marginBottom: 12,
               color: tokens.headingColor,
@@ -95,21 +102,23 @@ export default function HowWeOperate({ theme = "light" }: HowWeOperateProps) {
             <span style={{ color: "#0EC8C5" }}>.</span>
           </h3>
           <p
-            className="text-base lg:text-2xl font-medium mb-10 lg:mb-16"
-            style={{ color: tokens.subtitleColor }}
+            className="md:mt-10 text-base md:text-2xl lg:text-3xl font-normal mb-10 md:mb-16 lg:mb-20"
+            style={{ color: tokens.subtitleColor, fontFamily: "Stack Sans Text" }}
           >
             An operating model where
           </p>
         </AnimatedSection>
 
-        {/* ── Three Pillars ── */}
-        <div className="flex flex-col lg:flex-row justify-center gap-10 lg:gap-16 mb-16 lg:mb-20">
+        {/* ── Three Pillars — 167px gap, inline text ── */}
+        <div
+          className="flex flex-col md:flex-row justify-center mb-16 lg:mb-20 gap-16 md:gap-32 lg:gap-[167px]"
+        >
           {dadPillars.map((pillar, i) => (
             <AnimatedSection key={pillar.word} delay={0.15 + i * 0.1}>
               <div className="flex flex-col items-center gap-4">
                 {/* Icon */}
                 <div
-                  className="pillar-icon relative"
+                  className="relative"
                   style={{
                     width: "clamp(120px, 15vw, 200px)",
                     height: "clamp(120px, 15vw, 200px)",
@@ -129,13 +138,13 @@ export default function HowWeOperate({ theme = "light" }: HowWeOperateProps) {
                   />
                 </div>
 
-                {/* Label */}
-                <p className="text-center" style={{ lineHeight: 1.3 }}>
+                {/* ✅ Inline — "Data shapes decisions" ek saath */}
+                <p className="text-center max-w-[180px] lg:max-w-[190px] xl:max-w-[227px]" style={{ lineHeight: 1.4 }}>
                   <span
                     style={{
                       color: "#E53935",
                       fontWeight: 700,
-                      fontSize: "clamp(1.1rem, 2vw, 1.5rem)",
+                      fontSize: "clamp(1.1rem, 1.5vw, 1.4rem)",
                     }}
                   >
                     {pillar.word}
@@ -144,7 +153,7 @@ export default function HowWeOperate({ theme = "light" }: HowWeOperateProps) {
                     style={{
                       color: tokens.pillarTextColor,
                       fontWeight: 500,
-                      fontSize: "clamp(1.1rem, 2vw, 1.5rem)",
+                      fontSize: "clamp(1.1rem, 1.5vw, 1.4rem)",
                     }}
                   >
                     {pillar.tagline}
@@ -159,27 +168,28 @@ export default function HowWeOperate({ theme = "light" }: HowWeOperateProps) {
         <AnimatedSection delay={0.5}>
           <div className="px-4">
             <div
-              className="w-full lg:w-[60%] mx-auto p-4 lg:p-5"
-              style={{
-                border: `2px solid ${tokens.taglineBorder}`,
-              }}
+              className="w-full lg:w-[75%] mx-auto p-4 lg:p-5"
+              style={{ border: `2px solid ${tokens.taglineBorder}` }}
             >
               <p
-                className="text-lg lg:text-2xl font-semibold"
+                className="text-lg md:text-2xl lg:text-3xl font-normal"
                 style={{
                   backgroundImage: `linear-gradient(to right, ${tokens.taglineFrom}, ${tokens.taglineTo})`,
                   WebkitBackgroundClip: "text",
                   backgroundClip: "text",
                   WebkitTextFillColor: "transparent",
                   color: "transparent",
+                  fontFamily: "Stack Sans Text",
                 }}
               >
-                Decide with data. <strong>Move with intelligence.</strong>{" "}
+                Decide with data.{" "}
+                <span>Move with intelligence.</span>{" "}
                 <strong>Build digitally.</strong>
               </p>
             </div>
           </div>
         </AnimatedSection>
+
       </div>
     </section>
   );

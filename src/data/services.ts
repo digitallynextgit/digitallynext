@@ -51,7 +51,7 @@ export type ServiceScopeItem = {
 
 export type ServiceCaseStudyCard = {
   imageSrc: string;
-  title: string;       // supports HTML e.g. 'Advent <span style="color:#E21F26">Global</span>'
+  title: string;
   description: string;
   tag: string;
   href?: string;
@@ -59,35 +59,35 @@ export type ServiceCaseStudyCard = {
 
 export type ServiceSection =
   | {
-    type: "realBrief";
-    eyebrow: string;
-    heading: string;
-    description: string;
-    list: ServiceListItem[];
-    highlightText: string;
-  }
+      type: "realBrief";
+      eyebrow: string;
+      heading: string;
+      description: string;
+      list: ServiceListItem[];
+      highlightText: string;
+    }
   | {
-    type: "featureGrid";
-    eyebrow: string;
-    headingLines: string[];
-    description: string;
-    cards: ServiceFeatureCard[];
-    footerText?: string;
-  }
+      type: "featureGrid";
+      eyebrow: string;
+      headingLines: string[];
+      description: string;
+      cards: ServiceFeatureCard[];
+      footerText?: string;
+    }
   | {
-    type: "scope";
-    eyebrow: string;
-    heading: string;
-    description?: string;
-    items: ServiceScopeItem[];
-  }
+      type: "scope";
+      eyebrow: string;
+      heading: string;
+      description?: string;
+      items: ServiceScopeItem[];
+    }
   | {
-    type: "caseStudy";
-    heading: string;
-    ctaLabel: string;
-    ctaHref: string;
-    cards: ServiceCaseStudyCard[];
-  };
+      type: "caseStudy";
+      heading: string;
+      ctaLabel: string;
+      ctaHref: string;
+      cards: ServiceCaseStudyCard[];
+    };
 
 export type ServiceCTA = {
   heading: string;
@@ -99,6 +99,8 @@ export type ServiceDetail = {
   id: string;
   slug: string;
   title: string;
+  media: string;        // ✅ video path for Services page
+  sliderText: string;   // ✅ ticker text for Services page
   metaTitle: string;
   metaDescription: string;
   theme: ServiceTheme;
@@ -110,13 +112,16 @@ export type ServiceDetail = {
 // ─── Data ────────────────────────────────────────────────────────────────────
 
 export const services: ServiceDetail[] = [
-  // ───────────────────────────────────────────────────────────────────────────
+  // ─────────────────────────────────────────────────────────────────────────
   // 1. Performance, Distribution & Demand
-  // ───────────────────────────────────────────────────────────────────────────
+  // ─────────────────────────────────────────────────────────────────────────
   {
     id: "pdd",
     slug: "seo-optimization",
     title: "Performance, Distribution & Demand.",
+    media: "/services/s1.mp4",
+    sliderText:
+      "Brand & digital strategy · Positioning & GTM · Personal & founder branding · Community strategy · Podcast strategy & narrative design · Market & audience research",
     metaTitle: "Performance, Distribution & Demand | Digitally Next",
     metaDescription:
       "Performance, Distribution & Demand — a system-first approach to growth that compounds across channels.",
@@ -156,26 +161,11 @@ export const services: ServiceDetail[] = [
         heading: "What brands are actually asking for.",
         description: "Behind all of this language is one common need:",
         list: [
-          {
-            accent: "accent",
-            text: "<strong>A distribution system,</strong> not disconnected channels",
-          },
-          {
-            accent: "alt",
-            text: "Performance that builds <strong>authority,</strong> not just traffic",
-          },
-          {
-            accent: "accent",
-            text: "Growth that is <strong>predictable</strong>, not experimental every month",
-          },
-          {
-            accent: "alt",
-            text: "SEO, paid, PR, and UGC <strong>working together,</strong> not in silos",
-          },
-          {
-            accent: "accent",
-            text: "Decisions driven by <strong>data and context</strong>, not assumptions",
-          },
+          { accent: "accent", text: "<strong>A distribution system,</strong> not disconnected channels" },
+          { accent: "alt", text: "Performance that builds <strong>authority,</strong> not just traffic" },
+          { accent: "accent", text: "Growth that is <strong>predictable</strong>, not experimental every month" },
+          { accent: "alt", text: "SEO, paid, PR, and UGC <strong>working together,</strong> not in silos" },
+          { accent: "accent", text: "Decisions driven by <strong>data and context</strong>, not assumptions" },
         ],
         highlightText:
           'This is where fragmented execution fails, and where <span style="color:#E21F26">systems win.</span>',
@@ -254,8 +244,7 @@ export const services: ServiceDetail[] = [
       },
       {
         type: "caseStudy",
-        heading:
-          'How this shows up in the real world<span style="color:#0EC8C5">.</span>',
+        heading: 'How this shows up in the real world<span style="color:#0EC8C5">.</span>',
         ctaLabel: "View Case Study",
         ctaHref: "/case-study",
         cards: [
@@ -263,7 +252,7 @@ export const services: ServiceDetail[] = [
             imageSrc: "/case/c1.webp",
             title: 'Advent <span style="color:#E21F26">Global</span>',
             description:
-              "Transforming Legacy ( more than 3 decades old organization) Brand Image to the New Age evolved Brand Positioning.",
+              "Transforming Legacy (more than 3 decades old organization) Brand Image to the New Age evolved Brand Positioning.",
             tag: "IT & ITES",
             href: "/case-study/advent-global",
           },
@@ -277,13 +266,16 @@ export const services: ServiceDetail[] = [
     },
   },
 
-  // ───────────────────────────────────────────────────────────────────────────
+  // ─────────────────────────────────────────────────────────────────────────
   // 2. Content, Culture & Media Creation
-  // ───────────────────────────────────────────────────────────────────────────
+  // ─────────────────────────────────────────────────────────────────────────
   {
     id: "ccmc",
     slug: "ui-ux-design",
     title: "Content, Culture & Media Creation.",
+    media: "/services/s2.mp4",
+    sliderText:
+      "Content strategy · Video & visual production · Podcast production · UGC programs · Social content systems · Creative asset libraries",
     metaTitle: "Content, Culture & Media Creation | Digitally Next",
     metaDescription:
       "Content systems that travel across formats, platforms, and teams — without losing meaning.",
@@ -328,22 +320,10 @@ export const services: ServiceDetail[] = [
         description:
           "Behind these asks is a common problem:\n\nWhat brands need isn\u2019t more content.\nThey need content systems.",
         list: [
-          {
-            accent: "accent",
-            text: "Content is created faster than it\u2019s being thought through",
-          },
-          {
-            accent: "alt",
-            text: "Formats change, but meaning doesn\u2019t travel",
-          },
-          {
-            accent: "accent",
-            text: "Output increases, but narrative weakens",
-          },
-          {
-            accent: "alt",
-            text: "Teams create assets, but systems are missing",
-          },
+          { accent: "accent", text: "Content is created faster than it\u2019s being thought through" },
+          { accent: "alt", text: "Formats change, but meaning doesn\u2019t travel" },
+          { accent: "accent", text: "Output increases, but narrative weakens" },
+          { accent: "alt", text: "Teams create assets, but systems are missing" },
         ],
         highlightText:
           'What brands need isn\u2019t more content. They need <span style="color:#E21F26">content systems.</span>',
@@ -420,8 +400,7 @@ export const services: ServiceDetail[] = [
       },
       {
         type: "caseStudy",
-        heading:
-          'How this shows up in the real world<span style="color:#0EC8C5">.</span>',
+        heading: 'How this shows up in the real world<span style="color:#0EC8C5">.</span>',
         ctaLabel: "View Case Study",
         ctaHref: "/case-study",
         cards: [
@@ -429,7 +408,7 @@ export const services: ServiceDetail[] = [
             imageSrc: "/case/c1.webp",
             title: 'Advent <span style="color:#E21F26">Global</span>',
             description:
-              "Transforming Legacy ( more than 3 decades old organization) Brand Image to the New Age evolved Brand Positioning.",
+              "Transforming Legacy (more than 3 decades old organization) Brand Image to the New Age evolved Brand Positioning.",
             tag: "IT & ITES",
             href: "/case-study/advent-global",
           },
@@ -443,20 +422,23 @@ export const services: ServiceDetail[] = [
     },
   },
 
-  // ───────────────────────────────────────────────────────────────────────────
+  // ─────────────────────────────────────────────────────────────────────────
   // 3. Platforms, Web & Digital Experience
-  // ───────────────────────────────────────────────────────────────────────────
+  // ─────────────────────────────────────────────────────────────────────────
   {
     id: "pwde",
     slug: "web-development",
     title: "Platforms, Web & Digital Experience.",
+    media: "/services/s3.mp4",
+    sliderText:
+      "Websites & landing experiences · UX & conversion design · Web applications · CMS & headless architecture · Analytics & CRO · E-commerce & D2C platforms",
     metaTitle: "Platforms, Web & Digital Experience | Digitally Next",
     metaDescription:
       "Conversion-focused digital platforms built as infrastructure — designed to evolve, integrate, and scale.",
     theme: {
       heroBg: "#0A0A0A",
       heroText: "#FFFFFF",
-      heroMutedText: "rgba(255,255,255,0.7)",   // ✅ matched CCMC (was #C9C9C9)
+      heroMutedText: "rgba(255,255,255,0.7)",
       accent: "#E21F26",
       accentAlt: "#0EC8C5",
       surfaceBg: "#FAFAFA",
@@ -468,14 +450,14 @@ export const services: ServiceDetail[] = [
       breadcrumb: "Services > Platforms, Web & Digital Experience.",
       titleLines: ["Platforms, Web &", "Digital Experience."],
       layout: "stacked",
-      backgroundVideo: "/services/service-hero-video.mp4",   // ✅ added (was missing)
+      backgroundVideo: "/services/service-hero-video.mp4",
       overlay:
-        "linear-gradient(180deg, rgba(0,0,0,0.65) 0%, rgba(14,200,197,0.85) 100%)",  // ✅ teal (was black)
+        "linear-gradient(180deg, rgba(0,0,0,0.65) 0%, rgba(14,200,197,0.85) 100%)",
       subtitle: "Where digital foundations are built for scale",
       quoteLead: "We often see brands say things like this",
       quoteText:
         "\u201cLooking for a reliable website development partner \u2014 not just a one-time build.\u201d",
-      quoteColor: "#000",                        // ✅ matched CCMC (was #1BB9B4)
+      quoteColor: "#000",
       body: [
         "These are familiar asks.",
         "What they\u2019re really asking for is <strong>a system, not a site.</strong>",
@@ -484,7 +466,7 @@ export const services: ServiceDetail[] = [
       ctaLabel: "Inquire Now",
       ctaHref: "/contact",
       ctaVariant: "light",
-      arrowSrc: "/figma/services/arrow1.svg",    // ✅ added (was missing)
+      arrowSrc: "/figma/services/arrow1.svg",
     },
     sections: [
       {
@@ -494,26 +476,11 @@ export const services: ServiceDetail[] = [
         description:
           "Behind these requests is a clear pattern:\n\nWhat brands need isn\u2019t more content.\nThey need content systems.",
         list: [
-          {
-            accent: "accent",
-            text: "Websites are treated as projects, not products",
-          },
-          {
-            accent: "alt",
-            text: "UX is designed without conversion logic",
-          },
-          {
-            accent: "accent",
-            text: "Performance teams are limited by poor foundations",
-          },
-          {
-            accent: "alt",
-            text: "Data exists, but decisions aren\u2019t trusted",
-          },
-          {
-            accent: "accent",
-            text: "Platforms scale traffic, but not experience",
-          },
+          { accent: "accent", text: "Websites are treated as projects, not products" },
+          { accent: "alt", text: "UX is designed without conversion logic" },
+          { accent: "accent", text: "Performance teams are limited by poor foundations" },
+          { accent: "alt", text: "Data exists, but decisions aren\u2019t trusted" },
+          { accent: "accent", text: "Platforms scale traffic, but not experience" },
         ],
         highlightText:
           'What brands really need are <span style="color:#E21F26">digital foundations</span> built to grow with them.',
@@ -596,8 +563,7 @@ export const services: ServiceDetail[] = [
       },
       {
         type: "caseStudy",
-        heading:
-          'How this shows up in the real world<span style="color:#0EC8C5">.</span>',
+        heading: 'How this shows up in the real world<span style="color:#0EC8C5">.</span>',
         ctaLabel: "View Case Study",
         ctaHref: "/case-study",
         cards: [
@@ -605,7 +571,7 @@ export const services: ServiceDetail[] = [
             imageSrc: "/case/c1.webp",
             title: 'Advent <span style="color:#E21F26">Global</span>',
             description:
-              "Transforming Legacy ( more than 3 decades old organization) Brand Image to the New Age evolved Brand Positioning.",
+              "Transforming Legacy (more than 3 decades old organization) Brand Image to the New Age evolved Brand Positioning.",
             tag: "IT & ITES",
             href: "/case-study/advent-global",
           },
