@@ -66,15 +66,11 @@ export default function CTASection() {
         >
           <Link
             href="#contact"
-            className="group relative inline-block px-8 py-4
-               text-white font-semibold text-sm tracking-widest uppercase
-               bg-transparent transition-all duration-300
-               hover:text-black"
+            className="group relative inline-block px-8 py-4 text-white font-semibold text-sm tracking-widest uppercase bg-transparent transition-all duration-300 hover:text-black"
           >
             {/* Gradient border (default) — hidden on hover */}
             <span
-              className="absolute inset-0 pointer-events-none transition-opacity duration-300
-                         group-hover:opacity-0"
+              className="absolute inset-0 pointer-events-none transition-opacity duration-300 group-hover:opacity-0"
               style={{
                 background:
                   "linear-gradient(90deg, #0EC8C5 0%, #FFFFFF 50%, #E21F26 100%)",
@@ -86,14 +82,10 @@ export default function CTASection() {
               }}
             />
             {/* White border (hover) — hidden by default */}
-            <span
-              className="absolute inset-0 pointer-events-none transition-opacity duration-300
-                         opacity-0 group-hover:opacity-100 border-2 border-white"
-            />
+            <span className="absolute inset-0 pointer-events-none transition-opacity duration-300 opacity-0 group-hover:opacity-100 border-2 border-white" />
             {/* Hover gradient fill */}
             <span
-              className="absolute inset-0 opacity-0 transition-opacity duration-300
-                         group-hover:opacity-100 pointer-events-none"
+              className="absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100 pointer-events-none"
               style={{
                 background:
                   "linear-gradient(90deg, #0EC8C5 0%, #FFFFFF 50%, #E21F26 100%)",

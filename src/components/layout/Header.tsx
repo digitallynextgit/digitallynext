@@ -32,8 +32,8 @@ const ROUTE_THEMES: Record<string, RouteHeaderTheme> = {
         logo: "white",
     },
     "/contact": {
-        linkColor: "#000000",
-        logo: "dark",
+        linkColor: "#FFFFFF",
+        logo: "white",
     },
     "/about": {
         linkColor: "#000000",

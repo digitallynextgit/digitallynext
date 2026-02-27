@@ -35,7 +35,7 @@ export default function CaseStudyPage() {
   return (
     <div className="bg-white text-black">
       <div className="mx-auto w-full max-w-[1440px]">
-        <section className="w-full pt-28 md:pt-[246px]">
+        <section className="w-full pt-28 md:pt-36">
           <div className="mx-auto w-full max-w-[1265px] px-4 sm:px-6 md:px-12">
             <div className="grid grid-cols-1 lg:grid-cols-[668px_1fr] gap-10 lg:gap-[84px] items-center">
               <div className="w-full flex flex-col gap-10 lg:gap-[72px]">
