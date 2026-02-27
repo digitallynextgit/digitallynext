@@ -4,7 +4,7 @@ import type { CaseStudyDetail } from "@/data/casestudy";
 export default function CaseStudyFocusArea({ detail }: { detail: CaseStudyDetail }) {
   const isLight = detail.theme === "light";
   const first = detail.focusArea.cards[0];
-  const rest = detail.focusArea.cards.slice(1, 4);
+  const rest = detail.focusArea.cards.slice(1);
   const restGridClass = rest.length === 1 ? "md:grid-cols-1" : rest.length === 2 ? "md:grid-cols-2" : "md:grid-cols-3";
 
   return (
@@ -17,7 +17,7 @@ export default function CaseStudyFocusArea({ detail }: { detail: CaseStudyDetail
                 {detail.focusArea.heading}
                 <span className="text-[#E21F26]">.</span>
               </div>
-              <div className="text-[14px] md:text-[16px] leading-[1.5] md:leading-[1.3] font-normal text-white whitespace-pre-line mt-2">
+              <div className="text-[14px] md:text-[16px] leading-[1.5] md:leading-[1.3] font-normal text-white whitespace-pre-line mt-2 capitalize">
                 {detail.focusArea.body}
               </div>
             </div>
@@ -31,7 +31,7 @@ export default function CaseStudyFocusArea({ detail }: { detail: CaseStudyDetail
                   {first?.title ?? ""}
                 </div>
               </div>
-              <div className={isLight ? "text-[14px] md:text-[16px] leading-[1.5] md:leading-[1.3] font-normal text-black" : "text-[14px] md:text-[16px] leading-[1.5] md:leading-[1.3] font-normal text-white"}>
+              <div className={isLight ? "text-[14px] md:text-[16px] leading-[1.5] md:leading-[1.3] font-normal text-black capitalize" : "text-[14px] md:text-[16px] leading-[1.5] md:leading-[1.3] font-normal text-white capitalize"}>
                 {first?.description ?? ""}
               </div>
             </div>
@@ -48,7 +48,7 @@ export default function CaseStudyFocusArea({ detail }: { detail: CaseStudyDetail
                     {c.title}
                   </div>
                 </div>
-                <div className={isLight ? "text-[14px] md:text-[16px] leading-[1.5] md:leading-[1.3] font-normal text-black" : "text-[14px] md:text-[16px] leading-[1.5] md:leading-[1.3] font-normal text-white"}>
+                <div className={isLight ? "text-[14px] md:text-[16px] leading-[1.5] md:leading-[1.3] font-normal text-black capitalize" : "text-[14px] md:text-[16px] leading-[1.5] md:leading-[1.3] font-normal text-white capitalize"}>
                   {c.description}
                 </div>
               </div>

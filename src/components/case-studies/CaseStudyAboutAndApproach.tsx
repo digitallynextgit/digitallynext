@@ -13,9 +13,9 @@ export default function CaseStudyAboutAndApproach({ detail }: { detail: CaseStud
               <Image
                 src={detail.about.logoSrc}
                 alt=""
-                width={171}
-                height={105}
-                className="w-[171px] h-[105px] object-contain"
+                width={62}
+                height={72}
+                className="w-[62px] h-[72px] object-contain"
               />
 
               <div className="w-full flex flex-col gap-3 md:gap-[16px]">
@@ -25,8 +25,8 @@ export default function CaseStudyAboutAndApproach({ detail }: { detail: CaseStud
                 <div
                   className={
                     isLight
-                      ? "text-[14px] md:text-[16px] leading-[1.5] md:leading-[1.3] font-normal text-black"
-                      : "text-[14px] md:text-[16px] leading-[1.5] md:leading-[1.3] font-normal text-white"
+                      ? "text-[14px] md:text-[16px] leading-[1.5] md:leading-[1.3] font-normal text-black capitalize"
+                      : "text-[14px] md:text-[16px] leading-[1.5] md:leading-[1.3] font-normal text-white capitalize"
                   }
                 >
                   {detail.about.quote}
@@ -41,8 +41,8 @@ export default function CaseStudyAboutAndApproach({ detail }: { detail: CaseStud
                   <div
                     className={
                       isLight
-                        ? "text-[14px] md:text-[16px] leading-[1.3] font-normal text-black"
-                        : "text-[14px] md:text-[16px] leading-[1.3] font-normal text-white"
+                        ? "text-[14px] md:text-[16px] leading-[1.3] font-normal text-black "
+                        : "text-[14px] md:text-[16px] leading-[1.3] font-normal text-white "
                     }
                   >
                     {f.value}
@@ -56,8 +56,8 @@ export default function CaseStudyAboutAndApproach({ detail }: { detail: CaseStud
             <div
               className={
                 isLight
-                  ? "text-[16px] md:text-[18px] leading-[1.5] md:leading-[1.3] font-normal text-black"
-                  : "text-[16px] md:text-[18px] leading-[1.5] md:leading-[1.3] font-normal text-white"
+                  ? "text-[16px] md:text-[18px] leading-[1.5] md:leading-[1.3] font-normal text-black capitalize"
+                  : "text-[16px] md:text-[18px] leading-[1.5] md:leading-[1.3] font-normal text-white capitalize"
               }
             >
               {detail.intro}
@@ -70,8 +70,8 @@ export default function CaseStudyAboutAndApproach({ detail }: { detail: CaseStud
               <div
                 className={
                   isLight
-                    ? "text-[16px] md:text-[18px] leading-[1.5] md:leading-[1.3] font-normal text-black"
-                    : "text-[16px] md:text-[18px] leading-[1.5] md:leading-[1.3] font-normal text-white"
+                    ? "text-[16px] md:text-[18px] leading-[1.5] md:leading-[1.3] font-normal text-black capitalize"
+                    : "text-[16px] md:text-[18px] leading-[1.5] md:leading-[1.3] font-normal text-white capitalize"
                 }
               >
                 {detail.objective.body}
@@ -85,8 +85,8 @@ export default function CaseStudyAboutAndApproach({ detail }: { detail: CaseStud
               <div
                 className={
                   isLight
-                    ? "text-[16px] md:text-[18px] leading-[1.5] md:leading-[1.3] font-normal text-black"
-                    : "text-[16px] md:text-[18px] leading-[1.5] md:leading-[1.3] font-normal text-white"
+                    ? "text-[16px] md:text-[18px] leading-[1.5] md:leading-[1.3] font-normal text-black capitalize"
+                    : "text-[16px] md:text-[18px] leading-[1.5] md:leading-[1.3] font-normal text-white capitalize"
                 }
               >
                 {detail.approach.body}
@@ -111,8 +111,8 @@ export default function CaseStudyAboutAndApproach({ detail }: { detail: CaseStud
                     <div
                       className={
                         isLight
-                          ? "text-[16px] md:text-[18px] leading-[1.3] font-normal text-black"
-                          : "text-[16px] md:text-[18px] leading-[1.3] font-normal text-white"
+                          ? "text-[16px] md:text-[18px] leading-[1.3] font-normal text-black capitalize"
+                          : "text-[16px] md:text-[18px] leading-[1.3] font-normal text-white capitalize"
                       }
                     >
                       {card.label}

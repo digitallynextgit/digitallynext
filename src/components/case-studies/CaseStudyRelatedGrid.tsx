@@ -6,7 +6,7 @@ export default function CaseStudyRelatedGrid({ detail }: { detail: CaseStudyDeta
   const isLight = detail.theme === "light";
 
   return (
-    <section className="w-full mt-14 md:mt-[118px]">
+    <section className="w-full my-14 md:my-[118px]">
       <div className="w-full px-4 sm:px-6 md:px-[57px] flex justify-center items-center">
         <div className="max-w-[1160px] w-full grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-[53.38px]">
           {detail.relatedCaseStudies.map((cs) => (

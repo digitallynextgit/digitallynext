@@ -360,13 +360,9 @@ export const caseStudies: CaseStudy[] = [
           "All frameworks are powered by Modern DAD thinking and governed by the AI Decision & Acceleration Center.",
         items: [
           "JS Website",
-          "360° digital & social media calendar",
-          "Go-To-Market plan",
-          "Thought leadership content",
-          "Podcast production",
-          "Digital PR assets",
-          "Stakeholder outreach kits",
-          "Visual communication plans",
+          "Branding Kit",
+          "Podcast",
+          "360 degree Digital Social Media calendar set up and Roll Out",
         ],
       },
       otherTeams: {
@@ -438,7 +434,7 @@ export const caseStudies: CaseStudy[] = [
         ],
       },
       about: {
-        logoSrc: "/figma/case-study/about-logo.png",
+        logoSrc: "/figma/case-study/signia.png",
         quote:
           "Signia is a world-leading hearing aid brand dedicated to creating life-enhancing technology that empowers people to hear brilliantly. With cutting-edge Integrated Xperience technology, Signia delivers natural, effortless hearing in real-world conversations, helping people stay connected, confident, and fully engaged in every moment of life.",
         fields: [
@@ -507,10 +503,9 @@ export const caseStudies: CaseStudy[] = [
         headingPrefix: "Strategic Marketing",
         headingHighlight: "Support",
         menuItems: [
-          { link: "#", text: "Social Media", image: "https://picsum.photos/600/400?random=1" },
-          { link: "#", text: "Digital PR", image: "https://picsum.photos/600/400?random=2" },
-          { link: "#", text: "Thought Leadership", image: "https://picsum.photos/600/400?random=3" },
-          { link: "#", text: "Brand Ambassadors", image: "https://picsum.photos/600/400?random=4" },
+          { link: "#", text: "Content & Themes Planning", image: "https://picsum.photos/600/400?random=1" },
+          { link: "#", text: "Visual & Social Media", image: "https://picsum.photos/600/400?random=2" },
+          { link: "#", text: "Digital PR & Analytics", image: "https://picsum.photos/600/400?random=3" },
         ],
       },
       coreDigitalAssets: {
@@ -521,13 +516,9 @@ export const caseStudies: CaseStudy[] = [
         items: [
           "Microsite",
           "Engagement Promotional Assets",
-          "360° Social Media Calendar",
-          "UGC Distribution Program",
-          "Podcast Production",
-          "Digital PR Calendar",
-          "Thought Leadership Content",
-          "Brand Ambassador Toolkit",
-          "Visual Communication Plan",
+          "Podcast- Audio and Video",
+          "360 degree Digital Social Media calendar set up and Roll Out",
+          "Digital PR Calendar including UGC distribution",
         ],
       },
       otherTeams: {
@@ -599,9 +590,9 @@ export const caseStudies: CaseStudy[] = [
         ],
       },
       about: {
-        logoSrc: "/figma/case-study/about-logo.png",
+        logoSrc: "/figma/case-study/signia.png",
         quote:
-          "PAN India Launch (Online) of a disruptive phygital model in insurance sector to prevent mis-selling, mis-information and honest reach of the insurance products in the interiors of India.",
+          "Signia is a world-leading hearing aid brand dedicated to creating life-enhancing technology that empowers people to hear brilliantly. With cutting-edge Integrated Xperience technology, Signia delivers natural, effortless hearing in real-world conversations, helping people stay connected, confident, and fully engaged in every moment of life.",
         fields: [
           { label: "Industry", value: "BFSI" },
           { label: "Category", value: "Insurance Services" },
@@ -658,10 +649,11 @@ export const caseStudies: CaseStudy[] = [
         headingPrefix: "Strategic Marketing",
         headingHighlight: "Support",
         menuItems: [
-          { link: "#", text: "D2C Website", image: "https://picsum.photos/600/400?random=41" },
-          { link: "#", text: "Social Media", image: "https://picsum.photos/600/400?random=42" },
-          { link: "#", text: "Digital PR", image: "https://picsum.photos/600/400?random=43" },
-          { link: "#", text: "Thought Leadership", image: "https://picsum.photos/600/400?random=44" },
+          { link: "#", text: "Content & Themes Planning", image: "https://picsum.photos/600/400?random=41" },
+          { link: "#", text: "Visual Communication", image: "https://picsum.photos/600/400?random=42" },
+          { link: "#", text: "Social Media Planning", image: "https://picsum.photos/600/400?random=43" },
+          { link: "#", text: "Digital PR & Publications", image: "https://picsum.photos/600/400?random=44" },
+          { link: "#", text: "Data & Analytics", image: "https://picsum.photos/600/400?random=44" },
         ],
       },
       coreDigitalAssets: {
@@ -670,15 +662,11 @@ export const caseStudies: CaseStudy[] = [
         subheading:
           "All frameworks are powered by Modern DAD thinking and governed by the AI Decision & Acceleration Center.",
         items: [
-          "D2C Website (App-integrated)",
-          "360° Performance Marketing Assets",
-          "B2B Social Media Calendar",
-          "Digital PR & Publications Calendar",
-          "UGC Distribution Program",
-          "Podcast Production",
-          "Founder Personal Branding Kit",
-          "Thought Leadership Content",
-          "Visual Communication Plan",
+          "Website",
+          "Engagement Promotional Assets",
+          "Podcast- Audio and Video",
+          "360 degree Digital Social Media calendar set up and Roll Out",
+          "Digital PR Calendar including UGC distribution"
         ],
       },
       otherTeams: {
@@ -721,7 +709,7 @@ export const caseStudies: CaseStudy[] = [
       introText:
         "From ambitious startups to scaling enterprises – Digitally Next builds performance-driven creative systems that turn attention into measurable growth.",
       title: "Fintech Student Value Card",
-      imageSrc: "/case/c5.webp",
+      imageSrc: "/case/c3.webp",
       caption:
         "Digital Branding for a Fintech — Student value cards (endorsed by UNESCO) with a spread in 125+ Countries.",
       buttonLabel: "View Case Study",
@@ -733,7 +721,7 @@ export const caseStudies: CaseStudy[] = [
         eyebrow: "FINTECH",
         title:
           "Digital Branding for a Fintech — Student value cards (endorsed by UNESCO) with a spread in 125+ Countries",
-        heroImageSrc: "/case/c5.webp",
+        heroImageSrc: "/case/c3.webp",
         metrics: [
           {
             value: "100%",
@@ -750,9 +738,9 @@ export const caseStudies: CaseStudy[] = [
         ],
       },
       about: {
-        logoSrc: "/figma/case-study/about-logo.png",
+        logoSrc: "/figma/case-study/signia.png",
         quote:
-          "Awareness building among students and educational institutes about the value card.",
+          "Signia is a world-leading hearing aid brand dedicated to creating life-enhancing technology that empowers people to hear brilliantly. With cutting-edge Integrated Xperience technology, Signia delivers natural, effortless hearing in real-world conversations, helping people stay connected, confident, and fully engaged in every moment of life.",
         fields: [
           { label: "Industry", value: "BFSI" },
           { label: "Category", value: "Value Card Services" },
@@ -809,10 +797,11 @@ export const caseStudies: CaseStudy[] = [
         headingPrefix: "Strategic Marketing",
         headingHighlight: "Support",
         menuItems: [
-          { link: "#", text: "Social Media", image: "https://picsum.photos/600/400?random=51" },
-          { link: "#", text: "Digital PR", image: "https://picsum.photos/600/400?random=52" },
-          { link: "#", text: "Community Development", image: "https://picsum.photos/600/400?random=53" },
-          { link: "#", text: "Paid Ads", image: "https://picsum.photos/600/400?random=54" },
+          { link: "#", text: "Content & Themes Planning", image: "https://picsum.photos/600/400?random=41" },
+          { link: "#", text: "Visual Communication", image: "https://picsum.photos/600/400?random=42" },
+          { link: "#", text: "Social Media Planning", image: "https://picsum.photos/600/400?random=43" },
+          { link: "#", text: "Digital PR & Publications", image: "https://picsum.photos/600/400?random=44" },
+          { link: "#", text: "Data & Analytics", image: "https://picsum.photos/600/400?random=44" },
         ],
       },
       coreDigitalAssets: {
@@ -821,15 +810,9 @@ export const caseStudies: CaseStudy[] = [
         subheading:
           "All frameworks are powered by Modern DAD thinking and governed by the AI Decision & Acceleration Center.",
         items: [
-          "360° Social Media Calendar",
-          "Digital PR & Publications Calendar",
-          "UGC Distribution Program",
-          "Paid Ad Campaigns",
-          "Performance Marketing Assets",
-          "Community Outreach Programme",
-          "Visual Communication Plan",
-          "Brand Outreach Toolkit",
-          "Demand Generation Framework",
+          "Engagement Promotional Assets",
+          "360 degree Digital Social Media calendar set up and Roll Out",
+          "Digital PR Calendar including UGC distribution",
         ],
       },
       otherTeams: {
@@ -872,7 +855,7 @@ export const caseStudies: CaseStudy[] = [
       introText:
         "From ambitious startups to scaling enterprises – Digitally Next builds performance-driven creative systems that turn attention into measurable growth.",
       title: "Real Estate Advisory",
-      imageSrc: "/case/c6.webp",
+      imageSrc: "/case/c3.webp",
       caption:
         "Digital Brand Communication of the enriched legacy and the transformational work done to make world a better place.",
       buttonLabel: "View Case Study",
@@ -884,7 +867,7 @@ export const caseStudies: CaseStudy[] = [
         eyebrow: "REAL ESTATE ADVISORY",
         title:
           "140 years+ old Global name in advisory and standards advocacy in built environment — land, real estate, construction and infrastructure.",
-        heroImageSrc: "/case/c6.webp",
+        heroImageSrc: "/case/c3.webp",
         metrics: [
           {
             value: "5X",
@@ -901,9 +884,9 @@ export const caseStudies: CaseStudy[] = [
         ],
       },
       about: {
-        logoSrc: "/figma/case-study/about-logo.png",
+        logoSrc: "/figma/case-study/signia.png",
         quote:
-          "Digital Brand Communication of the enriched legacy and the transformational work done to make world a better place.",
+          "Signia is a world-leading hearing aid brand dedicated to creating life-enhancing technology that empowers people to hear brilliantly. With cutting-edge Integrated Xperience technology, Signia delivers natural, effortless hearing in real-world conversations, helping people stay connected, confident, and fully engaged in every moment of life.",
         fields: [
           { label: "Industry", value: "Consulting" },
           { label: "Category", value: "Real Estate Advisory" },
@@ -932,27 +915,27 @@ export const caseStudies: CaseStudy[] = [
       },
       focusArea: {
         heading: "Focus Area",
-        body: "Drove complete digital brand communication for a 140+ year old global advisory institution in the built environment sector — spanning land, real estate, construction, and infrastructure across APac. The engagement repositioned a deeply enriched legacy into a modern digital narrative, achieving 5X community growth. A 360° social media strategy, digital PR, and thought leadership programme communicated the organisation's transformational standards work to global stakeholders.",
+        body: "Drove complete digital branding and performance marketing for a UNESCO-endorsed Fintech student value card operating across 125+ countries in India, Spain, and Czech Republic. The strategy focused on brand outreach and demand generation among students and educational institutes, delivering a 100% increase in card purchases in under a year. A 360° social media rollout, digital PR calendar, and paid ads achieved a 150% growth in social media followers and earned features in Forbes and Business Standard.",
         cards: [
           {
             title: "Social Media",
             description:
-              "A 360° social media calendar was deployed with thematic content and visual communication to communicate the organisation's legacy, standards advocacy, and transformational impact across APac markets.",
+              "A 360° social media calendar was rolled out with thematic content and visual communication to drive awareness and demand among students and educational institutions across key markets.",
           },
           {
             title: "Digital PR",
             description:
-              "A targeted digital PR and publications calendar amplified the organisation's authority and thought leadership, securing media coverage that positioned it as a global standards voice in the built environment.",
+              "A targeted digital PR and UGC distribution calendar secured high-profile media coverage including features in Forbes and Business Standard, building credibility for the brand across India and international markets.",
           },
           {
             title: "Community Development",
             description:
-              "A structured community development programme was built around the brand, driving a 5X growth in community engagement through consistent digital activations, outreach, and thematic content.",
+              "An engaged student and institutional community was built around the value card through consistent digital activations, content programmes, and outreach across India, Spain, and Czech Republic.",
           },
           {
             title: "Thought Leadership",
             description:
-              "Senior leaders and subject matter experts were positioned as credible voices in real estate advisory, construction, and infrastructure through podcasts, thought leadership content, and strategic publications.",
+              "Performance-driven paid ad campaigns were deployed to accelerate demand generation, directly contributing to a 100% increase in card purchases within the first year of the engagement.",
           },
         ],
       },
@@ -960,10 +943,11 @@ export const caseStudies: CaseStudy[] = [
         headingPrefix: "Strategic Marketing",
         headingHighlight: "Support",
         menuItems: [
-          { link: "#", text: "Social Media", image: "https://picsum.photos/600/400?random=61" },
-          { link: "#", text: "Digital PR", image: "https://picsum.photos/600/400?random=62" },
-          { link: "#", text: "Community Development", image: "https://picsum.photos/600/400?random=63" },
-          { link: "#", text: "Thought Leadership", image: "https://picsum.photos/600/400?random=64" },
+          { link: "#", text: "Content & Themes Planning", image: "https://picsum.photos/600/400?random=41" },
+          { link: "#", text: "Visual Communication", image: "https://picsum.photos/600/400?random=42" },
+          { link: "#", text: "Social Media Planning", image: "https://picsum.photos/600/400?random=43" },
+          { link: "#", text: "Digital PR & Publications", image: "https://picsum.photos/600/400?random=44" },
+          { link: "#", text: "Data & Analytics", image: "https://picsum.photos/600/400?random=44" },
         ],
       },
       coreDigitalAssets: {
