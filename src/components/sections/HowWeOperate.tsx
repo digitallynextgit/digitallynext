@@ -156,7 +156,17 @@ export default function HowWeOperate({ theme = "light" }: HowWeOperateProps) {
                       fontSize: "clamp(1.1rem, 1.5vw, 1.4rem)",
                     }}
                   >
-                    {pillar.tagline}
+                    {pillar.taglineLine1}
+                  </span>
+                  <br />
+                  <span
+                    style={{
+                      color: tokens.pillarTextColor,
+                      fontWeight: 500,
+                      fontSize: "clamp(1.1rem, 1.5vw, 1.4rem)",
+                    }}
+                  >
+                    {pillar.taglineLine2}
                   </span>
                 </p>
               </div>

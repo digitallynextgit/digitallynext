@@ -82,7 +82,7 @@ export default function Hero() {
             }}
           >
             We build what tomorrow will{" "}
-            <strong style={{ color: "#fff", fontWeight: 700 }}>
+            <strong style={{ color: "#fff", fontWeight: 900 }}>
               remember.
             </strong>
           </p>

@@ -31,6 +31,7 @@ export const services = [
     id: 2,
     title: "Content, Culture & Media Creation",
     subtitle: "Content strategy · Video & visual production",
+    slug: "ui-ux-design",
     description:
       "From viral campaigns to brand storytelling — we create content that resonates with culture and drives authentic engagement.",
   },
@@ -38,6 +39,7 @@ export const services = [
     id: 3,
     title: "Performance, Distribution & Demand",
     subtitle: "SEO & organic growth · Paid media & optimization",
+    slug: "seo-optimization",
     description:
       "Data-driven performance marketing that maximizes ROI. We optimize every channel from search to social to drive measurable growth.",
   },
@@ -45,6 +47,7 @@ export const services = [
     id: 4,
     title: "Platforms, Web & Digital Experience",
     subtitle: "Websites & landing experiences · UX & conversion",
+    slug: "web-development",
     description:
       "We build digital experiences that convert. From landing pages to full platforms — designed for speed, beauty, and results.",
   },
@@ -81,7 +84,7 @@ export const caseStudies = [
   },
   {
     id: 3,
-    title: "", // Kept as NeoTech based on image text, though description implies Judaica Gallery
+    title: "NeoTech", // Kept as NeoTech based on image text, though description implies Judaica Gallery
     description:
       "Launch of a high end Judaica Art gallery and 5 Artists for International Markets-US",
     category: "UK",
@@ -120,19 +123,22 @@ export const dadPillars = [
   {
     letter: "D",
     word: "Data",
-    tagline: "shapes decisions",
+    taglineLine1: "shapes",
+    taglineLine2: "decisions",
     description: "Decide with data.",
   },
   {
     letter: "A",
     word: "AI",
-    tagline: "accelerates execution",
+    taglineLine1: "accelerates",
+    taglineLine2: "execution",
     description: "Move with intelligence.",
   },
   {
     letter: "D",
     word: "Digital",
-    tagline: "systems deliver outcomes",
+    taglineLine1: "systems",
+    taglineLine2: "deliver outcomes",
     description: "Build digitally.",
   },
 ];

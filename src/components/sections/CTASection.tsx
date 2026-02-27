@@ -8,17 +8,27 @@ export default function CTASection() {
   return (
     <section
       id="contact"
-      className="relative overflow-hidden py-24 md:py-32"
-      style={{ background: "var(--bg-primary)" }}
+      className="relative overflow-hidden w-screen -mx-[calc((100vw-100%)/2)] py-24 md:py-32"
+      style={{ background: "#000000" }}
     >
-      {/* Gradient blob background */}
+      {/* Video background */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <Image
-          src="/news.webp"
-          alt="CTA Background"
-          fill
-          className="object-cover"
-        />
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+          style={{
+            objectFit: "cover",
+            width: "180%",
+            height: "180%",
+            minWidth: "100%",
+            minHeight: "100%",
+          }}
+        >
+          <source src="/videos/CTA video.mp4" type="video/mp4" />
+        </video>
       </div>
 
       <div className="relative z-10 w-[95%] max-w-6xl mx-auto text-center">
