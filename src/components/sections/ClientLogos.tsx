@@ -5,7 +5,6 @@ import AnimatedSection from "@/components/ui/AnimatedSection";
 import Image from "next/image";
 import Link from "next/link";
 
-
 export default function ClientLogos() {
     const logoFiles = [
         "/logos/1.png", "/logos/3.png", "/logos/5.png", "/logos/7.png",
