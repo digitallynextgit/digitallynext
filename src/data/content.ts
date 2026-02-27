@@ -13,7 +13,7 @@ export const navLinksLeft = [
 ];
 
 export const navLinksRight = [
-  { label: "CASE STUDIES", href: "/#case-studies" },
+  { label: "CASE STUDIES", href: "/case-studies" },
   { label: "CONTACT", href: "/#contact" },
 ];
 
@@ -90,7 +90,7 @@ export const caseStudies = [
     category: "UK",
     color: "#00BCD4",
     image: "/case/c3.webp",
-    href: "/case-study",
+    href: "/case-studies/signia",
   },
   {
     id: 4,

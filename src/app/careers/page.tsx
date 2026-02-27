@@ -4,6 +4,8 @@ import GrowthSection from "@/components/careers/GrowthSection";
 import ModernDadSection from "@/components/careers/ModernDadSection";
 import AdacSection from "@/components/careers/AdacSection";
 import WhoThrivesSection from "@/components/careers/WhoThrivesSection";
+import OpenRolesSection from "@/components/careers/OpenRoleSection";
+import CareersCtaSection from "@/components/careers/CareersCtaSection";
 
 export default function CareersPage() {
   return (
@@ -14,6 +16,8 @@ export default function CareersPage() {
       <ModernDadSection />
       <AdacSection />
       <WhoThrivesSection />
+      <OpenRolesSection />
+      <CareersCtaSection />
       <div id="open-positions" />
     </main>
   );

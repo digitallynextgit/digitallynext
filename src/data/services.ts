@@ -59,35 +59,35 @@ export type ServiceCaseStudyCard = {
 
 export type ServiceSection =
   | {
-      type: "realBrief";
-      eyebrow: string;
-      heading: string;
-      description: string;
-      list: ServiceListItem[];
-      highlightText: string;
-    }
+    type: "realBrief";
+    eyebrow: string;
+    heading: string;
+    description: string;
+    list: ServiceListItem[];
+    highlightText: string;
+  }
   | {
-      type: "featureGrid";
-      eyebrow: string;
-      headingLines: string[];
-      description: string;
-      cards: ServiceFeatureCard[];
-      footerText?: string;
-    }
+    type: "featureGrid";
+    eyebrow: string;
+    headingLines: string[];
+    description: string;
+    cards: ServiceFeatureCard[];
+    footerText?: string;
+  }
   | {
-      type: "scope";
-      eyebrow: string;
-      heading: string;
-      description?: string;
-      items: ServiceScopeItem[];
-    }
+    type: "scope";
+    eyebrow: string;
+    heading: string;
+    description?: string;
+    items: ServiceScopeItem[];
+  }
   | {
-      type: "caseStudy";
-      heading: string;
-      ctaLabel: string;
-      ctaHref: string;
-      cards: ServiceCaseStudyCard[];
-    };
+    type: "caseStudy";
+    heading: string;
+    ctaLabel: string;
+    ctaHref: string;
+    cards: ServiceCaseStudyCard[];
+  };
 
 export type ServiceCTA = {
   heading: string;
@@ -246,7 +246,7 @@ export const services: ServiceDetail[] = [
         type: "caseStudy",
         heading: 'How this shows up in the real world<span style="color:#0EC8C5">.</span>',
         ctaLabel: "View Case Study",
-        ctaHref: "/case-study",
+        ctaHref: "/case-studies",
         cards: [
           {
             imageSrc: "/case/c1.webp",
@@ -254,7 +254,7 @@ export const services: ServiceDetail[] = [
             description:
               "Transforming Legacy (more than 3 decades old organization) Brand Image to the New Age evolved Brand Positioning.",
             tag: "IT & ITES",
-            href: "/case-study/advent-global",
+            href: "/case-studies/advent-global",
           },
         ],
       },
@@ -402,7 +402,7 @@ export const services: ServiceDetail[] = [
         type: "caseStudy",
         heading: 'How this shows up in the real world<span style="color:#0EC8C5">.</span>',
         ctaLabel: "View Case Study",
-        ctaHref: "/case-study",
+        ctaHref: "/case-studies",
         cards: [
           {
             imageSrc: "/case/c1.webp",
@@ -410,7 +410,7 @@ export const services: ServiceDetail[] = [
             description:
               "Transforming Legacy (more than 3 decades old organization) Brand Image to the New Age evolved Brand Positioning.",
             tag: "IT & ITES",
-            href: "/case-study/advent-global",
+            href: "/case-studies/advent-global",
           },
         ],
       },
@@ -565,7 +565,7 @@ export const services: ServiceDetail[] = [
         type: "caseStudy",
         heading: 'How this shows up in the real world<span style="color:#0EC8C5">.</span>',
         ctaLabel: "View Case Study",
-        ctaHref: "/case-study",
+        ctaHref: "/case-studies",
         cards: [
           {
             imageSrc: "/case/c1.webp",
@@ -573,7 +573,7 @@ export const services: ServiceDetail[] = [
             description:
               "Transforming Legacy (more than 3 decades old organization) Brand Image to the New Age evolved Brand Positioning.",
             tag: "IT & ITES",
-            href: "/case-study/advent-global",
+            href: "/case-studies/advent-global",
           },
         ],
       },
@@ -584,6 +584,332 @@ export const services: ServiceDetail[] = [
       buttonHref: "/contact",
     },
   },
+
+  // ─────────────────────────────────────────────────────────────────────────
+  // 4. Strategy, Brand & Growth Intelligence
+  // ─────────────────────────────────────────────────────────────────────────
+  {
+    id: "sbgi",
+    slug: "brand-strategy",
+    title: "Strategy, Brand & Growth Intelligence.",
+    media: "/services/s4.mp4",
+    sliderText:
+      "D2C market entry & growth strategy · Brand & digital strategy · Positioning & GTM · Market & audience intelligence · Founder & niche authority strategy · Community & ecosystem strategy",
+    metaTitle: "Strategy, Brand & Growth Intelligence | Digitally Next",
+    metaDescription:
+      "Where direction is defined before execution begins — authority-led growth strategy for D2C, B2B, and niche markets.",
+    theme: {
+      heroBg: "#0A0A0A",
+      heroText: "#FFFFFF",
+      heroMutedText: "rgba(255,255,255,0.7)",
+      accent: "#E21F26",
+      accentAlt: "#0EC8C5",
+      surfaceBg: "#FAFAFA",
+      surfaceBorder: "rgba(0,0,0,0.1)",
+      bodyText: "#000000",
+      mutedText: "#787878",
+    },
+    hero: {
+      breadcrumb: "Services > Strategy, Brand & Growth Intelligence",
+      titleLines: ["Strategy, Brand &", "Growth Intelligence."],
+      layout: "stacked",
+      backgroundVideo: "/services/service-hero-video.mp4",
+      overlay:
+        "linear-gradient(180deg, rgba(0,0,0,0.65) 0%, rgba(226,31,38,0.88) 100%)",
+      subtitle: "Where direction is defined before execution begins",
+      quoteLead: "We often see brands say things like this",
+      quoteText:
+        "\u201cWe want D2C scale without becoming discount-led.\u201d",
+      quoteColor: "#1BB9B4",
+      body: [
+        "These are not marketing requests.",
+        "What they\u2019re really asking for is <strong>authority-led growth, not volume.</strong>",
+      ],
+      ctaLabel: "Inquire Now",
+      ctaHref: "/contact",
+      ctaVariant: "light",
+      arrowSrc: "/figma/services/arrow2.svg",
+    },
+    sections: [
+      {
+        type: "realBrief",
+        eyebrow: "The Real Brief",
+        heading: "What brands are actually asking for.",
+        description:
+          "Across D2C and B2B, the underlying needs are clear:",
+        list: [
+          { accent: "accent", text: "A <strong>clear market and audience</strong> definition" },
+          { accent: "alt", text: "Sharp <strong>positioning</strong> that doesn\u2019t collapse under competition" },
+          { accent: "accent", text: "A <strong>growth path</strong> that matches the business model" },
+          { accent: "alt", text: "<strong>Strategic clarity</strong> before money is spent on execution" },
+          { accent: "accent", text: "Confidence that decisions are <strong>informed, not fashionable</strong>" },
+        ],
+        highlightText:
+          'What brands need isn\u2019t more frameworks. They need <span style="color:#E21F26">direction they can trust.</span>',
+      },
+      {
+        type: "featureGrid",
+        eyebrow: "Strategy, Brand & Growth Intelligence",
+        headingLines: [
+          "Where direction is defined",
+          'before execution begins<span style="color:#0EC8C5">.</span>',
+        ],
+        description:
+          "At Digitally Next, strategy is not a presentation.\n\nIt\u2019s a decision-making layer.\n\nWe help brands:",
+        cards: [
+          {
+            iconSrc: "/figma/services/sbgi-enter-markets.svg",
+            title: "Enter Markets with Clarity",
+            description:
+              "Launch B2B Verticals with Credibility. Strategically enter new markets, especially D2C, with defined positioning, audience intelligence, and a clear path to revenue.",
+          },
+          {
+            iconSrc: "/figma/services/sbgi-launch-b2b.svg",
+            title: "Launch B2B Verticals with Credibility",
+            description:
+              "Establish authority from day one, aligning narrative, proof, and go-to-market frameworks to build trust at scale.",
+          },
+          {
+            iconSrc: "/figma/services/sbgi-positioning.svg",
+            title: "Define Positioning Before Scaling Spend",
+            description:
+              "Clarify category stance, value proposition, and differentiation \u2014 ensuring media investment amplifies a strong strategic foundation.",
+          },
+          {
+            iconSrc: "/figma/services/sbgi-align.svg",
+            title: "Align Brand, Content, Performance & Platforms",
+            description:
+              "Unify storytelling, distribution, and technology \u2014 creating an integrated growth engine rather than siloed execution.",
+          },
+        ],
+        footerText:
+          "So that every action that follows is intentional, aligned, and scalable.",
+      },
+      {
+        type: "scope",
+        eyebrow: "Scope",
+        heading: 'What this includes<span style="color:#0EC8C5">.</span>',
+        description:
+          "Depending on the business model and stage, this typically spans:",
+        items: [
+          {
+            title: "D2C Market Entry & Growth Strategy",
+            description:
+              "End-to-end go-to-market and growth frameworks, spanning validation, positioning, acquisition, retention, and scalable performance.",
+            imageSrc: "/figma/services/seo.svg",
+          },
+          {
+            title: "Brand & Digital Strategy",
+            description:
+              "Business-aligned brand and digital architecture \u2014 ensuring narrative, platforms, and performance drive measurable outcomes.",
+            imageSrc: "/figma/services/seo.svg",
+          },
+          {
+            title: "Positioning & GTM Frameworks",
+            description:
+              "Category definition, value proposition clarity, and structured go-to-market systems \u2014 across both D2C and B2B models.",
+            imageSrc: "/figma/services/seo.svg",
+          },
+          {
+            title: "Market & Audience Intelligence",
+            description:
+              "Human insight layered with AI-assisted analysis \u2014 informing segmentation, demand mapping, and strategic decision-making.",
+            imageSrc: "/figma/services/seo.svg",
+          },
+          {
+            title: "Founder & Niche Authority Strategy",
+            description:
+              "Leadership positioning, thought capital development, and narrative systems \u2014 building durable authority within defined categories.",
+            imageSrc: "/figma/services/seo.svg",
+          },
+          {
+            title: "Community & Ecosystem Strategy",
+            description:
+              "Structured community design and partnership ecosystems, strengthening retention, advocacy, and long-term brand equity.",
+            imageSrc: "/figma/services/seo.svg",
+          },
+        ],
+      },
+      {
+        type: "caseStudy",
+        heading: 'How this shows up in the real world<span style="color:#0EC8C5">.</span>',
+        ctaLabel: "View Case Study",
+        ctaHref: "/case-studies",
+        cards: [
+          {
+            imageSrc: "/case/c1.webp",
+            title: 'Advent <span style="color:#E21F26">Global</span>',
+            description:
+              "Transforming Legacy (more than 3 decades old organization) Brand Image to the New Age evolved Brand Positioning.",
+            tag: "IT & ITES",
+            href: "/case-studies/advent-global",
+          },
+        ],
+      },
+    ],
+    cta: {
+      heading: "Inquire Now",
+      buttonLabel: "Inquire Now",
+      buttonHref: "/contact",
+    },
+  },
+
+  // ─────────────────────────────────────────────────────────────────────────
+  // 5. AI Enablement & Decision Systems (ADAC-Powered)
+  // ─────────────────────────────────────────────────────────────────────────
+  {
+    id: "adac",
+    slug: "ai-enablement",
+    title: "AI Enablement & Decision Systems (ADAC-Powered).",
+    media: "/services/s5.mp4",
+    sliderText:
+      "AI governance & decision frameworks · Branding AI enablement · Content AI acceleration · Performance AI optimization · Web & platform AI intelligence · ADAC-powered operations",
+    metaTitle: "AI Enablement & Decision Systems (ADAC-Powered) | Digitally Next",
+    metaDescription:
+      "Intelligence without dilution — a governed AI practice that decides how, where, and why AI is applied across your digital work.",
+    theme: {
+      heroBg: "#0A0A0A",
+      heroText: "#FFFFFF",
+      heroMutedText: "rgba(255,255,255,0.7)",
+      accent: "#E21F26",
+      accentAlt: "#0EC8C5",
+      surfaceBg: "#FAFAFA",
+      surfaceBorder: "rgba(0,0,0,0.1)",
+      bodyText: "#000000",
+      mutedText: "#787878",
+    },
+    hero: {
+      breadcrumb: "Services > Performance, Distribution & Demand.",
+      titleLines: ["AI Enablement &", "Decision Systems", "(ADAC-Powered)."],
+      layout: "stacked",
+      backgroundVideo: "/services/service-hero-video.mp4",
+      overlay:
+        "linear-gradient(180deg, rgba(0,0,0,0.65) 0%, rgba(226,31,38,0.88) 100%)",
+      subtitle: "Where intelligence is applied with intent, not by default",
+      quoteLead: "We often see brands say things like this",
+      quoteText:
+        "\u201cEveryone is using AI \u2014 but outputs are starting to look the same.\u201d",
+      quoteColor: "#1BB9B4",
+      body: [
+        "These aren\u2019t technology questions.",
+        "They\u2019re decision and accountability questions.",
+        "What they\u2019re really asking for is <strong>intelligence without dilution.</strong>",
+      ],
+      ctaLabel: "Inquire Now",
+      ctaHref: "/contact",
+      ctaVariant: "light",
+      arrowSrc: "/figma/services/arrow2.svg",
+    },
+    sections: [
+      {
+        type: "realBrief",
+        eyebrow: "The Real Brief",
+        heading: "What brands are actually asking for.",
+        description:
+          "Across branding, content, performance, and platforms, the pattern is clear:",
+        list: [
+          { accent: "accent", text: "AI is powerful, but <strong>undirected</strong>" },
+          { accent: "alt", text: "Speed is increasing, but <strong>clarity is dropping</strong>" },
+          { accent: "accent", text: "Outputs scale, but <strong>judgment risks eroding</strong>" },
+          { accent: "alt", text: "Teams adopt tools, but <strong>decision logic is missing</strong>" },
+          { accent: "accent", text: "<strong>Accountability</strong> becomes blurry" },
+        ],
+        highlightText:
+          'What brands need isn\u2019t more AI tools. They need a <span style="color:#E21F26">system that decides how intelligence is applied.</span>',
+      },
+      {
+        type: "featureGrid",
+        eyebrow: "AI Enablement & Decision Systems",
+        headingLines: [
+          "How intelligence accelerates",
+          'everything we do<span style="color:#0EC8C5">.</span>',
+        ],
+        description:
+          "At Digitally Next, AI is not treated as a capability.\n\nIt\u2019s treated as a <strong>governed layer.</strong>\n\nWe apply AI through a decision-first practice that determines:",
+        cards: [
+          {
+            iconSrc: "/figma/services/adac-should-ai.svg",
+            title: "Should AI Be Used Here?",
+            description:
+              "Evaluate where AI genuinely adds value, applying it intentionally rather than by default.",
+          },
+          {
+            iconSrc: "/figma/services/adac-human-judgment.svg",
+            title: "Human Judgment as Governance",
+            description:
+              "Define the level of human oversight required, ensuring strategy, ethics, and contextual nuance remain intact.",
+          },
+          {
+            iconSrc: "/figma/services/adac-outcomes.svg",
+            title: "AI with Defined Outcomes",
+            description:
+              "Authority-building through earned media, strategic placements, and narrative-led distribution.",
+          },
+          {
+            iconSrc: "/figma/services/adac-ugc.svg",
+            title: "UGC & Influencer Conversion",
+            description:
+              "Creator-led content designed for conversion, not just reach \u2014 with full attribution governance.",
+          },
+        ],
+      },
+      {
+        type: "scope",
+        eyebrow: "Scope",
+        heading: 'How this is applied<span style="color:#0EC8C5">.</span>',
+        description:
+          "AI enablement at DigitallyNext cuts across:",
+        items: [
+          {
+            title: "Branding",
+            description:
+              "Research support, insight mining, and positioning inputs \u2014 strengthening strategic foundations with AI-assisted intelligence.",
+            imageSrc: "/figma/services/seo.svg",
+          },
+          {
+            title: "Content",
+            description:
+              "Ideation acceleration, drafting support, variation generation, and structured testing \u2014 enhancing creative throughput without diluting narrative quality.",
+            imageSrc: "/figma/services/seo.svg",
+          },
+          {
+            title: "Performance",
+            description:
+              "Data analysis, signal detection, and optimisation support \u2014 augmenting human decision-making with pattern recognition and predictive insight.",
+            imageSrc: "/figma/services/seo.svg",
+          },
+          {
+            title: "Web & Platforms",
+            description:
+              "Quality assurance, technical optimisation, and performance intelligence \u2014 improving stability, speed, and measurable digital outcomes.",
+            imageSrc: "/figma/services/seo.svg",
+          },
+        ],
+      },
+      {
+        type: "caseStudy",
+        heading: 'How this shows up in the real world<span style="color:#0EC8C5">.</span>',
+        ctaLabel: "View Case Study",
+        ctaHref: "/case-studies",
+        cards: [
+          {
+            imageSrc: "/case/c1.webp",
+            title: 'Advent <span style="color:#E21F26">Global</span>',
+            description:
+              "Transforming Legacy (more than 3 decades old organization) Brand Image to the New Age evolved Brand Positioning.",
+            tag: "IT & ITES",
+            href: "/case-studies/advent-global",
+          },
+        ],
+      },
+    ],
+    cta: {
+      heading: "Inquire Now",
+      buttonLabel: "Inquire Now",
+      buttonHref: "/contact",
+    },
+  },
+
 ];
 
 export function getServiceBySlug(slug: string): ServiceDetail | undefined {

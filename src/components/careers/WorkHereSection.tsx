@@ -2,17 +2,16 @@ import Image from "next/image";
 
 export default function WorkHereSection() {
   return (
-    <section className="container pt-16 lg:pt-24">
-      <div style={{ maxWidth: 1103 }}>
+    <section className="container flex justify-center items-center">
+      <div style={{ maxWidth: 1103 }} className="py-12 md:py-16 lg:py-20">
         <div
           style={{
             background: "#FAFAFA",
             borderRadius: 10,
-            padding: "48px 32px",
             display: "flex",
             flexDirection: "column",
-            gap: 64,
           }}
+          className="gap-8 md:gap-12 lg:gap-16"
         >
           <h2
             style={{
@@ -24,11 +23,11 @@ export default function WorkHereSection() {
             }}
           >
             What It&apos;s Like to{" "}
-            <span style={{ color: "#E21F26" }}>Work Here</span>
+            <span style={{ color: "#E21F26" }} className="font-semibold">Work Here</span>
             <span style={{ color: "#0EC8C5" }}>.</span>
           </h2>
 
-          <div className="flex flex-col md:flex-row md:gap-0">
+          <div className="flex flex-col md:flex-row md:gap-10">
             {/* LEFT COL */}
             <div
               className="flex-1"
