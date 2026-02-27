@@ -119,7 +119,7 @@ export const caseStudies: CaseStudy[] = [
       introText:
         "From ambitious startups to scaling enterprises – Digitally Next builds performance-driven creative systems that turn attention into measurable growth.",
       title: 'Neo<span style="color:#E21F26">Tech</span>',
-      imageSrc: "/case/c1.webp",
+      imageSrc: "/case/c3.webp",
       caption:
         "Complete Brand Revamp for a US Tech Co. Helped them to bag one of the biggest social networking platforms as their client.",
       buttonLabel: "View Case Study",
@@ -131,7 +131,7 @@ export const caseStudies: CaseStudy[] = [
         eyebrow: "NEOTECH",
         title:
           "Complete Brand Revamp for a US Tech Co. Helped them to bag one of the biggest social networking platforms as their client",
-        heroImageSrc: "/case/c1.webp",
+        heroImageSrc: "/case/c3.webp",
         metrics: [
           {
             value: "3X",
@@ -202,11 +202,31 @@ export const caseStudies: CaseStudy[] = [
         headingPrefix: "Strategic Marketing",
         headingHighlight: "Support",
         menuItems: [
-          { link: "#", text: "Digital Strategy Development", image: "https://picsum.photos/600/400?random=21" },
-          { link: "#", text: "Technology Implementation", image: "https://picsum.photos/600/400?random=22" },
-          { link: "#", text: "Brand Positioning", image: "https://picsum.photos/600/400?random=23" },
-          { link: "#", text: "Market Analysis", image: "https://picsum.photos/600/400?random=24" },
-          { link: "#", text: "Performance Optimization", image: "https://picsum.photos/600/400?random=24" },
+          {
+            link: "#",
+            text: "Digital Strategy Development",
+            image: "https://picsum.photos/600/400?random=21",
+          },
+          {
+            link: "#",
+            text: "Technology Implementation",
+            image: "https://picsum.photos/600/400?random=22",
+          },
+          {
+            link: "#",
+            text: "Brand Positioning",
+            image: "https://picsum.photos/600/400?random=23",
+          },
+          {
+            link: "#",
+            text: "Market Analysis",
+            image: "https://picsum.photos/600/400?random=24",
+          },
+          {
+            link: "#",
+            text: "Performance Optimization",
+            image: "https://picsum.photos/600/400?random=24",
+          },
         ],
       },
       coreDigitalAssets: {
@@ -344,13 +364,41 @@ export const caseStudies: CaseStudy[] = [
         headingPrefix: "Strategic Marketing",
         headingHighlight: "Support",
         menuItems: [
-          { link: "#", text: "Go-To-Market Strategy", image: "https://picsum.photos/600/400?random=31" },
-          { link: "#", text: "Brand Guidelines Revision", image: "https://picsum.photos/600/400?random=32" },
-          { link: "#", text: "Content & Themes Planning", image: "https://picsum.photos/600/400?random=33" },
-          { link: "#", text: "Visual Communication", image: "https://picsum.photos/600/400?random=34" },
-          { link: "#", text: "Social Media Planning", image: "https://picsum.photos/600/400?random=34" },
-          { link: "#", text: "Digital PR Planning", image: "https://picsum.photos/600/400?random=34" },
-          { link: "#", text: "Data & Analytics", image: "https://picsum.photos/600/400?random=34" },
+          {
+            link: "#",
+            text: "Go-To-Market Strategy",
+            image: "https://picsum.photos/600/400?random=31",
+          },
+          {
+            link: "#",
+            text: "Brand Guidelines Revision",
+            image: "https://picsum.photos/600/400?random=32",
+          },
+          {
+            link: "#",
+            text: "Content & Themes Planning",
+            image: "https://picsum.photos/600/400?random=33",
+          },
+          {
+            link: "#",
+            text: "Visual Communication",
+            image: "https://picsum.photos/600/400?random=34",
+          },
+          {
+            link: "#",
+            text: "Social Media Planning",
+            image: "https://picsum.photos/600/400?random=34",
+          },
+          {
+            link: "#",
+            text: "Digital PR Planning",
+            image: "https://picsum.photos/600/400?random=34",
+          },
+          {
+            link: "#",
+            text: "Data & Analytics",
+            image: "https://picsum.photos/600/400?random=34",
+          },
         ],
       },
       coreDigitalAssets: {
@@ -400,7 +448,7 @@ export const caseStudies: CaseStudy[] = [
     slug: "signia",
     metaTitle: "Signia Case Study | Digitally Next",
     metaDescription:
-      "Digital campaign on a social cause for a world leader in wearable hearing devices.",
+      "Digital campaign on<br> a social cause for a world<br> leader in wearable<br> hearing devices.",
     listing: {
       introText:
         "From ambitious startups to scaling enterprises – Digitally Next builds performance-driven creative systems that turn attention into measurable growth.",
@@ -503,9 +551,21 @@ export const caseStudies: CaseStudy[] = [
         headingPrefix: "Strategic Marketing",
         headingHighlight: "Support",
         menuItems: [
-          { link: "#", text: "Content & Themes Planning", image: "https://picsum.photos/600/400?random=1" },
-          { link: "#", text: "Visual & Social Media", image: "https://picsum.photos/600/400?random=2" },
-          { link: "#", text: "Digital PR & Analytics", image: "https://picsum.photos/600/400?random=3" },
+          {
+            link: "#",
+            text: "Content & Themes Planning",
+            image: "https://picsum.photos/600/400?random=1",
+          },
+          {
+            link: "#",
+            text: "Visual & Social Media",
+            image: "https://picsum.photos/600/400?random=2",
+          },
+          {
+            link: "#",
+            text: "Digital PR & Analytics",
+            image: "https://picsum.photos/600/400?random=3",
+          },
         ],
       },
       coreDigitalAssets: {
@@ -577,13 +637,15 @@ export const caseStudies: CaseStudy[] = [
         metrics: [
           {
             value: "6000+",
-            description: "Pin Codes Reached Across\nTier-II & III Cities in Just 2 Years",
+            description:
+              "Pin Codes Reached Across\nTier-II & III Cities in Just 2 Years",
             color: "#E21F26",
             background: "rgba(226,31,38,0.05)",
           },
           {
             value: "Series B",
-            description: "Funding Secured Post\nSuccessful PAN India Digital Launch",
+            description:
+              "Funding Secured Post\nSuccessful PAN India Digital Launch",
             color: "#0EC8C5",
             background: "rgba(14,200,197,0.05)",
           },
@@ -649,11 +711,31 @@ export const caseStudies: CaseStudy[] = [
         headingPrefix: "Strategic Marketing",
         headingHighlight: "Support",
         menuItems: [
-          { link: "#", text: "Content & Themes Planning", image: "https://picsum.photos/600/400?random=41" },
-          { link: "#", text: "Visual Communication", image: "https://picsum.photos/600/400?random=42" },
-          { link: "#", text: "Social Media Planning", image: "https://picsum.photos/600/400?random=43" },
-          { link: "#", text: "Digital PR & Publications", image: "https://picsum.photos/600/400?random=44" },
-          { link: "#", text: "Data & Analytics", image: "https://picsum.photos/600/400?random=44" },
+          {
+            link: "#",
+            text: "Content & Themes Planning",
+            image: "https://picsum.photos/600/400?random=71",
+          },
+          {
+            link: "#",
+            text: "Visual Communication",
+            image: "https://picsum.photos/600/400?random=71",
+          },
+          {
+            link: "#",
+            text: "Social Media Planning",
+            image: "https://picsum.photos/600/400?random=71",
+          },
+          {
+            link: "#",
+            text: "Digital PR & Publications",
+            image: "https://picsum.photos/600/400?random=71",
+          },
+          {
+            link: "#",
+            text: "Data & Analytics",
+            image: "https://picsum.photos/600/400?random=71",
+          },
         ],
       },
       coreDigitalAssets: {
@@ -666,7 +748,7 @@ export const caseStudies: CaseStudy[] = [
           "Engagement Promotional Assets",
           "Podcast- Audio and Video",
           "360 degree Digital Social Media calendar set up and Roll Out",
-          "Digital PR Calendar including UGC distribution"
+          "Digital PR Calendar including UGC distribution",
         ],
       },
       otherTeams: {
@@ -797,11 +879,31 @@ export const caseStudies: CaseStudy[] = [
         headingPrefix: "Strategic Marketing",
         headingHighlight: "Support",
         menuItems: [
-          { link: "#", text: "Content & Themes Planning", image: "https://picsum.photos/600/400?random=41" },
-          { link: "#", text: "Visual Communication", image: "https://picsum.photos/600/400?random=42" },
-          { link: "#", text: "Social Media Planning", image: "https://picsum.photos/600/400?random=43" },
-          { link: "#", text: "Digital PR & Publications", image: "https://picsum.photos/600/400?random=44" },
-          { link: "#", text: "Data & Analytics", image: "https://picsum.photos/600/400?random=44" },
+          {
+            link: "#",
+            text: "Content & Themes Planning",
+            image: "https://picsum.photos/600/400?random=71",
+          },
+          {
+            link: "#",
+            text: "Visual Communication",
+            image: "https://picsum.photos/600/400?random=71",
+          },
+          {
+            link: "#",
+            text: "Social Media Planning",
+            image: "https://picsum.photos/600/400?random=71",
+          },
+          {
+            link: "#",
+            text: "Digital PR & Publications",
+            image: "https://picsum.photos/600/400?random=71",
+          },
+          {
+            link: "#",
+            text: "Data & Analytics",
+            image: "https://picsum.photos/600/400?random=71",
+          },
         ],
       },
       coreDigitalAssets: {
@@ -943,11 +1045,26 @@ export const caseStudies: CaseStudy[] = [
         headingPrefix: "Strategic Marketing",
         headingHighlight: "Support",
         menuItems: [
-          { link: "#", text: "Content & Themes Planning", image: "https://picsum.photos/600/400?random=41" },
-          { link: "#", text: "Visual Communication", image: "https://picsum.photos/600/400?random=42" },
-          { link: "#", text: "Social Media Planning", image: "https://picsum.photos/600/400?random=43" },
-          { link: "#", text: "Digital PR & Publications", image: "https://picsum.photos/600/400?random=44" },
-          { link: "#", text: "Data & Analytics", image: "https://picsum.photos/600/400?random=44" },
+          {
+            link: "#",
+            text: "Content & Themes Planning",
+            image: "https://picsum.photos/600/400?random=71",
+          },
+          {
+            link: "#",
+            text: "Visual Communication",
+            image: "https://picsum.photos/600/400?random=71",
+          },
+          {
+            link: "#",
+            text: "Digital PR & Publications",
+            image: "https://picsum.photos/600/400?random=71",
+          },
+          {
+            link: "#",
+            text: "Data & Analytics",
+            image: "https://picsum.photos/600/400?random=71",
+          },
         ],
       },
       coreDigitalAssets: {
@@ -1023,13 +1140,15 @@ export const caseStudies: CaseStudy[] = [
         metrics: [
           {
             value: "40+",
-            description: "Years of Legal Legacy\nAmplified Through Digital Brand Communication",
+            description:
+              "Years of Legal Legacy\nAmplified Through Digital Brand Communication",
             color: "#E21F26",
             background: "rgba(226,31,38,0.05)",
           },
           {
             value: "3X",
-            description: "Increase in Thought Leadership Visibility\nAcross APac Digital Channels",
+            description:
+              "Increase in Thought Leadership Visibility\nAcross APac Digital Channels",
             color: "#0EC8C5",
             background: "rgba(14,200,197,0.05)",
           },
@@ -1090,10 +1209,41 @@ export const caseStudies: CaseStudy[] = [
         headingPrefix: "Strategic Marketing",
         headingHighlight: "Support",
         menuItems: [
-          { link: "#", text: "Digital Assets", image: "https://picsum.photos/600/400?random=71" },
-          { link: "#", text: "Thought Leadership", image: "https://picsum.photos/600/400?random=72" },
-          { link: "#", text: "Brand Outreach", image: "https://picsum.photos/600/400?random=73" },
-          { link: "#", text: "IP Law Content", image: "https://picsum.photos/600/400?random=74" },
+          {
+            link: "#",
+            text: "Content & Themes Planning",
+            image: "https://picsum.photos/600/400?random=71",
+          },
+          {
+            link: "#",
+            text: "Visual Communication",
+            image: "https://picsum.photos/600/400?random=71",
+          },
+          {
+            link: "#",
+            text: "Social Media Planning",
+            image: "https://picsum.photos/600/400?random=71",
+          },
+          {
+            link: "#",
+            text: "Thought Leadership Strategy",
+            image: "https://picsum.photos/600/400?random=71",
+          },
+          {
+            link: "#",
+            text: "SEO & ORM Planning",
+            image: "https://picsum.photos/600/400?random=71",
+          },
+          {
+            link: "#",
+            text: "Digital PR & Publications",
+            image: "https://picsum.photos/600/400?random=71",
+          },
+          {
+            link: "#",
+            text: "Data & Analytics",
+            image: "https://picsum.photos/600/400?random=71",
+          },
         ],
       },
       coreDigitalAssets: {
@@ -1169,13 +1319,15 @@ export const caseStudies: CaseStudy[] = [
         metrics: [
           {
             value: "3X",
-            description: "Times More Reach in\nInternational Art Markets (US & UK)",
+            description:
+              "Times More Reach in\nInternational Art Markets (US & UK)",
             color: "#E21F26",
             background: "rgba(226,31,38,0.05)",
           },
           {
             value: "5",
-            description: "Individual Artist Brands Launched\nwith Dedicated D2C Storefronts",
+            description:
+              "Individual Artist Brands Launched\nwith Dedicated D2C Storefronts",
             color: "#0EC8C5",
             background: "rgba(14,200,197,0.05)",
           },
@@ -1241,10 +1393,41 @@ export const caseStudies: CaseStudy[] = [
         headingPrefix: "Strategic Marketing",
         headingHighlight: "Support",
         menuItems: [
-          { link: "#", text: "Social Media", image: "https://picsum.photos/600/400?random=81" },
-          { link: "#", text: "Digital PR", image: "https://picsum.photos/600/400?random=82" },
-          { link: "#", text: "Thought Leadership", image: "https://picsum.photos/600/400?random=83" },
-          { link: "#", text: "D2C E-commerce", image: "https://picsum.photos/600/400?random=84" },
+          {
+            link: "#",
+            text: "Content & Themes Planning",
+            image: "https://picsum.photos/600/400?random=81",
+          },
+          {
+            link: "#",
+            text: "Visual & Social Media",
+            image: "https://picsum.photos/600/400?random=82",
+          },
+          {
+            link: "#",
+            text: "Social Media Planning",
+            image: "https://picsum.photos/600/400?random=83",
+          },
+          {
+            link: "#",
+            text: "E-Commerce & Shopify Setup",
+            image: "https://picsum.photos/600/400?random=84",
+          },
+          {
+            link: "#",
+            text: "SEO & ORM Planning",
+            image: "https://picsum.photos/600/400?random=84",
+          },
+          {
+            link: "#",
+            text: "Influencer & Community Outreach",
+            image: "https://picsum.photos/600/400?random=84",
+          },
+          {
+            link: "#",
+            text: "Data & Analytics",
+            image: "https://picsum.photos/600/400?random=84",
+          },
         ],
       },
       coreDigitalAssets: {
