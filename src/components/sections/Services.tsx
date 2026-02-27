@@ -193,13 +193,13 @@ function DesktopServices() {
                   transition={{ duration: 0.2, ease: "easeOut" }}
                   className="relative z-20 shrink-0 mt-5"
                 >
-                    <Image
-                      src="/icons/enter.svg"
-                      alt="arrow"
-                      width={52}
-                      height={52}
-                      className="transition-transform duration-300 ease-out"
-                    />
+                  <Image
+                    src="/icons/enter.svg"
+                    alt="arrow"
+                    width={52}
+                    height={52}
+                    className="transition-transform duration-300 ease-out"
+                  />
                 </motion.div>
 
                 <h3
@@ -258,7 +258,7 @@ function DesktopServices() {
               className="group inline-flex items-center gap-1 pl-1"
             >
               {/* Arrow — hover pe left slide */}
-                <span className="text-[#E21F26] transition-transform duration-300 ease-out group-hover:-translate-x-1">
+              <span className="text-[#E21F26] transition-transform duration-300 ease-out group-hover:-translate-x-1">
                 <Image
                   src="/icons/enter.svg"
                   alt="arrow-right"

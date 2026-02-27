@@ -161,11 +161,11 @@ export const services: ServiceDetail[] = [
         heading: "What brands are actually asking for.",
         description: "Behind all of this language is one common need:",
         list: [
-          { accent: "accent", text: "<strong>A distribution system,</strong> not disconnected channels" },
-          { accent: "alt", text: "Performance that builds <strong>authority,</strong> not just traffic" },
-          { accent: "accent", text: "Growth that is <strong>predictable</strong>, not experimental every month" },
-          { accent: "alt", text: "SEO, paid, PR, and UGC <strong>working together,</strong> not in silos" },
-          { accent: "accent", text: "Decisions driven by <strong>data and context</strong>, not assumptions" },
+          { accent: "accent", text: "<strong>A distribution system,<br></strong> not disconnected channels" },
+          { accent: "alt", text: "Performance that builds <strong>authority,<br></strong> not just traffic" },
+          { accent: "accent", text: "Growth that is <strong>predictable</strong>,<br> not experimental every month" },
+          { accent: "alt", text: "SEO, paid, PR, and UGC<br> <strong>working together,</strong> not in silos" },
+          { accent: "accent", text: "Decisions driven by <strong>data and<br> context</strong>, not assumptions" },
         ],
         highlightText:
           'This is where fragmented execution fails, and where <span style="color:#E21F26">systems win.</span>',
@@ -320,10 +320,10 @@ export const services: ServiceDetail[] = [
         description:
           "Behind these asks is a common problem:\n\nWhat brands need isn\u2019t more content.\nThey need content systems.",
         list: [
-          { accent: "accent", text: "Content is created faster than it\u2019s being thought through" },
-          { accent: "alt", text: "Formats change, but meaning doesn\u2019t travel" },
-          { accent: "accent", text: "Output increases, but narrative weakens" },
-          { accent: "alt", text: "Teams create assets, but systems are missing" },
+          { accent: "accent", text: "Content is created faster than<br> it\u2019s being thought through" },
+          { accent: "alt", text: "Formats change, but<br> meaning doesn\u2019t travel" },
+          { accent: "accent", text: "Output increases,<br> but narrative weakens" },
+          { accent: "alt", text: "Teams create assets,<br> but systems are missing" },
         ],
         highlightText:
           'What brands need isn\u2019t more content. They need <span style="color:#E21F26">content systems.</span>',
@@ -476,11 +476,11 @@ export const services: ServiceDetail[] = [
         description:
           "Behind these requests is a clear pattern:\n\nWhat brands need isn\u2019t more content.\nThey need content systems.",
         list: [
-          { accent: "accent", text: "Websites are treated as projects, not products" },
-          { accent: "alt", text: "UX is designed without conversion logic" },
-          { accent: "accent", text: "Performance teams are limited by poor foundations" },
-          { accent: "alt", text: "Data exists, but decisions aren\u2019t trusted" },
-          { accent: "accent", text: "Platforms scale traffic, but not experience" },
+          { accent: "accent", text: "Websites are treated as projects,<br> not products" },
+          { accent: "alt", text: "UX is designed without<br> conversion logic" },
+          { accent: "accent", text: "Performance teams are limited<br> by poor foundations" },
+          { accent: "alt", text: "Data exists, but decisions<br> aren\u2019t trusted" },
+          { accent: "accent", text: "Platforms scale traffic,<br> but not experience" },
         ],
         highlightText:
           'What brands really need are <span style="color:#E21F26">digital foundations</span> built to grow with them.',
@@ -639,10 +639,10 @@ export const services: ServiceDetail[] = [
           "Across D2C and B2B, the underlying needs are clear:",
         list: [
           { accent: "accent", text: "A <strong>clear market and audience</strong> definition" },
-          { accent: "alt", text: "Sharp <strong>positioning</strong> that doesn\u2019t collapse under competition" },
-          { accent: "accent", text: "A <strong>growth path</strong> that matches the business model" },
-          { accent: "alt", text: "<strong>Strategic clarity</strong> before money is spent on execution" },
-          { accent: "accent", text: "Confidence that decisions are <strong>informed, not fashionable</strong>" },
+          { accent: "alt", text: "Sharp <strong>positioning</strong> that doesn\u2019t<br> collapse under competition" },
+          { accent: "accent", text: "A <strong>growth path</strong> that matches<br> the business model" },
+          { accent: "alt", text: "<strong>Strategic clarity</strong> before money<br> is spent on execution" },
+          { accent: "accent", text: "Confidence that decisions<br> are <strong>informed, not fashionable</strong>" },
         ],
         highlightText:
           'What brands need isn\u2019t more frameworks. They need <span style="color:#E21F26">direction they can trust.</span>',
@@ -808,11 +808,11 @@ export const services: ServiceDetail[] = [
         description:
           "Across branding, content, performance, and platforms, the pattern is clear:",
         list: [
-          { accent: "accent", text: "AI is powerful, but <strong>undirected</strong>" },
-          { accent: "alt", text: "Speed is increasing, but <strong>clarity is dropping</strong>" },
-          { accent: "accent", text: "Outputs scale, but <strong>judgment risks eroding</strong>" },
-          { accent: "alt", text: "Teams adopt tools, but <strong>decision logic is missing</strong>" },
-          { accent: "accent", text: "<strong>Accountability</strong> becomes blurry" },
+          { accent: "accent", text: "AI is powerful,<br> but <strong>undirected</strong>" },
+          { accent: "alt", text: "Speed is increasing,<br> but <strong>clarity is dropping</strong>" },
+          { accent: "accent", text: "Outputs scale,<br> but <strong>judgment risks eroding</strong>" },
+          { accent: "alt", text: "Teams adopt tools,<br> but <strong>decision logic is missing</strong>" },
+          { accent: "accent", text: "<strong>Accountability</strong> becomes<br> blurry" },
         ],
         highlightText:
           'What brands need isn\u2019t more AI tools. They need a <span style="color:#E21F26">system that decides how intelligence is applied.</span>',
