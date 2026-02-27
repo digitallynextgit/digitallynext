@@ -6,8 +6,8 @@ export default function CaseStudyAboutAndApproach({ detail }: { detail: CaseStud
 
   return (
     <section className={isLight ? "w-full mt-14 md:mt-[86px] bg-[#FAFAFA]" : "w-full mt-14 md:mt-[86px] bg-[#0A0A0A]"}>
-      <div className="w-full px-4 sm:px-6 md:px-[73px] py-12 md:py-[78px]">
-        <div className="grid grid-cols-1 lg:grid-cols-[492px_1fr] gap-10 lg:gap-[72px] items-center">
+      <div className="w-full px-4 sm:px-6 md:px-[73px] py-12 md:py-[78px] flex items-center justify-center">
+        <div className="max-w-[1170px]  grid grid-cols-1 lg:grid-cols-[492px_1fr] gap-10 lg:gap-[72px] items-center">
           <div className={isLight ? "w-full bg-white rounded-[10px] p-6 md:p-[31px_38px]" : "w-full bg-[#111111] rounded-[10px] p-6 md:p-[31px_38px]"}>
             <div className="w-full flex flex-col gap-6 md:gap-[33px]">
               <Image

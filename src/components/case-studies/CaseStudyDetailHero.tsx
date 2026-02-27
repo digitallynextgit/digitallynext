@@ -7,13 +7,13 @@ export default function CaseStudyDetailHero({ detail, metaTitle }: { detail: Cas
   return (
     <section className="w-full pt-28 md:pt-36">
       <div className="mx-auto w-full max-w-[1265px] px-4 sm:px-6 md:px-12">
-        <div className="grid grid-cols-1 lg:grid-cols-[668px_1fr] gap-10 lg:gap-[84px] items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-[668px_1fr] gap-10 lg:gap-[84px] lg:items-stretch">
           <div className="w-full flex flex-col gap-10 lg:gap-[72px]">
             <div className="w-full max-w-[482px] flex flex-col gap-4 lg:gap-[24px]">
               <div className="uppercase text-[16px] md:text-[18px] leading-[1.3] font-normal text-[#E21F26]">
                 {detail.hero.eyebrow}
               </div>
-              <div className="text-[26px] sm:text-[32px] md:text-[40px] leading-[1.07] font-light">
+              <div className="text-[26px] md:text-[32px] leading-[1.07] font-light">
                 {detail.hero.title}
               </div>
             </div>
@@ -43,13 +43,12 @@ export default function CaseStudyDetailHero({ detail, metaTitle }: { detail: Cas
             </div>
           </div>
 
-          <div className="w-full overflow-hidden rounded-[10px]">
+          <div className="relative w-full overflow-hidden rounded-[10px] aspect-[513/518] lg:aspect-auto lg:h-full">
             <Image
               src={detail.hero.heroImageSrc}
               alt={metaTitle}
-              width={513}
-              height={518}
-              className="w-full h-auto object-cover"
+              fill
+              className="object-cover"
               sizes="(max-width: 1024px) 100vw, 513px"
               priority
             />

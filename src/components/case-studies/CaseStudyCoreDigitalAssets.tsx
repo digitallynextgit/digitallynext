@@ -13,9 +13,9 @@ export default function CaseStudyCoreDigitalAssets({ detail }: { detail: CaseStu
               <span className="text-[#E21F26]">{detail.coreDigitalAssets.headingPrefix}</span>{" "}
               {detail.coreDigitalAssets.headingHighlight}
             </div>
-            <div className={isLight ? "text-xl" : "text-xl]"}>
+            {/* <div className={isLight ? "text-xl text-[#787878]" : "text-xl text-[#787878]"}>
               {detail.coreDigitalAssets.subheading}
-            </div>
+            </div> */}
           </div>
 
           <div className="w-full max-w-[560px]">

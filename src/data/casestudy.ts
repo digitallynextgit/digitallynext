@@ -178,13 +178,13 @@ export const caseStudies: CaseStudy[] = [
         ],
       },
       focusArea: {
-        heading: "Focus Area.",
-        body: "Rebuilt the brand's digital identity from the ground up to reflect a contemporary, globally relevant technology company.",
+        heading: "Focus Area",
+        body: "Transformed a 3-decade-old US Tech company's legacy brand image into a modern, New Age digital presence that resonates with today's stakeholders. A complete brand revamp strategy was executed across digital platforms, technology infrastructure, and market positioning. The result helped the client secure one of the world's biggest social networking platforms as a major new client.",
         cards: [
           {
             title: "Digital Brand Transformation",
             description:
-              "Transformed a 3-decade-old US Tech company's legacy brand image into a modern, New Age digital presence that resonates with today's stakeholders. A complete brand revamp strategy was executed across digital platforms, technology infrastructure, and market positioning.",
+              "Rebuilt the brand's digital identity from the ground up to reflect a contemporary, globally relevant technology company.",
           },
           {
             title: "Technology Innovation",
@@ -202,10 +202,11 @@ export const caseStudies: CaseStudy[] = [
         headingPrefix: "Strategic Marketing",
         headingHighlight: "Support",
         menuItems: [
-          { link: "#", text: "Brand Strategy", image: "https://picsum.photos/600/400?random=21" },
-          { link: "#", text: "Digital Identity", image: "https://picsum.photos/600/400?random=22" },
-          { link: "#", text: "Market Positioning", image: "https://picsum.photos/600/400?random=23" },
-          { link: "#", text: "Enterprise Growth", image: "https://picsum.photos/600/400?random=24" },
+          { link: "#", text: "Digital Strategy Development", image: "https://picsum.photos/600/400?random=21" },
+          { link: "#", text: "Technology Implementation", image: "https://picsum.photos/600/400?random=22" },
+          { link: "#", text: "Brand Positioning", image: "https://picsum.photos/600/400?random=23" },
+          { link: "#", text: "Market Analysis", image: "https://picsum.photos/600/400?random=24" },
+          { link: "#", text: "Performance Optimization", image: "https://picsum.photos/600/400?random=24" },
         ],
       },
       coreDigitalAssets: {
@@ -214,14 +215,10 @@ export const caseStudies: CaseStudy[] = [
         subheading:
           "All frameworks are powered by Modern DAD thinking and governed by the AI Decision & Acceleration Center.",
         items: [
-          "Brand identity system",
-          "Digital brand guidelines",
-          "Website experience",
-          "Campaign assets",
-          "Social content toolkit",
-          "Pitch & credential decks",
-          "Email templates",
-          "Case study narratives",
+          "Modern Web Platform",
+          "Digital Brand Identity",
+          "Technology Solutions",
+          "Analytics Dashboard",
         ],
       },
       otherTeams: {
@@ -323,7 +320,7 @@ export const caseStudies: CaseStudy[] = [
         ],
       },
       focusArea: {
-        heading: "Focus Area.",
+        heading: "Focus Area",
         body: "Executed a complete brand makeover for a global Genomics and Healthcare company post-M&A, transitioning to a new name and digital brand identity across India and UAE. The strategy covered reworking the Go-To-Market plan, revising brand guidelines, and rolling out a 360° digital and social media calendar. Every touchpoint was redesigned to drive awareness, recognition, and acceptance of the rebranding among healthcare professionals, government bodies, and key stakeholders.",
         cards: [
           {
@@ -347,10 +344,13 @@ export const caseStudies: CaseStudy[] = [
         headingPrefix: "Strategic Marketing",
         headingHighlight: "Support",
         menuItems: [
-          { link: "#", text: "Brand Strategy", image: "https://picsum.photos/600/400?random=31" },
-          { link: "#", text: "Rebranding", image: "https://picsum.photos/600/400?random=32" },
-          { link: "#", text: "Community Building", image: "https://picsum.photos/600/400?random=33" },
-          { link: "#", text: "Thought Leadership", image: "https://picsum.photos/600/400?random=34" },
+          { link: "#", text: "Go-To-Market Strategy", image: "https://picsum.photos/600/400?random=31" },
+          { link: "#", text: "Brand Guidelines Revision", image: "https://picsum.photos/600/400?random=32" },
+          { link: "#", text: "Content & Themes Planning", image: "https://picsum.photos/600/400?random=33" },
+          { link: "#", text: "Visual Communication", image: "https://picsum.photos/600/400?random=34" },
+          { link: "#", text: "Social Media Planning", image: "https://picsum.photos/600/400?random=34" },
+          { link: "#", text: "Digital PR Planning", image: "https://picsum.photos/600/400?random=34" },
+          { link: "#", text: "Data & Analytics", image: "https://picsum.photos/600/400?random=34" },
         ],
       },
       coreDigitalAssets: {
@@ -359,7 +359,7 @@ export const caseStudies: CaseStudy[] = [
         subheading:
           "All frameworks are powered by Modern DAD thinking and governed by the AI Decision & Acceleration Center.",
         items: [
-          "Revised brand guidelines",
+          "JS Website",
           "360° digital & social media calendar",
           "Go-To-Market plan",
           "Thought leadership content",
@@ -468,7 +468,7 @@ export const caseStudies: CaseStudy[] = [
         ],
       },
       focusArea: {
-        heading: "Focus Area.",
+        heading: "Focus Area",
         body: "Drove a purpose-led digital campaign for a world-leading hearing device brand in India, breaking the social taboo around hearing loss to spark a national movement. The strategy replaced traditional TV spend with a powerful all-digital approach, earning 400% more media recognition and a 30% revenue increase. A microsite, podcasts, UGC distribution, and a 360° social media calendar were deployed to build lasting brand recall and global attention.",
         cards: [
           {
@@ -629,7 +629,7 @@ export const caseStudies: CaseStudy[] = [
         ],
       },
       focusArea: {
-        heading: "Focus Area.",
+        heading: "Focus Area",
         body: "Executed the first-ever PAN India online launch of a disruptive phygital InsurTech model targeting tier-II and tier-III cities across Bharat. The strategy tackled insurance mis-selling and misinformation by building an honest, tech-driven D2C model that reached 6,000+ pin codes in just two years. A complete 360° digital rollout, including website, podcasts, social media, and digital PR — helped the brand secure Series B funding and a special mention by TiE.",
         cards: [
           {
@@ -780,7 +780,7 @@ export const caseStudies: CaseStudy[] = [
         ],
       },
       focusArea: {
-        heading: "Focus Area.",
+        heading: "Focus Area",
         body: "Drove complete digital branding and performance marketing for a UNESCO-endorsed Fintech student value card operating across 125+ countries in India, Spain, and Czech Republic. The strategy focused on brand outreach and demand generation among students and educational institutes, delivering a 100% increase in card purchases in under a year. A 360° social media rollout, digital PR calendar, and paid ads achieved a 150% growth in social media followers and earned features in Forbes and Business Standard.",
         cards: [
           {
@@ -931,7 +931,7 @@ export const caseStudies: CaseStudy[] = [
         ],
       },
       focusArea: {
-        heading: "Focus Area.",
+        heading: "Focus Area",
         body: "Drove complete digital brand communication for a 140+ year old global advisory institution in the built environment sector — spanning land, real estate, construction, and infrastructure across APac. The engagement repositioned a deeply enriched legacy into a modern digital narrative, achieving 5X community growth. A 360° social media strategy, digital PR, and thought leadership programme communicated the organisation's transformational standards work to global stakeholders.",
         cards: [
           {
@@ -1082,7 +1082,7 @@ export const caseStudies: CaseStudy[] = [
         ],
       },
       focusArea: {
-        heading: "Focus Area.",
+        heading: "Focus Area",
         body: "Managed and elevated the complete digital brand communication for a global legal and advisory firm specialising in intellectual property across the Asia-Pacific region. The strategy highlighted the firm's enriched legacy and transformational work across Media, Entertainment, Sweepstakes, Promotions, and IP Law. All digital assets, including the website, were curated and optimised to strengthen brand outreach and establish the firm as a leading thought leader in its field.",
         cards: [
           {
@@ -1228,7 +1228,7 @@ export const caseStudies: CaseStudy[] = [
         ],
       },
       focusArea: {
-        heading: "Focus Area.",
+        heading: "Focus Area",
         body: "Launched a high-end Judaica Art Gallery alongside five distinct artist portfolios, targeting international markets across the US and UK. The strategy blended social media activations, personal branding, SEO, and e-commerce infrastructure to build awareness among real estate builders, interior designers, architects, and art collectors. A fully functional D2C shop was established on Shopify and WooCommerce to enable direct global sales of contemporary and modern Judaica artwork.",
         cards: [
           {

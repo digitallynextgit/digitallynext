@@ -14,7 +14,7 @@ export default function CaseStudyStrategicMarketing({ detail }: { detail: CaseSt
             <span className="text-[#0EC8C5]">.</span>
           </div>
 
-          <div className="w-full mt-8 md:mt-[24px] overflow-hidden h-[360px] sm:h-[460px] md:h-[600px]">
+          <div className="w-full mt-8 md:mt-[24px] lg:mt-[36px] overflow-hidden h-[360px] sm:h-[460px] md:h-[600px]">
             <FlowingMenu
               items={detail.strategicMarketing.menuItems}
               speed={15}
