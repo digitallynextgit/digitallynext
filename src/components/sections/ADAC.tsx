@@ -66,7 +66,7 @@ function MobileADAC() {
           <h3 className="text-3xl font-bold text-[#1a1a1a]">How We Use AI</h3>
           <Link
             href="#"
-            className="inline-flex items-center gap-2 text-black font-semibold text-sm hover:gap-3 transition-all duration-300 shrink-0"
+            className="group inline-flex items-center gap-2 text-black font-semibold text-sm hover:gap-3 transition-all duration-300 shrink-0"
           >
             <Image
               src="/icons/enter.svg"
@@ -74,7 +74,7 @@ function MobileADAC() {
               width={24}
               height={24}
             />{" "}
-            Read More
+            <span className="transition-colors duration-200 group-hover:text-[#E21F26]">Read More</span>
           </Link>
         </div>
 
@@ -174,7 +174,7 @@ function DesktopADAC() {
           </h3>
           <Link
             href="#"
-            className="inline-flex items-center gap-2 text-black font-semibold !text-xl md:text-base hover:gap-3 transition-all duration-300 shrink-0"
+            className="group inline-flex items-center gap-2 text-black font-semibold !text-xl md:text-base hover:gap-3 transition-all duration-300 shrink-0"
           >
             <Image
               src="/icons/enter.svg"
@@ -182,7 +182,7 @@ function DesktopADAC() {
               width={30}
               height={30}
             />{" "}
-            Read More
+            <span className="transition-colors duration-200 group-hover:text-[#E21F26]">Read More</span>
           </Link>
         </div>
 

@@ -179,6 +179,24 @@
   overflow: hidden;
 }
 
+/* ===== CTA VIDEO (ultrawide cover fix) ===== */
+.cta-video {
+  transform: scale(1.22);
+  transform-origin: center;
+}
+
+@media (min-aspect-ratio: 21/9) {
+  .cta-video {
+    transform: scale(1.42);
+  }
+}
+
+@media (min-aspect-ratio: 32/9) {
+  .cta-video {
+    transform: scale(1.62);
+  }
+}
+
 .btn-primary:hover {
   background: var(--accent-hover);
   transform: translateY(-2px);

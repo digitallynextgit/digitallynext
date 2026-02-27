@@ -85,12 +85,12 @@ export default function InstagramReels() {
                         viewport={{ once: true, margin: "-100px" }}
                         transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
                     >
-                        <span className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl">People & Culture</span>
-                        <span className="text-[#0EC8C5] text-3xl sm:text-4xl md:text-6xl lg:text-7xl">.</span>
+                        <span className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl">People & Culture</span>
+                        <span className="text-[#0EC8C5] text-4xl sm:text-5xl md:text-7xl lg:text-8xl">.</span>
                     </motion.h2>
 
                     <motion.p
-                        className="text-base lg:text-xl font-semibold text-[#1a1a1a] mb-2 lg:mb-3"
+                        className="text-lg lg:text-2xl font-semibold text-[#1a1a1a] mb-2 lg:mb-3"
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true, margin: "-100px" }}
@@ -100,13 +100,15 @@ export default function InstagramReels() {
                     </motion.p>
 
                     <motion.p
-                        className="text-sm md:text-base text-gray-500 max-w-2xl mx-auto"
+                        className="text-base md:text-lg lg:text-xl text-gray-500 max-w-2xl mx-auto"
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true, margin: "-100px" }}
                         transition={{ duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
                     >
-                        Digitally Next is built by multidisciplinary teams who value clarity, collaboration, and accountability.
+                        Digitally Next is built by multidisciplinary teams who value clarity,
+                        <br className="hidden lg:block" />
+                        {" "}collaboration, and accountability.
                     </motion.p>
                 </div>
 

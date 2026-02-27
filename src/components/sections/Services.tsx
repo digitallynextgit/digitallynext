@@ -139,7 +139,7 @@ function DesktopServices() {
 
   return (
     <div className="hidden lg:block">
-      <div className="grid grid-cols-[38%_1fr] gap-2 mt-20">
+      <div className="grid grid-cols-[34%_1fr] gap-2 mt-20">
         {/* LEFT — Sticky media */}
         <div className="relative">
           <div
@@ -168,7 +168,7 @@ function DesktopServices() {
         </div>
 
         {/* RIGHT — Scrollable service items */}
-        <div className="flex flex-col overflow-hidden">
+        <div className="flex flex-col overflow-x-visible overflow-y-hidden min-w-0">
           {services.map((service, i) => (
             <div
               key={service.id}
@@ -179,31 +179,31 @@ function DesktopServices() {
             >
               <Link
                 href={`/services/${service.slug}`}
-                className="group inline-flex items-start gap-4 mb-6"
+                className="group flex items-start gap-4 mb-6 w-full min-w-0 transition-transform duration-200 ease-out hover:translate-x-3"
                 onMouseEnter={() => setHoveredIndex(i)}
                 onMouseLeave={() => setHoveredIndex(null)}
               >
                 <motion.div
-                  initial={{ opacity: 0, x: -16 }}
+                  initial={{ opacity: 0, x: 0 }}
                   animate={
                     hoveredIndex === i
                       ? { opacity: 1, x: 0 }
-                      : { opacity: 0, x: -16 }
+                      : { opacity: 0, x: 0 }
                   }
                   transition={{ duration: 0.2, ease: "easeOut" }}
-                  className="shrink-0 mt-5"
+                  className="relative z-20 shrink-0 mt-5"
                 >
                     <Image
                       src="/icons/enter.svg"
                       alt="arrow"
                       width={52}
                       height={52}
-                      className="transition-transform duration-300 ease-out group-hover:-translate-x-1"
+                      className="transition-transform duration-300 ease-out"
                     />
                 </motion.div>
 
                 <h3
-                  className={`text-3xl md:text-7xl font-bold leading-tight tracking-tight transition-colors duration-300 ${
+                  className={`min-w-0 whitespace-normal break-words text-3xl md:text-6xl font-bold leading-tight tracking-tight transition-colors duration-300 ${
                     hoveredIndex === i
                       ? "text-[#E53935]" // ✅ hover pe red
                       : activeIndex === i
@@ -283,7 +283,7 @@ function DesktopServices() {
 export default function Services() {
   return (
     <section id="services" className="py-12 md:py-20 bg-black">
-      <div className="w-[90%] lg:w-[80%] max-w-7xl mx-auto">
+      <div className="w-[90%] lg:w-[85%] max-w-7xl mx-auto">
         <AnimatedSection>
           <h2 className="text-2xl font-extrabold text-white mb-16 tracking-tight">
             <span className="text-5xl md:text-[6vw]">Services</span>
