@@ -6,7 +6,7 @@ import Header from "@/components/layout/Header";
 import NextTopLoader from "nextjs-toploader";
 import { usePathname } from "next/navigation";
 import { Toaster } from "react-hot-toast";
-import { SectionThemeProvider } from "../ui/SectionThemeContext";
+import { SectionThemeProvider } from "../../context/SectionThemeContext";
 
 export default function ClientWrapper({ children }: { children: ReactNode }) {
     const pathname = usePathname();

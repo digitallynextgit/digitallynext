@@ -3,6 +3,7 @@
 import { useRef } from "react";
 import { motion } from "framer-motion";
 import { Cobe, type CobeRef } from "../ui/cobe-globe";
+import { useSectionTheme } from "@/context/SectionThemeContext";
 
 const locations = [
   { name: "New York",  lat: 40.7128, long: -74.0060 },
@@ -12,11 +13,17 @@ const locations = [
   { name: "Mumbai",    lat: 19.0760, long: 72.8777  },
 ];
 
-export default function ProudlyWorkingWith() {
+interface ProudlyWorkingWithProps {
+  theme?: "dark" | "light";
+}
+
+export default function ProudlyWorkingWith({ theme }: ProudlyWorkingWithProps) {
+  const { theme: contextTheme } = useSectionTheme();
+  const isDark = (theme ?? contextTheme) === "dark";
   const cobeRef = useRef<CobeRef>(null);
 
   return (
-    <section className="py-10 md:py-16 lg:py-20 bg-black overflow-hidden">
+    <section className="py-10 md:py-16 lg:py-20 overflow-hidden">
       <div className="w-[92%] sm:w-[90%] lg:w-auto max-w-6xl mx-auto">
 
         {/* Heading */}
@@ -27,7 +34,12 @@ export default function ProudlyWorkingWith() {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           >
-            <h2 className="font-extrabold text-white tracking-tight leading-none text-center">
+            <h2
+              className={[
+                "font-extrabold tracking-tight leading-none text-center transition-colors duration-500",
+                isDark ? "text-white" : "text-[#1a1a1a]",
+              ].join(" ")}
+            >
               <span className="text-[#E53935] text-3xl sm:text-4xl md:text-6xl lg:text-7xl">
                 Proudly
               </span>{" "}
@@ -42,7 +54,13 @@ export default function ProudlyWorkingWith() {
         </div>
 
         {/* Locations */}
-        <div className="flex flex-wrap items-center justify-between gap-y-6 border-t border-b border-white/10 py-6 md:py-8">
+        <div
+          className={[
+            "flex flex-wrap items-center justify-between gap-y-6",
+            "border-t border-b py-6 md:py-8 transition-colors duration-500",
+            isDark ? "border-white/10" : "border-black/10",
+          ].join(" ")}
+        >
           {locations.map((place, i) => (
             <motion.span
               key={place.name}
@@ -53,7 +71,11 @@ export default function ProudlyWorkingWith() {
               onClick={() => cobeRef.current?.focusLocation(place.lat, place.long)}
               onMouseEnter={() => cobeRef.current?.pauseAt(place.lat, place.long)}
               onMouseLeave={() => cobeRef.current?.resume()}
-              className="text-white text-[clamp(1rem,2.2vw,1.6rem)] font-light tracking-widest uppercase transition-colors duration-300 hover:text-[#E53935] cursor-pointer select-none"
+              className={[
+                "text-[clamp(1rem,2.2vw,1.6rem)] font-light tracking-widest uppercase",
+                "transition-colors duration-300 hover:text-[#E53935] cursor-pointer select-none",
+                isDark ? "text-white" : "text-[#1a1a1a]",
+              ].join(" ")}
             >
               {place.name}
             </motion.span>
@@ -71,11 +93,12 @@ export default function ProudlyWorkingWith() {
           mapBrightness={1.8}
           mapBaseBrightness={0.05}
           diffuse={3}
-          dark={1.1}
-          baseColor="#ffffff"
+          // ✅ Globe dark/light mode
+          dark={isDark ? 1.1 : 0}
+          baseColor={isDark ? "#ffffff" : "#1a1a1a"}
           markerColor="#E53935"
           markerSize={0.06}
-          glowColor="#ffffff"
+          glowColor={isDark ? "#ffffff" : "#888888"}
           opacity={0.85}
         />
 

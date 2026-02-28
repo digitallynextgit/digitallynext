@@ -22,7 +22,6 @@ export default function Home() {
         <Hero />
       </ThemeSection>
 
-      {/* Banner — always light */}
       <ThemeSection theme="light">
         <div style={{ position: "relative", zIndex: 10 }}>
           <Image src="/banner/ipl-desktop.webp" alt="IPL Banner" width={768} height={60}
@@ -40,27 +39,31 @@ export default function Home() {
         <ClientLogos />
       </ThemeSection>
 
-      <ThemeSection theme="light">
+      <ThemeSection theme="dark">
         <Services />
       </ThemeSection>
 
-      <ThemeSection theme="dark">
+      <ThemeSection theme="light">
         <CaseStudies />
       </ThemeSection>
 
-      <AwardsAndRecognition />
-
-      <ThemeSection theme="dark">
-        <ADAC />
+      <ThemeSection theme="light">
+        <AwardsAndRecognition />
       </ThemeSection>
 
       <ThemeSection theme="light">
+        <ADAC />
+      </ThemeSection>
+
+      <ThemeSection theme="dark">
         <GlobalServicingModel />
       </ThemeSection>
 
-      <ProudlyWorkingWith />
-
       <ThemeSection theme="dark">
+        <ProudlyWorkingWith />
+      </ThemeSection>
+
+      <ThemeSection theme="light">
         <InstagramReels />
       </ThemeSection>
 
@@ -70,4 +73,3 @@ export default function Home() {
     </>
   );
 }
-

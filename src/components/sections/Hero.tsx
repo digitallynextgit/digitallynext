@@ -3,8 +3,12 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
+import { useSectionTheme } from "@/context/SectionThemeContext";
 
 export default function Hero() {
+  const { theme } = useSectionTheme();
+  const isDark = theme === "dark";
+
   return (
     <section
       className={[
@@ -15,11 +19,15 @@ export default function Hero() {
       style={{ height: "clamp(600px, 100vh, 1500px)" }}
     >
       {/* Background image + gradient overlay */}
-      <div className={[
-        "absolute inset-0 z-0",
-        "after:content-[''] after:absolute after:inset-0 after:z-1",
-        "after:bg-linear-to-b after:from-black/10 after:via-black/30 after:to-black/65",
-      ].join(" ")}>
+      <div
+        className={[
+          "absolute inset-0 z-0",
+          "after:content-[''] after:absolute after:inset-0 after:z-1",
+          isDark
+            ? "after:bg-linear-to-b after:from-black/10 after:via-black/30 after:to-black/75"
+            : "after:bg-linear-to-b after:from-black/5 after:via-black/20 after:to-black/55",
+        ].join(" ")}
+      >
         <Image
           src="/banner/b1.webp"
           alt="Hero"
@@ -70,20 +78,29 @@ export default function Hero() {
           </p>
         </motion.div>
 
-        <Link
-          href="/contact"
-          className={[
-            "inline-flex items-center gap-2 py-4 px-9",
-            "bg-[rgba(0,255,255,0.826)] text-red-500 text-[1.2rem]",
-            "font-normal tracking-[0.12em] uppercase rounded-none cursor-pointer",
-            "relative overflow-hidden",
-            "transition-all duration-200 ease-in-out",
-            "hover:bg-[#00e6bf] hover:-translate-y-0.5",
-            "hover:shadow-[0_8px_32px_rgba(0,201,167,0.3)]",
-          ].join(" ")}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.8 }}
         >
-          GET IN TOUCH
-        </Link>
+          <Link
+            href="/contact"
+            className={[
+              "inline-flex items-center gap-2 py-4 px-9",
+              "text-[1.2rem] font-normal tracking-[0.12em] uppercase",
+              "rounded-none cursor-pointer relative overflow-hidden",
+              "transition-all duration-300 ease-out",
+              // ✅ theme-aware button
+              isDark
+                ? "bg-[rgba(0,255,255,0.826)] text-red-500 hover:bg-[#00e6bf] hover:shadow-[0_8px_32px_rgba(0,201,167,0.3)]"
+                : "bg-[rgba(0,255,255,0.826)] text-red-500 hover:bg-[#00e6bf] hover:shadow-[0_8px_32px_rgba(0,201,167,0.4)]",
+              "hover:-translate-y-0.5",
+            ].join(" ")}
+          >
+            GET IN TOUCH
+          </Link>
+        </motion.div>
+
       </div>
     </section>
   );

@@ -6,8 +6,16 @@ import { caseStudies as caseStudyData } from "@/data/casestudy";
 import AnimatedSection from "@/components/ui/AnimatedSection";
 import Link from "next/link";
 import Image from "next/image";
+import { useSectionTheme } from "@/context/SectionThemeContext";
 
-export default function CaseStudies() {
+interface CaseStudiesProps {
+  theme?: "dark" | "light";
+}
+
+export default function CaseStudies({ theme }: CaseStudiesProps) {
+  const { theme: contextTheme } = useSectionTheme();
+  const isDark = (theme ?? contextTheme) === "dark";
+
   const sectionRef = useRef<HTMLDivElement>(null);
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
 
@@ -35,29 +43,38 @@ export default function CaseStudies() {
     <section
       id="case-studies"
       ref={sectionRef}
-      className="relative bg-white text-black overflow-visible"
+      className="relative overflow-visible"
     >
+      {/* Sticky heading */}
       <div className="sticky top-0 z-1 flex items-center justify-center px-6 py-20 pointer-events-none max-md:min-h-0 max-md:py-10 max-md:px-5">
         <motion.div
           className="text-center"
           style={{ scale: headingScale, visibility: headingVisibility }}
         >
-          <h2 className="text-[clamp(3rem,12vw,10rem)] max-md:text-[clamp(2.5rem,12vw,4rem)] font-black leading-[0.95] tracking-[-0.04em] text-black">
+          <h2
+            className={[
+              "text-[clamp(3rem,12vw,10rem)] max-md:text-[clamp(2.5rem,12vw,4rem)]",
+              "font-black leading-[0.95] tracking-[-0.04em]",
+              "transition-colors duration-500",
+              isDark ? "text-white" : "text-black",
+            ].join(" ")}
+          >
             Case Studies
             <span className="text-[#0EC8C5]">.</span>
           </h2>
         </motion.div>
       </div>
+
+      {/* Cards grid */}
       <div className="relative z-2 px-6 pb-[120px] max-w-[1280px] mx-auto max-md:mt-0 max-md:px-4 max-md:pb-16">
         <div className="grid grid-cols-2 gap-8 max-md:grid-cols-1 max-md:gap-6">
           {caseStudies.map((cs, i) => {
-            const isHovered = hoveredCard === cs.id;
             const CardWrapper = cs.href
               ? ({ children }: { children: React.ReactNode }) => (
-                <Link href={cs.href!} className="block no-underline text-inherit">
-                  {children}
-                </Link>
-              )
+                  <Link href={cs.href!} className="block no-underline text-inherit">
+                    {children}
+                  </Link>
+                )
               : ({ children }: { children: React.ReactNode }) => <>{children}</>;
 
             return (
@@ -65,14 +82,20 @@ export default function CaseStudies() {
                 <AnimatedSection delay={i * 0.05} direction="up">
                   <CardWrapper>
                     <div
-                      className="group bg-white overflow-hidden cursor-pointer transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1.5"
+                      className={[
+                        "group overflow-hidden cursor-pointer",
+                        "transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]",
+                        "hover:-translate-y-1.5",
+                        isDark ? "bg-[#0a0a0a]" : "bg-white",
+                      ].join(" ")}
                       onMouseEnter={() => setHoveredCard(cs.id)}
                       onMouseLeave={() => setHoveredCard(null)}
                     >
+                      {/* Image */}
                       <div
                         className="w-full aspect-4/3 overflow-hidden relative flex items-center justify-center"
                         style={{
-                          background: `linear-gradient(135deg, ${cs.color}30 0%, #2a2a2a 100%)`,
+                          background: `linear-gradient(135deg, ${cs.color}30 0%, ${isDark ? "#2a2a2a" : "#e0e0e0"} 100%)`,
                         }}
                       >
                         <img
@@ -83,28 +106,26 @@ export default function CaseStudies() {
                             (e.target as HTMLImageElement).style.display = "none";
                           }}
                         />
-                        <span className="absolute bottom-3 right-4 text-[48px] font-black text-white/15 leading-none pointer-events-none">
+                        <span
+                          className={[
+                            "absolute bottom-3 right-4 text-[48px] font-black leading-none pointer-events-none transition-colors duration-500",
+                            isDark ? "text-white/15" : "text-black/10",
+                          ].join(" ")}
+                        >
                           0{cs.id}
                         </span>
                       </div>
+
+                      {/* Content */}
                       <div className="pt-6 px-1 pb-6 max-md:pt-5 max-md:pb-5">
-                        {/* <h3
-                          className="text-[clamp(1.1rem,2vw,1.35rem)] font-extrabold text-[#0a0a0a] leading-tight mb-2"
-                          dangerouslySetInnerHTML={{ __html: cs.title }}
-                        /> */}
-                        <p className="text-[0.9rem] text-[#666] leading-[1.55] mb-4">
+                        <p
+                          className={[
+                            "text-[0.9rem] leading-[1.55] mb-4 transition-colors duration-500",
+                            isDark ? "text-white/60" : "text-[#666]",
+                          ].join(" ")}
+                        >
                           {cs.description}
                         </p>
-                        {/* <span
-                          className="inline-block text-xs font-semibold uppercase tracking-[0.06em] px-4 py-1.5 border-[1.5px] rounded-full transition-all duration-200 cursor-pointer"
-                          style={{
-                            borderColor: cs.color,
-                            color: isHovered ? "#FFFFFF" : cs.color,
-                            backgroundColor: isHovered ? cs.color : "transparent",
-                          }}
-                        >
-                          {cs.category}
-                        </span> */}
                       </div>
                     </div>
                   </CardWrapper>
@@ -118,10 +139,15 @@ export default function CaseStudies() {
         <div className="flex justify-center mt-12">
           <Link
             href="/case-studies"
-            className="group inline-flex items-center gap-2 text-xl font-semibold tracking-wide transition-all duration-300 hover:gap-4 text-[#1a1a1a] no-underline"
+            className="group inline-flex items-center gap-2 text-xl font-semibold tracking-wide transition-all duration-300 hover:gap-4 no-underline"
           >
             <Image src="/icons/enter.svg" alt="arrow-right" width={30} height={30} />
-            <span className="transition-colors duration-200 group-hover:text-[#E21F26]">
+            <span
+              className={[
+                "transition-colors duration-200 group-hover:text-[#E21F26]",
+                isDark ? "text-white" : "text-[#1a1a1a]",
+              ].join(" ")}
+            >
               View All
             </span>
           </Link>

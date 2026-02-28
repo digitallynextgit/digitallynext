@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import ClientWrapper from "@/components/layout/ClientWrapper";
 import Footer from "@/components/layout/Footer";
+import { ThemeSection } from "@/components/ui/ThemeSection.tsx";
 
 export const metadata: Metadata = {
   title: "Digitally Next | Full-Stack Digital Marketing Agency",
@@ -46,7 +47,9 @@ export default function RootLayout({
       </head>
       <body style={{ fontFamily: "Stack Sans Text" }}>
         <ClientWrapper>{children}</ClientWrapper>
-        <Footer />
+        <ThemeSection theme="dark">
+          <Footer />
+        </ThemeSection>
       </body>
     </html>
   );

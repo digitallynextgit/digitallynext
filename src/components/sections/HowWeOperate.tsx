@@ -4,13 +4,17 @@ import { dadPillars } from "@/data/content";
 import AnimatedSection from "@/components/ui/AnimatedSection";
 import Image from "next/image";
 import { useEffect, useRef } from "react";
+import { useSectionTheme } from "@/context/SectionThemeContext";
 
 type HowWeOperateProps = {
-  theme?: "dark" | "light";
+  theme?: "dark" | "light"; // ✅ no default — context se fallback
 };
 
-export default function HowWeOperate({ theme = "light" }: HowWeOperateProps) {
-  const isDark = theme === "dark";
+export default function HowWeOperate({ theme }: HowWeOperateProps) {
+  // ✅ Prop diya ho to prop use karo, nahi to context se lo
+  const { theme: contextTheme } = useSectionTheme();
+  const isDark = (theme ?? contextTheme) === "dark";
+
   const headingRef = useRef<HTMLHeadingElement>(null);
 
   useEffect(() => {
@@ -43,10 +47,8 @@ export default function HowWeOperate({ theme = "light" }: HowWeOperateProps) {
   return (
     <section
       id="how-we-operate"
-      // ✅ bg-black / bg-white removed — transparent rahega
       className="w-full flex flex-col items-center py-10 md:py-16 lg:py-20"
     >
-      {/* ── Modern DAD ── */}
       <AnimatedSection className="w-full">
         <div className="w-full flex justify-center overflow-hidden">
           <h2
@@ -62,13 +64,13 @@ export default function HowWeOperate({ theme = "light" }: HowWeOperateProps) {
             style={{ fontSize: "19vw", fontFamily: "Stack Sans Text" }}
           >
             <span
-              className="bg-clip-text text-transparent"
+              className="bg-clip-text text-transparent transition-all duration-500"
               style={{ backgroundImage: modernGradient }}
             >
               Modern
             </span>
             <span
-              className="bg-clip-text text-transparent"
+              className="bg-clip-text text-transparent transition-all duration-500"
               style={{ backgroundImage: dadGradient }}
             >
               DAD
@@ -77,14 +79,13 @@ export default function HowWeOperate({ theme = "light" }: HowWeOperateProps) {
         </div>
       </AnimatedSection>
 
-      {/* ── Main content ── */}
       <div className="w-full max-w-7xl mx-auto px-6 text-center">
 
-        {/* HOW WE OPERATE */}
         <AnimatedSection delay={0.2}>
           <h3
             className={[
               "text-[clamp(1.8rem,5vw,5rem)] font-extrabold mb-3 tracking-[-0.01em]",
+              "transition-colors duration-500",
               isDark ? "text-white" : "text-[#1a1a1a]",
             ].join(" ")}
           >
@@ -95,6 +96,7 @@ export default function HowWeOperate({ theme = "light" }: HowWeOperateProps) {
             className={[
               "md:mt-10 text-base md:text-2xl lg:text-3xl font-normal",
               "mb-10 md:mb-16 lg:mb-20",
+              "transition-colors duration-500",
               isDark ? "text-white/45" : "text-[#787878]",
             ].join(" ")}
             style={{ fontFamily: "Stack Sans Text" }}
@@ -103,7 +105,6 @@ export default function HowWeOperate({ theme = "light" }: HowWeOperateProps) {
           </p>
         </AnimatedSection>
 
-        {/* ── Three Pillars ── */}
         <div className="flex flex-col md:flex-row justify-between mb-16 lg:mb-20 gap-16 md:gap-32 lg:gap-[167px]">
           {dadPillars.map((pillar, i) => (
             <AnimatedSection key={pillar.word} delay={0.15 + i * 0.1}>
@@ -127,6 +128,7 @@ export default function HowWeOperate({ theme = "light" }: HowWeOperateProps) {
                   <span
                     className={[
                       "font-medium text-[clamp(1.1rem,1.5vw,1.4rem)]",
+                      "transition-colors duration-500",
                       isDark ? "text-white" : "text-[#1a1a1a]",
                     ].join(" ")}
                   >
@@ -136,6 +138,7 @@ export default function HowWeOperate({ theme = "light" }: HowWeOperateProps) {
                   <span
                     className={[
                       "font-medium text-[clamp(1.1rem,1.5vw,1.4rem)]",
+                      "transition-colors duration-500",
                       isDark ? "text-white" : "text-[#1a1a1a]",
                     ].join(" ")}
                   >
@@ -147,17 +150,17 @@ export default function HowWeOperate({ theme = "light" }: HowWeOperateProps) {
           ))}
         </div>
 
-        {/* ── Tagline bar ── */}
         <AnimatedSection delay={0.5}>
           <div className="px-4">
             <div
               className={[
                 "w-full lg:w-[80%] mx-auto p-4 lg:p-5 border-2",
+                "transition-colors duration-500",
                 isDark ? "border-white/35" : "border-[#1a1a1a]",
               ].join(" ")}
             >
               <p
-                className="text-lg md:text-2xl lg:text-3xl font-normal bg-clip-text text-transparent"
+                className="text-lg md:text-2xl lg:text-3xl font-normal bg-clip-text text-transparent transition-all duration-500"
                 style={{ backgroundImage: taglineGradient, fontFamily: "Stack Sans Text" }}
               >
                 Decide with data.{" "}

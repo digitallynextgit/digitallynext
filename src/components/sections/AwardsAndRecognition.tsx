@@ -3,6 +3,7 @@
 import { useRef } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { useSectionTheme } from "@/context/SectionThemeContext";
 
 const awards = [
     { src: "/awards/a1.png", alt: "Award 1", width: 342, height: 69 },
@@ -10,21 +11,35 @@ const awards = [
     { src: "/awards/a3.png", alt: "Award 3", width: 134, height: 101 },
 ];
 
-export default function AwardsAndRecognition() {
+interface AwardsAndRecognitionProps {
+    theme?: "dark" | "light";
+}
+
+export default function AwardsAndRecognition({ theme }: AwardsAndRecognitionProps) {
+    const { theme: contextTheme } = useSectionTheme();
+    const isDark = (theme ?? contextTheme) === "dark";
     const sectionRef = useRef<HTMLDivElement>(null);
 
     return (
-        <div className="border-t border-t-gray-200 border-b-gray-200 border-b">
+        <div
+            className={[
+                "border-t border-b transition-colors duration-500",
+                isDark ? "border-white/10" : "border-gray-200",
+            ].join(" ")}
+        >
             <section
                 ref={sectionRef}
-                className="bg-white py-10 md:py-16 lg:py-20 overflow-hidden"
+                className="py-10 md:py-16 lg:py-20 overflow-hidden"
             >
                 <div className="max-w-7xl mx-auto px-5 md:px-12">
 
                     {/* Header */}
                     <div className="text-center mb-12 md:mb-16 lg:mb-[72px]">
                         <motion.h2
-                            className="font-extrabold text-[#0A0A0A] tracking-tight leading-none"
+                            className={[
+                                "font-extrabold tracking-tight leading-none transition-colors duration-500",
+                                isDark ? "text-white" : "text-[#0A0A0A]",
+                            ].join(" ")}
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true, margin: "-100px" }}
@@ -76,7 +91,6 @@ export default function AwardsAndRecognition() {
                             </motion.div>
                         ))}
                     </motion.div>
-
 
                 </div>
             </section>

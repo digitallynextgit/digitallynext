@@ -3,27 +3,30 @@
 import AnimatedSection from "@/components/ui/AnimatedSection";
 import Image from "next/image";
 import Link from "next/link";
+import { useSectionTheme } from "@/context/SectionThemeContext";
 
 interface ClientLogosProps {
   theme?: "dark" | "light";
 }
 
-export default function ClientLogos({ theme = "dark" }: ClientLogosProps) {
+export default function ClientLogos({ theme }: ClientLogosProps) {
+  const { theme: contextTheme } = useSectionTheme();
+  const isDark = (theme ?? contextTheme) === "dark";
+
   const logoFiles = [
     "/home/client1.png", "/home/client2.png", "/home/client3.png", "/home/client4.png",
     "/home/client5.png", "/home/client6.png", "/home/client7.png", "/home/client8.png",
     "/home/client9.png", "/home/client10.png", "/home/client11.png", "/home/client12.png",
   ];
 
-  const isDark = theme === "dark";
-
   return (
     <section
       className={[
         "py-10 md:py-16 lg:py-20 overflow-hidden",
+        "transition-colors duration-500",
         isDark
           ? "border-t border-b border-white/10"
-          : "border-t border-b border-black/8",
+          : "border-t border-b border-black/10",
       ].join(" ")}
     >
       <div className="w-full max-w-[1280px] mx-auto px-6 md:px-12">
@@ -34,6 +37,7 @@ export default function ClientLogos({ theme = "dark" }: ClientLogosProps) {
             <p
               className={[
                 "text-2xl lg:text-4xl lg:w-[65%] w-full",
+                "transition-colors duration-500",
                 isDark ? "text-white" : "text-black",
               ].join(" ")}
             >
@@ -53,7 +57,8 @@ export default function ClientLogos({ theme = "dark" }: ClientLogosProps) {
               </span>
               <span
                 className={[
-                  "mt-1 font-light hover:text-[#E21F26] transition-colors duration-200",
+                  "mt-1 font-light hover:text-[#E21F26]",
+                  "transition-colors duration-500",
                   isDark ? "text-white" : "text-black",
                 ].join(" ")}
               >
@@ -64,7 +69,7 @@ export default function ClientLogos({ theme = "dark" }: ClientLogosProps) {
         </AnimatedSection>
       </div>
 
-      {/* ✅ Marquee — speed 30s → 45s (smoother), mask edges fade */}
+      {/* Marquee */}
       <div
         className="overflow-hidden py-4 mt-4"
         style={{
@@ -78,12 +83,12 @@ export default function ClientLogos({ theme = "dark" }: ClientLogosProps) {
               key={i}
               className={[
                 "group shrink-0 flex items-center justify-center",
-                "h-[100px] px-5", // ✅ sirf height fixed, width auto
+                "h-[100px] px-5",
                 "border rounded-lg hover:rounded-2xl",
                 "transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]",
                 "hover:scale-105",
                 isDark
-                  ? "border-white/70 hover:border-white/60 hover:shadow-[0_0_24px_rgba(255,255,255,0.08)]"
+                  ? "border-white/20 hover:border-white/60 hover:shadow-[0_0_24px_rgba(255,255,255,0.08)]"
                   : "border-black/15 hover:border-black/40 hover:shadow-[0_4px_24px_rgba(0,0,0,0.08)]",
               ].join(" ")}
             >
@@ -93,16 +98,15 @@ export default function ClientLogos({ theme = "dark" }: ClientLogosProps) {
                 width={0}
                 height={0}
                 sizes="200px"
-                style={{ width: "auto", height: "60px" }} // ✅ height fixed, width = image ki natural width
+                style={{ width: "auto", height: "60px" }}
                 className={[
                   "object-contain",
                   "opacity-50 group-hover:opacity-100",
-                  "transition-opacity duration-500 ease-out",
+                  "transition-all duration-500 ease-out",
                   isDark ? "brightness-0 invert" : "brightness-0",
                 ].join(" ")}
               />
             </div>
-
           ))}
         </div>
       </div>

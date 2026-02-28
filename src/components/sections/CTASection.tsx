@@ -3,28 +3,36 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import { useSectionTheme } from "@/context/SectionThemeContext";
 
-export default function CTASection() {
+interface CTASectionProps {
+  theme?: "dark" | "light";
+}
+
+export default function CTASection({ theme }: CTASectionProps) {
+  // ✅ Context integrate — consistent pattern
+  // Video background hai isliye visually always dark dikhega
+  const { theme: contextTheme } = useSectionTheme();
+  const isDark = (theme ?? contextTheme) === "dark";
+
   return (
     <section
       id="contact"
       className="relative overflow-hidden w-screen -mx-[calc((100vw-100%)/2)] py-10 md:py-16 lg:py-20"
-      style={{ background: "#000000" }}
+      // ✅ Dark theme pe pure black, light pe dark-grey — video ke saath blend
+      style={{ background: isDark ? "#000000" : "#111111" }}
     >
       {/* Video background */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
         <video
-          autoPlay
-          loop
-          muted
-          playsInline
+          autoPlay loop muted playsInline
           className="cta-video absolute inset-0 w-full h-full object-cover"
         >
           <source src="/videos/CTA video.mp4" type="video/mp4" />
         </video>
       </div>
 
-      {/* Gradient / texture overlay (above video, below text) */}
+      {/* Overlay */}
       <div className="absolute inset-0 z-10 pointer-events-none">
         <Image
           src="/CTA/overlay.png"
@@ -36,10 +44,10 @@ export default function CTASection() {
       </div>
 
       <div className="relative z-20 w-[95%] max-w-6xl mx-auto text-center">
-        {/* Heading */}
+
+        {/* Heading — always white (video bg pe) */}
         <motion.h2
           className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-white leading-tight tracking-tight mb-8"
-          // style={{ fontStyle: "italic" }}
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
@@ -58,8 +66,7 @@ export default function CTASection() {
           transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
         >
           <p className="text-sm md:text-2xl text-white font-bold">
-            We work best with teams that value structure, clarity, and long-term
-            thinking.
+            We work best with teams that value structure, clarity, and long-term thinking.
           </p>
           <p className="text-sm md:text-2xl text-gray-300 leading-relaxed">
             If you&apos;re looking for shortcuts, quick hacks, or transactional
@@ -82,27 +89,24 @@ export default function CTASection() {
             href="/contact"
             className="group relative inline-block px-8 py-4 text-white font-semibold text-sm tracking-widest uppercase bg-transparent transition-all duration-300 hover:text-black"
           >
-            {/* Gradient border (default) — hidden on hover */}
+            {/* Gradient border (default) */}
             <span
               className="absolute inset-0 pointer-events-none transition-opacity duration-300 group-hover:opacity-0"
               style={{
-                background:
-                  "linear-gradient(90deg, #0EC8C5 0%, #FFFFFF 50%, #E21F26 100%)",
+                background: "linear-gradient(90deg, #0EC8C5 0%, #FFFFFF 50%, #E21F26 100%)",
                 padding: "2px",
-                WebkitMask:
-                  "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
+                WebkitMask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
                 WebkitMaskComposite: "xor",
                 maskComposite: "exclude",
               }}
             />
-            {/* White border (hover) — hidden by default */}
+            {/* White border on hover */}
             <span className="absolute inset-0 pointer-events-none transition-opacity duration-300 opacity-0 group-hover:opacity-100 border-2 border-white" />
-            {/* Hover gradient fill */}
+            {/* Gradient fill on hover */}
             <span
               className="absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100 pointer-events-none"
               style={{
-                background:
-                  "linear-gradient(90deg, #0EC8C5 0%, #FFFFFF 50%, #E21F26 100%)",
+                background: "linear-gradient(90deg, #0EC8C5 0%, #FFFFFF 50%, #E21F26 100%)",
               }}
             />
             <span className="relative z-10">GET IN TOUCH</span>
