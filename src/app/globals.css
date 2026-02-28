@@ -1382,3 +1382,14 @@
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.552 0.016 285.938);
 }
+
+::selection {
+  background-color: rgba(226, 31, 38, 0.15); /* light red transparent */
+  color: inherit;
+}
+
+/* Firefox ke liye */
+::-moz-selection {
+  background-color: rgba(226, 31, 38, 0.15);
+  color: inherit;
+}
