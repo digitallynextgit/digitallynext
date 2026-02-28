@@ -7,6 +7,7 @@ import {
   useMotionValue,
   useTransform,
   type Variants,
+  useSpring,
 } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { navLinks } from "@/data/content";
@@ -125,21 +126,37 @@ function MagneticLink({
   onClick: () => void;
 }) {
   const ref = useRef<HTMLDivElement>(null);
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
-  const rotateX = useTransform(y, [-30, 30], [4, -4]);
-  const rotateY = useTransform(x, [-80, 80], [-4, 4]);
+
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  // ✅ useSpring — raw motion value pe spring lagao, jitter khatam
+  const springConfig = { stiffness: 120, damping: 18, mass: 0.08 };
+  const x = useSpring(mouseX, springConfig);
+  const y = useSpring(mouseY, springConfig);
+
+  const rotateX = useTransform(y, [-30, 30], [2.5, -2.5]);
+  const rotateY = useTransform(x, [-80, 80], [-2.5, 2.5]);
+
+  // ✅ translateX bhi spring se — whileHover conflict avoid
+  const hoverX = useMotionValue(0);
+  const smoothHoverX = useSpring(hoverX, { stiffness: 200, damping: 28 });
 
   const handleMouseMove = (e: React.MouseEvent) => {
     if (!ref.current) return;
     const rect = ref.current.getBoundingClientRect();
-    x.set(e.clientX - rect.left - rect.width / 2);
-    y.set(e.clientY - rect.top - rect.height / 2);
+    mouseX.set(e.clientX - rect.left - rect.width / 2);
+    mouseY.set(e.clientY - rect.top - rect.height / 2);
   };
 
   const handleMouseLeave = () => {
-    x.set(0);
-    y.set(0);
+    mouseX.set(0);
+    mouseY.set(0);
+    hoverX.set(0);
+  };
+
+  const handleMouseEnter = () => {
+    hoverX.set(12);
   };
 
   return (
@@ -148,15 +165,20 @@ function MagneticLink({
       variants={linkVariants}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
+      onMouseEnter={handleMouseEnter}
       className="w-full border-t border-white/10 last:border-b"
+      style={{ willChange: "transform" }}
     >
-      {/* Number + Link row */}
       <motion.a
         href={href}
         onClick={onClick}
-        style={{ rotateX, rotateY, transformPerspective: 800 }}
-        whileHover={{ x: 12 }}
-        transition={{ type: "spring", stiffness: 300, damping: 25 }}
+        style={{
+          rotateX,
+          rotateY,
+          x: smoothHoverX,            // ✅ whileHover hataya — spring x use karo
+          transformPerspective: 1200, // ✅ thoda zyada — rotation subtle lagegi
+          willChange: "transform",
+        }}
         className="group flex items-center justify-between w-full py-5 md:py-6 px-6 md:px-12 cursor-pointer"
       >
         {/* Index number */}
@@ -169,12 +191,13 @@ function MagneticLink({
           {label}
         </span>
 
-        {/* Arrow indicator */}
+        {/* Arrow */}
         <motion.span
           className="text-white/40 text-xl font-light"
-          initial={{ x: -6, opacity: 0 }}
-          whileHover={{ x: 0, opacity: 1 }}
-          transition={{ duration: 0.2 }}
+          style={{
+            x: useTransform(smoothHoverX, [0, 12], [-6, 0]),
+            opacity: useTransform(smoothHoverX, [0, 12], [0, 1]),
+          }}
         >
           →
         </motion.span>
@@ -188,6 +211,7 @@ function MagneticLink({
     </motion.div>
   );
 }
+
 
 // ─────────────────────────────────────────────
 // Main Header Component

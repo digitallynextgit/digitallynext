@@ -49,7 +49,7 @@ export default function HowWeOperate({ theme }: HowWeOperateProps) {
       id="how-we-operate"
       className="w-full flex flex-col items-center py-10 md:py-16 lg:py-20"
     >
-      <AnimatedSection className="w-full">
+      <div className="w-full">
         <div className="w-full flex justify-center overflow-hidden">
           <h2
             ref={headingRef}
@@ -77,7 +77,7 @@ export default function HowWeOperate({ theme }: HowWeOperateProps) {
             </span>
           </h2>
         </div>
-      </AnimatedSection>
+      </div>
 
       <div className="w-full max-w-7xl mx-auto px-6 text-center">
 

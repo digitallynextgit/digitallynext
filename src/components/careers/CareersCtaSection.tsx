@@ -1,14 +1,21 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { useSectionTheme } from "@/context/SectionThemeContext";
 
-export default function CareersCtaSection() {
+interface CareersCtaSectionProps {
+  theme?: "dark" | "light";
+}
+
+export default function CareersCtaSection({ theme }: CareersCtaSectionProps) {
+  const { theme: contextTheme } = useSectionTheme();
+  const isDark = (theme ?? contextTheme) === "dark";
+
   return (
     <section
-      style={{
-        position: "relative",
-        overflow: "hidden",
-        height: "clamp(500px, 80vh, 790px)",
-      }}
+      className="relative overflow-hidden"
+      style={{ height: "clamp(500px, 80vh, 790px)" }}
     >
       {/* Background image */}
       <Image
@@ -17,71 +24,39 @@ export default function CareersCtaSection() {
         fill
         priority
         sizes="100vw"
-        style={{ objectFit: "cover", objectPosition: "center top" }}
+        className="object-cover object-top"
       />
 
-      {/* Gradient overlay — transparent top to dark bottom */}
+      {/* Gradient overlay */}
       <div
+        className="absolute inset-0 transition-all duration-700"
         style={{
-          position: "absolute",
-          inset: 0,
-          background:
-            "linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.80) 100%)",
+          background: isDark
+            ? "linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.90) 100%)"
+            : "linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.80) 100%)",
         }}
       />
 
       {/* Content */}
-      <div
-        style={{
-          position: "relative",
-          zIndex: 2,
-          width: "100%",
-          height: "100%",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          textAlign: "center",
-          padding: "76px 24px",
-          gap: 48,
-        }}
-      >
-        {/* Heading block */}
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            gap: 0,
-          }}
-        >
+      <div className="relative z-1 w-full h-full flex flex-col items-center justify-center text-center px-6 py-[76px] gap-12">
+
+        {/* Heading block — always white (bg image pe) */}
+        <div className="flex flex-col items-center">
           <div
-            style={{
-              fontSize: "clamp(2rem, 5vw, 4rem)",
-              fontWeight: 300,
-              lineHeight: 1.1,
-              color: "#FFFFFF",
-            }}
+            className="font-light leading-[1.1] text-white"
+            style={{ fontSize: "clamp(2rem, 5vw, 4rem)" }}
           >
             Work that lasts.
           </div>
           <div
-            style={{
-              fontSize: "clamp(2rem, 5vw, 4rem)",
-              fontWeight: 400,
-              lineHeight: 1.1,
-              color: "#FFFFFF",
-            }}
+            className="font-normal leading-[1.1] text-white"
+            style={{ fontSize: "clamp(2rem, 5vw, 4rem)" }}
           >
             Systems that scale.
           </div>
           <div
-            style={{
-              fontSize: "clamp(2rem, 5vw, 4rem)",
-              fontWeight: 700,
-              lineHeight: 1.1,
-              color: "#FFFFFF",
-            }}
+            className="font-bold leading-[1.1] text-white"
+            style={{ fontSize: "clamp(2rem, 5vw, 4rem)" }}
           >
             People who grow with both.
           </div>
@@ -90,25 +65,14 @@ export default function CareersCtaSection() {
         {/* CTA Button */}
         <Link
           href="#open-positions"
+          className="inline-flex items-center justify-center px-10 py-[14px] text-white text-[12px] font-medium uppercase tracking-[0.9815px] whitespace-nowrap hover:opacity-90 transition-opacity duration-300 no-underline"
           style={{
-            display: "inline-flex",
-            alignItems: "center",
-            justifyContent: "center",
-            padding: "14px 40px",
             background: "linear-gradient(90deg, #E21F26 0%, #7C1115 100%)",
-            color: "#FFFFFF",
-            fontSize: 12,
-            fontWeight: 500,
-            letterSpacing: "0.9815px",
-            textTransform: "uppercase",
-            textDecoration: "none",
-            whiteSpace: "nowrap",
-            transition: "opacity 0.3s ease",
           }}
-          className="hover:opacity-90"
         >
           EXPLORE CAREERS
         </Link>
+
       </div>
     </section>
   );

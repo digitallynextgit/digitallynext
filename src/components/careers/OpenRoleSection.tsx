@@ -1,5 +1,12 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { useSectionTheme } from "@/context/SectionThemeContext";
+
+interface OpenRolesSectionProps {
+  theme?: "dark" | "light";
+}
 
 const cards = [
   {
@@ -16,43 +23,48 @@ const cards = [
   },
 ];
 
-export default function OpenRolesSection() {
+export default function OpenRolesSection({ theme }: OpenRolesSectionProps) {
+  const { theme: contextTheme } = useSectionTheme();
+  const isDark = (theme ?? contextTheme) === "dark";
+
   return (
-    <section>
+    <section
+      className={[
+        "transition-colors duration-700",
+        isDark ? "bg-black" : "bg-white",
+      ].join(" ")}
+    >
       <div className="container flex justify-center items-center">
         <div style={{ maxWidth: 1103 }} className="w-full py-12 md:py-16 lg:py-20">
 
-          {/* Outer wrapper — #FAFAFA background, padding 32px */}
+          {/* Outer wrapper */}
           <div
-            style={{
-              background: "#FAFAFA",
-              display: "flex",
-              flexDirection: "column",
-              gap: 40,
-            }}
+            className={[
+              "flex flex-col transition-colors duration-700",
+              isDark ? "bg-[#0a0a0a]" : "bg-[#FAFAFA]",
+            ].join(" ")}
+            style={{ gap: 40 }}
           >
+
             {/* Heading */}
             <div
-              style={{
-                fontSize: "clamp(2rem, 4vw, 2.975rem)",
-                fontWeight: 700,
-                lineHeight: 1.15,
-                color: "#000000",
-              }}
+              className={[
+                "font-bold leading-[1.15] transition-colors duration-700",
+                isDark ? "text-white" : "text-[#000000]",
+              ].join(" ")}
+              style={{ fontSize: "clamp(2rem, 4vw, 2.975rem)" }}
             >
               Open{" "}
               <span className="font-normal">Roles</span>
-              <span style={{ color: "#E21F26" }}>.</span>
+              <span className="text-[#E21F26]">.</span>
             </div>
 
             {/* Subtitle */}
             <div
-              style={{
-                color: "#A1A1A1",
-                fontWeight: 300,
-                fontSize: 16,
-                lineHeight: "29px",
-              }}
+              className={[
+                "font-light text-[16px] leading-[29px] transition-colors duration-700",
+                isDark ? "text-[#737373]" : "text-[#A1A1A1]",
+              ].join(" ")}
             >
               <div>If this feels like your kind of place,</div>
               <div>start here:</div>
@@ -63,38 +75,35 @@ export default function OpenRolesSection() {
               {cards.map(({ title, desc, linkLabel, href }, index) => (
                 <div
                   key={title}
-                  style={{
-                    background: "#FFFFFF",
-                    border: "1px solid #E5E5E5",
-                    padding: "49px 49px 40px",
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: 16,
-                    ...(index === 1
-                      ? { borderLeft: "none" }
-                      : {}),
-                  }}
+                  className={[
+                    "flex flex-col transition-colors duration-700",
+                    isDark
+                      ? "bg-[#111111] border border-[#2a2a2a]"
+                      : "bg-white border border-[#E5E5E5]",
+                    index === 1
+                      ? isDark
+                        ? "md:border-l-0"
+                        : "md:border-l-0"
+                      : "",
+                  ].join(" ")}
+                  style={{ padding: "49px 49px 40px", gap: 16 }}
                 >
                   {/* Title */}
                   <div
-                    style={{
-                      fontSize: 32,
-                      fontWeight: 400,
-                      lineHeight: "38px",
-                      color: "#0A0A0A",
-                    }}
+                    className={[
+                      "text-[32px] font-normal leading-[38px] transition-colors duration-700",
+                      isDark ? "text-white" : "text-[#0A0A0A]",
+                    ].join(" ")}
                   >
                     {title}
                   </div>
 
                   {/* Description */}
                   <div
-                    style={{
-                      fontSize: 15,
-                      fontWeight: 300,
-                      lineHeight: "26px",
-                      color: "#A1A1A1",
-                    }}
+                    className={[
+                      "text-[15px] font-light leading-[26px] transition-colors duration-700",
+                      isDark ? "text-[#737373]" : "text-[#A1A1A1]",
+                    ].join(" ")}
                   >
                     {desc}
                   </div>
@@ -102,18 +111,12 @@ export default function OpenRolesSection() {
                   {/* Link */}
                   <Link
                     href={href}
-                    style={{
-                      display: "inline-flex",
-                      alignItems: "center",
-                      gap: 15,
-                      color: "#000000",
-                      fontSize: 14,
-                      fontWeight: 400,
-                      lineHeight: "18px",
-                      textDecoration: "none",
-                      marginTop: 8,
-                    }}
-                    className="group"
+                    className={[
+                      "group mt-2 inline-flex items-center gap-[15px]",
+                      "text-[14px] font-normal leading-[18px] no-underline",
+                      "transition-colors duration-300",
+                      isDark ? "text-white" : "text-[#000000]",
+                    ].join(" ")}
                   >
                     <Image
                       src="/figma/careers/careers-arrow-link.svg"
@@ -132,18 +135,16 @@ export default function OpenRolesSection() {
 
             {/* Bottom line */}
             <div
-              style={{
-                fontSize: 14,
-                fontWeight: 700,
-                lineHeight: "25px",
-                color: "#000000",
-              }}
+              className={[
+                "text-[14px] font-bold leading-[25px] transition-colors duration-700",
+                isDark ? "text-white" : "text-[#000000]",
+              ].join(" ")}
             >
               No hype. Just an{" "}
-              <span style={{ color: "#E21F26" }}>honest start.</span>
+              <span className="text-[#E21F26]">honest start.</span>
             </div>
-          </div>
 
+          </div>
         </div>
       </div>
     </section>
