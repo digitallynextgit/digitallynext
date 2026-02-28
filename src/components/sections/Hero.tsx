@@ -88,7 +88,7 @@ export default function Hero() {
           </p>
         </motion.div>
 
-        <Link href="#contact" className="btn-green text-red-500 text-[1.2rem] text-xxl!">
+        <Link href="/contact" className="btn-green text-red-500 text-[1.2rem] text-xxl!">
           GET IN TOUCH
         </Link>
       </div>

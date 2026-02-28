@@ -33,7 +33,7 @@ export default function CaseStudiesList() {
 
                 {/* Content */}
                 <div className="flex flex-col gap-3 pt-2">
-                    <h3
+                    {/* <h3
                         style={{
                             fontSize: "clamp(1.4rem, 2.2vw, 1.9rem)",
                             fontWeight: 700,
@@ -42,7 +42,7 @@ export default function CaseStudiesList() {
                             margin: 0,
                         }}
                         dangerouslySetInnerHTML={{ __html: cs.listing.title }}
-                    />
+                    /> */}
                     <p
                         style={{
                             fontSize: 15,
@@ -56,7 +56,7 @@ export default function CaseStudiesList() {
                     </p>
 
                     {/* Tag pill */}
-                    <div>
+                    {/* <div>
                         <span
                             style={{
                                 display: "inline-flex",
@@ -73,7 +73,7 @@ export default function CaseStudiesList() {
                         >
                             {cs.listing.pillLabel ?? cs.listing.buttonLabel}
                         </span>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </Link>

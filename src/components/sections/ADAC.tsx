@@ -142,7 +142,7 @@ function DesktopADAC() {
 
       {/* Video */}
       <motion.div
-        className="relative w-full rounded-2xl overflow-hidden mb-12 md:mb-16 aspect-4/3"
+        className="relative w-full rounded overflow-hidden mb-12 md:mb-16 aspect-4/3"
         initial={{ opacity: 0, scale: 0.96 }}
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true, margin: "-100px" }}
@@ -173,7 +173,7 @@ function DesktopADAC() {
             <span className="text-5xl">How We Use AI</span>
           </h3>
           <Link
-            href="#"
+            href="/services/ai-enablement"
             className="group inline-flex items-center gap-2 text-black font-semibold !text-xl md:text-base hover:gap-3 transition-all duration-300 shrink-0"
           >
             <Image

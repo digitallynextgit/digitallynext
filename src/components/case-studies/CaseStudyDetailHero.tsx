@@ -10,9 +10,9 @@ export default function CaseStudyDetailHero({ detail, metaTitle }: { detail: Cas
         <div className="grid grid-cols-1 lg:grid-cols-[668px_1fr] gap-10 lg:gap-[84px] lg:items-stretch">
           <div className="w-full flex flex-col gap-10 lg:gap-[72px]">
             <div className="w-full max-w-[482px] flex flex-col gap-4 lg:gap-[24px]">
-              <div className="uppercase text-[16px] md:text-[18px] leading-[1.3] font-normal text-[#E21F26]">
+              {/* <div className="uppercase text-[16px] md:text-[18px] leading-[1.3] font-normal text-[#E21F26]">
                 {detail.hero.eyebrow}
-              </div>
+              </div> */}
               <div className="text-[26px] md:text-[32px] leading-[1.07] font-light">
                 {detail.hero.title}
               </div>

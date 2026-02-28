@@ -39,11 +39,20 @@ const ROUTE_THEMES: Record<string, RouteHeaderTheme> = {
         linkColor: "#FFFFFF",
         logo: "white",
     },
+    "/case-studies": {
+        linkColor: "#000000",
+        logo: "dark",
+    },
 };
 
 const DEFAULT_THEME: RouteHeaderTheme = {
     linkColor: "#000000",
     logo: "dark",
+};
+
+const NOT_FOUND_THEME: RouteHeaderTheme = {
+  linkColor: "#FFFFFF",
+  logo: "white",
 };
 
 const LOGO_SRCS: Record<RouteHeaderTheme["logo"], string> = {
@@ -58,7 +67,7 @@ function resolveRouteTheme(pathname: string): RouteHeaderTheme {
         (key) => key.endsWith("/") && key !== "/" && pathname.startsWith(key)
     );
     if (prefixMatch) return ROUTE_THEMES[prefixMatch];
-    return DEFAULT_THEME;
+    return NOT_FOUND_THEME;
 }
 
 export default function Header() {

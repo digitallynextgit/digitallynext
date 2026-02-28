@@ -10,8 +10,9 @@ interface ClientLogosProps {
 
 export default function ClientLogos({ theme = "dark" }: ClientLogosProps) {
     const logoFiles = [
-        "/logos/1.png", "/logos/3.png", "/logos/5.png", "/logos/7.png",
-        "/logos/11.png", "/logos/13.png", "/logos/17.png", "/logos/19.png",
+        "/home/client1.png", "/home/clinet2.png", "/home/client3.png", "/home/client4.png",
+        "/home/client5.png", "/home/client6.png", "/home/client7.png", "/home/client8.png",
+        "/home/client9.png", "/home/client10.png", "/home/client11.png", "/home/client12.png",
     ];
 
     const isDark = theme === "dark";
@@ -28,8 +29,8 @@ export default function ClientLogos({ theme = "dark" }: ClientLogosProps) {
             color: isDark ? "#FFFFFF" : "#000000",
         },
         logoCard: {
-            border: isDark ? "2px solid rgba(255,255,255,0.15)" : "2px solid rgba(0,0,0,0.08)",
-            background: isDark ? "rgba(255,255,255,0.03)" : "rgba(0,0,0,0.02)",
+            border: isDark ? "1px solid #fff" : "1px solid #000",
+            background: isDark ? "transparent" : "transparent",
         },
         linkText: {
             color: isDark ? "#FFFFFF" : "#000000",
@@ -61,7 +62,7 @@ export default function ClientLogos({ theme = "dark" }: ClientLogosProps) {
                         </p>
 
                         <Link
-                            href="#contact"
+                            href="/contact"
                             style={{
                                 display: "flex",
                                 alignItems: "center",
@@ -101,13 +102,25 @@ export default function ClientLogos({ theme = "dark" }: ClientLogosProps) {
                             className="client-logo-card"
                             style={styles.logoCard}
                         >
-                            <div style={{ position: "relative", width: 160, height: 160 }}>
+                            <div
+                                style={{
+                                    display: "flex",
+                                    alignItems: "center",
+                                    justifyContent: "center",
+                                    padding: "18px 22px",
+                                    maxWidth: 200,
+                                }}
+                            >
                                 <Image
                                     src={logo}
                                     alt="Client Logo"
-                                    fill
+                                    width={200}
+                                    height={120}
                                     className="client-logo-img"
                                     style={{
+                                        width: "100%",
+                                        height: "auto",
+                                        objectFit: "contain",
                                         filter: isDark ? "brightness(1)" : "brightness(0.85) contrast(1.1)",
                                     }}
                                 />

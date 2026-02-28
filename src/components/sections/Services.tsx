@@ -58,18 +58,16 @@ function MobileServices() {
                   >
                     <div className="pb-6 px-1">
                       {/* Video */}
-                      <div className="relative aspect-video rounded overflow-hidden bg-[var(--bg-surface)] border border-white/10 shadow-2xl mb-4">
-                        <video
-                          autoPlay
-                          loop
-                          muted
-                          playsInline
-                          className="absolute inset-0 w-full h-full object-cover"
-                          key={`mobile-vid-${i}`}
-                        >
-                          <source src={service.media} type="video/mp4" />
-                        </video>
-                      </div>
+                    <div className="relative aspect-video rounded overflow-hidden bg-[var(--bg-surface)] border border-white/10 shadow-2xl mb-4">
+                      <Image
+                        src={service.media}
+                        alt={service.title}
+                        fill
+                        sizes="(max-width: 1024px) 100vw, 480px"
+                        className="object-cover"
+                        priority={i === 0}
+                      />
+                    </div>
 
                       {/* Subtitle */}
                       <p className="text-sm text-white/60 mb-4 leading-relaxed">
@@ -148,20 +146,23 @@ function DesktopServices() {
           >
             <div className="relative aspect-4/3 rounded overflow-hidden bg-[var(--bg-surface)] border border-white/10 shadow-2xl">
               <AnimatePresence mode="popLayout">
-                <motion.video
+                <motion.div
                   key={activeIndex}
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  className="absolute inset-0 w-full h-full object-cover"
+                  className="absolute inset-0"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
                   transition={{ duration: 0.5, ease: "easeInOut" }}
                 >
-                  <source src={services[activeIndex].media} type="video/mp4" />
-                </motion.video>
+                  <Image
+                    src={services[activeIndex].media}
+                    alt={services[activeIndex].title}
+                    fill
+                    sizes="(max-width: 1280px) 60vw, 420px"
+                    className="object-cover"
+                    priority={activeIndex === 0}
+                  />
+                </motion.div>
               </AnimatePresence>
             </div>
           </div>
@@ -254,7 +255,7 @@ function DesktopServices() {
           {/* Request Quote CTA */}
           <div className="pt-8 w-full flex justify-start pl-8">
             <Link
-              href="#contact"
+              href="/contact"
               className="group inline-flex items-center gap-1 pl-1"
             >
               {/* Arrow — hover pe left slide */}

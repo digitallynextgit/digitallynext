@@ -281,7 +281,7 @@ export const caseStudies: CaseStudy[] = [
       introText:
         "From ambitious startups to scaling enterprises – Digitally Next builds performance-driven creative systems that turn attention into measurable growth.",
       title: 'Neo<span style="color:#E21F26">Tech</span>',
-      imageSrc: "/case/c2.webp",
+      imageSrc: "/case/c3.webp",
       caption:
         "Complete Brand makeover of a global brand (Post M&A) to a new name and digital brand communication.",
       buttonLabel: "View Case Study",
@@ -621,7 +621,7 @@ export const caseStudies: CaseStudy[] = [
       introText:
         "From ambitious startups to scaling enterprises – Digitally Next builds performance-driven creative systems that turn attention into measurable growth.",
       title: "InsurTech",
-      imageSrc: "/case/c3.webp",
+      imageSrc: "/case/c4.webp",
       caption:
         "PAN India Launch (Online) of a disruptive phygital model in insurance sector to prevent mis-selling, mis-information and honest reach of the insurance products in the interiors of India.",
       buttonLabel: "View Case Study",
@@ -791,7 +791,7 @@ export const caseStudies: CaseStudy[] = [
       introText:
         "From ambitious startups to scaling enterprises – Digitally Next builds performance-driven creative systems that turn attention into measurable growth.",
       title: "Fintech Student Value Card",
-      imageSrc: "/case/c3.webp",
+      imageSrc: "/case/c4.webp",
       caption:
         "Digital Branding for a Fintech — Student value cards (endorsed by UNESCO) with a spread in 125+ Countries.",
       buttonLabel: "View Case Study",
@@ -957,7 +957,7 @@ export const caseStudies: CaseStudy[] = [
       introText:
         "From ambitious startups to scaling enterprises – Digitally Next builds performance-driven creative systems that turn attention into measurable growth.",
       title: "Real Estate Advisory",
-      imageSrc: "/case/c3.webp",
+      imageSrc: "/case/c4.webp",
       caption:
         "Digital Brand Communication of the enriched legacy and the transformational work done to make world a better place.",
       buttonLabel: "View Case Study",
@@ -1124,7 +1124,7 @@ export const caseStudies: CaseStudy[] = [
       introText:
         "From ambitious startups to scaling enterprises – Digitally Next builds performance-driven creative systems that turn attention into measurable growth.",
       title: "Legal & IP Advisory",
-      imageSrc: "/case/c7.webp",
+      imageSrc: "/case/c4.webp",
       caption:
         "Digital Brand Communication of the enriched legacy and the transformational work done in all fields of law with emphasis on Media, Entertainment, Sweepstakes, Promotions and IP Law.",
       buttonLabel: "View Case Study",
@@ -1303,7 +1303,7 @@ export const caseStudies: CaseStudy[] = [
       introText:
         "From ambitious startups to scaling enterprises – Digitally Next builds performance-driven creative systems that turn attention into measurable growth.",
       title: "Judaica Art Gallery",
-      imageSrc: "/case/c8.webp",
+      imageSrc: "/case/c3.webp",
       caption:
         "Launch of a high end Judaica Art gallery and 5 Artists for International Markets — US & UK.",
       buttonLabel: "View Case Study",

@@ -77,7 +77,7 @@ export default function InstagramReels() {
         <section className="bg-white py-16 lg:py-32 overflow-hidden" ref={sectionRef}>
             <div className="max-w-7xl mx-auto px-5 md:px-12">
                 {/* Header */}
-                <div className="text-center mb-10 lg:mb-20">
+                <div className="text-center mb-10">
                     <motion.h2
                         className="font-extrabold text-[#1a1a1a] tracking-tight leading-none mb-4"
                         initial={{ opacity: 0, y: 30 }}

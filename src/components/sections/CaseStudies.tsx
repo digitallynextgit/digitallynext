@@ -2,13 +2,22 @@
 
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { caseStudies } from "@/data/content";
+import { caseStudies as caseStudyData } from "@/data/casestudy";
 import AnimatedSection from "@/components/ui/AnimatedSection";
 import Link from "next/link";
 import Image from "next/image";
 
 export default function CaseStudies() {
   const sectionRef = useRef<HTMLDivElement>(null);
+  const caseStudies = caseStudyData.slice(0, 4).map((cs) => ({
+    id: cs.id,
+    title: cs.listing.title,
+    description: cs.listing.caption,
+    category: cs.listing.pillLabel ?? "",
+    color: cs.detail.hero.metrics[0]?.color ?? "#E21F26",
+    image: cs.listing.imageSrc,
+    href: `/case-studies/${cs.slug}`,
+  }));
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -106,20 +115,10 @@ export default function CaseStudies() {
 
                     {/* Text content */}
                     <div className="cs-card-content">
-                      <h3 className="cs-card-title">
-                        {cs.title
-                          .split(cs.highlight || "")
-                          .map((part, i, arr) => (
-                            <span key={i}>
-                              {part}
-                              {i < arr.length - 1 && (
-                                <span style={{ color: cs.color }}>
-                                  {cs.highlight}
-                                </span>
-                              )}
-                            </span>
-                          ))}
-                      </h3>
+                      <h3
+                        className="cs-card-title"
+                        dangerouslySetInnerHTML={{ __html: cs.title }}
+                      />
                       <p className="cs-card-desc">{cs.description}</p>
                       <span
                         className="cs-card-tag transition-all duration-300 cursor-pointer"
@@ -151,7 +150,7 @@ export default function CaseStudies() {
         {/* View All CTA */}
         <div className="flex justify-center mt-12">
           <Link
-            href="/case-study"
+            href="/case-studies"
             className="group inline-flex items-center gap-2 text-xl font-semibold tracking-wide transition-all duration-300 hover:gap-4 text-[#1a1a1a]"
           >
             <Image

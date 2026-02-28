@@ -79,7 +79,7 @@ export default function CTASection() {
           transition={{ duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
         >
           <Link
-            href="#contact"
+            href="/contact"
             className="group relative inline-block px-8 py-4 text-white font-semibold text-sm tracking-widest uppercase bg-transparent transition-all duration-300 hover:text-black"
           >
             {/* Gradient border (default) — hidden on hover */}

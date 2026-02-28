@@ -12,7 +12,7 @@ const frameworks = [
     cta: "Explore Framework",
     icon: (
       <Image
-        src="/global/g1.png"
+        src="/home/sm1.png"
         alt="C-Suite Icon"
         width={80}
         height={80}
@@ -26,7 +26,7 @@ const frameworks = [
     cta: "Explore Framework",
     icon: (
       <Image
-        src="/global/g2.png"
+        src="/home/sm2.png"
         alt="KASA Icon"
         width={80}
         height={80}
@@ -40,7 +40,7 @@ const frameworks = [
     cta: "Explore Framework",
     icon: (
       <Image
-        src="/global/g3.png"
+        src="/home/sm3.png"
         alt="Profit Icon"
         width={80}
         height={80}
@@ -54,7 +54,7 @@ const frameworks = [
     cta: "Explore Model",
     icon: (
       <Image
-        src="/global/g4.png"
+        src="/home/sm4.png"
         alt="Communication Icon"
         width={80}
         height={80}
@@ -68,7 +68,7 @@ const frameworks = [
     cta: "Explore Models",
     icon: (
       <Image
-        src="/global/g5.png"
+        src="/home/sm5.png"
         alt="Delivery Models Icon"
         width={80}
         height={80}
@@ -117,7 +117,7 @@ function MobileGSM() {
           >
             <div className="flex items-start gap-3 sm:gap-4">
               {/* Icon */}
-              <div className="w-12 h-12 sm:w-14 sm:h-14 flex-shrink-0 flex items-center justify-center rounded-lg bg-orange-500/10">
+              <div className="w-12 h-12 sm:w-14 sm:h-14 flex-shrink-0 flex items-center justify-center rounded-lg">
                 {fw.icon}
               </div>
               <div className="flex-1 min-w-0">

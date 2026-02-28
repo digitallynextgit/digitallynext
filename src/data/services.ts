@@ -119,7 +119,7 @@ export const services: ServiceDetail[] = [
     id: "pdd",
     slug: "seo-optimization",
     title: "Performance, Distribution & Demand.",
-    media: "/services/s1.mp4",
+    media: "/home/service1.png",
     sliderText:
       "Brand & digital strategy · Positioning & GTM · Personal & founder branding · Community strategy · Podcast strategy & narrative design · Market & audience research",
     metaTitle: "Performance, Distribution & Demand | Digitally Next",
@@ -273,7 +273,7 @@ export const services: ServiceDetail[] = [
     id: "ccmc",
     slug: "ui-ux-design",
     title: "Content, Culture & Media Creation.",
-    media: "/services/s2.mp4",
+    media: "/home/service2.png",
     sliderText:
       "Content strategy · Video & visual production · Podcast production · UGC programs · Social content systems · Creative asset libraries",
     metaTitle: "Content, Culture & Media Creation | Digitally Next",
@@ -429,7 +429,7 @@ export const services: ServiceDetail[] = [
     id: "pwde",
     slug: "web-development",
     title: "Platforms, Web & Digital Experience.",
-    media: "/services/s3.mp4",
+    media: "/home/service3.png",
     sliderText:
       "Websites & landing experiences · UX & conversion design · Web applications · CMS & headless architecture · Analytics & CRO · E-commerce & D2C platforms",
     metaTitle: "Platforms, Web & Digital Experience | Digitally Next",
@@ -592,7 +592,7 @@ export const services: ServiceDetail[] = [
     id: "sbgi",
     slug: "brand-strategy",
     title: "Strategy, Brand & Growth Intelligence.",
-    media: "/services/s4.mp4",
+    media: "/home/service4.png",
     sliderText:
       "D2C market entry & growth strategy · Brand & digital strategy · Positioning & GTM · Market & audience intelligence · Founder & niche authority strategy · Community & ecosystem strategy",
     metaTitle: "Strategy, Brand & Growth Intelligence | Digitally Next",
@@ -761,7 +761,7 @@ export const services: ServiceDetail[] = [
     id: "adac",
     slug: "ai-enablement",
     title: "AI Enablement & Decision Systems (ADAC-Powered).",
-    media: "/services/s5.mp4",
+    media: "/home/service5.png",
     sliderText:
       "AI governance & decision frameworks · Branding AI enablement · Content AI acceleration · Performance AI optimization · Web & platform AI intelligence · ADAC-powered operations",
     metaTitle: "AI Enablement & Decision Systems (ADAC-Powered) | Digitally Next",

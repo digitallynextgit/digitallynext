@@ -127,10 +127,10 @@ export default function HowWeOperate({ theme = "light" }: HowWeOperateProps) {
                   <Image
                     src={
                       i === 0
-                        ? "/icons/dad1.webp"
+                        ? "/home/moderndad1.png"
                         : i === 1
-                          ? "/icons/dad2.webp"
-                          : "/icons/dad3.webp"
+                          ? "/home/moderndad2.png"
+                          : "/home/moderndad3.png"
                     }
                     alt={pillar.word}
                     fill

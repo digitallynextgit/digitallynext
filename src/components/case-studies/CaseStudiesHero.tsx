@@ -66,7 +66,8 @@ export default function CaseStudiesHero() {
 
       {/* Featured case study block */}
       {featuredCaseStudy && (
-        <div
+        <Link
+          href={`/case-studies/${featuredCaseStudy.slug}`}
           style={{
             display: "flex",
             flexDirection: "column",
@@ -119,7 +120,7 @@ export default function CaseStudiesHero() {
                 gap: 15,
               }}
             >
-              <h2
+              {/* <h2
                 style={{
                   fontWeight: 700,
                   fontSize: "clamp(2rem, 4vw, 3.15rem)",
@@ -129,7 +130,7 @@ export default function CaseStudiesHero() {
                   textAlign: "left",
                 }}
                 dangerouslySetInnerHTML={{ __html: featuredCaseStudy.listing.title }}
-              />
+              /> */}
               <p
                 style={{
                   fontWeight: 300,
@@ -145,7 +146,7 @@ export default function CaseStudiesHero() {
             </div>
 
             {/* Pill button — left */}
-            <Link
+            {/* <Link
               href={`/case-studies/${featuredCaseStudy.slug}`}
               style={{
                 display: "inline-flex",
@@ -166,9 +167,9 @@ export default function CaseStudiesHero() {
             >
               {featuredCaseStudy.listing.pillLabel ??
                 featuredCaseStudy.listing.buttonLabel}
-            </Link>
+            </Link> */}
           </div>
-        </div>
+        </Link>
       )}
     </section>
   );

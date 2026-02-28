@@ -5,6 +5,7 @@ import Preloader from "@/components/ui/Preloader";
 import Header from "@/components/layout/Header";
 import NextTopLoader from "nextjs-toploader";
 import { usePathname } from "next/navigation";
+import { Toaster } from "react-hot-toast";
 
 export default function ClientWrapper({ children }: { children: ReactNode }) {
     const pathname = usePathname();
@@ -26,6 +27,7 @@ export default function ClientWrapper({ children }: { children: ReactNode }) {
             />
             <Preloader />
             <Header />
+            <Toaster position="top-right" />
             <main>{children}</main>
         </div>
     );
