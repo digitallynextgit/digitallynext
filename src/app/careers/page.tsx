@@ -45,8 +45,6 @@ export default function CareersPage() {
       <ThemeSection theme="light">
         <CareersCtaSection />
       </ThemeSection>
-
-      <div id="open-positions" />
     </main>
   );
 }

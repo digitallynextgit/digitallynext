@@ -1,8 +1,15 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
+import { useMemo, useState } from "react";
 import { useSectionTheme } from "@/context/SectionThemeContext";
+import DepartmentSelectionModal from "@/components/careers/DepartmentSelectionModal";
+import {
+  CAREERS_DEPARTMENTS,
+  CAREERS_INTERNSHIP_ROLES,
+  type CareersDepartment,
+  type CareersRole,
+} from "@/data/careersDepartments";
 
 interface OpenRolesSectionProps {
   theme?: "dark" | "light";
@@ -13,13 +20,13 @@ const cards = [
     title: "Internships",
     desc: "Start with real work, real mentorship, and real expectations. Our internships are structured to build, not busy-work.",
     linkLabel: "Internship Roles",
-    href: "#internships",
+    mode: "internship" as const,
   },
   {
     title: "Full-Time Positions",
     desc: "Join a team that values clarity, ownership, and craft. Roles across strategy, digital, data, and AI.",
     linkLabel: "Full-Time Roles",
-    href: "#full-time",
+    mode: "full-time" as const,
   },
 ];
 
@@ -27,8 +34,34 @@ export default function OpenRolesSection({ theme }: OpenRolesSectionProps) {
   const { theme: contextTheme } = useSectionTheme();
   const isDark = (theme ?? contextTheme) === "dark";
 
+  const [modalOpen, setModalOpen] = useState(false);
+  const [modalMode, setModalMode] = useState<"full-time" | "internship">("full-time");
+  const [step, setStep] = useState<"department" | "role" | "form">("department");
+  const [selectedDepartmentId, setSelectedDepartmentId] = useState<string | null>(null);
+  const [selectedRoleId, setSelectedRoleId] = useState<string | null>(null);
+
+  const selectedDepartment = useMemo<CareersDepartment | null>(
+    () => CAREERS_DEPARTMENTS.find((d) => d.id === selectedDepartmentId) ?? null,
+    [selectedDepartmentId]
+  );
+
+  const internshipRoles = useMemo<CareersRole[]>(() => CAREERS_INTERNSHIP_ROLES, []);
+
+  const openModal = (mode: "full-time" | "internship") => {
+    setModalMode(mode);
+    setSelectedRoleId(null);
+    if (mode === "internship") {
+      setSelectedDepartmentId(null);
+      setStep("role");
+    } else {
+      setStep("department");
+    }
+    setModalOpen(true);
+  };
+
   return (
     <section
+      id="open-positions"
       className={[
         "transition-colors duration-700",
         isDark ? "bg-black" : "bg-white",
@@ -72,7 +105,7 @@ export default function OpenRolesSection({ theme }: OpenRolesSectionProps) {
 
             {/* Cards grid */}
             <div className="grid grid-cols-1 md:grid-cols-2">
-              {cards.map(({ title, desc, linkLabel, href }, index) => (
+              {cards.map(({ title, desc, linkLabel, mode }, index) => (
                 <div
                   key={title}
                   className={[
@@ -109,8 +142,9 @@ export default function OpenRolesSection({ theme }: OpenRolesSectionProps) {
                   </div>
 
                   {/* Link */}
-                  <Link
-                    href={href}
+                  <button
+                    type="button"
+                    onClick={() => openModal(mode)}
                     className={[
                       "group mt-2 inline-flex items-center gap-[15px]",
                       "text-[14px] font-normal leading-[18px] no-underline",
@@ -128,7 +162,7 @@ export default function OpenRolesSection({ theme }: OpenRolesSectionProps) {
                     <span className="group-hover:text-[#E21F26] transition-colors duration-300">
                       {linkLabel}
                     </span>
-                  </Link>
+                  </button>
                 </div>
               ))}
             </div>
@@ -147,6 +181,52 @@ export default function OpenRolesSection({ theme }: OpenRolesSectionProps) {
           </div>
         </div>
       </div>
+
+      <DepartmentSelectionModal
+        open={modalOpen}
+        mode={modalMode}
+        step={step}
+        departments={CAREERS_DEPARTMENTS}
+        internshipRoles={internshipRoles}
+        selectedDepartmentId={selectedDepartmentId}
+        selectedRoleId={selectedRoleId}
+        onSelectDepartment={(id) => {
+          setSelectedDepartmentId(id);
+          setSelectedRoleId(null);
+        }}
+        onSelectRole={(id) => setSelectedRoleId(id)}
+        onClose={() => setModalOpen(false)}
+        onBack={() => {
+          if (modalMode === "internship") {
+            if (step === "form") {
+              setStep("role");
+            } else {
+              setModalOpen(false);
+            }
+            return;
+          }
+
+          if (step === "form") {
+            setStep("role");
+            return;
+          }
+
+          setStep("department");
+          setSelectedRoleId(null);
+        }}
+        onNext={() => {
+          if (step === "department") {
+            if (!selectedDepartment) return;
+            setStep("role");
+            return;
+          }
+
+          if (step === "role") {
+            if (!selectedRoleId) return;
+            setStep("form");
+          }
+        }}
+      />
     </section>
   );
 }

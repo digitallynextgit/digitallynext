@@ -254,37 +254,37 @@ export const services: ServiceDetail[] = [
             title: "D2C Market Entry & Growth Strategy",
             description:
               "End-to-end go-to-market and growth frameworks, spanning validation, positioning, acquisition, retention, and scalable performance.",
-            imageSrc: "/figma/services/seo.svg",
+            imageSrc: "/services/ss1.png",
           },
           {
             title: "Brand & Digital Strategy",
             description:
               "Business-aligned brand and digital architecture \u2014 ensuring narrative, platforms, and performance drive measurable outcomes.",
-            imageSrc: "/figma/services/seo.svg",
+            imageSrc: "/services/ss2.png",
           },
           {
             title: "Positioning & GTM Frameworks",
             description:
               "Category definition, value proposition clarity, and structured go-to-market systems \u2014 across both D2C and B2B models.",
-            imageSrc: "/figma/services/seo.svg",
+            imageSrc: "/services/ss3.png",
           },
           {
             title: "Market & Audience Intelligence",
             description:
               "Human insight layered with AI-assisted analysis \u2014 informing segmentation, demand mapping, and strategic decision-making.",
-            imageSrc: "/figma/services/seo.svg",
+            imageSrc: "/services/ss4.png",
           },
           {
             title: "Founder & Niche Authority Strategy",
             description:
               "Leadership positioning, thought capital development, and narrative systems \u2014 building durable authority within defined categories.",
-            imageSrc: "/figma/services/seo.svg",
+            imageSrc: "/services/ss5.png",
           },
           {
             title: "Community & Ecosystem Strategy",
             description:
               "Structured community design and partnership ecosystems, strengthening retention, advocacy, and long-term brand equity.",
-            imageSrc: "/figma/services/seo.svg",
+            imageSrc: "/services/ss6.png",
           },
         ],
         footerText:
@@ -431,32 +431,32 @@ export const services: ServiceDetail[] = [
             title: "SEO, AEO & GEO",
             description:
               "Search engine optimisation, answer engine optimisation, and generative engine optimisation, unified discoverability.",
-            imageSrc: "/figma/services/seo.svg",
+            imageSrc: "/services/ss7.png",
           },
           {
             title: "Video & visual production",
             description: "(short-form, long-form, campaign-led)",
-            imageSrc: "/figma/services/seo.svg",
+            imageSrc: "/services/ss8.png",
           },
           {
             title: "Podcast production",
             description: "(end-to-end) \u2013 from concept to distribution",
-            imageSrc: "/figma/services/seo.svg",
+            imageSrc: "/services/ss9.png",
           },
           {
             title: "UGC programs",
             description: "designed for scale and performance",
-            imageSrc: "/figma/services/seo.svg",
+            imageSrc: "/services/ss10.png",
           },
           {
             title: "Social content systems",
             description: "across platforms",
-            imageSrc: "/figma/services/seo.svg",
+            imageSrc: "/services/ss11.png",
           },
           {
             title: "Creative asset libraries",
             description: "built for reuse and consistency",
-            imageSrc: "/figma/services/seo.svg",
+            imageSrc: "/services/ss12.png",
           },
         ],
       },
@@ -600,31 +600,31 @@ export const services: ServiceDetail[] = [
             title: "SEO, AEO & GEO",
             description:
               "Search engine optimisation, answer engine optimisation, and generative engine optimisation, unified discoverability.",
-            imageSrc: "/figma/services/seo.svg",
+            imageSrc: "/services/ss7.png",
           },
           {
             title: "Paid Media",
             description:
               "Performance media buying across search, social, and programmatic, governed by attribution and ROI frameworks.",
-            imageSrc: "/figma/services/seo.svg",
+            imageSrc: "/services/ss13.png",
           },
           {
             title: "UGC",
             description:
               "User-generated content strategy and production, creator-led assets built for conversion and brand alignment.",
-            imageSrc: "/figma/services/seo.svg",
+            imageSrc: "/services/ss4.png",
           },
           {
             title: "Digital PR",
             description:
               "Earned media, authority placements, and strategic narrative distribution, building trust at scale.",
-            imageSrc: "/figma/services/seo.svg",
+            imageSrc: "/services/ss14.png",
           },
           {
             title: "ORM",
             description:
               "Online reputation management, monitoring, response frameworks, and brand perception governance.",
-            imageSrc: "/figma/services/seo.svg",
+            imageSrc: "/services/ss15.png",
           },
         ],
       },

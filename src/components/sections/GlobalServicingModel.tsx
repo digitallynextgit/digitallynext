@@ -87,51 +87,53 @@ function MobileGSM({ isDark }: { isDark: boolean }) {
             viewport={{ once: true, margin: "-40px" }}
             transition={{ duration: 0.5, delay: i * 0.08, ease: [0.16, 1, 0.3, 1] }}
           >
-            <div className="flex items-start gap-3 sm:gap-4">
-              <div className="w-16 h-16 sm:w-20 sm:h-20 shrink-0 flex items-center justify-center rounded">
+            {/* Icon + Heading row */}
+            <div className="flex items-center gap-3 sm:gap-4 mb-2">
+              <div className="w-12 h-12 sm:w-16 sm:h-16 shrink-0 flex items-center justify-center rounded">
                 {fw.icon}
               </div>
-              <div className="flex-1 min-w-0">
-                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 mb-1">
-                  <h4
-                    className={[
-                      "text-base sm:text-lg font-bold tracking-tight wrap-break-words transition-colors duration-500",
-                      isDark ? "text-white" : "text-[#1a1a1a]",
-                    ].join(" ")}
-                  >
-                    {fw.name}
-                  </h4>
-                  <Link
-                    href="#"
-                    className="mt-1 sm:mt-0 inline-flex items-center gap-2 text-[#E53935] font-semibold text-[11px] sm:text-xs shrink-0 hover:gap-4 transition-all duration-300"
-                  >
-                    <Image src="/icons/enter.svg" alt="arrow-right" width={20} height={20} />
-                    <span
-                      className={[
-                        "mt-1 whitespace-nowrap text-[14px] transition-colors duration-500",
-                        isDark ? "text-white/70" : "text-black/70",
-                      ].join(" ")}
-                    >
-                      {fw.cta}
-                    </span>
-                  </Link>
-                </div>
-                <p
-                  className={[
-                    "text-[12px] mt-2 sm:text-xs leading-relaxed transition-colors duration-500",
-                    isDark ? "text-gray-400" : "text-gray-500",
-                  ].join(" ")}
-                >
-                  {fw.description}
-                </p>
-              </div>
+              <h4
+                className={[
+                  "text-base sm:text-lg font-bold tracking-tight wrap-break-word transition-colors duration-500",
+                  isDark ? "text-white" : "text-[#1a1a1a]",
+                ].join(" ")}
+              >
+                {fw.name}
+              </h4>
             </div>
+
+            {/* Description */}
+            <p
+              className={[
+                "text-[12px] sm:text-xs leading-relaxed mb-3 transition-colors duration-500",
+                isDark ? "text-gray-400" : "text-gray-500",
+              ].join(" ")}
+            >
+              {fw.description}
+            </p>
+
+            {/* CTA */}
+            <Link
+              href="#"
+              className="inline-flex items-center gap-2 hover:gap-4 transition-all duration-300"
+            >
+              <Image src="/icons/enter.svg" alt="arrow-right" width={20} height={20} />
+              <span
+                className={[
+                  "whitespace-nowrap text-[13px] sm:text-[14px] font-semibold transition-colors duration-500",
+                  isDark ? "text-white/70" : "text-black/70",
+                ].join(" ")}
+              >
+                {fw.cta}
+              </span>
+            </Link>
           </motion.div>
         ))}
       </div>
     </div>
   );
 }
+
 
 /* ===== Desktop Layout ===== */
 function DesktopGSM({ isDark }: { isDark: boolean }) {

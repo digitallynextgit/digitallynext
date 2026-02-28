@@ -6,11 +6,11 @@ import { Cobe, type CobeRef } from "../ui/cobe-globe";
 import { useSectionTheme } from "@/context/SectionThemeContext";
 
 const locations = [
-  { name: "New York",  lat: 40.7128, long: -74.0060 },
-  { name: "London",    lat: 51.5074, long: -0.1278  },
-  { name: "Dubai",     lat: 25.2048, long: 55.2708  },
-  { name: "Singapore", lat: 1.3521,  long: 103.8198 },
-  { name: "Mumbai",    lat: 19.0760, long: 72.8777  },
+  { name: "New York", lat: 40.7128, long: -74.0060 },
+  { name: "London", lat: 51.5074, long: -0.1278 },
+  { name: "Dubai", lat: 25.2048, long: 55.2708 },
+  { name: "Singapore", lat: 1.3521, long: 103.8198 },
+  { name: "Mumbai", lat: 19.0760, long: 72.8777 },
 ];
 
 interface ProudlyWorkingWithProps {
@@ -56,7 +56,7 @@ export default function ProudlyWorkingWith({ theme }: ProudlyWorkingWithProps) {
         {/* Locations */}
         <div
           className={[
-            "flex flex-wrap items-center justify-between gap-y-6",
+            "flex flex-wrap items-center justify-center gap-x-8 md:gap-x-12 lg:gap-x-16 gap-y-6 text-center",
             "border-t border-b py-6 md:py-8 transition-colors duration-500",
             isDark ? "border-white/10" : "border-black/10",
           ].join(" ")}
@@ -81,6 +81,7 @@ export default function ProudlyWorkingWith({ theme }: ProudlyWorkingWithProps) {
             </motion.span>
           ))}
         </div>
+
 
         {/* Globe */}
         <Cobe

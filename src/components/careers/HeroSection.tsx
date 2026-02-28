@@ -6,6 +6,7 @@ import ImageTrail from "@/components/ui/ImageTrail";
 import { useEffect, useRef } from "react";
 import SquareBg from "./SquareBg";
 import { useSectionTheme } from "@/context/SectionThemeContext";
+import gsap from "gsap";
 
 interface HeroSectionProps {
   theme?: "dark" | "light";

@@ -7,32 +7,45 @@ import { useEffect, useRef } from "react";
 import { useSectionTheme } from "@/context/SectionThemeContext";
 
 type HowWeOperateProps = {
-  theme?: "dark" | "light"; // ✅ no default — context se fallback
+  theme?: "dark" | "light";
 };
 
 export default function HowWeOperate({ theme }: HowWeOperateProps) {
-  // ✅ Prop diya ho to prop use karo, nahi to context se lo
   const { theme: contextTheme } = useSectionTheme();
   const isDark = (theme ?? contextTheme) === "dark";
 
   const headingRef = useRef<HTMLHeadingElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null); // ✅ container ref
 
   useEffect(() => {
+    const el = headingRef.current;
+    if (!el) return;
+
+    let lastWidth = 0;
+
     const fit = () => {
-      const el = headingRef.current;
-      if (!el) return;
+      // ✅ clientWidth — mobile scroll pe address bar se affect nahi hota
+      const containerWidth = document.documentElement.clientWidth;
+
+      // ✅ Width same ho to skip — height change (scroll) pe ignore
+      if (containerWidth === lastWidth) return;
+      lastWidth = containerWidth;
+
+      // ✅ Direct set — no rAF, no observer loop
       el.style.fontSize = "19vw";
-      const containerWidth = window.innerWidth;
       const textWidth = el.scrollWidth;
       if (textWidth > containerWidth) {
         const ratio = (containerWidth / textWidth) * 0.96;
         el.style.fontSize = `${19 * ratio}vw`;
       }
     };
+
     fit();
-    window.addEventListener("resize", fit);
+
+    window.addEventListener("resize", fit, { passive: true });
     return () => window.removeEventListener("resize", fit);
   }, []);
+
 
   const modernGradient = isDark
     ? "linear-gradient(to bottom, #FFFFFF 20%, #555555 80%)"
@@ -49,8 +62,9 @@ export default function HowWeOperate({ theme }: HowWeOperateProps) {
       id="how-we-operate"
       className="w-full flex flex-col items-center py-10 md:py-16 lg:py-20"
     >
-      <div className="w-full">
-        <div className="w-full flex justify-center overflow-hidden">
+      {/* ✅ containerRef yahan — heading ka actual wrapper */}
+      <div ref={containerRef} className="w-full overflow-hidden">
+        <div className="w-full flex justify-center">
           <h2
             ref={headingRef}
             className={[
@@ -58,8 +72,8 @@ export default function HowWeOperate({ theme }: HowWeOperateProps) {
               "font-black tracking-[-0.03em] leading-none",
               "whitespace-nowrap flex items-center gap-[0.2em]",
               "mb-[clamp(24px,3vw,48px)]",
-              "mask-[linear-gradient(to_bottom,black_40%,transparent_100%)]",
               "[-webkit-mask-image:linear-gradient(to_bottom,black_40%,transparent_100%)]",
+              "mask-[linear-gradient(to_bottom,black_40%,transparent_100%)]",
             ].join(" ")}
             style={{ fontSize: "19vw", fontFamily: "Stack Sans Text" }}
           >
