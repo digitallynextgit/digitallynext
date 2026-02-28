@@ -15,7 +15,7 @@ export default function ClientLogos({ theme }: ClientLogosProps) {
 
   const logoFiles = [
     "/home/client1.png", "/home/client2.png", "/home/client3.png", "/home/client4.png",
-    "/home/client5.png", "/home/client6.png", "/home/client7.png", "/home/client8.png",
+    "/home/client5.png", "/home/client99.png", "/home/client7.png", "/home/client8.png",
     "/home/client9.png", "/home/client10.png", "/home/client11.png", "/home/client12.png",
   ];
 
@@ -84,11 +84,11 @@ export default function ClientLogos({ theme }: ClientLogosProps) {
               className={[
                 "group shrink-0 flex items-center justify-center",
                 "h-[100px] px-5",
-                "border rounded-lg hover:rounded-2xl",
+                "border rounded-lg hover:rounded-full",
                 "transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]",
                 "hover:scale-105",
                 isDark
-                  ? "border-white/20 hover:border-white/60 hover:shadow-[0_0_24px_rgba(255,255,255,0.08)]"
+                  ? "border-white/60 hover:border-white/90 hover:shadow-[0_0_24px_rgba(255,255,255,0.08)]"
                   : "border-black/15 hover:border-black/40 hover:shadow-[0_4px_24px_rgba(0,0,0,0.08)]",
               ].join(" ")}
             >
@@ -101,9 +101,9 @@ export default function ClientLogos({ theme }: ClientLogosProps) {
                 style={{ width: "auto", height: "60px" }}
                 className={[
                   "object-contain",
-                  "opacity-50 group-hover:opacity-100",
+                  "opacity-75 grayscale group-hover:opacity-100",
                   "transition-all duration-500 ease-out",
-                  isDark ? "brightness-0 invert" : "brightness-0",
+                  isDark ? "brightness-900 invert-25" : "brightness-900",
                 ].join(" ")}
               />
             </div>
