@@ -155,12 +155,13 @@ function DesktopServices() {
 
   return (
     <div className="hidden lg:block">
-      <div className="grid grid-cols-[34%_1fr] gap-2 mt-20">
+      {/* ✅ FIX 1: grid-cols 34% → 44% image column बड़ा */}
+      <div className="grid grid-cols-[44%_1fr] gap-2 mt-20">
 
         {/* LEFT — Sticky media */}
         <div className="relative">
           <div
-            className="lg:sticky lg:top-32 w-full max-w-[320px]"
+            className="lg:sticky lg:top-32 w-full max-w-[460px]" 
             style={{ position: "-webkit-sticky" } as React.CSSProperties}
           >
             <div className="relative aspect-4/3 rounded-sm overflow-hidden bg-[#1a1a1a] border border-white/10 shadow-2xl">
@@ -177,7 +178,7 @@ function DesktopServices() {
                     src={services[activeIndex].media}
                     alt={services[activeIndex].title}
                     fill
-                    sizes="(max-width: 1280px) 60vw, 420px"
+                    sizes="(max-width: 1280px) 44vw, 520px"
                     className="object-cover"
                     priority={activeIndex === 0}
                   />
@@ -188,7 +189,8 @@ function DesktopServices() {
         </div>
 
         {/* RIGHT — Scrollable items */}
-        <div className="flex flex-col overflow-x-visible overflow-y-hidden min-w-0">
+        {/* ✅ FIX 3: overflow-x-hidden added — hover translateX scrollbar fix */}
+        <div className="flex flex-col overflow-x-hidden overflow-y-hidden min-w-0">
           {services.map((service, i) => (
             <div
               key={service.id}
@@ -217,11 +219,11 @@ function DesktopServices() {
                   />
                 </motion.div>
 
-                {/* Service title */}
+                {/* ✅ FIX 4: text-6xl → text-5xl — subtle font size reduction */}
                 <h3
                   className={[
                     "min-w-0 whitespace-normal wrap-break-words",
-                    "text-3xl md:text-6xl font-bold leading-tight tracking-tight",
+                    "text-3xl md:text-5xl font-bold leading-tight tracking-tight",
                     "transition-colors duration-300",
                     hoveredIndex === i
                       ? "text-[#E53935]"
@@ -279,6 +281,7 @@ function DesktopServices() {
     </div>
   );
 }
+
 
 /* ===== Main Export ===== */
 export default function Services() {

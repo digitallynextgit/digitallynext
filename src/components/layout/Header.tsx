@@ -1,34 +1,43 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect, useRef } from "react";
+import {
+  motion,
+  AnimatePresence,
+  useMotionValue,
+  useTransform,
+  type Variants,
+} from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { navLinks } from "@/data/content";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
+// ─────────────────────────────────────────────
+// Types & Static Config
+// ─────────────────────────────────────────────
 type RouteHeaderTheme = {
   linkColor: "white" | "black";
   logo: "light" | "dark" | "white";
 };
 
 const ROUTE_THEMES: Record<string, RouteHeaderTheme> = {
-  "/":              { linkColor: "white", logo: "light" },
-  "/services":     { linkColor: "white", logo: "white" },
-  "/contact":       { linkColor: "white", logo: "white" },
-  "/about":         { linkColor: "black", logo: "dark"  },
-  "/terms-of-use":  { linkColor: "white", logo: "white" },
-  "/privacy-policy":{ linkColor: "white", logo: "white" },
-  "/case-studies":  { linkColor: "black", logo: "dark"  },
-  "/careers":       { linkColor: "black", logo: "dark"  },
+  "/": { linkColor: "white", logo: "light" },
+  "/services": { linkColor: "white", logo: "white" },
+  "/contact": { linkColor: "white", logo: "white" },
+  "/about": { linkColor: "black", logo: "dark" },
+  "/terms-of-use": { linkColor: "white", logo: "white" },
+  "/privacy-policy": { linkColor: "white", logo: "white" },
+  "/case-studies": { linkColor: "black", logo: "dark" },
+  "/careers": { linkColor: "black", logo: "dark" },
 };
 
 const NOT_FOUND_THEME: RouteHeaderTheme = { linkColor: "white", logo: "white" };
 
 const LOGO_SRCS: Record<RouteHeaderTheme["logo"], string> = {
   light: "/logo-complete-white.webp",
-  dark:  "/logo1.webp",
+  dark: "/logo1.webp",
   white: "/logo1-white.webp",
 };
 
@@ -41,10 +50,157 @@ function resolveRouteTheme(pathname: string): RouteHeaderTheme {
   return NOT_FOUND_THEME;
 }
 
+// ─────────────────────────────────────────────
+// Animation Variants (outside component = stable refs)
+// ─────────────────────────────────────────────
+
+// Overlay: clip-path wipe from top-right corner → full screen
+const overlayVariants: Variants = {
+  hidden: {
+    clipPath: "circle(0% at calc(100% - 40px) 40px)",
+    opacity: 1,
+    transition: {
+      duration: 0.55,
+      ease: [0.76, 0, 0.24, 1] as const,
+      when: "afterChildren",
+    },
+  },
+  visible: {
+    clipPath: "circle(170% at calc(100% - 40px) 40px)",
+    opacity: 1,
+    transition: {
+      duration: 0.65,
+      ease: [0.76, 0, 0.24, 1] as const,
+      delayChildren: 0.3,
+      staggerChildren: 0.07,
+    },
+  },
+};
+
+// Each nav link: slides up + fades in
+const linkVariants: Variants = {
+  hidden: {
+    opacity: 0,
+    y: 30,
+    transition: { duration: 0.2, ease: "easeIn" as const },
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] as const },
+  },
+};
+
+// Divider line under each link
+const dividerVariants: Variants = {
+  hidden: { scaleX: 0, transition: { duration: 0.2 } },
+  visible: {
+    scaleX: 1,
+    transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] as const, delay: 0.1 },
+  },
+};
+
+// Bottom social/footer row
+const footerVariants: Variants = {
+  hidden: { opacity: 0, y: 10 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.4, ease: "easeOut" as const, delay: 0.55 },
+  },
+};
+
+// ─────────────────────────────────────────────
+// Magnetic Nav Link Component
+// ─────────────────────────────────────────────
+function MagneticLink({
+  href,
+  label,
+  index,
+  onClick,
+}: {
+  href: string;
+  label: string;
+  index: number;
+  onClick: () => void;
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+  const rotateX = useTransform(y, [-30, 30], [4, -4]);
+  const rotateY = useTransform(x, [-80, 80], [-4, 4]);
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!ref.current) return;
+    const rect = ref.current.getBoundingClientRect();
+    x.set(e.clientX - rect.left - rect.width / 2);
+    y.set(e.clientY - rect.top - rect.height / 2);
+  };
+
+  const handleMouseLeave = () => {
+    x.set(0);
+    y.set(0);
+  };
+
+  return (
+    <motion.div
+      ref={ref}
+      variants={linkVariants}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      className="w-full border-t border-white/10 last:border-b"
+    >
+      {/* Number + Link row */}
+      <motion.a
+        href={href}
+        onClick={onClick}
+        style={{ rotateX, rotateY, transformPerspective: 800 }}
+        whileHover={{ x: 12 }}
+        transition={{ type: "spring", stiffness: 300, damping: 25 }}
+        className="group flex items-center justify-between w-full py-5 md:py-6 px-6 md:px-12 cursor-pointer"
+      >
+        {/* Index number */}
+        <span className="text-white/30 text-sm font-mono w-8 shrink-0">
+          {String(index + 1).padStart(2, "0")}
+        </span>
+
+        {/* Label */}
+        <span className="flex-1 text-white text-[clamp(2rem,5vw,4rem)] font-light tracking-tight leading-none uppercase">
+          {label}
+        </span>
+
+        {/* Arrow indicator */}
+        <motion.span
+          className="text-white/40 text-xl font-light"
+          initial={{ x: -6, opacity: 0 }}
+          whileHover={{ x: 0, opacity: 1 }}
+          transition={{ duration: 0.2 }}
+        >
+          →
+        </motion.span>
+      </motion.a>
+
+      {/* Animated underline */}
+      <motion.div
+        variants={dividerVariants}
+        className="h-px bg-white/10 origin-left"
+      />
+    </motion.div>
+  );
+}
+
+// ─────────────────────────────────────────────
+// Main Header Component
+// ─────────────────────────────────────────────
 export default function Header() {
-  const [scrolled, setScrolled]     = useState(false);
-  const [mobileOpen, setMobileOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
+
+  // Close menu on route change
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [pathname]);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50);
@@ -53,116 +209,121 @@ export default function Header() {
   }, []);
 
   useEffect(() => {
-    document.body.style.overflow = mobileOpen ? "hidden" : "";
-  }, [mobileOpen]);
+    document.body.style.overflow = menuOpen ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [menuOpen]);
 
   const routeTheme = resolveRouteTheme(pathname);
-
-  // scrolled hone pe hamesha white links
   const isBlackLink = !scrolled && routeTheme.linkColor === "black";
-  const logoSrc     = scrolled ? LOGO_SRCS.white : LOGO_SRCS[routeTheme.logo];
-
-  const navLinkClass = [
-    "text-[11px] lg:text-[15px]",
-    "font-light",
-    "tracking-[0.06em] lg:tracking-[0.08em]",
-    "uppercase",
-    "transition-colors duration-200",
-    isBlackLink ? "text-black" : "text-white",
-  ].join(" ");
+  const logoSrc = menuOpen || scrolled ? LOGO_SRCS.white : LOGO_SRCS[routeTheme.logo];
+  const iconColor = menuOpen ? "text-white" : isBlackLink ? "text-black" : "text-white";
 
   return (
     <>
+      {/* ── Header Bar ── */}
       <header
         className={[
-          "fixed top-0 left-0 right-0 z-100 md:py-1",
-          "transition-all duration-400 ease-[cubic-bezier(0.16,1,0.3,1)]",
-          scrolled && !mobileOpen
+          "fixed top-0 left-0 right-0 z-100",
+          "transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]",
+          scrolled && !menuOpen
             ? "bg-[#0a0a0a]/85 backdrop-blur-xl border-b border-white/8"
             : "bg-transparent border-b border-transparent",
         ].join(" ")}
       >
-        {/* ── Grid: mobile = flex (logo left) │ desktop = 5-col grid ── */}
-        <div
-          className={[
-            "relative flex md:grid md:grid-cols-5",
-            "items-center h-20 w-full",
-            "px-5 md:px-7 lg:px-8",
-          ].join(" ")}
-        >
-          {/* 1. Home */}
-          <div className="hidden md:flex justify-center">
-            <Link href="/" className={navLinkClass}>HOME</Link>
+        <div className="grid grid-cols-3 items-center h-16 md:h-20 w-full px-5 md:px-7 lg:px-8">
+
+          {/* Col 1 – Left Image */}
+          <div className="flex items-center justify-start">
+            <Image
+              src="/admin-ajax.webp"
+              alt="awards"
+              width={120}
+              height={120}
+              className="w-16 h-16 md:w-20 md:h-20 object-contain"
+            />
           </div>
 
-          {/* 2. Services */}
-          <div className="hidden md:flex justify-center">
-            <Link href="/#services" className={navLinkClass}>SERVICES</Link>
-          </div>
-
-          {/* 3. Center Logo ── md:col-start-3 keeps it centered in grid */}
-          <div className="flex md:justify-center md:col-start-3">
+          {/* Col 2 – Center Logo */}
+          <div className="flex items-center justify-center">
             <Link href="/" className="flex items-center">
               <Image
                 src={logoSrc}
                 alt="Digitally Next"
                 width={1200}
                 height={120}
-                className="w-[44vw] sm:w-[36vw] md:w-[28vw] lg:w-[16vw]"
+                className="w-[58vw] sm:w-[44vw] md:w-[20vw] lg:w-[14vw]"
                 priority
               />
             </Link>
           </div>
 
-          {/* 4. Case Studies */}
-          <div className="hidden md:flex justify-center">
-            <Link href="/case-studies" className={navLinkClass}>CASE STUDIES</Link>
-          </div>
 
-          {/* 5. Careers */}
-          <div className="hidden md:flex justify-center">
-            <Link href="/careers" className={navLinkClass}>CAREERS</Link>
-          </div>
-
-          {/* Hamburger – absolute right, visible only on mobile */}
-          <div className="absolute right-5 top-1/2 -translate-y-1/2 md:hidden">
+          {/* Col 3 – Animated Hamburger */}
+          <div className="flex items-center justify-end">
             <button
-              onClick={() => setMobileOpen(!mobileOpen)}
+              onClick={() => setMenuOpen((v) => !v)}
               aria-label="Toggle menu"
               className={[
-                "bg-transparent border-none cursor-pointer p-1",
-                isBlackLink ? "text-black" : "text-white",
+                "relative w-10 h-10 flex items-center justify-center",
+                "bg-transparent border-none cursor-pointer rounded-full",
+                "transition-colors duration-300",
+                iconColor,
               ].join(" ")}
             >
-              {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+              <AnimatePresence mode="wait" initial={false}>
+                {menuOpen ? (
+                  <motion.span
+                    key="close"
+                    initial={{ rotate: -90, opacity: 0 }}
+                    animate={{ rotate: 0, opacity: 1 }}
+                    exit={{ rotate: 90, opacity: 0 }}
+                    transition={{ duration: 0.2, ease: "easeInOut" }}
+                    className="absolute"
+                  >
+                    <X size={22} strokeWidth={1.5} />
+                  </motion.span>
+                ) : (
+                  <motion.span
+                    key="open"
+                    initial={{ rotate: 90, opacity: 0 }}
+                    animate={{ rotate: 0, opacity: 1 }}
+                    exit={{ rotate: -90, opacity: 0 }}
+                    transition={{ duration: 0.2, ease: "easeInOut" }}
+                    className="absolute"
+                  >
+                    <Menu size={22} strokeWidth={1.5} />
+                  </motion.span>
+                )}
+              </AnimatePresence>
             </button>
           </div>
         </div>
       </header>
 
-      {/* ── Mobile Menu Overlay ── */}
+      {/* ── Full-Screen Menu Overlay ── */}
       <AnimatePresence>
-        {mobileOpen && (
+        {menuOpen && (
           <motion.div
-            initial={{ opacity: 0, x: "100%" }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: "100%" }}
-            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="fixed inset-0 z-99 bg-[#0a0a0a] flex flex-col justify-center items-center gap-8"
+            key="menu-overlay"
+            variants={overlayVariants}
+            initial="hidden"
+            animate="visible"
+            exit="hidden"
+            style={{ willChange: "clip-path" }}
+            className="fixed inset-0 z-99 bg-[#0a0a0a] flex flex-col"
           >
-            {navLinks.map((link, i) => (
-              <motion.a
-                key={link.label}
-                href={link.href}
-                onClick={() => setMobileOpen(false)}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1 + i * 0.05 }}
-                className="text-[32px] font-bold text-(--text-accent)"
-              >
-                {link.label}
-              </motion.a>
-            ))}
+            {/* Nav Links — vertically centered */}
+            <nav className="flex-1 flex flex-col justify-start mt-20 md:mt-28 lg:mt-32">
+              {navLinks.map((link, i) => (
+                <MagneticLink
+                  key={link.label}
+                  href={link.href}
+                  label={link.label}
+                  index={i}
+                  onClick={() => setMenuOpen(false)}
+                />
+              ))}
+            </nav>
           </motion.div>
         )}
       </AnimatePresence>

@@ -14,8 +14,8 @@ const frameworks = [
       <Image
         src="/home/sm1.png"
         alt="C-Suite Icon"
-        width={80}
-        height={80}
+        width={112}  
+        height={112}
         className="w-full h-full object-contain"
       />
     ),
@@ -28,8 +28,8 @@ const frameworks = [
       <Image
         src="/home/sm2.png"
         alt="KASA Icon"
-        width={80}
-        height={80}
+        width={112}
+        height={112}
         className="w-full h-full object-contain"
       />
     ),
@@ -42,8 +42,8 @@ const frameworks = [
       <Image
         src="/home/sm3.png"
         alt="Profit Icon"
-        width={80}
-        height={80}
+        width={112}
+        height={112}
         className="w-full h-full object-contain"
       />
     ),
@@ -56,8 +56,8 @@ const frameworks = [
       <Image
         src="/home/sm4.png"
         alt="Communication Icon"
-        width={80}
-        height={80}
+        width={112}
+        height={112}
         className="w-full h-full object-contain"
       />
     ),
@@ -70,13 +70,14 @@ const frameworks = [
       <Image
         src="/home/sm5.png"
         alt="Delivery Models Icon"
-        width={80}
-        height={80}
+        width={112}
+        height={112}
         className="w-full h-full object-contain"
       />
     ),
   },
 ];
+
 
 const CYCLE_INTERVAL = 4000;
 
@@ -117,7 +118,7 @@ function MobileGSM() {
           >
             <div className="flex items-start gap-3 sm:gap-4">
               {/* Icon */}
-              <div className="w-12 h-12 sm:w-14 sm:h-14 shrink-0 flex items-center justify-center rounded">
+              <div className="w-16 h-16 sm:w-20 sm:h-20 shrink-0 flex items-center justify-center rounded">
                 {fw.icon}
               </div>
               <div className="flex-1 min-w-0">
@@ -172,7 +173,7 @@ function DesktopGSM() {
   return (
     <div className="hidden lg:block">
       {/* Main content — two columns */}
-      <div className="grid grid-cols-2 gap-20 items-start mt-20">
+      <div className="grid grid-cols-2 gap-20 items-start ">
         {/* LEFT — Static info */}
         <motion.div
           initial={{ opacity: 0, x: -30 }}
@@ -212,7 +213,7 @@ function DesktopGSM() {
               transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
             >
               {/* Icon */}
-              <div className="mb-6 w-20 h-20 flex items-center justify-center rounded">
+              <div className="mb-6 w-28 h-28 flex items-center justify-center rounded">
                 {active.icon}
               </div>
               <div className="flex flex-row items-center justify-between">

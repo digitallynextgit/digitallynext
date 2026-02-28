@@ -43,10 +43,8 @@ export default function HowWeOperate({ theme = "light" }: HowWeOperateProps) {
   return (
     <section
       id="how-we-operate"
-      className={[
-        "w-full flex flex-col items-center py-10 md:py-16 lg:py-20",
-        isDark ? "bg-black" : "bg-white",
-      ].join(" ")}
+      // ✅ bg-black / bg-white removed — transparent rahega
+      className="w-full flex flex-col items-center py-10 md:py-16 lg:py-20"
     >
       {/* ── Modern DAD ── */}
       <AnimatedSection className="w-full">
@@ -61,10 +59,7 @@ export default function HowWeOperate({ theme = "light" }: HowWeOperateProps) {
               "mask-[linear-gradient(to_bottom,black_40%,transparent_100%)]",
               "[-webkit-mask-image:linear-gradient(to_bottom,black_40%,transparent_100%)]",
             ].join(" ")}
-            style={{
-              fontSize: "19vw",              
-              fontFamily: "Stack Sans Text",
-            }}
+            style={{ fontSize: "19vw", fontFamily: "Stack Sans Text" }}
           >
             <span
               className="bg-clip-text text-transparent"
@@ -100,7 +95,7 @@ export default function HowWeOperate({ theme = "light" }: HowWeOperateProps) {
             className={[
               "md:mt-10 text-base md:text-2xl lg:text-3xl font-normal",
               "mb-10 md:mb-16 lg:mb-20",
-              isDark ? "text-white/45" : "text-[#787878]", // ✅ subtitleColor
+              isDark ? "text-white/45" : "text-[#787878]",
             ].join(" ")}
             style={{ fontFamily: "Stack Sans Text" }}
           >
@@ -113,8 +108,6 @@ export default function HowWeOperate({ theme = "light" }: HowWeOperateProps) {
           {dadPillars.map((pillar, i) => (
             <AnimatedSection key={pillar.word} delay={0.15 + i * 0.1}>
               <div className="flex flex-col items-center gap-4">
-
-                {/* Icon */}
                 <div className="relative w-[clamp(120px,15vw,200px)] h-[clamp(120px,15vw,200px)]">
                   <Image
                     src={
@@ -127,8 +120,6 @@ export default function HowWeOperate({ theme = "light" }: HowWeOperateProps) {
                     className="object-contain"
                   />
                 </div>
-
-                {/* Pillar text */}
                 <p className="text-center max-w-[180px] lg:max-w-[190px] xl:max-w-[227px] leading-[1.4]">
                   <span className="text-[#E53935] font-bold text-[clamp(1.1rem,1.5vw,1.4rem)]">
                     {pillar.word}
@@ -136,7 +127,7 @@ export default function HowWeOperate({ theme = "light" }: HowWeOperateProps) {
                   <span
                     className={[
                       "font-medium text-[clamp(1.1rem,1.5vw,1.4rem)]",
-                      isDark ? "text-white" : "text-[#1a1a1a]", 
+                      isDark ? "text-white" : "text-[#1a1a1a]",
                     ].join(" ")}
                   >
                     {pillar.taglineLine1}
@@ -167,10 +158,7 @@ export default function HowWeOperate({ theme = "light" }: HowWeOperateProps) {
             >
               <p
                 className="text-lg md:text-2xl lg:text-3xl font-normal bg-clip-text text-transparent"
-                style={{
-                  backgroundImage: taglineGradient,
-                  fontFamily: "Stack Sans Text",
-                }}
+                style={{ backgroundImage: taglineGradient, fontFamily: "Stack Sans Text" }}
               >
                 Decide with data.{" "}
                 <span>Move with intelligence.</span>{" "}

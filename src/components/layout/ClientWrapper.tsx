@@ -6,6 +6,7 @@ import Header from "@/components/layout/Header";
 import NextTopLoader from "nextjs-toploader";
 import { usePathname } from "next/navigation";
 import { Toaster } from "react-hot-toast";
+import { SectionThemeProvider } from "../ui/SectionThemeContext";
 
 export default function ClientWrapper({ children }: { children: ReactNode }) {
     const pathname = usePathname();
@@ -28,7 +29,9 @@ export default function ClientWrapper({ children }: { children: ReactNode }) {
             <Preloader />
             <Header />
             <Toaster position="top-right" />
-            <main>{children}</main>
+            <SectionThemeProvider>
+                <main>{children}</main>
+            </SectionThemeProvider>
         </div>
     );
 }

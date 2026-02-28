@@ -22,8 +22,8 @@ export default function ClientLogos({ theme = "dark" }: ClientLogosProps) {
       className={[
         "py-10 md:py-16 lg:py-20 overflow-hidden",
         isDark
-          ? "bg-black border-t border-b border-white/10"
-          : "bg-white border-t border-b border-black/8",
+          ? "border-t border-b border-white/10"
+          : "border-t border-b border-black/8",
       ].join(" ")}
     >
       <div className="w-full max-w-[1280px] mx-auto px-6 md:px-12">
@@ -49,12 +49,7 @@ export default function ClientLogos({ theme = "dark" }: ClientLogosProps) {
               className="group flex items-center gap-2 text-2xl font-medium no-underline"
             >
               <span className="text-[#E21F26] transition-transform duration-300 ease-out group-hover:-translate-x-2">
-                <Image
-                  src="/icons/enter.svg"
-                  alt="arrow-right"
-                  width={32}
-                  height={32}
-                />
+                <Image src="/icons/enter.svg" alt="arrow-right" width={32} height={32} />
               </span>
               <span
                 className={[
@@ -69,36 +64,45 @@ export default function ClientLogos({ theme = "dark" }: ClientLogosProps) {
         </AnimatedSection>
       </div>
 
-      {/* Marquee */}
-      <div className="overflow-hidden py-4">
-        <div className="flex gap-12 w-max animate-[marquee_30s_linear_infinite] hover:[animation-play-state:paused]">
+      {/* ✅ Marquee — speed 30s → 45s (smoother), mask edges fade */}
+      <div
+        className="overflow-hidden py-4 mt-4"
+        style={{
+          maskImage: "linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)",
+          WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)",
+        }}
+      >
+        <div className="flex gap-8 w-max animate-[marquee_45s_linear_infinite] hover:paused">
           {[...logoFiles, ...logoFiles, ...logoFiles, ...logoFiles].map((logo, i) => (
             <div
               key={i}
               className={[
                 "group shrink-0 flex items-center justify-center",
-                "h-[120px] mt-8 px-6",
-                "border transition-all duration-300 rounded-lg",
-                isDark ? "border-white" : "border-black",
+                "h-[100px] px-5", // ✅ sirf height fixed, width auto
+                "border rounded-lg hover:rounded-2xl",
+                "transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]",
+                "hover:scale-105",
+                isDark
+                  ? "border-white/70 hover:border-white/60 hover:shadow-[0_0_24px_rgba(255,255,255,0.08)]"
+                  : "border-black/15 hover:border-black/40 hover:shadow-[0_4px_24px_rgba(0,0,0,0.08)]",
               ].join(" ")}
             >
-              <div className="flex items-center justify-center max-w-[160px]">
-                <Image
-                  src={logo}
-                  alt="Client Logo"
-                  width={160}
-                  height={80}
-                  className={[
-                    "w-full h-auto object-contain",
-                    "opacity-60 group-hover:opacity-100",
-                    "transition-opacity duration-300",
-                    isDark
-                      ? "brightness-0 invert"   
-                      : "brightness-0",         
-                  ].join(" ")}
-                />
-              </div>
+              <Image
+                src={logo}
+                alt="Client Logo"
+                width={0}
+                height={0}
+                sizes="200px"
+                style={{ width: "auto", height: "60px" }} // ✅ height fixed, width = image ki natural width
+                className={[
+                  "object-contain",
+                  "opacity-50 group-hover:opacity-100",
+                  "transition-opacity duration-500 ease-out",
+                  isDark ? "brightness-0 invert" : "brightness-0",
+                ].join(" ")}
+              />
             </div>
+
           ))}
         </div>
       </div>

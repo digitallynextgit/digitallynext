@@ -11,53 +11,63 @@ import InstagramReels from "@/components/sections/InstagramReels";
 import CTASection from "@/components/sections/CTASection";
 import Image from "next/image";
 import { useEffect } from "react";
+import { ThemeSection } from "@/components/ui/ThemeSection.tsx";
+import AwardsAndRecognition from "@/components/sections/AwardsAndRecognition";
+import ProudlyWorkingWith from "@/components/sections/ProudlyWorkingWith";
 
 export default function Home() {
-  useEffect(() => {
-    const hash = window.location.hash;
-    if (!hash) return;
-
-    // Thoda delay — page render hone do pehle
-    const timer = setTimeout(() => {
-      const el = document.querySelector(hash);
-      if (el) {
-        el.scrollIntoView({ behavior: "smooth", block: "start" });
-      }
-    }, 300);
-
-    return () => clearTimeout(timer);
-  }, []);
   return (
     <>
-      <Hero />
-      <div style={{ position: "relative", zIndex: 10, background: "var(--bg-primary)" }}>
-        <div className={`w-full transition-all duration-300 overflow-hidden`}>
-          <Image
-            src="/banner/ipl-desktop.webp"
-            alt="IPL Banner"
-            width={768}
-            height={60}
-            className="w-full object-contain block md:hidden "
-            priority
-          />
-          <Image
-            src="/banner/ipl-desktop.webp"
-            alt="IPL Banner"
-            width={2900}
-            height={60}
-            className="w-full h-[140px] object-cover hidden md:block"
-            priority
-          />
+      <ThemeSection theme="light">
+        <Hero />
+      </ThemeSection>
+
+      {/* Banner — always light */}
+      <ThemeSection theme="light">
+        <div style={{ position: "relative", zIndex: 10 }}>
+          <Image src="/banner/ipl-desktop.webp" alt="IPL Banner" width={768} height={60}
+            className="w-full object-contain block md:hidden" priority />
+          <Image src="/banner/ipl-desktop.webp" alt="IPL Banner" width={2900} height={60}
+            className="w-full h-[140px] object-cover hidden md:block" priority />
         </div>
+      </ThemeSection>
+
+      <ThemeSection theme="light">
         <HowWeOperate />
+      </ThemeSection>
+
+      <ThemeSection theme="dark">
         <ClientLogos />
+      </ThemeSection>
+
+      <ThemeSection theme="light">
         <Services />
+      </ThemeSection>
+
+      <ThemeSection theme="dark">
         <CaseStudies />
+      </ThemeSection>
+
+      <AwardsAndRecognition />
+
+      <ThemeSection theme="dark">
         <ADAC />
+      </ThemeSection>
+
+      <ThemeSection theme="light">
         <GlobalServicingModel />
+      </ThemeSection>
+
+      <ProudlyWorkingWith />
+
+      <ThemeSection theme="dark">
         <InstagramReels />
+      </ThemeSection>
+
+      <ThemeSection theme="dark">
         <CTASection />
-      </div>
+      </ThemeSection>
     </>
   );
 }
+
