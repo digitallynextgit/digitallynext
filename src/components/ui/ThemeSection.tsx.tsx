@@ -14,7 +14,6 @@ export function ThemeSection({ theme, children }: Props) {
 
   useEffect(() => {
     if (!ref.current) return;
-    // registerSection returns unregister fn — cleanup automatic
     return registerSection(ref.current, theme);
   }, [theme, registerSection]);
 

@@ -11,11 +11,6 @@ import {
 
 type Theme = "light" | "dark";
 
-interface SectionEntry {
-  el: HTMLElement;
-  theme: Theme;
-}
-
 interface ContextType {
   theme: Theme;
   registerSection: (el: HTMLElement, theme: Theme) => () => void;
@@ -23,74 +18,65 @@ interface ContextType {
 
 const SectionThemeContext = createContext<ContextType>({
   theme: "light",
-  registerSection: () => () => { },
+  registerSection: () => () => {},
 });
 
-export function SectionThemeProvider({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export function SectionThemeProvider({ children }: { children: React.ReactNode }) {
   const [theme, setThemeState] = useState<Theme>("light");
-  const sectionsRef = useRef<SectionEntry[]>([]);
-  const rafRef = useRef<number | null>(null);
   const currentThemeRef = useRef<Theme>("light");
+
+  // Map element → its theme
+  const themeMapRef = useRef<Map<HTMLElement, Theme>>(new Map());
+
+  // Single shared IntersectionObserver for all sections
+  const observerRef = useRef<IntersectionObserver | null>(null);
+
+  const getObserver = useCallback(() => {
+    if (observerRef.current) return observerRef.current;
+
+    observerRef.current = new IntersectionObserver(
+      (entries) => {
+        // Pick the first entry that became intersecting (crossed viewport center)
+        const intersecting = entries.find((e) => e.isIntersecting);
+        if (!intersecting) return;
+
+        const sectionTheme = themeMapRef.current.get(
+          intersecting.target as HTMLElement
+        );
+        if (!sectionTheme || sectionTheme === currentThemeRef.current) return;
+
+        currentThemeRef.current = sectionTheme;
+        setThemeState(sectionTheme);
+      },
+      {
+        // Only fires when section crosses the vertical midpoint of the viewport
+        rootMargin: "-50% 0px -50% 0px",
+        threshold: 0,
+      }
+    );
+
+    return observerRef.current;
+  }, []);
 
   const registerSection = useCallback(
     (el: HTMLElement, sectionTheme: Theme) => {
-      const entry: SectionEntry = { el, theme: sectionTheme };
-      sectionsRef.current.push(entry);
-
-      // Immediately check on register (handles initial load)
-      checkActiveSection();
+      themeMapRef.current.set(el, sectionTheme);
+      getObserver().observe(el);
 
       return () => {
-        sectionsRef.current = sectionsRef.current.filter((s) => s !== entry);
+        themeMapRef.current.delete(el);
+        observerRef.current?.unobserve(el);
       };
     },
-    []
+    [getObserver]
   );
 
-  const checkActiveSection = useCallback(() => {
-    const viewportCenter = window.innerHeight / 2;
-    let closestSection: SectionEntry | null = null;
-    let closestDistance = Infinity;
-
-    for (const section of sectionsRef.current) {
-      const rect = section.el.getBoundingClientRect();
-      const isVisible = rect.bottom > 0 && rect.top < window.innerHeight;
-      if (!isVisible) continue;
-
-      const sectionCenter = rect.top + rect.height / 2;
-      const distance = Math.abs(sectionCenter - viewportCenter);
-
-      if (distance < closestDistance) {
-        closestDistance = distance;
-        closestSection = section;
-      }
-    }
-
-    if (closestSection && closestSection.theme !== currentThemeRef.current) {
-      currentThemeRef.current = closestSection.theme;
-      setThemeState(closestSection.theme);
-    }
-  }, []);
-
+  // Cleanup observer on unmount
   useEffect(() => {
-    const onScroll = () => {
-      // ✅ rAF — smooth, no jank, batches multiple scroll events
-      if (rafRef.current) cancelAnimationFrame(rafRef.current);
-      rafRef.current = requestAnimationFrame(checkActiveSection);
-    };
-
-    window.addEventListener("scroll", onScroll, { passive: true });
-    checkActiveSection(); // initial check
-
     return () => {
-      window.removeEventListener("scroll", onScroll);
-      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+      observerRef.current?.disconnect();
     };
-  }, [checkActiveSection]);
+  }, []);
 
   return (
     <SectionThemeContext.Provider value={{ theme, registerSection }}>
@@ -98,7 +84,7 @@ export function SectionThemeProvider({
         className="fixed inset-0 -z-10"
         style={{
           backgroundColor: theme === "dark" ? "#000000" : "#ffffff",
-          transition: "background-color 1000ms cubic-bezier(0.76, 0, 0.24, 1)",
+          transition: "background-color 550ms cubic-bezier(0.25, 0.46, 0.45, 0.94)",
         }}
       />
       {children}
