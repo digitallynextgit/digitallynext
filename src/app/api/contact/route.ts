@@ -92,7 +92,7 @@ export async function POST(request: Request) {
 
     await transporter.sendMail({
       from: `Digitally Next Contact <${user}>`,
-      to: "diwakarjha554@gmail.com",
+      to: "contact@digitallynext.com",
       replyTo: email,
       subject: `Contact form: ${fullName}`,
       text: textLines.join("\n"),

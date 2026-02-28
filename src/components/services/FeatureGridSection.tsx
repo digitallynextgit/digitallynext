@@ -16,7 +16,7 @@ export default function FeatureGridSection({ section, theme }: Props) {
     <section style={{ backgroundColor: theme.surfaceBg, color: theme.bodyText }}>
 
       {/* ── Outer: max 1440px, padding 72px 120px per Figma ── */}
-      <div className="w-full max-w-[1440px] mx-auto px-6 py-14 sm:px-12 sm:py-16 lg:px-[120px] lg:py-[72px]">
+      <div className="w-full max-w-[1440px] mx-auto px-6 py-10 sm:px-12 md:py-16 lg:px-[120px] lg:py-20">
 
         {/* ── Inner: max 1200px ── */}
         <div className="max-w-[1200px] mx-auto flex flex-col gap-12 lg:gap-20">

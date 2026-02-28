@@ -29,7 +29,7 @@ function MobileADAC() {
         transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
       >
         <h2
-          className="text-[18vw] font-black leading-[0.85] tracking-tighter -mt-24"
+          className="text-[18vw] font-black leading-[0.85] tracking-tighter -mt-14"
           style={mobileFadeBottomMask}
         >
           <span className="text-red-500">ADAC</span>

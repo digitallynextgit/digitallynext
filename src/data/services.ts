@@ -57,6 +57,16 @@ export type ServiceCaseStudyCard = {
   href?: string;
 };
 
+// ✅ NEW
+export type ServiceYourAsk = {
+  eyebrow?: string;
+  lines: string[];
+  description: string;
+  ctaLabel?: string;
+  ctaHref?: string;
+  arrowSrc?: string;
+};
+
 export type ServiceSection =
   | {
     type: "realBrief";
@@ -80,6 +90,7 @@ export type ServiceSection =
     heading: string;
     description?: string;
     items: ServiceScopeItem[];
+    footerText?: string;
   }
   | {
     type: "caseStudy";
@@ -99,12 +110,13 @@ export type ServiceDetail = {
   id: string;
   slug: string;
   title: string;
-  media: string;        // ✅ video path for Services page
-  sliderText: string;   // ✅ ticker text for Services page
+  media: string;
+  sliderText: string;
   metaTitle: string;
   metaDescription: string;
   theme: ServiceTheme;
   hero: ServiceHeroSection;
+  yourAsk: ServiceYourAsk; // ✅ NEW
   sections: ServiceSection[];
   cta: ServiceCTA;
 };
@@ -145,8 +157,7 @@ export const services: ServiceDetail[] = [
         "linear-gradient(180deg, rgba(0,0,0,0.65) 0%, rgba(226,31,38,0.88) 100%)",
       subtitle: "Where direction is defined before execution begins",
       quoteLead: "We often see brands say things like this",
-      quoteText:
-        "\u201cWe want D2C scale without becoming discount-led.\u201d",
+      quoteText: "\u201cWe want D2C scale without becoming discount-led.\u201d",
       quoteColor: "#1BB9B4",
       body: [
         "These are not marketing requests.",
@@ -157,13 +168,27 @@ export const services: ServiceDetail[] = [
       ctaVariant: "light",
       arrowSrc: "/figma/services/arrow2.svg",
     },
+    // ✅ yourAsk
+    yourAsk: {
+      eyebrow: "If this sounds like your ask",
+      lines: [
+        "Entering a competitive <strong>D2C market</strong>",
+        "Launching a new <strong>B2B or niche vertical</strong>",
+        "Planning <strong>PR- and influence-led</strong> growth",
+        "Or <strong>seeking AI-enabled</stromg> strategy without generic outputs"
+      ],
+      description:
+        "Then Strategy, Brand & Growth Intelligence at DigitallyNext is built for you.",
+      ctaLabel: "Get In Touch",
+      ctaHref: "/contact",
+      arrowSrc: "/figma/services/arrow2.svg",
+    },
     sections: [
       {
         type: "realBrief",
         eyebrow: "The Real Brief",
-        heading: "What brands are actually asking for.",
-        description:
-          "Across D2C and B2B, the underlying needs are clear:",
+        heading: "What brands are actually asking for",
+        description: "Across D2C and B2B, the underlying needs are clear:",
         list: [
           { accent: "accent", text: "A <strong>clear market and audience</strong> definition" },
           { accent: "alt", text: "Sharp <strong>positioning</strong> that doesn\u2019t<br> collapse under competition" },
@@ -178,35 +203,41 @@ export const services: ServiceDetail[] = [
         type: "featureGrid",
         eyebrow: "Strategy, Brand & Growth Intelligence",
         headingLines: [
-          "Where direction is defined",
-          'before execution begins<span style="color:#0EC8C5">.</span>',
+          'Where <span style="color:#0EC8C5">direction is defined</span>',
+          'before execution begins<span style="color:#E21F26">.</span>',
         ],
         description:
-          "At Digitally Next, strategy is not a presentation.\n\nIt\u2019s a decision-making layer.\n\nWe help brands:",
+          "At Digitally Next, strategy is not a presentation.\nIt\u2019s a decision-making layer.\n\n<strong>We help brands:</strong>",
         cards: [
           {
-            iconSrc: "/figma/services/sbgi-enter-markets.svg",
+            iconSrc: "/services/icon1.png",
             title: "Enter Markets with Clarity",
             description:
               "Launch B2B Verticals with Credibility. Strategically enter new markets, especially D2C, with defined positioning, audience intelligence, and a clear path to revenue.",
           },
           {
-            iconSrc: "/figma/services/sbgi-launch-b2b.svg",
+            iconSrc: "/services/icon2.png",
             title: "Launch B2B Verticals with Credibility",
             description:
               "Establish authority from day one, aligning narrative, proof, and go-to-market frameworks to build trust at scale.",
           },
           {
-            iconSrc: "/figma/services/sbgi-positioning.svg",
+            iconSrc: "/services/icon3.png",
             title: "Define Positioning Before Scaling Spend",
             description:
               "Clarify category stance, value proposition, and differentiation \u2014 ensuring media investment amplifies a strong strategic foundation.",
           },
           {
-            iconSrc: "/figma/services/sbgi-align.svg",
+            iconSrc: "/services/icon4.png",
             title: "Align Brand, Content, Performance & Platforms",
             description:
               "Unify storytelling, distribution, and technology \u2014 creating an integrated growth engine rather than siloed execution.",
+          },
+          {
+            iconSrc: "/services/icon5.png",
+            title: "Scale across teams",
+            description:
+              "Authority-building through earned media, strategic placements, and narrative-led distribution.",
           },
         ],
         footerText:
@@ -256,6 +287,8 @@ export const services: ServiceDetail[] = [
             imageSrc: "/figma/services/seo.svg",
           },
         ],
+        footerText:
+          'Some strategies lead to execution.\n\nSome exist to <strong>prevent expensive mistakes</strong>\n\nBoth are valuable.',
       },
       {
         type: "caseStudy",
@@ -264,12 +297,12 @@ export const services: ServiceDetail[] = [
         ctaHref: "/case-studies",
         cards: [
           {
-            imageSrc: "/case/c1.webp",
-            title: 'Advent <span style="color:#E21F26">Global</span>',
+            imageSrc: "/case/c3.webp",
+            title: "Advent Global",
             description:
-              "Transforming Legacy (more than 3 decades old organization) Brand Image to the New Age evolved Brand Positioning.",
+              "From ambitious startups to scaling enterprises – Digitally Next builds performance-driven creative systems that turn attention into measurable growth.",
             tag: "IT & ITES",
-            href: "/case-studies/advent-global",
+            href: "/case-studies/neotech-genomics",
           },
         ],
       },
@@ -309,7 +342,7 @@ export const services: ServiceDetail[] = [
       breadcrumb: "Services > Content, Culture & Media Creation",
       titleLines: ["Content, Culture", "& Media Creation."],
       layout: "stacked",
-      backgroundVideo: "/services/service-hero-video.mp4",
+      backgroundVideo: "/home/service2.mp4",
       overlay:
         "linear-gradient(180deg, rgba(0,0,0,0.65) 0%, rgba(14,200,197,0.85) 100%)",
       subtitle: "Where stories are crafted to endure platforms and trends",
@@ -327,28 +360,42 @@ export const services: ServiceDetail[] = [
       ctaVariant: "light",
       arrowSrc: "/figma/services/arrow1.svg",
     },
+    // ✅ yourAsk
+    yourAsk: {
+      eyebrow: "If this sounds like your ask",
+      lines: [
+        "Content that builds <strong>recall</strong>, not just reach",
+        "Media that <strong>compounds</strong> over time",
+        "Systems that <strong>scale creativity</strong> without chaos",
+      ],
+      description:
+        "Then Content, Culture & Media Creation at Digitally Next is built for you.",
+      ctaLabel: "Get In Touch",
+      ctaHref: "/contact",
+      arrowSrc: "/figma/services/arrow1.svg",
+    },
     sections: [
       {
         type: "realBrief",
         eyebrow: "The Real Brief",
-        heading: "What brands are actually asking for.",
+        heading: "What brands are actually asking for",
         description:
           "Behind these asks is a common problem:\n\nWhat brands need isn\u2019t more content.\nThey need content systems.",
         list: [
-          { accent: "accent", text: "Content is created faster than<br> it\u2019s being thought through" },
-          { accent: "alt", text: "Formats change, but<br> meaning doesn\u2019t travel" },
-          { accent: "accent", text: "Output increases,<br> but narrative weakens" },
-          { accent: "alt", text: "Teams create assets,<br> but systems are missing" },
+          { accent: "accent", text: "Content is <strong>created faster</strong> than<br> it\u2019s being thought through" },
+          { accent: "alt", text: "<strong>Formats change</strong>, but<br> meaning doesn\u2019t travel" },
+          { accent: "accent", text: "<strong>Output increases</strong>,<br> but narrative weakens" },
+          { accent: "alt", text: "Teams create <strong>assets</strong>,<br> but systems are missing" },
         ],
         highlightText:
-          'What brands need isn\u2019t more content. They need <span style="color:#E21F26">content systems.</span>',
+          'What brands need isn\u2019t more content. They need <span style="color:#0EC8C5">content systems.</span>',
       },
       {
         type: "featureGrid",
         eyebrow: "Content, Culture & Media Creation",
         headingLines: [
           'Where <span style="color:#E21F26">stories</span> are crafted',
-          'to endure platforms and trends<span style="color:#0EC8C5">.</span>',
+          'to endure <span style="font-weight:300">platforms and trends</span><span style="color:#0EC8C5">.</span>',
         ],
         description:
           "At Digitally Next, content is not treated as output.\n\nIt\u2019s treated as <strong>infrastructure.</strong>\nWe design <strong>high-impact content systems</strong> that allow stories to:",
@@ -420,12 +467,12 @@ export const services: ServiceDetail[] = [
         ctaHref: "/case-studies",
         cards: [
           {
-            imageSrc: "/case/c1.webp",
-            title: 'Advent <span style="color:#E21F26">Global</span>',
+            imageSrc: "/case/c3.webp",
+            title: "Advent Global",
             description:
-              "Transforming Legacy (more than 3 decades old organization) Brand Image to the New Age evolved Brand Positioning.",
+              "From ambitious startups to scaling enterprises – Digitally Next builds performance-driven creative systems that turn attention into measurable growth.",
             tag: "IT & ITES",
-            href: "/case-studies/advent-global",
+            href: "/case-studies/neotech-genomics",
           },
         ],
       },
@@ -465,7 +512,7 @@ export const services: ServiceDetail[] = [
       breadcrumb: "Services > Performance, Distribution & Demand.",
       titleLines: ["Performance,", "Distribution &", "Demand"],
       layout: "centered",
-      backgroundVideo: "/services/service-hero-video.mp4",
+      backgroundVideo: "/home/service3.mp4",
       overlay:
         "linear-gradient(180deg, rgba(0,0,0,0.65) 0%, rgba(226,31,38,0.88) 100%)",
       quoteText: "\u201cWe need a system, not more agencies.\u201d",
@@ -479,11 +526,25 @@ export const services: ServiceDetail[] = [
       ctaVariant: "light",
       arrowSrc: "/figma/services/arrow2.svg",
     },
+    // ✅ yourAsk
+    yourAsk: {
+      eyebrow: "If this sounds like your ask",
+      lines: [
+        "<strong>Growth</strong> without chaos",
+        "<strong>Performance</strong> without brand erosion",
+        "Distribution systems that <strong>scale</strong>",
+      ],
+      description:
+        "We work best with teams that value structure, clarity, and long-term thinking. If you\u2019re building something meant to scale \u2013 let\u2019s talk.",
+      ctaLabel: "Learn More",
+      ctaHref: "/contact",
+      arrowSrc: "/figma/services/arrow2.svg",
+    },
     sections: [
       {
         type: "realBrief",
         eyebrow: "The Real Brief",
-        heading: "What brands are actually asking for.",
+        heading: "What brands are actually asking for",
         description: "Behind all of this language is one common need:",
         list: [
           { accent: "accent", text: "<strong>A distribution system,<br></strong> not disconnected channels" },
@@ -500,7 +561,7 @@ export const services: ServiceDetail[] = [
         eyebrow: "The System",
         headingLines: [
           'Where <span style="color:#E21F26">growth</span> is',
-          'engineered, not assumed<span style="color:#0EC8C5">.</span>',
+          'engineered, <span style="font-weight:300; color:#787878;">not assumed</span><span style="color:#0EC8C5">.</span>',
         ],
         description: "Channels should compound \u2014 not compete with each other.",
         cards: [
@@ -574,12 +635,12 @@ export const services: ServiceDetail[] = [
         ctaHref: "/case-studies",
         cards: [
           {
-            imageSrc: "/case/c1.webp",
-            title: 'Advent <span style="color:#E21F26">Global</span>',
+            imageSrc: "/case/c3.webp",
+            title: "Advent Global",
             description:
-              "Transforming Legacy (more than 3 decades old organization) Brand Image to the New Age evolved Brand Positioning.",
+              "From ambitious startups to scaling enterprises – Digitally Next builds performance-driven creative systems that turn attention into measurable growth.",
             tag: "IT & ITES",
-            href: "/case-studies/advent-global",
+            href: "/case-studies/neotech-genomics",
           },
         ],
       },
@@ -619,7 +680,7 @@ export const services: ServiceDetail[] = [
       breadcrumb: "Services > Platforms, Web & Digital Experience.",
       titleLines: ["Platforms, Web &", "Digital Experience."],
       layout: "stacked",
-      backgroundVideo: "/services/service-hero-video.mp4",
+      backgroundVideo: "/home/service4.mp4",
       overlay:
         "linear-gradient(180deg, rgba(0,0,0,0.65) 0%, rgba(14,200,197,0.85) 100%)",
       subtitle: "Where digital foundations are built for scale",
@@ -637,35 +698,50 @@ export const services: ServiceDetail[] = [
       ctaVariant: "light",
       arrowSrc: "/figma/services/arrow1.svg",
     },
+    // ✅ yourAsk
+    yourAsk: {
+      eyebrow: "If this sounds like your ask",
+      lines: [
+        "A <strong style='font-weight:600'>web partner</strong>, not a one-off vendor",
+        "Platforms that support <strong style='font-weight:600'>performance and scale</strong>",
+        "D2C and brand <strong style='font-weight:600'>experiences</strong> that don’t feel generic",
+        "<strong style='font-weight:600'>Systems</strong> that improve over time",
+      ],
+      description:
+        "Then Platforms, Web & Digital Experience at Digitally Next is built for you.",
+      ctaLabel: "Get In Touch",
+      ctaHref: "/contact",
+      arrowSrc: "/figma/services/arrow1.svg",
+    },
     sections: [
       {
         type: "realBrief",
         eyebrow: "The Real Brief",
-        heading: "What brands are actually asking for.",
+        heading: "What brands are actually asking for",
         description:
           "Behind these requests is a clear pattern:\n\nWhat brands need isn\u2019t more content.\nThey need content systems.",
         list: [
-          { accent: "accent", text: "Websites are treated as projects,<br> not products" },
-          { accent: "alt", text: "UX is designed without<br> conversion logic" },
-          { accent: "accent", text: "Performance teams are limited<br> by poor foundations" },
-          { accent: "alt", text: "Data exists, but decisions<br> aren\u2019t trusted" },
-          { accent: "accent", text: "Platforms scale traffic,<br> but not experience" },
+          { accent: "accent", text: "Websites are treated as <strong>projects</strong>,<br> not products" },
+          { accent: "alt", text: "UX is <strong>designed</strong> without<br> conversion logic" },
+          { accent: "accent", text: "Performance teams are <strong>limited</strong><br> by poor foundations" },
+          { accent: "alt", text: "Data <strong>exists</strong>, but decisions<br> aren\u2019t trusted" },
+          { accent: "accent", text: "Platforms <strong>scale traffic</strong>,<br> but not experience" },
         ],
         highlightText:
-          'What brands really need are <span style="color:#E21F26">digital foundations</span> built to grow with them.',
+          'What brands really need are <span style="color:#0EC8C5">digital foundations</span> built to grow with them.',
       },
       {
         type: "featureGrid",
         eyebrow: "Platforms, Web & Digital Experience",
         headingLines: [
-          "Where digital foundations",
-          'are built for scale<span style="color:#0EC8C5">.</span>',
+          "<span style='font-weight:400'>Where digital foundations</span>",
+          '<span style="font-weight:400">are</span> built for <span style="color:#E21F26">scale</span><span style="color:#0EC8C5">.</span>',
         ],
         description:
-          "At Digitally Next, websites are not deliverables.\n\nThey\u2019re infrastructure.\n\nWe design and build robust, conversion-focused digital platforms that:",
+          "At Digitally Next, websites are not deliverables.\n\nThey\u2019re infrastructure.\nWe design and build robust, conversion-focused digital platforms that:",
         cards: [
           {
-            iconSrc: "/figma/services/pwde-growth.svg",
+            iconSrc: "/services/icon1.png",
             title: "Support Growth & Performance",
             description:
               "Built to enable measurable growth \u2014 aligning systems, strategy, and execution to drive sustained performance outcomes.",
@@ -677,13 +753,13 @@ export const services: ServiceDetail[] = [
               "Designed to integrate effortlessly with your existing marketing stack, ensuring data continuity, automation, and operational efficiency.",
           },
           {
-            iconSrc: "/figma/services/pwde-evolve.svg",
+            iconSrc: "/services/icon3.png",
             title: "Built to Evolve",
             description:
               "Architected for adaptability, allowing your systems and processes to scale and evolve without structural breakdowns.",
           },
           {
-            iconSrc: "/figma/services/pwde-reliability.svg",
+            iconSrc: "/services/icon4.png",
             title: "Reliability Over Quick Fixes",
             description:
               "Focused on long-term stability and performance integrity, prioritising dependable frameworks over temporary tactical wins.",
@@ -699,33 +775,33 @@ export const services: ServiceDetail[] = [
         description: "Depending on the brand and context, this typically spans:",
         items: [
           {
-            title: "Brand & Marketing Websites",
+            title: "Websites & Landing Experiences",
             description:
-              "High-performance sites built for brand authority, lead generation, and conversion \u2014 not just aesthetics.",
+              "Brand-led, performance-focused web experiences, spanning corporate sites, high-conversion landing pages, and D2C ecosystems.",
             imageSrc: "/figma/services/seo.svg",
           },
           {
-            title: "E-commerce & D2C Platforms",
+            title: "UX & Conversion Design",
             description:
-              "Full-stack commerce ecosystems built for scale \u2014 with attribution, inventory, and CX built in from day one.",
+              "Behaviour- and intent-driven user experience design, structured to reduce friction and maximise measurable conversion.",
             imageSrc: "/figma/services/seo.svg",
           },
           {
-            title: "Web Applications",
+            title: "Analytics & Tracking",
             description:
-              "Custom web apps and dashboards designed for operational efficiency, user retention, and data visibility.",
+              "GA4 architecture, event tracking, funnel mapping, and custom dashboards, ensuring decision-making is governed by clean data.",
             imageSrc: "/figma/services/seo.svg",
           },
           {
-            title: "CMS & Headless Architecture",
+            title: "CRM & Platform Integrations",
             description:
-              "Flexible, scalable content infrastructure that lets your teams move fast without breaking structure.",
+              "HubSpot and marketing stack integrations, connecting websites, automation systems, and CRM workflows seamlessly.",
             imageSrc: "/figma/services/seo.svg",
           },
           {
-            title: "Analytics & Conversion Optimisation",
+            title: "Performance Optimisation",
             description:
-              "Data pipelines, heatmaps, A/B frameworks, and CRO strategies that turn traffic into measurable outcomes.",
+              "Speed, stability, and scalable infrastructure, engineered for long-term performance, not short-term patches.",
             imageSrc: "/figma/services/seo.svg",
           },
         ],
@@ -737,12 +813,12 @@ export const services: ServiceDetail[] = [
         ctaHref: "/case-studies",
         cards: [
           {
-            imageSrc: "/case/c1.webp",
-            title: 'Advent <span style="color:#E21F26">Global</span>',
+            imageSrc: "/case/c3.webp",
+            title: "Advent Global",
             description:
-              "Transforming Legacy (more than 3 decades old organization) Brand Image to the New Age evolved Brand Positioning.",
+              "From ambitious startups to scaling enterprises – Digitally Next builds performance-driven creative systems that turn attention into measurable growth.",
             tag: "IT & ITES",
-            href: "/case-studies/advent-global",
+            href: "/case-studies/neotech-genomics",
           },
         ],
       },
@@ -782,10 +858,10 @@ export const services: ServiceDetail[] = [
       breadcrumb: "Services > Performance, Distribution & Demand.",
       titleLines: ["AI Enablement &", "Decision Systems", "(ADAC-Powered)."],
       layout: "stacked",
-      backgroundVideo: "/services/service-hero-video.mp4",
+      backgroundVideo: "/home/service5.mp4",
       overlay:
         "linear-gradient(180deg, rgba(0,0,0,0.65) 0%, rgba(226,31,38,0.88) 100%)",
-      subtitle: "Where intelligence is applied with intent, not by default",
+      subtitle: "",
       quoteLead: "We often see brands say things like this",
       quoteText:
         "\u201cEveryone is using AI \u2014 but outputs are starting to look the same.\u201d",
@@ -800,11 +876,25 @@ export const services: ServiceDetail[] = [
       ctaVariant: "light",
       arrowSrc: "/figma/services/arrow2.svg",
     },
+    // ✅ yourAsk
+    yourAsk: {
+      eyebrow: "If this sounds like your ask",
+      lines: [
+        "<strong>Exploring AI but wary of generic outputs</strong>",
+        "<strong>Scaling digital work without wanting to lose judgment</strong>",
+        "<strong>Looking for governance, not just automation</strong>",
+      ],
+      description:
+        "We work best with teams that value structure, clarity, and long-term thinking. If you\u2019re building something meant to scale \u2013 let\u2019s talk.",
+      ctaLabel: "Learn More",
+      ctaHref: "/contact",
+      arrowSrc: "/figma/services/arrow2.svg",
+    },
     sections: [
       {
         type: "realBrief",
         eyebrow: "The Real Brief",
-        heading: "What brands are actually asking for.",
+        heading: "What brands are actually asking for",
         description:
           "Across branding, content, performance, and platforms, the pattern is clear:",
         list: [
@@ -815,41 +905,35 @@ export const services: ServiceDetail[] = [
           { accent: "accent", text: "<strong>Accountability</strong> becomes<br> blurry" },
         ],
         highlightText:
-          'What brands need isn\u2019t more AI tools. They need a <span style="color:#E21F26">system that decides how intelligence is applied.</span>',
+          'What brands need isn\u2019t more AI tools. They need a <span style="color:#0EC8C5">system that decides how intelligence is applied.</span>',
       },
       {
         type: "featureGrid",
         eyebrow: "AI Enablement & Decision Systems",
         headingLines: [
-          "How intelligence accelerates",
-          'everything we do<span style="color:#0EC8C5">.</span>',
+          "<span style='font-weight:400'>How intelligence</span> <span style='color:#E21F26'>accelerates</span>",
+          'everything we do',
         ],
         description:
-          "At Digitally Next, AI is not treated as a capability.\n\nIt\u2019s treated as a <strong>governed layer.</strong>\n\nWe apply AI through a decision-first practice that determines:",
+          "At Digitally Next, AI is not treated as a capability.\n\nIt\u2019s treated as a <strong>governed layer.</strong>\nWe apply AI through a decision-first practice that determines:",
         cards: [
           {
-            iconSrc: "/figma/services/adac-should-ai.svg",
+            iconSrc: "/services/icon6.png",
             title: "Should AI Be Used Here?",
             description:
               "Evaluate where AI genuinely adds value, applying it intentionally rather than by default.",
           },
           {
-            iconSrc: "/figma/services/adac-human-judgment.svg",
+            iconSrc: "/services/icon2.png",
             title: "Human Judgment as Governance",
             description:
               "Define the level of human oversight required, ensuring strategy, ethics, and contextual nuance remain intact.",
           },
           {
-            iconSrc: "/figma/services/adac-outcomes.svg",
+            iconSrc: "/services/icon7.png",
             title: "AI with Defined Outcomes",
             description:
               "Authority-building through earned media, strategic placements, and narrative-led distribution.",
-          },
-          {
-            iconSrc: "/figma/services/adac-ugc.svg",
-            title: "UGC & Influencer Conversion",
-            description:
-              "Creator-led content designed for conversion, not just reach \u2014 with full attribution governance.",
           },
         ],
       },
@@ -857,8 +941,7 @@ export const services: ServiceDetail[] = [
         type: "scope",
         eyebrow: "Scope",
         heading: 'How this is applied<span style="color:#0EC8C5">.</span>',
-        description:
-          "AI enablement at DigitallyNext cuts across:",
+        description: "AI enablement at DigitallyNext cuts across:",
         items: [
           {
             title: "Branding",
@@ -893,12 +976,12 @@ export const services: ServiceDetail[] = [
         ctaHref: "/case-studies",
         cards: [
           {
-            imageSrc: "/case/c1.webp",
-            title: 'Advent <span style="color:#E21F26">Global</span>',
+            imageSrc: "/case/c3.webp",
+            title: "Advent Global",
             description:
-              "Transforming Legacy (more than 3 decades old organization) Brand Image to the New Age evolved Brand Positioning.",
+              "From ambitious startups to scaling enterprises – Digitally Next builds performance-driven creative systems that turn attention into measurable growth.",
             tag: "IT & ITES",
-            href: "/case-studies/advent-global",
+            href: "/case-studies/neotech-genomics",
           },
         ],
       },
@@ -909,7 +992,6 @@ export const services: ServiceDetail[] = [
       buttonHref: "/contact",
     },
   },
-
 ];
 
 export function getServiceBySlug(slug: string): ServiceDetail | undefined {

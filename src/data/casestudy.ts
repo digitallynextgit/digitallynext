@@ -757,7 +757,7 @@ export const caseStudies: CaseStudy[] = [
         linkHref: "/case-studies",
       },
       relatedCaseStudies: [
-         {
+        {
           imageSrc: "/case/c3.webp",
           title: "Advent Global",
           description:
@@ -923,7 +923,7 @@ export const caseStudies: CaseStudy[] = [
         linkHref: "/case-studies",
       },
       relatedCaseStudies: [
-         {
+        {
           imageSrc: "/case/c3.webp",
           title: "Advent Global",
           description:
@@ -1090,7 +1090,7 @@ export const caseStudies: CaseStudy[] = [
         linkHref: "/case-studies",
       },
       relatedCaseStudies: [
-         {
+        {
           imageSrc: "/case/c3.webp",
           title: "Advent Global",
           description:
@@ -1256,7 +1256,7 @@ export const caseStudies: CaseStudy[] = [
         linkHref: "/case-studies",
       },
       relatedCaseStudies: [
-         {
+        {
           imageSrc: "/case/c3.webp",
           title: "Advent Global",
           description:
@@ -1440,7 +1440,7 @@ export const caseStudies: CaseStudy[] = [
         linkHref: "/case-studies",
       },
       relatedCaseStudies: [
-         {
+        {
           imageSrc: "/case/c3.webp",
           title: "Advent Global",
           description:

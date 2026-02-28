@@ -1,12 +1,14 @@
-import type { ServiceDetail, ServiceSection } from "@/data/services";
+import { getServiceBySlug, type ServiceDetail, type ServiceSection } from "@/data/services";
 import FeatureGridSection from "./FeatureGridSection";
 import HeroSection from "./HeroSection";
 import RealBriefSection from "./RealBriefSection";
 import ADAC from "../sections/ADAC";
+import SADAC from "./SADAC";
 import ScopeSection from "./ScopeSection";
 import HowWeOperate from "../sections/HowWeOperate";
 import YourAskSection from "./YourAskSection";
 import CaseStudySection from "./CaseStudySection";
+import { notFound } from "next/navigation";
 
 type Props = {
   service: ServiceDetail;
@@ -17,6 +19,9 @@ export default function ServiceDetailPage({ service }: Props) {
     (s): s is Extract<ServiceSection, { type: "caseStudy" }> =>
       s.type === "caseStudy"
   );
+  const servicess = getServiceBySlug(service.slug);
+  if (!servicess) notFound();
+
   return (
     <main>
       <HeroSection hero={service.hero} theme={service.theme} />
@@ -32,16 +37,14 @@ export default function ServiceDetailPage({ service }: Props) {
         }
         return null;
       })}
-      <ADAC />
+
+      {service.slug === "ai-enablement" ? <SADAC /> : <ADAC />}
+
       <HowWeOperate theme="dark" />
-      <YourAskSection />
+      <YourAskSection yourAsk={servicess.yourAsk} />
       {caseStudySection && (
-        <CaseStudySection
-          section={caseStudySection}
-          theme={service.theme}
-        />
+        <CaseStudySection section={caseStudySection} theme={service.theme} />
       )}
     </main>
   );
 }
-

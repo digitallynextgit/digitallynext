@@ -12,12 +12,11 @@ export default function CaseStudySection({ section, theme }: Props) {
         <section
             style={{
                 backgroundColor: "#FAFAFA",
-                borderTop: "1px solid rgba(0,0,0,0.1)",
                 borderBottom: "1px solid rgba(0,0,0,0.1)",
             }}
         >
             {/* Outer: max 1440px | Desktop: px-[264px] py-[88px] */}
-            <div className="w-full max-w-[1440px] mx-auto px-8 py-14 sm:px-12 sm:py-16 lg:px-[264px] lg:py-[88px]">
+            <div className="w-full max-w-[1280px] mx-auto px-8 py-10 sm:px-12 md:py-16  lg:py-20">
 
                 {/* Outer column: gap 56px (between header row and card) */}
                 <div className="flex flex-col gap-14">
@@ -29,7 +28,7 @@ export default function CaseStudySection({ section, theme }: Props) {
                 - CTA: w-[219px]
               Mobile: flex-col, gap-6
           ── */}
-                    <div className="flex flex-col gap-6 lg:flex-row lg:items-center">
+                    <div className="flex flex-col gap-6 lg:flex-row w-full lg:justify-between">
 
                         {/* Heading: 44px bold, line-height 51px */}
                         <h2
@@ -76,7 +75,7 @@ export default function CaseStudySection({ section, theme }: Props) {
                             </svg>
 
                             <span
-                                className="text-black group-hover:opacity-70 transition-opacity"
+                                className="text-black group-hover:opacity-70 transition-opacity mt-1"
                                 style={{
                                     fontSize: "22px",
                                     lineHeight: "33px",
@@ -160,14 +159,14 @@ function CardContent({ card }: CardContentProps) {
                 <div className="flex flex-col" style={{ gap: "13.6px" }}>
 
                     {/* Title: 44.8px bold, supports HTML accent */}
-                    <h3
+                    {/* <h3
                         className="font-bold text-black"
                         style={{
                             fontSize: "clamp(28px, 3.12vw, 44.8px)",
                             lineHeight: "58px",
                         }}
                         dangerouslySetInnerHTML={{ __html: card.title }}
-                    />
+                    /> */}
 
                     {/* Description: 22.58px weight 300 #787878 */}
                     <p
@@ -177,13 +176,14 @@ function CardContent({ card }: CardContentProps) {
                             fontWeight: 300,
                             color: "#787878",
                         }}
+                        className="hover:text-[#E21F26]"
                     >
                         {card.description}
                     </p>
                 </div>
 
                 {/* Tag Pill: border 0.8px red, radius 26.24px */}
-                <div
+                {/* <div
                     className="inline-flex items-center justify-center self-start"
                     style={{
                         padding: "13.12px 19.68px",
@@ -201,7 +201,7 @@ function CardContent({ card }: CardContentProps) {
                     >
                         {card.tag}
                     </span>
-                </div>
+                </div> */}
 
             </div>
         </>

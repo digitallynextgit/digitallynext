@@ -1,128 +1,96 @@
 import Image from "next/image";
 import Link from "next/link";
+import type { ServiceYourAsk } from "@/data/services";
+import LiquidEther from "@/app/contact/LiquidEther"; // ✅ adjust path if moved to shared location
 
-export default function YourAskSection() {
+type Props = {
+    yourAsk: ServiceYourAsk;
+};
+
+export default function YourAskSection({ yourAsk }: Props) {
+    const {
+        eyebrow = "If this sounds like your ask",
+        lines,
+        description,
+        ctaLabel = "Learn More",
+        ctaHref = "/contact",
+        arrowSrc = "/figma/services/arrow2.svg",
+    } = yourAsk;
+
     return (
-        <section className="w-full bg-white">
-
-            {/* Outer: max 1440px, padding 144px 126px per Figma */}
-            <div className="w-full max-w-[1440px] mx-auto px-6 py-16 sm:px-12 sm:py-24 lg:px-[126px] lg:py-[144px]">
-
-                {/* Frame 158: all content, centered, gap 56px */}
+        <section className="relative w-full overflow-hidden min-h-[70vh] flex items-center bg-white">
+            <div className="absolute inset-0 z-0">
+                <LiquidEther
+                    colors={["#5227FF", "#FF9FFC", "#B19EEF"]}
+                    mouseForce={20}
+                    cursorSize={100}
+                    isViscous
+                    viscous={30}
+                    iterationsViscous={32}
+                    iterationsPoisson={32}
+                    resolution={0.5}
+                    isBounce={false}
+                    autoDemo
+                    autoSpeed={0.5}
+                    autoIntensity={2.2}
+                    takeoverDuration={0.25}
+                    autoResumeDelay={3000}
+                    autoRampDuration={0.6}
+                    style={{ width: "100%", height: "100%" }}
+                />
+            </div>
+            <div className="relative z-10 w-full max-w-[1280px] mx-auto px-6 py-16 sm:px-12 md:py-20 lg:px-[126px] lg:py-24">
                 <div className="flex flex-col items-center gap-14">
 
-                    {/* Frame 157: eyebrow + text block, gap 56px */}
-                    <div className="flex flex-col items-center gap-14 w-full max-w-[900px]">
+                    {/* Eyebrow + text block */}
+                    <div className="flex flex-col items-center w-full">
 
                         {/* Eyebrow */}
-                        <p
-                            className="text-center font-medium uppercase"
-                            style={{
-                                fontSize: "16px",
-                                lineHeight: "21px",
-                                letterSpacing: "3px",
-                                color: "#E21F26",
-                            }}
-                        >
-                            If this sounds like your ask
+                        <p className="text-center font-medium uppercase text-[16px] leading-[21px] tracking-[3px] text-[#E21F26]">
+                            {eyebrow}
                         </p>
 
-                        {/* Frame 156: text lines + description, gap 56px */}
+                        <div className="text-[#787878] mt-14 mb-4 font-bold text-lg">
+                            If you’re looking for:
+                        </div>
                         <div className="flex flex-col items-center gap-14 w-full">
-
-                            {/* 3 text lines — gap 12px desktop, 24px mobile */}
+                            {/* Lines */}
                             <div className="flex flex-col items-center gap-6 lg:gap-3 w-full">
-
-                                {/* Line 1: Growth (extrabold) + without chaos (light) */}
-                                <p
-                                    className="text-center w-full text-black"
-                                    style={{
-                                        fontSize: "clamp(32px, 8vw, 48px)",
-                                        lineHeight: "1.2",
-                                        fontWeight: 300,
-                                    }}
-                                >
-                                    <span style={{ fontWeight: 800 }}>Growth</span>
-                                    {" "}without chaos
-                                </p>
-
-                                {/* Line 2: Performance (extrabold) + without brand erosion (light) */}
-                                <p
-                                    className="text-center w-full text-black"
-                                    style={{
-                                        fontSize: "clamp(32px, 8vw, 48px)",
-                                        lineHeight: "1.2",
-                                        fontWeight: 300,
-                                    }}
-                                >
-                                    <span style={{ fontWeight: 800 }}>Performance</span>
-                                    {" "}without brand erosion
-                                </p>
-
-                                {/* Line 3: Distribution systems that (light) + scale (extrabold) */}
-                                <p
-                                    className="text-center w-full text-black"
-                                    style={{
-                                        fontSize: "clamp(32px, 8vw, 48px)",
-                                        lineHeight: "1.2",
-                                        fontWeight: 300,
-                                    }}
-                                >
-                                    Distribution systems that{" "}
-                                    <span style={{ fontWeight: 800 }}>scale</span>
-                                </p>
+                                {lines.map((line, i) => (
+                                    <p
+                                        key={i}
+                                        className="text-center w-full text-[#111111] font-light"
+                                        style={{ fontSize: "clamp(32px, 8vw, 48px)", lineHeight: "1.2" }}
+                                        dangerouslySetInnerHTML={{ __html: line }}
+                                    />
+                                ))}
                             </div>
 
-                            {/* Description: 18px, weight 300, centered, max-width 600px */}
-                            <p
-                                className="text-center max-w-[600px] mx-auto"
-                                style={{
-                                    fontSize: "18px",
-                                    lineHeight: "31px",
-                                    fontWeight: 300,
-                                    color: "#787878",
-                                }}
-                            >
-                                We work best with teams that value structure, clarity, and
-                                long-term thinking. If you&apos;re building something meant to
-                                scale &ndash; let&apos;s talk.
+                            {/* Description */}
+                            <p className="text-center mx-auto text-[18px] leading-[31px] font-light text-[#555555]">
+                                {description}
                             </p>
 
                         </div>
                     </div>
 
-                    {/* CTA: ↳ arrow (teal) + "Learn More" (red) */}
+                    {/* CTA */}
                     <Link
-                        href="/contact"
-                        className="flex flex-row items-center transition-opacity hover:opacity-75"
-                        style={{ gap: "15px" }}
+                        href={ctaHref}
+                        className="group flex flex-row items-center gap-[15px] no-underline"
                     >
-                        <Image
-                            src="/figma/services/arrow2.svg"
-                            alt="Arrow right"
-                            width={36}
-                            height={17}
-                            style={{
-                                stroke: "#0EC8C5",
-                                strokeWidth: "2.87",
-                                strokeLinecap: "round",
-                                strokeLinejoin: "round",
-                            }}
-                        />
-
-                        {/* "Learn More" */}
-                        <span
-                            style={{
-                                fontSize: "24px",
-                                lineHeight: "31px",
-                                fontWeight: 400,
-                                color: "#E21F26",
-                            }}
-                        >
-                            Learn More
+                        <span className="transition-transform duration-300 ease-out group-hover:-translate-x-2">
+                            <Image
+                                src={arrowSrc}
+                                alt="Arrow right"
+                                width={36}
+                                height={17}
+                            />
+                        </span>
+                        <span className="text-[24px] leading-[31px] font-normal text-[#E21F26] transition-opacity duration-200 group-hover:opacity-75">
+                            {ctaLabel}
                         </span>
                     </Link>
-
                 </div>
             </div>
         </section>

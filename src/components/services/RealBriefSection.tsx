@@ -9,7 +9,7 @@ export default function RealBriefSection({ section, theme }: Props) {
   const bg = theme.bodyText === "#000000" ? "#FFFFFF" : theme.surfaceBg;
 
   return (
-    <section className="py-30" style={{ backgroundColor: bg, color: theme.bodyText }}>
+    <section className="py-10 md:py-16 lg:py-20" style={{ backgroundColor: bg, color: theme.bodyText }}>
       <div className="container py-16 sm:py-20 lg:py-[120px]">
 
         {/* ── Two-column row ── */}
@@ -26,6 +26,7 @@ export default function RealBriefSection({ section, theme }: Props) {
 
             <h2 className="mt-5 font-extrabold leading-[1.05] tracking-[-0.03em] text-[36px] sm:text-[48px] lg:text-[60px]">
               {section.heading}
+              <span className="text-[#E21F26]">.</span>
             </h2>
 
             <p

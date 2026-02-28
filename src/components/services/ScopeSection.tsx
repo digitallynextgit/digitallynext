@@ -10,7 +10,7 @@ export default function ScopeSection({ section, theme }: Props) {
     return (
         <section style={{ backgroundColor: "#000000", color: "#FFFFFF" }}>
             {/* Outer: max 1440px — padding: 144px 120px 0 per Figma */}
-            <div className="w-full max-w-[1440px] mx-auto px-6 py-14 sm:px-10 sm:py-20 lg:px-[120px] lg:py-[144px]">
+            <div className="w-full max-w-[1440px] mx-auto px-6 py-10 sm:px-10 md:py-16 lg:px-[120px] lg:py-20">
 
                 {/* Inner: max 1200px — gap 72px between header and list */}
                 <div className="max-w-[1200px] mx-auto flex flex-col gap-12 lg:gap-[72px]">
@@ -126,6 +126,19 @@ export default function ScopeSection({ section, theme }: Props) {
                         ))}
                     </div>
 
+                    {/* ── Footer Text ── */}
+                    {section.footerText && (
+                        <p
+                            className="text-[#E5E5E5] text-start"
+                            style={{
+                                fontSize: "24px",
+                                lineHeight: "27px",
+                                fontWeight: 300,
+                                whiteSpace: "pre-line",
+                            }}
+                            dangerouslySetInnerHTML={{ __html: section.footerText }}
+                        />
+                    )}
                 </div>
             </div>
         </section>

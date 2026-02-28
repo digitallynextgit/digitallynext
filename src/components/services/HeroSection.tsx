@@ -1,5 +1,8 @@
+'use client';
+
 import Link from "next/link";
 import Image from "next/image";
+import { motion } from "framer-motion";
 import type { ServiceHeroSection, ServiceTheme } from "@/data/services";
 
 type Props = {
@@ -21,54 +24,114 @@ export default function HeroSection({ hero, theme }: Props) {
         : theme.heroText;
 
   return (
-    <section className="relative overflow-hidden min-h-screen" style={{ backgroundColor: theme.heroBg, color: theme.heroText }}>
+    <section
+      className={[
+        "overflow-hidden relative",
+        "flex items-center md:items-end",
+        "py-10 md:pt-16 lg:pt-20",
+      ].join(" ")}
+      style={{
+        height: "clamp(600px, 100vh, 1500px)",
+        backgroundColor: theme.heroBg,
+        color: theme.heroText,
+      }}
+    >
       {hero.backgroundVideo ? (
-        <div className="absolute inset-0">
-          <video src={hero.backgroundVideo} autoPlay muted loop playsInline className="absolute inset-0 h-full w-full object-cover" />
-          <div className="absolute inset-0" style={{ background: hero.overlay ?? "rgba(0,0,0,0.6)" }} />
+        <div className="absolute inset-0 z-0 overflow-hidden">
+          <video
+            src={hero.backgroundVideo}
+            autoPlay
+            muted
+            loop
+            playsInline
+            style={{
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+              minWidth: "100%",
+              minHeight: "100%",
+              width: "auto",
+              height: "auto",
+              objectFit: "cover",
+            }}
+          />
+          <div
+            className="absolute inset-0 z-[1]"
+            style={{ background: hero.overlay ?? "rgba(0,0,0,0.6)" }}
+          />
         </div>
       ) : hero.backgroundImage ? (
-        <div className="absolute inset-0">
-          <Image src={hero.backgroundImage} alt="" fill className="object-cover" priority />
-          <div className="absolute inset-0" style={{ background: hero.overlay ?? "rgba(0,0,0,0.6)" }} />
+        <div className="absolute inset-0 z-0">
+          <Image
+            src={hero.backgroundImage}
+            alt=""
+            fill
+            className="object-cover object-center"
+            priority
+          />
+          <div className="absolute inset-0 z-1 bg-linear-to-b from-black/10 via-black/30 to-black/65" />
         </div>
       ) : hero.overlay ? (
-        <div className="absolute inset-0" style={{ background: hero.overlay }} />
+        <div className="absolute inset-0 z-0" style={{ background: hero.overlay }} />
       ) : null}
 
-      <div className="relative container ">
+      <div className="relative z-2 px-6 md:px-12 w-full max-w-[1280px] mx-auto">
         <div className={isCentered ? "mx-auto max-w-[920px] text-center" : "max-w-[1104px]"}>
-          <div className="mt-24 md:mt-28 text-[10px] font-medium tracking-[0.1875em] uppercase underline underline-offset-4 whitespace-pre-line" style={{ color: theme.heroMutedText }}>
-            {hero.breadcrumb}
-          </div>
 
-          <div className="mt-6 sm:mt-8">
+          {/* Breadcrumb */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="mt-0 text-[10px] font-medium tracking-[0.1875em] uppercase underline underline-offset-4 whitespace-pre-line"
+            style={{ color: theme.heroMutedText }}
+          >
+            {hero.breadcrumb}
+          </motion.div>
+
+          {/* Title */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="mt-6 sm:mt-8"
+          >
             <h1 className="font-bold tracking-[-0.025em] leading-[1.05] text-[36px] sm:text-[48px] lg:text-[96px]">
               {hero.titleLines.map((line, idx) => (
-                <span key={idx} className="block">
-                  {line}
-                </span>
+                <span key={idx} className="block">{line}</span>
               ))}
             </h1>
 
-            {hero.subtitle ? (
-              <p className="mt-4 sm:mt-6 text-sm sm:text-base lg:text-lg" style={{ color: theme.heroMutedText }}>
+            {hero.subtitle && (
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.35 }}
+                className="mt-4 sm:mt-6 text-sm sm:text-base lg:text-lg"
+                style={{ color: theme.heroMutedText }}
+              >
                 {hero.subtitle}
-              </p>
-            ) : null}
-          </div>
+              </motion.p>
+            )}
+          </motion.div>
 
-          <div className="mt-8 sm:mt-10 space-y-1">
-            {hero.quoteLead ? (
-              <div className="text-[11px] sm:text-xs lg:text-sm font-semibold tracking-[0.1875em] uppercase" style={{ color: theme.heroText }}>
-                {hero.quoteLead}
-              </div>
-            ) : null}
-
-            <div className="text-base sm:text-lg lg:text-2xl font-semibold leading-relaxed" style={{ color: quoteColor, textShadow: hero.quoteShadow }}>
+          {/* Quote + Body + CTA */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+            className="mt-8 sm:mt-10 space-y-1"
+          >
+            {/* Quote */}
+            <div
+              className="text-base sm:text-lg lg:text-2xl font-semibold leading-relaxed"
+              style={{ color: quoteColor, textShadow: hero.quoteShadow }}
+            >
               {hero.quoteText}
             </div>
 
+            {/* Body paragraphs */}
             <div className="flex flex-col mt-5">
               {hero.body.map((p, idx) => (
                 <p
@@ -80,17 +143,25 @@ export default function HeroSection({ hero, theme }: Props) {
               ))}
             </div>
 
-            <div className={`pt-2 ${isCentered ? "flex justify-center" : ""}`}>
+            {/* CTA — same hover pattern as homepage */}
+            <div className={`pt-2 md:pt-4 lg:pt-7 ${isCentered ? "flex justify-center" : ""}`}>
               <Link
                 href={hero.ctaHref}
-                className="inline-flex items-center gap-3 text-[11px] sm:text-xs lg:text-base font-semibold tracking-[0.1875em] capitalize transition-opacity hover:opacity-75"
-                style={{ color: ctaTextColor }}
+                className="group inline-flex items-center gap-3 no-underline"
               >
-                <Image src={hero.arrowSrc!} alt="" width={30} height={20} />
-                <span className="">{hero.ctaLabel}</span>
+                <span className="transition-transform duration-300 ease-out group-hover:-translate-x-2">
+                  <Image src={hero.arrowSrc!} alt="" width={30} height={20} />
+                </span>
+                <span
+                  className="capitalize font-normal text-xl mt-1 transition-colors duration-200 group-hover:text-[#E21F26]"
+                  style={{ color: ctaTextColor }}
+                >
+                  {hero.ctaLabel}
+                </span>
               </Link>
             </div>
-          </div>
+          </motion.div>
+
         </div>
       </div>
     </section>

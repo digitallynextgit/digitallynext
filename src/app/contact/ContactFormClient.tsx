@@ -150,7 +150,7 @@ export default function ContactFormClient() {
 
       <button
         type="submit"
-        className="inline-flex items-center gap-4 text-base sm:text-lg font-semibold tracking-[0.08em] uppercase text-[#111111] transition group"
+        className="inline-flex items-center gap-4 sm:text-lg font-semibold tracking-[0.08em] capitalize text-lg text-[#111111] transition group cursor-pointer"
         style={{ fontFamily: "Stack Sans Text" }}
         disabled={isSubmitting}
       >
@@ -162,7 +162,9 @@ export default function ContactFormClient() {
           style={{ transform: "scaleX(1)" }}
           className="transition-transform duration-300 group-hover:-translate-x-2"
         />
-        Inquire Now
+        <span className="mt-1 hover:text-[#E21F26]">
+          Inquire Now
+        </span>
       </button>
     </form>
   );

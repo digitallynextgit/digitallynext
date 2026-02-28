@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import LiquidEther from "./LiquidEther";
 import ContactFormClient from "./ContactFormClient";
+import Image from "next/image";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Contact Us | Digitally Next",
@@ -146,18 +148,22 @@ export default function ContactPage() {
                 >
                   Connect
                 </div>
-                <a
-                  href="https://www.linkedin.com"
+                <Link
+                  href="https://www.linkedin.com/company/digitallynext/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 text-white text-base sm:text-lg font-semibold"
                   style={{ fontFamily: "Stack Sans Text" }}
                 >
-                  <span className="inline-flex items-center justify-center w-5 h-5 rounded-sm border border-white/30 text-[12px] leading-none">
-                    in
-                  </span>
+                  <Image 
+                    src={'/linkedin.png'}
+                    alt="linkedin"
+                    height={15}
+                    width={15}
+                    className=""
+                  />
                   LinkedIn
-                </a>
+                </Link>
               </div>
             </div>
           </div>
@@ -210,7 +216,7 @@ export default function ContactPage() {
 
             <a
               href="#contact-form"
-              className="mt-10 inline-flex items-center justify-center border border-[#E21F26] px-10 py-4 text-[11px] sm:text-xs font-semibold tracking-[0.22em] uppercase text-[#111111] bg-white/90 backdrop-blur-sm transition hover:bg-[#E21F26] hover:text-white"
+              className="mt-10 inline-flex items-center justify-center border border-[#E21F26] px-10 py-4 text-[11px] sm:text-xs font-semibold tracking-[0.22em] uppercase text-[#111111] bg-transparent backdrop-blur-sm transition hover:bg-[#E21F26] hover:text-white"
               style={{ fontFamily: "Stack Sans Text" }}
             >
               Start a conversation
