@@ -8,7 +8,7 @@ export default function CTASection() {
   return (
     <section
       id="contact"
-      className="relative overflow-hidden w-screen -mx-[calc((100vw-100%)/2)] py-24 md:py-32"
+      className="relative overflow-hidden w-screen -mx-[calc((100vw-100%)/2)] py-10 md:py-16 lg:py-20"
       style={{ background: "#000000" }}
     >
       {/* Video background */}

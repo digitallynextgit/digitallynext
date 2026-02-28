@@ -3,16 +3,16 @@ import Link from "next/link";
 
 const navItems = [
   { label: "Home", href: "/" },
-//   { label: "Blog", href: "/blog" },
+  //   { label: "Blog", href: "/blog" },
   { label: "Contact", href: "/contact" },
   { label: "About", href: "#about" },
   { label: "Case Studies", href: "#case-studies" },
 ];
 
 const socialItems = [
-  { label: "Instagram", href: "https://instagram.com" },
-  { label: "YouTube", href: "https://youtube.com" },
-  { label: "LinkedIn", href: "https://linkedin.com" },
+  { label: "Instagram", href: "https://instagram.com/digitallynext" },
+  { label: "YouTube", href: "https://www.youtube.com/@digitallynext" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/company/digitallynext/" },
 ];
 
 export default function Footer() {
@@ -20,7 +20,7 @@ export default function Footer() {
     <footer className="bg-black border-t border-white/8">
       {/* Main footer content */}
       <div className="w-full py-16 md:py-20 px-4">
-        <div className="max-w-6xl mx-auto mb-12">
+        <div className="max-w-7xl mx-auto mb-12">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16 lg:gap-24 xl:gap-62">
             {/* Left — Tagline */}
             <div className="text-center md:text-left">
@@ -58,7 +58,7 @@ export default function Footer() {
                   <li key={item.label}>
                     <Link
                       href={item.href}
-                      className="text-lg font-light text-gray-300 hover:text-white transition-colors duration-200"
+                      className="text-lg font-light text-white/70 hover:text-white transition-colors duration-200"
                       style={{ fontFamily: "Stack Sans Text" }}
                     >
                       {item.label}
@@ -83,7 +83,7 @@ export default function Footer() {
                       href={item.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-lg font-light text-gray-300 hover:text-white transition-colors duration-200"
+                      className="text-lg font-light text-white/70 hover:text-white transition-colors duration-200"
                       style={{ fontFamily: "Stack Sans Text" }}
                     >
                       {item.label}
@@ -96,14 +96,14 @@ export default function Footer() {
         </div>
 
         {/* Divider + Bottom row */}
-        <div className="border-t border-white/8 pt-6 max-w-6xl mx-auto">
+        <div className="border-t border-white/8 pt-6 max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16 lg:gap-24 xl:gap-72 items-center">
             {/* Left — Copyright */}
             <span
               className="lg:text-lg text-sm text-white/80 text-center md:text-left block xl:whitespace-nowrap"
               style={{ fontFamily: "Stack Sans Text" }}
             >
-              © 2026 Digitally Next. All Rights Reserved.
+              © {new Date(Date.now()).getFullYear()} Digitally Next. All Rights Reserved.
             </span>
 
             {/* Center — Terms of Use */}

@@ -6,170 +6,73 @@ export default function CaseStudiesHero() {
   const featuredCaseStudy = caseStudies[0];
 
   return (
-    <section
-      style={{
-        background: "#FFFFFF",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        paddingBottom: 0,
-        gap: 47,
-        width: "100%",
-      }}
-      className="py-12 md:py-16 lg:py-24"
-    >
-      {/* Top text block — centered */}
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          padding: "32px 0",
-          gap: 56,
-          width: "100%",
-          maxWidth: 848,
-          textAlign: "center",
-        }}
-      >
-        <h1
-          style={{
-            fontSize: "clamp(2rem, 5vw, 4rem)",
-            fontWeight: 200,
-            lineHeight: 1.25,
-            textAlign: "center",
-            letterSpacing: "-2.0385px",
-            color: "#000000",
-            margin: 0,
-          }}
-        >
+    <section className="bg-white flex flex-col items-center gap-[47px] w-full py-10 md:py-16 lg:py-20">
+
+      {/* Top text block */}
+      <div className="mt-10 flex flex-col items-center py-8 gap-14 w-full max-w-[848px] text-center px-4">
+        <h1 className="text-[clamp(2rem,5vw,4rem)] font-extralight leading-tight text-center tracking-[-2.0385px] text-black m-0">
           We help brands show up{" "}
           <br />
-          <span style={{ fontWeight: 500 }}>where world is watching</span>
-          <span style={{ color: "#0EC8C5" }}>.</span>
+          <span className="font-medium">where world is watching</span>
+          <span className="text-[#0EC8C5]">.</span>
         </h1>
 
-        <p
-          style={{
-            maxWidth: 803,
-            fontWeight: 300,
-            fontSize: 18,
-            lineHeight: "31px",
-            textAlign: "center",
-            color: "#737373",
-            margin: 0,
-          }}
-        >
+        <p className="max-w-[803px] font-light text-[18px] leading-[31px] text-center text-[#737373] m-0">
           {featuredCaseStudy?.listing.introText ??
             "From ambitious startups to scaling enterprises — Digitally Next builds performance-driven creative systems that turn attention into measurable growth."}
         </p>
       </div>
 
-      {/* Featured case study block */}
+      {/* Featured case study */}
       {featuredCaseStudy && (
-        <Link
-          href={`/case-studies/${featuredCaseStudy.slug}`}
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "flex-start",
-            gap: 41,
-            width: "100%",
-            maxWidth: 937,
-            paddingBottom: 80,
-            paddingLeft: 16,
-            paddingRight: 16,
-          }}
-        >
-          {/* Case study image */}
-          <div
-            style={{
-              width: "100%",
-              borderRadius: 5.39,
-              overflow: "hidden",
-              boxShadow: "0 24px 80px rgba(0,0,0,0.10)",
-            }}
+        <div className="flex flex-col items-start gap-4" >
+          <Link
+            href={`/case-studies/${featuredCaseStudy.slug}`}
+            className="flex flex-col items-start gap-[41px] w-full max-w-[937px] px-4"
           >
-            <Image
-              src={featuredCaseStudy.listing.imageSrc}
-              alt={featuredCaseStudy.metaTitle}
-              width={1874}
-              height={1249}
-              className="w-full h-auto object-cover"
-              sizes="(max-width: 1024px) 100vw, 937px"
-              priority
-            />
-          </div>
-
-          {/* Case study info — LEFT aligned (same as image) */}
-          <div
-            style={{
-              width: "100%",
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "flex-start",
-              gap: 48,
-            }}
-          >
-            {/* Title + caption */}
-            <div
-              style={{
-                width: "100%",
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "flex-start",
-                gap: 15,
-              }}
-            >
-              {/* <h2
-                style={{
-                  fontWeight: 700,
-                  fontSize: "clamp(2rem, 4vw, 3.15rem)",
-                  lineHeight: 1.3,
-                  color: "#000000",
-                  margin: 0,
-                  textAlign: "left",
-                }}
-                dangerouslySetInnerHTML={{ __html: featuredCaseStudy.listing.title }}
-              /> */}
-              <p
-                style={{
-                  fontWeight: 300,
-                  fontSize: 24,
-                  lineHeight: "31px",
-                  color: "#787878",
-                  margin: 0,
-                  textAlign: "left",
-                }}
-              >
-                {featuredCaseStudy.listing.caption}
-              </p>
+            {/* Image */}
+            <div className="w-full rounded overflow-hidden shadow-[0_24px_80px_rgba(0,0,0,0.10)]">
+              <Image
+                src={featuredCaseStudy.listing.imageSrc}
+                alt={featuredCaseStudy.metaTitle}
+                width={1874}
+                height={1249}
+                className="w-full h-auto object-cover"
+                sizes="(max-width: 1024px) 100vw, 937px"
+                priority
+              />
             </div>
 
-            {/* Pill button — left */}
-            {/* <Link
-              href={`/case-studies/${featuredCaseStudy.slug}`}
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                justifyContent: "center",
-                padding: "18px 28px",
-                border: "0.9px solid #E21F26",
-                borderRadius: 37.95,
-                fontSize: 21,
-                fontWeight: 400,
-                lineHeight: "28px",
-                color: "#000000",
-                textDecoration: "none",
-                whiteSpace: "nowrap",
-                transition: "background 0.3s ease",
-              }}
-              className="hover:bg-[#E21F26]/10"
+            {/* Info */}
+            <div className="w-full flex flex-col items-start gap-12">
+              <div className="w-full flex flex-col items-start gap-[15px]">
+                <p className="font-light text-2xl leading-[31px] text-[#787878] m-0 text-left">
+                  {featuredCaseStudy.listing.caption}
+                </p>
+              </div>
+            </div>
+          </Link>
+          <Link
+            href={`/case-studies/${featuredCaseStudy.slug}`}
+            className="group px-5 flex items-center gap-2 text-2xl font-medium no-underline"
+          >
+            <span className="text-[#E21F26] transition-transform duration-300 ease-out group-hover:-translate-x-2">
+              <Image
+                src="/icons/enter.svg"
+                alt="arrow-right"
+                width={32}
+                height={32}
+              />
+            </span>
+            <span
+              className={[
+                "mt-2 font-light text-[#787878] hover:text-[#E21F26] transition-colors duration-200",
+              ].join(" ")}
             >
-              {featuredCaseStudy.listing.pillLabel ??
-                featuredCaseStudy.listing.buttonLabel}
-            </Link> */}
-          </div>
-        </Link>
+              View Case Study
+            </span>
+          </Link>
+        </div>
       )}
     </section>
   );

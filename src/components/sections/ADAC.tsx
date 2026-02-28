@@ -4,10 +4,22 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 
+/* ===== Shared mask style ===== */
+const fadeBottomMask = {
+  WebkitMaskImage: "linear-gradient(to bottom, black 20%, transparent 100%)",
+  maskImage: "linear-gradient(to bottom, black 20%, transparent 100%)",
+};
+
+const mobileFadeBottomMask = {
+  WebkitMaskImage: "linear-gradient(to bottom, black 30%, transparent 100%)",
+  maskImage: "linear-gradient(to bottom, black 30%, transparent 100%)",
+};
+
 /* ===== Mobile ADAC ===== */
 function MobileADAC() {
   return (
     <div className="lg:hidden">
+
       {/* Header */}
       <motion.div
         className="mb-8"
@@ -18,13 +30,7 @@ function MobileADAC() {
       >
         <h2
           className="text-[18vw] font-black leading-[0.85] tracking-tighter -mt-24"
-          style={{
-            fontFamily: "Stack Sans Text",
-            WebkitMaskImage:
-              "linear-gradient(to bottom, black 30%, transparent 100%)",
-            maskImage:
-              "linear-gradient(to bottom, black 30%, transparent 100%)",
-          }}
+          style={mobileFadeBottomMask}
         >
           <span className="text-red-500">ADAC</span>
         </h2>
@@ -36,8 +42,7 @@ function MobileADAC() {
 
       {/* Video */}
       <motion.div
-        className="relative w-full rounded-xl overflow-hidden mb-8"
-        style={{ aspectRatio: "4 / 2.8" }}
+        className="relative w-full rounded overflow-hidden mb-8 aspect-[4/2.8]"
         initial={{ opacity: 0, scale: 0.96 }}
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true, margin: "-60px" }}
@@ -62,32 +67,30 @@ function MobileADAC() {
         viewport={{ once: true, margin: "-60px" }}
         transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
       >
-        <div className="flex items-center justify-between mb-4">
+        {/* How We Use AI + Read More */}
+        <div className="flex flex-col items-start gap-4 justify-between mb-4">
           <h3 className="text-3xl font-bold text-[#1a1a1a]">How We Use AI</h3>
+          {/* Description */}
+          <p className="text-sm text-gray-500 leading-relaxed">
+            A dedicated function that governs how, where, and why AI is applied
+            across our digital work.
+          </p>
           <Link
             href="#"
-            className="group inline-flex items-center gap-2 text-black font-semibold text-sm hover:gap-3 transition-all duration-300 shrink-0"
+            className="group inline-flex items-center gap-2 text-black font-semibold text-sm hover:gap-3 transition-all duration-300 shrink-0 no-underline mb-6"
           >
-            <Image
-              src="/icons/enter.svg"
-              alt="arrow-right"
-              width={24}
-              height={24}
-            />{" "}
-            <span className="transition-colors duration-200 group-hover:text-[#E21F26]">Read More</span>
+            <Image src="/icons/enter.svg" alt="arrow-right" width={24} height={24} />
+            <span className="mt-1 transition-colors duration-200 group-hover:text-[#E21F26]">
+              Read More
+            </span>
           </Link>
         </div>
 
-        <p className="text-sm text-gray-500 leading-relaxed mb-6">
-          A dedicated function that governs how, where, and why AI is applied
-          across our digital work.
-        </p>
-
         {/* Quote Box */}
-        <div className="border border-gray-800 rounded-lg px-5 py-4 mb-8">
+        <div className="border border-gray-800 px-5 py-4 mb-8">
           <p className="text-lg text-gray-600 leading-relaxed text-center">
             Not all work needs <span className="font-normal">AI.</span>{" "}
-            <span className="font-bold bg-gradient-to-r from-black to-red-600 bg-clip-text text-transparent">
+            <span className="font-bold bg-linear-to-r from-black to-red-600 bg-clip-text text-transparent">
               Some need judgment. ADAC decides the difference.
             </span>
           </p>
@@ -104,10 +107,11 @@ function MobileADAC() {
   );
 }
 
-/* ===== Desktop ADAC (unchanged) ===== */
+/* ===== Desktop ADAC ===== */
 function DesktopADAC() {
   return (
     <div className="hidden lg:block">
+
       {/* Header */}
       <motion.div
         className="mb-12 md:mb-16"
@@ -117,21 +121,12 @@ function DesktopADAC() {
         transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
       >
         <div className="flex flex-col md:flex-row md:items-center gap-4 md:gap-6">
+          {/* ✅ clamp + mask stays inline — no Tailwind equivalent */}
           <h2
-            className="-mt-24"
-            style={{
-              fontSize: "clamp(2rem, 14vw, 14rem)",
-              fontFamily: "Stack Sans Text",
-              fontWeight: 900,
-              letterSpacing: "-0.04em",
-              lineHeight: 0.95,
-              WebkitMaskImage:
-                "linear-gradient(to bottom, black 20%, transparent 100%)",
-              maskImage:
-                "linear-gradient(to bottom, black 20%, transparent 100%)",
-            }}
+            className="-mt-24 text-[clamp(2rem,14vw,14rem)] font-black leading-[0.95] tracking-[-0.04em] text-red-500"
+            style={fadeBottomMask}
           >
-            <span className="text-red-500 ">ADAC</span>
+            ADAC
           </h2>
           <p className="text-xl md:text-2xl lg:text-5xl font-bold text-black leading-tight -translate-y-8">
             AI Decision &<br />
@@ -169,37 +164,33 @@ function DesktopADAC() {
       >
         {/* How We Use AI + Read More */}
         <div className="flex items-center justify-between mb-6">
-          <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-[#1a1a1a]">
-            <span className="text-5xl">How We Use AI</span>
-          </h3>
+          <div className="flex flex-col gap-4">
+            <h3 className="text-5xl font-bold text-[#1a1a1a]">
+              How We Use AI
+            </h3>
+            {/* Description */}
+            <p className="text-sm md:text-base text-gray-500 leading-relaxed max-w-3xl">
+              A dedicated function that governs how, where, and why AI is applied
+              across our digital work.
+            </p>
+          </div>
           <Link
             href="/services/ai-enablement"
-            className="group inline-flex items-center gap-2 text-black font-semibold !text-xl md:text-base hover:gap-3 transition-all duration-300 shrink-0"
+            className="group inline-flex items-center gap-2 text-black font-semibold text-xl hover:gap-3 transition-all duration-300 shrink-0 no-underline"
           >
-            <Image
-              src="/icons/enter.svg"
-              alt="arrow-right"
-              width={30}
-              height={30}
-            />{" "}
-            <span className="transition-colors duration-200 group-hover:text-[#E21F26]">Read More</span>
+            <Image src="/icons/enter.svg" alt="arrow-right" width={30} height={30} />
+            <span className="mt-1 transition-colors duration-200 group-hover:text-[#E21F26]">
+              Read More
+            </span>
           </Link>
         </div>
 
-        {/* Description */}
-        <p className="text-sm md:text-base text-gray-500 leading-relaxed max-w-3xl">
-          A dedicated function that governs how, where, and why AI is applied
-          across our digital work.
-        </p>
-
         {/* Quote Box */}
-        <div className="border border-gray-800 rounded-lg px-6 py-5 my-10">
-          <p className="text-sm md:text-base text-gray-600 leading-relaxed text-center">
-            <span className="text-2xl">
-              Not all work needs <span className="font-normal">AI.</span>{" "}
-              <span className="font-bold bg-gradient-to-r from-black to-red-600 bg-clip-text text-transparent">
-                Some need judgment. ADAC decides the difference.
-              </span>
+        <div className="border border-gray-800 px-6 py-5 my-10">
+          <p className="text-2xl text-gray-600 leading-relaxed text-center">
+            Not all work needs <span className="font-normal">AI.</span>{" "}
+            <span className="font-bold bg-linear-to-r from-black to-red-600 bg-clip-text text-transparent">
+              Some need judgment. ADAC decides the difference.
             </span>
           </p>
         </div>

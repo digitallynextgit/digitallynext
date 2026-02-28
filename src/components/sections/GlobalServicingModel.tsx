@@ -105,7 +105,7 @@ function MobileGSM() {
         {frameworks.map((fw, i) => (
           <motion.div
             key={fw.name}
-            className="bg-black border border-white/15 rounded-xl p-4 sm:p-5 backdrop-blur-sm"
+            className="bg-black border-2 border-white/15 rounded p-4 sm:p-5 backdrop-blur-sm"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-40px" }}
@@ -117,30 +117,30 @@ function MobileGSM() {
           >
             <div className="flex items-start gap-3 sm:gap-4">
               {/* Icon */}
-              <div className="w-12 h-12 sm:w-14 sm:h-14 flex-shrink-0 flex items-center justify-center rounded-lg">
+              <div className="w-12 h-12 sm:w-14 sm:h-14 shrink-0 flex items-center justify-center rounded">
                 {fw.icon}
               </div>
               <div className="flex-1 min-w-0">
                 <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 mb-1">
-                  <h4 className="text-base sm:text-lg font-bold text-white tracking-tight break-words">
+                  <h4 className="text-base sm:text-lg font-bold text-white tracking-tight wrap-break-words">
                     {fw.name}
                   </h4>
                   <Link
                     href="#"
-                    className="mt-0.5 sm:mt-0 inline-flex items-center gap-2 text-[#E53935] font-semibold text-[11px] sm:text-xs shrink-0 hover:gap-4 transition-all duration-300"
+                    className="mt-1 sm:mt-0 inline-flex items-center gap-2 text-[#E53935] font-semibold text-[11px] sm:text-xs shrink-0 hover:gap-4 transition-all duration-300"
                   >
                     <Image
                       src="/icons/enter.svg"
                       alt="arrow-right"
-                      width={40}
-                      height={40}
+                      width={20}
+                      height={20}
                     />
-                    <span className="text-white/70 whitespace-nowrap">
+                    <span className="text-white/70 mt-1 whitespace-nowrap text-[14px]">
                       {fw.cta}
                     </span>
                   </Link>
                 </div>
-                <p className="text-[12px] sm:text-xs text-gray-400 leading-relaxed">
+                <p className="text-[12px] mt-2 sm:text-xs text-gray-400 leading-relaxed">
                   {fw.description}
                 </p>
               </div>
@@ -205,14 +205,14 @@ function DesktopGSM() {
           <AnimatePresence mode="wait">
             <motion.div
               key={activeIndex}
-              className="bg-black border border-white rounded-2xl p-8 md:p-10 backdrop-blur-sm"
+              className="bg-black border-2 border-white/15 rounded p-8 md:p-10 backdrop-blur-sm"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
             >
               {/* Icon */}
-              <div className="mb-6 w-20 h-20 flex items-center justify-center rounded-xl bg-orange-500/10">
+              <div className="mb-6 w-20 h-20 flex items-center justify-center rounded">
                 {active.icon}
               </div>
               <div className="flex flex-row items-center justify-between">
@@ -229,10 +229,10 @@ function DesktopGSM() {
                   <Image
                     src="/icons/enter.svg"
                     alt="arrow-right"
-                    width={20}
-                    height={20}
+                    width={30}
+                    height={30}
                   />{" "}
-                  <span className="text-white whitespace-nowrap">
+                  <span className="text-white/70 mt-1 whitespace-nowrap text-lg hover:text-[#E53935]">
                     {active.cta}
                   </span>
                 </Link>
@@ -268,7 +268,7 @@ function DesktopGSM() {
 /* ===== Main Export ===== */
 export default function GlobalServicingModel() {
   return (
-    <section className="py-16 sm:py-24 md:py-32">
+    <section className="py-10 md:py-16 lg:py-20 bg-black">
       <div className="w-[92%] sm:w-[90%] lg:w-auto max-w-6xl mx-auto">
         <div className="flex justify-between items-center flex-col">
           {/* Heading */}
@@ -279,7 +279,7 @@ export default function GlobalServicingModel() {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           >
-            <h2 className="font-extrabold text-white tracking-tight leading-none">
+            <h2 className="font-extrabold text-white tracking-tight leading-none text-center">
               <span className="text-[#E53935] text-3xl sm:text-4xl md:text-6xl lg:text-7xl">
                 Global
               </span>{" "}

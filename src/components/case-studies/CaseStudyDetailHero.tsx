@@ -5,8 +5,8 @@ export default function CaseStudyDetailHero({ detail, metaTitle }: { detail: Cas
   const isLight = detail.theme === "light";
 
   return (
-    <section className="w-full pt-28 md:pt-36">
-      <div className="mx-auto w-full max-w-[1265px] px-4 sm:px-6 md:px-12">
+    <section className="w-full">
+      <div className="mx-auto w-full max-w-[1280px] px-4">
         <div className="grid grid-cols-1 lg:grid-cols-[668px_1fr] gap-10 lg:gap-[84px] lg:items-stretch">
           <div className="w-full flex flex-col gap-10 lg:gap-[72px]">
             <div className="w-full max-w-[482px] flex flex-col gap-4 lg:gap-[24px]">
@@ -31,8 +31,8 @@ export default function CaseStudyDetailHero({ detail, metaTitle }: { detail: Cas
                     <div
                       className={
                         isLight
-                          ? "text-[16px] md:text-[18px] leading-[1.3] font-normal text-black whitespace-pre-line"
-                          : "text-[16px] md:text-[18px] leading-[1.3] font-normal text-white whitespace-pre-line"
+                          ? "capitalize text-[16px] md:text-[18px] leading-[1.3] font-normal text-black whitespace-pre-line"
+                          : "capitalize text-[16px] md:text-[18px] leading-[1.3] font-normal text-white whitespace-pre-line"
                       }
                     >
                       {m.description}
@@ -43,7 +43,7 @@ export default function CaseStudyDetailHero({ detail, metaTitle }: { detail: Cas
             </div>
           </div>
 
-          <div className="relative w-full overflow-hidden rounded-[10px] aspect-[513/518] lg:aspect-auto lg:h-full">
+          <div className="relative w-full overflow-hidden rounded-[10px] aspect-513/518 lg:aspect-auto lg:h-full">
             <Image
               src={detail.hero.heroImageSrc}
               alt={metaTitle}

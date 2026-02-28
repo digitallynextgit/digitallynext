@@ -113,18 +113,18 @@ export type ServiceDetail = {
 
 export const services: ServiceDetail[] = [
   // ─────────────────────────────────────────────────────────────────────────
-  // 1. Performance, Distribution & Demand
+  // 1. Strategy, Brand & Growth Intelligence
   // ─────────────────────────────────────────────────────────────────────────
   {
-    id: "pdd",
-    slug: "seo-optimization",
-    title: "Performance, Distribution & Demand.",
+    id: "sbgi",
+    slug: "brand-strategy",
+    title: "Strategy, Brand & Growth Intelligence.",
     media: "/home/service1.png",
     sliderText:
-      "Brand & digital strategy · Positioning & GTM · Personal & founder branding · Community strategy · Podcast strategy & narrative design · Market & audience research",
-    metaTitle: "Performance, Distribution & Demand | Digitally Next",
+      "D2C market entry & growth strategy · Brand & digital strategy · Positioning & GTM · Market & audience intelligence · Founder & niche authority strategy · Community & ecosystem strategy",
+    metaTitle: "Strategy, Brand & Growth Intelligence | Digitally Next",
     metaDescription:
-      "Performance, Distribution & Demand — a system-first approach to growth that compounds across channels.",
+      "Where direction is defined before execution begins — authority-led growth strategy for D2C, B2B, and niche markets.",
     theme: {
       heroBg: "#0A0A0A",
       heroText: "#FFFFFF",
@@ -137,17 +137,20 @@ export const services: ServiceDetail[] = [
       mutedText: "#787878",
     },
     hero: {
-      breadcrumb: "Services > Performance, Distribution & Demand.",
-      titleLines: ["Performance,", "Distribution &", "Demand"],
-      layout: "centered",
+      breadcrumb: "Services > Strategy, Brand & Growth Intelligence",
+      titleLines: ["Strategy, Brand &", "Growth Intelligence."],
+      layout: "stacked",
       backgroundVideo: "/services/service-hero-video.mp4",
       overlay:
         "linear-gradient(180deg, rgba(0,0,0,0.65) 0%, rgba(226,31,38,0.88) 100%)",
-      quoteText: "\u201cWe need a system, not more agencies.\u201d",
+      subtitle: "Where direction is defined before execution begins",
+      quoteLead: "We often see brands say things like this",
+      quoteText:
+        "\u201cWe want D2C scale without becoming discount-led.\u201d",
       quoteColor: "#1BB9B4",
       body: [
-        "These are familiar conversations.",
-        "What they\u2019re really asking for is <strong>creative that performs without burning out.</strong>",
+        "These are not marketing requests.",
+        "What they\u2019re really asking for is <strong>authority-led growth, not volume.</strong>",
       ],
       ctaLabel: "Inquire Now",
       ctaHref: "/contact",
@@ -159,85 +162,97 @@ export const services: ServiceDetail[] = [
         type: "realBrief",
         eyebrow: "The Real Brief",
         heading: "What brands are actually asking for.",
-        description: "Behind all of this language is one common need:",
+        description:
+          "Across D2C and B2B, the underlying needs are clear:",
         list: [
-          { accent: "accent", text: "<strong>A distribution system,<br></strong> not disconnected channels" },
-          { accent: "alt", text: "Performance that builds <strong>authority,<br></strong> not just traffic" },
-          { accent: "accent", text: "Growth that is <strong>predictable</strong>,<br> not experimental every month" },
-          { accent: "alt", text: "SEO, paid, PR, and UGC<br> <strong>working together,</strong> not in silos" },
-          { accent: "accent", text: "Decisions driven by <strong>data and<br> context</strong>, not assumptions" },
+          { accent: "accent", text: "A <strong>clear market and audience</strong> definition" },
+          { accent: "alt", text: "Sharp <strong>positioning</strong> that doesn\u2019t<br> collapse under competition" },
+          { accent: "accent", text: "A <strong>growth path</strong> that matches<br> the business model" },
+          { accent: "alt", text: "<strong>Strategic clarity</strong> before money<br> is spent on execution" },
+          { accent: "accent", text: "Confidence that decisions<br> are <strong>informed, not fashionable</strong>" },
         ],
         highlightText:
-          'This is where fragmented execution fails, and where <span style="color:#E21F26">systems win.</span>',
+          'What brands need isn\u2019t more frameworks. They need <span style="color:#E21F26">direction they can trust.</span>',
       },
       {
         type: "featureGrid",
-        eyebrow: "The System",
+        eyebrow: "Strategy, Brand & Growth Intelligence",
         headingLines: [
-          'Where <span style="color:#E21F26">growth</span> is',
-          'engineered, not assumed<span style="color:#0EC8C5">.</span>',
+          "Where direction is defined",
+          'before execution begins<span style="color:#0EC8C5">.</span>',
         ],
-        description: "Channels should compound \u2014 not compete with each other.",
+        description:
+          "At Digitally Next, strategy is not a presentation.\n\nIt\u2019s a decision-making layer.\n\nWe help brands:",
         cards: [
           {
-            iconSrc: "/figma/services/pdd-organic-visibility.svg",
-            title: "Organic Visibility",
+            iconSrc: "/figma/services/sbgi-enter-markets.svg",
+            title: "Enter Markets with Clarity",
             description:
-              "SEO, AEO & GEO working as a unified discoverability engine \u2014 not isolated keyword plays.",
+              "Launch B2B Verticals with Credibility. Strategically enter new markets, especially D2C, with defined positioning, audience intelligence, and a clear path to revenue.",
           },
           {
-            iconSrc: "/figma/services/pdd-paid-performance.svg",
-            title: "Paid Performance",
+            iconSrc: "/figma/services/sbgi-launch-b2b.svg",
+            title: "Launch B2B Verticals with Credibility",
             description:
-              "Precision-driven media buying governed by data intelligence and attribution modelling.",
+              "Establish authority from day one, aligning narrative, proof, and go-to-market frameworks to build trust at scale.",
           },
           {
-            iconSrc: "/figma/services/pdd-digital-pr.svg",
-            title: "Digital PR",
+            iconSrc: "/figma/services/sbgi-positioning.svg",
+            title: "Define Positioning Before Scaling Spend",
             description:
-              "Authority-building through earned media, strategic placements, and narrative-led distribution.",
+              "Clarify category stance, value proposition, and differentiation \u2014 ensuring media investment amplifies a strong strategic foundation.",
           },
           {
-            iconSrc: "/figma/services/pdd-ugc-influencer.svg",
-            title: "UGC & Influencer Conversion",
+            iconSrc: "/figma/services/sbgi-align.svg",
+            title: "Align Brand, Content, Performance & Platforms",
             description:
-              "Creator-led content designed for conversion, not just reach \u2014 with full attribution governance.",
+              "Unify storytelling, distribution, and technology \u2014 creating an integrated growth engine rather than siloed execution.",
           },
         ],
+        footerText:
+          "So that every action that follows is intentional, aligned, and scalable.",
       },
       {
         type: "scope",
         eyebrow: "Scope",
         heading: 'What this includes<span style="color:#0EC8C5">.</span>',
+        description:
+          "Depending on the business model and stage, this typically spans:",
         items: [
           {
-            title: "SEO, AEO & GEO",
+            title: "D2C Market Entry & Growth Strategy",
             description:
-              "Search engine optimisation, answer engine optimisation, and generative engine optimisation, unified discoverability.",
+              "End-to-end go-to-market and growth frameworks, spanning validation, positioning, acquisition, retention, and scalable performance.",
             imageSrc: "/figma/services/seo.svg",
           },
           {
-            title: "Paid Media",
+            title: "Brand & Digital Strategy",
             description:
-              "Performance media buying across search, social, and programmatic, governed by attribution and ROI frameworks.",
+              "Business-aligned brand and digital architecture \u2014 ensuring narrative, platforms, and performance drive measurable outcomes.",
             imageSrc: "/figma/services/seo.svg",
           },
           {
-            title: "UGC",
+            title: "Positioning & GTM Frameworks",
             description:
-              "User-generated content strategy and production, creator-led assets built for conversion and brand alignment.",
+              "Category definition, value proposition clarity, and structured go-to-market systems \u2014 across both D2C and B2B models.",
             imageSrc: "/figma/services/seo.svg",
           },
           {
-            title: "Digital PR",
+            title: "Market & Audience Intelligence",
             description:
-              "Earned media, authority placements, and strategic narrative distribution, building trust at scale.",
+              "Human insight layered with AI-assisted analysis \u2014 informing segmentation, demand mapping, and strategic decision-making.",
             imageSrc: "/figma/services/seo.svg",
           },
           {
-            title: "ORM",
+            title: "Founder & Niche Authority Strategy",
             description:
-              "Online reputation management, monitoring, response frameworks, and brand perception governance.",
+              "Leadership positioning, thought capital development, and narrative systems \u2014 building durable authority within defined categories.",
+            imageSrc: "/figma/services/seo.svg",
+          },
+          {
+            title: "Community & Ecosystem Strategy",
+            description:
+              "Structured community design and partnership ecosystems, strengthening retention, advocacy, and long-term brand equity.",
             imageSrc: "/figma/services/seo.svg",
           },
         ],
@@ -423,13 +438,167 @@ export const services: ServiceDetail[] = [
   },
 
   // ─────────────────────────────────────────────────────────────────────────
-  // 3. Platforms, Web & Digital Experience
+  // 3. Performance, Distribution & Demand
+  // ─────────────────────────────────────────────────────────────────────────
+  {
+    id: "pdd",
+    slug: "seo-optimization",
+    title: "Performance, Distribution & Demand.",
+    media: "/home/service3.png",
+    sliderText:
+      "Brand & digital strategy · Positioning & GTM · Personal & founder branding · Community strategy · Podcast strategy & narrative design · Market & audience research",
+    metaTitle: "Performance, Distribution & Demand | Digitally Next",
+    metaDescription:
+      "Performance, Distribution & Demand — a system-first approach to growth that compounds across channels.",
+    theme: {
+      heroBg: "#0A0A0A",
+      heroText: "#FFFFFF",
+      heroMutedText: "rgba(255,255,255,0.7)",
+      accent: "#E21F26",
+      accentAlt: "#0EC8C5",
+      surfaceBg: "#FAFAFA",
+      surfaceBorder: "rgba(0,0,0,0.1)",
+      bodyText: "#000000",
+      mutedText: "#787878",
+    },
+    hero: {
+      breadcrumb: "Services > Performance, Distribution & Demand.",
+      titleLines: ["Performance,", "Distribution &", "Demand"],
+      layout: "centered",
+      backgroundVideo: "/services/service-hero-video.mp4",
+      overlay:
+        "linear-gradient(180deg, rgba(0,0,0,0.65) 0%, rgba(226,31,38,0.88) 100%)",
+      quoteText: "\u201cWe need a system, not more agencies.\u201d",
+      quoteColor: "#1BB9B4",
+      body: [
+        "These are familiar conversations.",
+        "What they\u2019re really asking for is <strong>creative that performs without burning out.</strong>",
+      ],
+      ctaLabel: "Inquire Now",
+      ctaHref: "/contact",
+      ctaVariant: "light",
+      arrowSrc: "/figma/services/arrow2.svg",
+    },
+    sections: [
+      {
+        type: "realBrief",
+        eyebrow: "The Real Brief",
+        heading: "What brands are actually asking for.",
+        description: "Behind all of this language is one common need:",
+        list: [
+          { accent: "accent", text: "<strong>A distribution system,<br></strong> not disconnected channels" },
+          { accent: "alt", text: "Performance that builds <strong>authority,<br></strong> not just traffic" },
+          { accent: "accent", text: "Growth that is <strong>predictable</strong>,<br> not experimental every month" },
+          { accent: "alt", text: "SEO, paid, PR, and UGC<br> <strong>working together,</strong> not in silos" },
+          { accent: "accent", text: "Decisions driven by <strong>data and<br> context</strong>, not assumptions" },
+        ],
+        highlightText:
+          'This is where fragmented execution fails, and where <span style="color:#E21F26">systems win.</span>',
+      },
+      {
+        type: "featureGrid",
+        eyebrow: "The System",
+        headingLines: [
+          'Where <span style="color:#E21F26">growth</span> is',
+          'engineered, not assumed<span style="color:#0EC8C5">.</span>',
+        ],
+        description: "Channels should compound \u2014 not compete with each other.",
+        cards: [
+          {
+            iconSrc: "/figma/services/pdd-organic-visibility.svg",
+            title: "Organic Visibility",
+            description:
+              "SEO, AEO & GEO working as a unified discoverability engine \u2014 not isolated keyword plays.",
+          },
+          {
+            iconSrc: "/figma/services/pdd-paid-performance.svg",
+            title: "Paid Performance",
+            description:
+              "Precision-driven media buying governed by data intelligence and attribution modelling.",
+          },
+          {
+            iconSrc: "/figma/services/pdd-digital-pr.svg",
+            title: "Digital PR",
+            description:
+              "Authority-building through earned media, strategic placements, and narrative-led distribution.",
+          },
+          {
+            iconSrc: "/figma/services/pdd-ugc-influencer.svg",
+            title: "UGC & Influencer Conversion",
+            description:
+              "Creator-led content designed for conversion, not just reach \u2014 with full attribution governance.",
+          },
+        ],
+      },
+      {
+        type: "scope",
+        eyebrow: "Scope",
+        heading: 'What this includes<span style="color:#0EC8C5">.</span>',
+        items: [
+          {
+            title: "SEO, AEO & GEO",
+            description:
+              "Search engine optimisation, answer engine optimisation, and generative engine optimisation, unified discoverability.",
+            imageSrc: "/figma/services/seo.svg",
+          },
+          {
+            title: "Paid Media",
+            description:
+              "Performance media buying across search, social, and programmatic, governed by attribution and ROI frameworks.",
+            imageSrc: "/figma/services/seo.svg",
+          },
+          {
+            title: "UGC",
+            description:
+              "User-generated content strategy and production, creator-led assets built for conversion and brand alignment.",
+            imageSrc: "/figma/services/seo.svg",
+          },
+          {
+            title: "Digital PR",
+            description:
+              "Earned media, authority placements, and strategic narrative distribution, building trust at scale.",
+            imageSrc: "/figma/services/seo.svg",
+          },
+          {
+            title: "ORM",
+            description:
+              "Online reputation management, monitoring, response frameworks, and brand perception governance.",
+            imageSrc: "/figma/services/seo.svg",
+          },
+        ],
+      },
+      {
+        type: "caseStudy",
+        heading: 'How this shows up in the real world<span style="color:#0EC8C5">.</span>',
+        ctaLabel: "View Case Study",
+        ctaHref: "/case-studies",
+        cards: [
+          {
+            imageSrc: "/case/c1.webp",
+            title: 'Advent <span style="color:#E21F26">Global</span>',
+            description:
+              "Transforming Legacy (more than 3 decades old organization) Brand Image to the New Age evolved Brand Positioning.",
+            tag: "IT & ITES",
+            href: "/case-studies/advent-global",
+          },
+        ],
+      },
+    ],
+    cta: {
+      heading: "Inquire Now",
+      buttonLabel: "Inquire Now",
+      buttonHref: "/contact",
+    },
+  },
+
+  // ─────────────────────────────────────────────────────────────────────────
+  // 4. Platforms, Web & Digital Experience
   // ─────────────────────────────────────────────────────────────────────────
   {
     id: "pwde",
     slug: "web-development",
     title: "Platforms, Web & Digital Experience.",
-    media: "/home/service3.png",
+    media: "/home/service4.png",
     sliderText:
       "Websites & landing experiences · UX & conversion design · Web applications · CMS & headless architecture · Analytics & CRO · E-commerce & D2C platforms",
     metaTitle: "Platforms, Web & Digital Experience | Digitally Next",
@@ -557,175 +726,6 @@ export const services: ServiceDetail[] = [
             title: "Analytics & Conversion Optimisation",
             description:
               "Data pipelines, heatmaps, A/B frameworks, and CRO strategies that turn traffic into measurable outcomes.",
-            imageSrc: "/figma/services/seo.svg",
-          },
-        ],
-      },
-      {
-        type: "caseStudy",
-        heading: 'How this shows up in the real world<span style="color:#0EC8C5">.</span>',
-        ctaLabel: "View Case Study",
-        ctaHref: "/case-studies",
-        cards: [
-          {
-            imageSrc: "/case/c1.webp",
-            title: 'Advent <span style="color:#E21F26">Global</span>',
-            description:
-              "Transforming Legacy (more than 3 decades old organization) Brand Image to the New Age evolved Brand Positioning.",
-            tag: "IT & ITES",
-            href: "/case-studies/advent-global",
-          },
-        ],
-      },
-    ],
-    cta: {
-      heading: "Inquire Now",
-      buttonLabel: "Inquire Now",
-      buttonHref: "/contact",
-    },
-  },
-
-  // ─────────────────────────────────────────────────────────────────────────
-  // 4. Strategy, Brand & Growth Intelligence
-  // ─────────────────────────────────────────────────────────────────────────
-  {
-    id: "sbgi",
-    slug: "brand-strategy",
-    title: "Strategy, Brand & Growth Intelligence.",
-    media: "/home/service4.png",
-    sliderText:
-      "D2C market entry & growth strategy · Brand & digital strategy · Positioning & GTM · Market & audience intelligence · Founder & niche authority strategy · Community & ecosystem strategy",
-    metaTitle: "Strategy, Brand & Growth Intelligence | Digitally Next",
-    metaDescription:
-      "Where direction is defined before execution begins — authority-led growth strategy for D2C, B2B, and niche markets.",
-    theme: {
-      heroBg: "#0A0A0A",
-      heroText: "#FFFFFF",
-      heroMutedText: "rgba(255,255,255,0.7)",
-      accent: "#E21F26",
-      accentAlt: "#0EC8C5",
-      surfaceBg: "#FAFAFA",
-      surfaceBorder: "rgba(0,0,0,0.1)",
-      bodyText: "#000000",
-      mutedText: "#787878",
-    },
-    hero: {
-      breadcrumb: "Services > Strategy, Brand & Growth Intelligence",
-      titleLines: ["Strategy, Brand &", "Growth Intelligence."],
-      layout: "stacked",
-      backgroundVideo: "/services/service-hero-video.mp4",
-      overlay:
-        "linear-gradient(180deg, rgba(0,0,0,0.65) 0%, rgba(226,31,38,0.88) 100%)",
-      subtitle: "Where direction is defined before execution begins",
-      quoteLead: "We often see brands say things like this",
-      quoteText:
-        "\u201cWe want D2C scale without becoming discount-led.\u201d",
-      quoteColor: "#1BB9B4",
-      body: [
-        "These are not marketing requests.",
-        "What they\u2019re really asking for is <strong>authority-led growth, not volume.</strong>",
-      ],
-      ctaLabel: "Inquire Now",
-      ctaHref: "/contact",
-      ctaVariant: "light",
-      arrowSrc: "/figma/services/arrow2.svg",
-    },
-    sections: [
-      {
-        type: "realBrief",
-        eyebrow: "The Real Brief",
-        heading: "What brands are actually asking for.",
-        description:
-          "Across D2C and B2B, the underlying needs are clear:",
-        list: [
-          { accent: "accent", text: "A <strong>clear market and audience</strong> definition" },
-          { accent: "alt", text: "Sharp <strong>positioning</strong> that doesn\u2019t<br> collapse under competition" },
-          { accent: "accent", text: "A <strong>growth path</strong> that matches<br> the business model" },
-          { accent: "alt", text: "<strong>Strategic clarity</strong> before money<br> is spent on execution" },
-          { accent: "accent", text: "Confidence that decisions<br> are <strong>informed, not fashionable</strong>" },
-        ],
-        highlightText:
-          'What brands need isn\u2019t more frameworks. They need <span style="color:#E21F26">direction they can trust.</span>',
-      },
-      {
-        type: "featureGrid",
-        eyebrow: "Strategy, Brand & Growth Intelligence",
-        headingLines: [
-          "Where direction is defined",
-          'before execution begins<span style="color:#0EC8C5">.</span>',
-        ],
-        description:
-          "At Digitally Next, strategy is not a presentation.\n\nIt\u2019s a decision-making layer.\n\nWe help brands:",
-        cards: [
-          {
-            iconSrc: "/figma/services/sbgi-enter-markets.svg",
-            title: "Enter Markets with Clarity",
-            description:
-              "Launch B2B Verticals with Credibility. Strategically enter new markets, especially D2C, with defined positioning, audience intelligence, and a clear path to revenue.",
-          },
-          {
-            iconSrc: "/figma/services/sbgi-launch-b2b.svg",
-            title: "Launch B2B Verticals with Credibility",
-            description:
-              "Establish authority from day one, aligning narrative, proof, and go-to-market frameworks to build trust at scale.",
-          },
-          {
-            iconSrc: "/figma/services/sbgi-positioning.svg",
-            title: "Define Positioning Before Scaling Spend",
-            description:
-              "Clarify category stance, value proposition, and differentiation \u2014 ensuring media investment amplifies a strong strategic foundation.",
-          },
-          {
-            iconSrc: "/figma/services/sbgi-align.svg",
-            title: "Align Brand, Content, Performance & Platforms",
-            description:
-              "Unify storytelling, distribution, and technology \u2014 creating an integrated growth engine rather than siloed execution.",
-          },
-        ],
-        footerText:
-          "So that every action that follows is intentional, aligned, and scalable.",
-      },
-      {
-        type: "scope",
-        eyebrow: "Scope",
-        heading: 'What this includes<span style="color:#0EC8C5">.</span>',
-        description:
-          "Depending on the business model and stage, this typically spans:",
-        items: [
-          {
-            title: "D2C Market Entry & Growth Strategy",
-            description:
-              "End-to-end go-to-market and growth frameworks, spanning validation, positioning, acquisition, retention, and scalable performance.",
-            imageSrc: "/figma/services/seo.svg",
-          },
-          {
-            title: "Brand & Digital Strategy",
-            description:
-              "Business-aligned brand and digital architecture \u2014 ensuring narrative, platforms, and performance drive measurable outcomes.",
-            imageSrc: "/figma/services/seo.svg",
-          },
-          {
-            title: "Positioning & GTM Frameworks",
-            description:
-              "Category definition, value proposition clarity, and structured go-to-market systems \u2014 across both D2C and B2B models.",
-            imageSrc: "/figma/services/seo.svg",
-          },
-          {
-            title: "Market & Audience Intelligence",
-            description:
-              "Human insight layered with AI-assisted analysis \u2014 informing segmentation, demand mapping, and strategic decision-making.",
-            imageSrc: "/figma/services/seo.svg",
-          },
-          {
-            title: "Founder & Niche Authority Strategy",
-            description:
-              "Leadership positioning, thought capital development, and narrative systems \u2014 building durable authority within defined categories.",
-            imageSrc: "/figma/services/seo.svg",
-          },
-          {
-            title: "Community & Ecosystem Strategy",
-            description:
-              "Structured community design and partnership ecosystems, strengthening retention, advocacy, and long-term brand equity.",
             imageSrc: "/figma/services/seo.svg",
           },
         ],

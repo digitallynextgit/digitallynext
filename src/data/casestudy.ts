@@ -160,11 +160,11 @@ export const caseStudies: CaseStudy[] = [
       intro:
         "Transforming Legacy (more than 3 decades old organization) Brand Image to the New Age evolved Brand Positioning.",
       objective: {
-        heading: "Objective Goal.",
+        heading: "objective goal",
         body: "Build and Ensure up to Date Digital Brand Presence that resonates with the stakeholders of today's 3.0 world",
       },
       approach: {
-        heading: "Approach.",
+        heading: "Approach",
         body: "Mix of Strategy",
         cards: [
           {
@@ -242,18 +242,18 @@ export const caseStudies: CaseStudy[] = [
         ],
       },
       otherTeams: {
-        heading: "Digitally Next.",
+        heading: "Digitally next",
         linkLabel: "Case Studies",
         linkHref: "/case-studies",
       },
       relatedCaseStudies: [
         {
-          imageSrc: "/figma/case-study/advent-case-study-69de24.png",
+          imageSrc: "/case/c3.webp",
           title: "Advent Global",
           description:
-            "Transforming Legacy (more than 3 decades old organization) Brand Image to the New Age evolved Brand Positioning.",
+            "From ambitious startups to scaling enterprises – Digitally Next builds performance-driven creative systems that turn attention into measurable growth.",
           tag: "IT & ITES",
-          href: "/case-studies/advent-global",
+          href: "/case-studies/neotech-genomics",
         },
       ],
       cta: {
@@ -322,11 +322,11 @@ export const caseStudies: CaseStudy[] = [
       intro:
         "Complete Brand makeover of a global brand (Post M&A) to a new name and digital brand communication.",
       objective: {
-        heading: "Objective Goal.",
+        heading: "objective goal",
         body: "Awareness, Outreach, Recognition and Acceptance of rebranding that resonates with the varied stakeholders from health care and government sector",
       },
       approach: {
-        heading: "Approach.",
+        heading: "Approach",
         body: "Mix of Strategy",
         cards: [
           {
@@ -414,18 +414,18 @@ export const caseStudies: CaseStudy[] = [
         ],
       },
       otherTeams: {
-        heading: "Digitally Next.",
+        heading: "Digitally next",
         linkLabel: "Case Studies",
         linkHref: "/case-studies",
       },
       relatedCaseStudies: [
         {
-          imageSrc: "/figma/case-study/advent-case-study-69de24.png",
+          imageSrc: "/case/c3.webp",
           title: "Advent Global",
           description:
-            "Transforming Legacy (more than 3 decades old organization) Brand Image to the New Age evolved Brand Positioning.",
+            "From ambitious startups to scaling enterprises – Digitally Next builds performance-driven creative systems that turn attention into measurable growth.",
           tag: "IT & ITES",
-          href: "/case-studies/advent-global",
+          href: "/case-studies/neotech",
         },
       ],
       cta: {
@@ -494,11 +494,11 @@ export const caseStudies: CaseStudy[] = [
       intro:
         "Breaking the social taboo to create a high level of awareness where the client is a flag bearer in the bringing the change.",
       objective: {
-        heading: "Objective Goal.",
+        heading: "objective goal",
         body: "Build a Movement along with strong brand recall and enhanced media attention including global social councils. All from Digital replacing TV spend.",
       },
       approach: {
-        heading: "Approach.",
+        heading: "Approach",
         body: "Mix of Strategy",
         cards: [
           {
@@ -582,18 +582,18 @@ export const caseStudies: CaseStudy[] = [
         ],
       },
       otherTeams: {
-        heading: "Digitally Next.",
+        heading: "Digitally next",
         linkLabel: "Case Studies",
         linkHref: "/case-studies",
       },
       relatedCaseStudies: [
         {
-          imageSrc: "/figma/case-study/advent-case-study-69de24.png",
+          imageSrc: "/case/c3.webp",
           title: "Advent Global",
           description:
-            "Transforming Legacy (more than 3 decades old organization) Brand Image to the New Age evolved Brand Positioning.",
+            "From ambitious startups to scaling enterprises – Digitally Next builds performance-driven creative systems that turn attention into measurable growth.",
           tag: "IT & ITES",
-          href: "/case-studies/advent-global",
+          href: "/case-studies/neotech-genomics",
         },
       ],
       cta: {
@@ -664,11 +664,11 @@ export const caseStudies: CaseStudy[] = [
       intro:
         "PAN India Launch (Online) of a disruptive phygital model in insurance sector to prevent mis-selling, mis-information and honest reach of the insurance products in the interiors of India.",
       objective: {
-        heading: "Objective Goal.",
+        heading: "objective goal",
         body: "Complete new D2C centric website integrating with Apps along with 360 degrees performance marketing asset creation and B2B centric social media.",
       },
       approach: {
-        heading: "Approach.",
+        heading: "Approach",
         body: "Mix of Strategy",
         cards: [
           {
@@ -752,18 +752,18 @@ export const caseStudies: CaseStudy[] = [
         ],
       },
       otherTeams: {
-        heading: "Digitally Next.",
+        heading: "Digitally next",
         linkLabel: "Case Studies",
         linkHref: "/case-studies",
       },
       relatedCaseStudies: [
-        {
-          imageSrc: "/figma/case-study/advent-case-study-69de24.png",
+         {
+          imageSrc: "/case/c3.webp",
           title: "Advent Global",
           description:
-            "Transforming Legacy (more than 3 decades old organization) Brand Image to the New Age evolved Brand Positioning.",
+            "From ambitious startups to scaling enterprises – Digitally Next builds performance-driven creative systems that turn attention into measurable growth.",
           tag: "IT & ITES",
-          href: "/case-studies/advent-global",
+          href: "/case-studies/neotech-genomics",
         },
       ],
       cta: {
@@ -832,11 +832,11 @@ export const caseStudies: CaseStudy[] = [
       intro:
         "Awareness building among students and educational institutes about the value card.",
       objective: {
-        heading: "Objective Goal.",
+        heading: "objective goal",
         body: "Manage Complete Digital Branding and performance Marketing with focus on Brand outreach and demand generation.",
       },
       approach: {
-        heading: "Approach.",
+        heading: "Approach",
         body: "Mix of Strategy",
         cards: [
           {
@@ -918,18 +918,18 @@ export const caseStudies: CaseStudy[] = [
         ],
       },
       otherTeams: {
-        heading: "Digitally Next.",
+        heading: "Digitally next",
         linkLabel: "Case Studies",
         linkHref: "/case-studies",
       },
       relatedCaseStudies: [
-        {
-          imageSrc: "/figma/case-study/advent-case-study-69de24.png",
+         {
+          imageSrc: "/case/c3.webp",
           title: "Advent Global",
           description:
-            "Transforming Legacy (more than 3 decades old organization) Brand Image to the New Age evolved Brand Positioning.",
+            "From ambitious startups to scaling enterprises – Digitally Next builds performance-driven creative systems that turn attention into measurable growth.",
           tag: "IT & ITES",
-          href: "/case-studies/advent-global",
+          href: "/case-studies/neotech-genomics",
         },
       ],
       cta: {
@@ -998,11 +998,11 @@ export const caseStudies: CaseStudy[] = [
       intro:
         "Digital Brand Communication of the enriched legacy and the transformational work done to make world a better place.",
       objective: {
-        heading: "Objective Goal.",
+        heading: "objective goal",
         body: "Manage Complete Digital Branding and performance Marketing with focus on Brand outreach, Community development and Thought leadership.",
       },
       approach: {
-        heading: "Approach.",
+        heading: "Approach",
         body: "Mix of Strategy",
         cards: [
           {
@@ -1035,7 +1035,7 @@ export const caseStudies: CaseStudy[] = [
               "An engaged student and institutional community was built around the value card through consistent digital activations, content programmes, and outreach across India, Spain, and Czech Republic.",
           },
           {
-            title: "Thought Leadership",
+            title: "Paid Ads",
             description:
               "Performance-driven paid ad campaigns were deployed to accelerate demand generation, directly contributing to a 100% increase in card purchases within the first year of the engagement.",
           },
@@ -1085,18 +1085,18 @@ export const caseStudies: CaseStudy[] = [
         ],
       },
       otherTeams: {
-        heading: "Digitally Next.",
+        heading: "Digitally next",
         linkLabel: "Case Studies",
         linkHref: "/case-studies",
       },
       relatedCaseStudies: [
-        {
-          imageSrc: "/figma/case-study/advent-case-study-69de24.png",
+         {
+          imageSrc: "/case/c3.webp",
           title: "Advent Global",
           description:
-            "Transforming Legacy (more than 3 decades old organization) Brand Image to the New Age evolved Brand Positioning.",
+            "From ambitious startups to scaling enterprises – Digitally Next builds performance-driven creative systems that turn attention into measurable growth.",
           tag: "IT & ITES",
-          href: "/case-studies/advent-global",
+          href: "/case-studies/neotech-genomics",
         },
       ],
       cta: {
@@ -1136,7 +1136,7 @@ export const caseStudies: CaseStudy[] = [
         eyebrow: "LEGAL & IP ADVISORY",
         title:
           "Managing Digital Assets of a Global Legal and advisory firm specializing in intellectual property",
-        heroImageSrc: "/case/c7.webp",
+        heroImageSrc: "/case/c4.webp",
         metrics: [
           {
             value: "40+",
@@ -1167,11 +1167,11 @@ export const caseStudies: CaseStudy[] = [
       intro:
         "Digital Brand Communication of the enriched legacy and the transformational work done in all fields of law with emphasis on Media, Entertainment, Sweepstakes, Promotions and IP Law.",
       objective: {
-        heading: "Objective Goal.",
+        heading: "objective goal",
         body: "Manage Digital Branding assets with focus on Brand outreach and Thought leadership.",
       },
       approach: {
-        heading: "Approach.",
+        heading: "Approach",
         body: "Mix of Strategy",
         cards: [
           {
@@ -1192,16 +1192,6 @@ export const caseStudies: CaseStudy[] = [
             title: "Digital Assets Including the Website",
             description:
               "All digital brand assets and the website were managed to communicate the firm's expertise in IP, Media, Entertainment, and Law across the Asia-Pacific region.",
-          },
-          {
-            title: "Thought Leadership",
-            description:
-              "Senior legal experts and partners were positioned as credible thought leaders in IP, Media, and Entertainment Law through strategic content, publications, and digital PR across APac channels.",
-          },
-          {
-            title: "Brand Outreach",
-            description:
-              "A structured brand outreach programme was deployed to amplify the firm's 40+ year legacy, driving awareness among corporates, media houses, and legal stakeholders across the region.",
           },
         ],
       },
@@ -1252,30 +1242,27 @@ export const caseStudies: CaseStudy[] = [
         subheading:
           "All frameworks are powered by Modern DAD thinking and governed by the AI Decision & Acceleration Center.",
         items: [
-          "Website Management & Optimisation",
-          "Digital Brand Asset Library",
-          "Thought Leadership Content",
-          "Digital PR & Publications Calendar",
-          "Social Media Calendar",
-          "Visual Communication Plan",
-          "Brand Outreach Toolkit",
-          "IP Law Content Programme",
-          "Legacy Narrative & Positioning",
+          "Website Management & Optimization (Digital Asset Upkeep)",
+          "Engagement Promotional Assets",
+          "Thought Leadership Articles & Legal Commentary Content",
+          "360 degree Digital Social Media Calendar set up and Roll Out",
+          "Digital PR Calendar including UGC distribution",
+          "SEO & ORM Asset Creation for Firm and Practice Specializations",
         ],
       },
       otherTeams: {
-        heading: "Digitally Next.",
+        heading: "Digitally next",
         linkLabel: "Case Studies",
         linkHref: "/case-studies",
       },
       relatedCaseStudies: [
-        {
-          imageSrc: "/figma/case-study/advent-case-study-69de24.png",
+         {
+          imageSrc: "/case/c3.webp",
           title: "Advent Global",
           description:
-            "Transforming Legacy (more than 3 decades old organization) Brand Image to the New Age evolved Brand Positioning.",
+            "From ambitious startups to scaling enterprises – Digitally Next builds performance-driven creative systems that turn attention into measurable growth.",
           tag: "IT & ITES",
-          href: "/case-studies/advent-global",
+          href: "/case-studies/neotech-genomics",
         },
       ],
       cta: {
@@ -1315,7 +1302,7 @@ export const caseStudies: CaseStudy[] = [
         eyebrow: "JUDAICA ART GALLERY",
         title:
           "Launch of a high end Judaica Art gallery and 5 Artists for International Markets — US | UK",
-        heroImageSrc: "/case/c8.webp",
+        heroImageSrc: "/case/c4.webp",
         metrics: [
           {
             value: "3X",
@@ -1340,17 +1327,17 @@ export const caseStudies: CaseStudy[] = [
         fields: [
           { label: "Industry", value: "Art & Culture" },
           { label: "Category", value: "Art Gallery & E-commerce" },
-          { label: "Region", value: "US & UK" },
+          { label: "Region", value: "Global" },
         ],
       },
       intro:
-        "Launch of a high end Judaica Art gallery and 5 Artists for International Markets — US & UK.",
+        "Create a high level of awareness for Judaica Art work and D2C shop set up – Contemporary and Modern by launching online Art Gallery and 5 different Artists & portfolios.",
       objective: {
-        heading: "Objective Goal.",
-        body: "Build a Movement along with strong brand recall and enhanced media attention including global social councils. All from Digital replacing TV spend.",
+        heading: "objective goal",
+        body: "Set up E-Commerce . Promote Judaica Art and Cultural transformation among Real Estate builders , Interior Designers , Architects and Art Collectors.",
       },
       approach: {
-        heading: "Approach.",
+        heading: "Approach",
         body: "Mix of Strategy",
         cards: [
           {
@@ -1448,18 +1435,18 @@ export const caseStudies: CaseStudy[] = [
         ],
       },
       otherTeams: {
-        heading: "Digitally Next.",
+        heading: "Digitally next",
         linkLabel: "Case Studies",
         linkHref: "/case-studies",
       },
       relatedCaseStudies: [
-        {
-          imageSrc: "/figma/case-study/advent-case-study-69de24.png",
+         {
+          imageSrc: "/case/c3.webp",
           title: "Advent Global",
           description:
-            "Transforming Legacy (more than 3 decades old organization) Brand Image to the New Age evolved Brand Positioning.",
+            "From ambitious startups to scaling enterprises – Digitally Next builds performance-driven creative systems that turn attention into measurable growth.",
           tag: "IT & ITES",
-          href: "/case-studies/advent-global",
+          href: "/case-studies/neotech-genomics",
         },
       ],
       cta: {

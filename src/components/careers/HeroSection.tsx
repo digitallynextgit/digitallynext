@@ -63,14 +63,17 @@ export default function HeroSection() {
             <ImageTrail
               key="careers-hero-trail"
               items={[
-                "https://picsum.photos/id/287/300/300",
-                "https://picsum.photos/id/1001/300/300",
-                "https://picsum.photos/id/1025/300/300",
-                "https://picsum.photos/id/1026/300/300",
-                "https://picsum.photos/id/1027/300/300",
-                "https://picsum.photos/id/1028/300/300",
-                "https://picsum.photos/id/1029/300/300",
-                "https://picsum.photos/id/1031/300/300",
+                "/careers/c1.png",
+                "/careers/c2.png",
+                "/careers/c3.png",
+                "/careers/c4.png",
+                "/careers/c5.png",
+                "/careers/c6.png",
+                "/careers/c7.png",
+                "/careers/c8.png",
+                "/careers/c9.png",
+                "/careers/c10.png",
+                "/careers/c11.png",
               ]}
               variant={2}
             />

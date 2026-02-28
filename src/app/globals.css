@@ -299,7 +299,7 @@
   justify-content: space-between;
   height: 80px;
   padding: 0 40px;
-  max-width: 1440px;
+  width: 100%;
   margin: 0 auto;
 }
 
@@ -319,7 +319,7 @@
 }
 
 .header-nav-link:hover {
-  color: #fff;
+  color: #E21F26;
 }
 
 .header--light .header-nav-link {

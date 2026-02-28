@@ -14,94 +14,10 @@ export const navLinksLeft = [
 
 export const navLinksRight = [
   { label: "CASE STUDIES", href: "/case-studies" },
-  { label: "CONTACT", href: "/#contact" },
+  { label: "CAREERS", href: "/careers" },
 ];
 
 export const navLinks = [...navLinksLeft, ...navLinksRight];
-
-export const services = [
-  {
-    id: 1,
-    title: "Strategy, Brand & Growth Intelligence",
-    subtitle: "Brand & digital strategy · Positioning & GTM",
-    description:
-      "We decode markets, define positioning, and craft go-to-market strategies that give your brand a competitive edge in the digital landscape.",
-  },
-  {
-    id: 2,
-    title: "Content, Culture & Media Creation",
-    subtitle: "Content strategy · Video & visual production",
-    slug: "ui-ux-design",
-    description:
-      "From viral campaigns to brand storytelling — we create content that resonates with culture and drives authentic engagement.",
-  },
-  {
-    id: 3,
-    title: "Performance, Distribution & Demand",
-    subtitle: "SEO & organic growth · Paid media & optimization",
-    slug: "seo-optimization",
-    description:
-      "Data-driven performance marketing that maximizes ROI. We optimize every channel from search to social to drive measurable growth.",
-  },
-  {
-    id: 4,
-    title: "Platforms, Web & Digital Experience",
-    subtitle: "Websites & landing experiences · UX & conversion",
-    slug: "web-development",
-    description:
-      "We build digital experiences that convert. From landing pages to full platforms — designed for speed, beauty, and results.",
-  },
-  {
-    id: 5,
-    title: "AI Enablement & Decision Systems",
-    subtitle:
-      "Guided by ADAC · Websites & landing experiences · UX & conversion",
-    description:
-      "Leverage AI to accelerate execution, automate decisions, and unlock insights. Our ADAC framework turns data into action.",
-    highlight: "ADAC",
-  },
-];
-
-export const caseStudies = [
-  {
-    id: 1,
-    title: "Advent Global",
-    highlight: "Global",
-    description:
-      "Transforming Legacy (more than 3 decades old organization) Brand Image to the New Age evolved Brand Positioning.",
-    category: "IT & ITES",
-    color: "#E53935",
-    image: "/case/c1.webp",
-  },
-  {
-    id: 2,
-    title: "NeoTech",
-    description:
-      "Complete Brand makeover of a global brand (Post M&A) to a new name and digital brand communication.",
-    category: "Genomics",
-    color: "#00BCD4",
-    image: "/case/c2.webp",
-  },
-  {
-    id: 3,
-    title: "NeoTech", // Kept as NeoTech based on image text, though description implies Judaica Gallery
-    description:
-      "Launch of a high end Judaica Art gallery and 5 Artists for International Markets-US",
-    category: "UK",
-    color: "#00BCD4",
-    image: "/case/c3.webp",
-    href: "/case-studies/signia",
-  },
-  {
-    id: 4,
-    title: "Signia",
-    description:
-      "Digital Campaign on Social Cause for a world leader in wearable hearing devices",
-    category: "Hearing Aids",
-    color: "#E53935",
-    image: "/case/c4.webp",
-  },
-];
 
 export const stats = [
   { value: 100, suffix: "+", label: "Brands Served" },
