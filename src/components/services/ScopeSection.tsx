@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import { useSectionTheme } from "@/context/SectionThemeContext";
 import type { ServiceSection, ServiceTheme } from "@/data/services";
 
 type Props = {
@@ -7,18 +10,23 @@ type Props = {
 };
 
 export default function ScopeSection({ section, theme }: Props) {
-    return (
-        <section style={{ backgroundColor: "#000000", color: "#FFFFFF" }}>
-            {/* Outer: max 1440px — padding: 144px 120px 0 per Figma */}
-            <div className="w-full max-w-[1440px] mx-auto px-6 py-10 sm:px-10 md:py-16 lg:px-[120px] lg:py-20">
+    const { theme: contextTheme } = useSectionTheme();
+    const isDark = contextTheme === "dark";
 
-                {/* Inner: max 1200px — gap 72px between header and list */}
+    return (
+        <section
+            className={[
+                "transition-colors duration-700",
+                isDark ? "bg-[#000000]" : "bg-[#FAFAFA]",
+            ].join(" ")}
+        >
+            <div className="w-full max-w-[1440px] mx-auto px-6 py-10 sm:px-10 md:py-16 lg:px-[120px] lg:py-20">
                 <div className="max-w-[1200px] mx-auto flex flex-col gap-12 lg:gap-[72px]">
 
                     {/* ── Header Block ── */}
                     <div className="flex flex-col gap-4 lg:gap-6">
 
-                        {/* Eyebrow: 16px, weight 500, letter-spacing 3px */}
+                        {/* Eyebrow */}
                         <p
                             className="font-medium uppercase text-[13px] lg:text-base"
                             style={{ color: theme.accent, letterSpacing: "3px" }}
@@ -26,17 +34,24 @@ export default function ScopeSection({ section, theme }: Props) {
                             {section.eyebrow}
                         </p>
 
-                        {/* Heading: 56px bold white — supports HTML e.g. teal "." */}
+                        {/* Heading */}
                         <h2
-                            className="font-bold leading-[1.1] text-[36px] sm:text-[44px] lg:text-[56px] text-white"
+                            className={[
+                                "font-bold leading-[1.1] text-[36px] sm:text-[44px] lg:text-[56px]",
+                                "transition-colors duration-700",
+                                isDark ? "text-white" : "text-[#000000]",
+                            ].join(" ")}
                             dangerouslySetInnerHTML={{ __html: section.heading }}
                         />
 
-                        {/* Optional subtitle: 24px weight 300 */}
+                        {/* Description */}
                         {section.description && (
                             <p
-                                className="text-base sm:text-xl lg:text-2xl"
-                                style={{ color: "#E5E5E5", fontWeight: 300 }}
+                                className={[
+                                    "text-base sm:text-xl lg:text-2xl font-light",
+                                    "transition-colors duration-700",
+                                    isDark ? "text-[#E5E5E5]" : "text-[#787878]",
+                                ].join(" ")}
                             >
                                 {section.description}
                             </p>
@@ -48,45 +63,45 @@ export default function ScopeSection({ section, theme }: Props) {
                         {section.items.map((item, idx) => (
                             <div key={idx}>
 
-                                {/* ── DESKTOP: horizontal row ──
-                    padding: 32px 0, gap: 64px, border-bottom 
-                ── */}
+                                {/* ── DESKTOP row ── */}
                                 <div
-                                    className="hidden lg:flex items-start lg:items-center gap-16 py-8 border-b"
-                                    style={{ borderColor: "rgba(255,255,255,0.1)" }}
+                                    className={[
+                                        "hidden lg:flex items-start lg:items-center gap-16 py-8 border-b",
+                                        "transition-colors duration-700",
+                                        isDark ? "border-white/10" : "border-black/10",
+                                    ].join(" ")}
                                 >
-                                    {/* Title: w-[280px], 20px bold white */}
-                                    <div className="w-[280px] flex-shrink-0">
+                                    {/* Title */}
+                                    <div className="w-[280px] shrink-0">
                                         <h3
-                                            className="font-bold text-white"
-                                            style={{ fontSize: "20px", lineHeight: "30px" }}
+                                            className={[
+                                                "font-bold text-[20px] leading-[30px] transition-colors duration-700",
+                                                isDark ? "text-white" : "text-[#000000]",
+                                            ].join(" ")}
                                         >
                                             {item.title}
                                         </h3>
                                     </div>
 
-                                    {/* Description: flex-1, 16px, weight 300, #E5E5E5 */}
+                                    {/* Description */}
                                     <p
-                                        className="flex-1"
-                                        style={{
-                                            fontSize: "16px",
-                                            lineHeight: "27px",
-                                            color: "#E5E5E5",
-                                            fontWeight: 300,
-                                        }}
+                                        className={[
+                                            "flex-1 text-[16px] leading-[27px] font-light",
+                                            "transition-colors duration-700",
+                                            isDark ? "text-[#E5E5E5]" : "text-[#787878]",
+                                        ].join(" ")}
                                     >
                                         {item.description}
                                     </p>
                                 </div>
 
-                                {/* ── MOBILE: card with image + title + description ──
-                    gap: 72px between items (pb-[72px] on all but last)
-                ── */}
+                                {/* ── MOBILE card ── */}
                                 <div
-                                    className={`flex lg:hidden flex-col gap-6 ${idx < section.items.length - 1 ? "pb-[72px]" : "pb-14"
-                                        }`}
+                                    className={[
+                                        "flex lg:hidden flex-col gap-6",
+                                        idx < section.items.length - 1 ? "pb-[72px]" : "pb-14",
+                                    ].join(" ")}
                                 >
-                                    {/* Image: 16:10 aspect, full width */}
                                     {item.imageSrc && (
                                         <div
                                             className="relative w-full overflow-hidden"
@@ -101,21 +116,20 @@ export default function ScopeSection({ section, theme }: Props) {
                                         </div>
                                     )}
 
-                                    {/* Text block: gap 16px */}
                                     <div className="flex flex-col gap-4">
                                         <h3
-                                            className="font-bold text-white"
-                                            style={{ fontSize: "20px", lineHeight: "30px" }}
+                                            className={[
+                                                "font-bold text-[20px] leading-[30px] transition-colors duration-700",
+                                                isDark ? "text-white" : "text-[#000000]",
+                                            ].join(" ")}
                                         >
                                             {item.title}
                                         </h3>
                                         <p
-                                            style={{
-                                                fontSize: "16px",
-                                                lineHeight: "27px",
-                                                color: "#E5E5E5",
-                                                fontWeight: 300,
-                                            }}
+                                            className={[
+                                                "text-[16px] leading-[27px] font-light transition-colors duration-700",
+                                                isDark ? "text-[#E5E5E5]" : "text-[#787878]",
+                                            ].join(" ")}
                                         >
                                             {item.description}
                                         </p>
@@ -129,16 +143,15 @@ export default function ScopeSection({ section, theme }: Props) {
                     {/* ── Footer Text ── */}
                     {section.footerText && (
                         <p
-                            className="text-[#E5E5E5] text-start"
-                            style={{
-                                fontSize: "24px",
-                                lineHeight: "27px",
-                                fontWeight: 300,
-                                whiteSpace: "pre-line",
-                            }}
+                            className={[
+                                "text-start text-[24px] leading-[27px] font-light whitespace-pre-line",
+                                "transition-colors duration-700",
+                                isDark ? "text-[#E5E5E5]" : "text-[#787878]",
+                            ].join(" ")}
                             dangerouslySetInnerHTML={{ __html: section.footerText }}
                         />
                     )}
+
                 </div>
             </div>
         </section>

@@ -57,7 +57,7 @@ export default function HeroSection({ hero, theme }: Props) {
             }}
           />
           <div
-            className="absolute inset-0 z-[1]"
+            className="absolute inset-0 z-1"
             style={{ background: hero.overlay ?? "rgba(0,0,0,0.6)" }}
           />
         </div>

@@ -13,7 +13,6 @@ import { ThemeSection } from "@/components/ui/ThemeSection.tsx";
 export default function CareersPage() {
   return (
     <main>
-
       <ThemeSection theme="light">
         <HeroSection />
       </ThemeSection>

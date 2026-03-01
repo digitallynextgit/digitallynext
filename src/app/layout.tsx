@@ -3,6 +3,7 @@ import "./globals.css";
 import ClientWrapper from "@/components/layout/ClientWrapper";
 import Footer from "@/components/layout/Footer";
 import { ThemeSection } from "@/components/ui/ThemeSection.tsx";
+import { ScrollToHash } from "@/components/layout/ScrollToHash";
 
 export const metadata: Metadata = {
   title: "Digitally Next | Full-Stack Digital Marketing Agency",
@@ -46,6 +47,7 @@ export default function RootLayout({
         />
       </head>
       <body style={{ fontFamily: "Stack Sans Text" }}>
+        <ScrollToHash delay={100} />
         <ClientWrapper>{children}</ClientWrapper>
         <ThemeSection theme="dark">
           <Footer />

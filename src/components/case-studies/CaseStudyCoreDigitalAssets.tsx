@@ -17,7 +17,7 @@ export default function CaseStudyCoreDigitalAssets({ detail, theme }: CaseStudyC
     <section
       className={[
         "w-full mt-[-10px] md:mt-[-25px] relative transition-colors duration-500",
-        isDark ? "bg-[#0A0A0A]" : "bg-[#FAFAFA]",
+        isDark ? "bg-black" : "bg-white",
       ].join(" ")}
     >
       <div className="w-full px-4 sm:px-6 md:px-[59px] py-10 relative">

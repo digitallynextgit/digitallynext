@@ -1,209 +1,162 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import type { ServiceSection, ServiceTheme } from "@/data/services";
+import { useSectionTheme } from "@/context/SectionThemeContext";
 
 type Props = {
-    section: Extract<ServiceSection, { type: "caseStudy" }>;
-    theme: ServiceTheme;
+  section: Extract<ServiceSection, { type: "caseStudy" }>;
+  theme: ServiceTheme;
 };
 
 export default function CaseStudySection({ section, theme }: Props) {
-    return (
-        <section
-            style={{
-                backgroundColor: "#FAFAFA",
-                borderBottom: "1px solid rgba(0,0,0,0.1)",
-            }}
-        >
-            {/* Outer: max 1440px | Desktop: px-[264px] py-[88px] */}
-            <div className="w-full max-w-[1280px] mx-auto px-8 py-10 sm:px-12 md:py-16  lg:py-20">
+  const { theme: contextTheme } = useSectionTheme();
+  const isDark = contextTheme === "dark";
 
-                {/* Outer column: gap 56px (between header row and card) */}
-                <div className="flex flex-col gap-14">
+  return (
+    <section
+      className={[
+        "transition-colors duration-700",
+        isDark
+          ? "bg-[#0A0A0A] border-b border-white/10"
+          : "bg-[#FAFAFA] border-b border-black/10",
+      ].join(" ")}
+    >
+      <div className="w-full max-w-[1280px] mx-auto px-8 py-10 sm:px-12 md:py-16 lg:py-20">
+        <div className="flex flex-col gap-14">
 
-                    {/* ── ROW 1: Heading + CTA ──
-              Desktop: flex-row, items-center
-                - Heading: w-[588px], fixed
-                - Spacer: w-[104px]
-                - CTA: w-[219px]
-              Mobile: flex-col, gap-6
-          ── */}
-                    <div className="flex flex-col gap-6 lg:flex-row w-full lg:justify-between">
+          {/* ── ROW 1: Heading + CTA ── */}
+          <div className="flex flex-col gap-6 lg:flex-row w-full lg:justify-between">
 
-                        {/* Heading: 44px bold, line-height 51px */}
-                        <h2
-                            className="font-bold text-black lg:w-[588px] lg:flex-shrink-0"
-                            style={{
-                                fontSize: "clamp(26px, 3.06vw, 44px)",
-                                lineHeight: "1.16",
-                            }}
-                            dangerouslySetInnerHTML={{ __html: section.heading }}
-                        />
+            {/* Heading */}
+            <h2
+              className={[
+                "font-bold lg:w-[588px] lg:shrink-0 transition-colors duration-700",
+                isDark ? "text-white" : "text-black",
+              ].join(" ")}
+              style={{ fontSize: "clamp(26px, 3.06vw, 44px)", lineHeight: "1.16" }}
+              dangerouslySetInnerHTML={{ __html: section.heading }}
+            />
 
-                        {/* Gap 104px — desktop only spacer */}
-                        <div className="hidden lg:block flex-shrink-0" style={{ width: "104px" }} />
+            {/* Desktop spacer */}
+            <div className="hidden lg:block shrink-0" style={{ width: "104px" }} />
 
-                        {/* CTA: ↳ arrow (red) + "View Case Study" (black) */}
-                        <Link
-                            href={section.ctaHref}
-                            className="inline-flex flex-row items-center gap-2 group w-fit lg:w-[219px] lg:flex-shrink-0"
-                        >
-                            {/* ↳ Arrow SVG — 22×20px, red, ↳ shape */}
-                            <svg
-                                width="22"
-                                height="20"
-                                viewBox="0 0 22 20"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                                aria-hidden="true"
-                                className="flex-shrink-0"
-                            >
-                                <path
-                                    d="M2.5 2L2.5 14.5L19.5 14.5"
-                                    stroke="#E21F26"
-                                    strokeWidth="2.4"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                />
-                                <path
-                                    d="M13.5 8.5L19.5 14.5L13.5 20.5"
-                                    stroke="#E21F26"
-                                    strokeWidth="2.4"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                />
-                            </svg>
+            {/* CTA */}
+            <Link
+              href={section.ctaHref}
+              className="inline-flex flex-row items-center gap-2 group w-fit lg:w-[219px] lg:shrink-0"
+            >
+              <svg
+                width="22"
+                height="20"
+                viewBox="0 0 22 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+                className="shrink-0"
+              >
+                <path
+                  d="M2.5 2L2.5 14.5L19.5 14.5"
+                  stroke="#E21F26"
+                  strokeWidth="2.4"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+                <path
+                  d="M13.5 8.5L19.5 14.5L13.5 20.5"
+                  stroke="#E21F26"
+                  strokeWidth="2.4"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+              <span
+                className={[
+                  "group-hover:opacity-70 transition-opacity mt-1 font-normal",
+                  "text-[22px] leading-[33px] transition-colors duration-700",
+                  isDark ? "text-white" : "text-black",
+                ].join(" ")}
+              >
+                {section.ctaLabel}
+              </span>
+            </Link>
+          </div>
 
-                            <span
-                                className="text-black group-hover:opacity-70 transition-opacity mt-1"
-                                style={{
-                                    fontSize: "22px",
-                                    lineHeight: "33px",
-                                    fontWeight: 400,
-                                }}
-                            >
-                                {section.ctaLabel}
-                            </span>
-                        </Link>
-                    </div>
-
-                    {/* ── ROW 2: Cards — 638px, centered on desktop ──
-              Desktop: w-[637.81px], mx-auto (centered in 912px container)
-              Mobile:  full width
-          ── */}
-                    <div className="flex flex-col gap-14 w-full lg:w-[638px] lg:mx-auto">
-                        {section.cards.map((card, idx) => {
-                            const isLink = !!card.href;
-
-                            return isLink ? (
-                                <Link
-                                    key={idx}
-                                    href={card.href!}
-                                    className="flex flex-col group"
-                                    style={{ gap: "36.81px" }}
-                                >
-                                    <CardContent card={card} />
-                                </Link>
-                            ) : (
-                                <div
-                                    key={idx}
-                                    className="flex flex-col"
-                                    style={{ gap: "36.81px" }}
-                                >
-                                    <CardContent card={card} />
-                                </div>
-                            );
-                        })}
-                    </div>
-
+          {/* ── ROW 2: Cards ── */}
+          <div className="flex flex-col gap-14 w-full lg:w-[638px] lg:mx-auto">
+            {section.cards.map((card, idx) => {
+              const isLink = !!card.href;
+              return isLink ? (
+                <Link
+                  key={idx}
+                  href={card.href!}
+                  className="flex flex-col group"
+                  style={{ gap: "36.81px" }}
+                >
+                  <CardContent card={card} isDark={isDark} />
+                </Link>
+              ) : (
+                <div key={idx} className="flex flex-col" style={{ gap: "36.81px" }}>
+                  <CardContent card={card} isDark={isDark} />
                 </div>
-            </div>
-        </section>
-    );
+              );
+            })}
+          </div>
+
+        </div>
+      </div>
+    </section>
+  );
 }
 
-/* ── Inner card content — extracted to avoid repetition ── */
+/* ── CardContent ── */
 type CardContentProps = {
-    card: {
-        imageSrc: string;
-        title: string;
-        description: string;
-        tag: string;
-    };
+  card: {
+    imageSrc: string;
+    title: string;
+    description: string;
+    tag: string;
+  };
+  isDark: boolean;
 };
 
-function CardContent({ card }: CardContentProps) {
-    return (
-        <>
-            {/* Image: 637.81 × 424.94px, border-radius 5.18px */}
-            <div
-                className="relative w-full overflow-hidden"
-                style={{
-                    height: "clamp(220px, 29.5vw, 425px)",
-                    borderRadius: "5.18px",
-                }}
-            >
-                <Image
-                    src={card.imageSrc}
-                    alt={card.title.replace(/<[^>]+>/g, "")}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, 638px"
-                />
-            </div>
+function CardContent({ card, isDark }: CardContentProps) {
+  return (
+    <>
+      {/* Image */}
+      <div
+        className="relative w-full overflow-hidden"
+        style={{ height: "clamp(220px, 29.5vw, 425px)", borderRadius: "5.18px" }}
+      >
+        <Image
+          src={card.imageSrc}
+          alt={card.title.replace(/<[^>]+>/g, "")}
+          fill
+          className="object-cover"
+          sizes="(max-width: 768px) 100vw, 638px"
+        />
+      </div>
 
-            {/* Info block: gap 43.21px */}
-            <div className="flex flex-col" style={{ gap: "43.21px" }}>
-
-                {/* Title + Description: gap 13.6px */}
-                <div className="flex flex-col" style={{ gap: "13.6px" }}>
-
-                    {/* Title: 44.8px bold, supports HTML accent */}
-                    {/* <h3
-                        className="font-bold text-black"
-                        style={{
-                            fontSize: "clamp(28px, 3.12vw, 44.8px)",
-                            lineHeight: "58px",
-                        }}
-                        dangerouslySetInnerHTML={{ __html: card.title }}
-                    /> */}
-
-                    {/* Description: 22.58px weight 300 #787878 */}
-                    <p
-                        style={{
-                            fontSize: "clamp(16px, 1.57vw, 22.58px)",
-                            lineHeight: "29px",
-                            fontWeight: 300,
-                            color: "#787878",
-                        }}
-                        className="hover:text-[#E21F26]"
-                    >
-                        {card.description}
-                    </p>
-                </div>
-
-                {/* Tag Pill: border 0.8px red, radius 26.24px */}
-                {/* <div
-                    className="inline-flex items-center justify-center self-start"
-                    style={{
-                        padding: "13.12px 19.68px",
-                        border: "0.8px solid #E21F26",
-                        borderRadius: "26.24px",
-                    }}
-                >
-                    <span
-                        className="text-black text-center"
-                        style={{
-                            fontSize: "19.2px",
-                            lineHeight: "25px",
-                            fontWeight: 400,
-                        }}
-                    >
-                        {card.tag}
-                    </span>
-                </div> */}
-
-            </div>
-        </>
-    );
+      {/* Info block */}
+      <div className="flex flex-col" style={{ gap: "43.21px" }}>
+        <div className="flex flex-col" style={{ gap: "13.6px" }}>
+          {/* Description */}
+          <p
+            className={[
+              "hover:text-[#E21F26] transition-colors duration-700",
+              isDark ? "text-[#A1A1A1]" : "text-[#787878]",
+            ].join(" ")}
+            style={{
+              fontSize: "clamp(16px, 1.57vw, 22.58px)",
+              lineHeight: "29px",
+              fontWeight: 300,
+            }}
+          >
+            {card.description}
+          </p>
+        </div>
+      </div>
+    </>
+  );
 }

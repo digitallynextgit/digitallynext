@@ -74,7 +74,7 @@ export default function OpenRolesSection({ theme }: OpenRolesSectionProps) {
           <div
             className={[
               "flex flex-col transition-colors duration-700",
-              isDark ? "bg-[#0a0a0a]" : "bg-[#FAFAFA]",
+              isDark ? "bg-black" : "bg-white",
             ].join(" ")}
             style={{ gap: 40 }}
           >

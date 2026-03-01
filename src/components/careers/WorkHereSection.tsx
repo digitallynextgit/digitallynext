@@ -22,7 +22,7 @@ export default function WorkHereSection({ theme }: WorkHereSectionProps) {
         <div
           className={[
             "flex flex-col gap-8 md:gap-12 lg:gap-16 rounded-[10px] transition-colors duration-700",
-            isDark ? "bg-[#0a0a0a]" : "bg-[#FAFAFA]",
+            isDark ? "bg-black" : "bg-white",
           ].join(" ")}
         >
           {/* Heading */}

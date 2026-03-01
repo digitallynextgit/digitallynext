@@ -21,7 +21,7 @@ export default function Home() {
       <ThemeSection theme="light">
         <Hero />
       </ThemeSection>
-
+      
       <ThemeSection theme="light">
         <div style={{ position: "relative", zIndex: 10 }}>
           <Image src="/banner/ipl-desktop.webp" alt="IPL Banner" width={768} height={60}

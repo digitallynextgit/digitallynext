@@ -1,8 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useSectionTheme } from "@/context/SectionThemeContext";
 
-/* ===== Shared mask style ===== */
 const fadeBottomMask = {
   WebkitMaskImage: "linear-gradient(to bottom, black 20%, transparent 100%)",
   maskImage: "linear-gradient(to bottom, black 20%, transparent 100%)",
@@ -14,7 +14,7 @@ const mobileFadeBottomMask = {
 };
 
 /* ===== Mobile SADAC ===== */
-function MobileSADAC() {
+function MobileSADAC({ isDark }: { isDark: boolean }) {
   return (
     <div className="lg:hidden">
       {/* Header */}
@@ -31,13 +31,18 @@ function MobileSADAC() {
         >
           ADAC
         </h2>
-        <p className="text-2xl font-bold text-black leading-tight mt-2">
+        <p
+          className={[
+            "text-2xl font-bold leading-tight mt-2 transition-colors duration-700",
+            isDark ? "text-white" : "text-black",
+          ].join(" ")}
+        >
           AI Decision &<br />
           Acceleration Center
         </p>
       </motion.div>
 
-      {/* Image with gradient overlay */}
+      {/* Image */}
       <motion.div
         className="relative w-full rounded overflow-hidden mb-8 aspect-[4/2.8]"
         initial={{ opacity: 0, scale: 0.96 }}
@@ -50,11 +55,12 @@ function MobileSADAC() {
           alt="ADAC Visual"
           className="absolute inset-0 w-full h-full object-cover object-top"
         />
-        {/* Bottom gradient fade */}
         <div
           className="absolute bottom-0 left-0 right-0 h-20 pointer-events-none"
           style={{
-            background: "linear-gradient(180deg, rgba(255,255,255,0) 0%, #FFFFFF 100%)",
+            background: isDark
+              ? "linear-gradient(180deg, rgba(0,0,0,0) 0%, #000000 100%)"
+              : "linear-gradient(180deg, rgba(255,255,255,0) 0%, #FFFFFF 100%)",
           }}
         />
       </motion.div>
@@ -69,18 +75,35 @@ function MobileSADAC() {
       >
         {/* How decisions are governed */}
         <div className="text-center space-y-3">
-          <h3 className="text-xl font-normal text-black">
+          <h3
+            className={[
+              "text-xl font-normal transition-colors duration-700",
+              isDark ? "text-white" : "text-black",
+            ].join(" ")}
+          >
             How decisions are governed
           </h3>
-          <p className="text-sm text-[#787878] leading-relaxed">
+          <p
+            className={[
+              "text-sm leading-relaxed transition-colors duration-700",
+              isDark ? "text-[#A1A1A1]" : "text-[#787878]",
+            ].join(" ")}
+          >
             ADAC is a dedicated internal function that governs AI usage across all work.
           </p>
         </div>
 
         {/* It exists to */}
         <div>
-          <h3 className="text-xl font-normal text-black mb-4">It exists to:</h3>
-          <ul className="flex flex-col gap-3 text-sm text-[#787878] leading-relaxed list-none">
+          <h3
+            className={[
+              "text-xl font-normal mb-4 transition-colors duration-700",
+              isDark ? "text-white" : "text-black",
+            ].join(" ")}
+          >
+            It exists to:
+          </h3>
+          <ul className="flex flex-col gap-3 text-sm leading-relaxed list-none">
             {[
               "Define where AI should and should not be applied",
               "Set clear boundaries between AI assistance and human ownership",
@@ -89,16 +112,28 @@ function MobileSADAC() {
             ].map((item) => (
               <li key={item} className="flex items-start gap-2.5">
                 <span className="mt-[7px] w-1.5 h-1.5 rounded-full bg-[#787878] shrink-0" />
-                <span>{item}</span>
+                <span
+                  className={[
+                    "transition-colors duration-700",
+                    isDark ? "text-[#A1A1A1]" : "text-[#787878]",
+                  ].join(" ")}
+                >
+                  {item}
+                </span>
               </li>
             ))}
           </ul>
         </div>
 
         {/* ADAC ensures box */}
-        <div className="bg-[#FBFBFA] p-6">
+        <div
+          className={[
+            "p-6 transition-colors duration-700",
+            isDark ? "bg-[#111111]" : "bg-[#FBFBFA]",
+          ].join(" ")}
+        >
           <h3 className="text-xl font-bold text-[#0EC8C5] mb-4">ADAC ensures:</h3>
-          <ul className="flex flex-col gap-3 text-sm text-[#787878] leading-relaxed list-none">
+          <ul className="flex flex-col gap-3 text-sm leading-relaxed list-none">
             {[
               "Speed without recklessness",
               "Scale without sameness",
@@ -106,22 +141,28 @@ function MobileSADAC() {
             ].map((item) => (
               <li key={item} className="flex items-start gap-2.5">
                 <span className="mt-[7px] w-1.5 h-1.5 rounded-full bg-[#0EC8C5] shrink-0" />
-                <span>{item}</span>
+                <span
+                  className={[
+                    "transition-colors duration-700",
+                    isDark ? "text-[#A1A1A1]" : "text-[#787878]",
+                  ].join(" ")}
+                >
+                  {item}
+                </span>
               </li>
             ))}
           </ul>
         </div>
-
       </motion.div>
     </div>
   );
 }
 
 /* ===== Desktop SADAC ===== */
-function DesktopSADAC() {
+function DesktopSADAC({ isDark }: { isDark: boolean }) {
   return (
     <div className="hidden lg:block">
-      {/* Header — centered row */}
+      {/* Header */}
       <motion.div
         className="flex flex-row items-center justify-center gap-12 xl:gap-14 mb-14"
         initial={{ opacity: 0, y: 40 }}
@@ -135,13 +176,18 @@ function DesktopSADAC() {
         >
           ADAC
         </h2>
-        <p className="text-3xl xl:text-[4rem] font-bold text-black leading-tight">
+        <p
+          className={[
+            "text-3xl xl:text-[4rem] font-bold leading-tight transition-colors duration-700",
+            isDark ? "text-white" : "text-black",
+          ].join(" ")}
+        >
           AI Decision &<br />
           Acceleration Center
         </p>
       </motion.div>
 
-      {/* Image with gradient overlay — full bleed */}
+      {/* Video */}
       <motion.div
         className="relative w-full rounded overflow-hidden mb-8 aspect-[4/2.8]"
         initial={{ opacity: 0, scale: 0.96 }}
@@ -160,7 +206,7 @@ function DesktopSADAC() {
         </video>
       </motion.div>
 
-      {/* Content block — max-w matches Figma 1165px */}
+      {/* Content */}
       <motion.div
         className="max-w-[1165px] mx-auto"
         initial={{ opacity: 0, y: 30 }}
@@ -168,24 +214,40 @@ function DesktopSADAC() {
         viewport={{ once: true, margin: "-80px" }}
         transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
       >
-        {/* How decisions are governed — centered */}
+        {/* How decisions are governed */}
         <div className="text-center mb-14 space-y-5">
-          <h3 className="text-[2.5rem] leading-[1.3] font-normal text-black">
+          <h3
+            className={[
+              "text-[2.5rem] leading-[1.3] font-normal transition-colors duration-700",
+              isDark ? "text-white" : "text-black",
+            ].join(" ")}
+          >
             How decisions are governed
           </h3>
-          <p className="text-2xl text-[#787878] leading-relaxed">
+          <p
+            className={[
+              "text-2xl leading-relaxed transition-colors duration-700",
+              isDark ? "text-[#A1A1A1]" : "text-[#787878]",
+            ].join(" ")}
+          >
             ADAC is a dedicated internal function that governs AI usage across all work.
           </p>
         </div>
 
-        {/* Two columns — gap 120px per Figma */}
+        {/* Two columns */}
         <div className="flex flex-row justify-between" style={{ gap: "120px" }}>
+
           {/* Left: It exists to */}
           <div className="flex-1 flex flex-col gap-10">
-            <h3 className="text-[2.5rem] leading-[1.3] font-normal text-black">
+            <h3
+              className={[
+                "text-[2.5rem] leading-[1.3] font-normal transition-colors duration-700",
+                isDark ? "text-white" : "text-black",
+              ].join(" ")}
+            >
               It exists to:
             </h3>
-            <ul className="flex flex-col gap-4 text-lg text-[#787878] leading-relaxed list-none"> {/* text-2xl → text-lg */}
+            <ul className="flex flex-col gap-4 text-lg leading-relaxed list-none">
               {[
                 "Define where AI should and should not be applied",
                 "Set clear boundaries between AI assistance and human ownership",
@@ -194,7 +256,14 @@ function DesktopSADAC() {
               ].map((item) => (
                 <li key={item} className="flex items-start gap-3">
                   <span className="mt-[10px] w-1.5 h-1.5 rounded-full bg-[#787878] shrink-0" />
-                  <span>{item}</span>
+                  <span
+                    className={[
+                      "transition-colors duration-700",
+                      isDark ? "text-[#A1A1A1]" : "text-[#787878]",
+                    ].join(" ")}
+                  >
+                    {item}
+                  </span>
                 </li>
               ))}
             </ul>
@@ -202,13 +271,15 @@ function DesktopSADAC() {
 
           {/* Right: ADAC ensures box */}
           <div
-            className="flex-1 flex flex-col gap-10 self-start"
-            style={{ background: "#FBFBFA", padding: "32px" }}
+            className={[
+              "flex-1 flex flex-col gap-10 self-start p-8 transition-colors duration-700",
+              isDark ? "bg-[#111111]" : "bg-[#FBFBFA]",
+            ].join(" ")}
           >
             <h3 className="text-[2.5rem] leading-[1.3] font-bold text-[#0EC8C5]">
               ADAC ensures:
             </h3>
-            <ul className="flex flex-col gap-4 text-lg text-[#787878] leading-relaxed list-none"> {/* text-2xl → text-lg */}
+            <ul className="flex flex-col gap-4 text-lg leading-relaxed list-none">
               {[
                 "Speed without recklessness",
                 "Scale without sameness",
@@ -216,7 +287,14 @@ function DesktopSADAC() {
               ].map((item) => (
                 <li key={item} className="flex items-start gap-3">
                   <span className="mt-[10px] w-1.5 h-1.5 rounded-full bg-[#0EC8C5] shrink-0" />
-                  <span>{item}</span>
+                  <span
+                    className={[
+                      "transition-colors duration-700",
+                      isDark ? "text-[#A1A1A1]" : "text-[#787878]",
+                    ].join(" ")}
+                  >
+                    {item}
+                  </span>
                 </li>
               ))}
             </ul>
@@ -230,11 +308,19 @@ function DesktopSADAC() {
 
 /* ===== Main Export ===== */
 export default function SADAC() {
+  const { theme } = useSectionTheme();
+  const isDark = theme === "dark";
+
   return (
-    <section className="bg-white py-24 md:py-32 overflow-hidden">
+    <section
+      className={[
+        "py-24 md:py-32 overflow-hidden transition-colors duration-700",
+        isDark ? "bg-[#0A0A0A]" : "bg-white",
+      ].join(" ")}
+    >
       <div className="w-[90%] lg:w-[85%] max-w-6xl mx-auto">
-        <DesktopSADAC />
-        <MobileSADAC />
+        <DesktopSADAC isDark={isDark} />
+        <MobileSADAC isDark={isDark} />
       </div>
     </section>
   );

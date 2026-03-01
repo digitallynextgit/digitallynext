@@ -12,17 +12,17 @@ const items = [
   {
     sub: "Data doesn't sit in dashboards.",
     main: "It shapes decisions.",
-    image: "/figma/careers/careers-modern-dad-1.png",
+    image: "/figma/careers/careers-modern-dad.png",
   },
   {
     sub: "AI doesn't replace thinking.",
     main: "It removes friction.",
-    image: "/figma/careers/careers-modern-dad-2.png",
+    image: "/figma/careers/careers-modern-dad.png",
   },
   {
     sub: "Digital isn't a channel.",
     main: "It's the system.",
-    image: "/figma/careers/careers-modern-dad-3.png",
+    image: "/figma/careers/careers-modern-dad.png",
   },
 ];
 
