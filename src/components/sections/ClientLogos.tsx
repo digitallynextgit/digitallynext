@@ -8,16 +8,24 @@ import { useSectionTheme } from "@/context/SectionThemeContext";
 interface ClientLogosProps {
   theme?: "dark" | "light";
 }
+const logosWhite = [
+  "/home/client1.png",  "/home/client2.png",  "/home/client3.png",
+  "/home/client4.png",  "/home/client5.png",  "/home/client6.png",
+  "/home/client7.png",  "/home/client8.png",  "/home/client9.png",
+  "/home/client10.png", "/home/client11.png", "/home/client12.png",
+];
+const logosBlack = [
+  "/home/client13.png", "/home/client14.png", "/home/client15.png",
+  "/home/client16.png", "/home/client17.png", "/home/client18.png",
+  "/home/client19.png", "/home/client20.png", "/home/client21.png",
+  "/home/client22.png", "/home/client23.png", "/home/client24.png",
+];
 
 export default function ClientLogos({ theme }: ClientLogosProps) {
   const { theme: contextTheme } = useSectionTheme();
   const isDark = (theme ?? contextTheme) === "dark";
 
-  const logoFiles = [
-    "/home/client1.png", "/home/client2.png", "/home/client3.png", "/home/client4.png",
-    "/home/client5.png", "/home/client99.png", "/home/client7.png", "/home/client8.png",
-    "/home/client9.png", "/home/client10.png", "/home/client11.png", "/home/client12.png",
-  ];
+  const logoFiles = isDark ? logosWhite : logosBlack;
 
   return (
     <section
@@ -77,19 +85,24 @@ export default function ClientLogos({ theme }: ClientLogosProps) {
           WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)",
         }}
       >
-        <div className="flex gap-8 w-max animate-[marquee_45s_linear_infinite] hover:paused">
+        <div
+          className="flex gap-8 w-max"
+          style={{ animation: "marquee 45s linear infinite" }}
+          onMouseEnter={(e) => (e.currentTarget.style.animationPlayState = "paused")}
+          onMouseLeave={(e) => (e.currentTarget.style.animationPlayState = "running")}
+        >
           {[...logoFiles, ...logoFiles, ...logoFiles, ...logoFiles].map((logo, i) => (
             <div
               key={i}
               className={[
                 "group shrink-0 flex items-center justify-center",
                 "h-[100px] px-5",
-                "border rounded-lg hover:rounded-full",
+                "border-2 rounded-lg hover:rounded-full",
                 "transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]",
                 "hover:scale-105",
                 isDark
-                  ? "border-white/60 hover:border-white/90 hover:shadow-[0_0_24px_rgba(255,255,255,0.08)]"
-                  : "border-black/15 hover:border-black/40 hover:shadow-[0_4px_24px_rgba(0,0,0,0.08)]",
+                  ? "border-white/50 hover:border-white/70 hover:shadow-[0_0_24px_rgba(255,255,255,0.08)]"
+                  : "border-black/20 hover:border-black/30 hover:shadow-[0_4px_24px_rgba(0,0,0,0.08)]",
               ].join(" ")}
             >
               <Image
@@ -97,14 +110,14 @@ export default function ClientLogos({ theme }: ClientLogosProps) {
                 alt="Client Logo"
                 width={0}
                 height={0}
-                sizes="200px"
-                style={{ width: "auto", height: "60px" }}
-                className={[
-                  "object-contain",
-                  "opacity-75 grayscale group-hover:opacity-100",
-                  "transition-all duration-500 ease-out",
-                  isDark ? "brightness-900 invert-25" : "brightness-900",
-                ].join(" ")}
+                sizes="140px"
+                style={{
+                  width: "auto",
+                  height: "55px",
+                  maxWidth: "140px",
+                }}
+                className="object-contain transition-opacity duration-500 opacity-100 brightness-900"
+              
               />
             </div>
           ))}

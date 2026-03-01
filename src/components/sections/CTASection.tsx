@@ -10,8 +10,6 @@ interface CTASectionProps {
 }
 
 export default function CTASection({ theme }: CTASectionProps) {
-  // ✅ Context integrate — consistent pattern
-  // Video background hai isliye visually always dark dikhega
   const { theme: contextTheme } = useSectionTheme();
   const isDark = (theme ?? contextTheme) === "dark";
 
@@ -19,7 +17,6 @@ export default function CTASection({ theme }: CTASectionProps) {
     <section
       id="contact"
       className="relative overflow-hidden w-screen -mx-[calc((100vw-100%)/2)] py-10 md:py-16 lg:py-20"
-      // ✅ Dark theme pe pure black, light pe dark-grey — video ke saath blend
       style={{ background: isDark ? "#000000" : "#111111" }}
     >
       {/* Video background */}

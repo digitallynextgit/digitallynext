@@ -35,7 +35,7 @@ export default function AwardsAndRecognition({ theme }: AwardsAndRecognitionProp
             ].join(" ")}
         >
             <section ref={sectionRef} className="py-10 md:py-16 lg:py-20 overflow-hidden">
-                <div className="max-w-7xl mx-auto px-5 md:px-12">
+                <div className="max-w-7xl mx-auto px-5">
 
                     {/* Header */}
                     <div className="text-center mb-12 md:mb-16 lg:mb-[72px]">
@@ -67,7 +67,10 @@ export default function AwardsAndRecognition({ theme }: AwardsAndRecognitionProp
                         variants={{
                             hidden: {},
                             visible: {
-                                transition: { staggerChildren: 0.12, delayChildren: 0.2 },
+                                transition: {
+                                    staggerChildren: 0.18,
+                                    delayChildren: 0.1,
+                                },
                             },
                         }}
                     >
@@ -77,15 +80,24 @@ export default function AwardsAndRecognition({ theme }: AwardsAndRecognitionProp
                                 <motion.div
                                     key={i}
                                     variants={{
-                                        hidden: { opacity: 0, y: 20 },
+                                        hidden: {
+                                            opacity: 0,
+                                            scale: 0.85,
+                                            filter: "blur(8px)",
+                                            y: 24,
+                                        },
                                         visible: {
                                             opacity: 1,
+                                            scale: 1,
+                                            filter: "blur(0px)",
                                             y: 0,
-                                            transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] },
+                                            transition: {
+                                                duration: 0.8,
+                                                ease: [0.16, 1, 0.3, 1],
+                                            },
                                         },
                                     }}
                                     className="flex items-center justify-center"
-                                    // On mobile each award gets a sensible share of width
                                     style={{ flexBasis: "auto", minWidth: 0 }}
                                 >
                                     <Image
@@ -102,6 +114,7 @@ export default function AwardsAndRecognition({ theme }: AwardsAndRecognitionProp
                                 </motion.div>
                             );
                         })}
+
                     </motion.div>
 
                 </div>

@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { ServiceYourAsk } from "@/data/services";
-import LiquidEther from "@/app/contact/LiquidEther"; // ✅ adjust path if moved to shared location
+import LiquidEther from "@/app/contact/LiquidEther";
 
 type Props = {
     yourAsk: ServiceYourAsk;

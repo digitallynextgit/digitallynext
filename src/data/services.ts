@@ -57,7 +57,6 @@ export type ServiceCaseStudyCard = {
   href?: string;
 };
 
-// ✅ NEW
 export type ServiceYourAsk = {
   eyebrow?: string;
   lines: string[];
@@ -116,7 +115,7 @@ export type ServiceDetail = {
   metaDescription: string;
   theme: ServiceTheme;
   hero: ServiceHeroSection;
-  yourAsk: ServiceYourAsk; // ✅ NEW
+  yourAsk: ServiceYourAsk;
   sections: ServiceSection[];
   cta: ServiceCTA;
 };
@@ -168,7 +167,6 @@ export const services: ServiceDetail[] = [
       ctaVariant: "light",
       arrowSrc: "/figma/services/arrow2.svg",
     },
-    // ✅ yourAsk
     yourAsk: {
       eyebrow: "If this sounds like your ask",
       lines: [
@@ -360,7 +358,6 @@ export const services: ServiceDetail[] = [
       ctaVariant: "light",
       arrowSrc: "/figma/services/arrow1.svg",
     },
-    // ✅ yourAsk
     yourAsk: {
       eyebrow: "If this sounds like your ask",
       lines: [
@@ -526,7 +523,6 @@ export const services: ServiceDetail[] = [
       ctaVariant: "light",
       arrowSrc: "/figma/services/arrow2.svg",
     },
-    // ✅ yourAsk
     yourAsk: {
       eyebrow: "If this sounds like your ask",
       lines: [
@@ -698,7 +694,6 @@ export const services: ServiceDetail[] = [
       ctaVariant: "light",
       arrowSrc: "/figma/services/arrow1.svg",
     },
-    // ✅ yourAsk
     yourAsk: {
       eyebrow: "If this sounds like your ask",
       lines: [
@@ -876,7 +871,6 @@ export const services: ServiceDetail[] = [
       ctaVariant: "light",
       arrowSrc: "/figma/services/arrow2.svg",
     },
-    // ✅ yourAsk
     yourAsk: {
       eyebrow: "If this sounds like your ask",
       lines: [

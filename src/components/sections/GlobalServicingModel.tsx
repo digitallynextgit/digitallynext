@@ -272,7 +272,7 @@ export default function GlobalServicingModel({ theme }: GSMProps) {
   const isDark = (theme ?? contextTheme) === "dark";
 
   return (
-    <section className="py-10 md:py-16 lg:py-20">
+    <section className={`py-10 md:py-16 lg:py-20 border-t ${isDark ? "border-white/8" : "border-black/8"}`}>
       <div className="w-[92%] sm:w-[90%] lg:w-auto max-w-6xl mx-auto">
 
         {/* Heading */}

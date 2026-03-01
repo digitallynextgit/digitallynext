@@ -64,7 +64,7 @@ export default function CareersCtaSection({ theme }: CareersCtaSectionProps) {
 
         {/* CTA Button */}
         <Link
-          href="#open-positions"
+          href="/careers/#open-positions"
           className="inline-flex items-center justify-center px-10 py-[14px] text-white text-[12px] font-medium uppercase tracking-[0.9815px] whitespace-nowrap hover:opacity-90 transition-opacity duration-300 no-underline"
           style={{
             background: "linear-gradient(90deg, #E21F26 0%, #7C1115 100%)",

@@ -110,7 +110,7 @@ export default function ProudlyWorkingWith({ theme }: ProudlyWorkingWithProps) {
           <div
             ref={marqueeRef}
             className="flex w-max py-6 md:py-8"
-            style={{ animation: "marquee 55s linear infinite" }} // ✅ slow speed
+            style={{ animation: "marquee 55s linear infinite" }}
           >
             {[...locations, ...locations, ...locations, ...locations].map((place, i) => (
               <span

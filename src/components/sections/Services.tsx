@@ -186,7 +186,7 @@ function DesktopServices({ isDark }: { isDark: boolean }) {
 
   return (
     <div className="hidden lg:block">
-      <div className="grid grid-cols-[44%_1fr] gap-2 mt-20">
+      <div className="grid grid-cols-[44%_1fr] gap-2 mt-10">
 
         {/* LEFT — Sticky media */}
         <div className="relative">
@@ -245,7 +245,7 @@ function DesktopServices({ isDark }: { isDark: boolean }) {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: hoveredIndex === i ? 1 : 0 }}
                   transition={{ duration: 0.2, ease: "easeOut" }}
-                  className="relative z-20 shrink-0 mt-5"
+                  className="relative z-20 shrink-0 mt-2"
                 >
                   <Image
                     src="/icons/enter.svg"
@@ -288,7 +288,7 @@ function DesktopServices({ isDark }: { isDark: boolean }) {
                     isDark ? "text-white/60" : "text-black/60",
                   ].join(" ")}
                   animate={{ x: ["0%", "-50%"] }}
-                  transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+                  transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
                 >
                   {[...Array(4)].map((_, j) => (
                     <span key={j} className="shrink-0 flex items-center">
@@ -311,7 +311,7 @@ function DesktopServices({ isDark }: { isDark: boolean }) {
 
           {/* Inquire Now CTA */}
           <div className="pt-8 w-full flex justify-start pl-8">
-            <Link href="/contact" className="group inline-flex items-center gap-1 pl-1">
+            <Link href="/contact" className="group inline-flex items-center gap-2">
               <span className="text-[#E21F26] transition-transform duration-300 ease-out group-hover:-translate-x-1">
                 <Image src="/icons/enter.svg" alt="arrow-right" width={32} height={32} />
               </span>
@@ -341,7 +341,7 @@ export default function Services({ theme }: ServicesProps) {
   const isDark = (theme ?? contextTheme) === "dark";
 
   return (
-    <section id="services" className="py-10 md:py-16 lg:py-20">
+    <section id="services" className={`py-10 md:py-16 lg:py-20 border-b ${isDark ? "border-white/8" : "border-black/8"}`}>
       <div className="w-[90%] lg:w-[85%] max-w-7xl mx-auto">
         <AnimatedSection>
           <h2

@@ -130,7 +130,6 @@ function MagneticLink({
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
-  // ✅ useSpring — raw motion value pe spring lagao, jitter khatam
   const springConfig = { stiffness: 120, damping: 18, mass: 0.08 };
   const x = useSpring(mouseX, springConfig);
   const y = useSpring(mouseY, springConfig);
@@ -138,7 +137,6 @@ function MagneticLink({
   const rotateX = useTransform(y, [-30, 30], [2.5, -2.5]);
   const rotateY = useTransform(x, [-80, 80], [-2.5, 2.5]);
 
-  // ✅ translateX bhi spring se — whileHover conflict avoid
   const hoverX = useMotionValue(0);
   const smoothHoverX = useSpring(hoverX, { stiffness: 200, damping: 28 });
 
@@ -175,8 +173,8 @@ function MagneticLink({
         style={{
           rotateX,
           rotateY,
-          x: smoothHoverX,            // ✅ whileHover hataya — spring x use karo
-          transformPerspective: 1200, // ✅ thoda zyada — rotation subtle lagegi
+          x: smoothHoverX,        
+          transformPerspective: 1200, 
           willChange: "transform",
         }}
         className="group flex items-center justify-between w-full py-5 md:py-6 px-6 md:px-12 cursor-pointer"
