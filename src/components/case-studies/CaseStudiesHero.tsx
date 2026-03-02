@@ -14,7 +14,6 @@ export default function CaseStudiesHero({ theme }: CaseStudiesHeroProps) {
   const isDark = (theme ?? contextTheme) === "dark";
 
   const featuredCaseStudy = caseStudies[0];
-  console.log(featuredCaseStudy);
 
   return (
     <section className="flex flex-col items-center gap-[47px] w-full py-10 md:py-16 lg:py-20">
@@ -82,7 +81,7 @@ export default function CaseStudiesHero({ theme }: CaseStudiesHeroProps) {
                     isDark ? "text-white/50" : "text-[#787878]",
                   ].join(" ")}
                 >
-                  {featuredCaseStudy.listing.caption}
+                  {featuredCaseStudy.detail.hero.title}
                 </p>
               </div>
             </div>

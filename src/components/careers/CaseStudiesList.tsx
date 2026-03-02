@@ -39,7 +39,7 @@ export default function CaseStudiesList({ theme }: CaseStudiesListProps) {
             isDark ? "text-white/50" : "text-[#787878]",
           ].join(" ")}
         >
-          {cs.listing.caption}
+          {cs.detail.hero.title}
         </p>
 
         <Link

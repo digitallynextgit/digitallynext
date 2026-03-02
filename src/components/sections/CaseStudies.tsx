@@ -22,7 +22,7 @@ export default function CaseStudies({ theme }: CaseStudiesProps) {
   const caseStudies = caseStudyData.slice(0, 4).map((cs) => ({
     id: cs.id,
     title: cs.listing.title,
-    description: cs.listing.caption,
+    description: cs.detail.hero.title,
     category: cs.listing.pillLabel ?? "",
     color: cs.detail.hero.metrics[0]?.color ?? "#E21F26",
     image: cs.listing.imageSrc,
