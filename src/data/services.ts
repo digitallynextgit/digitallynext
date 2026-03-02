@@ -21,7 +21,7 @@ export type ServiceHeroSection = {
   overlay?: string;
   subtitle?: string;
   quoteLead?: string;
-  quoteText: string;
+  quoteText: string | string[];
   quoteColor?: string;
   quoteShadow?: string;
   body: string[];
@@ -156,7 +156,17 @@ export const services: ServiceDetail[] = [
         "linear-gradient(180deg, rgba(0,0,0,0.65) 0%, rgba(226,31,38,0.88) 100%)",
       subtitle: "Where direction is defined before execution begins",
       quoteLead: "We often see brands say things like this",
-      quoteText: "\u201cWe want D2C scale without becoming discount-led.\u201d",
+      quoteText: [
+        "“We’re entering the D2C market and need a complete go-to-market strategy — from positioning to digital rollout.”",
+        "“We want D2C scale without becoming discount-led.”",
+        "“We’re launching a new B2B vertical and need global visibility, not just lead ads.”",
+        "“We know the product is strong, but the market is crowded.”",
+        "“We want a digital strategy before we start hiring agencies or running campaigns.”",
+        "“We need clarity first. Execution can follow.”",
+        "“We need to define who we’re really for — and why we’ll win.”",
+        "“This isn’t mass marketing — it’s niche, high-value.”",
+        "“We need PR, thought leadership, and influence working together.”",
+      ],
       quoteColor: "#1BB9B4",
       body: [
         "These are not marketing requests.",
@@ -785,7 +795,7 @@ export const services: ServiceDetail[] = [
             title: "Analytics & Tracking",
             description:
               "GA4 architecture, event tracking, funnel mapping, and custom dashboards, ensuring decision-making is governed by clean data.",
-           imageSrc: "/services/ss18.png",
+            imageSrc: "/services/ss18.png",
           },
           {
             title: "CRM & Platform Integrations",

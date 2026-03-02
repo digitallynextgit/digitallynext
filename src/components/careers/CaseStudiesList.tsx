@@ -35,8 +35,8 @@ export default function CaseStudiesList({ theme }: CaseStudiesListProps) {
       <div className="flex flex-col gap-3 pt-2">
         <p
           className={[
-            "text-[15px] font-light leading-[1.6] m-0 transition-colors duration-500",
-            isDark ? "text-white/50" : "text-[#787878]",
+            "text-2xl font-light leading-[1.6] m-0 transition-colors duration-500",
+            isDark ? "text-white" : "text-black",
           ].join(" ")}
         >
           {cs.detail.hero.title}
@@ -47,11 +47,11 @@ export default function CaseStudiesList({ theme }: CaseStudiesListProps) {
           className="group inline-flex items-center gap-2 text-xl font-medium no-underline mt-1"
         >
           <span className="text-[#E21F26] transition-transform duration-300 ease-out group-hover:-translate-x-2">
-            <Image src="/icons/enter.svg" alt="arrow-right" width={26} height={26} />
+            <Image src="/icons/enter.svg" alt="arrow-right" width={22} height={22} />
           </span>
           <span
             className={[
-              "mt-1 font-light group-hover:text-[#E21F26] transition-colors duration-200",
+              "mt-1 text-base font-light group-hover:text-[#E21F26] transition-colors duration-200",
               isDark ? "text-white/50" : "text-[#787878]",
             ].join(" ")}
           >

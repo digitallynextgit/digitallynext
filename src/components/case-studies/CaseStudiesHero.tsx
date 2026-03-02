@@ -77,8 +77,8 @@ export default function CaseStudiesHero({ theme }: CaseStudiesHeroProps) {
               <div className="w-full flex flex-col items-start gap-[15px]">
                 <p
                   className={[
-                    "font-light text-2xl leading-[31px] m-0 text-left transition-colors duration-500",
-                    isDark ? "text-white/50" : "text-[#787878]",
+                    "font-light text-3xl m-0 text-left transition-colors duration-500",
+                    isDark ? "text-white" : "text-black",
                   ].join(" ")}
                 >
                   {featuredCaseStudy.detail.hero.title}
@@ -93,11 +93,11 @@ export default function CaseStudiesHero({ theme }: CaseStudiesHeroProps) {
             className="group px-5 flex items-center gap-2 text-2xl font-medium no-underline"
           >
             <span className="text-[#E21F26] transition-transform duration-300 ease-out group-hover:-translate-x-2">
-              <Image src="/icons/enter.svg" alt="arrow-right" width={32} height={32} />
+              <Image src="/icons/enter.svg" alt="arrow-right" width={28} height={28} />
             </span>
             <span
               className={[
-                "mt-2 font-light hover:text-[#E21F26] transition-colors duration-200",
+                "mt-1 font-light hover:text-[#E21F26] transition-colors duration-200 text-base",
                 isDark ? "text-white/60" : "text-[#787878]",
               ].join(" ")}
             >

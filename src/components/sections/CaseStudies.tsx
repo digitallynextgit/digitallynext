@@ -121,8 +121,8 @@ export default function CaseStudies({ theme }: CaseStudiesProps) {
                       <div className="pt-6 px-1 pb-6 max-md:pt-5 max-md:pb-5">
                         <p
                           className={[
-                            "text-[1.2rem] leading-[1.55] mb-4 transition-colors duration-500",
-                            isDark ? "text-white/10" : "text-[#666]",
+                            "text-[1.3rem] leading-[1.55] mb-4 transition-colors duration-500",
+                            isDark ? "text-white" : "text-black",
                           ].join(" ")}
                         >
                           {cs.description}
