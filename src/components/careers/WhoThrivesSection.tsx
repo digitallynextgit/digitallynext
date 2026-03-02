@@ -13,27 +13,30 @@ const traits = [
     before: "Like ",
     bold: "structure",
     after: ", but hate rigidity",
-    image: "/figma/careers/careers-thrives-1.png",
+    image: "/figma/careers/careers-thrives-bg-48937d.png",
   },
   {
     before: 'Ask "',
     bold: "why",
     after: '" before "how"',
-    image: "/figma/careers/careers-thrives-2.png",
+    image: "https://images.pexels.com/photos/5428836/pexels-photo-5428836.jpeg",
   },
   {
     before: "Care about ",
     bold: "outcomes",
     after: ", not just effort",
-    image: "/figma/careers/careers-thrives-3.png",
+    image: "https://images.pexels.com/photos/265087/pexels-photo-265087.jpeg",
   },
   {
     before: "Want to ",
     bold: "grow",
     after: " without pretending",
-    image: "/figma/careers/careers-thrives-4.png",
+    image: "https://images.pexels.com/photos/4173195/pexels-photo-4173195.jpeg",
   },
 ];
+
+const DEFAULT_BG =
+  "/figma/careers/careers-thrives-bg-48937d.png";
 
 export default function WhoThrivesSection({ theme }: WhoThrivesSectionProps) {
   const { theme: contextTheme } = useSectionTheme();
@@ -45,13 +48,13 @@ export default function WhoThrivesSection({ theme }: WhoThrivesSectionProps) {
 
       {/* Default background */}
       <Image
-        src="/figma/careers/careers-thrives-bg-48937d.png"
+        src={DEFAULT_BG}
         alt=""
         fill
         sizes="100vw"
         className="object-cover"
         style={{
-          transition: "opacity 0.4s ease",
+          transition: "opacity 0.5s ease",
           opacity: hoveredIndex === null ? 1 : 0,
         }}
       />
@@ -66,24 +69,22 @@ export default function WhoThrivesSection({ theme }: WhoThrivesSectionProps) {
           sizes="100vw"
           className="object-cover"
           style={{
-            transition: "opacity 0.4s ease",
+            transition: "opacity 0.5s ease",
             opacity: hoveredIndex === index ? 1 : 0,
           }}
         />
       ))}
 
-      {/* Dark overlay — slightly lighter on light theme */}
+      {/* Dark overlay */}
       <div
-        className="absolute inset-0 z-1 transition-colors duration-700"
+        className="absolute inset-0 z-10 transition-colors duration-700"
         style={{
-          background: isDark
-            ? "rgba(0,0,0,0.85)"
-            : "rgba(0,0,0,0.70)",
+          background: isDark ? "rgba(0,0,0,0.85)" : "rgba(0,0,0,0.70)",
         }}
       />
 
       {/* Content */}
-      <div className="container relative z-2 flex justify-center items-center text-white">
+      <div className="container relative z-20 flex justify-center items-center text-white">
         <div style={{ maxWidth: 1103 }} className="w-full py-12 md:py-16 lg:py-20">
 
           {/* Heading */}
@@ -103,9 +104,8 @@ export default function WhoThrivesSection({ theme }: WhoThrivesSectionProps) {
           </div>
 
           {/* Traits Grid */}
-          <div
-            className="mt-16 max-w-[800px] mx-auto grid grid-cols-1 md:grid-cols-2 md:gap-x-16"
-          >
+          <div className="mt-16 max-w-[800px] mx-auto grid grid-cols-1 md:grid-cols-2 md:gap-x-16">
+
             {/* Left col — traits 0, 2 */}
             <div>
               {[0, 2].map((traitIdx) => {
