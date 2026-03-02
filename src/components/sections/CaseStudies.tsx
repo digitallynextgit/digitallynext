@@ -22,7 +22,7 @@ export default function CaseStudies({ theme }: CaseStudiesProps) {
   const caseStudies = caseStudyData.slice(0, 4).map((cs) => ({
     id: cs.id,
     title: cs.listing.title,
-    description: cs.listing.caption,
+    description: cs.detail.intro,
     category: cs.listing.pillLabel ?? "",
     color: cs.detail.hero.metrics[0]?.color ?? "#E21F26",
     image: cs.listing.imageSrc,
@@ -69,6 +69,7 @@ export default function CaseStudies({ theme }: CaseStudiesProps) {
       <div className="relative z-2 px-6 pb-[120px] max-w-[1280px] mx-auto max-md:mt-0 max-md:px-4 max-md:pb-16">
         <div className="grid grid-cols-2 gap-8 max-md:grid-cols-1 max-md:gap-6">
           {caseStudies.map((cs, i) => {
+            const isHovered = hoveredCard === cs.id;
             const CardWrapper = cs.href
               ? ({ children }: { children: React.ReactNode }) => (
                   <Link href={cs.href!} className="block no-underline text-inherit">
@@ -106,14 +107,14 @@ export default function CaseStudies({ theme }: CaseStudiesProps) {
                             (e.target as HTMLImageElement).style.display = "none";
                           }}
                         />
-                        <span
+                        {/* <span
                           className={[
                             "absolute bottom-3 right-4 text-[48px] font-black leading-none pointer-events-none transition-colors duration-500",
                             isDark ? "text-white/15" : "text-black/10",
                           ].join(" ")}
                         >
                           0{cs.id}
-                        </span>
+                        </span> */}
                       </div>
 
                       {/* Content */}
@@ -126,6 +127,16 @@ export default function CaseStudies({ theme }: CaseStudiesProps) {
                         >
                           {cs.description}
                         </p>
+                         <span
+                          className="inline-block text-xs font-semibold uppercase tracking-[0.06em] px-4 py-1.5 border-[1.5px] rounded-full transition-all duration-200 cursor-pointer"
+                          style={{
+                            borderColor: cs.color,
+                            color: isHovered ? "#FFFFFF" : cs.color,
+                            backgroundColor: isHovered ? cs.color : "transparent",
+                          }}
+                        >
+                          {cs.category}
+                        </span>
                       </div>
                     </div>
                   </CardWrapper>

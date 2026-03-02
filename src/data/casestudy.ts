@@ -111,27 +111,27 @@ export type CaseStudy = {
 export const caseStudies: CaseStudy[] = [
   {
     id: 1,
-    slug: "neotech",
-    metaTitle: "NeoTech Case Study | Digitally Next",
+    slug: "advent-global",
+    metaTitle: "Advent Global Case Study | Digitally Next",
     metaDescription:
       "Complete Brand Revamp for a US Tech Co. Helped them to bag one of the biggest social networking platforms as their client.",
     listing: {
       introText:
         "From ambitious startups to scaling enterprises – Digitally Next builds performance-driven creative systems that turn attention into measurable growth.",
-      title: 'Neo<span style="color:#E21F26">Tech</span>',
-      imageSrc: "/case/c3.webp",
+      title: 'Advent<span style="color:#E21F26">Global</span>',
+      imageSrc: "/case/advent.png",
       caption:
         "Complete Brand Revamp for a US Tech Co. Helped them to bag one of the biggest social networking platforms as their client.",
       buttonLabel: "View Case Study",
-      pillLabel: "Genomics",
+      pillLabel: "IT & ITES",
     },
     detail: {
       theme: "light",
       hero: {
-        eyebrow: "NEOTECH",
+        eyebrow: "ADVENTGLOBAL",
         title:
           "Complete Brand Revamp for a US Tech Co. Helped them to bag one of the biggest social networking platforms as their client",
-        heroImageSrc: "/case/c3.webp",
+        heroImageSrc: "/case/advent.png",
         metrics: [
           {
             value: "3X",
@@ -281,7 +281,7 @@ export const caseStudies: CaseStudy[] = [
       introText:
         "From ambitious startups to scaling enterprises – Digitally Next builds performance-driven creative systems that turn attention into measurable growth.",
       title: 'Neo<span style="color:#E21F26">Tech</span>',
-      imageSrc: "/case/c3.webp",
+      imageSrc: "/case/neotech.png",
       caption:
         "Complete Brand makeover of a global brand (Post M&A) to a new name and digital brand communication.",
       buttonLabel: "View Case Study",
@@ -293,7 +293,7 @@ export const caseStudies: CaseStudy[] = [
         eyebrow: "NEOTECH",
         title:
           "Complete Re-Branding and marketing function set up of an acquired organization (post completion of M&A)",
-        heroImageSrc: "/case/c2.webp",
+        heroImageSrc: "/case/neotech.png",
         metrics: [
           {
             value: "85%",
@@ -443,8 +443,193 @@ export const caseStudies: CaseStudy[] = [
       },
     },
   },
+
   {
     id: 3,
+    slug: "judaica-art-gallery",
+    metaTitle: "Judaica Art Gallery Case Study | Digitally Next",
+    metaDescription:
+      "Launch of a high end Judaica Art gallery and 5 Artists for International Markets — US & UK.",
+    listing: {
+      introText:
+        "From ambitious startups to scaling enterprises – Digitally Next builds performance-driven creative systems that turn attention into measurable growth.",
+      title: "Judaica Art Gallery",
+      imageSrc: "/case/c3.webp",
+      caption:
+        "Launch of a high end Judaica Art gallery and 5 Artists for International Markets — US & UK.",
+      buttonLabel: "View Case Study",
+      pillLabel: "UK",
+    },
+    detail: {
+      theme: "light",
+      hero: {
+        eyebrow: "JUDAICA ART GALLERY",
+        title:
+          "Launch of a high end Judaica Art gallery and 5 Artists for International Markets — US | UK",
+        heroImageSrc: "/case/c4.webp",
+        metrics: [
+          {
+            value: "3X",
+            description:
+              "Times More Reach in\nInternational Art Markets (US & UK)",
+            color: "#E21F26",
+            background: "rgba(226,31,38,0.05)",
+          },
+          {
+            value: "5",
+            description:
+              "Individual Artist Brands Launched\nwith Dedicated D2C Storefronts",
+            color: "#0EC8C5",
+            background: "rgba(14,200,197,0.05)",
+          },
+        ],
+      },
+      about: {
+        logoSrc: "/figma/case-study/about-logo.png",
+        quote:
+          '"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat._"',
+        fields: [
+          { label: "Industry", value: "Art & Culture" },
+          { label: "Category", value: "Art Gallery & E-commerce" },
+          { label: "Region", value: "Global" },
+        ],
+      },
+      intro:
+        "Create a high level of awareness for Judaica Art work and D2C shop set up – Contemporary and Modern by launching online Art Gallery and 5 different Artists & portfolios.",
+      objective: {
+        heading: "objective goal",
+        body: "Set up E-Commerce . Promote Judaica Art and Cultural transformation among Real Estate builders , Interior Designers , Architects and Art Collectors.",
+      },
+      approach: {
+        heading: "Approach",
+        body: "Mix of Strategy",
+        cards: [
+          {
+            iconSrc: "/figma/case-study/icon-cloud-lightning.svg",
+            label: "Functional",
+          },
+          {
+            iconSrc: "/figma/case-study/icon-trending-up.svg",
+            label: "Operational pursuits",
+          },
+        ],
+      },
+      focusArea: {
+        heading: "Focus Area",
+        body: "Launched a high-end Judaica Art Gallery alongside five distinct artist portfolios, targeting international markets across the US and UK. The strategy blended social media activations, personal branding, SEO, and e-commerce infrastructure to build awareness among real estate builders, interior designers, architects, and art collectors. A fully functional D2C shop was established on Shopify and WooCommerce to enable direct global sales of contemporary and modern Judaica artwork.",
+        cards: [
+          {
+            title: "Social Media",
+            description:
+              "Targeted social media campaigns were activated to build community and awareness around Judaica art and the five featured artists across international markets.",
+          },
+          {
+            title: "Digital PR",
+            description:
+              "Strategic digital PR amplified the gallery's launch, securing visibility across key publications and platforms within the art and luxury lifestyle space.",
+          },
+          {
+            title: "Thought Leadership",
+            description:
+              "The gallery's artists were positioned as cultural voices in the Judaica world through curated content, interviews, and expert commentary on digital platforms.",
+          },
+          {
+            title: "Industry Association",
+            description:
+              "Meaningful connections were built with art collectors, interior designers, architects, and real estate developers to expand the gallery's professional network and clientele.",
+          },
+        ],
+      },
+      strategicMarketing: {
+        headingPrefix: "Strategic Marketing",
+        headingHighlight: "Support",
+        menuItems: [
+          {
+            link: "#",
+            text: "Content & Themes Planning",
+            image: "https://picsum.photos/600/400?random=81",
+          },
+          {
+            link: "#",
+            text: "Visual & Social Media",
+            image: "https://picsum.photos/600/400?random=82",
+          },
+          {
+            link: "#",
+            text: "Social Media Planning",
+            image: "https://picsum.photos/600/400?random=83",
+          },
+          {
+            link: "#",
+            text: "E-Commerce & Shopify Setup",
+            image: "https://picsum.photos/600/400?random=84",
+          },
+          {
+            link: "#",
+            text: "SEO & ORM Planning",
+            image: "https://picsum.photos/600/400?random=84",
+          },
+          {
+            link: "#",
+            text: "Influencer & Community Outreach",
+            image: "https://picsum.photos/600/400?random=84",
+          },
+          {
+            link: "#",
+            text: "Data & Analytics",
+            image: "https://picsum.photos/600/400?random=84",
+          },
+        ],
+      },
+      coreDigitalAssets: {
+        headingPrefix: "Core",
+        headingHighlight: "Digital Assets",
+        subheading:
+          "All frameworks are powered by Modern DAD thinking and governed by the AI Decision & Acceleration Center.",
+        items: [
+          "D2C Shopify & WooCommerce Store",
+          "Artist Portfolio Websites (x5)",
+          "360° Social Media Calendar",
+          "Digital PR & Publications Calendar",
+          "Personal Branding — 5 Artists",
+          "SEO Strategy",
+          "Visual Communication Plan",
+          "Art Collector Outreach Programme",
+          "Thought Leadership Content",
+        ],
+      },
+      otherTeams: {
+        heading: "Digitally next",
+        linkLabel: "Case Studies",
+        linkHref: "/case-studies",
+      },
+      relatedCaseStudies: [
+        {
+          imageSrc: "/case/c3.webp",
+          title: "Advent Global",
+          description:
+            "From ambitious startups to scaling enterprises – Digitally Next builds performance-driven creative systems that turn attention into measurable growth.",
+          tag: "IT & ITES",
+          href: "/case-studies/neotech-genomics",
+        },
+      ],
+      cta: {
+        backgroundImageSrc: "/figma/case-study/cta-bg-4ff61d.png",
+        headingLines: ["Let's Build Something", "That Lasts."],
+        bodyLines: [
+          "We work best with teams that value structure, clarity, and long-term thinking.",
+          "",
+          "If you're looking for shortcuts, quick hacks, or transactional execution, we may not be the right fit.",
+          "",
+          "If you're building something meant to scale, let's talk.",
+        ],
+        buttonLabel: "Get In Touch",
+        buttonHref: "/contact",
+      },
+    },
+  },
+  {
+    id: 4,
     slug: "signia",
     metaTitle: "Signia Case Study | Digitally Next",
     metaDescription:
@@ -575,176 +760,6 @@ export const caseStudies: CaseStudy[] = [
           "All frameworks are powered by Modern DAD thinking and governed by the AI Decision & Acceleration Center.",
         items: [
           "Microsite",
-          "Engagement Promotional Assets",
-          "Podcast- Audio and Video",
-          "360 degree Digital Social Media calendar set up and Roll Out",
-          "Digital PR Calendar including UGC distribution",
-        ],
-      },
-      otherTeams: {
-        heading: "Digitally next",
-        linkLabel: "Case Studies",
-        linkHref: "/case-studies",
-      },
-      relatedCaseStudies: [
-        {
-          imageSrc: "/case/c3.webp",
-          title: "Advent Global",
-          description:
-            "From ambitious startups to scaling enterprises – Digitally Next builds performance-driven creative systems that turn attention into measurable growth.",
-          tag: "IT & ITES",
-          href: "/case-studies/neotech-genomics",
-        },
-      ],
-      cta: {
-        backgroundImageSrc: "/figma/case-study/cta-bg-4ff61d.png",
-        headingLines: ["Let's Build Something", "That Lasts."],
-        bodyLines: [
-          "We work best with teams that value structure, clarity, and long-term thinking.",
-          "",
-          "If you're looking for shortcuts, quick hacks, or transactional execution, we may not be the right fit.",
-          "",
-          "If you're building something meant to scale, let's talk.",
-        ],
-        buttonLabel: "Get In Touch",
-        buttonHref: "/contact",
-      },
-    },
-  },
-  {
-    id: 4,
-    slug: "insurtech-pan-india",
-    metaTitle: "InsurTech PAN India Launch Case Study | Digitally Next",
-    metaDescription:
-      "First Ever PAN India launch of InsurTech and their Phygital Model for the Tier-II & III cities (Bharat).",
-    listing: {
-      introText:
-        "From ambitious startups to scaling enterprises – Digitally Next builds performance-driven creative systems that turn attention into measurable growth.",
-      title: "InsurTech",
-      imageSrc: "/case/c4.webp",
-      caption:
-        "PAN India Launch (Online) of a disruptive phygital model in insurance sector to prevent mis-selling, mis-information and honest reach of the insurance products in the interiors of India.",
-      buttonLabel: "View Case Study",
-      pillLabel: "Insurance",
-    },
-    detail: {
-      theme: "light",
-      hero: {
-        eyebrow: "INSURTECH",
-        title:
-          "First Ever PAN India launch of InsurTech and their Phygital Model for the Tier-II & III cities (Bharat)",
-        heroImageSrc: "/case/c3.webp",
-        metrics: [
-          {
-            value: "6000+",
-            description:
-              "Pin Codes Reached Across\nTier-II & III Cities in Just 2 Years",
-            color: "#E21F26",
-            background: "rgba(226,31,38,0.05)",
-          },
-          {
-            value: "Series B",
-            description:
-              "Funding Secured Post\nSuccessful PAN India Digital Launch",
-            color: "#0EC8C5",
-            background: "rgba(14,200,197,0.05)",
-          },
-        ],
-      },
-      about: {
-        logoSrc: "/figma/case-study/signia.png",
-        quote:
-          "Signia is a world-leading hearing aid brand dedicated to creating life-enhancing technology that empowers people to hear brilliantly. With cutting-edge Integrated Xperience technology, Signia delivers natural, effortless hearing in real-world conversations, helping people stay connected, confident, and fully engaged in every moment of life.",
-        fields: [
-          { label: "Industry", value: "BFSI" },
-          { label: "Category", value: "Insurance Services" },
-          { label: "Region", value: "India" },
-        ],
-      },
-      intro:
-        "PAN India Launch (Online) of a disruptive phygital model in insurance sector to prevent mis-selling, mis-information and honest reach of the insurance products in the interiors of India.",
-      objective: {
-        heading: "objective goal",
-        body: "Complete new D2C centric website integrating with Apps along with 360 degrees performance marketing asset creation and B2B centric social media.",
-      },
-      approach: {
-        heading: "Approach",
-        body: "Mix of Strategy",
-        cards: [
-          {
-            iconSrc: "/figma/case-study/icon-cloud-lightning.svg",
-            label: "Functional",
-          },
-          {
-            iconSrc: "/figma/case-study/icon-trending-up.svg",
-            label: "Operational pursuits",
-          },
-        ],
-      },
-      focusArea: {
-        heading: "Focus Area",
-        body: "Executed the first-ever PAN India online launch of a disruptive phygital InsurTech model targeting tier-II and tier-III cities across Bharat. The strategy tackled insurance mis-selling and misinformation by building an honest, tech-driven D2C model that reached 6,000+ pin codes in just two years. A complete 360° digital rollout, including website, podcasts, social media, and digital PR — helped the brand secure Series B funding and a special mention by TiE.",
-        cards: [
-          {
-            title: "D2C Website",
-            description:
-              "A fully integrated D2C website was built and launched, connecting seamlessly with apps and performance marketing assets to drive direct insurance outreach across India's tier-II and tier-III markets.",
-          },
-          {
-            title: "Social Media",
-            description:
-              "A B2B-focused social media strategy was deployed with thematic content, visual communication, and a 360° calendar to build brand credibility and educate audiences on honest insurance practices.",
-          },
-          {
-            title: "Digital PR",
-            description:
-              "A targeted digital PR and publications calendar drove national media coverage and UGC distribution, positioning the brand as a disruptive force in India's insurance sector.",
-          },
-          {
-            title: "Personal Branding & Thought Leadership",
-            description:
-              "Founders and leadership were established as credible InsurTech voices through podcasts, thought leadership forums, and strategic personal branding.",
-          },
-        ],
-      },
-      strategicMarketing: {
-        headingPrefix: "Strategic Marketing",
-        headingHighlight: "Support",
-        menuItems: [
-          {
-            link: "#",
-            text: "Content & Themes Planning",
-            image: "https://picsum.photos/600/400?random=71",
-          },
-          {
-            link: "#",
-            text: "Visual Communication",
-            image: "https://picsum.photos/600/400?random=71",
-          },
-          {
-            link: "#",
-            text: "Social Media Planning",
-            image: "https://picsum.photos/600/400?random=71",
-          },
-          {
-            link: "#",
-            text: "Digital PR & Publications",
-            image: "https://picsum.photos/600/400?random=71",
-          },
-          {
-            link: "#",
-            text: "Data & Analytics",
-            image: "https://picsum.photos/600/400?random=71",
-          },
-        ],
-      },
-      coreDigitalAssets: {
-        headingPrefix: "Core",
-        headingHighlight: "Digital Assets",
-        subheading:
-          "All frameworks are powered by Modern DAD thinking and governed by the AI Decision & Acceleration Center.",
-        items: [
-          "Website",
           "Engagement Promotional Assets",
           "Podcast- Audio and Video",
           "360 degree Digital Social Media calendar set up and Roll Out",
@@ -1282,59 +1297,59 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     id: 8,
-    slug: "judaica-art-gallery",
-    metaTitle: "Judaica Art Gallery Case Study | Digitally Next",
+    slug: "insurtech-pan-india",
+    metaTitle: "InsurTech PAN India Launch Case Study | Digitally Next",
     metaDescription:
-      "Launch of a high end Judaica Art gallery and 5 Artists for International Markets — US & UK.",
+      "First Ever PAN India launch of InsurTech and their Phygital Model for the Tier-II & III cities (Bharat).",
     listing: {
       introText:
         "From ambitious startups to scaling enterprises – Digitally Next builds performance-driven creative systems that turn attention into measurable growth.",
-      title: "Judaica Art Gallery",
-      imageSrc: "/case/c3.webp",
+      title: "InsurTech",
+      imageSrc: "/case/c4.webp",
       caption:
-        "Launch of a high end Judaica Art gallery and 5 Artists for International Markets — US & UK.",
+        "PAN India Launch (Online) of a disruptive phygital model in insurance sector to prevent mis-selling, mis-information and honest reach of the insurance products in the interiors of India.",
       buttonLabel: "View Case Study",
-      pillLabel: "UK",
+      pillLabel: "Insurance",
     },
     detail: {
       theme: "light",
       hero: {
-        eyebrow: "JUDAICA ART GALLERY",
+        eyebrow: "INSURTECH",
         title:
-          "Launch of a high end Judaica Art gallery and 5 Artists for International Markets — US | UK",
-        heroImageSrc: "/case/c4.webp",
+          "First Ever PAN India launch of InsurTech and their Phygital Model for the Tier-II & III cities (Bharat)",
+        heroImageSrc: "/case/c3.webp",
         metrics: [
           {
-            value: "3X",
+            value: "6000+",
             description:
-              "Times More Reach in\nInternational Art Markets (US & UK)",
+              "Pin Codes Reached Across\nTier-II & III Cities in Just 2 Years",
             color: "#E21F26",
             background: "rgba(226,31,38,0.05)",
           },
           {
-            value: "5",
+            value: "Series B",
             description:
-              "Individual Artist Brands Launched\nwith Dedicated D2C Storefronts",
+              "Funding Secured Post\nSuccessful PAN India Digital Launch",
             color: "#0EC8C5",
             background: "rgba(14,200,197,0.05)",
           },
         ],
       },
       about: {
-        logoSrc: "/figma/case-study/about-logo.png",
+        logoSrc: "/figma/case-study/signia.png",
         quote:
-          '"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat._"',
+          "Signia is a world-leading hearing aid brand dedicated to creating life-enhancing technology that empowers people to hear brilliantly. With cutting-edge Integrated Xperience technology, Signia delivers natural, effortless hearing in real-world conversations, helping people stay connected, confident, and fully engaged in every moment of life.",
         fields: [
-          { label: "Industry", value: "Art & Culture" },
-          { label: "Category", value: "Art Gallery & E-commerce" },
-          { label: "Region", value: "Global" },
+          { label: "Industry", value: "BFSI" },
+          { label: "Category", value: "Insurance Services" },
+          { label: "Region", value: "India" },
         ],
       },
       intro:
-        "Create a high level of awareness for Judaica Art work and D2C shop set up – Contemporary and Modern by launching online Art Gallery and 5 different Artists & portfolios.",
+        "PAN India Launch (Online) of a disruptive phygital model in insurance sector to prevent mis-selling, mis-information and honest reach of the insurance products in the interiors of India.",
       objective: {
         heading: "objective goal",
-        body: "Set up E-Commerce . Promote Judaica Art and Cultural transformation among Real Estate builders , Interior Designers , Architects and Art Collectors.",
+        body: "Complete new D2C centric website integrating with Apps along with 360 degrees performance marketing asset creation and B2B centric social media.",
       },
       approach: {
         heading: "Approach",
@@ -1352,27 +1367,27 @@ export const caseStudies: CaseStudy[] = [
       },
       focusArea: {
         heading: "Focus Area",
-        body: "Launched a high-end Judaica Art Gallery alongside five distinct artist portfolios, targeting international markets across the US and UK. The strategy blended social media activations, personal branding, SEO, and e-commerce infrastructure to build awareness among real estate builders, interior designers, architects, and art collectors. A fully functional D2C shop was established on Shopify and WooCommerce to enable direct global sales of contemporary and modern Judaica artwork.",
+        body: "Executed the first-ever PAN India online launch of a disruptive phygital InsurTech model targeting tier-II and tier-III cities across Bharat. The strategy tackled insurance mis-selling and misinformation by building an honest, tech-driven D2C model that reached 6,000+ pin codes in just two years. A complete 360° digital rollout, including website, podcasts, social media, and digital PR — helped the brand secure Series B funding and a special mention by TiE.",
         cards: [
+          {
+            title: "D2C Website",
+            description:
+              "A fully integrated D2C website was built and launched, connecting seamlessly with apps and performance marketing assets to drive direct insurance outreach across India's tier-II and tier-III markets.",
+          },
           {
             title: "Social Media",
             description:
-              "Targeted social media campaigns were activated to build community and awareness around Judaica art and the five featured artists across international markets.",
+              "A B2B-focused social media strategy was deployed with thematic content, visual communication, and a 360° calendar to build brand credibility and educate audiences on honest insurance practices.",
           },
           {
             title: "Digital PR",
             description:
-              "Strategic digital PR amplified the gallery's launch, securing visibility across key publications and platforms within the art and luxury lifestyle space.",
+              "A targeted digital PR and publications calendar drove national media coverage and UGC distribution, positioning the brand as a disruptive force in India's insurance sector.",
           },
           {
-            title: "Thought Leadership",
+            title: "Personal Branding & Thought Leadership",
             description:
-              "The gallery's artists were positioned as cultural voices in the Judaica world through curated content, interviews, and expert commentary on digital platforms.",
-          },
-          {
-            title: "Industry Association",
-            description:
-              "Meaningful connections were built with art collectors, interior designers, architects, and real estate developers to expand the gallery's professional network and clientele.",
+              "Founders and leadership were established as credible InsurTech voices through podcasts, thought leadership forums, and strategic personal branding.",
           },
         ],
       },
@@ -1383,37 +1398,27 @@ export const caseStudies: CaseStudy[] = [
           {
             link: "#",
             text: "Content & Themes Planning",
-            image: "https://picsum.photos/600/400?random=81",
+            image: "https://picsum.photos/600/400?random=71",
           },
           {
             link: "#",
-            text: "Visual & Social Media",
-            image: "https://picsum.photos/600/400?random=82",
+            text: "Visual Communication",
+            image: "https://picsum.photos/600/400?random=71",
           },
           {
             link: "#",
             text: "Social Media Planning",
-            image: "https://picsum.photos/600/400?random=83",
+            image: "https://picsum.photos/600/400?random=71",
           },
           {
             link: "#",
-            text: "E-Commerce & Shopify Setup",
-            image: "https://picsum.photos/600/400?random=84",
-          },
-          {
-            link: "#",
-            text: "SEO & ORM Planning",
-            image: "https://picsum.photos/600/400?random=84",
-          },
-          {
-            link: "#",
-            text: "Influencer & Community Outreach",
-            image: "https://picsum.photos/600/400?random=84",
+            text: "Digital PR & Publications",
+            image: "https://picsum.photos/600/400?random=71",
           },
           {
             link: "#",
             text: "Data & Analytics",
-            image: "https://picsum.photos/600/400?random=84",
+            image: "https://picsum.photos/600/400?random=71",
           },
         ],
       },
@@ -1423,15 +1428,11 @@ export const caseStudies: CaseStudy[] = [
         subheading:
           "All frameworks are powered by Modern DAD thinking and governed by the AI Decision & Acceleration Center.",
         items: [
-          "D2C Shopify & WooCommerce Store",
-          "Artist Portfolio Websites (x5)",
-          "360° Social Media Calendar",
-          "Digital PR & Publications Calendar",
-          "Personal Branding — 5 Artists",
-          "SEO Strategy",
-          "Visual Communication Plan",
-          "Art Collector Outreach Programme",
-          "Thought Leadership Content",
+          "Website",
+          "Engagement Promotional Assets",
+          "Podcast- Audio and Video",
+          "360 degree Digital Social Media calendar set up and Roll Out",
+          "Digital PR Calendar including UGC distribution",
         ],
       },
       otherTeams: {

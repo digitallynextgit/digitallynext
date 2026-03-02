@@ -159,7 +159,7 @@ export async function POST(request: Request) {
 
     await transporter.sendMail({
       from: `Digitally Next Contact <${user}>`,
-      to: "diwakarjha554@gmail.com",
+      to: "contact@digitallynext.com",
       subject: `New Inquiry — ${payload.name}${payload.entityType ? ` (${payload.entityType})` : ""}`,
       text: buildText(payload),
       html: buildHtml(payload),
