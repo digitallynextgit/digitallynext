@@ -14,6 +14,7 @@ export default function CaseStudiesHero({ theme }: CaseStudiesHeroProps) {
   const isDark = (theme ?? contextTheme) === "dark";
 
   const featuredCaseStudy = caseStudies[0];
+  console.log(featuredCaseStudy);
 
   return (
     <section className="flex flex-col items-center gap-[47px] w-full py-10 md:py-16 lg:py-20">
