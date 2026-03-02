@@ -608,7 +608,7 @@ export const services: ServiceDetail[] = [
             title: "UGC",
             description:
               "User-generated content strategy and production, creator-led assets built for conversion and brand alignment.",
-            imageSrc: "/services/ss4.png",
+            imageSrc: "/services/ss10.png",
           },
           {
             title: "Digital PR",
@@ -773,31 +773,31 @@ export const services: ServiceDetail[] = [
             title: "Websites & Landing Experiences",
             description:
               "Brand-led, performance-focused web experiences, spanning corporate sites, high-conversion landing pages, and D2C ecosystems.",
-            imageSrc: "/figma/services/seo.svg",
+            imageSrc: "/services/ss16.png",
           },
           {
             title: "UX & Conversion Design",
             description:
               "Behaviour- and intent-driven user experience design, structured to reduce friction and maximise measurable conversion.",
-            imageSrc: "/figma/services/seo.svg",
+            imageSrc: "/services/ss17.png",
           },
           {
             title: "Analytics & Tracking",
             description:
               "GA4 architecture, event tracking, funnel mapping, and custom dashboards, ensuring decision-making is governed by clean data.",
-            imageSrc: "/figma/services/seo.svg",
+           imageSrc: "/services/ss18.png",
           },
           {
             title: "CRM & Platform Integrations",
             description:
               "HubSpot and marketing stack integrations, connecting websites, automation systems, and CRM workflows seamlessly.",
-            imageSrc: "/figma/services/seo.svg",
+            imageSrc: "/services/ss19.png",
           },
           {
             title: "Performance Optimisation",
             description:
               "Speed, stability, and scalable infrastructure, engineered for long-term performance, not short-term patches.",
-            imageSrc: "/figma/services/seo.svg",
+            imageSrc: "/services/ss20.png",
           },
         ],
       },
@@ -941,25 +941,25 @@ export const services: ServiceDetail[] = [
             title: "Branding",
             description:
               "Research support, insight mining, and positioning inputs \u2014 strengthening strategic foundations with AI-assisted intelligence.",
-            imageSrc: "/figma/services/seo.svg",
+            imageSrc: "/services/ss21.png",
           },
           {
             title: "Content",
             description:
               "Ideation acceleration, drafting support, variation generation, and structured testing \u2014 enhancing creative throughput without diluting narrative quality.",
-            imageSrc: "/figma/services/seo.svg",
+            imageSrc: "/services/ss22.png",
           },
           {
             title: "Performance",
             description:
               "Data analysis, signal detection, and optimisation support \u2014 augmenting human decision-making with pattern recognition and predictive insight.",
-            imageSrc: "/figma/services/seo.svg",
+            imageSrc: "/services/ss23.png",
           },
           {
             title: "Web & Platforms",
             description:
               "Quality assurance, technical optimisation, and performance intelligence \u2014 improving stability, speed, and measurable digital outcomes.",
-            imageSrc: "/figma/services/seo.svg",
+            imageSrc: "/services/ss24.png",
           },
         ],
       },

@@ -42,27 +42,19 @@ function MobileSADAC({ isDark }: { isDark: boolean }) {
         </p>
       </motion.div>
 
-      {/* Image */}
-      <motion.div
+       <motion.div
         className="relative w-full rounded overflow-hidden mb-8 aspect-[4/2.8]"
         initial={{ opacity: 0, scale: 0.96 }}
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true, margin: "-60px" }}
         transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
       >
-        <img
-          src="/images/ADAC Visual Draft.png"
-          alt="ADAC Visual"
-          className="absolute inset-0 w-full h-full object-cover object-top"
-        />
-        <div
-          className="absolute bottom-0 left-0 right-0 h-20 pointer-events-none"
-          style={{
-            background: isDark
-              ? "linear-gradient(180deg, rgba(0,0,0,0) 0%, #000000 100%)"
-              : "linear-gradient(180deg, rgba(255,255,255,0) 0%, #FFFFFF 100%)",
-          }}
-        />
+        <video
+          autoPlay loop muted playsInline
+          className="absolute -top-[4px] -left-[4px] -right-[4px] -bottom-[12px] w-[calc(100%+8px)] h-[calc(100%+16px)] object-cover object-top mt-[5px]"
+        >
+          <source src="/videos/ADAC Video.mp4" type="video/mp4" />
+        </video>
       </motion.div>
 
       {/* Content */}

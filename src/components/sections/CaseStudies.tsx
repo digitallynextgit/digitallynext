@@ -22,7 +22,7 @@ export default function CaseStudies({ theme }: CaseStudiesProps) {
   const caseStudies = caseStudyData.slice(0, 4).map((cs) => ({
     id: cs.id,
     title: cs.listing.title,
-    description: cs.detail.intro,
+    description: cs.listing.caption,
     category: cs.listing.pillLabel ?? "",
     color: cs.detail.hero.metrics[0]?.color ?? "#E21F26",
     image: cs.listing.imageSrc,
@@ -121,8 +121,8 @@ export default function CaseStudies({ theme }: CaseStudiesProps) {
                       <div className="pt-6 px-1 pb-6 max-md:pt-5 max-md:pb-5">
                         <p
                           className={[
-                            "text-[0.9rem] leading-[1.55] mb-4 transition-colors duration-500",
-                            isDark ? "text-white/60" : "text-[#666]",
+                            "text-[1.2rem] leading-[1.55] mb-4 transition-colors duration-500",
+                            isDark ? "text-white/10" : "text-[#666]",
                           ].join(" ")}
                         >
                           {cs.description}

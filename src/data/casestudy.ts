@@ -443,7 +443,6 @@ export const caseStudies: CaseStudy[] = [
       },
     },
   },
-
   {
     id: 3,
     slug: "judaica-art-gallery",
