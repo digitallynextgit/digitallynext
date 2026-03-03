@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import Hero from "@/components/sections/Hero";
 import ClientLogos from "@/components/sections/ClientLogos";
@@ -21,14 +21,34 @@ export default function Home() {
       <ThemeSection theme="light">
         <Hero />
       </ThemeSection>
-      
+
       <ThemeSection theme="light">
         <div style={{ position: "relative", zIndex: 10 }}>
-          <Image src="/banner/ipl-desktop.webp" alt="IPL Banner" width={768} height={60}
-            className="w-full object-contain block md:hidden" priority />
-          <Image src="/banner/ipl-desktop.webp" alt="IPL Banner" width={2900} height={60}
-            className="w-full h-[140px] object-cover hidden md:block" priority />
+          <Image
+            src="/banner/ipl-desktop.webp"
+            alt="IPL Banner"
+            width={768}
+            height={60}
+            className="w-full object-contain block md:hidden"
+            priority
+          />
+          <Image
+            src="/banner/ipl-desktop.webp"
+            alt="IPL Banner"
+            width={2900}
+            height={60}
+            className="w-full h-35 object-cover hidden md:block"
+            priority
+          />
         </div>
+      </ThemeSection>
+
+      <ThemeSection theme="light">
+        <AwardsAndRecognition />
+      </ThemeSection>
+
+      <ThemeSection theme="light">
+        <ProudlyWorkingWith />
       </ThemeSection>
 
       <ThemeSection theme="light">
@@ -48,19 +68,11 @@ export default function Home() {
       </ThemeSection>
 
       <ThemeSection theme="light">
-        <AwardsAndRecognition />
-      </ThemeSection>
-
-      <ThemeSection theme="light">
         <ADAC />
       </ThemeSection>
 
-      <ThemeSection theme="dark">
+      <ThemeSection theme="light">
         <GlobalServicingModel />
-      </ThemeSection>
-
-      <ThemeSection theme="dark">
-        <ProudlyWorkingWith />
       </ThemeSection>
 
       <ThemeSection theme="light">

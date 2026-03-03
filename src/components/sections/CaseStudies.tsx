@@ -29,15 +29,21 @@ export default function CaseStudies({ theme }: CaseStudiesProps) {
     href: `/case-studies/${cs.slug}`,
   }));
 
+  // 1st & 4th = teal/blue, 2nd & 3rd = red
+  const pillColors = ["#0EC8C5", "#E21F26", "#E21F26", "#0EC8C5"];
+
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start start", "end start"],
   });
 
-  const headingScale = useTransform(scrollYProgress, [0, 0.3], [1, 0.95]);
-  const headingVisibility = useTransform(scrollYProgress, (v: number) =>
-    v > 0.36 ? "hidden" : "visible"
+  const headingScale = useTransform(scrollYProgress, [0, 0.35], [1, 0.88]);
+  const headingOpacity = useTransform(
+    scrollYProgress,
+    [0, 0.28, 0.42],
+    [1, 0.6, 0],
   );
+  const headingY = useTransform(scrollYProgress, [0, 0.42], ["0%", "-18%"]);
 
   return (
     <section
@@ -49,7 +55,7 @@ export default function CaseStudies({ theme }: CaseStudiesProps) {
       <div className="sticky top-0 z-1 flex items-center justify-center px-6 py-20 pointer-events-none max-md:min-h-0 max-md:py-10 max-md:px-5">
         <motion.div
           className="text-center"
-          style={{ scale: headingScale, visibility: headingVisibility }}
+          style={{ scale: headingScale, opacity: headingOpacity, y: headingY }}
         >
           <h2
             className={[
@@ -70,16 +76,25 @@ export default function CaseStudies({ theme }: CaseStudiesProps) {
         <div className="grid grid-cols-2 gap-8 max-md:grid-cols-1 max-md:gap-6">
           {caseStudies.map((cs, i) => {
             const isHovered = hoveredCard === cs.id;
+            const pillColor = pillColors[i] ?? cs.color;
             const CardWrapper = cs.href
               ? ({ children }: { children: React.ReactNode }) => (
-                  <Link href={cs.href!} className="block no-underline text-inherit">
+                  <Link
+                    href={cs.href!}
+                    className="block no-underline text-inherit"
+                  >
                     {children}
                   </Link>
                 )
-              : ({ children }: { children: React.ReactNode }) => <>{children}</>;
+              : ({ children }: { children: React.ReactNode }) => (
+                  <>{children}</>
+                );
 
             return (
-              <div key={cs.id} className={i % 2 === 1 ? "mt-20 max-md:mt-0" : ""}>
+              <div
+                key={cs.id}
+                className={i % 2 === 1 ? "mt-20 max-md:mt-0" : ""}
+              >
                 <AnimatedSection delay={i * 0.05} direction="up">
                   <CardWrapper>
                     <div
@@ -104,17 +119,24 @@ export default function CaseStudies({ theme }: CaseStudiesProps) {
                           alt={cs.title}
                           className="w-full h-full object-cover transition-transform duration-600 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
                           onError={(e) => {
-                            (e.target as HTMLImageElement).style.display = "none";
+                            (e.target as HTMLImageElement).style.display =
+                              "none";
                           }}
                         />
-                        {/* <span
-                          className={[
-                            "absolute bottom-3 right-4 text-[48px] font-black leading-none pointer-events-none transition-colors duration-500",
-                            isDark ? "text-white/15" : "text-black/10",
-                          ].join(" ")}
+                        {/* Category pill — top-left overlay */}
+                        <span
+                          className="absolute top-3 left-3 z-10 text-xs font-semibold uppercase tracking-[0.06em] px-4 py-1.5 border-[1.5px] rounded-full transition-all duration-200 cursor-pointer"
+                          style={{
+                            borderColor: pillColor,
+                            color: "#FFFFFF",
+                            backgroundColor: pillColor,
+                            filter: isHovered
+                              ? "brightness(1.15)"
+                              : "brightness(1)",
+                          }}
                         >
-                          0{cs.id}
-                        </span> */}
+                          {cs.category}
+                        </span>
                       </div>
 
                       {/* Content */}
@@ -127,16 +149,6 @@ export default function CaseStudies({ theme }: CaseStudiesProps) {
                         >
                           {cs.description}
                         </p>
-                         <span
-                          className="inline-block text-xs font-semibold uppercase tracking-[0.06em] px-4 py-1.5 border-[1.5px] rounded-full transition-all duration-200 cursor-pointer"
-                          style={{
-                            borderColor: cs.color,
-                            color: isHovered ? "#FFFFFF" : cs.color,
-                            backgroundColor: isHovered ? cs.color : "transparent",
-                          }}
-                        >
-                          {cs.category}
-                        </span>
                       </div>
                     </div>
                   </CardWrapper>
@@ -152,7 +164,12 @@ export default function CaseStudies({ theme }: CaseStudiesProps) {
             href="/case-studies"
             className="group inline-flex items-center gap-2 text-xl font-semibold tracking-wide transition-all duration-300 hover:gap-4 no-underline"
           >
-            <Image src="/icons/enter.svg" alt="arrow-right" width={30} height={30} />
+            <Image
+              src="/icons/enter.svg"
+              alt="arrow-right"
+              width={30}
+              height={30}
+            />
             <span
               className={[
                 "transition-colors duration-200 group-hover:text-[#E21F26]",
