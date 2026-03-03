@@ -9,14 +9,17 @@ import AnimatedSection from "@/components/ui/AnimatedSection";
 import { useSectionTheme } from "@/context/SectionThemeContext";
 
 const maskStyle = {
-  maskImage: "linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)",
-  WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)",
+  maskImage:
+    "linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)",
+  WebkitMaskImage:
+    "linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)",
 };
 
 /* ===== Mobile Accordion ===== */
 function MobileServices({ isDark }: { isDark: boolean }) {
   const [expandedIndex, setExpandedIndex] = useState<number | null>(0);
-  const toggle = (i: number) => setExpandedIndex(expandedIndex === i ? null : i);
+  const toggle = (i: number) =>
+    setExpandedIndex(expandedIndex === i ? null : i);
 
   return (
     <div className="lg:hidden">
@@ -24,13 +27,7 @@ function MobileServices({ isDark }: { isDark: boolean }) {
         {services.map((service, i) => {
           const isOpen = expandedIndex === i;
           return (
-            <div
-              key={service.id}
-              className={[
-                "border-b transition-colors duration-500",
-                isDark ? "border-white/10" : "border-black/10",
-              ].join(" ")}
-            >
+            <div key={service.id}>
               {/* Accordion header */}
               <button
                 onClick={() => toggle(i)}
@@ -51,7 +48,11 @@ function MobileServices({ isDark }: { isDark: boolean }) {
                 <span
                   className={[
                     "ml-4 flex items-center gap-0.5 text-sm font-mono shrink-0 transition-colors duration-300",
-                    isOpen ? "text-[#E53935]" : isDark ? "text-white/30" : "text-black/30",
+                    isOpen
+                      ? "text-[#E53935]"
+                      : isDark
+                        ? "text-white/30"
+                        : "text-black/30",
                   ].join(" ")}
                 >
                   {"{ "}
@@ -91,7 +92,12 @@ function MobileServices({ isDark }: { isDark: boolean }) {
                           />
                           <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-300 flex items-center justify-center">
                             <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center gap-2 text-white font-semibold text-sm tracking-widest uppercase border border-white/60 px-4 py-2 rounded-sm backdrop-blur-sm">
-                              <Image src="/icons/enter.svg" alt="" width={16} height={16} />
+                              <Image
+                                src="/icons/enter.svg"
+                                alt=""
+                                width={16}
+                                height={16}
+                              />
                               View Details
                             </span>
                           </div>
@@ -123,10 +129,17 @@ function MobileServices({ isDark }: { isDark: boolean }) {
                             isDark ? "text-white/40" : "text-black/40",
                           ].join(" ")}
                           animate={{ x: ["0%", "-50%"] }}
-                          transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+                          transition={{
+                            duration: 25,
+                            repeat: Infinity,
+                            ease: "linear",
+                          }}
                         >
                           {[...Array(3)].map((_, j) => (
-                            <span key={j} className="shrink-0 flex items-center">
+                            <span
+                              key={j}
+                              className="shrink-0 flex items-center"
+                            >
                               {service.sliderText}
                               <span className="mx-4 opacity-40">·</span>
                             </span>
@@ -140,7 +153,12 @@ function MobileServices({ isDark }: { isDark: boolean }) {
                         className="group inline-flex items-center gap-2 mt-1"
                       >
                         <span className="text-[#E21F26] transition-transform duration-300 ease-out group-hover:-translate-x-1">
-                          <Image src="/icons/enter.svg" alt="" width={20} height={20} />
+                          <Image
+                            src="/icons/enter.svg"
+                            alt=""
+                            width={20}
+                            height={20}
+                          />
                         </span>
                         <span
                           className={[
@@ -156,6 +174,9 @@ function MobileServices({ isDark }: { isDark: boolean }) {
                   </motion.div>
                 )}
               </AnimatePresence>
+              <div
+                className={`h-px bg-linear-to-r from-transparent ${isDark ? "via-white/10" : "via-black/10"} to-transparent transition-colors duration-500`}
+              />
             </div>
           );
         })}
@@ -175,7 +196,9 @@ function DesktopServices({ isDark }: { isDark: boolean }) {
     itemRefs.current.forEach((ref, index) => {
       if (!ref) return;
       const observer = new IntersectionObserver(
-        ([entry]) => { if (entry.isIntersecting) setActiveIndex(index); },
+        ([entry]) => {
+          if (entry.isIntersecting) setActiveIndex(index);
+        },
         { root: null, rootMargin: "-35% 0px -60% 0px", threshold: 0 },
       );
       observer.observe(ref);
@@ -187,7 +210,6 @@ function DesktopServices({ isDark }: { isDark: boolean }) {
   return (
     <div className="hidden lg:block">
       <div className="grid grid-cols-[44%_1fr] gap-2 mt-10">
-
         {/* LEFT — Sticky media */}
         <div className="relative">
           <div
@@ -231,7 +253,9 @@ function DesktopServices({ isDark }: { isDark: boolean }) {
           {services.map((service, i) => (
             <div
               key={service.id}
-              ref={(el) => { itemRefs.current[i] = el; }}
+              ref={(el) => {
+                itemRefs.current[i] = el;
+              }}
               className="transition-all duration-500"
             >
               <Link
@@ -266,8 +290,12 @@ function DesktopServices({ isDark }: { isDark: boolean }) {
                     hoveredIndex === i || activeIndex === i
                       ? "text-[#E53935]"
                       : activeIndex + 1 === i
-                        ? isDark ? "text-white" : "text-black"
-                        : isDark ? "text-white/20" : "text-black/20",
+                        ? isDark
+                          ? "text-white"
+                          : "text-black"
+                        : isDark
+                          ? "text-white/20"
+                          : "text-black/20",
                   ].join(" ")}
                 >
                   {service.title}
@@ -289,7 +317,11 @@ function DesktopServices({ isDark }: { isDark: boolean }) {
                     isDark ? "text-white/60" : "text-black/60",
                   ].join(" ")}
                   animate={{ x: ["0%", "-50%"] }}
-                  transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
+                  transition={{
+                    duration: 60,
+                    repeat: Infinity,
+                    ease: "linear",
+                  }}
                 >
                   {[...Array(4)].map((_, j) => (
                     <span key={j} className="shrink-0 flex items-center">
@@ -303,8 +335,8 @@ function DesktopServices({ isDark }: { isDark: boolean }) {
               {/* Divider */}
               <div
                 className={[
-                  "my-12 h-px transition-colors duration-500",
-                  isDark ? "bg-white/8" : "bg-black/8",
+                  "my-12 h-px bg-linear-to-r from-transparent to-transparent transition-colors duration-500",
+                  isDark ? "via-white/8" : "via-black/8",
                 ].join(" ")}
               />
             </div>
@@ -312,9 +344,17 @@ function DesktopServices({ isDark }: { isDark: boolean }) {
 
           {/* Inquire Now CTA */}
           <div className="pt-8 w-full flex justify-start pl-8">
-            <Link href="/contact" className="group inline-flex items-center gap-2">
+            <Link
+              href="/contact"
+              className="group inline-flex items-center gap-2"
+            >
               <span className="text-[#E21F26] transition-transform duration-300 ease-out group-hover:-translate-x-1">
-                <Image src="/icons/enter.svg" alt="arrow-right" width={32} height={32} />
+                <Image
+                  src="/icons/enter.svg"
+                  alt="arrow-right"
+                  width={32}
+                  height={32}
+                />
               </span>
               <span
                 className={[
@@ -342,7 +382,7 @@ export default function Services({ theme }: ServicesProps) {
   const isDark = (theme ?? contextTheme) === "dark";
 
   return (
-    <section id="services" className={`py-10 md:py-16 lg:py-20 border-b ${isDark ? "border-white/8" : "border-black/8"}`}>
+    <section id="services" className={`py-10 md:py-16 lg:py-20`}>
       <div className="w-[90%] lg:w-[85%] max-w-7xl mx-auto">
         <AnimatedSection>
           <h2
@@ -358,12 +398,23 @@ export default function Services({ theme }: ServicesProps) {
 
         <DesktopServices isDark={isDark} />
         <MobileServices isDark={isDark} />
+        <div
+          className={`h-px bg-linear-to-r from-transparent ${isDark ? "via-white/8" : "via-black/8"} to-transparent transition-colors duration-500`}
+        />
 
         {/* Mobile CTA */}
         <div className="pt-8 w-full flex justify-start lg:hidden">
-          <Link href="/contact" className="group inline-flex items-center gap-1 pl-1">
+          <Link
+            href="/contact"
+            className="group inline-flex items-center gap-1 pl-1"
+          >
             <span className="text-[#E21F26] transition-transform duration-300 ease-out group-hover:-translate-x-1">
-              <Image src="/icons/enter.svg" alt="arrow-right" width={32} height={32} />
+              <Image
+                src="/icons/enter.svg"
+                alt="arrow-right"
+                width={32}
+                height={32}
+              />
             </span>
             <span
               className={[

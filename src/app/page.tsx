@@ -24,20 +24,22 @@ export default function Home() {
 
       <ThemeSection theme="light">
         <div style={{ position: "relative", zIndex: 10 }}>
+          {/* Mobile */}
           <Image
             src="/banner/ipl-desktop.webp"
             alt="IPL Banner"
             width={768}
-            height={60}
-            className="w-full object-contain block md:hidden"
+            height={240}
+            className="w-full h-auto object-contain block md:hidden"
             priority
           />
+          {/* Tablet + Desktop */}
           <Image
             src="/banner/ipl-desktop.webp"
             alt="IPL Banner"
             width={2900}
-            height={60}
-            className="w-full h-35 object-cover hidden md:block"
+            height={240}
+            className="w-full h-auto object-contain hidden md:block"
             priority
           />
         </div>
@@ -71,7 +73,7 @@ export default function Home() {
         <ADAC />
       </ThemeSection>
 
-      <ThemeSection theme="light">
+      <ThemeSection theme="dark">
         <GlobalServicingModel />
       </ThemeSection>
 

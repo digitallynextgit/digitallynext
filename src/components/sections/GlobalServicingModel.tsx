@@ -11,31 +11,71 @@ const frameworks = [
     name: "C-Suite",
     description: "Leadership & decision-aligned engagement",
     cta: "Explore Framework",
-    icon: <Image src="/home/sm1.png" alt="C-Suite Icon" width={112} height={112} className="w-full h-full object-contain" />,
+    icon: (
+      <Image
+        src="/home/sm1.png"
+        alt="C-Suite Icon"
+        width={112}
+        height={112}
+        className="w-full h-full object-contain"
+      />
+    ),
   },
   {
     name: "KASA",
     description: "Founder & leadership brand authority model",
     cta: "Explore Framework",
-    icon: <Image src="/home/sm2.png" alt="KASA Icon" width={112} height={112} className="w-full h-full object-contain" />,
+    icon: (
+      <Image
+        src="/home/sm2.png"
+        alt="KASA Icon"
+        width={112}
+        height={112}
+        className="w-full h-full object-contain"
+      />
+    ),
   },
   {
     name: "Profit",
     description: "Plan-to-performance growth execution",
     cta: "Explore Framework",
-    icon: <Image src="/home/sm3.png" alt="Profit Icon" width={112} height={112} className="w-full h-full object-contain" />,
+    icon: (
+      <Image
+        src="/home/sm3.png"
+        alt="Profit Icon"
+        width={112}
+        height={112}
+        className="w-full h-full object-contain"
+      />
+    ),
   },
   {
     name: "Communication & Governance",
     description: "Cadence · Ownership · Escalation",
     cta: "Explore Model",
-    icon: <Image src="/home/sm4.png" alt="Communication Icon" width={112} height={112} className="w-full h-full object-contain" />,
+    icon: (
+      <Image
+        src="/home/sm4.png"
+        alt="Communication Icon"
+        width={112}
+        height={112}
+        className="w-full h-full object-contain"
+      />
+    ),
   },
   {
     name: "Delivery Models",
     description: "Satellite Office · Dedicated Pods · Build-Operate-Transfer",
     cta: "Explore Models",
-    icon: <Image src="/home/sm5.png" alt="Delivery Models Icon" width={112} height={112} className="w-full h-full object-contain" />,
+    icon: (
+      <Image
+        src="/home/sm5.png"
+        alt="Delivery Models Icon"
+        width={112}
+        height={112}
+        className="w-full h-full object-contain"
+      />
+    ),
   },
 ];
 
@@ -85,7 +125,11 @@ function MobileGSM({ isDark }: { isDark: boolean }) {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-40px" }}
-            transition={{ duration: 0.5, delay: i * 0.08, ease: [0.16, 1, 0.3, 1] }}
+            transition={{
+              duration: 0.5,
+              delay: i * 0.08,
+              ease: [0.16, 1, 0.3, 1],
+            }}
           >
             {/* Icon + Heading row */}
             <div className="flex items-center gap-3 sm:gap-4 mb-2">
@@ -117,7 +161,12 @@ function MobileGSM({ isDark }: { isDark: boolean }) {
               href="#"
               className="inline-flex items-center gap-2 hover:gap-4 transition-all duration-300"
             >
-              <Image src="/icons/enter.svg" alt="arrow-right" width={20} height={20} />
+              <Image
+                src="/icons/enter.svg"
+                alt="arrow-right"
+                width={20}
+                height={20}
+              />
               <span
                 className={[
                   "whitespace-nowrap text-[13px] sm:text-[14px] font-semibold transition-colors duration-500",
@@ -133,7 +182,6 @@ function MobileGSM({ isDark }: { isDark: boolean }) {
     </div>
   );
 }
-
 
 /* ===== Desktop Layout ===== */
 function DesktopGSM({ isDark }: { isDark: boolean }) {
@@ -155,7 +203,6 @@ function DesktopGSM({ isDark }: { isDark: boolean }) {
   return (
     <div className="hidden lg:block">
       <div className="grid grid-cols-2 gap-20 items-start">
-
         {/* LEFT */}
         <motion.div
           initial={{ opacity: 0, x: -30 }}
@@ -170,7 +217,9 @@ function DesktopGSM({ isDark }: { isDark: boolean }) {
             ].join(" ")}
           >
             <span className="text-2xl md:text-5xl font-medium">
-              Our Operating<br />Frameworks
+              Our Operating
+              <br />
+              Frameworks
             </span>
           </h3>
           <p
@@ -220,7 +269,12 @@ function DesktopGSM({ isDark }: { isDark: boolean }) {
                   href="#"
                   className="inline-flex items-center gap-2 text-[#E53935] font-semibold text-sm mb-4 hover:gap-4 transition-all duration-300"
                 >
-                  <Image src="/icons/enter.svg" alt="arrow-right" width={30} height={30} />
+                  <Image
+                    src="/icons/enter.svg"
+                    alt="arrow-right"
+                    width={30}
+                    height={30}
+                  />
                   <span
                     className={[
                       "mt-1 whitespace-nowrap text-lg hover:text-[#E53935] transition-colors duration-500",
@@ -272,54 +326,62 @@ export default function GlobalServicingModel({ theme }: GSMProps) {
   const isDark = (theme ?? contextTheme) === "dark";
 
   return (
-    <section className={`py-10 md:py-16 lg:py-20 border-t ${isDark ? "border-white/8" : "border-black/8"}`}>
-      <div className="w-[92%] sm:w-[90%] lg:w-auto max-w-6xl mx-auto">
-
-        {/* Heading */}
-        <div className="flex justify-between items-center flex-col">
-          <motion.div
-            className="mb-5 sm:mb-6"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-          >
-            <h2
-              className={[
-                "font-extrabold tracking-tight leading-none text-center transition-colors duration-500",
-                isDark ? "text-white" : "text-[#1a1a1a]",
-              ].join(" ")}
+    <>
+      <div
+        className={`h-px bg-linear-to-r from-transparent ${isDark ? "via-white/8" : "via-black/8"} to-transparent transition-colors duration-500`}
+      />
+      <section className={`py-10 md:py-16 lg:py-20`}>
+        <div className="w-[92%] sm:w-[90%] lg:w-auto max-w-6xl mx-auto">
+          {/* Heading */}
+          <div className="flex justify-between items-center flex-col">
+            <motion.div
+              className="mb-5 sm:mb-6"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
             >
-              <span className="text-[#E53935] text-3xl sm:text-4xl md:text-6xl lg:text-7xl">
-                Global
-              </span>{" "}
-              <span className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl">
-                Servicing Model
-              </span>
-              <span className="text-[#0EC8C5] text-3xl sm:text-4xl md:text-6xl lg:text-7xl">
-                .
-              </span>
-            </h2>
-          </motion.div>
+              <h2
+                className={[
+                  "font-extrabold tracking-tight leading-none text-center transition-colors duration-500",
+                  isDark ? "text-white" : "text-[#1a1a1a]",
+                ].join(" ")}
+              >
+                <span className="text-[#E53935] text-3xl sm:text-4xl md:text-6xl lg:text-7xl">
+                  Global
+                </span>{" "}
+                <span className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl">
+                  Servicing Model
+                </span>
+                <span className="text-[#0EC8C5] text-3xl sm:text-4xl md:text-6xl lg:text-7xl">
+                  .
+                </span>
+              </h2>
+            </motion.div>
 
-          {/* Subtitle */}
-          <motion.p
-            className={[
-              "text-[12px] sm:text-sm md:text-lg mb-10 sm:mb-16 md:mb-20 text-center transition-colors duration-500",
-              isDark ? "text-white/80" : "text-black/70",
-            ].join(" ")}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-          >
-            Structured frameworks. Predictable delivery. Global scale.
-          </motion.p>
+            {/* Subtitle */}
+            <motion.p
+              className={[
+                "text-[12px] sm:text-sm md:text-lg mb-10 sm:mb-16 md:mb-20 text-center transition-colors duration-500",
+                isDark ? "text-white/80" : "text-black/70",
+              ].join(" ")}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{
+                duration: 0.6,
+                delay: 0.1,
+                ease: [0.16, 1, 0.3, 1],
+              }}
+            >
+              Structured frameworks. Predictable delivery. Global scale.
+            </motion.p>
+          </div>
+
+          <DesktopGSM isDark={isDark} />
+          <MobileGSM isDark={isDark} />
         </div>
-
-        <DesktopGSM isDark={isDark} />
-        <MobileGSM isDark={isDark} />
-      </div>
-    </section>
+      </section>
+    </>
   );
 }

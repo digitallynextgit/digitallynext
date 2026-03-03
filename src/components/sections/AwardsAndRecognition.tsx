@@ -13,9 +13,9 @@ const awards = [
 
 // Max height per breakpoint per image (px)
 const imageHeights: Record<number, { sm: number; md: number; lg: number }> = {
-  0: { sm: 30, md: 44, lg: 58 }, // a1 — wide & short
-  1: { sm: 44, md: 60, lg: 82 }, // a2 — tall
-  2: { sm: 44, md: 60, lg: 82 }, // a3 — tall & narrow
+  0: { sm: 44, md: 60, lg: 82 },
+  1: { sm: 44, md: 60, lg: 82 },
+  2: { sm: 44, md: 60, lg: 82 },
 };
 
 interface AwardsAndRecognitionProps {
@@ -30,12 +30,10 @@ export default function AwardsAndRecognition({
   const sectionRef = useRef<HTMLDivElement>(null);
 
   return (
-    <div
-      className={[
-        "border-t border-b transition-colors duration-500",
-        isDark ? "border-white/10" : "border-gray-200",
-      ].join(" ")}
-    >
+    <div>
+      <div
+        className={`h-px bg-linear-to-r from-transparent ${isDark ? "via-white/10" : "via-gray-200"} to-transparent transition-colors duration-500`}
+      />
       <section
         ref={sectionRef}
         className="py-10 md:py-16 lg:py-20 overflow-hidden"
@@ -64,7 +62,10 @@ export default function AwardsAndRecognition({
 
           {/* Awards Row */}
           <motion.div
-            className="flex flex-wrap items-center justify-center gap-14 sm:gap-20 md:flex-nowrap md:justify-center md:gap-24 lg:gap-32"
+            className={[
+              "flex items-center w-full",
+              isDark ? "divide-x divide-white/10" : "divide-x divide-gray-200",
+            ].join(" ")}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-80px" }}
@@ -101,8 +102,7 @@ export default function AwardsAndRecognition({
                       },
                     },
                   }}
-                  className="flex items-center justify-center"
-                  style={{ flexBasis: "auto", minWidth: 0 }}
+                  className="flex-1 flex items-center justify-center px-6 md:px-10 lg:px-14"
                 >
                   <Image
                     src={award.src}
@@ -121,6 +121,9 @@ export default function AwardsAndRecognition({
           </motion.div>
         </div>
       </section>
+      <div
+        className={`h-px bg-linear-to-r from-transparent ${isDark ? "via-white/10" : "via-gray-200"} to-transparent transition-colors duration-500`}
+      />
     </div>
   );
 }

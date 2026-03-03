@@ -101,10 +101,10 @@ export default function ProudlyWorkingWith({ theme }: ProudlyWorkingWithProps) {
 
         {/* Locations Marquee */}
         <div
-          className={[
-            "border-t border-b transition-colors duration-500 overflow-hidden",
-            isDark ? "border-white/10" : "border-black/10",
-          ].join(" ")}
+          className={`h-px bg-linear-to-r from-transparent ${isDark ? "via-white/10" : "via-black/10"} to-transparent transition-colors duration-500`}
+        />
+        <div
+          className="overflow-hidden"
           style={{
             maskImage:
               "linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)",
@@ -150,6 +150,9 @@ export default function ProudlyWorkingWith({ theme }: ProudlyWorkingWithProps) {
             )}
           </div>
         </div>
+        <div
+          className={`h-px bg-linear-to-r from-transparent ${isDark ? "via-white/10" : "via-black/10"} to-transparent transition-colors duration-500`}
+        />
       </div>
 
       {/* World Map — full width, fade bottom */}
