@@ -24,7 +24,11 @@ export default function Home() {
       </ThemeSection>
 
       <ThemeSection theme="light">
-        <Link href="/contact" className="block cursor-pointer" style={{ position: "relative", zIndex: 10 }}>
+        <Link
+          href="/contact"
+          className="block cursor-pointer"
+          style={{ position: "relative", zIndex: 10 }}
+        >
           {/* Mobile */}
           <Image
             src="/banner/ipl-desktop.webp"

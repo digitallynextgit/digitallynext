@@ -11,11 +11,20 @@ export const metadata = {
 
 export default function CaseStudiesPage() {
   return (
-    <ThemeSection theme="light">
-      <CaseStudiesHero />
-      <ClientLogos theme="light" />
-      <CaseStudiesList />
-      <CareersCtaSection />
-    </ThemeSection>
+    <>
+      <ThemeSection theme="light">
+        <CaseStudiesHero />
+      </ThemeSection>
+
+      <ThemeSection theme="dark">
+        <ClientLogos />
+      </ThemeSection>
+      <ThemeSection theme="light">
+        <CaseStudiesList />
+      </ThemeSection>
+      <ThemeSection theme="light">
+        <CareersCtaSection />
+      </ThemeSection>
+    </>
   );
 }

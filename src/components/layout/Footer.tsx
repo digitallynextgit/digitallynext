@@ -126,7 +126,7 @@ export default function Footer() {
               className="lg:text-lg text-sm text-white/80 text-center md:text-left block xl:whitespace-nowrap"
               style={{ fontFamily: "Stack Sans Text" }}
             >
-              © {new Date(Date.now()).getFullYear()} Digitally Next. All Rights
+             © ${new Date().getFullYear()} Digitally Next. All Rights Reserved.
               Reserved.
             </span>
 

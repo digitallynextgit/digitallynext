@@ -45,15 +45,10 @@ export default function CaseStudiesHero({ theme }: CaseStudiesHeroProps) {
             </p>
 
             <Link
-              href="/case-studies"
+              href="#case-studies-list"
               className="inline-flex items-center gap-[15.3px] w-fit"
             >
-              <Image
-                src="/icons/enter.svg"
-                alt=""
-                width={36}
-                height={16}
-              />
+              <Image src="/icons/enter.svg" alt="" width={36} height={16} />
               <span
                 className={[
                   "text-[clamp(1.6rem,2.4vw,2.2rem)] leading-[1.3] font-normal mt-1 transition-colors duration-500 hover:text-[#E21F26]",
