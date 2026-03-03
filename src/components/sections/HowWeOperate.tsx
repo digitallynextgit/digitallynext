@@ -3,6 +3,7 @@
 import { dadPillars } from "@/data/content";
 import AnimatedSection from "@/components/ui/AnimatedSection";
 import Image from "next/image";
+import Link from "next/link";
 import { useSectionTheme } from "@/context/SectionThemeContext";
 
 type HowWeOperateProps = {
@@ -155,6 +156,24 @@ export default function HowWeOperate({ theme }: HowWeOperateProps) {
                 <strong>Build digitally.</strong>
               </p>
             </div>
+          </div>
+        </AnimatedSection>
+
+        <AnimatedSection delay={0.6}>
+          <div className="pt-12 md:pt-16 flex justify-center">
+            <Link href="/contact" className="group inline-flex items-center gap-2">
+              <span className="text-[#E21F26] transition-transform duration-300 ease-out group-hover:-translate-x-1">
+                <Image src="/icons/enter.svg" alt="arrow" width={32} height={32} />
+              </span>
+              <span
+                className={[
+                  "mt-1 font-light text-2xl tracking-wide transition-colors duration-200 group-hover:text-[#E21F26]",
+                  isDark ? "text-white" : "text-black",
+                ].join(" ")}
+              >
+                GET IN TOUCH
+              </span>
+            </Link>
           </div>
         </AnimatedSection>
 
