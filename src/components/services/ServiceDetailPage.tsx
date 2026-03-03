@@ -1,6 +1,11 @@
 // ServiceDetailPage.tsx
 
-import { getServiceBySlug, type ServiceDetail, type ServiceSection, type ServiceTheme } from "@/data/services";
+import {
+  getServiceBySlug,
+  type ServiceDetail,
+  type ServiceSection,
+  type ServiceTheme,
+} from "@/data/services";
 import FeatureGridSection from "./FeatureGridSection";
 import HeroSection from "./HeroSection";
 import RealBriefSection from "./RealBriefSection";
@@ -30,19 +35,18 @@ function surfaceBaseTheme(theme: ServiceTheme): "light" | "dark" {
 export default function ServiceDetailPage({ service }: Props) {
   const caseStudySection = service.sections.find(
     (s): s is Extract<ServiceSection, { type: "caseStudy" }> =>
-      s.type === "caseStudy"
+      s.type === "caseStudy",
   );
   const servicess = getServiceBySlug(service.slug);
   if (!servicess) notFound();
 
-  const heroTheme = heroBaseTheme(service.theme);    
+  const heroTheme = heroBaseTheme(service.theme);
   const contentTheme = surfaceBaseTheme(service.theme);
 
   return (
     <main>
-
       {/* ── Hero — dark background ── */}
-      <ThemeSection theme={'light'}>
+      <ThemeSection theme={"light"}>
         <HeroSection hero={service.hero} theme={service.theme} />
       </ThemeSection>
 
@@ -64,7 +68,7 @@ export default function ServiceDetailPage({ service }: Props) {
         }
         if (section.type === "scope") {
           return (
-            <ThemeSection theme="dark">
+            <ThemeSection key={idx} theme="dark">
               <ScopeSection section={section} theme={service.theme} />
             </ThemeSection>
           );
@@ -89,11 +93,10 @@ export default function ServiceDetailPage({ service }: Props) {
 
       {/* ── Case Study ── */}
       {caseStudySection && (
-        <ThemeSection theme={'light'}>
+        <ThemeSection theme={"light"}>
           <CaseStudySection section={caseStudySection} theme={service.theme} />
         </ThemeSection>
       )}
-
     </main>
   );
 }

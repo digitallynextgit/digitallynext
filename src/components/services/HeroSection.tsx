@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import type { ServiceHeroSection, ServiceTheme } from "@/data/services";
 
 type Props = {
@@ -19,10 +19,10 @@ export default function HeroSection({ hero, theme }: Props) {
   const ctaTextColor = hero.ctaColor
     ? hero.ctaColor
     : hero.ctaVariant === "accent"
-    ? theme.accent
-    : hero.ctaVariant === "alt"
-    ? theme.accentAlt
-    : theme.heroText;
+      ? theme.accent
+      : hero.ctaVariant === "alt"
+        ? theme.accentAlt
+        : theme.heroText;
 
   // ---- MULTI QUOTE SUPPORT ----
   const quotes = useMemo(
@@ -30,26 +30,71 @@ export default function HeroSection({ hero, theme }: Props) {
       Array.isArray(hero.quoteText)
         ? hero.quoteText
         : hero.quoteText
-        ? [hero.quoteText]
-        : [],
-    [hero.quoteText]
+          ? [hero.quoteText]
+          : [],
+    [hero.quoteText],
   );
 
   const [quoteIndex, setQuoteIndex] = useState(0);
 
+  const activeQuote: string =
+    quotes.length > 0
+      ? quotes[quoteIndex]
+      : typeof hero.quoteText === "string"
+        ? hero.quoteText
+        : "";
+
+  // ---- TYPEWRITER ----
+  const [displayedText, setDisplayedText] = useState("");
+  const [isDone, setIsDone] = useState(false);
+  const typeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
   useEffect(() => {
-    if (quotes.length <= 1) return;
+    setDisplayedText("");
+    setIsDone(false);
+    if (!activeQuote) return;
 
-    const interval = setInterval(
-      () => setQuoteIndex((prev) => (prev + 1) % quotes.length),
-      3000
-    );
+    const speed = 65; // ms per character
+    const pauseAfter = 1500; // ms pause after typing finishes before next action
+    const isSingleQuote = quotes.length <= 1;
+    let i = 0;
+    let cancelled = false;
 
-    return () => clearInterval(interval);
-  }, [quotes.length]);
+    const startTyping = () => {
+      i = 0;
+      setDisplayedText("");
+      setIsDone(false);
+      const tick = () => {
+        if (cancelled) return;
+        i++;
+        setDisplayedText(activeQuote.slice(0, i));
+        if (i < activeQuote.length) {
+          typeTimerRef.current = setTimeout(tick, speed);
+        } else {
+          setIsDone(true);
+          if (isSingleQuote) {
+            // Single quote: pause then retype the same one
+            typeTimerRef.current = setTimeout(startTyping, pauseAfter);
+          } else {
+            // Multi-quote array: pause then advance to next quote
+            typeTimerRef.current = setTimeout(() => {
+              if (!cancelled) {
+                setQuoteIndex((prev) => (prev + 1) % quotes.length);
+              }
+            }, pauseAfter);
+          }
+        }
+      };
+      typeTimerRef.current = setTimeout(tick, speed);
+    };
 
-  const activeQuote =
-    quotes.length > 0 ? quotes[quoteIndex] : hero.quoteText ?? "";
+    startTyping();
+
+    return () => {
+      cancelled = true;
+      if (typeTimerRef.current) clearTimeout(typeTimerRef.current);
+    };
+  }, [activeQuote, quotes.length]);
 
   // navbar approx 72px; adjust if needed
   const headerHeight = 100;
@@ -169,7 +214,23 @@ export default function HeroSection({ hero, theme }: Props) {
                   className="text-base sm:text-lg lg:text-2xl font-semibold leading-relaxed"
                   style={{ color: quoteColor, textShadow: hero.quoteShadow }}
                 >
-                  {activeQuote}
+                  {displayedText}
+                  <span
+                    style={{
+                      display: "inline-block",
+                      width: "2px",
+                      marginLeft: "1px",
+                      opacity: isDone ? 0 : 1,
+                      animation: isDone
+                        ? "none"
+                        : "blink 0.8s step-start infinite",
+                      backgroundColor: quoteColor,
+                      verticalAlign: "middle",
+                      height: "1em",
+                    }}
+                    aria-hidden
+                  />
+                  <style>{`@keyframes blink { 50% { opacity: 0 } }`}</style>
                 </motion.div>
               )}
 
