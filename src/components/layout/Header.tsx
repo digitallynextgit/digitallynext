@@ -167,7 +167,7 @@ function SubItem({
           <span className="text-white/20 text-[10px] font-mono shrink-0 group-hover:text-white/40 transition-colors duration-200">
             {String(index + 1).padStart(2, "0")}
           </span>
-          <span className="flex-1 text-white/45 group-hover:text-[#E21F26] text-sm md:text-[14px] font-light tracking-wide transition-colors duration-200 leading-snug">
+          <span className="flex-1 text-white/85 group-hover:text-[#E21F26] text-sm md:text-[14px] font-light tracking-wide transition-colors duration-200 leading-snug">
             {label}
           </span>
         </motion.span>
