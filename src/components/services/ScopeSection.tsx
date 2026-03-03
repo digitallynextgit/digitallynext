@@ -5,6 +5,7 @@ import { useRef, useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useSectionTheme } from "@/context/SectionThemeContext";
 import type { ServiceSection, ServiceTheme } from "@/data/services";
+import Link from "next/link";
 
 type Props = {
   section: Extract<ServiceSection, { type: "scope" }>;
@@ -187,16 +188,17 @@ export default function ScopeSection({ section, theme }: Props) {
 
                       <div className="flex flex-col gap-3">
                         {/* ↑ title: 22px → 24px */}
-                        <h3
+                        <Link
+                          href={'/contact'}
                           className={[
-                            "font-bold text-[24px] leading-[34px] transition-colors duration-500",
+                            "font-bold text-[24px] leading-[34px] transition-colors duration-500 hover:text-[#E21F26] active:text-[#E21F26]",
                             activeIndex === idx
                               ? isDark ? "text-white" : "text-[#000000]"
                               : isDark ? "text-white/50" : "text-black/50",
                           ].join(" ")}
                         >
                           {item.title}
-                        </h3>
+                        </Link>
                         {/* ↑ description: 16px → 18px */}
                         <p
                           className={[
@@ -238,14 +240,15 @@ export default function ScopeSection({ section, theme }: Props) {
                     )}
 
                     <div className="flex flex-col gap-4">
-                      <h3
+                      <Link
+                        href={'/contact'}
                         className={[
-                          "font-bold text-[20px] leading-[30px] transition-colors duration-700",
+                          "font-bold text-[20px] leading-[30px] transition-colors duration-700 hover:text-[#E21F26] active:text-[#E21F26]",
                           isDark ? "text-white" : "text-[#000000]",
                         ].join(" ")}
                       >
                         {item.title}
-                      </h3>
+                      </Link>
                       <p
                         className={[
                           "text-[16px] leading-[27px] font-light transition-colors duration-700",
