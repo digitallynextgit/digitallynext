@@ -39,7 +39,6 @@ export default function Hero() {
 
       {/* Content */}
       <div className="relative z-2 px-6 md:px-12 w-full max-w-[1280px] mx-auto">
-
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -91,15 +90,14 @@ export default function Hero() {
               "rounded-none cursor-pointer relative overflow-hidden",
               "transition-all duration-300 ease-out",
               isDark
-                ? "bg-[rgba(0,255,255,0.826)] text-red-500"
-                : "bg-[rgba(0,255,255,0.826)] text-red-500",
+                ? "bg-[rgba(0,255,255,0.826)] text-white"
+                : "bg-[rgba(0,255,255,0.826)] text-white",
               "hover:-translate-y-0.5",
             ].join(" ")}
           >
             GET IN TOUCH
           </Link>
         </motion.div>
-
       </div>
     </section>
   );

@@ -1,23 +1,29 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef, useState, useMemo } from "react";
 import { motion } from "framer-motion";
-import { Cobe, type CobeRef } from "../ui/cobe-globe";
+import Image from "next/image";
+import WorldMap from "@/components/ui/world-map";
 import { useSectionTheme } from "@/context/SectionThemeContext";
 
 const locations = [
-  { name: "India",          lat: 20.5937,  long: 78.9629   },
-  { name: "USA",            lat: 37.0902,  long: -95.7129  },
-  { name: "UK",             lat: 51.5074,  long: -0.1278   },
-  { name: "Italy",          lat: 41.9028,  long: 12.4964   },
-  { name: "Czech Republic", lat: 50.0755,  long: 14.4378   },
-  { name: "Switzerland",    lat: 46.9481,  long: 7.4474    },
-  { name: "Australia",      lat: -25.2744, long: 133.7751  },
-  { name: "Russia",         lat: 55.7558,  long: 37.6173   },
-  { name: "Middle East",    lat: 24.4667,  long: 54.3667   },
-  { name: "Israel",         lat: 31.7683,  long: 35.2137   },
-  { name: "Canada",         lat: 56.1304,  long: -106.3468 },
-  { name: "Singapore",      lat: 1.3521,   long: 103.8198  },
+  { name: "India", flag: "India", lat: 20.5937, lng: 78.9629 },
+  { name: "USA", flag: "USA", lat: 37.0902, lng: -95.7129 },
+  { name: "UK", flag: "UK", lat: 51.5074, lng: -0.1278 },
+  { name: "Italy", flag: "Italy", lat: 41.9028, lng: 12.4964 },
+  {
+    name: "Czech Republic",
+    flag: "Czech Republic",
+    lat: 50.0755,
+    lng: 14.4378,
+  },
+  { name: "Switzerland", flag: "Switzerland", lat: 46.9481, lng: 7.4474 },
+  { name: "Australia", flag: "Australia", lat: -25.2744, lng: 133.7751 },
+  { name: "Russia", flag: "Russia", lat: 55.7558, lng: 37.6173 },
+  { name: "Middle East", flag: "Middle East", lat: 24.4667, lng: 54.3667 },
+  { name: "Israel", flag: "Israel", lat: 31.7683, lng: 35.2137 },
+  { name: "Canada", flag: "Canada", lat: 56.1304, lng: -106.3468 },
+  { name: "Singapore", flag: "Singapore", lat: 1.3521, lng: 103.8198 },
 ];
 
 interface ProudlyWorkingWithProps {
@@ -27,48 +33,45 @@ interface ProudlyWorkingWithProps {
 export default function ProudlyWorkingWith({ theme }: ProudlyWorkingWithProps) {
   const { theme: contextTheme } = useSectionTheme();
   const isDark = (theme ?? contextTheme) === "dark";
-  const cobeRef = useRef<CobeRef>(null);
   const marqueeRef = useRef<HTMLDivElement>(null);
 
-  // track click-locked pause separately from hover pause
-  const [clickPaused, setClickPaused] = useState(false);
+  const [hoveredName, setHoveredName] = useState<string | null>(null);
 
   const pauseMarquee = () => {
-    if (marqueeRef.current) marqueeRef.current.style.animationPlayState = "paused";
+    if (marqueeRef.current)
+      marqueeRef.current.style.animationPlayState = "paused";
   };
 
   const resumeMarquee = () => {
-    if (marqueeRef.current) marqueeRef.current.style.animationPlayState = "running";
+    if (marqueeRef.current)
+      marqueeRef.current.style.animationPlayState = "running";
   };
 
-  const handleMouseEnter = (lat: number, long: number) => {
+  const handleMouseEnter = (name: string) => {
     pauseMarquee();
-    cobeRef.current?.pauseAt(lat, long);
+    setHoveredName(name);
   };
 
   const handleMouseLeave = () => {
-    if (!clickPaused) resumeMarquee(); // resume only if not click-locked
-    cobeRef.current?.resume();
+    resumeMarquee();
+    setHoveredName(null);
   };
 
-  const handleClick = (lat: number, long: number) => {
-    if (clickPaused) {
-      // already paused by click → resume
-      setClickPaused(false);
-      resumeMarquee();
-      cobeRef.current?.resume();
-    } else {
-      // pause by click
-      setClickPaused(true);
-      pauseMarquee();
-      cobeRef.current?.focusLocation(lat, long);
-    }
-  };
+  // All 12 dots always shown — hovered country turns blue, rest stay red. No lines.
+  const mapDots = useMemo(
+    () =>
+      locations.map((l) => ({
+        start: { lat: l.lat, lng: l.lng },
+        end: { lat: l.lat, lng: l.lng },
+        color: hoveredName === l.name ? "#0EC8C5" : "#E53935",
+      })),
+    [hoveredName],
+  );
 
   return (
-    <section className="py-10 md:py-16 lg:py-20 overflow-hidden">
+    <section className="pt-10 md:pt-16 lg:pt-20 overflow-hidden">
+      {/* Heading + Marquee inside constrained container */}
       <div className="w-[92%] sm:w-[90%] lg:w-auto max-w-6xl mx-auto">
-
         {/* Heading */}
         <div className="flex flex-col items-center mb-12 md:mb-16 lg:mb-20">
           <motion.div
@@ -103,8 +106,10 @@ export default function ProudlyWorkingWith({ theme }: ProudlyWorkingWithProps) {
             isDark ? "border-white/10" : "border-black/10",
           ].join(" ")}
           style={{
-            maskImage: "linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)",
-            WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)",
+            maskImage:
+              "linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)",
+            WebkitMaskImage:
+              "linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)",
           }}
         >
           <div
@@ -112,54 +117,57 @@ export default function ProudlyWorkingWith({ theme }: ProudlyWorkingWithProps) {
             className="flex w-max py-6 md:py-8"
             style={{ animation: "marquee 55s linear infinite" }}
           >
-            {[...locations, ...locations, ...locations, ...locations].map((place, i) => (
-              <span
-                key={i}
-                onClick={() => handleClick(place.lat, place.long)}
-                onMouseEnter={() => handleMouseEnter(place.lat, place.long)}
-                onMouseLeave={handleMouseLeave}
-                className={[
-                  "shrink-0 text-[clamp(0.9rem,2vw,1.4rem)] font-light tracking-widest uppercase",
-                  "transition-colors duration-300 cursor-pointer select-none",
-                  "px-6 md:px-10",
-                  isDark
-                    ? "text-white/70 hover:text-[#E53935]"
-                    : "text-[#1a1a1a]/70 hover:text-[#E53935]",
-                ].join(" ")}
-              >
-                {place.name}
-                <span className="ml-6 md:ml-10 text-[#E53935] opacity-40">·</span>
-              </span>
-            ))}
+            {[...locations, ...locations, ...locations, ...locations].map(
+              (place, i) => (
+                <span
+                  key={i}
+                  onMouseEnter={() => handleMouseEnter(place.name)}
+                  onMouseLeave={handleMouseLeave}
+                  className={[
+                    "shrink-0 inline-flex items-center gap-2.5",
+                    "text-[clamp(0.9rem,2vw,1.4rem)] font-light tracking-widest uppercase",
+                    "transition-colors duration-300 select-none",
+                    "px-9",
+                    hoveredName === place.name
+                      ? "text-[#E53935]"
+                      : isDark
+                        ? "text-white/70 hover:text-[#E53935]"
+                        : "text-[#1a1a1a]/70 hover:text-[#E53935]",
+                  ].join(" ")}
+                >
+                  <Image
+                    src={`/flags/${place.flag}.png`}
+                    alt={place.name}
+                    width={28}
+                    height={20}
+                    className="rounded-[3px] object-cover shrink-0"
+                    style={{ width: "clamp(20px, 2vw, 28px)", height: "auto" }}
+                  />
+                  {place.name}
+                  <span className="text-[#E53935] opacity-40">·</span>
+                </span>
+              ),
+            )}
           </div>
         </div>
+      </div>
 
-        {/* Click to unlock hint */}
-        {clickPaused && (
-          <p className="text-center text-xs mt-2 text-[#E53935]/60 tracking-widest uppercase">
-            Click again to resume
-          </p>
-        )}
-
-        {/* Globe */}
-        <Cobe
-          ref={cobeRef}
-          variant="auto-rotate-to-location"
-          locations={locations.map((l) => ({ ...l, emoji: "📍" }))}
-          phi={0}
-          theta={0.2}
-          mapSamples={16000}
-          mapBrightness={1.8}
-          mapBaseBrightness={0.05}
-          diffuse={3}
-          dark={isDark ? 1.1 : 0}
-          baseColor={isDark ? "#ffffff" : "#1a1a1a"}
-          markerColor="#E53935"
-          markerSize={0.06}
-          glowColor={isDark ? "#ffffff" : "#888888"}
-          opacity={0.85}
-        />
-
+      {/* World Map — full width, fade bottom */}
+      <div
+        className="relative w-full mt-4"
+        style={{
+          maskImage: "linear-gradient(to bottom, black 60%, transparent 100%)",
+          WebkitMaskImage:
+            "linear-gradient(to bottom, black 60%, transparent 100%)",
+        }}
+      >
+        <div className="max-w-6xl mx-auto px-4">
+          <WorldMap
+            dots={mapDots}
+            lineColor="#0EC8C5"
+            theme={isDark ? "dark" : "light"}
+          />
+        </div>
       </div>
     </section>
   );

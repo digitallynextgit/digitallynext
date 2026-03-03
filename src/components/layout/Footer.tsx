@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { Phone, Mail } from "lucide-react";
 
 const navItems = [
   { label: "Home", href: "/" },
@@ -12,7 +13,10 @@ const navItems = [
 const socialItems = [
   { label: "Instagram", href: "https://instagram.com/digitallynext" },
   { label: "YouTube", href: "https://www.youtube.com/@digitallynext" },
-  { label: "LinkedIn", href: "https://www.linkedin.com/company/digitallynext/" },
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/company/digitallynext/",
+  },
 ];
 
 export default function Footer() {
@@ -43,6 +47,25 @@ export default function Footer() {
                 </span>
                 <span style={{ color: "#0EC8C5" }}>.</span>
               </h3>
+              {/* Contact details */}
+              <div className="mt-5 flex flex-col gap-3 items-center md:items-start">
+                <a
+                  href="tel:+919810409943"
+                  className="flex items-center gap-2 text-white/70 hover:text-white transition-colors duration-200 text-base font-light"
+                  style={{ fontFamily: "Stack Sans Text" }}
+                >
+                  <Phone size={16} className="shrink-0" />
+                  <span>+91 98104 09943</span>
+                </a>
+                <a
+                  href="mailto:contact@digitallynext.com"
+                  className="flex items-center gap-2 text-white/70 hover:text-white transition-colors duration-200 text-base font-light"
+                  style={{ fontFamily: "Stack Sans Text" }}
+                >
+                  <Mail size={16} className="shrink-0" />
+                  <span>contact@digitallynext.com</span>
+                </a>
+              </div>
             </div>
 
             {/* Center — Navigation */}
@@ -103,7 +126,8 @@ export default function Footer() {
               className="lg:text-lg text-sm text-white/80 text-center md:text-left block xl:whitespace-nowrap"
               style={{ fontFamily: "Stack Sans Text" }}
             >
-              © {new Date(Date.now()).getFullYear()} Digitally Next. All Rights Reserved.
+              © {new Date(Date.now()).getFullYear()} Digitally Next. All Rights
+              Reserved.
             </span>
 
             {/* Center — Terms of Use */}
