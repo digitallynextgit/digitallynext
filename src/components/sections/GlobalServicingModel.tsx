@@ -79,7 +79,7 @@ const frameworks = [
   },
 ];
 
-const CYCLE_INTERVAL = 4000;
+const CYCLE_INTERVAL = 2000;
 
 interface GSMProps {
   theme?: "dark" | "light";
