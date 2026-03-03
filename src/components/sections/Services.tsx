@@ -251,6 +251,7 @@ function DesktopServices({ isDark }: { isDark: boolean }) {
                     src="/icons/enter.svg"
                     alt="arrow"
                     width={52}
+                    quality={100}
                     height={52}
                     className="transition-transform duration-300 ease-out"
                   />

@@ -1,165 +1,93 @@
-import { NextResponse } from "next/server";
-import nodemailer from "nodemailer";
+import { NextRequest, NextResponse } from "next/server";
+import { Client } from "@notionhq/client";
+import { put } from "@vercel/blob";
 
-type CareersPayload = {
-  track: "full-time" | "internship";
-  department: string | null;
-  role: string;
-  fullName: string;
-  email: string;
-  phone: string;
-  linkedIn: string;
-  portfolio: string;
-  message: string;
-};
+const notion = new Client({ auth: process.env.NOTION_API_KEY });
+const DB_ID = process.env.NOTION_DATABASE_ID!;
 
-function fromJson(raw: Record<string, unknown>): CareersPayload {
-  const trackRaw = String(raw.track ?? "").trim();
-  const track: CareersPayload["track"] = trackRaw === "internship" ? "internship" : "full-time";
-  const department = raw.department == null ? null : String(raw.department).trim();
-
-  return {
-    track,
-    department: department ? department : null,
-    role: String(raw.role ?? "").trim(),
-    fullName: String(raw.fullName ?? "").trim(),
-    email: String(raw.email ?? "").trim(),
-    phone: String(raw.phone ?? "").trim(),
-    linkedIn: String(raw.linkedIn ?? "").trim(),
-    portfolio: String(raw.portfolio ?? "").trim(),
-    message: String(raw.message ?? "").trim(),
-  };
-}
-
-function safeText(s: string): string {
-  return s.replace(/</g, "&lt;");
-}
-
-function buildHtml(p: CareersPayload): string {
-  const rows: [string, string][] = [
-    ["Track", p.track === "internship" ? "Internship" : "Full-time"],
-    ["Department", p.department || "—"],
-    ["Role", p.role || "—"],
-    ["Name", p.fullName || "—"],
-    [
-      "Email",
-      p.email ? `<a href="mailto:${p.email}" style="color:#E21F26;">${p.email}</a>` : "—",
-    ],
-    ["Phone", p.phone || "—"],
-    [
-      "LinkedIn",
-      p.linkedIn
-        ? `<a href="${p.linkedIn}" style="color:#E21F26;">${p.linkedIn}</a>`
-        : "—",
-    ],
-    [
-      "Portfolio",
-      p.portfolio
-        ? `<a href="${p.portfolio}" style="color:#E21F26;">${p.portfolio}</a>`
-        : "—",
-    ],
-  ];
-
-  const tableRows = rows
-    .map(
-      ([label, value], i) => `
-      <tr style="background:${i % 2 === 0 ? "#f9f9f9" : "#ffffff"};">
-        <td style="padding:8px 12px; width:160px; font-weight:600;">${label}</td>
-        <td style="padding:8px 12px;">${value}</td>
-      </tr>`
-    )
-    .join("");
-
-  return `
-    <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #111111; max-width: 640px;">
-      <h2 style="color:#E21F26; margin-bottom:20px;">New Careers Application</h2>
-      <table cellpadding="0" cellspacing="0" style="border-collapse:collapse; width:100%; border:1px solid #E6E6E6; border-radius:6px; overflow:hidden;">
-        ${tableRows}
-      </table>
-      ${
-        p.message
-          ? `<div style="margin-top:20px; padding:16px; background:#f9f9f9; border-left:3px solid #E21F26; border-radius:4px;">
-              <p style="margin:0 0 8px; font-weight:600;">Message</p>
-              <p style="margin:0; white-space:pre-wrap;">${safeText(p.message)}</p>
-             </div>`
-          : ""
-      }
-    </div>
-  `;
-}
-
-function buildText(p: CareersPayload): string {
-  return [
-    `Track: ${p.track}`,
-    `Department: ${p.department || "—"}`,
-    `Role: ${p.role || "—"}`,
-    `Name: ${p.fullName || "—"}`,
-    `Email: ${p.email || "—"}`,
-    `Phone: ${p.phone || "—"}`,
-    `LinkedIn: ${p.linkedIn || "—"}`,
-    `Portfolio: ${p.portfolio || "—"}`,
-    "",
-    "Message:",
-    p.message || "—",
-  ].join("\n");
-}
-
-export async function POST(request: Request) {
+export async function POST(req: NextRequest) {
   try {
-    const contentType = request.headers.get("content-type") ?? "";
-    if (!contentType.includes("application/json")) {
-      return NextResponse.json(
-        { ok: false, error: "Invalid content type." },
-        { status: 415 }
-      );
+    const data = await req.formData();
+
+    const fullName  = (data.get("fullName")   as string) ?? "";
+    const email     = (data.get("email")      as string) ?? "";
+    const phone     = (data.get("phone")      as string) ?? "";
+    const linkedIn  = (data.get("linkedIn")   as string) ?? "";
+    const portfolio = (data.get("portfolio")  as string) ?? "";
+    const message   = (data.get("message")    as string) ?? "";
+    const track     = (data.get("track")      as string) ?? "";
+    const department= (data.get("department") as string) ?? "";
+    const role      = (data.get("role")       as string) ?? "";
+    const resumeFile= data.get("resume") as File | null;
+
+    // Validate required fields server-side
+    if (!fullName || !email || !phone || !linkedIn || !portfolio || !resumeFile) {
+      return NextResponse.json({ error: "All required fields must be filled." }, { status: 400 });
     }
 
-    const payload = fromJson((await request.json()) as Record<string, unknown>);
+    // ── Upload resume to Vercel Blob ─────────────────────────────────────────
+    const resumeBuffer = Buffer.from(await resumeFile.arrayBuffer());
+    const safeFileName = `careers/${Date.now()}-${resumeFile.name.replace(/[^a-zA-Z0-9._-]/g, "_")}`;
 
-    if (!payload.fullName || !payload.email || !payload.role) {
-      return NextResponse.json(
-        { ok: false, error: "Name, Email, and Role are required." },
-        { status: 400 }
-      );
-    }
-
-    const user = process.env.GMAIL_USER;
-    const pass = process.env.GMAIL_APP_PASSWORD;
-
-    if (!user || !pass) {
-      return NextResponse.json(
-        { ok: false, error: "Server configuration error." },
-        { status: 500 }
-      );
-    }
-
-    const transporter = nodemailer.createTransport({
-      service: "gmail",
-      auth: { user, pass },
+    const blob = await put(safeFileName, resumeBuffer, {
+      access: "public",
+      contentType: resumeFile.type,
     });
 
-    const subjectParts = [
-      "Career Application",
-      payload.role,
-      payload.track === "internship" ? "Internship" : "Full-time",
-      payload.fullName,
-    ].filter(Boolean);
-
-    await transporter.sendMail({
-      from: `Digitally Next Careers <${user}>`,
-      to: "careers@digitallynext.com",
-      replyTo: payload.email,
-      subject: subjectParts.join(" — "),
-      text: buildText(payload),
-      html: buildHtml(payload),
+    // ── Save to Notion ────────────────────────────────────────────────────────
+    await notion.pages.create({
+      parent: { database_id: DB_ID },
+      properties: {
+        // Title property
+        Name: {
+          title: [{ text: { content: fullName } }],
+        },
+        Email: {
+          email: email,
+        },
+        Phone: {
+          phone_number: phone,
+        },
+        LinkedIn: {
+          url: linkedIn.startsWith("http") ? linkedIn : `https://${linkedIn}`,
+        },
+        Portfolio: {
+          url: portfolio.startsWith("http") ? portfolio : `https://${portfolio}`,
+        },
+        Resume: {
+          files: [
+            {
+              name: resumeFile.name,
+              type: "external",
+              external: { url: blob.url },
+            },
+          ],
+        },
+        Department: {
+          select: { name: department || "Unknown" },
+        },
+        Role: {
+          rich_text: [{ text: { content: role } }],
+        },
+        Track: {
+          select: { name: track || "Unknown" },
+        },
+        Message: {
+          rich_text: [{ text: { content: message } }],
+        },
+        "Applied At": {
+          date: { start: new Date().toISOString() },
+        },
+        Status: {
+          select: { name: "New" },
+        },
+      },
     });
 
-    return NextResponse.json({ ok: true });
-  } catch {
-    return NextResponse.json(
-      { ok: false, error: "Failed to submit application." },
-      { status: 500 }
-    );
+    return NextResponse.json({ success: true }, { status: 200 });
+  } catch (err) {
+    console.error("[careers/route] error:", err);
+    const message = err instanceof Error ? err.message : "Internal server error.";
+    return NextResponse.json({ error: message }, { status: 500 });
   }
 }
-

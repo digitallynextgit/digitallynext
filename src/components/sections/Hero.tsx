@@ -91,8 +91,8 @@ export default function Hero() {
               "rounded-none cursor-pointer relative overflow-hidden",
               "transition-all duration-300 ease-out",
               isDark
-                ? "bg-[rgba(0,255,255,0.826)] text-red-500 hover:bg-[#00e6bf] hover:shadow-[0_8px_32px_rgba(0,201,167,0.3)]"
-                : "bg-[rgba(0,255,255,0.826)] text-red-500 hover:bg-[#00e6bf] hover:shadow-[0_8px_32px_rgba(0,201,167,0.4)]",
+                ? "bg-[rgba(0,255,255,0.826)] text-red-500"
+                : "bg-[rgba(0,255,255,0.826)] text-red-500",
               "hover:-translate-y-0.5",
             ].join(" ")}
           >

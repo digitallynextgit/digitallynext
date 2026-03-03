@@ -9,7 +9,7 @@ import {
   type Variants,
   useSpring,
 } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import { navLinks } from "@/data/content";
 import Image from "next/image";
 import Link from "next/link";
@@ -42,6 +42,17 @@ const LOGO_SRCS: Record<RouteHeaderTheme["logo"], string> = {
   white: "/logo1-white.webp",
 };
 
+const SERVICES = [
+  { label: "Strategy, Brand & Growth Intelligence", href: "/services/brand-strategy" },
+  { label: "Content, Culture & Media Creation", href: "/services/ui-ux-design" },
+  { label: "Performance, Distribution & Demand", href: "/services/seo-optimization" },
+  { label: "Platforms, Web & Digital Experience", href: "/services/web-development" },
+  { label: "AI Enablement & Decision Systems", href: "/services/ai-enablement" },
+];
+
+const MENU_EXTRA = [{ label: "CONTACT", href: "/contact" }];
+const MotionLink = motion(Link);
+
 function resolveRouteTheme(pathname: string): RouteHeaderTheme {
   if (ROUTE_THEMES[pathname]) return ROUTE_THEMES[pathname];
   const prefixMatch = Object.keys(ROUTE_THEMES)
@@ -52,17 +63,15 @@ function resolveRouteTheme(pathname: string): RouteHeaderTheme {
 }
 
 // ─────────────────────────────────────────────
-// Animation Variants (outside component = stable refs)
+// Animation Variants
 // ─────────────────────────────────────────────
-
-// Overlay: clip-path wipe from top-right corner → full screen
 const overlayVariants: Variants = {
   hidden: {
     clipPath: "circle(0% at calc(100% - 40px) 40px)",
-    opacity: 1,
+    opacity: 0,
     transition: {
-      duration: 0.55,
-      ease: [0.76, 0, 0.24, 1] as const,
+      duration: 0.45,
+      ease: [0.22, 1, 0.36, 1] as const,
       when: "afterChildren",
     },
   },
@@ -70,51 +79,55 @@ const overlayVariants: Variants = {
     clipPath: "circle(170% at calc(100% - 40px) 40px)",
     opacity: 1,
     transition: {
-      duration: 0.65,
-      ease: [0.76, 0, 0.24, 1] as const,
-      delayChildren: 0.3,
-      staggerChildren: 0.07,
+      duration: 0.5,
+      ease: [0.22, 1, 0.36, 1] as const,
+      delayChildren: 0.12,
+      staggerChildren: 0.045,
     },
   },
 };
 
-// Each nav link: slides up + fades in
 const linkVariants: Variants = {
   hidden: {
     opacity: 0,
-    y: 30,
+    y: 20,
     transition: { duration: 0.2, ease: "easeIn" as const },
   },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] as const },
+    transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] as const },
   },
 };
 
-// Divider line under each link
 const dividerVariants: Variants = {
-  hidden: { scaleX: 0, transition: { duration: 0.2 } },
+  hidden: { scaleX: 0 },
   visible: {
     scaleX: 1,
-    transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] as const, delay: 0.1 },
+    transition: { duration: 0.32, ease: [0.22, 1, 0.36, 1] as const, delay: 0.08 },
   },
 };
 
-// Bottom social/footer row
-const footerVariants: Variants = {
-  hidden: { opacity: 0, y: 10 },
+const subMenuVariants: Variants = {
+  hidden: {
+    height: 0,
+    opacity: 0,
+    transition: { duration: 0.3, ease: [0.22, 1, 0.36, 1] as const },
+  },
   visible: {
+    height: "auto",
     opacity: 1,
-    y: 0,
-    transition: { duration: 0.4, ease: "easeOut" as const, delay: 0.55 },
+    transition: {
+      height: { duration: 0.36, ease: [0.22, 1, 0.36, 1] as const },
+      opacity: { duration: 0.22, delay: 0.06 },
+    },
   },
 };
 
 // ─────────────────────────────────────────────
-// Magnetic Nav Link Component
+// SubItem — same slide + arrow animation as parent links
 // ─────────────────────────────────────────────
-function MagneticLink({
+function SubItem({
   href,
   label,
   index,
@@ -125,20 +138,85 @@ function MagneticLink({
   index: number;
   onClick: () => void;
 }) {
+  const hoverX = useMotionValue(0);
+  const smoothHoverX = useSpring(hoverX, { stiffness: 250, damping: 30 });
+  const arrowX = useTransform(smoothHoverX, [0, 10], [-6, 0]);
+  const arrowOpacity = useTransform(smoothHoverX, [0, 10], [0, 1]);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, x: -8 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{
+        delay: index * 0.04 + 0.06,
+        duration: 0.28,
+        ease: [0.22, 1, 0.36, 1],
+      }}
+      onMouseEnter={() => hoverX.set(10)}
+      onMouseLeave={() => hoverX.set(0)}
+    >
+      <Link
+        href={href}
+        onClick={onClick}
+        className="group flex items-center gap-3 w-full py-2 px-3 rounded-md"
+      >
+        <motion.span
+          style={{ x: smoothHoverX }}
+          className="flex items-center gap-3 flex-1 min-w-0"
+        >
+          <span className="text-white/20 text-[10px] font-mono shrink-0 group-hover:text-white/40 transition-colors duration-200">
+            {String(index + 1).padStart(2, "0")}
+          </span>
+          <span className="flex-1 text-white/45 group-hover:text-[#E21F26] text-sm md:text-[14px] font-light tracking-wide transition-colors duration-200 leading-snug">
+            {label}
+          </span>
+        </motion.span>
+        <motion.span
+          style={{ x: arrowX, opacity: arrowOpacity }}
+          className="text-white/30 text-sm shrink-0"
+        >
+          →
+        </motion.span>
+      </Link>
+    </motion.div>
+  );
+}
+
+// ─────────────────────────────────────────────
+// MagneticLink — red label on hover + stays red while submenu open
+// ─────────────────────────────────────────────
+function MagneticLink({
+  href,
+  label,
+  index,
+  onClick,
+  hasSubmenu = false,
+  submenuOpen = false,
+  onSubmenuToggle,
+}: {
+  href: string;
+  label: string;
+  index: number;
+  onClick: () => void;
+  hasSubmenu?: boolean;
+  submenuOpen?: boolean;
+  onSubmenuToggle?: () => void;
+}) {
   const ref = useRef<HTMLDivElement>(null);
+  const [hovered, setHovered] = useState(false);
 
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
-
-  const springConfig = { stiffness: 120, damping: 18, mass: 0.08 };
-  const x = useSpring(mouseX, springConfig);
-  const y = useSpring(mouseY, springConfig);
-
-  const rotateX = useTransform(y, [-30, 30], [2.5, -2.5]);
-  const rotateY = useTransform(x, [-80, 80], [-2.5, 2.5]);
+  const springConfig = { stiffness: 150, damping: 20, mass: 0.1 };
+  const mx = useSpring(mouseX, springConfig);
+  const my = useSpring(mouseY, springConfig);
+  const rotateX = useTransform(my, [-30, 30], [2, -2]);
+  const rotateY = useTransform(mx, [-80, 80], [-2, 2]);
 
   const hoverX = useMotionValue(0);
-  const smoothHoverX = useSpring(hoverX, { stiffness: 200, damping: 28 });
+  const smoothHoverX = useSpring(hoverX, { stiffness: 250, damping: 30 });
+  const arrowTranslateX = useTransform(smoothHoverX, [0, 10], [-6, 0]);
+  const arrowOpacity = useTransform(smoothHoverX, [0, 10], [0, 1]);
 
   const handleMouseMove = (e: React.MouseEvent) => {
     if (!ref.current) return;
@@ -151,11 +229,46 @@ function MagneticLink({
     mouseX.set(0);
     mouseY.set(0);
     hoverX.set(0);
+    setHovered(false);
   };
 
   const handleMouseEnter = () => {
-    hoverX.set(12);
+    hoverX.set(10);
+    setHovered(true);
   };
+
+  // Red when hovered OR submenu is open (active state)
+  const labelColor =
+    hovered || submenuOpen ? "text-[#E21F26]" : "text-white";
+
+  const innerContent = (
+    <>
+      <span className="text-white/25 text-xs font-mono w-7 shrink-0">
+        {String(index + 1).padStart(2, "0")}
+      </span>
+      <span
+        className={`flex-1 ${labelColor} text-[clamp(1.4rem,3.2vw,2.6rem)] font-light tracking-tight leading-none uppercase transition-colors duration-300`}
+      >
+        {label}
+      </span>
+      {hasSubmenu ? (
+        <motion.span
+          animate={{ rotate: submenuOpen ? 180 : 0 }}
+          transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+          className="text-white/40 flex items-center shrink-0"
+        >
+          <ChevronDown size={18} strokeWidth={1.5} />
+        </motion.span>
+      ) : (
+        <motion.span
+          className="text-white/40 text-lg shrink-0"
+          style={{ x: arrowTranslateX, opacity: arrowOpacity }}
+        >
+          →
+        </motion.span>
+      )}
+    </>
+  );
 
   return (
     <motion.div
@@ -165,43 +278,53 @@ function MagneticLink({
       onMouseLeave={handleMouseLeave}
       onMouseEnter={handleMouseEnter}
       className="w-full border-t border-white/10 last:border-b"
-      style={{ willChange: "transform" }}
     >
-      <motion.a
-        href={href}
-        onClick={onClick}
-        style={{
-          rotateX,
-          rotateY,
-          x: smoothHoverX,        
-          transformPerspective: 1200, 
-          willChange: "transform",
-        }}
-        className="group flex items-center justify-between w-full py-5 md:py-6 px-6 md:px-12 cursor-pointer"
-      >
-        {/* Index number */}
-        <span className="text-white/30 text-sm font-mono w-8 shrink-0">
-          {String(index + 1).padStart(2, "0")}
-        </span>
-
-        {/* Label */}
-        <span className="flex-1 text-white text-[clamp(2rem,5vw,4rem)] font-light tracking-tight leading-none uppercase">
-          {label}
-        </span>
-
-        {/* Arrow */}
-        <motion.span
-          className="text-white/40 text-xl font-light"
-          style={{
-            x: useTransform(smoothHoverX, [0, 12], [-6, 0]),
-            opacity: useTransform(smoothHoverX, [0, 12], [0, 1]),
-          }}
+      {/* div for submenu toggle (no navigation), a for regular links */}
+      {hasSubmenu ? (
+        <motion.div
+          onClick={() => onSubmenuToggle?.()}
+          style={{ rotateX, rotateY, x: smoothHoverX, transformPerspective: 1200 }}
+          className="flex items-center justify-between w-full py-4 md:py-5 px-6 md:px-12 cursor-pointer select-none"
         >
-          →
-        </motion.span>
-      </motion.a>
+          {innerContent}
+        </motion.div>
+      ) : (
+        <MotionLink
+          href={href}
+          onClick={onClick}
+          style={{ rotateX, rotateY, x: smoothHoverX, transformPerspective: 1200 }}
+          className="flex items-center justify-between w-full py-4 md:py-5 px-6 md:px-12 cursor-pointer"
+        >
+          {innerContent}
+        </MotionLink>
+      )}
 
-      {/* Animated underline */}
+      {/* Services accordion — no border-l, no bg hover on items */}
+      <AnimatePresence>
+        {hasSubmenu && submenuOpen && (
+          <motion.div
+            key="submenu"
+            variants={subMenuVariants}
+            initial="hidden"
+            animate="visible"
+            exit="hidden"
+            className="overflow-hidden"
+          >
+            <div className="px-6 md:px-12 pb-5 space-y-1">
+              {SERVICES.map((service, i) => (
+                <SubItem
+                  key={service.href}
+                  href={service.href}
+                  label={service.label}
+                  index={i}
+                  onClick={onClick}
+                />
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       <motion.div
         variants={dividerVariants}
         className="h-px bg-white/10 origin-left"
@@ -210,22 +333,35 @@ function MagneticLink({
   );
 }
 
-
 // ─────────────────────────────────────────────
 // Main Header Component
 // ─────────────────────────────────────────────
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
+  const [headerVisible, setHeaderVisible] = useState(true);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [servicesOpen, setServicesOpen] = useState(false);
+  const lastScrollY = useRef(0);
   const pathname = usePathname();
 
-  // Close menu on route change
   useEffect(() => {
     setMenuOpen(false);
+    setServicesOpen(false);
   }, [pathname]);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 50);
+    const onScroll = () => {
+      const currentY = window.scrollY;
+      setScrolled(currentY > 50);
+      if (currentY > 80) {
+        const delta = currentY - lastScrollY.current;
+        if (delta > 4) setHeaderVisible(false);
+        else if (delta < -4) setHeaderVisible(true);
+      } else {
+        setHeaderVisible(true);
+      }
+      lastScrollY.current = currentY;
+    };
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
@@ -236,51 +372,112 @@ export default function Header() {
   }, [menuOpen]);
 
   const routeTheme = resolveRouteTheme(pathname);
-  const isBlackLink = !scrolled && routeTheme.linkColor === "black";
-  const logoSrc = menuOpen || scrolled ? LOGO_SRCS.white : LOGO_SRCS[routeTheme.logo];
-  const iconColor = menuOpen ? "text-white" : isBlackLink ? "text-black" : "text-white";
+
+  const logoSrc = menuOpen
+    ? LOGO_SRCS.white
+    : scrolled
+      ? LOGO_SRCS.dark
+      : LOGO_SRCS[routeTheme.logo];
+
+  const iconColor = menuOpen
+    ? "text-white"
+    : scrolled
+      ? "text-black"
+      : routeTheme.linkColor === "black"
+        ? "text-black"
+        : "text-white";
+
+  // No border on any state
+  const headerBg = menuOpen
+    ? "bg-transparent"
+    : scrolled
+      ? "bg-white/40 backdrop-blur-2xl shadow-[0_2px_28px_rgba(0,0,0,0.05)]"
+      : "bg-transparent";
+
+  const allMenuLinks = [...navLinks, ...MENU_EXTRA];
 
   return (
     <>
       {/* ── Header Bar ── */}
-      <header
+      <motion.header
+        initial={false}
+        animate={{ y: headerVisible || menuOpen ? "0%" : "-100%" }}
+        transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
         className={[
           "fixed top-0 left-0 right-0 z-100",
-          "transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]",
-          scrolled && !menuOpen
-            ? "bg-[#0a0a0a]/85 backdrop-blur-xl border-b border-white/8"
-            : "bg-transparent border-b border-transparent",
+          "transition-colors duration-500",
+          headerBg,
         ].join(" ")}
       >
-        <div className="grid grid-cols-3 items-center h-16 md:h-20 w-full px-5 md:px-7 lg:px-8">
+        {/* h-16 md:h-20 — fixed, never changes */}
+        <div className="grid grid-cols-3 items-center h-16 md:h-20 lg:h-28 w-full px-5 md:px-7 lg:px-8">
 
-          {/* Col 1 – Left Image */}
+          {/* Col 1 — Award image | FLIP logo when menu open */}
           <div className="flex items-center justify-start">
-            <Image
-              src="/admin-ajax.webp"
-              alt="awards"
-              width={120}
-              height={120}
-              className="w-16 h-16 md:w-20 md:h-20 object-contain"
-            />
+            <AnimatePresence mode="wait">
+              {menuOpen ? (
+                <motion.div
+                  key="logo-left"
+                  layoutId="header-logo"
+                  transition={{ duration: 0.32, ease: [0.22, 1, 0.36, 1] }}
+                >
+                  <Link href="/" onClick={() => setMenuOpen(false)}>
+                    <Image
+                      src={LOGO_SRCS.white}
+                      alt="Digitally Next"
+                      width={600}
+                      height={60}
+                      className="w-[40vw] sm:w-[28vw] md:w-[16vw] lg:w-[18vw]"
+                    />
+                  </Link>
+                </motion.div>
+              ) : (
+                <motion.div
+                  key="award-img"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
+                >
+                  <Image
+                    src="/admin-ajax.webp"
+                    alt="awards"
+                    width={80}
+                    height={80}
+                    quality={100}
+                    className="w-14 h-14 md:w-16 md:h-16 lg:w-28 lg:h-28 object-contain"
+                  />
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
 
-          {/* Col 2 – Center Logo */}
+          {/* Col 2 — Center logo, FLIP to col-1 on menu open */}
           <div className="flex items-center justify-center">
-            <Link href="/" className="flex items-center">
-              <Image
-                src={logoSrc}
-                alt="Digitally Next"
-                width={1200}
-                height={120}
-                className="w-[58vw] sm:w-[44vw] md:w-[20vw] lg:w-[14vw]"
-                priority
-              />
-            </Link>
+            <AnimatePresence>
+              {!menuOpen && (
+                <motion.div
+                  layoutId="header-logo"
+                  initial={false}
+                  exit={{ opacity: 0, transition: { duration: 0.12 } }}
+                  transition={{ duration: 0.32, ease: [0.22, 1, 0.36, 1] }}
+                >
+                  <Link href="/">
+                    <Image
+                      src={logoSrc}
+                      alt="Digitally Next"
+                      width={600}
+                      height={60}
+                      className="w-[40vw] sm:w-[28vw] md:w-[16vw] lg:w-[18vw]"
+                      priority
+                    />
+                  </Link>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
 
-
-          {/* Col 3 – Animated Hamburger */}
+          {/* Col 3 — Hamburger / Close */}
           <div className="flex items-center justify-end">
             <button
               onClick={() => setMenuOpen((v) => !v)}
@@ -299,10 +496,10 @@ export default function Header() {
                     initial={{ rotate: -90, opacity: 0 }}
                     animate={{ rotate: 0, opacity: 1 }}
                     exit={{ rotate: 90, opacity: 0 }}
-                    transition={{ duration: 0.2, ease: "easeInOut" }}
+                    transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
                     className="absolute"
                   >
-                    <X size={22} strokeWidth={1.5} />
+                    <X size={28} strokeWidth={1.5} />
                   </motion.span>
                 ) : (
                   <motion.span
@@ -310,19 +507,19 @@ export default function Header() {
                     initial={{ rotate: 90, opacity: 0 }}
                     animate={{ rotate: 0, opacity: 1 }}
                     exit={{ rotate: -90, opacity: 0 }}
-                    transition={{ duration: 0.2, ease: "easeInOut" }}
+                    transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
                     className="absolute"
                   >
-                    <Menu size={22} strokeWidth={1.5} />
+                    <Menu size={28} strokeWidth={1.5} />
                   </motion.span>
                 )}
               </AnimatePresence>
             </button>
           </div>
         </div>
-      </header>
+      </motion.header>
 
-      {/* ── Full-Screen Menu Overlay ── */}
+      {/* ── Full-Screen Overlay ── */}
       <AnimatePresence>
         {menuOpen && (
           <motion.div
@@ -334,18 +531,37 @@ export default function Header() {
             style={{ willChange: "clip-path" }}
             className="fixed inset-0 z-99 bg-[#0a0a0a] flex flex-col"
           >
-            {/* Nav Links — vertically centered */}
-            <nav className="flex-1 flex flex-col justify-start mt-20 md:mt-28 lg:mt-32">
-              {navLinks.map((link, i) => (
-                <MagneticLink
-                  key={link.label}
-                  href={link.href}
-                  label={link.label}
-                  index={i}
-                  onClick={() => setMenuOpen(false)}
-                />
-              ))}
-            </nav>
+            {/* mt-16 md:mt-20 matches header height exactly */}
+            <div
+              className={[
+                "flex-1 overflow-y-auto mt-16 md:mt-20 ",
+                "[&::-webkit-scrollbar]:w-[3px]",
+                "[&::-webkit-scrollbar-track]:bg-transparent",
+                "[&::-webkit-scrollbar-thumb]:bg-white/20",
+                "[&::-webkit-scrollbar-thumb]:rounded-full",
+                "[&::-webkit-scrollbar-thumb:hover]:bg-white/40",
+              ].join(" ")}
+            >
+              <nav className="pt-4 md:pt-6">
+                {allMenuLinks.map((link, i) => {
+                  const isServices = link.label === "SERVICES";
+                  return (
+                    <MagneticLink
+                      key={link.label}
+                      href={link.href}
+                      label={link.label}
+                      index={i}
+                      onClick={() => setMenuOpen(false)}
+                      hasSubmenu={isServices}
+                      submenuOpen={isServices && servicesOpen}
+                      onSubmenuToggle={
+                        isServices ? () => setServicesOpen((v) => !v) : undefined
+                      }
+                    />
+                  );
+                })}
+              </nav>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

@@ -6,16 +6,16 @@ import { useSectionTheme } from "@/context/SectionThemeContext";
 import DepartmentSelectionModal from "@/components/careers/DepartmentSelectionModal";
 import {
   CAREERS_DEPARTMENTS,
-  CAREERS_INTERNSHIP_ROLES,
+  CAREERS_INTERNSHIP_DEPARTMENTS,
   type CareersDepartment,
-  type CareersRole,
+  type CareersModalStep,
 } from "@/data/careersDepartments";
 
 interface OpenRolesSectionProps {
   theme?: "dark" | "light";
 }
 
-const cards = [
+const CARDS = [
   {
     title: "Internships",
     desc: "Start with real work, real mentorship, and real expectations. Our internships are structured to build, not busy-work.",
@@ -36,120 +36,87 @@ export default function OpenRolesSection({ theme }: OpenRolesSectionProps) {
 
   const [modalOpen, setModalOpen] = useState(false);
   const [modalMode, setModalMode] = useState<"full-time" | "internship">("full-time");
-  const [step, setStep] = useState<"department" | "role" | "form">("department");
+  const [step, setStep] = useState<CareersModalStep>("department");
   const [selectedDepartmentId, setSelectedDepartmentId] = useState<string | null>(null);
   const [selectedRoleId, setSelectedRoleId] = useState<string | null>(null);
 
-  const selectedDepartment = useMemo<CareersDepartment | null>(
-    () => CAREERS_DEPARTMENTS.find((d) => d.id === selectedDepartmentId) ?? null,
-    [selectedDepartmentId]
+  const departments = useMemo<CareersDepartment[]>(
+    () => (modalMode === "internship" ? CAREERS_INTERNSHIP_DEPARTMENTS : CAREERS_DEPARTMENTS),
+    [modalMode]
   );
-
-  const internshipRoles = useMemo<CareersRole[]>(() => CAREERS_INTERNSHIP_ROLES, []);
 
   const openModal = (mode: "full-time" | "internship") => {
     setModalMode(mode);
+    setSelectedDepartmentId(null);
     setSelectedRoleId(null);
-    if (mode === "internship") {
-      setSelectedDepartmentId(null);
-      setStep("role");
-    } else {
-      setStep("department");
-    }
+    setStep("department");
     setModalOpen(true);
+  };
+
+  const handleClose = () => {
+    setModalOpen(false);
+  };
+
+  const handleBack = () => {
+    if (step === "form") { setStep("description"); return; }
+    if (step === "description") { setStep("role"); return; }
+    if (step === "role") { setSelectedRoleId(null); setStep("department"); return; }
+    handleClose();
   };
 
   return (
     <section
       id="open-positions"
-      className={[
-        "transition-colors duration-700",
-        isDark ? "bg-black" : "bg-white",
-      ].join(" ")}
+      className={["transition-colors duration-700", isDark ? "bg-black" : "bg-white"].join(" ")}
     >
       <div className="container flex justify-center items-center">
         <div style={{ maxWidth: 1103 }} className="w-full py-12 md:py-16 lg:py-20">
-
-          {/* Outer wrapper */}
           <div
-            className={[
-              "flex flex-col transition-colors duration-700",
-              isDark ? "bg-black" : "bg-white",
-            ].join(" ")}
+            className={["flex flex-col transition-colors duration-700", isDark ? "bg-black" : "bg-white"].join(" ")}
             style={{ gap: 40 }}
           >
-
             {/* Heading */}
             <div
-              className={[
-                "font-bold leading-[1.15] transition-colors duration-700",
-                isDark ? "text-white" : "text-[#000000]",
-              ].join(" ")}
+              className={["font-bold leading-[1.15] transition-colors duration-700", isDark ? "text-white" : "text-black"].join(" ")}
               style={{ fontSize: "clamp(2rem, 4vw, 2.975rem)" }}
             >
-              Open{" "}
-              <span className="font-normal">Roles</span>
+              Open <span className="font-normal">Roles</span>
               <span className="text-[#E21F26]">.</span>
             </div>
 
             {/* Subtitle */}
             <div
-              className={[
-                "font-light text-[16px] leading-[29px] transition-colors duration-700",
-                isDark ? "text-[#737373]" : "text-[#A1A1A1]",
-              ].join(" ")}
+              className={["font-light text-[16px] leading-[29px] transition-colors duration-700", isDark ? "text-[#737373]" : "text-[#A1A1A1]"].join(" ")}
             >
               <div>If this feels like your kind of place,</div>
               <div>start here:</div>
             </div>
 
-            {/* Cards grid */}
+            {/* Cards */}
             <div className="grid grid-cols-1 md:grid-cols-2">
-              {cards.map(({ title, desc, linkLabel, mode }, index) => (
+              {CARDS.map(({ title, desc, linkLabel, mode }, index) => (
                 <div
                   key={title}
                   className={[
                     "flex flex-col transition-colors duration-700",
-                    isDark
-                      ? "bg-[#111111] border border-[#2a2a2a]"
-                      : "bg-white border border-[#E5E5E5]",
-                    index === 1
-                      ? isDark
-                        ? "md:border-l-0"
-                        : "md:border-l-0"
-                      : "",
+                    isDark ? "bg-[#111111] border border-[#2a2a2a]" : "bg-white border border-[#E5E5E5]",
+                    index === 1 ? "md:border-l-0" : "",
                   ].join(" ")}
                   style={{ padding: "49px 49px 40px", gap: 16 }}
                 >
-                  {/* Title */}
-                  <div
-                    className={[
-                      "text-[32px] font-normal leading-[38px] transition-colors duration-700",
-                      isDark ? "text-white" : "text-[#0A0A0A]",
-                    ].join(" ")}
-                  >
+                  <div className={["text-[32px] font-normal leading-[38px] transition-colors duration-700", isDark ? "text-white" : "text-[#0A0A0A]"].join(" ")}>
                     {title}
                   </div>
-
-                  {/* Description */}
-                  <div
-                    className={[
-                      "text-[15px] font-light leading-[26px] transition-colors duration-700",
-                      isDark ? "text-[#737373]" : "text-[#A1A1A1]",
-                    ].join(" ")}
-                  >
+                  <div className={["text-[15px] font-light leading-[26px] transition-colors duration-700", isDark ? "text-[#737373]" : "text-[#A1A1A1]"].join(" ")}>
                     {desc}
                   </div>
-
-                  {/* Link */}
                   <button
                     type="button"
                     onClick={() => openModal(mode)}
                     className={[
                       "group mt-2 inline-flex items-center gap-[15px]",
-                      "text-[14px] font-normal leading-[18px] no-underline",
-                      "transition-colors duration-300",
-                      isDark ? "text-white" : "text-[#000000]",
+                      "text-[14px] font-normal leading-[18px] transition-colors duration-300",
+                      isDark ? "text-white" : "text-black",
                     ].join(" ")}
                   >
                     <Image
@@ -168,16 +135,9 @@ export default function OpenRolesSection({ theme }: OpenRolesSectionProps) {
             </div>
 
             {/* Bottom line */}
-            <div
-              className={[
-                "text-[14px] font-bold leading-[25px] transition-colors duration-700",
-                isDark ? "text-white" : "text-[#000000]",
-              ].join(" ")}
-            >
-              No hype. Just an{" "}
-              <span className="text-[#E21F26]">honest start.</span>
+            <div className={["text-[14px] font-bold leading-[25px] transition-colors duration-700", isDark ? "text-white" : "text-black"].join(" ")}>
+              No hype. Just an <span className="text-[#E21F26]">honest start.</span>
             </div>
-
           </div>
         </div>
       </div>
@@ -186,46 +146,21 @@ export default function OpenRolesSection({ theme }: OpenRolesSectionProps) {
         open={modalOpen}
         mode={modalMode}
         step={step}
-        departments={CAREERS_DEPARTMENTS}
-        internshipRoles={internshipRoles}
+        departments={departments}
         selectedDepartmentId={selectedDepartmentId}
         selectedRoleId={selectedRoleId}
         onSelectDepartment={(id) => {
           setSelectedDepartmentId(id);
           setSelectedRoleId(null);
+          setStep("role");
         }}
-        onSelectRole={(id) => setSelectedRoleId(id)}
-        onClose={() => setModalOpen(false)}
-        onBack={() => {
-          if (modalMode === "internship") {
-            if (step === "form") {
-              setStep("role");
-            } else {
-              setModalOpen(false);
-            }
-            return;
-          }
-
-          if (step === "form") {
-            setStep("role");
-            return;
-          }
-
-          setStep("department");
-          setSelectedRoleId(null);
+        onSelectRole={(id) => {
+          setSelectedRoleId(id);
+          setStep("description");
         }}
-        onNext={() => {
-          if (step === "department") {
-            if (!selectedDepartment) return;
-            setStep("role");
-            return;
-          }
-
-          if (step === "role") {
-            if (!selectedRoleId) return;
-            setStep("form");
-          }
-        }}
+        onApplyNow={() => setStep("form")}
+        onClose={handleClose}
+        onBack={handleBack}
       />
     </section>
   );
