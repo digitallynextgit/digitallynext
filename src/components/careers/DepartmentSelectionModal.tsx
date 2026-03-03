@@ -2,6 +2,7 @@
 
 import { X, ChevronLeft, Upload, CheckCircle2, FileText, Loader2 } from "lucide-react";
 import { useCallback, useEffect, useId, useRef, useState } from "react";
+import toast from "react-hot-toast";
 import type {
   CareersDepartment,
   CareersRole,
@@ -128,7 +129,7 @@ function Field({
 
 const inputCls = (hasError: boolean) =>
   [
-    "h-11 w-full rounded-xl border px-4 text-sm text-black outline-none transition",
+    "h-11 w-full rounded border px-4 text-sm text-black outline-none transition cursor-text",
     "focus:ring-2 focus:ring-black/20",
     hasError ? "border-[#E21F26] bg-red-50" : "border-black/15 bg-white",
   ].join(" ");
@@ -224,6 +225,7 @@ export default function DepartmentSelectionModal({
   const isRoleStep = step === "role";
   const isDescriptionStep = step === "description";
   const isFormStep = step === "form";
+  const isFormReady = Object.keys(validateForm(form)).length === 0;
 
   // ── Title ────────────────────────────────────────────────────────────────────
   const renderTitle = () => {
@@ -306,7 +308,14 @@ export default function DepartmentSelectionModal({
 
       if (!res.ok) throw new Error(json.error ?? "Submission failed. Please try again.");
 
-      setSubmitStatus("success");
+      toast.success("Application submitted successfully.");
+      setForm(makeEmptyForm());
+      setErrors({});
+      setSubmitStatus("idle");
+      setSubmitError(null);
+      setDragOver(false);
+      if (fileInputRef.current) fileInputRef.current.value = "";
+      handleClose();
     } catch (err) {
       setSubmitStatus("error");
       setSubmitError(err instanceof Error ? err.message : "Something went wrong. Please try again.");
@@ -329,7 +338,7 @@ export default function DepartmentSelectionModal({
         style={{ maxWidth: 1060, borderRadius: 5, maxHeight: "calc(100svh - 4rem)" }}
       >
         {/* ── Header ──────────────────────────────────────────────────────────── */}
-        <div className="flex shrink-0 items-start justify-between gap-6 px-6 py-6 md:px-6 border-b">
+        <div className="flex shrink-0 items-start justify-between gap-6 p-6 border-b">
           <div className="flex-1 min-w-0">
             <h2
               id={titleId}
@@ -355,16 +364,8 @@ export default function DepartmentSelectionModal({
         {/* ── Scrollable body ──────────────────────────────────────────────────── */}
         <div
           ref={scrollRef}
-          className={[
-            "min-h-0 flex-1 overflow-y-auto overscroll-contain px-6 pb-6 md:px-12 md:py-10 [-webkit-overflow-scrolling:touch]",
-            "[&::-webkit-scrollbar]:w-[10px]",
-            "[&::-webkit-scrollbar-track]:bg-transparent",
-            "[&::-webkit-scrollbar-thumb]:bg-[#C9C9C9]",
-            "[&::-webkit-scrollbar-thumb]:rounded-full",
-            "scrollbar-width:auto",
-          ].join(" ")}
+          className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-6 py-6 [-webkit-overflow-scrolling:touch] [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
         >
-
           {/* ════ STEP 1: DEPARTMENT ════════════════════════════════════════════ */}
           {isDepartmentStep && (
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -377,7 +378,7 @@ export default function DepartmentSelectionModal({
                     type="button"
                     onClick={() => onSelectDepartment(dept.id)}
                     className={[
-                      "group flex min-h-[164px] md:min-h-[300px] flex-col justify-between rounded p-6 text-left transition-all duration-200",
+                      "group flex min-h-[164px] md:min-h-[300px] flex-col justify-between rounded p-6 text-left transition-all duration-200 cursor-pointer",
                       tone.cardBg,
                       tone.cardBgHover,
                       isSelected ? `ring-2 ${tone.ringColor}` : `hover:ring-1 ${tone.ringColor}`,
@@ -411,7 +412,7 @@ export default function DepartmentSelectionModal({
                     type="button"
                     onClick={() => onSelectRole(role.id)}
                     className={[
-                      "flex w-full items-center justify-between rounded-2xl px-7 py-5 text-left transition-all duration-200",
+                      "flex w-full items-center justify-between rounded px-7 py-5 text-left transition-all duration-200 cursor-pointer",
                       "bg-[rgba(226,31,38,0.04)]",
                       "hover:bg-[rgba(226,31,38,0.09)]",
                       isSelected ? `ring-2 ${tone.ringColor}` : "",
@@ -453,7 +454,7 @@ export default function DepartmentSelectionModal({
           {isDescriptionStep && selectedRole && (
             <div className="flex flex-col gap-6">
               {/* Role header card */}
-              <div className="rounded-2xl border border-[#E5E5E5] bg-[#FAFAFA] px-7 py-6">
+              <div className="rounded border border-[#E5E5E5] bg-[#FAFAFA] px-7 py-6">
                 <div className="flex flex-wrap items-start justify-between gap-4">
                   <div>
                     <div className="text-[clamp(20px,3vw,32px)] font-bold text-black leading-tight">
@@ -463,16 +464,15 @@ export default function DepartmentSelectionModal({
                       <div className="mt-1.5 text-sm text-black/50 capitalize">{selectedRole.meta}</div>
                     )}
                   </div>
-                  {selectedDepartment && (
-                    <span
-                      className={[
-                        "inline-flex items-center rounded-full px-4 py-1.5 text-xs font-bold uppercase tracking-wide",
-                        getToneClasses(selectedDepartment.tone).badgeBg,
-                      ].join(" ")}
+                  <div className="mt-2">
+                    <button
+                      type="button"
+                      onClick={onApplyNow}
+                      className="inline-flex items-center justify-center border border-[#E21F26] bg-transparent px-8 py-3 text-sm font-bold text-[#E21F26] transition-all duration-200 hover:bg-[#E21F26] hover:text-white focus:outline-none focus:ring-2 focus:ring-[#E21F26]/50 rounded-full cursor-pointer"
                     >
-                      {selectedDepartment.title}
-                    </span>
-                  )}
+                      Apply Now
+                    </button>
+                  </div>
                 </div>
               </div>
 
@@ -512,9 +512,9 @@ export default function DepartmentSelectionModal({
                 <button
                   type="button"
                   onClick={onApplyNow}
-                  className="inline-flex items-center justify-center rounded-full bg-[#E21F26] px-8 py-3 text-sm font-bold text-white transition-opacity hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-[#E21F26]/50"
+                  className="inline-flex items-center justify-center rounded-full bg-[#E21F26] px-8 py-3 text-sm font-bold text-white transition-opacity hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-[#E21F26]/50 cursor-pointer"
                 >
-                  Apply Now →
+                  Apply Now
                 </button>
               </div>
             </div>
@@ -522,9 +522,9 @@ export default function DepartmentSelectionModal({
 
           {/* ════ STEP 4: APPLICATION FORM ══════════════════════════════════════ */}
           {isFormStep && (
-            <div className="mx-auto w-full max-w-[740px]">
+            <div className="mx-auto w-full">
               {/* Applying for banner */}
-              <div className="mb-6 rounded-2xl border border-[#E5E5E5] bg-[#FAFAFA] px-6 py-5">
+              <div className="mb-6 rounded border border-[#E5E5E5] bg-[#FAFAFA] px-6 py-5">
                 <div className="text-xs font-bold uppercase tracking-widest text-black/40">
                   Applying for
                 </div>
@@ -599,8 +599,10 @@ export default function DepartmentSelectionModal({
                   />
                 </Field>
 
-                {/* Resume upload */}
-                <Field label="Resume" required error={errors.resume} fullWidth>
+                <div className="flex flex-col gap-1.5 md:col-span-2">
+                  <span className="text-sm font-semibold text-black">
+                    Resume<span className="ml-0.5 text-[#E21F26]">*</span>
+                  </span>
                   <div
                     onClick={() => fileInputRef.current?.click()}
                     onDragOver={(e) => { e.preventDefault(); setDragOver(true); }}
@@ -615,7 +617,7 @@ export default function DepartmentSelectionModal({
                     tabIndex={0}
                     onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") fileInputRef.current?.click(); }}
                     className={[
-                      "flex cursor-pointer flex-col items-center justify-center gap-2 rounded-xl border-2 border-dashed px-6 py-8 text-center transition-colors",
+                      "flex cursor-pointer flex-col items-center justify-center gap-2 rounded border-2 border-dashed px-6 py-8 text-center transition-colors",
                       dragOver ? "border-[#E21F26] bg-red-50" : "border-black/15 bg-[#FAFAFA] hover:border-black/30",
                       errors.resume ? "border-[#E21F26] bg-red-50" : "",
                       submitStatus === "submitting" || submitStatus === "success" ? "pointer-events-none opacity-60" : "",
@@ -650,14 +652,15 @@ export default function DepartmentSelectionModal({
                       e.target.value = "";
                     }}
                   />
-                </Field>
+                  {errors.resume && <span className="text-xs text-[#E21F26]">{errors.resume}</span>}
+                </div>
 
                 <Field label="Message (optional)" error={errors.message} fullWidth>
                   <textarea
                     value={form.message}
                     onChange={(e) => setForm((p) => ({ ...p, message: e.target.value }))}
                     className={[
-                      "min-h-[120px] w-full resize-y rounded-xl border px-4 py-3 text-sm text-black outline-none transition",
+                      "min-h-[120px] w-full resize-y rounded border px-4 py-3 text-sm text-black outline-none transition cursor-text",
                       "focus:ring-2 focus:ring-black/20",
                       "border-black/15 bg-white",
                     ].join(" ")}
@@ -669,7 +672,7 @@ export default function DepartmentSelectionModal({
 
               {/* Status messages */}
               {submitStatus === "success" && (
-                <div className="mt-5 flex items-start gap-3 rounded-xl border border-emerald-200 bg-emerald-50 p-4">
+                <div className="mt-5 flex items-start gap-3 rounded border border-emerald-200 bg-emerald-50 p-4">
                   <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-emerald-600" />
                   <div>
                     <div className="text-sm font-bold text-emerald-900">Application submitted!</div>
@@ -681,7 +684,7 @@ export default function DepartmentSelectionModal({
               )}
 
               {submitStatus === "error" && submitError && (
-                <div className="mt-5 rounded-xl border border-red-200 bg-red-50 p-4 text-sm text-red-900">
+                <div className="mt-5 rounded border border-red-200 bg-red-50 p-4 text-sm text-red-900">
                   {submitError}
                 </div>
               )}
@@ -690,7 +693,7 @@ export default function DepartmentSelectionModal({
         </div>
 
         {/* ── Footer ───────────────────────────────────────────────────────────── */}
-        <div className="flex shrink-0 items-center justify-between gap-3 border-t border-black/8 px-6 py-4 md:px-12">
+        <div className="flex shrink-0 items-center justify-between gap-3 border-t border-black/8 px-6 py-6">
           {/* Back / Close */}
           <button
             type="button"
@@ -706,11 +709,13 @@ export default function DepartmentSelectionModal({
             <button
               type="button"
               onClick={handleSubmit}
-              disabled={submitStatus === "submitting"}
+              disabled={submitStatus === "submitting" || !isFormReady}
               className={[
                 "inline-flex items-center gap-2 rounded-full px-7 py-2.5 text-sm font-bold text-white transition-opacity",
-                "bg-[#E21F26] focus:outline-none focus:ring-2 focus:ring-[#E21F26]/50",
-                submitStatus === "submitting" ? "cursor-not-allowed opacity-70" : "hover:opacity-90",
+                "focus:outline-none focus:ring-2 focus:ring-[#E21F26]/50",
+                submitStatus === "submitting" || !isFormReady
+                  ? "cursor-not-allowed bg-black/30 opacity-70"
+                  : "bg-[#E21F26] hover:opacity-90",
               ].join(" ")}
             >
               {submitStatus === "submitting" && <Loader2 className="h-4 w-4 animate-spin" />}
