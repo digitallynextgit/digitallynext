@@ -21,6 +21,13 @@ const logosWhite = [
   "/home/client10.png",
   "/home/client11.png",
   "/home/client12.png",
+  "/home/client32.png",
+  "/home/client33.png",
+  "/home/client34.png",
+  "/home/client35.png",
+  "/home/client36.png",
+  "/home/client37.png",
+  "/home/client38.png",
 ];
 const logosBlack = [
   "/home/client13.png",
@@ -35,6 +42,13 @@ const logosBlack = [
   "/home/client22.png",
   "/home/client23.png",
   "/home/client24.png",
+  "/home/client25.png",
+  "/home/client26.png",
+  "/home/client27.png",
+  "/home/client28.png",
+  "/home/client29.png",
+  "/home/client30.png",
+  "/home/client31.png",
 ];
 
 export default function ClientLogos({ theme }: ClientLogosProps) {
