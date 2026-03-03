@@ -89,10 +89,8 @@ export default function Hero() {
               "text-[1.2rem] font-normal tracking-[0.12em] uppercase",
               "rounded-none cursor-pointer relative overflow-hidden",
               "transition-all duration-300 ease-out",
-              isDark
-                ? "bg-[rgba(0,255,255,0.826)] text-white"
-                : "bg-[rgba(0,255,255,0.826)] text-white",
-              "hover:-translate-y-0.5",
+              "bg-[rgba(0,255,255,0.826)] text-white",
+              "hover:bg-[#E21F26] hover:-translate-y-0.5",
             ].join(" ")}
           >
             GET IN TOUCH

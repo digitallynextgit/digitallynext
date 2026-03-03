@@ -10,6 +10,7 @@ import GlobalServicingModel from "@/components/sections/GlobalServicingModel";
 import InstagramReels from "@/components/sections/InstagramReels";
 import CTASection from "@/components/sections/CTASection";
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect } from "react";
 import { ThemeSection } from "@/components/ui/ThemeSection.tsx";
 import AwardsAndRecognition from "@/components/sections/AwardsAndRecognition";
@@ -23,7 +24,7 @@ export default function Home() {
       </ThemeSection>
 
       <ThemeSection theme="light">
-        <div style={{ position: "relative", zIndex: 10 }}>
+        <Link href="/contact" className="block cursor-pointer" style={{ position: "relative", zIndex: 10 }}>
           {/* Mobile */}
           <Image
             src="/banner/ipl-desktop.webp"
@@ -42,7 +43,7 @@ export default function Home() {
             className="w-full h-auto object-contain hidden md:block"
             priority
           />
-        </div>
+        </Link>
       </ThemeSection>
 
       <ThemeSection theme="light">

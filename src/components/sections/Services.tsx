@@ -125,7 +125,7 @@ function MobileServices({ isDark }: { isDark: boolean }) {
                       >
                         <motion.div
                           className={[
-                            "inline-flex text-xs font-medium transition-colors duration-500",
+                            "inline-flex text-xs font-light transition-colors duration-500",
                             isDark ? "text-white/40" : "text-black/40",
                           ].join(" ")}
                           animate={{ x: ["0%", "-50%"] }}
@@ -313,7 +313,7 @@ function DesktopServices({ isDark }: { isDark: boolean }) {
               >
                 <motion.div
                   className={[
-                    "inline-flex text-lg font-medium transition-colors duration-500",
+                    "inline-flex text-lg font-light transition-colors duration-500",
                     isDark ? "text-white/60" : "text-black/60",
                   ].join(" ")}
                   animate={{ x: ["0%", "-50%"] }}
