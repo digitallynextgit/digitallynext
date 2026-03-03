@@ -154,7 +154,7 @@ export const CAREERS_DEPARTMENTS: CareersDepartment[] = [
   {
     id: "strategic-management",
     title: "Strategic Management Group",
-    jobsLabel: "8 Jobs",
+    jobsLabel: "Open Roles",
     tone: "red",
     roles: [
       {
@@ -181,7 +181,7 @@ export const CAREERS_DEPARTMENTS: CareersDepartment[] = [
   {
     id: "account-management",
     title: "Account Management Group",
-    jobsLabel: "5 Jobs",
+    jobsLabel: "Open Roles",
     tone: "teal",
     roles: [
       {
@@ -208,7 +208,7 @@ export const CAREERS_DEPARTMENTS: CareersDepartment[] = [
   {
     id: "project-management",
     title: "Project Management Group",
-    jobsLabel: "4 Jobs",
+    jobsLabel: "Open Roles",
     tone: "red",
     roles: [
       {
@@ -235,7 +235,7 @@ export const CAREERS_DEPARTMENTS: CareersDepartment[] = [
   {
     id: "creative-studio",
     title: "Creative Studio",
-    jobsLabel: "7 Jobs",
+    jobsLabel: "9 Jobs", // ✅ Updated: Junior + Senior + Visual Lead + Junior Video + Senior Video + Video Producer + Video Production Lead + Content Storyteller + Content Lead + Creative Manager
     tone: "teal",
     roles: [
       {
@@ -277,6 +277,27 @@ export const CAREERS_DEPARTMENTS: CareersDepartment[] = [
         },
       },
       {
+        // ✅ NEW — from docs
+        id: "visual-lead",
+        title: "Visual Lead",
+        meta: "Full Time | Delhi",
+        summary: "Lead visual direction, design systems, and the creative team.",
+        description: {
+          intro:
+            "A Visual Lead at Digitally Next doesn't just design — they define the visual language of the agency. You set the standard, build the system, and elevate every creative output.",
+          jobEssence:
+            "Own the agency's visual identity across all client work — leading the design team, setting quality benchmarks, and ensuring brand consistency across campaigns, platforms, and formats.",
+          keyRequirements: [
+            "Expert-level Adobe Photoshop and Illustrator",
+            "Design leadership and team mentoring",
+            "Visual identity and brand system building",
+            "Cross-platform creative direction",
+            "Familiarity with AI-enabled design tools",
+            "Agency experience required",
+          ],
+        },
+      },
+      {
         id: "junior-video",
         title: "Junior Video Editor",
         meta: "Full Time | 1–2 Years Exp | Delhi",
@@ -311,6 +332,46 @@ export const CAREERS_DEPARTMENTS: CareersDepartment[] = [
             "Multi-camera production experience",
             "Motion graphics and animation skills",
             "Strong storytelling and narrative structure",
+          ],
+        },
+      },
+      {
+        // ✅ NEW — from docs
+        id: "video-producer",
+        title: "Video Producer",
+        meta: "Full Time | Delhi",
+        summary: "Produce end-to-end video projects across formats and platforms.",
+        description: {
+          intro:
+            "A Video Producer at Digitally Next manages the full production lifecycle — from concept and pre-production to shoot coordination and final delivery.",
+          jobEssence:
+            "Oversee video production projects across brand, social, and digital formats — scripting, shoot planning, crew coordination, and post-production supervision.",
+          keyRequirements: [
+            "End-to-end video production management",
+            "Script development and storyboarding",
+            "Shoot coordination and crew management",
+            "Post-production oversight (editing, color, audio)",
+            "Strong project management and deadline adherence",
+          ],
+        },
+      },
+      {
+        // ✅ NEW — from docs
+        id: "video-production-lead",
+        title: "Video Production Lead",
+        meta: "Full Time | Delhi",
+        summary: "Lead the video team and own production quality end-to-end.",
+        description: {
+          intro:
+            "The Video Production Lead at Digitally Next sets the standard for all video output — leading the team, managing production pipelines, and ensuring every frame serves the brand story.",
+          jobEssence:
+            "Lead the video production team across all client and agency projects — quality control, team mentoring, production planning, and cross-functional creative collaboration.",
+          keyRequirements: [
+            "Proven video production leadership experience",
+            "Expert-level post-production and direction skills",
+            "Team management and workflow optimization",
+            "Agency or studio production background",
+            "Strong creative vision and brand storytelling",
           ],
         },
       },
@@ -395,6 +456,7 @@ export const CAREERS_DEPARTMENTS: CareersDepartment[] = [
             "Keyword research and competitor analysis",
             "Technical SEO and site audits",
             "Content optimization and link-building strategies",
+            "Journey from SEO → GEO → AEO",
             "Familiarity with Google Analytics, Search Console, and SEMrush",
           ],
         },
@@ -501,6 +563,7 @@ export const CAREERS_DEPARTMENTS: CareersDepartment[] = [
             "ORM tools like Prisma / Drizzle",
             "Responsive UI development and Figma collaboration",
             "Deployment via Vercel / AWS, Git & GitHub with CI/CD",
+            "Knowledge of DNS, hosting, and domain management", // ✅ Added from docs
             "Familiarity with AI-enabled tools",
           ],
         },
@@ -608,6 +671,7 @@ export const CAREERS_DEPARTMENTS: CareersDepartment[] = [
             "Data interpretation and forecasting",
             "Automation workflows for ad platforms",
             "ROI and conversion-driven mindset",
+            "Strong analytical decision-making skills", // ✅ Added from docs
           ],
         },
       },
@@ -682,7 +746,7 @@ export const CAREERS_DEPARTMENTS: CareersDepartment[] = [
   {
     id: "media",
     title: "Media - Social and Digital Presence",
-    jobsLabel: "5 Jobs",
+    jobsLabel: "6 Jobs", // ✅ Updated: SMO Specialist + SMO Meta + SMO LinkedIn + SMO YouTube + PR + Influencer
     tone: "teal",
     roles: [
       {
@@ -701,6 +765,7 @@ export const CAREERS_DEPARTMENTS: CareersDepartment[] = [
             "Content and engagement strategy",
             "Analytics and performance tracking",
             "Hashtag, keyword, and caption optimization",
+            "SEO for social media",
           ],
         },
       },
@@ -739,6 +804,26 @@ export const CAREERS_DEPARTMENTS: CareersDepartment[] = [
             "LinkedIn analytics and performance tracking",
             "B2B social strategy expertise",
             "Newsletter and document post optimization",
+          ],
+        },
+      },
+      {
+        // ✅ NEW — from docs
+        id: "smo-youtube",
+        title: "SMO – YouTube Specialist",
+        meta: "Full Time | Delhi",
+        summary: "Grow YouTube presence through SEO, content, and optimization.",
+        description: {
+          intro:
+            "YouTube is the world's second-largest search engine. As an SMO YouTube Specialist, you engineer discoverability, watch time, and subscriber growth through strategy and optimization.",
+          jobEssence:
+            "Manage YouTube channel strategy and optimization — video SEO, thumbnail strategy, content calendar, audience retention analysis, and platform algorithm understanding.",
+          keyRequirements: [
+            "Deep understanding of YouTube algorithm and ranking factors",
+            "Video SEO — titles, descriptions, tags, thumbnails",
+            "Content strategy and audience retention optimization",
+            "YouTube Analytics and performance tracking",
+            "Shorts strategy and cross-platform content sync",
           ],
         },
       },

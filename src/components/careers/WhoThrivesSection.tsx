@@ -79,7 +79,7 @@ export default function WhoThrivesSection({ theme }: WhoThrivesSectionProps) {
       <div
         className="absolute inset-0 z-10 transition-colors duration-700"
         style={{
-          background: isDark ? "rgba(0,0,0,0.85)" : "rgba(0,0,0,0.70)",
+          background: isDark ? "rgba(0,0,0,0.85)" : "rgba(0,0,0,0.85)",
         }}
       />
 

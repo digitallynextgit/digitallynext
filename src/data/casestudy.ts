@@ -95,6 +95,7 @@ export type CaseStudyListing = {
   title: string;
   imageSrc: string;
   caption: string;
+  highlightKeywords?: string[];
   buttonLabel: string;
   pillLabel?: string;
 };
@@ -122,6 +123,11 @@ export const caseStudies: CaseStudy[] = [
       imageSrc: "/case/advent.png",
       caption:
         "Complete Brand Revamp for a US Tech Co. Helped them to bag one of the biggest social networking platforms as their client.",
+      highlightKeywords: [
+        "Brand Revamp",
+        "US Tech Co.",
+        "social networking platforms",
+      ],
       buttonLabel: "View Case Study",
       pillLabel: "IT & ITES",
     },
@@ -284,6 +290,7 @@ export const caseStudies: CaseStudy[] = [
       imageSrc: "/case/neotech.png",
       caption:
         "Complete Brand makeover of a global brand (Post M&A) to a new name and digital brand communication.",
+      highlightKeywords: ["Brand makeover", "Post M&A", "digital brand communication"],
       buttonLabel: "View Case Study",
       pillLabel: "Genomics",
     },
@@ -456,6 +463,11 @@ export const caseStudies: CaseStudy[] = [
       imageSrc: "/case/signia.png",
       caption:
         "Digital Campaign on Social Cause for a world leader in wearable hearing devices",
+      highlightKeywords: [
+        "Digital Campaign",
+        "Social Cause",
+        "wearable hearing devices",
+      ],
       buttonLabel: "View Case Study",
       pillLabel: "Hearing Aids",
     },
@@ -624,6 +636,11 @@ export const caseStudies: CaseStudy[] = [
       imageSrc: "/case/cs4.png",
       caption:
         "PAN India Launch (Online) of a disruptive phygital model in insurance sector to prevent mis-selling, mis-information and honest reach of the insurance products in the interiors of India.",
+      highlightKeywords: [
+        "PAN India Launch",
+        "phygital model",
+        "insurance products",
+      ],
       buttonLabel: "View Case Study",
       pillLabel: "Insurance",
     },
@@ -794,6 +811,12 @@ export const caseStudies: CaseStudy[] = [
       imageSrc: "/case/cs5.png",
       caption:
         "Digital Branding for a Fintech — Student value cards (endorsed by UNESCO) with a spread in 125+ Countries.",
+      highlightKeywords: [
+        "Fintech",
+        "Student value cards",
+        "UNESCO",
+        "125+ Countries",
+      ],
       buttonLabel: "View Case Study",
       pillLabel: "Value Card Services",
     },
@@ -960,6 +983,11 @@ export const caseStudies: CaseStudy[] = [
       imageSrc: "/case/cs6.png",
       caption:
         "Digital Brand Communication of the enriched legacy and the transformational work done to make world a better place.",
+      highlightKeywords: [
+        "Digital Brand Communication",
+        "enriched legacy",
+        "transformational work",
+      ],
       buttonLabel: "View Case Study",
       pillLabel: "Real Estate Advisory",
     },
@@ -1127,6 +1155,7 @@ export const caseStudies: CaseStudy[] = [
       imageSrc: "/case/cs7.png",
       caption:
         "Digital Brand Communication of the enriched legacy and the transformational work done in all fields of law with emphasis on Media, Entertainment, Sweepstakes, Promotions and IP Law.",
+      highlightKeywords: ["fields of law", "Media", "IP Law"],
       buttonLabel: "View Case Study",
       pillLabel: "Attorneys at Law",
     },
@@ -1293,6 +1322,12 @@ export const caseStudies: CaseStudy[] = [
       imageSrc: "/case/c3.webp",
       caption:
         "Launch of a high end Judaica Art gallery and 5 Artists for International Markets — US & UK.",
+      highlightKeywords: [
+        "Judaica Art",
+        "5 Artists",
+        "International Markets",
+        "US & UK",
+      ],
       buttonLabel: "View Case Study",
       pillLabel: "UK",
     },

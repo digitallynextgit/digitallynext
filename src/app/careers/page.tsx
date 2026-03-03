@@ -3,6 +3,7 @@
 import HeroSection from "@/components/careers/HeroSection";
 import WorkHereSection from "@/components/careers/WorkHereSection";
 import GrowthSection from "@/components/careers/GrowthSection";
+import GrowthCarouselSection from "@/components/careers/GrowthCarouselSection";
 import ModernDadSection from "@/components/careers/ModernDadSection";
 import AdacSection from "@/components/careers/AdacSection";
 import WhoThrivesSection from "@/components/careers/WhoThrivesSection";
@@ -23,6 +24,10 @@ export default function CareersPage() {
 
       <ThemeSection theme="light">
         <GrowthSection />
+      </ThemeSection>
+
+      <ThemeSection theme="light">
+        <GrowthCarouselSection />
       </ThemeSection>
 
       <ThemeSection theme="dark">

@@ -12,17 +12,17 @@ const items = [
   {
     sub: "Data doesn't sit in dashboards.",
     main: "It shapes decisions.",
-    image: "/figma/careers/careers-modern-dad.png",
+    image: "/home/moderndad1.png",
   },
   {
     sub: "AI doesn't replace thinking.",
     main: "It removes friction.",
-    image: "/figma/careers/careers-modern-dad.png",
+    image: "/home/moderndad2.png",
   },
   {
     sub: "Digital isn't a channel.",
     main: "It's the system.",
-    image: "/figma/careers/careers-modern-dad.png",
+    image: "/home/moderndad3.png",
   },
 ];
 
@@ -42,7 +42,7 @@ export default function ModernDadSection({ theme }: ModernDadSectionProps) {
         <div style={{ maxWidth: 1103 }} className="w-full py-12 md:py-16 lg:py-20">
 
           {/* Top label */}
-          <div className="text-[#0EC8C5] text-[16px] font-medium tracking-[0.1125em]">
+          <div className="text-[#0EC8C5] text-6xl font-light tracking-[0.1125em]">
             MODERN DAD
           </div>
 
@@ -107,14 +107,14 @@ export default function ModernDadSection({ theme }: ModernDadSectionProps) {
               className="hidden lg:block shrink-0"
               style={{ width: 260, marginTop: 80 }}
             >
-              <div className="relative" style={{ width: 260, height: 363 }}>
+              <div className="relative" style={{ width: 300, height: 363 }}>
                 {items.map(({ image, sub }, index) => (
                   <Image
                     key={sub}
                     src={image}
                     alt=""
                     fill
-                    className="object-cover absolute"
+                    className="object-contain absolute"
                     style={{
                       transition: "opacity 0.4s ease",
                       opacity: hoveredIndex === index ? 1 : 0,
@@ -123,10 +123,10 @@ export default function ModernDadSection({ theme }: ModernDadSectionProps) {
                 ))}
                 {/* Default image */}
                 <Image
-                  src="/figma/careers/careers-modern-dad.png"
+                  src="/home/moderndad1.png"
                   alt=""
                   fill
-                  className="object-cover absolute"
+                  className="object-contain absolute"
                   style={{
                     transition: "opacity 0.4s ease",
                     opacity: hoveredIndex === null ? 1 : 0,

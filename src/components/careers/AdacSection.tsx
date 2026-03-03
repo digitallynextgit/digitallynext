@@ -44,7 +44,7 @@ export default function AdacSection({ theme }: AdacSectionProps) {
           <div className="flex flex-col" style={{ gap: 40 }}>
 
             {/* Label */}
-            <div className="text-[#C8102E] text-[12px] font-medium tracking-[0.15em]">
+            <div className="text-[#C8102E] text-6xl font-light tracking-[0.15em]">
               ADAC
             </div>
 
