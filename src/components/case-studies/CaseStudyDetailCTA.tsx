@@ -10,7 +10,7 @@ export default function CaseStudyDetailCTA({ detail }: { detail: CaseStudyDetail
     >
       <div className="absolute inset-0">
         <Image src={detail.cta.backgroundImageSrc} alt="" fill className="object-cover" priority={false} sizes="100vw" />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black" />
+        <div className="absolute inset-0 bg-linear-to-b from-transparent to-black" />
       </div>
 
       <div className="relative z-10 mx-auto w-full max-w-[1244px] flex flex-col items-center gap-10 md:gap-[80px]">
@@ -20,7 +20,7 @@ export default function CaseStudyDetailCTA({ detail }: { detail: CaseStudyDetail
             <br />
             {detail.cta.headingLines[1] ?? ""}
           </div>
-          <div className="w-full text-center text-[16px] sm:text-[20px] md:text-[32px] leading-[1.5] md:leading-[1.3] font-light text-white whitespace-pre-line">
+          <div className="w-full text-center text-[16px] sm:text-[20px] md:text-[32px] leading-normal md:leading-[1.3] font-light text-white whitespace-pre-line">
             {detail.cta.bodyLines.join("\n")}
           </div>
         </div>
