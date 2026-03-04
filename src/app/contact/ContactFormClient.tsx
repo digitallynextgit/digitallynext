@@ -23,7 +23,11 @@ const SERVICES = [
 
 const CUSTOM_SERVICE = "Custom Services";
 
-export default function ContactFormClient() {
+type Props = {
+  onSuccess?: () => void;
+};
+
+export default function ContactFormClient({ onSuccess }: Props) {
   const formRef = useRef<HTMLFormElement>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [selectedEntity, setSelectedEntity] = useState("");
@@ -82,6 +86,7 @@ export default function ContactFormClient() {
       setSelectedServices([]);
       setIsCustomSelected(false);
       setCustomServiceNote("");
+      onSuccess?.();
     } catch {
       toast.error("Unable to send message.");
     } finally {

@@ -149,7 +149,7 @@ export const services: ServiceDetail[] = [
     },
     hero: {
       breadcrumb: "Services > Strategy, Brand & Growth Intelligence",
-      titleLines: ["Strategy, Brand &", "Growth Intelligence."],
+      titleLines: ["Strategy, Brand &", "Growth Intelligence"],
       layout: "stacked",
       backgroundVideo: "/services/service-hero-video.mp4",
       overlay:
@@ -183,7 +183,7 @@ export const services: ServiceDetail[] = [
         "Entering a competitive <strong>D2C market</strong>",
         "Launching a new <strong>B2B or niche vertical</strong>",
         "Planning <strong>PR- and influence-led</strong> growth",
-        "Or <strong>seeking AI-enabled</stromg> strategy without generic outputs"
+        "Or <strong>seeking AI-enabled</strong> strategy without generic outputs"
       ],
       description:
         "Then Strategy, Brand & Growth Intelligence at DigitallyNext is built for you.",
@@ -348,7 +348,7 @@ export const services: ServiceDetail[] = [
     },
     hero: {
       breadcrumb: "Services > Content, Culture & Media Creation",
-      titleLines: ["Content, Culture", "& Media Creation."],
+      titleLines: ["Content, Culture", "& Media Creation"],
       layout: "stacked",
       backgroundVideo: "/home/service2.mp4",
       overlay:
@@ -684,7 +684,7 @@ export const services: ServiceDetail[] = [
     },
     hero: {
       breadcrumb: "Services > Platforms, Web & Digital Experience.",
-      titleLines: ["Platforms, Web &", "Digital Experience."],
+      titleLines: ["Platforms, Web &", "Digital Experience"],
       layout: "stacked",
       backgroundVideo: "/home/service4.mp4",
       overlay:
@@ -861,7 +861,7 @@ export const services: ServiceDetail[] = [
     },
     hero: {
       breadcrumb: "Services > Performance, Distribution & Demand.",
-      titleLines: ["AI Enablement &", "Decision Systems", "(ADAC-Powered)."],
+      titleLines: ["AI Enablement & Decision",  "Systems (ADAC-Powered)"],
       layout: "stacked",
       backgroundVideo: "/home/service5.mp4",
       overlay:
