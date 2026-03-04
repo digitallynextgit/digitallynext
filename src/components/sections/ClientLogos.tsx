@@ -3,65 +3,61 @@
 import AnimatedSection from "@/components/ui/AnimatedSection";
 import Image from "next/image";
 import Link from "next/link";
+import { useRef } from "react";
 import { useSectionTheme } from "@/context/SectionThemeContext";
 
 interface ClientLogosProps {
   theme?: "dark" | "light";
 }
+
 const logosWhite = [
-  "/home/client1.png",
-  "/home/client2.png",
-  "/home/client3.png",
-  "/home/client4.png",
-  "/home/client5.png",
-  "/home/client6.png",
-  "/home/client7.png",
-  "/home/client8.png",
-  "/home/client9.png",
-  "/home/client10.png",
-  "/home/client11.png",
-  "/home/client12.png",
-  "/home/client32.png",
-  "/home/client33.png",
-  "/home/client34.png",
-  "/home/client35.png",
-  "/home/client36.png",
-  "/home/client37.png",
+  "/home/client1.png", "/home/client2.png", "/home/client3.png",
+  "/home/client4.png", "/home/client5.png", "/home/client6.png",
+  "/home/client7.png", "/home/client8.png", "/home/client9.png",
+  "/home/client10.png", "/home/client11.png", "/home/client12.png",
+  "/home/client32.png", "/home/client33.png", "/home/client34.png",
+  "/home/client35.png", "/home/client36.png", "/home/client37.png",
   "/home/client38.png",
 ];
+
 const logosBlack = [
-  "/home/client13.png",
-  "/home/client14.png",
-  "/home/client15.png",
-  "/home/client16.png",
-  "/home/client17.png",
-  "/home/client18.png",
-  "/home/client19.png",
-  "/home/client20.png",
-  "/home/client21.png",
-  "/home/client22.png",
-  "/home/client23.png",
-  "/home/client24.png",
-  "/home/client25.png",
-  "/home/client26.png",
-  "/home/client27.png",
-  "/home/client28.png",
-  "/home/client29.png",
-  "/home/client30.png",
+  "/home/client13.png", "/home/client14.png", "/home/client15.png",
+  "/home/client16.png", "/home/client17.png", "/home/client18.png",
+  "/home/client19.png", "/home/client20.png", "/home/client21.png",
+  "/home/client22.png", "/home/client23.png", "/home/client24.png",
+  "/home/client25.png", "/home/client26.png", "/home/client27.png",
+  "/home/client28.png", "/home/client29.png", "/home/client30.png",
   "/home/client31.png",
 ];
+
+// Divider — inline style instead of bg-linear-to-r (Tailwind v4 only)
+function Divider({ isDark }: { isDark: boolean }) {
+  return (
+    <div
+      style={{
+        height: 1,
+        background: isDark
+          ? "linear-gradient(to right, transparent, rgba(255,255,255,0.1), transparent)"
+          : "linear-gradient(to right, transparent, rgba(0,0,0,0.1), transparent)",
+        transition: "background 0.5s",
+      }}
+    />
+  );
+}
 
 export default function ClientLogos({ theme }: ClientLogosProps) {
   const { theme: contextTheme } = useSectionTheme();
   const isDark = (theme ?? contextTheme) === "dark";
+  const marqueeRef = useRef<HTMLDivElement>(null);
 
   const logoFiles = isDark ? logosWhite : logosBlack;
+  // 4 copies for seamless loop — translateX -25% = 1 full set
+  const allLogos = [...logoFiles, ...logoFiles, ...logoFiles, ...logoFiles];
 
   return (
     <>
-      <div
-        className={`h-px bg-linear-to-r from-transparent ${isDark ? "via-white/10" : "via-black/10"} to-transparent transition-colors duration-500`}
-      />
+      <Divider isDark={isDark} />
+
       <section
         className={[
           "py-10 md:py-16 lg:py-20 overflow-hidden",
@@ -71,11 +67,11 @@ export default function ClientLogos({ theme }: ClientLogosProps) {
         <div className="w-full max-w-7xl mx-auto px-6 md:px-12">
           <AnimatedSection>
             <div className="flex justify-between items-center mb-8 flex-wrap gap-6">
+
               {/* Heading */}
               <p
                 className={[
-                  "text-2xl lg:text-4xl lg:w-[65%] w-full",
-                  "transition-colors duration-500",
+                  "text-2xl lg:text-4xl lg:w-[65%] w-full transition-colors duration-500",
                   isDark ? "text-white" : "text-black",
                 ].join(" ")}
               >
@@ -100,8 +96,7 @@ export default function ClientLogos({ theme }: ClientLogosProps) {
                 </span>
                 <span
                   className={[
-                    "mt-1 font-light hover:text-[#E21F26]",
-                    "transition-colors duration-500",
+                    "mt-1 font-light hover:text-[#E21F26] transition-colors duration-500",
                     isDark ? "text-white" : "text-black",
                   ].join(" ")}
                 >
@@ -112,63 +107,98 @@ export default function ClientLogos({ theme }: ClientLogosProps) {
           </AnimatedSection>
         </div>
 
-        {/* Marquee */}
+        {/* Marquee wrapper */}
         <div
           className="overflow-hidden py-4 mt-4"
           style={{
-            maskImage:
-              "linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)",
+            // ✅ Both prefixes — Safari needs webkit
             WebkitMaskImage:
+              "linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)",
+            maskImage:
               "linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)",
           }}
         >
+          {/* 
+            ✅ Safari fix:
+            - translateZ(0) forces GPU layer — prevents jitter
+            - will-change: transform — hints browser to optimize
+            - animation defined inline via CSS custom property
+          */}
           <div
-            className="flex gap-8 w-max"
-            style={{ animation: "marquee 45s linear infinite" }}
-            onMouseEnter={(e) =>
-              (e.currentTarget.style.animationPlayState = "paused")
-            }
-            onMouseLeave={(e) =>
-              (e.currentTarget.style.animationPlayState = "running")
-            }
+            ref={marqueeRef}
+            className="flex gap-8"
+            style={{
+              width: "max-content",
+              // ✅ Cross-browser animation
+              animation: "clientMarquee 45s linear infinite",
+              // ✅ GPU acceleration — fixes Safari jitter
+              transform: "translateZ(0)",
+              WebkitTransform: "translateZ(0)",
+              willChange: "transform",
+              // ✅ Prevents sub-pixel blurring in Safari
+              WebkitBackfaceVisibility: "hidden",
+              backfaceVisibility: "hidden",
+            }}
+            onMouseEnter={() => {
+              if (marqueeRef.current)
+                marqueeRef.current.style.animationPlayState = "paused";
+            }}
+            onMouseLeave={() => {
+              if (marqueeRef.current)
+                marqueeRef.current.style.animationPlayState = "running";
+            }}
           >
-            {[...logoFiles, ...logoFiles, ...logoFiles, ...logoFiles].map(
-              (logo, i) => (
-                <div
-                  key={i}
-                  className={[
-                    "group shrink-0 flex items-center justify-center",
-                    "h-25 px-5",
-                    "border-2 rounded-lg hover:rounded-full",
-                    "transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]",
-                    "hover:scale-105",
-                    isDark
-                      ? "border-white/50 hover:border-white/70 hover:shadow-[0_0_24px_rgba(255,255,255,0.08)]"
-                      : "border-black/20 hover:border-black/30 hover:shadow-[0_4px_24px_rgba(0,0,0,0.08)]",
-                  ].join(" ")}
-                >
-                  <Image
-                    src={logo}
-                    alt="Client Logo"
-                    width={0}
-                    height={0}
-                    sizes="140px"
-                    style={{
-                      width: "auto",
-                      height: "55px",
-                      maxWidth: "140px",
-                    }}
-                    className="object-contain transition-opacity duration-500 opacity-100 brightness-900"
-                  />
-                </div>
-              ),
-            )}
+            {allLogos.map((logo, i) => (
+              <div
+                key={i}
+                className={[
+                  "shrink-0 flex items-center justify-center",
+                  "h-24 px-5",
+                  "border-2 rounded-lg hover:rounded-full",
+                  "transition-all duration-500",
+                  "hover:scale-105",
+                  isDark
+                    ? "border-white/50 hover:border-white/70"
+                    : "border-black/20 hover:border-black/30",
+                ].join(" ")}
+                style={{
+                  // ✅ Safari box-shadow fix — inline instead of Tailwind arbitrary
+                  boxShadow: "none",
+                  transition: "all 0.5s cubic-bezier(0.16,1,0.3,1)",
+                }}
+              >
+                <Image
+                  src={logo}
+                  alt="Client Logo"
+                  width={140}
+                  height={55}
+                  // ✅ Lazy load — first 8 eager, rest lazy
+                  loading={i < 8 ? "eager" : "lazy"}
+                  style={{
+                    width: "auto",
+                    height: "55px",
+                    maxWidth: "140px",
+                    objectFit: "contain",
+                  }}
+                />
+              </div>
+            ))}
           </div>
         </div>
       </section>
-      <div
-        className={`h-px bg-linear-to-r from-transparent ${isDark ? "via-white/10" : "via-black/10"} to-transparent transition-colors duration-500`}
-      />
+
+      <Divider isDark={isDark} />
+
+      {/* 
+        ✅ Keyframe defined inline via style tag — works in all browsers
+        including Safari, Firefox, without needing globals.css
+      */}
+      <style>{`
+        @keyframes clientMarquee {
+          0%   { transform: translateX(0) translateZ(0); }
+          100% { transform: translateX(-25%) translateZ(0); }
+        }
+      `}</style>
     </>
   );
 }

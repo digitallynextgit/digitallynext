@@ -219,7 +219,7 @@ export default function HeroSection({ hero, theme }: Props) {
             <div
               className={[
                 "flex-1 flex flex-col justify-center",
-                "pb-10 md:pb-14 lg:pb-20 mt-10 lg:mt-20",
+                "pb-10 md:pb-14 lg:pb-20 lg:mt-20",
                 isCentered
                   ? "mx-auto max-w-7xl text-center"
                   : "max-w-276",
