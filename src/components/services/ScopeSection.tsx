@@ -100,8 +100,8 @@ export default function ScopeSection({ section, theme }: Props) {
           isDark ? "bg-[#000000]" : "bg-[#FAFAFA]",
         ].join(" ")}
       >
-        <div className="w-full max-w-[1440px] mx-auto px-6 py-10 sm:px-10 md:py-16 lg:px-[120px] lg:py-20">
-          <div className="max-w-[1200px] mx-auto flex flex-col gap-12 lg:gap-[72px]">
+        <div className="w-full max-w-360 mx-auto px-6 py-10 sm:px-10 md:py-16 lg:px-30 lg:py-20">
+          <div className="max-w-300 mx-auto flex flex-col gap-12 lg:gap-18">
 
             {/* ── Header Block ── */}
             <div className="flex flex-col gap-4 lg:gap-6">
@@ -250,7 +250,7 @@ export default function ScopeSection({ section, theme }: Props) {
                             aria-haspopup="dialog"
                             aria-controls={dialogId}
                             className={[
-                              "font-bold text-[24px] leading-[34px] transition-colors duration-500 hover:text-[#E21F26] active:text-[#E21F26] cursor-pointer text-left",
+                              "font-bold text-[24px] leading-8.5 transition-colors duration-500 hover:text-[#E21F26] active:text-[#E21F26] cursor-pointer text-left",
                               activeIndex === idx
                                 ? isDark ? "text-white" : "text-[#000000]"
                                 : isDark ? "text-white/50" : "text-black/50",
@@ -261,7 +261,7 @@ export default function ScopeSection({ section, theme }: Props) {
                           {/* ↑ description: 16px → 18px */}
                           <p
                             className={[
-                              "text-[18px] leading-[30px] font-light transition-colors duration-700",
+                              "text-[18px] leading-7.5 font-light transition-colors duration-700",
                               isDark ? "text-[#E5E5E5]" : "text-[#787878]",
                             ].join(" ")}
                           >
@@ -281,7 +281,7 @@ export default function ScopeSection({ section, theme }: Props) {
                     <div
                       className={[
                         "flex flex-col gap-6",
-                        idx < section.items.length - 1 ? "pb-[72px]" : "pb-14",
+                        idx < section.items.length - 1 ? "pb-18" : "pb-14",
                       ].join(" ")}
                     >
                       {item.imageSrc && (
@@ -305,7 +305,7 @@ export default function ScopeSection({ section, theme }: Props) {
                           aria-haspopup="dialog"
                           aria-controls={dialogId}
                           className={[
-                            "font-bold text-[20px] leading-[30px] transition-colors duration-700 hover:text-[#E21F26] active:text-[#E21F26] cursor-pointer text-left",
+                            "font-bold text-[20px] leading-7.5 transition-colors duration-700 hover:text-[#E21F26] active:text-[#E21F26] cursor-pointer text-left",
                             isDark ? "text-white" : "text-[#000000]",
                           ].join(" ")}
                         >
@@ -313,7 +313,7 @@ export default function ScopeSection({ section, theme }: Props) {
                         </button>
                         <p
                           className={[
-                            "text-[16px] leading-[27px] font-light transition-colors duration-700",
+                            "text-[16px] leading-6.75 font-light transition-colors duration-700",
                             isDark ? "text-[#E5E5E5]" : "text-[#787878]",
                           ].join(" ")}
                         >
@@ -331,7 +331,7 @@ export default function ScopeSection({ section, theme }: Props) {
             {section.footerText && (
               <p
                 className={[
-                  "text-start text-[24px] leading-[27px] font-light whitespace-pre-line",
+                  "text-start text-[24px] leading-6.75 font-light whitespace-pre-line",
                   "transition-colors duration-700",
                   isDark ? "text-[#E5E5E5]" : "text-[#787878]",
                 ].join(" ")}
@@ -382,7 +382,7 @@ export default function ScopeSection({ section, theme }: Props) {
                 <X strokeWidth={2.5} className="h-5 w-5" />
               </button>
             </div>
-            <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain py-6 [-webkit-overflow-scrolling:touch] [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+            <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-6 py-6 [-webkit-overflow-scrolling:touch] [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
               <div className="mx-auto w-full">
                 <ContactFormClient onSuccess={() => setContactOpen(false)} />
               </div>
