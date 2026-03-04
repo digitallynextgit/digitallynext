@@ -38,7 +38,7 @@ export default function CareersCtaSection({ theme }: CareersCtaSectionProps) {
       />
 
       {/* Content */}
-      <div className="relative z-1 w-full h-full flex flex-col items-center justify-center text-center px-6 py-[76px] gap-12">
+      <div className="relative z-1 w-full h-full flex flex-col items-center justify-center text-center px-6 py-19 gap-12">
 
         {/* Heading block — always white (bg image pe) */}
         <div className="flex flex-col items-center">
@@ -65,7 +65,7 @@ export default function CareersCtaSection({ theme }: CareersCtaSectionProps) {
         {/* CTA Button */}
         <Link
           href="/careers/#open-positions"
-          className="inline-flex items-center justify-center px-10 py-[14px] text-white text-[12px] font-medium uppercase tracking-[0.9815px] whitespace-nowrap hover:opacity-90 transition-opacity duration-300 no-underline"
+          className="inline-flex items-center justify-center px-10 py-3.5 text-white text-[12px] font-medium uppercase tracking-[0.9815px] whitespace-nowrap hover:opacity-90 transition-opacity duration-300 no-underline"
           style={{
             background: "linear-gradient(90deg, #E21F26 0%, #7C1115 100%)",
           }}

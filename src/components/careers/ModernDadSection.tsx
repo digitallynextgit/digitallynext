@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { useSectionTheme } from "@/context/SectionThemeContext";
 
 interface ModernDadSectionProps {
@@ -29,7 +30,13 @@ const items = [
 export default function ModernDadSection({ theme }: ModernDadSectionProps) {
   const { theme: contextTheme } = useSectionTheme();
   const isDark = (theme ?? contextTheme) === "dark";
+
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  // Only used for xs mobile inline accordion
+  const [selectedIndex, setSelectedIndex] = useState<number>(0);
+
+  // sm+: hover → that image, no hover → first image (index 0)
+  const desktopActiveIndex = hoveredIndex ?? 0;
 
   return (
     <section
@@ -38,76 +45,122 @@ export default function ModernDadSection({ theme }: ModernDadSectionProps) {
         isDark ? "bg-black text-white" : "bg-white text-black",
       ].join(" ")}
     >
-      <div className="container relative flex items-center justify-center">
-        <div style={{ maxWidth: 1103 }} className="w-full py-12 md:py-16 lg:py-20">
+      <div
+        className={`h-px bg-linear-to-r from-transparent ${
+          isDark ? "via-white/10" : "via-black/10"
+        } to-transparent transition-colors duration-500`}
+      />
+
+      <div className="relative flex items-center justify-center">
+        <div className="w-full max-w-7xl mx-auto px-6 lg:px-10 py-12 md:py-16 lg:py-20">
 
           {/* Top label */}
-          <div className="text-[#0EC8C5] text-6xl font-light tracking-[0.1125em]">
+          <div className="text-[#0EC8C5] text-4xl sm:text-5xl lg:text-6xl font-light tracking-[0.1125em]">
             MODERN DAD
           </div>
 
           {/* Main layout row */}
-          <div className="flex items-start justify-between gap-12 mt-6">
+          <div className="flex items-start justify-between w-full mt-6 gap-8 sm:gap-12">
 
             {/* Left: heading + items */}
-            <div className="flex-1">
-              <h2
+            <div className="flex-1 min-w-0">
+              <div
                 className={[
-                  "font-normal leading-[1.15] transition-colors duration-700",
+                  "font-light leading-[1.15] transition-colors duration-700",
                   isDark ? "text-white" : "text-[#000000]",
                 ].join(" ")}
-                style={{ fontSize: "clamp(2rem, 4vw, 2.975rem)" }}
+                style={{ fontSize: "clamp(1.5rem, 4vw, 2.975rem)" }}
               >
-                How work moves forward here
-              </h2>
+                How work moves{" "}
+                <span className="text-[#E21F26]">forward here</span>
+              </div>
 
-              <div
-                className="mt-12 lg:mt-[88px] flex flex-col"
-                style={{ gap: 64 }}
-              >
-                {items.map(({ sub, main }, index) => (
-                  <div
-                    key={sub}
-                    className="pl-6 lg:pl-[50px] cursor-default"
-                    style={{
-                      borderLeft: `2px solid ${hoveredIndex === index ? "#0EC8C5" : "#C8102E"}`,
-                      transition: "border-color 0.3s ease",
-                    }}
-                    onMouseEnter={() => setHoveredIndex(index)}
-                    onMouseLeave={() => setHoveredIndex(null)}
-                  >
-                    <div
-                      className="text-[#0EC8C5] text-[16px] font-bold leading-[27px]"
-                      style={{
-                        transition: "opacity 0.3s ease",
-                        opacity: hoveredIndex === null || hoveredIndex === index ? 1 : 0.4,
-                      }}
-                    >
-                      {sub}
+              {/* Items */}
+              <div className="mt-12 lg:mt-22 flex flex-col" style={{ gap: 48 }}>
+                {items.map(({ sub, main, image }, index) => {
+                  const isTapActive = selectedIndex === index;
+                  const isDesktopDimmed =
+                    hoveredIndex !== null && hoveredIndex !== index;
+
+                  return (
+                    <div key={sub}>
+                      {/* Item row */}
+                      <div
+                        className="pl-5 lg:pl-12 cursor-pointer"
+                        style={{
+                          borderLeft: `2px solid ${
+                            // xs: tapped item cyan; sm+: hovered item cyan
+                            isTapActive || hoveredIndex === index
+                              ? "#0EC8C5"
+                              : "#C8102E"
+                          }`,
+                          transition: "border-color 0.3s ease",
+                        }}
+                        onClick={() => setSelectedIndex(index)}   // xs only tap
+                        onMouseEnter={() => setHoveredIndex(index)}
+                        onMouseLeave={() => setHoveredIndex(null)}
+                      >
+                        <div
+                          className="text-[#0EC8C5] text-[15px] lg:text-[16px] font-bold leading-[1.7]"
+                          style={{
+                            transition: "opacity 0.3s ease",
+                            opacity: isDesktopDimmed ? 0.4 : 1,
+                          }}
+                        >
+                          {sub}
+                        </div>
+                        <div
+                          className={[
+                            "mt-2 text-[26px] lg:text-[34px] font-normal leading-[1.2] transition-colors duration-700",
+                            isDark ? "text-white" : "text-[#000000]",
+                          ].join(" ")}
+                          style={{
+                            transition: "opacity 0.3s ease",
+                            opacity: isDesktopDimmed ? 0.4 : 1,
+                          }}
+                        >
+                          {main}
+                        </div>
+                      </div>
+
+                      {/* Inline image — xs only (below sm hidden) */}
+                      <div className="sm:hidden overflow-hidden">
+                        <AnimatePresence initial={false}>
+                          {isTapActive && (
+                            <motion.div
+                              key={index}
+                              initial={{ height: 0, opacity: 0 }}
+                              animate={{ height: "auto", opacity: 1 }}
+                              exit={{ height: 0, opacity: 0 }}
+                              transition={{
+                                duration: 0.45,
+                                ease: [0.16, 1, 0.3, 1],
+                              }}
+                            >
+                              <div className="relative w-full aspect-4/3 mt-5 rounded overflow-hidden">
+                                <Image
+                                  src={image}
+                                  alt={main}
+                                  fill
+                                  className="object-contain"
+                                />
+                              </div>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </div>
                     </div>
-                    <div
-                      className={[
-                        "mt-2 text-[34px] font-normal leading-[1.2] transition-colors duration-700",
-                        isDark ? "text-white" : "text-[#000000]",
-                      ].join(" ")}
-                      style={{
-                        transition: "opacity 0.3s ease",
-                        opacity: hoveredIndex === null || hoveredIndex === index ? 1 : 0.4,
-                      }}
-                    >
-                      {main}
-                    </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             </div>
 
-            {/* Right: image (desktop only) */}
+            {/* Right image — sm+ only, hover controlled */}
             <div
-              className="hidden lg:block shrink-0"
-              style={{ width: 260, marginTop: 80 }}
+              className="hidden sm:flex items-center justify-end shrink-0 self-center"
+              style={{ width: 260 }}
             >
-              <div className="relative" style={{ width: 300, height: 363 }}>
+              <div className="relative" style={{ width: 240, height: 300 }}>
                 {items.map(({ image, sub }, index) => (
                   <Image
                     key={sub}
@@ -117,29 +170,20 @@ export default function ModernDadSection({ theme }: ModernDadSectionProps) {
                     className="object-contain absolute"
                     style={{
                       transition: "opacity 0.4s ease",
-                      opacity: hoveredIndex === index ? 1 : 0,
+                      opacity: desktopActiveIndex === index ? 1 : 0,
+                      // ↑ hover → that image, no hover → index 0 (first)
                     }}
                   />
                 ))}
-                {/* Default image */}
-                <Image
-                  src="/home/moderndad1.png"
-                  alt=""
-                  fill
-                  className="object-contain absolute"
-                  style={{
-                    transition: "opacity 0.4s ease",
-                    opacity: hoveredIndex === null ? 1 : 0,
-                  }}
-                />
               </div>
             </div>
+
           </div>
 
           {/* Bottom text */}
           <div
             className={[
-              "mt-20 pt-[49px] text-[15px] font-light leading-[1.8] transition-colors duration-700",
+              "mt-20 pt-10 text-[15px] font-light leading-[1.8] transition-colors duration-700",
               isDark
                 ? "border-t border-[#262626] text-[#737373]"
                 : "border-t border-[#E5E5E5] text-[#A1A1A1]",

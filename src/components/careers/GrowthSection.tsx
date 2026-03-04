@@ -32,69 +32,69 @@ export default function GrowthSection({ theme }: GrowthSectionProps) {
   return (
     <section
       className={[
-        "transition-colors duration-700",
+        "w-full transition-colors duration-700",
         isDark ? "bg-black" : "bg-white",
       ].join(" ")}
     >
-      {/* Top border */}
       <div
-        className={[
-          "transition-colors duration-700",
-          isDark ? "border-t border-[#2a2a2a]" : "border-t border-[#E5E5E5]",
-        ].join(" ")}
+        className={`h-px bg-linear-to-r from-transparent ${isDark ? "via-white/10" : "via-black/10"
+          } to-transparent transition-colors duration-500`}
       />
 
-      <div className="container flex justify-center items-center">
-        <div style={{ maxWidth: 1103 }} className="py-12 md:py-16 lg:py-20">
+      <div className="w-full max-w-7xl mx-auto px-6 lg:px-10 py-10 md:py-16 lg:py-20">
 
-          {/* Heading */}
-          <h2
-            className={[
-              "font-normal leading-[1.15] transition-colors duration-700",
-              isDark ? "text-white" : "text-[#000000]",
-            ].join(" ")}
-            style={{ fontSize: "clamp(2rem, 4vw, 2.975rem)" }}
-          >
-            How{" "}
-            <span className="text-[#E21F26] font-semibold">Growth</span>{" "}
-            Actually Happens
-            <span className="text-[#0EC8C5]">...</span>
-          </h2>
+        {/* Heading */}
+        <h2
+          className={[
+            "font-normal leading-[1.15] transition-colors duration-700",
+            isDark ? "text-white" : "text-[#000000]",
+          ].join(" ")}
+          style={{ fontSize: "clamp(2rem, 4vw, 2.975rem)" }}
+        >
+          How{" "}
+          <span className="text-[#E21F26] font-semibold">Growth</span>{" "}
+          Actually Happens
+          <span className="text-[#0EC8C5]">...</span>
+        </h2>
 
-          {/* Subtitle */}
-          <div
-            className={[
-              "mt-6 font-light text-[16px] leading-[1.8] transition-colors duration-700",
-              isDark ? "text-[#737373]" : "text-[#A1A1A1]",
-            ].join(" ")}
-          >
-            <div>You won&apos;t be &quot;trained&quot; for months before doing real work.</div>
-            <div>And you won&apos;t be thrown into the deep end without context.</div>
-          </div>
+        {/* Subtitle */}
+        <div
+          className={[
+            "mt-6 font-light text-[16px] leading-[1.8] transition-colors duration-700",
+            isDark ? "text-[#737373]" : "text-[#A1A1A1]",
+          ].join(" ")}
+        >
+          <div>You won&apos;t be &quot;trained&quot; for months before doing real work.</div>
+          <div>And you won&apos;t be thrown into the deep end without context.</div>
+        </div>
 
-          {/* Items list */}
-          <div
-            className={[
-              "mt-20 transition-colors duration-700",
-              isDark ? "border-t border-[#2a2a2a]" : "border-t border-[#E5E5E5]",
-            ].join(" ")}
-          >
-            {items.map(({ num, title, desc, borderBottom }) => (
+        {/* Items list */}
+        <div
+          className={[
+            "mt-5 sm:mt-10 md:mt-16 lg:mt-20 transition-colors duration-700",
+            isDark ? "border-t border-[#2a2a2a]" : "border-t border-[#E5E5E5]",
+          ].join(" ")}
+        >
+          {items.map(({ num, title, desc, borderBottom }) => (
+            <div
+              key={num}
+              className={[
+                "cursor-default transition-colors duration-500",
+                isDark
+                  ? "border-t border-[#2a2a2a] hover:bg-[#111111]"
+                  : "border-t border-[#E5E5E5] hover:bg-[#F5F5F5]",
+                borderBottom
+                  ? isDark ? "border-b border-[#2a2a2a]" : "border-b border-[#E5E5E5]"
+                  : "",
+              ].join(" ")}
+            >
               <div
-                key={num}
                 className={[
                   "group grid grid-cols-1 items-start gap-3",
                   "lg:grid-cols-[80px_minmax(0,435px)_minmax(0,1fr)] lg:items-center lg:gap-0",
-                  "cursor-default transition-colors duration-300",
-                  "px-0 py-[44px]",
-                  isDark
-                    ? "border-t border-[#2a2a2a] hover:bg-[#111111]"
-                    : "border-t border-[#E5E5E5] hover:bg-[#F5F5F5]",
-                  borderBottom
-                    ? isDark
-                      ? "border-b border-[#2a2a2a]"
-                      : "border-b border-[#E5E5E5]"
-                    : "",
+                  "px-0 py-5 sm:py-7 md:py-11",
+                  "hover:translate-x-4",
+                  "transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]",
                 ].join(" ")}
               >
                 {/* Number */}
@@ -134,21 +134,22 @@ export default function GrowthSection({ theme }: GrowthSectionProps) {
                   {desc}
                 </div>
               </div>
-            ))}
-          </div>
-
-          {/* Footer text */}
-          <div
-            className={[
-              "mt-16 font-light text-[15px] leading-[1.8] transition-colors duration-700",
-              isDark ? "text-[#737373]" : "text-[#A1A1A1]",
-            ].join(" ")}
-          >
-            <div>Growth here isn&apos;t loud.</div>
-            <div>But it&apos;s real — and it compounds.</div>
-          </div>
+            </div>
+          ))}
 
         </div>
+
+        {/* Footer text */}
+        <div
+          className={[
+            "mt-16 font-light text-[15px] leading-[1.8] transition-colors duration-700",
+            isDark ? "text-[#737373]" : "text-[#A1A1A1]",
+          ].join(" ")}
+        >
+          <div>Growth here isn&apos;t loud.</div>
+          <div>But it&apos;s real — and it compounds.</div>
+        </div>
+
       </div>
     </section>
   );

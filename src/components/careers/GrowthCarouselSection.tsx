@@ -7,7 +7,19 @@ interface GrowthCarouselSectionProps {
   theme?: "dark" | "light";
 }
 
-const carouselImages = ["/careers/c1.jpg", "/careers/c2.jpg", "/careers/c3.jpg"];
+const carouselImages = [
+  "/careers/c1.jpg",
+  "/careers/c2.jpg",
+  "/careers/c3.jpg",
+  "/careers/c4.png",
+  "/careers/c5.webp",
+  "/careers/c6.png",
+  "/careers/c7.png",
+  "/careers/c8.png",
+  "/careers/c9.jpeg",
+  "/careers/c10.jpeg",
+  "/careers/c11.jpeg",
+];
 const carouselItems = Array.from({ length: 10 }, (_, i) => carouselImages[i % carouselImages.length]);
 
 export default function GrowthCarouselSection({ theme }: GrowthCarouselSectionProps) {
@@ -22,7 +34,7 @@ export default function GrowthCarouselSection({ theme }: GrowthCarouselSectionPr
       ].join(" ")}
     >
       <div className="flex justify-center items-center">
-        <div  className="w-full pb-10 md:pb-16 lg:pb-20">
+        <div className="w-full pb-10 md:pb-16 lg:pb-20">
           <div
             className="overflow-hidden"
             style={{
@@ -38,7 +50,7 @@ export default function GrowthCarouselSection({ theme }: GrowthCarouselSectionPr
                     alt=""
                     width={360}
                     height={240}
-                    className="h-[160px] w-full object-cover sm:h-[180px] md:h-[200px] lg:h-[400px]"
+                    className="h-40 w-full object-cover sm:h-45 md:h-50 lg:h-100"
                   />
                 </div>
               ))}

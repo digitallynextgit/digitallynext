@@ -378,7 +378,7 @@ export default function DepartmentSelectionModal({
                     type="button"
                     onClick={() => onSelectDepartment(dept.id)}
                     className={[
-                      "group flex min-h-[164px] md:min-h-[300px] flex-col justify-between rounded p-6 text-left transition-all duration-200 cursor-pointer",
+                      "group flex min-h-41 md:min-h-75 flex-col justify-between rounded p-6 text-left transition-all duration-200 cursor-pointer",
                       tone.cardBg,
                       tone.cardBgHover,
                       isSelected ? `ring-2 ${tone.ringColor}` : `hover:ring-1 ${tone.ringColor}`,
@@ -479,31 +479,48 @@ export default function DepartmentSelectionModal({
               {/* Description body */}
               {selectedRole.description && (
                 <div className="flex flex-col gap-6">
-                  {/* Intro */}
-                  <p className="text-[15px] leading-[1.75] text-black/70">
-                    {selectedRole.description.intro}
-                  </p>
-
-                  {/* Job Essence */}
-                  <div className="flex flex-col gap-3">
-                    <h3 className="text-base font-bold text-black">Job Essence</h3>
+                  {selectedRole.description.intro && (
                     <p className="text-[15px] leading-[1.75] text-black/70">
-                      {selectedRole.description.jobEssence}
+                      {selectedRole.description.intro}
                     </p>
-                  </div>
+                  )}
 
-                  {/* Key Requirements */}
-                  <div className="flex flex-col gap-3">
-                    <h3 className="text-base font-bold text-black">Key Requirements</h3>
-                    <ul className="flex flex-col gap-2">
-                      {selectedRole.description.keyRequirements.map((req, i) => (
-                        <li key={i} className="flex items-start gap-3 text-[15px] text-black/70">
-                          <span className="mt-[5px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#E21F26]" />
-                          {req}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+                  {selectedRole.description.jobEssence && (
+                    <div className="flex flex-col gap-3">
+                      <h3 className="text-base font-bold text-black">Job Essence</h3>
+                      <p className="text-[15px] leading-[1.75] text-black/70">
+                        {selectedRole.description.jobEssence}
+                      </p>
+                    </div>
+                  )}
+
+                  {!!selectedRole.description.keyRequirements?.length && (
+                    <div className="flex flex-col gap-3">
+                      <h3 className="text-base font-bold text-black">Key Requirements</h3>
+                      <ul className="flex flex-col gap-2">
+                        {selectedRole.description.keyRequirements.map((req, i) => (
+                          <li key={i} className="flex items-start gap-3 text-[15px] text-black/70">
+                            <span className="mt-1.25 h-1.5 w-1.5 shrink-0 rounded-full bg-[#E21F26]" />
+                            {req}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+
+                  {!!selectedRole.description.currentOpenings?.length && (
+                    <div className="flex flex-col gap-3">
+                      <h3 className="text-base font-bold text-black">Current Openings</h3>
+                      <ul className="flex flex-col gap-2">
+                        {selectedRole.description.currentOpenings.map((opening, i) => (
+                          <li key={i} className="flex items-start gap-3 text-[15px] text-black/70">
+                            <span className="mt-1.25 h-1.5 w-1.5 shrink-0 rounded-full bg-[#E21F26]" />
+                            {opening}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
                 </div>
               )}
 
@@ -660,7 +677,7 @@ export default function DepartmentSelectionModal({
                     value={form.message}
                     onChange={(e) => setForm((p) => ({ ...p, message: e.target.value }))}
                     className={[
-                      "min-h-[120px] w-full resize-y rounded border px-4 py-3 text-sm text-black outline-none transition cursor-text",
+                      "min-h-30 w-full resize-y rounded border px-4 py-3 text-sm text-black outline-none transition cursor-text",
                       "focus:ring-2 focus:ring-black/20",
                       "border-black/15 bg-white",
                     ].join(" ")}

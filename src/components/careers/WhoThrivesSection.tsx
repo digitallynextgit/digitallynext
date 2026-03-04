@@ -35,8 +35,7 @@ const traits = [
   },
 ];
 
-const DEFAULT_BG =
-  "/figma/careers/careers-thrives-bg-48937d.png";
+const DEFAULT_BG = "/figma/careers/careers-thrives-bg-48937d.png";
 
 export default function WhoThrivesSection({ theme }: WhoThrivesSectionProps) {
   const { theme: contextTheme } = useSectionTheme();
@@ -44,7 +43,7 @@ export default function WhoThrivesSection({ theme }: WhoThrivesSectionProps) {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
-    <section className="relative overflow-hidden">
+    <section className="relative w-full overflow-hidden">
 
       {/* Default background */}
       <Image
@@ -77,34 +76,32 @@ export default function WhoThrivesSection({ theme }: WhoThrivesSectionProps) {
 
       {/* Dark overlay */}
       <div
-        className="absolute inset-0 z-10 transition-colors duration-700"
-        style={{
-          background: isDark ? "rgba(0,0,0,0.85)" : "rgba(0,0,0,0.85)",
-        }}
+        className="absolute inset-0 z-10"
+        style={{ background: "rgba(0,0,0,0.90)" }}
       />
 
       {/* Content */}
-      <div className="container relative z-20 flex justify-center items-center text-white">
-        <div style={{ maxWidth: 1103 }} className="w-full py-12 md:py-16 lg:py-20">
+      <div className="relative z-20 w-full">
+        <div className="w-full max-w-7xl mx-auto px-6 lg:px-10 py-12 md:py-16 lg:py-20 text-white">
 
           {/* Heading */}
-          <div className="text-center max-w-[720px] mx-auto">
+          <div className="text-center max-w-180 mx-auto">
             <h2
               className="font-normal leading-[1.15] text-white"
-              style={{ fontSize: "clamp(2rem, 4vw, 2.975rem)" }}
+              style={{ fontSize: "clamp(1.75rem, 4vw, 2.975rem)" }}
             >
               Who Thrives at{" "}
               <span className="text-[#E21F26] font-bold">Digitally</span>{" "}
               <span className="font-bold text-white">Next</span>
               <span className="text-[#0EC8C5] font-bold">.</span>
             </h2>
-            <div className="mt-6 text-[#D1D1D1] font-light text-[16px] leading-[1.8]">
+            <p className="mt-6 text-[#D1D1D1] font-light text-[16px] leading-[1.8]">
               People who do well here usually:
-            </div>
+            </p>
           </div>
 
           {/* Traits Grid */}
-          <div className="mt-16 max-w-[800px] mx-auto grid grid-cols-1 md:grid-cols-2 md:gap-x-16">
+          <div className="mt-16 max-w-200 mx-auto grid grid-cols-1 md:grid-cols-2 md:gap-x-16">
 
             {/* Left col — traits 0, 2 */}
             <div>
@@ -115,17 +112,17 @@ export default function WhoThrivesSection({ theme }: WhoThrivesSectionProps) {
                     key={traitIdx}
                     onMouseEnter={() => setHoveredIndex(traitIdx)}
                     onMouseLeave={() => setHoveredIndex(null)}
-                    className="py-[25px] border-t border-white/15 cursor-default"
+                    className="py-6 border-t border-white/40 cursor-default" // ← was border-white/15
                     style={{
                       transition: "opacity 0.3s ease",
                       opacity:
                         hoveredIndex === null || hoveredIndex === traitIdx
                           ? 1
-                          : 0.4,
+                          : 0.35,
                     }}
                   >
                     <div
-                      className="text-[17px] font-normal leading-normal transition-colors duration-300"
+                      className="text-[17px] cursor-pointer font-normal leading-normal transition-colors duration-300"
                       style={{
                         color: hoveredIndex === traitIdx ? "#0EC8C5" : "#FFFFFF",
                       }}
@@ -148,17 +145,17 @@ export default function WhoThrivesSection({ theme }: WhoThrivesSectionProps) {
                     key={traitIdx}
                     onMouseEnter={() => setHoveredIndex(traitIdx)}
                     onMouseLeave={() => setHoveredIndex(null)}
-                    className="py-[25px] border-t border-white/15 cursor-default"
+                    className="py-6 border-t border-white/40 cursor-default" // ← was border-white/15
                     style={{
                       transition: "opacity 0.3s ease",
                       opacity:
                         hoveredIndex === null || hoveredIndex === traitIdx
                           ? 1
-                          : 0.4,
+                          : 0.35,
                     }}
                   >
                     <div
-                      className="text-[17px] font-normal leading-normal transition-colors duration-300"
+                      className="text-[17px] cursor-pointer font-normal leading-normal transition-colors duration-300"
                       style={{
                         color: hoveredIndex === traitIdx ? "#0EC8C5" : "#FFFFFF",
                       }}
@@ -175,8 +172,8 @@ export default function WhoThrivesSection({ theme }: WhoThrivesSectionProps) {
 
           {/* Bottom text */}
           <div className="mt-14 text-center text-[#D1D1D1] font-light text-[15px] leading-[1.8]">
-            <div>This isn&apos;t the place for shortcuts.</div>
-            <div>But it is a place to build something solid.</div>
+            <span className="block">This isn&apos;t the place for shortcuts.</span>
+            <span className="block">But it is a place to build something solid.</span>
           </div>
 
         </div>
