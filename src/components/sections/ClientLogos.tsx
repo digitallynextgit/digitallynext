@@ -68,7 +68,7 @@ export default function ClientLogos({ theme }: ClientLogosProps) {
           "transition-colors duration-500",
         ].join(" ")}
       >
-        <div className="w-full max-w-[1280px] mx-auto px-6 md:px-12">
+        <div className="w-full max-w-7xl mx-auto px-6 md:px-12">
           <AnimatedSection>
             <div className="flex justify-between items-center mb-8 flex-wrap gap-6">
               {/* Heading */}
@@ -138,7 +138,7 @@ export default function ClientLogos({ theme }: ClientLogosProps) {
                   key={i}
                   className={[
                     "group shrink-0 flex items-center justify-center",
-                    "h-[100px] px-5",
+                    "h-25 px-5",
                     "border-2 rounded-lg hover:rounded-full",
                     "transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]",
                     "hover:scale-105",

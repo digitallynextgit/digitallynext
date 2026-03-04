@@ -77,8 +77,8 @@ export default function HowWeOperate({ theme }: HowWeOperateProps) {
           </h3>
           <p
             className={[
-              "md:mt-10 text-base md:text-2xl lg:text-3xl font-normal",
-              "mb-10 md:mb-16 lg:mb-20",
+              "md:mt-4 text-base md:text-2xl lg:text-3xl font-normal",
+              "mb-10 md:mb-16",
               "transition-colors duration-500",
               isDark ? "text-white/45" : "text-[#787878]",
             ].join(" ")}
@@ -88,7 +88,7 @@ export default function HowWeOperate({ theme }: HowWeOperateProps) {
           </p>
         </AnimatedSection>
 
-        <div className="flex flex-col md:flex-row justify-between mb-16 lg:mb-20 gap-16 md:gap-32 lg:gap-[167px]">
+        <div className="flex flex-col sm:flex-row justify-between mb-16 lg:mb-20 gap-10">
           {dadPillars.map((pillar, i) => (
             <AnimatedSection key={pillar.word} delay={0.15 + i * 0.1}>
               <div className="flex flex-col items-center gap-4">
@@ -106,7 +106,7 @@ export default function HowWeOperate({ theme }: HowWeOperateProps) {
                     className="object-contain"
                   />
                 </div>
-                <p className="text-center max-w-[180px] lg:max-w-[190px] xl:max-w-[227px] leading-[1.4]">
+                <p className="text-center max-w-45 lg:max-w-47.5 xl:max-w-56.75 leading-[1.4]">
                   <span className="text-[#E53935] font-bold text-[clamp(1.1rem,1.5vw,1.4rem)]">
                     {pillar.word}
                   </span>{" "}

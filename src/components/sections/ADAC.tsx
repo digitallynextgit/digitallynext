@@ -22,7 +22,7 @@ interface ADACProps {
 /* ===== Mobile ADAC ===== */
 function MobileADAC({ isDark }: { isDark: boolean }) {
   return (
-    <div className="lg:hidden">
+    <div className="sm:hidden">
 
       {/* Header */}
       <motion.div
@@ -40,7 +40,7 @@ function MobileADAC({ isDark }: { isDark: boolean }) {
         </h2>
         <p
           className={[
-            "text-2xl font-bold leading-tight mt-2 transition-colors duration-500",
+            "text-3xl font-bold leading-tight mt-2 transition-colors duration-500",
             isDark ? "text-white" : "text-black",
           ].join(" ")}
         >
@@ -51,7 +51,7 @@ function MobileADAC({ isDark }: { isDark: boolean }) {
 
       {/* Video */}
       <motion.div
-        className="relative w-full rounded overflow-hidden mb-8 aspect-[4/2.8]"
+        className="relative w-full overflow-hidden -mt-4 mb-8 aspect-[4/2.8]"
         initial={{ opacity: 0, scale: 0.96 }}
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true, margin: "-60px" }}
@@ -59,7 +59,7 @@ function MobileADAC({ isDark }: { isDark: boolean }) {
       >
         <video
           autoPlay loop muted playsInline
-          className="absolute -top-[4px] -left-[4px] -right-[4px] -bottom-[12px] w-[calc(100%+8px)] h-[calc(100%+16px)] object-cover object-top mt-[5px]"
+          className="absolute -left-1 -right-1 -bottom-3 w-[calc(100%+8px)] h-[calc(100%+16px)] object-cover object-top"
         >
           <source src="/videos/ADAC Video.mp4" type="video/mp4" />
         </video>
@@ -94,7 +94,7 @@ function MobileADAC({ isDark }: { isDark: boolean }) {
           <Link
             href="#"
             className={[
-              "group inline-flex items-center gap-2 font-semibold text-sm",
+              "group inline-flex items-center gap-2 font-normal text-lg",
               "hover:gap-3 transition-all duration-300 shrink-0 no-underline mb-6",
               isDark ? "text-white" : "text-black",
             ].join(" ")}
@@ -152,26 +152,26 @@ function MobileADAC({ isDark }: { isDark: boolean }) {
 /* ===== Desktop ADAC ===== */
 function DesktopADAC({ isDark }: { isDark: boolean }) {
   return (
-    <div className="hidden lg:block">
+    <div className="hidden sm:block">
 
       {/* Header */}
       <motion.div
-        className="mb-12 md:mb-16"
+        className="mb-5"
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
       >
-        <div className="flex flex-col md:flex-row md:items-center gap-4 md:gap-6">
+        <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6">
           <h2
-            className="-mt-24 text-[clamp(2rem,14vw,14rem)] font-black leading-[0.95] tracking-[-0.04em] text-red-500"
+            className="-mt-24 text-[clamp(2rem,17vw,17rem)] font-black leading-[0.95] tracking-[-0.04em] text-red-500"
             style={fadeBottomMask}
           >
             ADAC
           </h2>
           <p
             className={[
-              "text-xl md:text-2xl lg:text-5xl font-bold leading-tight -translate-y-8",
+              "text-[25px] md:text-3xl lg:text-4xl xl:text-[55px] font-bold leading-tight -translate-y-8",
               "transition-colors duration-500",
               isDark ? "text-white" : "text-black",
             ].join(" ")}
@@ -184,7 +184,7 @@ function DesktopADAC({ isDark }: { isDark: boolean }) {
 
       {/* Video */}
       <motion.div
-        className="relative w-full rounded overflow-hidden mb-12 md:mb-16 aspect-4/3"
+        className="relative w-full overflow-hidden mb-12 sm:mb-16 aspect-4/3"
         initial={{ opacity: 0, scale: 0.96 }}
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true, margin: "-100px" }}
@@ -200,7 +200,7 @@ function DesktopADAC({ isDark }: { isDark: boolean }) {
 
       {/* Content */}
       <motion.div
-        className="mt-8 md:mt-12 max-w-5xl mx-auto"
+        className="mt-8 sm:mt-12 max-w-5xl mx-auto"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-80px" }}
@@ -219,7 +219,7 @@ function DesktopADAC({ isDark }: { isDark: boolean }) {
             </h3>
             <p
               className={[
-                "text-sm md:text-base leading-relaxed max-w-3xl transition-colors duration-500",
+                "text-xl leading-relaxed max-w-xl transition-colors duration-500",
                 isDark ? "text-white/50" : "text-gray-500",
               ].join(" ")}
             >
@@ -230,7 +230,7 @@ function DesktopADAC({ isDark }: { isDark: boolean }) {
           <Link
             href="/services/ai-enablement"
             className={[
-              "group inline-flex items-center gap-2 font-semibold text-xl",
+              "group inline-flex items-center gap-2 font-normal text-2xl",
               "hover:gap-3 transition-all duration-300 shrink-0 no-underline",
               isDark ? "text-white" : "text-black",
             ].join(" ")}
@@ -272,7 +272,7 @@ function DesktopADAC({ isDark }: { isDark: boolean }) {
         {/* Bottom Statement */}
         <p
           className={[
-            "text-sm md:text-xl font-semibold leading-relaxed text-center max-w-5xl mx-auto",
+            "text-2xl font-normal leading-relaxed text-center max-w-5xl mx-auto",
             "transition-colors duration-500",
             isDark ? "text-white/80" : "text-[#1a1a1a]",
           ].join(" ")}
@@ -292,8 +292,8 @@ export default function ADAC({ theme }: ADACProps) {
   const isDark = (theme ?? contextTheme) === "dark";
 
   return (
-    <section className="py-24 md:py-32 overflow-hidden">
-      <div className="w-[90%] lg:w-[85%] max-w-6xl mx-auto">
+    <section className="pt-20 pb-10 sm:py-20 overflow-hidden">
+      <div className="w-[90%] max-w-7xl mx-auto">
         <DesktopADAC isDark={isDark} />
         <MobileADAC isDark={isDark} />
       </div>

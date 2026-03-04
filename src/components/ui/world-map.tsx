@@ -32,12 +32,13 @@ export default function WorldMap({
     () =>
       map.getSVG({
         radius: 0.22,
-        color: isDark ? "#FFFFFF40" : "#00000040",
+        color: isDark ? "#FFFFFF40" : "#00000065", // was #00000040 → darker dots
         shape: "circle",
-        backgroundColor: isDark ? "black" : "white",
+        backgroundColor: isDark ? "#000000" : "#F5F5F5", // was "white" → match section bg
       }),
     [map, isDark],
   );
+
 
   // The SVG from getSVG() uses viewBox="0 0 {image.width} {image.height}"
   // getPin() returns coordinates in the SAME space — so our overlay SVG
@@ -63,8 +64,7 @@ export default function WorldMap({
 
   return (
     <div
-      className="w-full aspect-2/1 rounded-lg relative font-sans"
-      style={{ backgroundColor: isDark ? "black" : "white" }}
+      className={`w-full aspect-2/1 rounded-lg relative font-sans ${isDark ? "bg-black" : "bg-[#F5F5F5]"}`}
     >
       {/* Base dotted map — uses its own internal SVG coordinate space */}
       <img

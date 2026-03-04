@@ -213,16 +213,16 @@ function DesktopServices({ isDark }: { isDark: boolean }) {
         {/* LEFT — Sticky media */}
         <div className="relative">
           <div
-            className="lg:sticky lg:top-32 w-full max-w-[460px]"
+            className="lg:sticky lg:top-32 w-full max-w-115"
             style={{ position: "-webkit-sticky" } as React.CSSProperties}
           >
             <div
               className={[
-                "relative aspect-4/3 rounded-sm overflow-hidden shadow-2xl",
-                "border transition-colors duration-500",
+                "relative aspect-4/3 overflow-hidden shadow-2xl",
+                "transition-colors duration-500",
                 isDark
-                  ? "bg-[#1a1a1a] border-white/10"
-                  : "bg-[#f0f0f0] border-black/10",
+                  ? "bg-[#1a1a1a]"
+                  : "bg-[#f0f0f0]",
               ].join(" ")}
             >
               <AnimatePresence mode="popLayout">
@@ -391,16 +391,15 @@ export default function Services({ theme }: ServicesProps) {
               isDark ? "text-white" : "text-[#1a1a1a]",
             ].join(" ")}
           >
-            <span className="text-5xl md:text-[6vw]">Services</span>
-            <span className="text-[#0EC8C5] text-[5rem]">.</span>
+            <span className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[80px]">
+              Services
+              <span className="text-[#0EC8C5]">.</span>
+            </span>
           </h2>
         </AnimatedSection>
 
         <DesktopServices isDark={isDark} />
         <MobileServices isDark={isDark} />
-        <div
-          className={`h-px bg-linear-to-r from-transparent ${isDark ? "via-white/8" : "via-black/8"} to-transparent transition-colors duration-500`}
-        />
 
         {/* Mobile CTA */}
         <div className="pt-8 w-full flex justify-start lg:hidden">

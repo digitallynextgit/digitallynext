@@ -79,7 +79,7 @@ const frameworks = [
   },
 ];
 
-const CYCLE_INTERVAL = 2000;
+const CYCLE_INTERVAL = 3000;
 
 interface GSMProps {
   theme?: "dark" | "light";
@@ -169,7 +169,7 @@ function MobileGSM({ isDark }: { isDark: boolean }) {
               />
               <span
                 className={[
-                  "whitespace-nowrap text-[13px] sm:text-[14px] font-semibold transition-colors duration-500",
+                  "whitespace-nowrap text-[13px] mt-1 sm:text-[14px] font-semibold transition-colors duration-500",
                   isDark ? "text-white/70" : "text-black/70",
                 ].join(" ")}
               >
@@ -202,7 +202,7 @@ function DesktopGSM({ isDark }: { isDark: boolean }) {
 
   return (
     <div className="hidden lg:block">
-      <div className="grid grid-cols-2 gap-20 items-start">
+      <div className="grid grid-cols-2 gap-20 items-center">
         {/* LEFT */}
         <motion.div
           initial={{ opacity: 0, x: -30 }}
@@ -212,20 +212,18 @@ function DesktopGSM({ isDark }: { isDark: boolean }) {
         >
           <h3
             className={[
-              "text-2xl md:text-4xl font-bold leading-tight mb-10 transition-colors duration-500",
+              "text-2xl md:text-4xl mb-10 transition-colors duration-500",
               isDark ? "text-white" : "text-[#1a1a1a]",
             ].join(" ")}
           >
-            <span className="text-2xl md:text-5xl font-medium">
-              Our Operating
-              <br />
-              Frameworks
+            <span className="text-2xl md:text-5xl font-normal">
+              Our Operating Frameworks
             </span>
           </h3>
           <p
             className={[
-              "text-sm md:text-lg leading-relaxed max-w-md transition-colors duration-500",
-              isDark ? "text-white/80" : "text-black/70",
+              "text-sm md:text-lg lg:text-xl xl:text-2xl font-light leading-relaxed max-w-md transition-colors duration-500",
+              isDark ? "text-[#787878]" : "text-black/70",
             ].join(" ")}
           >
             All frameworks are powered by Modern DAD thinking and governed by
@@ -347,13 +345,13 @@ export default function GlobalServicingModel({ theme }: GSMProps) {
                   isDark ? "text-white" : "text-[#1a1a1a]",
                 ].join(" ")}
               >
-                <span className="text-[#E53935] text-3xl sm:text-4xl md:text-6xl lg:text-7xl">
+                <span className="text-[#E53935] text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[80px]">
                   Global
                 </span>{" "}
-                <span className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl">
+                <span className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[80px]">
                   Servicing Model
                 </span>
-                <span className="text-[#0EC8C5] text-3xl sm:text-4xl md:text-6xl lg:text-7xl">
+                <span className="text-[#0EC8C5] text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[80px]">
                   .
                 </span>
               </h2>
@@ -362,8 +360,8 @@ export default function GlobalServicingModel({ theme }: GSMProps) {
             {/* Subtitle */}
             <motion.p
               className={[
-                "text-[12px] sm:text-sm md:text-lg mb-10 sm:mb-16 md:mb-20 text-center transition-colors duration-500",
-                isDark ? "text-white/80" : "text-black/70",
+                "text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl mb-10 sm:mb-16 md:mb-20 text-center transition-colors duration-500",
+                isDark ? "text-[#787878]" : "text-black/70",
               ].join(" ")}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}

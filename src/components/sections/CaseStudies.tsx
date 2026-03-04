@@ -59,7 +59,7 @@ export default function CaseStudies({ theme }: CaseStudiesProps) {
         >
           <h2
             className={[
-              "text-[clamp(3rem,12vw,10rem)] max-md:text-[clamp(2.5rem,12vw,4rem)]",
+              "text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[80px]",
               "font-black leading-[0.95] tracking-[-0.04em]",
               "transition-colors duration-500",
               isDark ? "text-white" : "text-black",
@@ -72,23 +72,23 @@ export default function CaseStudies({ theme }: CaseStudiesProps) {
       </div>
 
       {/* Cards grid */}
-      <div className="relative z-2 px-6 pb-[120px] max-w-[1280px] mx-auto max-md:mt-0 max-md:px-4 max-md:pb-16">
+      <div className="relative z-2 px-6 pb-30 max-w-7xl mx-auto max-md:mt-0 max-md:px-4 max-md:pb-16">
         <div className="grid grid-cols-2 gap-8 max-md:grid-cols-1 max-md:gap-6">
           {caseStudies.map((cs, i) => {
             const isHovered = hoveredCard === cs.id;
             const pillColor = pillColors[i] ?? cs.color;
             const CardWrapper = cs.href
               ? ({ children }: { children: React.ReactNode }) => (
-                  <Link
-                    href={cs.href!}
-                    className="block no-underline text-inherit"
-                  >
-                    {children}
-                  </Link>
-                )
+                <Link
+                  href={cs.href!}
+                  className="block no-underline text-inherit"
+                >
+                  {children}
+                </Link>
+              )
               : ({ children }: { children: React.ReactNode }) => (
-                  <>{children}</>
-                );
+                <>{children}</>
+              );
 
             return (
               <div
@@ -162,18 +162,21 @@ export default function CaseStudies({ theme }: CaseStudiesProps) {
         <div className="flex justify-center mt-12">
           <Link
             href="/case-studies"
-            className="group inline-flex items-center gap-2 text-xl font-semibold tracking-wide transition-all duration-300 hover:gap-4 no-underline"
+            className="group flex items-center gap-2 text-2xl font-medium no-underline"
           >
-            <Image
-              src="/icons/enter.svg"
-              alt="arrow-right"
-              width={30}
-              height={30}
-            />
+            <span className="text-[#E21F26] transition-transform duration-300 ease-out group-hover:-translate-x-2">
+              <Image
+                src="/icons/enter.svg"
+                alt="arrow-right"
+                width={32}
+                height={32}
+              />
+            </span>
             <span
               className={[
-                "transition-colors duration-200 group-hover:text-[#E21F26]",
-                isDark ? "text-white" : "text-[#1a1a1a]",
+                "mt-1 font-light hover:text-[#E21F26]",
+                "transition-colors duration-500",
+                isDark ? "text-white" : "text-black",
               ].join(" ")}
             >
               View All

@@ -55,7 +55,7 @@ export default function InstagramReels({ theme }: InstagramReelsProps) {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           >
-            <span className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl">
+            <span className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[80px]">
               People &amp; Culture
             </span>
             <span className="text-[#0EC8C5] text-4xl sm:text-5xl md:text-7xl lg:text-8xl">
@@ -65,7 +65,7 @@ export default function InstagramReels({ theme }: InstagramReelsProps) {
 
           <motion.p
             className={[
-              "text-lg lg:text-2xl font-semibold mb-2 lg:mb-3 transition-colors duration-500",
+              "text-lg lg:text-2xl font-normal mb-2 lg:mb-3 transition-colors duration-500",
               isDark ? "text-white" : "text-[#1a1a1a]",
             ].join(" ")}
             initial={{ opacity: 0, y: 20 }}
@@ -78,8 +78,8 @@ export default function InstagramReels({ theme }: InstagramReelsProps) {
 
           <motion.p
             className={[
-              "text-base md:text-lg lg:text-xl max-w-2xl mx-auto transition-colors duration-500",
-              isDark ? "text-white/50" : "text-gray-500",
+              "text-base md:text-lg lg:text-xl max-w-2xl mt-5 md:mt-7 mx-auto transition-colors duration-500",
+              isDark ? "text-white/50" : "text-[#787878]",
             ].join(" ")}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -99,7 +99,7 @@ export default function InstagramReels({ theme }: InstagramReelsProps) {
               key={dir}
               onClick={() => scroll(dir as "left" | "right")}
               className={[
-                "w-10 h-10 lg:w-11 lg:h-11 rounded-full border flex items-center justify-center",
+                "w-10 h-10 lg:w-11 lg:h-11 rounded-full border flex items-center justify-center cursor-pointer",
                 "hover:text-[#E53935] hover:border-[#E53935] transition-all duration-300 group",
                 isDark
                   ? "border-white/20 bg-white/5 text-white/50 hover:bg-white/10"
@@ -200,7 +200,7 @@ export default function InstagramReels({ theme }: InstagramReelsProps) {
               <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
             </svg>
             Follow us on Instagram
-            <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+            {/* <span className="transition-transform duration-300 group-hover:translate-x-1">→</span> */}
           </Link>
         </motion.div>
 

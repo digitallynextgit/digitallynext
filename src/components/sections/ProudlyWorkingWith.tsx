@@ -69,7 +69,7 @@ export default function ProudlyWorkingWith({ theme }: ProudlyWorkingWithProps) {
   );
 
   return (
-    <section className="pt-10 md:pt-16 lg:pt-20 overflow-hidden">
+    <section className={`pt-10 md:pt-16 lg:pt-20 overflow-hidden ${isDark ? 'bg-black' : 'bg-[#F5F5F5]'}`}>
       {/* Heading + Marquee inside constrained container */}
       <div className="w-[92%] sm:w-[90%] lg:w-auto max-w-6xl mx-auto">
         {/* Heading */}
@@ -86,13 +86,13 @@ export default function ProudlyWorkingWith({ theme }: ProudlyWorkingWithProps) {
                 isDark ? "text-white" : "text-[#1a1a1a]",
               ].join(" ")}
             >
-              <span className="text-[#E53935] text-3xl sm:text-4xl md:text-6xl lg:text-7xl">
+              <span className="text-[#E53935] text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[80px]">
                 Proudly
               </span>{" "}
-              <span className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl">
+              <span className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[80px]">
                 working with
               </span>
-              <span className="text-[#0EC8C5] text-3xl sm:text-4xl md:text-6xl lg:text-7xl">
+              <span className="text-[#0EC8C5] text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[80px]">
                 .
               </span>
             </h2>
@@ -124,10 +124,10 @@ export default function ProudlyWorkingWith({ theme }: ProudlyWorkingWithProps) {
                   onMouseEnter={() => handleMouseEnter(place.name)}
                   onMouseLeave={handleMouseLeave}
                   className={[
-                    "shrink-0 inline-flex items-center gap-2.5",
-                    "text-[clamp(0.9rem,2vw,1.4rem)] font-light tracking-widest uppercase",
+                    "shrink-0 inline-flex items-center gap-3",
+                    "text-[clamp(1.1rem,2.5vw,1.75rem)] font-light tracking-widest uppercase",
                     "transition-colors duration-300 select-none",
-                    "px-9",
+                    "px-10",
                     hoveredName === place.name
                       ? "text-[#E53935]"
                       : isDark
@@ -138,14 +138,15 @@ export default function ProudlyWorkingWith({ theme }: ProudlyWorkingWithProps) {
                   <Image
                     src={`/flags/${place.flag}.png`}
                     alt={place.name}
-                    width={28}
-                    height={20}
+                    width={36}       
+                    height={26}      
                     className="rounded-[3px] object-cover shrink-0"
-                    style={{ width: "clamp(20px, 2vw, 28px)", height: "auto" }}
+                    style={{ width: "clamp(26px, 2.5vw, 36px)", height: "auto" }}
                   />
                   {place.name}
                   <span className="text-[#E53935] opacity-40">·</span>
                 </span>
+
               ),
             )}
           </div>
@@ -155,9 +156,8 @@ export default function ProudlyWorkingWith({ theme }: ProudlyWorkingWithProps) {
         />
       </div>
 
-      {/* World Map — full width, fade bottom */}
       <div
-        className="relative w-full mt-4"
+        className={`relative w-full mt-10 ${isDark ? "bg-black" : "bg-[#F5F5F5]"}`}
         style={{
           maskImage: "linear-gradient(to bottom, black 60%, transparent 100%)",
           WebkitMaskImage:
@@ -172,6 +172,7 @@ export default function ProudlyWorkingWith({ theme }: ProudlyWorkingWithProps) {
           />
         </div>
       </div>
+
     </section>
   );
 }

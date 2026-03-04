@@ -410,7 +410,7 @@ export default function Header() {
         ].join(" ")}
       >
         {/* h-16 md:h-20 — fixed, never changes */}
-        <div className="grid grid-cols-3 items-center h-16 md:h-20 lg:h-28 w-full px-5 md:px-7 lg:px-8">
+        <div className="grid grid-cols-3 items-center h-14 md:h-16 lg:h-28 w-full px-5 md:px-7 lg:px-8">
 
           {/* Col 1 — Award image | FLIP logo when menu open */}
           <div className="flex items-center justify-start">
@@ -535,7 +535,7 @@ export default function Header() {
             <div
               className={[
                 "flex-1 overflow-y-auto mt-16 md:mt-20 ",
-                "[&::-webkit-scrollbar]:w-[3px]",
+                "[&::-webkit-scrollbar]:w-0.75",
                 "[&::-webkit-scrollbar-track]:bg-transparent",
                 "[&::-webkit-scrollbar-thumb]:bg-white/20",
                 "[&::-webkit-scrollbar-thumb]:rounded-full",

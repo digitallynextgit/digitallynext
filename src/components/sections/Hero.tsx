@@ -38,7 +38,7 @@ export default function Hero() {
       </div>
 
       {/* Content */}
-      <div className="relative z-2 px-6 md:px-12 w-full max-w-[1280px] mx-auto">
+      <div className="relative z-2 px-6 md:px-12 w-full max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -89,7 +89,7 @@ export default function Hero() {
               "text-[1.2rem] font-normal tracking-[0.12em] uppercase",
               "rounded-none cursor-pointer relative overflow-hidden",
               "transition-all duration-300 ease-out",
-              "bg-[rgba(0,255,255,0.826)] text-white",
+              "bg-[#0EC8C5] text-white",
               "hover:bg-[#E21F26] hover:-translate-y-0.5",
             ].join(" ")}
           >
