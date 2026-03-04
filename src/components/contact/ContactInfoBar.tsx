@@ -19,7 +19,7 @@ export default function ContactInfoBar({ theme }: ContactInfoBarProps) {
                 isDark ? "bg-black" : "bg-[#111111]",
             ].join(" ")}
         >
-            <div className="max-w-[1200px] mx-auto w-full px-6 sm:px-8 lg:px-10 py-16 sm:py-20 lg:py-24">
+            <div className="max-w-7xl mx-auto w-full px-6 sm:px-8 lg:px-10 py-16 sm:py-20 lg:py-24">
                 <div className="grid gap-8 md:grid-cols-3 md:gap-16 justify-items-center text-center">
 
                     {/* General Inquiries */}

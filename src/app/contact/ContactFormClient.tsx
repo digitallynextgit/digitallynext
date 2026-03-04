@@ -107,7 +107,7 @@ export default function ContactFormClient() {
             name="name"
             placeholder="Your full name"
             required
-            className="h-11 w-full rounded-md border border-[#E0E0E0] bg-white px-4 text-sm text-[#111111] placeholder:text-[#9E9E9E] focus:outline-none focus:ring-2 focus:ring-[#E21F26]/30"
+            className="h-11 w-full rounded border border-[#E0E0E0] bg-white px-4 text-sm text-[#111111] placeholder:text-[#9E9E9E] focus:outline-none focus:ring-2 focus:ring-[#E21F26]/30"
           />
         </label>
 
@@ -120,7 +120,7 @@ export default function ContactFormClient() {
             name="phone"
             placeholder="+91 00000 00000"
             required
-            className="h-11 w-full rounded-md border border-[#E0E0E0] bg-white px-4 text-sm text-[#111111] placeholder:text-[#9E9E9E] focus:outline-none focus:ring-2 focus:ring-[#E21F26]/30"
+            className="h-11 w-full rounded border border-[#E0E0E0] bg-white px-4 text-sm text-[#111111] placeholder:text-[#9E9E9E] focus:outline-none focus:ring-2 focus:ring-[#E21F26]/30"
           />
         </label>
       </div>
@@ -133,7 +133,7 @@ export default function ContactFormClient() {
             <select
               name="country"
               defaultValue=""
-              className="h-11 w-full appearance-none rounded-md border border-[#E0E0E0] bg-white px-4 pr-9 text-sm text-[#111111] focus:outline-none focus:ring-2 focus:ring-[#E21F26]/30"
+              className="h-11 w-full appearance-none rounded border border-[#E0E0E0] bg-white px-4 pr-9 text-sm text-[#111111] focus:outline-none focus:ring-2 focus:ring-[#E21F26]/30"
             >
               <option value="" disabled>
                 Select country
@@ -159,7 +159,7 @@ export default function ContactFormClient() {
             type="text"
             name="city"
             placeholder="Your city"
-            className="h-11 w-full rounded-md border border-[#E0E0E0] bg-white px-4 text-sm text-[#111111] placeholder:text-[#9E9E9E] focus:outline-none focus:ring-2 focus:ring-[#E21F26]/30"
+            className="h-11 w-full rounded border border-[#E0E0E0] bg-white px-4 text-sm text-[#111111] placeholder:text-[#9E9E9E] focus:outline-none focus:ring-2 focus:ring-[#E21F26]/30"
           />
         </label>
       </div>
@@ -171,7 +171,7 @@ export default function ContactFormClient() {
           type="url"
           name="linkedIn"
           placeholder="https://linkedin.com/in/yourprofile"
-          className="h-11 w-full rounded-md border border-[#E0E0E0] bg-white px-4 text-sm text-[#111111] placeholder:text-[#9E9E9E] focus:outline-none focus:ring-2 focus:ring-[#E21F26]/30"
+          className="h-11 w-full rounded border border-[#E0E0E0] bg-white px-4 text-sm text-[#111111] placeholder:text-[#9E9E9E] focus:outline-none focus:ring-2 focus:ring-[#E21F26]/30"
         />
       </label>
 
@@ -186,10 +186,10 @@ export default function ContactFormClient() {
               key={type}
               type="button"
               onClick={() => setSelectedEntity(type)}
-              className={`px-4 py-2 rounded-full border text-xs font-semibold tracking-wide transition-all cursor-pointer ${
+              className={`px-4 py-2 rounded border text-xs font-semibold tracking-wide transition-all cursor-pointer ${
                 selectedEntity === type
                   ? "bg-[#111111] border-[#111111] text-white"
-                  : "bg-white border-[#E0E0E0] text-[#4B4B4B] hover:border-[#111111] hover:text-[#111111]"
+                  : "bg-white border-[#E0E0E0] text-[#4B4B4B] hover:border-[#E21F26] hover:text-[#E21F26]"
               }`}
             >
               {type}
@@ -210,7 +210,7 @@ export default function ContactFormClient() {
               key={service}
               type="button"
               onClick={() => toggleService(service)}
-              className={`px-4 py-2 rounded-full border text-xs font-semibold tracking-wide transition-all cursor-pointer ${
+              className={`px-4 py-2 rounded border text-xs font-semibold tracking-wide transition-all cursor-pointer ${
                 selectedServices.includes(service)
                   ? "bg-[#E21F26] border-[#E21F26] text-white"
                   : "bg-white border-[#E0E0E0] text-[#4B4B4B] hover:border-[#E21F26] hover:text-[#E21F26]"
@@ -224,7 +224,7 @@ export default function ContactFormClient() {
           <button
             type="button"
             onClick={toggleCustom}
-            className={`px-4 py-2 rounded-full border text-xs font-semibold tracking-wide transition-all cursor-pointer ${
+            className={`px-4 py-2 rounded border text-xs font-semibold tracking-wide transition-all cursor-pointer ${
               isCustomSelected
                 ? "bg-[#111111] border-[#111111] text-white"
                 : "bg-white border-[#E0E0E0] text-[#4B4B4B] hover:border-[#111111] hover:text-[#111111]"
@@ -243,7 +243,7 @@ export default function ContactFormClient() {
                 value={customServiceNote}
                 onChange={(e) => setCustomServiceNote(e.target.value)}
                 placeholder="e.g. I need all services bundled / I want Performance + AI combined for my brand..."
-                className="min-h-[110px] w-full resize-none rounded-md border border-[#E0E0E0] bg-white px-4 py-3 text-sm text-[#111111] placeholder:text-[#9E9E9E] focus:outline-none focus:ring-2 focus:ring-[#111111]/20"
+                className="min-h-27.5 w-full resize-none rounded border border-[#E0E0E0] bg-white px-4 py-3 text-sm text-[#111111] placeholder:text-[#9E9E9E] focus:outline-none focus:ring-2 focus:ring-[#111111]/20"
               />
             </label>
           </div>
@@ -256,7 +256,7 @@ export default function ContactFormClient() {
         <textarea
           name="message"
           placeholder="Tell us about your project, goals, and timeline..."
-          className="min-h-[140px] w-full resize-none rounded-md border border-[#E0E0E0] bg-white px-4 py-3 text-sm text-[#111111] placeholder:text-[#9E9E9E] focus:outline-none focus:ring-2 focus:ring-[#E21F26]/30"
+          className="min-h-35 w-full resize-none rounded border border-[#E0E0E0] bg-white px-4 py-3 text-sm text-[#111111] placeholder:text-[#9E9E9E] focus:outline-none focus:ring-2 focus:ring-[#E21F26]/30"
         />
       </label>
 
@@ -274,7 +274,7 @@ export default function ContactFormClient() {
           height={26}
           className="transition-transform duration-300 group-hover:-translate-x-2"
         />
-        <span className="mt-[2px] group-hover:text-[#E21F26]">
+        <span className="mt-0.5 group-hover:text-[#E21F26]">
           {isSubmitting ? "Submitting..." : "Submit"}
         </span>
       </button>

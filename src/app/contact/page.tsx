@@ -22,9 +22,9 @@ export default function ContactPage() {
       <ContactHero />
 
       <section id="contact-form" aria-label="Contact Form" className="bg-white">
-        <div className="max-w-[1200px] mx-auto px-6 sm:px-8 lg:px-10 py-16 sm:py-20 lg:py-24">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-10 py-16 sm:py-20 lg:py-24">
           <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)] lg:items-start">
-            <div className="max-w-[520px]">
+            <div className="max-w-130">
               <h2 className="text-[28px] sm:text-[32px] lg:text-[36px] font-semibold leading-snug tracking-[-0.01em] text-[#111111]">
                 <span className="text-[#E21F26]">Tell us</span> about your brand,
                 <br />
@@ -32,7 +32,7 @@ export default function ContactPage() {
                 <br />
                 you&apos;re building.
               </h2>
-              <p className="mt-4 text-sm sm:text-base leading-relaxed max-w-[420px] font-light text-[#A1A1A1]">
+              <p className="mt-4 text-sm sm:text-base leading-relaxed max-w-105 font-light text-[#A1A1A1]">
                 We typically respond{" "}
                 <span className="font-semibold">within 2 business days</span>. If
                 your inquiry aligns with our capabilities, we&apos;ll set up a

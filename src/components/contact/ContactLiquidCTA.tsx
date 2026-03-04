@@ -24,7 +24,7 @@ export default function ContactLiquidCTA() {
                 />
             </div>
 
-            <div className="relative z-10 max-w-[1200px] mx-auto px-6 sm:px-8 lg:px-10 flex flex-col items-center text-center">
+            <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-10 flex flex-col items-center text-center">
                 <h2 className="text-[#111111] leading-[1.05] tracking-[-0.02em] text-[40px] sm:text-[52px] lg:text-[64px]">
                     <span className="font-extrabold">Clarity</span>{" "}
                     <span className="font-normal">
@@ -43,9 +43,9 @@ export default function ContactLiquidCTA() {
 
                 <a
                     href="#contact-form"
-                    className="mt-10 inline-flex items-center justify-center border border-[#E21F26] px-10 py-4 text-[11px] sm:text-xs font-semibold tracking-[0.22em] uppercase text-[#111111] bg-transparent backdrop-blur-sm transition hover:bg-[#E21F26] hover:text-white"
+                    className="mt-10 inline-flex items-center justify-center border border-[#E21F26] px-10 py-4 font-semibold uppercase text-[#111111] bg-transparent backdrop-blur-sm transition hover:bg-[#E21F26] hover:text-white"
                 >
-                    Start a conversation
+                    Get Started
                 </a>
             </div>
         </div>
