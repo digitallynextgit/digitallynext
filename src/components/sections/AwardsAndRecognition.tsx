@@ -6,9 +6,9 @@ import Image from "next/image";
 import { useSectionTheme } from "@/context/SectionThemeContext";
 
 const awards = [
-  { src: "/awards/a1.png", alt: "Award 1", width: 342, height: 69 },
-  { src: "/awards/a2.png", alt: "Award 2", width: 313, height: 101 },
-  { src: "/awards/a3.png", alt: "Award 3", width: 134, height: 101 },
+  { src: "/awards/a1.webp", alt: "Award 1", width: 342, height: 69 },
+  { src: "/awards/a2.webp", alt: "Award 2", width: 313, height: 101 },
+  { src: "/awards/a3.webp", alt: "Award 3", width: 134, height: 101 },
 ];
 
 interface AwardsAndRecognitionProps {
@@ -28,10 +28,8 @@ export default function AwardsAndRecognition({
       className="py-8 sm:py-10 md:py-16 lg:py-20 overflow-hidden"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
         {/* Outer column — gap scales per breakpoint */}
         <div className="flex flex-col items-center gap-8 sm:gap-10 md:gap-14 lg:gap-18">
-
           {/* Header */}
           <motion.h2
             className={[
@@ -103,7 +101,6 @@ export default function AwardsAndRecognition({
               </motion.div>
             ))}
           </motion.div>
-
         </div>
       </div>
     </section>

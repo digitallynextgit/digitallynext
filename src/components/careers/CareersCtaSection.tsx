@@ -19,7 +19,7 @@ export default function CareersCtaSection({ theme }: CareersCtaSectionProps) {
     >
       {/* Background image */}
       <Image
-        src="/figma/careers/careers-team.jpg"
+        src="/figma/careers/careers-team.webp"
         alt=""
         fill
         priority

@@ -6,12 +6,36 @@ import Link from "next/link";
 import { useSectionTheme } from "@/context/SectionThemeContext";
 
 const INSTAGRAM_REELS = [
-  { id: "reel1", embedUrl: "https://www.instagram.com/reel/DUxx0CeEm1V/embed", title: "Team Culture Reel" },
-  { id: "reel2", embedUrl: "https://www.instagram.com/reel/DHvsqYGhjU3/embed", title: "Behind the Scenes" },
-  { id: "reel3", embedUrl: "https://www.instagram.com/reel/DT5KMCUEmYg/embed", title: "Our Work Process" },
-  { id: "reel4", embedUrl: "https://www.instagram.com/reel/DUsQ4aNkmla/embed", title: "Our Work Process" },
-  { id: "reel5", embedUrl: "https://www.instagram.com/reel/DTkIEw9Emsq/embed", title: "Our Work Process" },
-  { id: "reel6", embedUrl: "https://www.instagram.com/reel/DTze5OUEsBR/embed", title: "Our Work Process" },
+  {
+    id: "reel1",
+    embedUrl: "https://www.instagram.com/reel/DUxx0CeEm1V/embed",
+    title: "Team Culture Reel",
+  },
+  {
+    id: "reel2",
+    embedUrl: "https://www.instagram.com/reel/DHvsqYGhjU3/embed",
+    title: "Behind the Scenes",
+  },
+  {
+    id: "reel3",
+    embedUrl: "https://www.instagram.com/reel/DT5KMCUEmYg/embed",
+    title: "Our Work Process",
+  },
+  {
+    id: "reel4",
+    embedUrl: "https://www.instagram.com/reel/DUsQ4aNkmla/embed",
+    title: "Our Work Process",
+  },
+  {
+    id: "reel5",
+    embedUrl: "https://www.instagram.com/reel/DTkIEw9Emsq/embed",
+    title: "Our Work Process",
+  },
+  {
+    id: "reel6",
+    embedUrl: "https://www.instagram.com/reel/DTze5OUEsBR/embed",
+    title: "Our Work Process",
+  },
 ];
 
 interface InstagramReelsProps {
@@ -28,7 +52,8 @@ export default function InstagramReels({ theme }: InstagramReelsProps) {
 
   const scroll = (dir: "left" | "right") => {
     if (!scrollRef.current) return;
-    const cardWidth = scrollRef.current.querySelector(".reel-card")?.clientWidth ?? 300;
+    const cardWidth =
+      scrollRef.current.querySelector(".reel-card")?.clientWidth ?? 300;
     const gap = 24;
     scrollRef.current.scrollBy({
       left: dir === "left" ? -(cardWidth + gap) : cardWidth + gap,
@@ -42,7 +67,6 @@ export default function InstagramReels({ theme }: InstagramReelsProps) {
       className="py-10 md:py-16 lg:py-20 overflow-hidden"
     >
       <div className="max-w-7xl mx-auto px-5 md:px-12">
-
         {/* Header */}
         <div className="text-center mb-10">
           <motion.h2
@@ -86,9 +110,10 @@ export default function InstagramReels({ theme }: InstagramReelsProps) {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
           >
-            Digitally Next is built by multidisciplinary teams who value clarity,
-            <br className="hidden lg:block" />
-            {" "}collaboration, and accountability.
+            Digitally Next is built by multidisciplinary teams who value
+            clarity,
+            <br className="hidden lg:block" /> collaboration, and
+            accountability.
           </motion.p>
         </div>
 
@@ -110,13 +135,18 @@ export default function InstagramReels({ theme }: InstagramReelsProps) {
               <svg
                 className={[
                   "w-4 h-4 transition-transform duration-300",
-                  dir === "left" ? "group-hover:-translate-x-0.5" : "group-hover:translate-x-0.5",
+                  dir === "left"
+                    ? "group-hover:-translate-x-0.5"
+                    : "group-hover:translate-x-0.5",
                 ].join(" ")}
-                fill="none" viewBox="0 0 24 24"
-                stroke="currentColor" strokeWidth={2.5}
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={2.5}
               >
                 <path
-                  strokeLinecap="round" strokeLinejoin="round"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                   d={dir === "left" ? "M15 19l-7-7 7-7" : "M9 5l7 7-7 7"}
                 />
               </svg>
@@ -145,11 +175,29 @@ export default function InstagramReels({ theme }: InstagramReelsProps) {
               animate={
                 isInView
                   ? {
-                    opacity: 1, y: 0, scale: 1, rotateY: 0,
-                    transition: { duration: 0.7, delay: index * 0.15, ease: [0.16, 1, 0.3, 1] },
-                  }
-                  : { opacity: 0, y: 60, scale: 0.92, rotateY: index % 2 === 0 ? -8 : 8 }
+                      opacity: 1,
+                      y: 0,
+                      scale: 1,
+                      rotateY: 0,
+                      transition: {
+                        duration: 0.7,
+                        delay: index * 0.15,
+                        ease: [0.16, 1, 0.3, 1],
+                      },
+                    }
+                  : {
+                      opacity: 0,
+                      y: 60,
+                      scale: 0.92,
+                      rotateY: index % 2 === 0 ? -8 : 8,
+                    }
               }
+              style={{
+                // Safari: prevent 3D transform flickering and subpixel rendering artifacts
+                willChange: "transform, opacity",
+                WebkitBackfaceVisibility: "hidden",
+                backfaceVisibility: "hidden",
+              }}
             >
               <div
                 className={[
@@ -195,7 +243,8 @@ export default function InstagramReels({ theme }: InstagramReelsProps) {
           >
             <svg
               className="w-5 h-5 transition-transform duration-300 group-hover:scale-110"
-              viewBox="0 0 24 24" fill="currentColor"
+              viewBox="0 0 24 24"
+              fill="currentColor"
             >
               <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
             </svg>
@@ -203,7 +252,6 @@ export default function InstagramReels({ theme }: InstagramReelsProps) {
             {/* <span className="transition-transform duration-300 group-hover:translate-x-1">→</span> */}
           </Link>
         </motion.div>
-
       </div>
     </section>
   );

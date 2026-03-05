@@ -43,11 +43,26 @@ const LOGO_SRCS: Record<RouteHeaderTheme["logo"], string> = {
 };
 
 const SERVICES = [
-  { label: "Strategy, Brand & Growth Intelligence", href: "/services/brand-strategy" },
-  { label: "Content, Culture & Media Creation", href: "/services/ui-ux-design" },
-  { label: "Performance, Distribution & Demand", href: "/services/seo-optimization" },
-  { label: "Platforms, Web & Digital Experience", href: "/services/web-development" },
-  { label: "AI Enablement & Decision Systems", href: "/services/ai-enablement" },
+  {
+    label: "Strategy, Brand & Growth Intelligence",
+    href: "/services/brand-strategy",
+  },
+  {
+    label: "Content, Culture & Media Creation",
+    href: "/services/ui-ux-design",
+  },
+  {
+    label: "Performance, Distribution & Demand",
+    href: "/services/seo-optimization",
+  },
+  {
+    label: "Platforms, Web & Digital Experience",
+    href: "/services/web-development",
+  },
+  {
+    label: "AI Enablement & Decision Systems",
+    href: "/services/ai-enablement",
+  },
 ];
 
 const MENU_EXTRA = [{ label: "CONTACT", href: "/contact" }];
@@ -104,7 +119,11 @@ const dividerVariants: Variants = {
   hidden: { scaleX: 0 },
   visible: {
     scaleX: 1,
-    transition: { duration: 0.32, ease: [0.22, 1, 0.36, 1] as const, delay: 0.08 },
+    transition: {
+      duration: 0.32,
+      ease: [0.22, 1, 0.36, 1] as const,
+      delay: 0.08,
+    },
   },
 };
 
@@ -238,8 +257,7 @@ function MagneticLink({
   };
 
   // Red when hovered OR submenu is open (active state)
-  const labelColor =
-    hovered || submenuOpen ? "text-[#E21F26]" : "text-white";
+  const labelColor = hovered || submenuOpen ? "text-[#E21F26]" : "text-white";
 
   const innerContent = (
     <>
@@ -283,7 +301,12 @@ function MagneticLink({
       {hasSubmenu ? (
         <motion.div
           onClick={() => onSubmenuToggle?.()}
-          style={{ rotateX, rotateY, x: smoothHoverX, transformPerspective: 1200 }}
+          style={{
+            rotateX,
+            rotateY,
+            x: smoothHoverX,
+            transformPerspective: 1200,
+          }}
           className="flex items-center justify-between w-full py-4 md:py-5 px-6 md:px-12 cursor-pointer select-none"
         >
           {innerContent}
@@ -292,7 +315,12 @@ function MagneticLink({
         <MotionLink
           href={href}
           onClick={onClick}
-          style={{ rotateX, rotateY, x: smoothHoverX, transformPerspective: 1200 }}
+          style={{
+            rotateX,
+            rotateY,
+            x: smoothHoverX,
+            transformPerspective: 1200,
+          }}
           className="flex items-center justify-between w-full py-4 md:py-5 px-6 md:px-12 cursor-pointer"
         >
           {innerContent}
@@ -368,7 +396,9 @@ export default function Header() {
 
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [menuOpen]);
 
   const routeTheme = resolveRouteTheme(pathname);
@@ -411,7 +441,6 @@ export default function Header() {
       >
         {/* h-16 md:h-20 — fixed, never changes */}
         <div className="grid grid-cols-3 items-center h-14 md:h-16 lg:h-28 w-full px-5 md:px-7 lg:px-8">
-
           {/* Col 1 — Award image | FLIP logo when menu open */}
           <div className="flex items-center justify-start">
             <AnimatePresence mode="wait">
@@ -528,7 +557,13 @@ export default function Header() {
             initial="hidden"
             animate="visible"
             exit="hidden"
-            style={{ willChange: "clip-path" }}
+            style={{
+              // Safari: force GPU compositing and add backface-visibility
+              // Note: -webkit-clip-path is handled by Framer Motion's autoprefixing
+              willChange: "clip-path, transform",
+              WebkitBackfaceVisibility: "hidden",
+              backfaceVisibility: "hidden",
+            }}
             className="fixed inset-0 z-99 bg-[#0a0a0a] flex flex-col"
           >
             {/* mt-16 md:mt-20 matches header height exactly */}
@@ -555,7 +590,9 @@ export default function Header() {
                       hasSubmenu={isServices}
                       submenuOpen={isServices && servicesOpen}
                       onSubmenuToggle={
-                        isServices ? () => setServicesOpen((v) => !v) : undefined
+                        isServices
+                          ? () => setServicesOpen((v) => !v)
+                          : undefined
                       }
                     />
                   );

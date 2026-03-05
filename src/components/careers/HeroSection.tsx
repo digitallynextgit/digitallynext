@@ -20,7 +20,8 @@ export default function HeroSection({ theme }: HeroSectionProps) {
   useEffect(() => {
     if (!backgroundRef.current) return;
 
-    const elements = backgroundRef.current.querySelectorAll(".floating-element");
+    const elements =
+      backgroundRef.current.querySelectorAll(".floating-element");
 
     elements.forEach((el) => {
       const randomDelay = Math.random() * 2;
@@ -33,6 +34,8 @@ export default function HeroSection({ theme }: HeroSectionProps) {
         yoyo: true,
         ease: "power1.inOut",
         delay: randomDelay,
+        // Safari GPU acceleration
+        force3D: true,
       });
     });
 
@@ -65,24 +68,23 @@ export default function HeroSection({ theme }: HeroSectionProps) {
       </div>
 
       <div className="mt-6 md:mt-12 lg:mt-20">
-
         {/* 1. ImageTrail */}
         <div className="absolute inset-0 z-1">
           <div className="h-full w-full relative overflow-hidden">
             <ImageTrail
               key="careers-hero-trail"
               items={[
-                "/careers/c1.jpg",
-                "/careers/c2.jpg",
-                "/careers/c3.jpg",
-                "/careers/c4.png",
+                "/careers/c1.webp",
+                "/careers/c2.webp",
+                "/careers/c3.webp",
+                "/careers/c4.webp",
                 "/careers/c5.webp",
-                "/careers/c6.png",
-                "/careers/c7.png",
-                "/careers/c8.png",
-                "/careers/c9.jpeg",
-                "/careers/c10.jpeg",
-                "/careers/c11.jpeg",
+                "/careers/c6.webp",
+                "/careers/c7.webp",
+                "/careers/c8.webp",
+                "/careers/c9.webp",
+                "/careers/c10.webp",
+                "/careers/c11.webp",
               ]}
               variant={2}
             />
@@ -135,7 +137,10 @@ export default function HeroSection({ theme }: HeroSectionProps) {
 
           {/* Sub-content block */}
           <div className="flex flex-col items-center" style={{ gap: 24 }}>
-            <div className="flex flex-col items-center text-center" style={{ gap: 24 }}>
+            <div
+              className="flex flex-col items-center text-center"
+              style={{ gap: 24 }}
+            >
               <div
                 className={[
                   "font-light text-[18px] leading-7.75 transition-colors duration-700",

@@ -13,17 +13,17 @@ const items = [
   {
     sub: "Data doesn't sit in dashboards.",
     main: "It shapes decisions.",
-    image: "/home/moderndad1.png",
+    image: "/home/moderndad1.webp",
   },
   {
     sub: "AI doesn't replace thinking.",
     main: "It removes friction.",
-    image: "/home/moderndad2.png",
+    image: "/home/moderndad2.webp",
   },
   {
     sub: "Digital isn't a channel.",
     main: "It's the system.",
-    image: "/home/moderndad3.png",
+    image: "/home/moderndad3.webp",
   },
 ];
 

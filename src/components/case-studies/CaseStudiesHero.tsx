@@ -62,7 +62,7 @@ export default function CaseStudiesHero({ theme }: CaseStudiesHeroProps) {
 
           {/* <div className="relative w-full overflow-hidden rounded-[10px] aspect-4/3 lg:aspect-auto lg:h-[520px]">
             <Image
-              src={featuredCaseStudy?.listing.imageSrc ?? "/case/cs1.png"}
+              src={featuredCaseStudy?.listing.imageSrc ?? "/case/cs1.webp"}
               alt={featuredCaseStudy?.listing.title ?? "Case study"}
               fill
               className="object-cover"

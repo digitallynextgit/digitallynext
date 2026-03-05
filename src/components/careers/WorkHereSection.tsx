@@ -106,7 +106,7 @@ export default function WorkHereSection({ theme }: WorkHereSectionProps) {
 
             <div className="mt-2">
               <Image
-                src="/figma/careers/careers-workhere.png"
+                src="/figma/careers/careers-workhere.webp"
                 alt="Work Here"
                 width={477}
                 height={269}

@@ -120,7 +120,7 @@ export const caseStudies: CaseStudy[] = [
       introText:
         "From ambitious startups to scaling enterprises – Digitally Next builds performance-driven creative systems that turn attention into measurable growth.",
       title: 'Advent<span style="color:#E21F26">Global</span>',
-      imageSrc: "/case/advent.png",
+      imageSrc: "/case/advent.webp",
       caption:
         "Complete Brand Revamp for a US Tech Co. Helped them to bag one of the biggest social networking platforms as their client.",
       highlightKeywords: [
@@ -137,7 +137,7 @@ export const caseStudies: CaseStudy[] = [
         eyebrow: "ADVENTGLOBAL",
         title:
           "Complete Brand Revamp for a US Tech Co. Helped them to bag one of the biggest social networking platforms as their client",
-        heroImageSrc: "/case/advent.png",
+        heroImageSrc: "/case/advent.webp",
         metrics: [
           {
             value: "3X",
@@ -154,7 +154,7 @@ export const caseStudies: CaseStudy[] = [
         ],
       },
       about: {
-        logoSrc: "/figma/case-study/about-logo.png",
+        logoSrc: "/figma/case-study/about-logo.webp",
         quote:
           '"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat._"',
         fields: [
@@ -263,7 +263,7 @@ export const caseStudies: CaseStudy[] = [
         },
       ],
       cta: {
-        backgroundImageSrc: "/figma/case-study/cta-bg-4ff61d.png",
+        backgroundImageSrc: "/figma/case-study/cta-bg-4ff61d.webp",
         headingLines: ["Let's Build Something", "That Lasts."],
         bodyLines: [
           "We work best with teams that value structure, clarity, and long-term thinking.",
@@ -287,7 +287,7 @@ export const caseStudies: CaseStudy[] = [
       introText:
         "From ambitious startups to scaling enterprises – Digitally Next builds performance-driven creative systems that turn attention into measurable growth.",
       title: 'Neo<span style="color:#E21F26">Tech</span>',
-      imageSrc: "/case/neotech.png",
+      imageSrc: "/case/neotech.webp",
       caption:
         "Complete Brand makeover of a global brand (Post M&A) to a new name and digital brand communication.",
       highlightKeywords: ["Brand makeover", "Post M&A", "digital brand communication"],
@@ -300,7 +300,7 @@ export const caseStudies: CaseStudy[] = [
         eyebrow: "NEOTECH",
         title:
           "Complete Re-Branding and marketing function set up of an acquired organization (post completion of M&A)",
-        heroImageSrc: "/case/neotech.png",
+        heroImageSrc: "/case/neotech.webp",
         metrics: [
           {
             value: "85%",
@@ -317,7 +317,7 @@ export const caseStudies: CaseStudy[] = [
         ],
       },
       about: {
-        logoSrc: "/figma/case-study/about-logo.png",
+        logoSrc: "/figma/case-study/about-logo.webp",
         quote:
           '"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat._"',
         fields: [
@@ -436,7 +436,7 @@ export const caseStudies: CaseStudy[] = [
         },
       ],
       cta: {
-        backgroundImageSrc: "/figma/case-study/cta-bg-4ff61d.png",
+        backgroundImageSrc: "/figma/case-study/cta-bg-4ff61d.webp",
         headingLines: ["Let's Build Something", "That Lasts."],
         bodyLines: [
           "We work best with teams that value structure, clarity, and long-term thinking.",
@@ -460,7 +460,7 @@ export const caseStudies: CaseStudy[] = [
       introText:
         "From ambitious startups to scaling enterprises – Digitally Next builds performance-driven creative systems that turn attention into measurable growth.",
       title: "Signia",
-      imageSrc: "/case/signia.png",
+      imageSrc: "/case/signia.webp",
       caption:
         "Digital Campaign on Social Cause for a world leader in wearable hearing devices",
       highlightKeywords: [
@@ -477,7 +477,7 @@ export const caseStudies: CaseStudy[] = [
         eyebrow: "SIGNIA",
         title:
           "Digital Campaign on Social Cause for a world leader in wearable hearing devices",
-        heroImageSrc: "/case/signia.png",
+        heroImageSrc: "/case/signia.webp",
         metrics: [
           {
             value: "400%",
@@ -494,7 +494,7 @@ export const caseStudies: CaseStudy[] = [
         ],
       },
       about: {
-        logoSrc: "/figma/case-study/signia.png",
+        logoSrc: "/figma/case-study/signia.webp",
         quote:
           "Signia is a world-leading hearing aid brand dedicated to creating life-enhancing technology that empowers people to hear brilliantly. With cutting-edge Integrated Xperience technology, Signia delivers natural, effortless hearing in real-world conversations, helping people stay connected, confident, and fully engaged in every moment of life.",
         fields: [
@@ -609,7 +609,7 @@ export const caseStudies: CaseStudy[] = [
         },
       ],
       cta: {
-        backgroundImageSrc: "/figma/case-study/cta-bg-4ff61d.png",
+        backgroundImageSrc: "/figma/case-study/cta-bg-4ff61d.webp",
         headingLines: ["Let's Build Something", "That Lasts."],
         bodyLines: [
           "We work best with teams that value structure, clarity, and long-term thinking.",
@@ -633,7 +633,7 @@ export const caseStudies: CaseStudy[] = [
       introText:
         "From ambitious startups to scaling enterprises – Digitally Next builds performance-driven creative systems that turn attention into measurable growth.",
       title: "InsurTech",
-      imageSrc: "/case/cs4.png",
+      imageSrc: "/case/cs4.webp",
       caption:
         "PAN India Launch (Online) of a disruptive phygital model in insurance sector to prevent mis-selling, mis-information and honest reach of the insurance products in the interiors of India.",
       highlightKeywords: [
@@ -650,7 +650,7 @@ export const caseStudies: CaseStudy[] = [
         eyebrow: "INSURTECH",
         title:
           "First Ever PAN India launch of InsurTech and their Phygital Model for the Tier-II & III cities (Bharat)",
-        heroImageSrc: "/case/cs4.png",
+        heroImageSrc: "/case/cs4.webp",
         metrics: [
           {
             value: "6000+",
@@ -669,7 +669,7 @@ export const caseStudies: CaseStudy[] = [
         ],
       },
       about: {
-        logoSrc: "/figma/case-study/signia.png",
+        logoSrc: "/figma/case-study/signia.webp",
         quote:
           "Signia is a world-leading hearing aid brand dedicated to creating life-enhancing technology that empowers people to hear brilliantly. With cutting-edge Integrated Xperience technology, Signia delivers natural, effortless hearing in real-world conversations, helping people stay connected, confident, and fully engaged in every moment of life.",
         fields: [
@@ -784,7 +784,7 @@ export const caseStudies: CaseStudy[] = [
         },
       ],
       cta: {
-        backgroundImageSrc: "/figma/case-study/cta-bg-4ff61d.png",
+        backgroundImageSrc: "/figma/case-study/cta-bg-4ff61d.webp",
         headingLines: ["Let's Build Something", "That Lasts."],
         bodyLines: [
           "We work best with teams that value structure, clarity, and long-term thinking.",
@@ -808,7 +808,7 @@ export const caseStudies: CaseStudy[] = [
       introText:
         "From ambitious startups to scaling enterprises – Digitally Next builds performance-driven creative systems that turn attention into measurable growth.",
       title: "Fintech Student Value Card",
-      imageSrc: "/case/cs5.png",
+      imageSrc: "/case/cs5.webp",
       caption:
         "Digital Branding for a Fintech — Student value cards (endorsed by UNESCO) with a spread in 125+ Countries.",
       highlightKeywords: [
@@ -826,7 +826,7 @@ export const caseStudies: CaseStudy[] = [
         eyebrow: "FINTECH",
         title:
           "Digital Branding for a Fintech — Student value cards (endorsed by UNESCO) with a spread in 125+ Countries",
-        heroImageSrc: "/case/cs5.png",
+        heroImageSrc: "/case/cs5.webp",
         metrics: [
           {
             value: "100%",
@@ -843,7 +843,7 @@ export const caseStudies: CaseStudy[] = [
         ],
       },
       about: {
-        logoSrc: "/figma/case-study/signia.png",
+        logoSrc: "/figma/case-study/signia.webp",
         quote:
           "Signia is a world-leading hearing aid brand dedicated to creating life-enhancing technology that empowers people to hear brilliantly. With cutting-edge Integrated Xperience technology, Signia delivers natural, effortless hearing in real-world conversations, helping people stay connected, confident, and fully engaged in every moment of life.",
         fields: [
@@ -956,7 +956,7 @@ export const caseStudies: CaseStudy[] = [
         },
       ],
       cta: {
-        backgroundImageSrc: "/figma/case-study/cta-bg-4ff61d.png",
+        backgroundImageSrc: "/figma/case-study/cta-bg-4ff61d.webp",
         headingLines: ["Let's Build Something", "That Lasts."],
         bodyLines: [
           "We work best with teams that value structure, clarity, and long-term thinking.",
@@ -980,7 +980,7 @@ export const caseStudies: CaseStudy[] = [
       introText:
         "From ambitious startups to scaling enterprises – Digitally Next builds performance-driven creative systems that turn attention into measurable growth.",
       title: "Real Estate Advisory",
-      imageSrc: "/case/cs6.png",
+      imageSrc: "/case/cs6.webp",
       caption:
         "Digital Brand Communication of the enriched legacy and the transformational work done to make world a better place.",
       highlightKeywords: [
@@ -997,7 +997,7 @@ export const caseStudies: CaseStudy[] = [
         eyebrow: "REAL ESTATE ADVISORY",
         title:
           "140 years+ old Global name in advisory and standards advocacy in built environment — land, real estate, construction and infrastructure.",
-        heroImageSrc: "/case/cs6.png",
+        heroImageSrc: "/case/cs6.webp",
         metrics: [
           {
             value: "5X",
@@ -1014,7 +1014,7 @@ export const caseStudies: CaseStudy[] = [
         ],
       },
       about: {
-        logoSrc: "/figma/case-study/signia.png",
+        logoSrc: "/figma/case-study/signia.webp",
         quote:
           "Signia is a world-leading hearing aid brand dedicated to creating life-enhancing technology that empowers people to hear brilliantly. With cutting-edge Integrated Xperience technology, Signia delivers natural, effortless hearing in real-world conversations, helping people stay connected, confident, and fully engaged in every moment of life.",
         fields: [
@@ -1128,7 +1128,7 @@ export const caseStudies: CaseStudy[] = [
         },
       ],
       cta: {
-        backgroundImageSrc: "/figma/case-study/cta-bg-4ff61d.png",
+        backgroundImageSrc: "/figma/case-study/cta-bg-4ff61d.webp",
         headingLines: ["Let's Build Something", "That Lasts."],
         bodyLines: [
           "We work best with teams that value structure, clarity, and long-term thinking.",
@@ -1152,7 +1152,7 @@ export const caseStudies: CaseStudy[] = [
       introText:
         "From ambitious startups to scaling enterprises – Digitally Next builds performance-driven creative systems that turn attention into measurable growth.",
       title: "Legal & IP Advisory",
-      imageSrc: "/case/cs7.png",
+      imageSrc: "/case/cs7.webp",
       caption:
         "Digital Brand Communication of the enriched legacy and the transformational work done in all fields of law with emphasis on Media, Entertainment, Sweepstakes, Promotions and IP Law.",
       highlightKeywords: ["fields of law", "Media", "IP Law"],
@@ -1165,7 +1165,7 @@ export const caseStudies: CaseStudy[] = [
         eyebrow: "LEGAL & IP ADVISORY",
         title:
           "Managing Digital Assets of a Global Legal and advisory firm specializing in intellectual property",
-        heroImageSrc: "/case/cs7.png",
+        heroImageSrc: "/case/cs7.webp",
         metrics: [
           {
             value: "40+",
@@ -1184,7 +1184,7 @@ export const caseStudies: CaseStudy[] = [
         ],
       },
       about: {
-        logoSrc: "/figma/case-study/about-logo.png",
+        logoSrc: "/figma/case-study/about-logo.webp",
         quote:
           "Digital Brand Communication of the enriched legacy and the transformational work done in all fields of law with emphasis on Media, Entertainment, Sweepstakes, Promotions and IP Law.",
         fields: [
@@ -1295,7 +1295,7 @@ export const caseStudies: CaseStudy[] = [
         },
       ],
       cta: {
-        backgroundImageSrc: "/figma/case-study/cta-bg-4ff61d.png",
+        backgroundImageSrc: "/figma/case-study/cta-bg-4ff61d.webp",
         headingLines: ["Let's Build Something", "That Lasts."],
         bodyLines: [
           "We work best with teams that value structure, clarity, and long-term thinking.",
@@ -1356,7 +1356,7 @@ export const caseStudies: CaseStudy[] = [
         ],
       },
       about: {
-        logoSrc: "/figma/case-study/about-logo.png",
+        logoSrc: "/figma/case-study/about-logo.webp",
         quote:
           '"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat._"',
         fields: [
@@ -1485,7 +1485,7 @@ export const caseStudies: CaseStudy[] = [
         },
       ],
       cta: {
-        backgroundImageSrc: "/figma/case-study/cta-bg-4ff61d.png",
+        backgroundImageSrc: "/figma/case-study/cta-bg-4ff61d.webp",
         headingLines: ["Let's Build Something", "That Lasts."],
         bodyLines: [
           "We work best with teams that value structure, clarity, and long-term thinking.",

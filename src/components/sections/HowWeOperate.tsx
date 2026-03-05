@@ -37,10 +37,14 @@ export default function HowWeOperate({ theme }: HowWeOperateProps) {
             "font-black tracking-[-0.03em] leading-none",
             "whitespace-nowrap",
             "mb-[clamp(24px,3vw,48px)]",
-            "[-webkit-mask-image:linear-gradient(to_bottom,black_40%,transparent_100%)]",
-            "mask-[linear-gradient(to_bottom,black_40%,transparent_100%)]",
           ].join(" ")}
           style={{
+            // Safari fix: use inline style instead of Tailwind arbitrary for mask-image
+            // Both prefixes required for older Safari
+            WebkitMaskImage:
+              "linear-gradient(to bottom, black 40%, transparent 100%)",
+            maskImage:
+              "linear-gradient(to bottom, black 40%, transparent 100%)",
             fontSize: "clamp(2.5rem, 15.3vw, 20rem)",
             fontFamily: "Stack Sans Text",
           }}
@@ -50,8 +54,7 @@ export default function HowWeOperate({ theme }: HowWeOperateProps) {
             style={{ backgroundImage: modernGradient }}
           >
             Modern
-          </span>
-          {" "}
+          </span>{" "}
           <span
             className="bg-clip-text text-transparent transition-all duration-500"
             style={{ backgroundImage: dadGradient }}
@@ -61,9 +64,7 @@ export default function HowWeOperate({ theme }: HowWeOperateProps) {
         </h2>
       </div>
 
-
       <div className="w-full max-w-7xl mx-auto px-6 text-center">
-
         <AnimatedSection delay={0.2}>
           <h3
             className={[
@@ -96,10 +97,10 @@ export default function HowWeOperate({ theme }: HowWeOperateProps) {
                   <Image
                     src={
                       i === 0
-                        ? "/home/moderndad1.png"
+                        ? "/home/moderndad1.webp"
                         : i === 1
-                          ? "/home/moderndad2.png"
-                          : "/home/moderndad3.png"
+                          ? "/home/moderndad2.webp"
+                          : "/home/moderndad3.webp"
                     }
                     alt={pillar.word}
                     fill
@@ -151,8 +152,7 @@ export default function HowWeOperate({ theme }: HowWeOperateProps) {
                   fontFamily: "Stack Sans Text",
                 }}
               >
-                Decide with data.{" "}
-                <span>Move with intelligence.</span>{" "}
+                Decide with data. <span>Move with intelligence.</span>{" "}
                 <strong>Build digitally.</strong>
               </p>
             </div>
@@ -161,9 +161,17 @@ export default function HowWeOperate({ theme }: HowWeOperateProps) {
 
         <AnimatedSection delay={0.6}>
           <div className="pt-12 md:pt-16 flex justify-center">
-            <Link href="/contact" className="group inline-flex items-center gap-2">
+            <Link
+              href="/contact"
+              className="group inline-flex items-center gap-2"
+            >
               <span className="text-[#E21F26] transition-transform duration-300 ease-out group-hover:-translate-x-1">
-                <Image src="/icons/enter.svg" alt="arrow" width={32} height={32} />
+                <Image
+                  src="/icons/enter.svg"
+                  alt="arrow"
+                  width={32}
+                  height={32}
+                />
               </span>
               <span
                 className={[
@@ -176,7 +184,6 @@ export default function HowWeOperate({ theme }: HowWeOperateProps) {
             </Link>
           </div>
         </AnimatedSection>
-
       </div>
     </section>
   );

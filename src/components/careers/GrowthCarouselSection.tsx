@@ -8,21 +8,26 @@ interface GrowthCarouselSectionProps {
 }
 
 const carouselImages = [
-  "/careers/c1.jpg",
-  "/careers/c2.jpg",
-  "/careers/c3.jpg",
-  "/careers/c4.png",
+  "/careers/c1.webp",
+  "/careers/c2.webp",
+  "/careers/c3.webp",
+  "/careers/c4.webp",
   "/careers/c5.webp",
-  "/careers/c6.png",
-  "/careers/c7.png",
-  "/careers/c8.png",
-  "/careers/c9.jpeg",
-  "/careers/c10.jpeg",
-  "/careers/c11.jpeg",
+  "/careers/c6.webp",
+  "/careers/c7.webp",
+  "/careers/c8.webp",
+  "/careers/c9.webp",
+  "/careers/c10.webp",
+  "/careers/c11.webp",
 ];
-const carouselItems = Array.from({ length: 10 }, (_, i) => carouselImages[i % carouselImages.length]);
+const carouselItems = Array.from(
+  { length: 10 },
+  (_, i) => carouselImages[i % carouselImages.length],
+);
 
-export default function GrowthCarouselSection({ theme }: GrowthCarouselSectionProps) {
+export default function GrowthCarouselSection({
+  theme,
+}: GrowthCarouselSectionProps) {
   const { theme: contextTheme } = useSectionTheme();
   const isDark = (theme ?? contextTheme) === "dark";
 
@@ -38,11 +43,24 @@ export default function GrowthCarouselSection({ theme }: GrowthCarouselSectionPr
           <div
             className="overflow-hidden"
             style={{
-              maskImage: "linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)",
-              WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)",
+              maskImage:
+                "linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)",
+              WebkitMaskImage:
+                "linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)",
             }}
           >
-            <div className="flex w-max gap-6 md:gap-8" style={{ animation: "marquee 40s linear infinite" }}>
+            <div
+              className="flex w-max gap-6 md:gap-8"
+              style={{
+                animation: "marquee 40s linear infinite",
+                // Safari GPU acceleration — prevents jitter and subpixel blurring
+                willChange: "transform",
+                WebkitTransform: "translateZ(0)",
+                transform: "translateZ(0)",
+                WebkitBackfaceVisibility: "hidden",
+                backfaceVisibility: "hidden",
+              }}
+            >
               {[...carouselItems, ...carouselItems].map((src, idx) => (
                 <div key={`${src}-${idx}`} className="shrink-0">
                   <Image

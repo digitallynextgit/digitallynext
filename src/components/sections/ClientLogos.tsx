@@ -11,23 +11,23 @@ interface ClientLogosProps {
 }
 
 const logosWhite = [
-  "/home/client1.png", "/home/client2.png", "/home/client3.png",
-  "/home/client4.png", "/home/client5.png", "/home/client6.png",
-  "/home/client7.png", "/home/client8.png", "/home/client9.png",
-  "/home/client10.png", "/home/client11.png", "/home/client12.png",
-  "/home/client32.png", "/home/client33.png", "/home/client34.png",
-  "/home/client35.png", "/home/client36.png", "/home/client37.png",
-  "/home/client38.png",
+  "/home/client1.webp", "/home/client2.webp", "/home/client3.webp",
+  "/home/client4.webp", "/home/client5.webp", "/home/client6.webp",
+  "/home/client7.webp", "/home/client8.webp", "/home/client9.webp",
+  "/home/client10.webp", "/home/client11.webp", "/home/client12.webp",
+  "/home/client32.webp", "/home/client33.webp", "/home/client34.webp",
+  "/home/client35.webp", "/home/client36.webp", "/home/client37.webp",
+  "/home/client38.webp",
 ];
 
 const logosBlack = [
-  "/home/client13.png", "/home/client14.png", "/home/client15.png",
-  "/home/client16.png", "/home/client17.png", "/home/client18.png",
-  "/home/client19.png", "/home/client20.png", "/home/client21.png",
-  "/home/client22.png", "/home/client23.png", "/home/client24.png",
-  "/home/client25.png", "/home/client26.png", "/home/client27.png",
-  "/home/client28.png", "/home/client29.png", "/home/client30.png",
-  "/home/client31.png",
+  "/home/client13.webp", "/home/client14.webp", "/home/client15.webp",
+  "/home/client16.webp", "/home/client17.webp", "/home/client18.webp",
+  "/home/client19.webp", "/home/client20.webp", "/home/client21.webp",
+  "/home/client22.webp", "/home/client23.webp", "/home/client24.webp",
+  "/home/client25.webp", "/home/client26.webp", "/home/client27.webp",
+  "/home/client28.webp", "/home/client29.webp", "/home/client30.webp",
+  "/home/client31.webp",
 ];
 
 // Divider — inline style instead of bg-linear-to-r (Tailwind v4 only)
