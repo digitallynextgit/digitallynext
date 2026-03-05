@@ -55,7 +55,15 @@ export default function CaseStudies({ theme }: CaseStudiesProps) {
       <div className="sticky top-0 z-1 flex items-center justify-center px-6 py-20 pointer-events-none max-md:min-h-0 max-md:py-10 max-md:px-5">
         <motion.div
           className="text-center"
-          style={{ scale: headingScale, opacity: headingOpacity, y: headingY }}
+          style={{
+            scale: headingScale,
+            opacity: headingOpacity,
+            y: headingY,
+            // Safari: GPU-accelerate scroll-linked transforms to prevent jank
+            willChange: "transform, opacity",
+            WebkitBackfaceVisibility: "hidden",
+            backfaceVisibility: "hidden",
+          }}
         >
           <h2
             className={[
@@ -79,16 +87,16 @@ export default function CaseStudies({ theme }: CaseStudiesProps) {
             const pillColor = pillColors[i] ?? cs.color;
             const CardWrapper = cs.href
               ? ({ children }: { children: React.ReactNode }) => (
-                <Link
-                  href={cs.href!}
-                  className="block no-underline text-inherit"
-                >
-                  {children}
-                </Link>
-              )
+                  <Link
+                    href={cs.href!}
+                    className="block no-underline text-inherit"
+                  >
+                    {children}
+                  </Link>
+                )
               : ({ children }: { children: React.ReactNode }) => (
-                <>{children}</>
-              );
+                  <>{children}</>
+                );
 
             return (
               <div

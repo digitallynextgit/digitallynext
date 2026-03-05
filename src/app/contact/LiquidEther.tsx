@@ -135,7 +135,15 @@ export default function LiquidEther({
         this.container = container;
         this.pixelRatio = Math.min(window.devicePixelRatio || 1, 2);
         this.resize();
-        this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+        this.renderer = new THREE.WebGLRenderer({
+          antialias: true,
+          alpha: true,
+          // iOS Safari: prefer default power mode, avoid high-performance GPU mode
+          // that can cause context loss on mobile devices
+          powerPreference: "default",
+          // Allow degraded rendering rather than failing completely on older iOS
+          failIfMajorPerformanceCaveat: false,
+        });
         this.renderer.autoClear = false;
         this.renderer.setClearColor(new THREE.Color(0x000000), 0);
         this.renderer.setPixelRatio(this.pixelRatio);
@@ -153,7 +161,8 @@ export default function LiquidEther({
         this.width = Math.max(1, Math.floor(rect.width));
         this.height = Math.max(1, Math.floor(rect.height));
         this.aspect = this.width / this.height;
-        if (this.renderer) this.renderer.setSize(this.width, this.height, false);
+        if (this.renderer)
+          this.renderer.setSize(this.width, this.height, false);
       }
       update() {
         if (!this.clock) return;
@@ -191,7 +200,8 @@ export default function LiquidEther({
         this.container = container;
         this.docTarget = container.ownerDocument || null;
         const defaultView =
-          this.docTarget?.defaultView || (typeof window !== "undefined" ? window : null);
+          this.docTarget?.defaultView ||
+          (typeof window !== "undefined" ? window : null);
         if (!defaultView) return;
         this.listenerTarget = defaultView;
         this.listenerTarget.addEventListener("mousemove", this._onMouseMove);
@@ -206,13 +216,25 @@ export default function LiquidEther({
       }
       dispose() {
         if (this.listenerTarget) {
-          this.listenerTarget.removeEventListener("mousemove", this._onMouseMove);
-          this.listenerTarget.removeEventListener("touchstart", this._onTouchStart);
-          this.listenerTarget.removeEventListener("touchmove", this._onTouchMove);
+          this.listenerTarget.removeEventListener(
+            "mousemove",
+            this._onMouseMove,
+          );
+          this.listenerTarget.removeEventListener(
+            "touchstart",
+            this._onTouchStart,
+          );
+          this.listenerTarget.removeEventListener(
+            "touchmove",
+            this._onTouchMove,
+          );
           this.listenerTarget.removeEventListener("touchend", this._onTouchEnd);
         }
         if (this.docTarget) {
-          this.docTarget.removeEventListener("mouseleave", this._onDocumentLeave);
+          this.docTarget.removeEventListener(
+            "mouseleave",
+            this._onDocumentLeave,
+          );
         }
         this.listenerTarget = null;
         this.docTarget = null;
@@ -634,7 +656,8 @@ export default function LiquidEther({
       createBoundary() {
         const boundaryG = new THREE.BufferGeometry();
         const vertices_boundary = new Float32Array([
-          -1, -1, 0, -1, 1, 0, -1, 1, 0, 1, 1, 0, 1, 1, 0, 1, -1, 0, 1, -1, 0, -1, -1, 0,
+          -1, -1, 0, -1, 1, 0, -1, 1, 0, 1, 1, 0, 1, 1, 0, 1, -1, 0, 1, -1, 0,
+          -1, -1, 0,
         ]);
         boundaryG.setAttribute(
           "position",
@@ -1129,7 +1152,10 @@ export default function LiquidEther({
         try {
           window.removeEventListener("resize", this._resize);
           if (this._onVisibility)
-            document.removeEventListener("visibilitychange", this._onVisibility);
+            document.removeEventListener(
+              "visibilitychange",
+              this._onVisibility,
+            );
           Mouse.dispose();
           if (Common.renderer) {
             const canvas = Common.renderer.domElement;
@@ -1147,15 +1173,29 @@ export default function LiquidEther({
     container.style.position = container.style.position || "relative";
     container.style.overflow = container.style.overflow || "hidden";
 
-    const webgl = new WebGLManager({
-      $wrapper: container,
-      autoDemo,
-      autoSpeed,
-      autoIntensity,
-      takeoverDuration,
-      autoResumeDelay,
-      autoRampDuration,
-    });
+    // iOS Safari: check WebGL support before attempting to create context
+    const canvas = document.createElement("canvas");
+    const testCtx = canvas.getContext("webgl2") || canvas.getContext("webgl");
+    if (!testCtx) {
+      // WebGL not available (very old iOS or restricted settings) — skip gracefully
+      return;
+    }
+
+    let webgl: LiquidEtherWebGL;
+    try {
+      webgl = new WebGLManager({
+        $wrapper: container,
+        autoDemo,
+        autoSpeed,
+        autoIntensity,
+        takeoverDuration,
+        autoResumeDelay,
+        autoRampDuration,
+      });
+    } catch {
+      // WebGL context creation failed on this device — degrade gracefully
+      return;
+    }
     webglRef.current = webgl;
 
     const applyOptionsFromProps = () => {
@@ -1178,7 +1218,7 @@ export default function LiquidEther({
       if (resolution !== prevRes) sim.resize();
     };
     applyOptionsFromProps();
-    webgl.start();
+    webglRef.current?.start();
 
     const io = new IntersectionObserver(
       (entries) => {
@@ -1307,4 +1347,3 @@ export default function LiquidEther({
     />
   );
 }
-

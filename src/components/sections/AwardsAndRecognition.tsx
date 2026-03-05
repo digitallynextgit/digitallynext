@@ -28,10 +28,8 @@ export default function AwardsAndRecognition({
       className="py-8 sm:py-10 md:py-16 lg:py-20 overflow-hidden"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
         {/* Outer column — gap scales per breakpoint */}
         <div className="flex flex-col items-center gap-8 sm:gap-10 md:gap-14 lg:gap-18">
-
           {/* Header */}
           <motion.h2
             className={[
@@ -103,7 +101,6 @@ export default function AwardsAndRecognition({
               </motion.div>
             ))}
           </motion.div>
-
         </div>
       </div>
     </section>

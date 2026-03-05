@@ -20,7 +20,8 @@ export default function HeroSection({ theme }: HeroSectionProps) {
   useEffect(() => {
     if (!backgroundRef.current) return;
 
-    const elements = backgroundRef.current.querySelectorAll(".floating-element");
+    const elements =
+      backgroundRef.current.querySelectorAll(".floating-element");
 
     elements.forEach((el) => {
       const randomDelay = Math.random() * 2;
@@ -33,6 +34,8 @@ export default function HeroSection({ theme }: HeroSectionProps) {
         yoyo: true,
         ease: "power1.inOut",
         delay: randomDelay,
+        // Safari GPU acceleration
+        force3D: true,
       });
     });
 
@@ -65,7 +68,6 @@ export default function HeroSection({ theme }: HeroSectionProps) {
       </div>
 
       <div className="mt-6 md:mt-12 lg:mt-20">
-
         {/* 1. ImageTrail */}
         <div className="absolute inset-0 z-1">
           <div className="h-full w-full relative overflow-hidden">
@@ -135,7 +137,10 @@ export default function HeroSection({ theme }: HeroSectionProps) {
 
           {/* Sub-content block */}
           <div className="flex flex-col items-center" style={{ gap: 24 }}>
-            <div className="flex flex-col items-center text-center" style={{ gap: 24 }}>
+            <div
+              className="flex flex-col items-center text-center"
+              style={{ gap: 24 }}
+            >
               <div
                 className={[
                   "font-light text-[18px] leading-7.75 transition-colors duration-700",

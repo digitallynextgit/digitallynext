@@ -69,7 +69,9 @@ export default function ProudlyWorkingWith({ theme }: ProudlyWorkingWithProps) {
   );
 
   return (
-    <section className={`pt-10 md:pt-16 lg:pt-20 overflow-hidden ${isDark ? 'bg-black' : 'bg-[#F5F5F5]'}`}>
+    <section
+      className={`pt-10 md:pt-16 lg:pt-20 overflow-hidden ${isDark ? "bg-black" : "bg-[#F5F5F5]"}`}
+    >
       {/* Heading + Marquee inside constrained container */}
       <div className="w-[92%] sm:w-[90%] lg:w-auto max-w-6xl mx-auto">
         {/* Heading */}
@@ -115,7 +117,15 @@ export default function ProudlyWorkingWith({ theme }: ProudlyWorkingWithProps) {
           <div
             ref={marqueeRef}
             className="flex w-max py-6 md:py-8"
-            style={{ animation: "marquee 55s linear infinite" }}
+            style={{
+              animation: "marquee 55s linear infinite",
+              // Safari GPU acceleration
+              willChange: "transform",
+              WebkitTransform: "translateZ(0)",
+              transform: "translateZ(0)",
+              WebkitBackfaceVisibility: "hidden",
+              backfaceVisibility: "hidden",
+            }}
           >
             {[...locations, ...locations, ...locations, ...locations].map(
               (place, i) => (
@@ -138,15 +148,17 @@ export default function ProudlyWorkingWith({ theme }: ProudlyWorkingWithProps) {
                   <Image
                     src={`/flags/${place.flag}.png`}
                     alt={place.name}
-                    width={36}       
-                    height={26}      
+                    width={36}
+                    height={26}
                     className="rounded-[3px] object-cover shrink-0"
-                    style={{ width: "clamp(26px, 2.5vw, 36px)", height: "auto" }}
+                    style={{
+                      width: "clamp(26px, 2.5vw, 36px)",
+                      height: "auto",
+                    }}
                   />
                   {place.name}
                   <span className="text-[#E53935] opacity-40">·</span>
                 </span>
-
               ),
             )}
           </div>
@@ -172,7 +184,6 @@ export default function ProudlyWorkingWith({ theme }: ProudlyWorkingWithProps) {
           />
         </div>
       </div>
-
     </section>
   );
 }
