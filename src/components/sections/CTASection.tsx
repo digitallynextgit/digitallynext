@@ -35,7 +35,7 @@ export default function CTASection({ theme }: CTASectionProps) {
       {/* Overlay */}
       <div className="absolute inset-0 z-10 pointer-events-none">
         <Image
-          src="/CTA/overlay.png"
+          src="/CTA/overlay.webp"
           alt=""
           fill
           priority

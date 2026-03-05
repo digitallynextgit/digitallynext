@@ -146,7 +146,7 @@ export default function ProudlyWorkingWith({ theme }: ProudlyWorkingWithProps) {
                   ].join(" ")}
                 >
                   <Image
-                    src={`/flags/${place.flag}.png`}
+                    src={`/flags/${place.flag}.webp`}
                     alt={place.name}
                     width={36}
                     height={26}

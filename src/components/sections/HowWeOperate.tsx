@@ -97,10 +97,10 @@ export default function HowWeOperate({ theme }: HowWeOperateProps) {
                   <Image
                     src={
                       i === 0
-                        ? "/home/moderndad1.png"
+                        ? "/home/moderndad1.webp"
                         : i === 1
-                          ? "/home/moderndad2.png"
-                          : "/home/moderndad3.png"
+                          ? "/home/moderndad2.webp"
+                          : "/home/moderndad3.webp"
                     }
                     alt={pillar.word}
                     fill

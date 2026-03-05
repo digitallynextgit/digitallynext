@@ -13,7 +13,7 @@ const frameworks = [
     cta: "Explore Framework",
     icon: (
       <Image
-        src="/home/sm1.png"
+        src="/home/sm1.webp"
         alt="C-Suite Icon"
         width={112}
         height={112}
@@ -27,7 +27,7 @@ const frameworks = [
     cta: "Explore Framework",
     icon: (
       <Image
-        src="/home/sm2.png"
+        src="/home/sm2.webp"
         alt="KASA Icon"
         width={112}
         height={112}
@@ -41,7 +41,7 @@ const frameworks = [
     cta: "Explore Framework",
     icon: (
       <Image
-        src="/home/sm3.png"
+        src="/home/sm3.webp"
         alt="Profit Icon"
         width={112}
         height={112}
@@ -55,7 +55,7 @@ const frameworks = [
     cta: "Explore Model",
     icon: (
       <Image
-        src="/home/sm4.png"
+        src="/home/sm4.webp"
         alt="Communication Icon"
         width={112}
         height={112}
@@ -69,7 +69,7 @@ const frameworks = [
     cta: "Explore Models",
     icon: (
       <Image
-        src="/home/sm5.png"
+        src="/home/sm5.webp"
         alt="Delivery Models Icon"
         width={112}
         height={112}

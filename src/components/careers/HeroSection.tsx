@@ -74,17 +74,17 @@ export default function HeroSection({ theme }: HeroSectionProps) {
             <ImageTrail
               key="careers-hero-trail"
               items={[
-                "/careers/c1.jpg",
-                "/careers/c2.jpg",
-                "/careers/c3.jpg",
-                "/careers/c4.png",
+                "/careers/c1.webp",
+                "/careers/c2.webp",
+                "/careers/c3.webp",
+                "/careers/c4.webp",
                 "/careers/c5.webp",
-                "/careers/c6.png",
-                "/careers/c7.png",
-                "/careers/c8.png",
-                "/careers/c9.jpeg",
-                "/careers/c10.jpeg",
-                "/careers/c11.jpeg",
+                "/careers/c6.webp",
+                "/careers/c7.webp",
+                "/careers/c8.webp",
+                "/careers/c9.webp",
+                "/careers/c10.webp",
+                "/careers/c11.webp",
               ]}
               variant={2}
             />

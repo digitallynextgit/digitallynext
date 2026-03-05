@@ -6,9 +6,9 @@ import Image from "next/image";
 import { useSectionTheme } from "@/context/SectionThemeContext";
 
 const awards = [
-  { src: "/awards/a1.png", alt: "Award 1", width: 342, height: 69 },
-  { src: "/awards/a2.png", alt: "Award 2", width: 313, height: 101 },
-  { src: "/awards/a3.png", alt: "Award 3", width: 134, height: 101 },
+  { src: "/awards/a1.webp", alt: "Award 1", width: 342, height: 69 },
+  { src: "/awards/a2.webp", alt: "Award 2", width: 313, height: 101 },
+  { src: "/awards/a3.webp", alt: "Award 3", width: 134, height: 101 },
 ];
 
 interface AwardsAndRecognitionProps {

@@ -130,7 +130,7 @@ export const services: ServiceDetail[] = [
     id: "sbgi",
     slug: "brand-strategy",
     title: "Strategy, Brand & Growth Intelligence.",
-    media: "/home/service1.png",
+    media: "/home/service1.webp",
     sliderText:
       "D2C market entry & growth strategy · Brand & digital strategy · Positioning & GTM · Market & audience intelligence · Founder & niche authority strategy · Community & ecosystem strategy",
     metaTitle: "Strategy, Brand & Growth Intelligence | Digitally Next",
@@ -262,37 +262,37 @@ export const services: ServiceDetail[] = [
             title: "D2C Market Entry & Growth Strategy",
             description:
               "End-to-end go-to-market and growth frameworks, spanning validation, positioning, acquisition, retention, and scalable performance.",
-            imageSrc: "/services/ss1.png",
+            imageSrc: "/services/ss1.webp",
           },
           {
             title: "Brand & Digital Strategy",
             description:
               "Business-aligned brand and digital architecture \u2014 ensuring narrative, platforms, and performance drive measurable outcomes.",
-            imageSrc: "/services/ss2.png",
+            imageSrc: "/services/ss2.webp",
           },
           {
             title: "Positioning & GTM Frameworks",
             description:
               "Category definition, value proposition clarity, and structured go-to-market systems \u2014 across both D2C and B2B models.",
-            imageSrc: "/services/ss3.png",
+            imageSrc: "/services/ss3.webp",
           },
           {
             title: "Market & Audience Intelligence",
             description:
               "Human insight layered with AI-assisted analysis \u2014 informing segmentation, demand mapping, and strategic decision-making.",
-            imageSrc: "/services/ss4.png",
+            imageSrc: "/services/ss4.webp",
           },
           {
             title: "Founder & Niche Authority Strategy",
             description:
               "Leadership positioning, thought capital development, and narrative systems \u2014 building durable authority within defined categories.",
-            imageSrc: "/services/ss5.png",
+            imageSrc: "/services/ss5.webp",
           },
           {
             title: "Community & Ecosystem Strategy",
             description:
               "Structured community design and partnership ecosystems, strengthening retention, advocacy, and long-term brand equity.",
-            imageSrc: "/services/ss6.png",
+            imageSrc: "/services/ss6.webp",
           },
         ],
         footerText:
@@ -329,7 +329,7 @@ export const services: ServiceDetail[] = [
     id: "ccmc",
     slug: "ui-ux-design",
     title: "Content, Culture & Media Creation.",
-    media: "/home/service2.png",
+    media: "/home/service2.webp",
     sliderText:
       "Content strategy · Video & visual production · Podcast production · UGC programs · Social content systems · Creative asset libraries",
     metaTitle: "Content, Culture & Media Creation | Digitally Next",
@@ -438,32 +438,32 @@ export const services: ServiceDetail[] = [
             title: "SEO, AEO & GEO",
             description:
               "Search engine optimisation, answer engine optimisation, and generative engine optimisation, unified discoverability.",
-            imageSrc: "/services/ss7.png",
+            imageSrc: "/services/ss7.webp",
           },
           {
             title: "Video & visual production",
             description: "(short-form, long-form, campaign-led)",
-            imageSrc: "/services/ss8.png",
+            imageSrc: "/services/ss8.webp",
           },
           {
             title: "Podcast production",
             description: "(end-to-end) \u2013 from concept to distribution",
-            imageSrc: "/services/ss9.png",
+            imageSrc: "/services/ss9.webp",
           },
           {
             title: "UGC programs",
             description: "designed for scale and performance",
-            imageSrc: "/services/ss10.png",
+            imageSrc: "/services/ss10.webp",
           },
           {
             title: "Social content systems",
             description: "across platforms",
-            imageSrc: "/services/ss11.png",
+            imageSrc: "/services/ss11.webp",
           },
           {
             title: "Creative asset libraries",
             description: "built for reuse and consistency",
-            imageSrc: "/services/ss12.png",
+            imageSrc: "/services/ss12.webp",
           },
         ],
       },
@@ -498,7 +498,7 @@ export const services: ServiceDetail[] = [
     id: "pdd",
     slug: "seo-optimization",
     title: "Performance, Distribution & Demand.",
-    media: "/home/service3.png",
+    media: "/home/service3.webp",
     sliderText:
       "Brand & digital strategy · Positioning & GTM · Personal & founder branding · Community strategy · Podcast strategy & narrative design · Market & audience research",
     metaTitle: "Performance, Distribution & Demand | Digitally Next",
@@ -606,31 +606,31 @@ export const services: ServiceDetail[] = [
             title: "SEO, AEO & GEO",
             description:
               "Search engine optimisation, answer engine optimisation, and generative engine optimisation, unified discoverability.",
-            imageSrc: "/services/ss7.png",
+            imageSrc: "/services/ss7.webp",
           },
           {
             title: "Paid Media",
             description:
               "Performance media buying across search, social, and programmatic, governed by attribution and ROI frameworks.",
-            imageSrc: "/services/ss13.png",
+            imageSrc: "/services/ss13.webp",
           },
           {
             title: "UGC",
             description:
               "User-generated content strategy and production, creator-led assets built for conversion and brand alignment.",
-            imageSrc: "/services/ss10.png",
+            imageSrc: "/services/ss10.webp",
           },
           {
             title: "Digital PR",
             description:
               "Earned media, authority placements, and strategic narrative distribution, building trust at scale.",
-            imageSrc: "/services/ss14.png",
+            imageSrc: "/services/ss14.webp",
           },
           {
             title: "ORM",
             description:
               "Online reputation management, monitoring, response frameworks, and brand perception governance.",
-            imageSrc: "/services/ss15.png",
+            imageSrc: "/services/ss15.webp",
           },
         ],
       },
@@ -665,7 +665,7 @@ export const services: ServiceDetail[] = [
     id: "pwde",
     slug: "web-development",
     title: "Platforms, Web & Digital Experience.",
-    media: "/home/service4.png",
+    media: "/home/service4.webp",
     sliderText:
       "Websites & landing experiences · UX & conversion design · Web applications · CMS & headless architecture · Analytics & CRO · E-commerce & D2C platforms",
     metaTitle: "Platforms, Web & Digital Experience | Digitally Next",
@@ -783,31 +783,31 @@ export const services: ServiceDetail[] = [
             title: "Websites & Landing Experiences",
             description:
               "Brand-led, performance-focused web experiences, spanning corporate sites, high-conversion landing pages, and D2C ecosystems.",
-            imageSrc: "/services/ss16.png",
+            imageSrc: "/services/ss16.webp",
           },
           {
             title: "UX & Conversion Design",
             description:
               "Behaviour- and intent-driven user experience design, structured to reduce friction and maximise measurable conversion.",
-            imageSrc: "/services/ss17.png",
+            imageSrc: "/services/ss17.webp",
           },
           {
             title: "Analytics & Tracking",
             description:
               "GA4 architecture, event tracking, funnel mapping, and custom dashboards, ensuring decision-making is governed by clean data.",
-            imageSrc: "/services/ss18.png",
+            imageSrc: "/services/ss18.webp",
           },
           {
             title: "CRM & Platform Integrations",
             description:
               "HubSpot and marketing stack integrations, connecting websites, automation systems, and CRM workflows seamlessly.",
-            imageSrc: "/services/ss19.png",
+            imageSrc: "/services/ss19.webp",
           },
           {
             title: "Performance Optimisation",
             description:
               "Speed, stability, and scalable infrastructure, engineered for long-term performance, not short-term patches.",
-            imageSrc: "/services/ss20.png",
+            imageSrc: "/services/ss20.webp",
           },
         ],
       },
@@ -842,7 +842,7 @@ export const services: ServiceDetail[] = [
     id: "adac",
     slug: "ai-enablement",
     title: "AI Enablement & Decision Systems (ADAC-Powered).",
-    media: "/home/service5.png",
+    media: "/home/service5.webp",
     sliderText:
       "AI governance & decision frameworks · Branding AI enablement · Content AI acceleration · Performance AI optimization · Web & platform AI intelligence · ADAC-powered operations",
     metaTitle: "AI Enablement & Decision Systems (ADAC-Powered) | Digitally Next",
@@ -951,25 +951,25 @@ export const services: ServiceDetail[] = [
             title: "Branding",
             description:
               "Research support, insight mining, and positioning inputs \u2014 strengthening strategic foundations with AI-assisted intelligence.",
-            imageSrc: "/services/ss21.png",
+            imageSrc: "/services/ss21.webp",
           },
           {
             title: "Content",
             description:
               "Ideation acceleration, drafting support, variation generation, and structured testing \u2014 enhancing creative throughput without diluting narrative quality.",
-            imageSrc: "/services/ss22.png",
+            imageSrc: "/services/ss22.webp",
           },
           {
             title: "Performance",
             description:
               "Data analysis, signal detection, and optimisation support \u2014 augmenting human decision-making with pattern recognition and predictive insight.",
-            imageSrc: "/services/ss23.png",
+            imageSrc: "/services/ss23.webp",
           },
           {
             title: "Web & Platforms",
             description:
               "Quality assurance, technical optimisation, and performance intelligence \u2014 improving stability, speed, and measurable digital outcomes.",
-            imageSrc: "/services/ss24.png",
+            imageSrc: "/services/ss24.webp",
           },
         ],
       },

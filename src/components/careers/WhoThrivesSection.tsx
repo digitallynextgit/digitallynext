@@ -13,7 +13,7 @@ const traits = [
     before: "Like ",
     bold: "structure",
     after: ", but hate rigidity",
-    image: "/figma/careers/careers-thrives-bg-48937d.png",
+    image: "/figma/careers/careers-thrives-bg-48937d.webp",
   },
   {
     before: 'Ask "',
@@ -35,7 +35,7 @@ const traits = [
   },
 ];
 
-const DEFAULT_BG = "/figma/careers/careers-thrives-bg-48937d.png";
+const DEFAULT_BG = "/figma/careers/careers-thrives-bg-48937d.webp";
 
 export default function WhoThrivesSection({ theme }: WhoThrivesSectionProps) {
   const { theme: contextTheme } = useSectionTheme();
