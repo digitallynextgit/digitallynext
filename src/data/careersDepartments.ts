@@ -83,7 +83,7 @@ export const CAREERS_INTERNSHIP_DEPARTMENTS: CareersDepartment[] = [
 export const CAREERS_DEPARTMENTS: CareersDepartment[] = [
   {
     id: "strategic-relations–lead",
-    title: "Strategic Relations",
+    title: "Strategic Management Group",
     jobsLabel: "Explore Open Roles",
     tone: "teal",
     roles: [
@@ -195,7 +195,7 @@ export const CAREERS_DEPARTMENTS: CareersDepartment[] = [
       },
       {
         id: "video-editor",
-        title: "VIDEO EDITOR",
+        title: "Video Editor",
         description: {
           intro:
             "Every video you edit should be a movie, a story, a legendary portfolio having a capability to move mountains, arouse emotions among the audience. We are looking for someone who can create memories, and give the audience a reason to share it among their circle!",
@@ -218,7 +218,7 @@ export const CAREERS_DEPARTMENTS: CareersDepartment[] = [
       },
       {
         id: "content-storyteller",
-        title: "CONTENT STORYTELLER",
+        title: "Content Storyteller",
         description: {
           intro:
             "It's Only Words ..and the words are all I have ..to take your heart away… Or Country Roads take me home …. Or Har rang kuchh kehta hai… We are looking for those who can feel the soul of seasons, the flora and fauna, the mountains, and the river…similarly if they feel the soul, the character of a brand to communicate and build the connect with its audience!",
@@ -240,7 +240,7 @@ export const CAREERS_DEPARTMENTS: CareersDepartment[] = [
       },
       {
         id: "creative-head",
-        title: "CREATIVE HEAD",
+        title: "Creative Head",
         description: {
           intro:
             "Creativity scales only when it’s managed well. This role is for someone who can lead, align, and elevate video, design, content, and social media teams to deliver consistent, high-impact brand communication across platforms.",
