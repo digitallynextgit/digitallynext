@@ -31,7 +31,7 @@ export const CAREERS_INTERNSHIP_DEPARTMENTS: CareersDepartment[] = [
   {
     id: "internships",
     title: "Internships",
-    jobsLabel: "5 Positions",
+    jobsLabel: "Explore Open Positions",
     tone: "teal",
     roles: [
       {
@@ -82,9 +82,36 @@ export const CAREERS_INTERNSHIP_DEPARTMENTS: CareersDepartment[] = [
 
 export const CAREERS_DEPARTMENTS: CareersDepartment[] = [
   {
+    id: "strategic-relations–lead",
+    title: "Strategic Relations",
+    jobsLabel: "Explore Open Roles",
+    tone: "teal",
+    roles: [
+      {
+        id: "strategic-relations–lead",
+        title: "Strategic Relations – Lead",
+        description: {
+          intro:
+            "Growth today is global. Influence is built through relationships. We’re looking for a Strategic Relations – Lead who can open international corridors, build powerful alliances, and drive expansion across the US and Middle East markets. This isn’t business development. This is strategic expansion through trust, positioning, and high-value partnerships.",
+          jobEssence:
+            "Lead international growth by identifying and securing high-value clients and strategic partners across overseas markets. Build long-term alliances, own cross-border conversations, and position the organization as a trusted global partner. Drive revenue through relationship architecture, market intelligence, and structured expansion strategy.",
+          keyRequirements: [
+            "3–5 years of experience in international growth, partnerships, consulting, or strategic roles",
+            "Strong exposure to Indian, US and Middle East markets",
+            "Proven ability to build and close high-value international relationships",
+            "Strong negotiation, communication, and stakeholder management skills",
+            "Strategic mindset with clear revenue-growth orientation",
+            "Cultural intelligence and ability to operate across time zones",
+            "Understanding of digital/agency/consulting ecosystems preferred",
+          ],
+        },
+      },
+    ],
+  },
+  {
     id: "account-management",
     title: "Account Management Group",
-    jobsLabel: "1 Role",
+    jobsLabel: "Explore Open Roles",
     tone: "teal",
     roles: [
       {
@@ -113,7 +140,7 @@ export const CAREERS_DEPARTMENTS: CareersDepartment[] = [
   {
     id: "project-management",
     title: "Project Management Group",
-    jobsLabel: "1 Role",
+    jobsLabel: "Explore Open Roles",
     tone: "red",
     roles: [
       {
@@ -141,7 +168,7 @@ export const CAREERS_DEPARTMENTS: CareersDepartment[] = [
   {
     id: "creative-studio",
     title: "Creative Studio",
-    jobsLabel: "1 Role",
+    jobsLabel: "Explore Open Roles",
     tone: "teal",
     roles: [
       {
@@ -166,12 +193,76 @@ export const CAREERS_DEPARTMENTS: CareersDepartment[] = [
           ],
         },
       },
+      {
+        id: "video-editor",
+        title: "VIDEO EDITOR",
+        description: {
+          intro:
+            "Every video you edit should be a movie, a story, a legendary portfolio having a capability to move mountains, arouse emotions among the audience. We are looking for someone who can create memories, and give the audience a reason to share it among their circle!",
+          jobEssence:
+            "Having a sound understanding of - Podcasts | Reels | Video shoot with multiple camera set-ups | YouTube | OTTs | Motion Graphics | Explanatory | Streaming/News Centric.",
+          keyRequirements: [
+            "Adobe After Effects",
+            "Adobe Premiere Pro",
+            "Any related video editing software",
+            "Cinematography and Storytelling video editing",
+            "Familiarity with AI enabled outputs",
+          ],
+          currentOpenings: [
+            "Junior video editor (1-2 Years Exp)",
+            "Senior video editor",
+            "Video Producer",
+            "Video Production Lead",
+          ],
+        },
+      },
+      {
+        id: "content-storyteller",
+        title: "CONTENT STORYTELLER",
+        description: {
+          intro:
+            "It's Only Words ..and the words are all I have ..to take your heart away… Or Country Roads take me home …. Or Har rang kuchh kehta hai… We are looking for those who can feel the soul of seasons, the flora and fauna, the mountains, and the river…similarly if they feel the soul, the character of a brand to communicate and build the connect with its audience!",
+          jobEssence:
+            "Having a sound understanding of storytelling in terms of creative writing on digital and social mediums, PR outreach, business and commercial aspects. Ideal to be adept in both short and long form writing.",
+          keyRequirements: [
+            "Creative Writing for Social Media & Digital Platforms",
+            "Commercial Writing",
+            "SEO to AEO to GEO driven content journeys",
+            "Performance based Campaign storytelling",
+            "Media and brand outreach communication",
+          ],
+          currentOpenings: [
+            "Junior content writer (1-2 Years Exp)",
+            "Senior content creator",
+            "Content Lead",
+          ],
+        },
+      },
+      {
+        id: "creative-head",
+        title: "CREATIVE HEAD",
+        description: {
+          intro:
+            "Creativity scales only when it’s managed well. This role is for someone who can lead, align, and elevate video, design, content, and social media teams to deliver consistent, high-impact brand communication across platforms.",
+          jobEssence:
+            "The role focuses on managing end-to-end creative execution across video, graphic design, content, and social media. It involves team coordination, quality control, campaign alignment, and ensuring timely, platform-optimized delivery while maintaining brand consistency and performance.",
+          keyRequirements: [
+            "Creative Team Management (Video, Graphic, Content & Social)",
+            "Content & Campaign Planning",
+            "Social Media Strategy & Execution Oversight",
+            "Quality Control & Brand Consistency",
+            "Must have Agency Experience",
+            "Familiarity with AI enabled tools",
+          ],
+          currentOpenings: ["Create Manager (4-5+ Years Exp)"],
+        },
+      },
     ],
   },
   {
     id: "performance",
     title: "Performance (Organic and Paid)",
-    jobsLabel: "2 Roles",
+    jobsLabel: "Explore Open Roless",
     tone: "red",
     roles: [
       {
@@ -223,7 +314,7 @@ export const CAREERS_DEPARTMENTS: CareersDepartment[] = [
   {
     id: "web-essentials",
     title: "Web Essentials",
-    jobsLabel: "1 Role",
+    jobsLabel: "Explore Open Roles",
     tone: "red",
     roles: [
       {
@@ -257,7 +348,7 @@ export const CAREERS_DEPARTMENTS: CareersDepartment[] = [
   {
     id: "adac",
     title: "AI Decision and Acceleration Centre (ADAC)",
-    jobsLabel: "4 Roles",
+    jobsLabel: "Explore Open Roless",
     tone: "teal",
     roles: [
       {
@@ -341,7 +432,7 @@ export const CAREERS_DEPARTMENTS: CareersDepartment[] = [
   {
     id: "human-resources",
     title: "Human Resources",
-    jobsLabel: "1 Role",
+    jobsLabel: "Explore Open Roles",
     tone: "red",
     roles: [
       {
@@ -370,12 +461,13 @@ export const CAREERS_DEPARTMENTS: CareersDepartment[] = [
   {
     id: "media",
     title: "Media - Social and Digital Presence",
-    jobsLabel: "3 Roles",
+    jobsLabel: "Explore Open Roless",
     tone: "teal",
     roles: [
       {
         id: "smo-specialist",
-        title: "Social Media Optimization Specialist - LinkedIN | Meta | X | YouTube",
+        title:
+          "Social Media Optimization Specialist - LinkedIN | Meta | X | YouTube",
         description: {
           intro:
             "Visibility is power in today’s digital-first world. Social media isn’t just about posting content — it’s about shaping perception, driving engagement, and building brand authority. If you understand how to engineer reach, relevance, and impact across platforms, we’d love to have you on board.",
