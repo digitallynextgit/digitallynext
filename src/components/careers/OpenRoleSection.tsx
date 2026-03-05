@@ -125,7 +125,7 @@ export default function OpenRolesSection({ theme }: OpenRolesSectionProps) {
                     : "bg-white border border-[#E5E5E5]",
                   index === 1 ? "border-t-0 md:border-t md:border-l-0" : "",
                 ].join(" ")}
-              >
+              > 
                 <div
                   className={[
                     "text-[26px] sm:text-[32px] font-normal leading-tight transition-colors duration-700",
