@@ -31,7 +31,7 @@ export default function Home() {
         >
           {/* Mobile */}
           <Image
-            src="/banner/ipl-desktop.webp"
+            src="/banner/ipl-mobile.webp"
             alt="IPL Banner"
             width={768}
             height={240}
