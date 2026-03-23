@@ -1,6 +1,6 @@
 "use client";
 
-import { X, ChevronLeft, Upload, CheckCircle2, FileText, Loader2 } from "lucide-react";
+import { X, ChevronLeft, CheckCircle2, Loader2 } from "lucide-react";
 import { useCallback, useEffect, useId, useRef, useState } from "react";
 import toast from "react-hot-toast";
 import type {
@@ -68,7 +68,7 @@ interface FormFields {
   linkedIn: string;
   portfolio: string;
   message: string;
-  resume: File | null;
+  resumeUrl: string;
 }
 
 type FormErrors = Partial<Record<keyof FormFields, string>>;
@@ -81,8 +81,17 @@ function makeEmptyForm(): FormFields {
     linkedIn: "",
     portfolio: "",
     message: "",
-    resume: null,
+    resumeUrl: "",
   };
+}
+
+function isValidUrl(value: string) {
+  try {
+    new URL(value);
+    return true;
+  } catch {
+    return false;
+  }
 }
 
 function validateForm(f: FormFields): FormErrors {
@@ -96,7 +105,11 @@ function validateForm(f: FormFields): FormErrors {
   if (!f.phone.trim()) errors.phone = "Phone number is required.";
   if (!f.linkedIn.trim()) errors.linkedIn = "LinkedIn profile URL is required.";
   if (!f.portfolio.trim()) errors.portfolio = "Portfolio / work link is required.";
-  if (!f.resume) errors.resume = "Resume is required.";
+  if (!f.resumeUrl.trim()) {
+    errors.resumeUrl = "Resume URL is required.";
+  } else if (!isValidUrl(f.resumeUrl.trim())) {
+    errors.resumeUrl = "Enter a valid resume URL.";
+  }
   return errors;
 }
 
@@ -157,13 +170,13 @@ export default function DepartmentSelectionModal({
   const scrollRef = useRef<HTMLDivElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
   const lastActiveRef = useRef<HTMLElement | null>(null);
-  const fileInputRef = useRef<HTMLInputElement>(null);
+  // const fileInputRef = useRef<HTMLInputElement>(null);
 
   const [form, setForm] = useState<FormFields>(makeEmptyForm());
   const [errors, setErrors] = useState<FormErrors>({});
   const [submitStatus, setSubmitStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [submitError, setSubmitError] = useState<string | null>(null);
-  const [dragOver, setDragOver] = useState(false);
+  // const [dragOver, setDragOver] = useState(false);
 
   // ── Scroll to top whenever step changes ─────────────────────────────────────
   useEffect(() => {
@@ -264,20 +277,19 @@ export default function DepartmentSelectionModal({
     return "Back to Role";
   };
 
-  // ── Resume handler ───────────────────────────────────────────────────────────
-  const handleResumeFile = (file: File) => {
-    const allowed = ["application/pdf", "application/msword", "application/vnd.openxmlformats-officedocument.wordprocessingml.document"];
-    if (!allowed.includes(file.type)) {
-      setErrors((prev) => ({ ...prev, resume: "Only PDF, DOC, or DOCX files are accepted." }));
-      return;
-    }
-    if (file.size > 5 * 1024 * 1024) {
-      setErrors((prev) => ({ ...prev, resume: "File size must be under 5 MB." }));
-      return;
-    }
-    setForm((prev) => ({ ...prev, resume: file }));
-    setErrors((prev) => ({ ...prev, resume: undefined }));
-  };
+  // const handleResumeFile = (file: File) => {
+  //   const allowed = ["application/pdf", "application/msword", "application/vnd.openxmlformats-officedocument.wordprocessingml.document"];
+  //   if (!allowed.includes(file.type)) {
+  //     setErrors((prev) => ({ ...prev, resume: "Only PDF, DOC, or DOCX files are accepted." }));
+  //     return;
+  //   }
+  //   if (file.size > 5 * 1024 * 1024) {
+  //     setErrors((prev) => ({ ...prev, resume: "File size must be under 5 MB." }));
+  //     return;
+  //   }
+  //   setForm((prev) => ({ ...prev, resume: file }));
+  //   setErrors((prev) => ({ ...prev, resume: undefined }));
+  // };
 
   // ── Submit ───────────────────────────────────────────────────────────────────
   const handleSubmit = async () => {
@@ -297,11 +309,12 @@ export default function DepartmentSelectionModal({
       data.append("phone", form.phone.trim());
       data.append("linkedIn", form.linkedIn.trim());
       data.append("portfolio", form.portfolio.trim());
+      data.append("resumeUrl", form.resumeUrl.trim());
       data.append("message", form.message.trim());
       data.append("track", mode === "internship" ? "Internship" : "Full-time");
       data.append("department", selectedDepartment?.title ?? "");
       data.append("role", selectedRole?.title ?? "");
-      if (form.resume) data.append("resume", form.resume);
+      // if (form.resume) data.append("resume", form.resume);
 
       const res = await fetch("/api/careers", { method: "POST", body: data });
       const json = (await res.json().catch(() => ({}))) as { error?: string };
@@ -313,8 +326,8 @@ export default function DepartmentSelectionModal({
       setErrors({});
       setSubmitStatus("idle");
       setSubmitError(null);
-      setDragOver(false);
-      if (fileInputRef.current) fileInputRef.current.value = "";
+      // setDragOver(false);
+      // if (fileInputRef.current) fileInputRef.current.value = "";
       handleClose();
     } catch (err) {
       setSubmitStatus("error");
@@ -616,7 +629,19 @@ export default function DepartmentSelectionModal({
                   />
                 </Field>
 
-                <div className="flex flex-col gap-1.5 md:col-span-2">
+                <Field label="Resume URL" required error={errors.resumeUrl} fullWidth>
+                  <input
+                    type="url"
+                    value={form.resumeUrl}
+                    onChange={(e) => setForm((p) => ({ ...p, resumeUrl: e.target.value }))}
+                    className={inputCls(!!errors.resumeUrl)}
+                    placeholder="https://drive.google.com/..."
+                    inputMode="url"
+                    disabled={submitStatus === "submitting" || submitStatus === "success"}
+                  />
+                </Field>
+
+                {/* <div className="flex flex-col gap-1.5 md:col-span-2">
                   <span className="text-sm font-semibold text-black">
                     Resume<span className="ml-0.5 text-[#E21F26]">*</span>
                   </span>
@@ -670,7 +695,7 @@ export default function DepartmentSelectionModal({
                     }}
                   />
                   {errors.resume && <span className="text-xs text-[#E21F26]">{errors.resume}</span>}
-                </div>
+                </div> */}
 
                 <Field label="Message (optional)" error={errors.message} fullWidth>
                   <textarea
