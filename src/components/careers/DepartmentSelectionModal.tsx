@@ -1,21 +1,18 @@
 'use client';
 
-import { ChevronLeft, X } from 'lucide-react';
+import { X } from 'lucide-react';
 import { useCallback, useEffect, useId, useRef } from 'react';
-import type { CareersDepartment, CareersRole, CareersTone, CareersModalStep } from '@/data/careersDepartments';
+import type { CareersDepartment, CareersTone } from '@/data/careersDepartments';
 
 type ModalMode = 'full-time' | 'internship';
 
 interface ModalProps {
   open: boolean;
   mode: ModalMode;
-  step: CareersModalStep;
   departments: CareersDepartment[];
   selectedDepartmentId: string | null;
   onSelectDepartment: (id: string) => void;
-  onSelectRole: (id: string) => void;
   onClose: () => void;
-  onBack: () => void;
 }
 
 function getToneClasses(tone: CareersTone) {
@@ -49,13 +46,10 @@ function getFocusableElements(container: HTMLElement): HTMLElement[] {
 export default function DepartmentSelectionModal({
   open,
   mode,
-  step,
   departments,
   selectedDepartmentId,
   onSelectDepartment,
-  onSelectRole,
   onClose,
-  onBack,
 }: ModalProps) {
   const dialogId = useId();
   const titleId = `${dialogId}-title`;
@@ -67,7 +61,7 @@ export default function DepartmentSelectionModal({
 
   useEffect(() => {
     scrollRef.current?.scrollTo({ top: 0, behavior: 'smooth' });
-  }, [step]);
+  }, [open]);
 
   const handleClose = useCallback(() => onClose(), [onClose]);
 
@@ -121,45 +115,10 @@ export default function DepartmentSelectionModal({
 
   if (!open) return null;
 
-  const selectedDepartment = departments.find((department) => department.id === selectedDepartmentId) ?? null;
-  const roles: CareersRole[] = selectedDepartment?.roles ?? [];
-  const deptTone = selectedDepartment ? getToneClasses(selectedDepartment.tone) : null;
-  const isDepartmentStep = step === 'department';
-  const isRoleStep = step === 'role';
-
-  const renderTitle = () => {
-    if (isDepartmentStep) {
-      return (
-        <>
-          Join Us At <span className="font-black">Digitally</span> <span className="text-[#E21F26]">Next</span>.
-        </>
-      );
-    }
-
-    if (selectedDepartment) {
-      return (
-        <>
-          {selectedDepartment.title}
-          <span className={deptTone?.dotColor ?? 'text-[#E21F26]'}>.</span>
-        </>
-      );
-    }
-
-    return (
-      <>
-        Open Roles<span className="text-[#E21F26]">.</span>
-      </>
-    );
-  };
-
   const renderSubtitle = () => {
-    if (isDepartmentStep) {
-      return mode === 'internship'
-        ? 'Select a department to explore internship openings.'
-        : 'Select a department to explore openings.';
-    }
-
-    return 'Click on a role to open its full page and apply there.';
+    return mode === 'internship'
+      ? 'Select a department to explore internship openings.'
+      : 'Select a department to explore openings.';
   };
 
   return (
@@ -184,7 +143,7 @@ export default function DepartmentSelectionModal({
               id={titleId}
               className="text-[clamp(24px,4vw,48px)] font-extrabold leading-tight tracking-tight text-black"
             >
-              {renderTitle()}
+              Join Us At <span className="font-black">Digitally</span> <span className="text-[#E21F26]">Next</span>.
             </h2>
             <p id={descId} className="mt-1.5 text-sm text-black/50">
               {renderSubtitle()}
@@ -206,104 +165,50 @@ export default function DepartmentSelectionModal({
           ref={scrollRef}
           className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-6 py-6 [-webkit-overflow-scrolling:touch] [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
         >
-          {isDepartmentStep && (
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {departments.map((department) => {
-                const tone = getToneClasses(department.tone);
-                const isSelected = selectedDepartmentId === department.id;
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {departments.map((department) => {
+              const tone = getToneClasses(department.tone);
+              const isSelected = selectedDepartmentId === department.id;
 
-                return (
-                  <button
-                    key={department.id}
-                    type="button"
-                    onClick={() => onSelectDepartment(department.id)}
-                    className={[
-                      'group flex min-h-41 flex-col justify-between rounded p-6 text-left transition-all duration-200 cursor-pointer md:min-h-75',
-                      tone.cardBg,
-                      tone.cardBgHover,
-                      isSelected ? `ring-2 ${tone.ringColor}` : `hover:ring-1 ${tone.ringColor}`,
-                      'focus:outline-none focus:ring-2 focus:ring-black/25',
-                    ].join(' ')}
-                  >
-                    <div
-                      className={[
-                        'text-[clamp(18px,2.2vw,28px)] font-extrabold leading-[1.1] tracking-tight',
-                        tone.titleColor,
-                      ].join(' ')}
-                    >
-                      {department.title}
-                    </div>
-                    <div className="text-sm font-semibold text-black/60">{department.jobsLabel}</div>
-                  </button>
-                );
-              })}
-            </div>
-          )}
-
-          {isRoleStep && selectedDepartment && (
-            <div className="flex flex-col gap-3">
-              {roles.map((role) => (
+              return (
                 <button
-                  key={role.id}
+                  key={department.id}
                   type="button"
-                  onClick={() => onSelectRole(role.id)}
+                  onClick={() => onSelectDepartment(department.id)}
                   className={[
-                    'flex w-full items-center justify-between rounded px-7 py-5 text-left transition-all duration-200 cursor-pointer',
-                    'bg-[rgba(226,31,38,0.04)] hover:bg-[rgba(226,31,38,0.09)]',
-                    'focus:outline-none focus:ring-2 focus:ring-black/20',
+                    'group flex min-h-41 flex-col justify-between rounded p-6 text-left transition-all duration-200 cursor-pointer md:min-h-75',
+                    tone.cardBg,
+                    tone.cardBgHover,
+                    isSelected ? `ring-2 ${tone.ringColor}` : `hover:ring-1 ${tone.ringColor}`,
+                    'focus:outline-none focus:ring-2 focus:ring-black/25',
                   ].join(' ')}
                 >
-                  <div className="flex flex-col gap-1.5">
-                    <div
-                      className="font-medium text-black"
-                      style={{
-                        fontSize: 'clamp(18px, 2.8vw, 36px)',
-                        letterSpacing: '-0.03em',
-                        lineHeight: 1.15,
-                      }}
-                    >
-                      {role.title}
-                    </div>
-                    {role.meta && <div className="text-sm font-normal capitalize text-black/55">{role.meta}</div>}
+                  <div
+                    className={[
+                      'text-[clamp(18px,2.2vw,28px)] font-extrabold leading-[1.1] tracking-tight',
+                      tone.titleColor,
+                    ].join(' ')}
+                  >
+                    {department.title}
                   </div>
-
-                  <div className="ml-6 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-black/5 text-black/40 transition-all">
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                      <path
-                        d="M3 8h10M9 4l4 4-4 4"
-                        stroke="currentColor"
-                        strokeWidth="1.8"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  </div>
+                  <div className="text-sm font-semibold text-black/60">{department.jobsLabel}</div>
                 </button>
-              ))}
-            </div>
-          )}
+              );
+            })}
+          </div>
         </div>
 
         <div className="flex shrink-0 items-center justify-between gap-3 border-t border-black/8 px-6 py-6">
           <button
             type="button"
-            onClick={isDepartmentStep ? handleClose : onBack}
+            onClick={handleClose}
             className="inline-flex items-center gap-2 rounded-full border border-black/15 px-5 py-2 text-sm font-semibold text-black transition-colors hover:bg-black/5 focus:outline-none focus:ring-2 focus:ring-black/20"
           >
-            {!isDepartmentStep && <ChevronLeft className="h-4 w-4" />}
-            {isDepartmentStep ? 'Close' : 'All Departments'}
+            Close
           </button>
 
           <div className="flex items-center gap-1.5">
-            {(['department', 'role'] as CareersModalStep[]).map((currentStep) => (
-              <div
-                key={currentStep}
-                className={[
-                  'h-1.5 rounded-full transition-all',
-                  step === currentStep ? 'w-5 bg-[#E21F26]' : 'w-1.5 bg-black/15',
-                ].join(' ')}
-              />
-            ))}
+            <div className="h-1.5 w-5 rounded-full bg-[#E21F26]" />
           </div>
         </div>
       </div>

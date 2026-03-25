@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { CheckCircle2, Loader2 } from 'lucide-react';
 import { useRef, useState } from 'react';
 import toast from 'react-hot-toast';
-import type { CareerRoleEntry } from '@/data/careersDepartments';
+import { getCareerDepartmentHref, type CareerRoleEntry } from '@/data/careersDepartments';
 
 interface FormFields {
   fullName: string;
@@ -153,11 +153,11 @@ export default function CareerRolePageClient({ entry }: { entry: CareerRoleEntry
       <section className="mx-auto flex w-full max-w-7xl flex-col gap-8 px-6 py-12 md:px-8 md:py-28 lg:gap-10 lg:px-10 lg:py-36">
         <div className="flex flex-col gap-4">
           <Link
-            href="/careers#open-positions"
+            href={getCareerDepartmentHref(department)}
             className="inline-flex w-fit items-center gap-2 text-sm font-semibold text-black/60 transition-colors hover:text-[#E21F26]"
           >
             <span aria-hidden="true">←</span>
-            <span>Back to Careers</span>
+            <span>Back to Department</span>
           </Link>
 
           <div className="rounded border border-[#E5E5E5] bg-white px-7 py-7 shadow-[0_10px_30px_rgba(0,0,0,0.04)]">

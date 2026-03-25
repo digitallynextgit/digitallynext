@@ -1,15 +1,15 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import CareerRolePageClient from '@/components/careers/CareerRolePageClient';
-import { getCareerRoleBySlug, getCareerRoleEntries } from '@/data/careersDepartments';
+import { getCareerRoleBySlugs, getCareerRoleEntries } from '@/data/careersDepartments';
 
 interface Props {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ departmentSlug: string; roleSlug: string }>;
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { slug } = await params;
-  const entry = getCareerRoleBySlug(slug);
+  const { departmentSlug, roleSlug } = await params;
+  const entry = getCareerRoleBySlugs(departmentSlug, roleSlug);
 
   if (!entry) {
     return {
@@ -30,13 +30,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export function generateStaticParams() {
   return getCareerRoleEntries().map((entry) => ({
-    slug: entry.slug,
+    departmentSlug: entry.departmentSlug,
+    roleSlug: entry.roleSlug,
   }));
 }
 
 export default async function CareerRolePage({ params }: Props) {
-  const { slug } = await params;
-  const entry = getCareerRoleBySlug(slug);
+  const { departmentSlug, roleSlug } = await params;
+  const entry = getCareerRoleBySlugs(departmentSlug, roleSlug);
 
   if (!entry) {
     notFound();

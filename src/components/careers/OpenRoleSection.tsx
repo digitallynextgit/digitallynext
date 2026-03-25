@@ -8,9 +8,8 @@ import DepartmentSelectionModal from '@/components/careers/DepartmentSelectionMo
 import {
   CAREERS_DEPARTMENTS,
   CAREERS_INTERNSHIP_DEPARTMENTS,
-  getCareerRoleById,
+  getCareerDepartmentById,
   type CareersDepartment,
-  type CareersModalStep,
 } from '@/data/careersDepartments';
 import Link from 'next/link';
 
@@ -40,7 +39,6 @@ export default function OpenRolesSection({ theme }: OpenRolesSectionProps) {
 
   const [modalOpen, setModalOpen] = useState(false);
   const [modalMode, setModalMode] = useState<'full-time' | 'internship'>('full-time');
-  const [step, setStep] = useState<CareersModalStep>('department');
   const [selectedDepartmentId, setSelectedDepartmentId] = useState<string | null>(null);
 
   const departments = useMemo<CareersDepartment[]>(
@@ -51,19 +49,10 @@ export default function OpenRolesSection({ theme }: OpenRolesSectionProps) {
   const openModal = (mode: 'full-time' | 'internship') => {
     setModalMode(mode);
     setSelectedDepartmentId(null);
-    setStep('department');
     setModalOpen(true);
   };
 
   const handleClose = () => setModalOpen(false);
-
-  const handleBack = () => {
-    if (step === 'role') {
-      setStep('department');
-      return;
-    }
-    handleClose();
-  };
 
   return (
     <section
@@ -187,21 +176,16 @@ export default function OpenRolesSection({ theme }: OpenRolesSectionProps) {
       <DepartmentSelectionModal
         open={modalOpen}
         mode={modalMode}
-        step={step}
         departments={departments}
         selectedDepartmentId={selectedDepartmentId}
         onSelectDepartment={(id) => {
-          setSelectedDepartmentId(id);
-          setStep('role');
-        }}
-        onSelectRole={(id) => {
-          const entry = getCareerRoleById(modalMode, id);
+          const entry = getCareerDepartmentById(modalMode, id);
           if (!entry) return;
+          setSelectedDepartmentId(id);
           setModalOpen(false);
-          router.push(`/careers/${entry.slug}`);
+          router.push(`/careers/${entry.departmentSlug}`);
         }}
         onClose={handleClose}
-        onBack={handleBack}
       />
     </section>
   );

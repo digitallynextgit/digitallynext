@@ -1,6 +1,6 @@
 export type CareersTone = 'red' | 'teal';
 
-export type CareersModalStep = 'department' | 'role';
+export type CareersModalStep = 'department';
 export type CareersMode = 'full-time' | 'internship';
 
 export type CareersRoleDescription = {
@@ -30,7 +30,8 @@ export type CareerRoleEntry = {
   department: CareersDepartment;
   role: CareersRole;
   mode: CareersMode;
-  slug: string;
+  departmentSlug: string;
+  roleSlug: string;
 };
 
 function slugifyCareerRole(value: string) {
@@ -535,6 +536,10 @@ export function getCareerRoleSlug(role: CareersRole) {
   return slugifyCareerRole(role.title);
 }
 
+export function getCareerDepartmentSlug(department: CareersDepartment) {
+  return slugifyCareerRole(department.title);
+}
+
 export function getCareerRoleEntries(): CareerRoleEntry[] {
   return [
     ...CAREERS_DEPARTMENTS.flatMap((department) =>
@@ -542,7 +547,8 @@ export function getCareerRoleEntries(): CareerRoleEntry[] {
         department,
         role,
         mode: 'full-time' as const,
-        slug: getCareerRoleSlug(role),
+        departmentSlug: getCareerDepartmentSlug(department),
+        roleSlug: getCareerRoleSlug(role),
       }))
     ),
     ...CAREERS_INTERNSHIP_DEPARTMENTS.flatMap((department) =>
@@ -550,20 +556,53 @@ export function getCareerRoleEntries(): CareerRoleEntry[] {
         department,
         role,
         mode: 'internship' as const,
-        slug: getCareerRoleSlug(role),
+        departmentSlug: getCareerDepartmentSlug(department),
+        roleSlug: getCareerRoleSlug(role),
       }))
     ),
   ];
 }
 
-export function getCareerRoleBySlug(slug: string) {
-  return getCareerRoleEntries().find((entry) => entry.slug === slug) ?? null;
+export function getCareerDepartmentEntries() {
+  return [
+    ...CAREERS_DEPARTMENTS.map((department) => ({
+      department,
+      mode: 'full-time' as const,
+      departmentSlug: getCareerDepartmentSlug(department),
+    })),
+    ...CAREERS_INTERNSHIP_DEPARTMENTS.map((department) => ({
+      department,
+      mode: 'internship' as const,
+      departmentSlug: getCareerDepartmentSlug(department),
+    })),
+  ];
+}
+
+export function getCareerDepartmentBySlug(departmentSlug: string) {
+  return getCareerDepartmentEntries().find((entry) => entry.departmentSlug === departmentSlug) ?? null;
+}
+
+export function getCareerDepartmentById(mode: CareersMode, departmentId: string) {
+  return (
+    getCareerDepartmentEntries().find((entry) => entry.mode === mode && entry.department.id === departmentId) ?? null
+  );
+}
+
+export function getCareerRoleBySlugs(departmentSlug: string, roleSlug: string) {
+  return (
+    getCareerRoleEntries().find((entry) => entry.departmentSlug === departmentSlug && entry.roleSlug === roleSlug) ??
+    null
+  );
 }
 
 export function getCareerRoleById(mode: CareersMode, roleId: string) {
   return getCareerRoleEntries().find((entry) => entry.mode === mode && entry.role.id === roleId) ?? null;
 }
 
-export function getCareerRoleHref(role: CareersRole) {
-  return `/careers/${getCareerRoleSlug(role)}`;
+export function getCareerDepartmentHref(department: CareersDepartment) {
+  return `/careers/${getCareerDepartmentSlug(department)}`;
+}
+
+export function getCareerRoleHref(entry: CareerRoleEntry) {
+  return `/careers/${entry.departmentSlug}/${entry.roleSlug}`;
 }
