@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import { useEffect, useRef } from "react";
-import { useSectionTheme } from "../../context/SectionThemeContext";
+import { useEffect, useRef } from 'react';
+import { useSectionTheme } from '../../context/SectionThemeContext';
 
 type Props = {
-  theme: "light" | "dark";
+  theme: 'light' | 'dark';
   children: React.ReactNode;
 };
 

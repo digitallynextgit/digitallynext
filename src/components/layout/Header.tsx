@@ -1,77 +1,70 @@
-"use client";
+'use client';
 
-import { useState, useEffect, useRef } from "react";
-import {
-  motion,
-  AnimatePresence,
-  useMotionValue,
-  useTransform,
-  type Variants,
-  useSpring,
-} from "framer-motion";
-import { Menu, X, ChevronDown } from "lucide-react";
-import { navLinks } from "@/data/content";
-import Image from "next/image";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { useState, useEffect, useRef } from 'react';
+import { motion, AnimatePresence, useMotionValue, useTransform, type Variants, useSpring } from 'framer-motion';
+import { Menu, X, ChevronDown } from 'lucide-react';
+import { navLinks } from '@/data/content';
+import Image from 'next/image';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 // ─────────────────────────────────────────────
 // Types & Static Config
 // ─────────────────────────────────────────────
 type RouteHeaderTheme = {
-  linkColor: "white" | "black";
-  logo: "light" | "dark" | "white";
+  linkColor: 'white' | 'black';
+  logo: 'light' | 'dark' | 'white';
 };
 
 const ROUTE_THEMES: Record<string, RouteHeaderTheme> = {
-  "/": { linkColor: "white", logo: "light" },
-  "/services": { linkColor: "white", logo: "white" },
-  "/contact": { linkColor: "white", logo: "white" },
-  "/about": { linkColor: "black", logo: "dark" },
-  "/terms-of-use": { linkColor: "white", logo: "white" },
-  "/privacy-policy": { linkColor: "white", logo: "white" },
-  "/case-studies": { linkColor: "black", logo: "dark" },
-  "/careers": { linkColor: "black", logo: "dark" },
+  '/': { linkColor: 'white', logo: 'light' },
+  '/services': { linkColor: 'white', logo: 'white' },
+  '/contact': { linkColor: 'white', logo: 'white' },
+  '/about': { linkColor: 'black', logo: 'dark' },
+  '/terms-of-use': { linkColor: 'white', logo: 'white' },
+  '/privacy-policy': { linkColor: 'white', logo: 'white' },
+  '/case-studies': { linkColor: 'black', logo: 'dark' },
+  '/careers': { linkColor: 'black', logo: 'dark' },
 };
 
-const NOT_FOUND_THEME: RouteHeaderTheme = { linkColor: "white", logo: "white" };
+const NOT_FOUND_THEME: RouteHeaderTheme = { linkColor: 'white', logo: 'white' };
 
-const LOGO_SRCS: Record<RouteHeaderTheme["logo"], string> = {
-  light: "/logo-complete-white.webp",
-  dark: "/logo1.webp",
-  white: "/logo1-white.webp",
+const LOGO_SRCS: Record<RouteHeaderTheme['logo'], string> = {
+  light: '/logo-complete-white.webp',
+  dark: '/logo1.webp',
+  white: '/logo1-white.webp',
 };
 
 const SERVICES = [
   {
-    label: "Strategy, Brand & Growth Intelligence",
-    href: "/services/brand-strategy",
+    label: 'Strategy, Brand & Growth Intelligence',
+    href: '/services/brand-strategy',
   },
   {
-    label: "Content, Culture & Media Creation",
-    href: "/services/ui-ux-design",
+    label: 'Content, Culture & Media Creation',
+    href: '/services/ui-ux-design',
   },
   {
-    label: "Performance, Distribution & Demand",
-    href: "/services/seo-optimization",
+    label: 'Performance, Distribution & Demand',
+    href: '/services/seo-optimization',
   },
   {
-    label: "Platforms, Web & Digital Experience",
-    href: "/services/web-development",
+    label: 'Platforms, Web & Digital Experience',
+    href: '/services/web-development',
   },
   {
-    label: "AI Enablement & Decision Systems",
-    href: "/services/ai-enablement",
+    label: 'AI Enablement & Decision Systems',
+    href: '/services/ai-enablement',
   },
 ];
 
-const MENU_EXTRA = [{ label: "CONTACT", href: "/contact" }];
+const MENU_EXTRA = [{ label: 'CONTACT', href: '/contact' }];
 const MotionLink = motion(Link);
 
 function resolveRouteTheme(pathname: string): RouteHeaderTheme {
   if (ROUTE_THEMES[pathname]) return ROUTE_THEMES[pathname];
   const prefixMatch = Object.keys(ROUTE_THEMES)
-    .filter((key) => key !== "/" && pathname.startsWith(key))
+    .filter((key) => key !== '/' && pathname.startsWith(key))
     .sort((a, b) => b.length - a.length)[0];
   if (prefixMatch) return ROUTE_THEMES[prefixMatch];
   return NOT_FOUND_THEME;
@@ -82,16 +75,16 @@ function resolveRouteTheme(pathname: string): RouteHeaderTheme {
 // ─────────────────────────────────────────────
 const overlayVariants: Variants = {
   hidden: {
-    clipPath: "circle(0% at calc(100% - 40px) 40px)",
+    clipPath: 'circle(0% at calc(100% - 40px) 40px)',
     opacity: 0,
     transition: {
       duration: 0.45,
       ease: [0.22, 1, 0.36, 1] as const,
-      when: "afterChildren",
+      when: 'afterChildren',
     },
   },
   visible: {
-    clipPath: "circle(170% at calc(100% - 40px) 40px)",
+    clipPath: 'circle(170% at calc(100% - 40px) 40px)',
     opacity: 1,
     transition: {
       duration: 0.5,
@@ -106,7 +99,7 @@ const linkVariants: Variants = {
   hidden: {
     opacity: 0,
     y: 20,
-    transition: { duration: 0.2, ease: "easeIn" as const },
+    transition: { duration: 0.2, ease: 'easeIn' as const },
   },
   visible: {
     opacity: 1,
@@ -134,7 +127,7 @@ const subMenuVariants: Variants = {
     transition: { duration: 0.3, ease: [0.22, 1, 0.36, 1] as const },
   },
   visible: {
-    height: "auto",
+    height: 'auto',
     opacity: 1,
     transition: {
       height: { duration: 0.36, ease: [0.22, 1, 0.36, 1] as const },
@@ -146,17 +139,7 @@ const subMenuVariants: Variants = {
 // ─────────────────────────────────────────────
 // SubItem — same slide + arrow animation as parent links
 // ─────────────────────────────────────────────
-function SubItem({
-  href,
-  label,
-  index,
-  onClick,
-}: {
-  href: string;
-  label: string;
-  index: number;
-  onClick: () => void;
-}) {
+function SubItem({ href, label, index, onClick }: { href: string; label: string; index: number; onClick: () => void }) {
   const hoverX = useMotionValue(0);
   const smoothHoverX = useSpring(hoverX, { stiffness: 250, damping: 30 });
   const arrowX = useTransform(smoothHoverX, [0, 10], [-6, 0]);
@@ -174,26 +157,16 @@ function SubItem({
       onMouseEnter={() => hoverX.set(10)}
       onMouseLeave={() => hoverX.set(0)}
     >
-      <Link
-        href={href}
-        onClick={onClick}
-        className="group flex items-center gap-3 w-full py-2 px-3 rounded-md"
-      >
-        <motion.span
-          style={{ x: smoothHoverX }}
-          className="flex items-center gap-3 flex-1 min-w-0"
-        >
+      <Link href={href} onClick={onClick} className="group flex items-center gap-3 w-full py-2 px-3 rounded-md">
+        <motion.span style={{ x: smoothHoverX }} className="flex items-center gap-3 flex-1 min-w-0">
           <span className="text-white/20 text-[10px] font-mono shrink-0 group-hover:text-white/40 transition-colors duration-200">
-            {String(index + 1).padStart(2, "0")}
+            {String(index + 1).padStart(2, '0')}
           </span>
           <span className="flex-1 text-white/85 group-hover:text-[#E21F26] text-sm md:text-[14px] font-light tracking-wide transition-colors duration-200 leading-snug">
             {label}
           </span>
         </motion.span>
-        <motion.span
-          style={{ x: arrowX, opacity: arrowOpacity }}
-          className="text-white/30 text-sm shrink-0"
-        >
+        <motion.span style={{ x: arrowX, opacity: arrowOpacity }} className="text-white/30 text-sm shrink-0">
           →
         </motion.span>
       </Link>
@@ -257,13 +230,11 @@ function MagneticLink({
   };
 
   // Red when hovered OR submenu is open (active state)
-  const labelColor = hovered || submenuOpen ? "text-[#E21F26]" : "text-white";
+  const labelColor = hovered || submenuOpen ? 'text-[#E21F26]' : 'text-white';
 
   const innerContent = (
     <>
-      <span className="text-white/25 text-xs font-mono w-7 shrink-0">
-        {String(index + 1).padStart(2, "0")}
-      </span>
+      <span className="text-white/25 text-xs font-mono w-7 shrink-0">{String(index + 1).padStart(2, '0')}</span>
       <span
         className={`flex-1 ${labelColor} text-[clamp(1.4rem,3.2vw,2.6rem)] font-light tracking-tight leading-none uppercase transition-colors duration-300`}
       >
@@ -278,10 +249,7 @@ function MagneticLink({
           <ChevronDown size={18} strokeWidth={1.5} />
         </motion.span>
       ) : (
-        <motion.span
-          className="text-white/40 text-lg shrink-0"
-          style={{ x: arrowTranslateX, opacity: arrowOpacity }}
-        >
+        <motion.span className="text-white/40 text-lg shrink-0" style={{ x: arrowTranslateX, opacity: arrowOpacity }}>
           →
         </motion.span>
       )}
@@ -340,23 +308,14 @@ function MagneticLink({
           >
             <div className="px-6 md:px-12 pb-5 space-y-1">
               {SERVICES.map((service, i) => (
-                <SubItem
-                  key={service.href}
-                  href={service.href}
-                  label={service.label}
-                  index={i}
-                  onClick={onClick}
-                />
+                <SubItem key={service.href} href={service.href} label={service.label} index={i} onClick={onClick} />
               ))}
             </div>
           </motion.div>
         )}
       </AnimatePresence>
 
-      <motion.div
-        variants={dividerVariants}
-        className="h-px bg-white/10 origin-left"
-      />
+      <motion.div variants={dividerVariants} className="h-px bg-white/10 origin-left" />
     </motion.div>
   );
 }
@@ -390,39 +349,35 @@ export default function Header() {
       }
       lastScrollY.current = currentY;
     };
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
   useEffect(() => {
-    document.body.style.overflow = menuOpen ? "hidden" : "";
+    document.body.style.overflow = menuOpen ? 'hidden' : '';
     return () => {
-      document.body.style.overflow = "";
+      document.body.style.overflow = '';
     };
   }, [menuOpen]);
 
   const routeTheme = resolveRouteTheme(pathname);
 
-  const logoSrc = menuOpen
-    ? LOGO_SRCS.white
-    : scrolled
-      ? LOGO_SRCS.dark
-      : LOGO_SRCS[routeTheme.logo];
+  const logoSrc = menuOpen ? LOGO_SRCS.white : scrolled ? LOGO_SRCS.dark : LOGO_SRCS[routeTheme.logo];
 
   const iconColor = menuOpen
-    ? "text-white"
+    ? 'text-white'
     : scrolled
-      ? "text-black"
-      : routeTheme.linkColor === "black"
-        ? "text-black"
-        : "text-white";
+      ? 'text-black'
+      : routeTheme.linkColor === 'black'
+        ? 'text-black'
+        : 'text-white';
 
   // No border on any state
   const headerBg = menuOpen
-    ? "bg-transparent"
+    ? 'bg-transparent'
     : scrolled
-      ? "bg-white/40 backdrop-blur-2xl shadow-[0_2px_28px_rgba(0,0,0,0.05)]"
-      : "bg-transparent";
+      ? 'bg-white/40 backdrop-blur-2xl shadow-[0_2px_28px_rgba(0,0,0,0.05)]'
+      : 'bg-transparent';
 
   const allMenuLinks = [...navLinks, ...MENU_EXTRA];
 
@@ -431,13 +386,9 @@ export default function Header() {
       {/* ── Header Bar ── */}
       <motion.header
         initial={false}
-        animate={{ y: headerVisible || menuOpen ? "0%" : "-100%" }}
+        animate={{ y: headerVisible || menuOpen ? '0%' : '-100%' }}
         transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-        className={[
-          "fixed top-0 left-0 right-0 z-100",
-          "transition-colors duration-500",
-          headerBg,
-        ].join(" ")}
+        className={['fixed top-0 left-0 right-0 z-100', 'transition-colors duration-500', headerBg].join(' ')}
       >
         {/* h-16 md:h-20 — fixed, never changes */}
         <div className="grid grid-cols-3 items-center h-14 md:h-16 lg:h-28 w-full px-5 md:px-7 lg:px-8">
@@ -512,11 +463,11 @@ export default function Header() {
               onClick={() => setMenuOpen((v) => !v)}
               aria-label="Toggle menu"
               className={[
-                "relative w-10 h-10 flex items-center justify-center",
-                "bg-transparent border-none cursor-pointer rounded-full",
-                "transition-colors duration-300",
+                'relative w-10 h-10 flex items-center justify-center',
+                'bg-transparent border-none cursor-pointer rounded-full',
+                'transition-colors duration-300',
                 iconColor,
-              ].join(" ")}
+              ].join(' ')}
             >
               <AnimatePresence mode="wait" initial={false}>
                 {menuOpen ? (
@@ -560,26 +511,26 @@ export default function Header() {
             style={{
               // Safari: force GPU compositing and add backface-visibility
               // Note: -webkit-clip-path is handled by Framer Motion's autoprefixing
-              willChange: "clip-path, transform",
-              WebkitBackfaceVisibility: "hidden",
-              backfaceVisibility: "hidden",
+              willChange: 'clip-path, transform',
+              WebkitBackfaceVisibility: 'hidden',
+              backfaceVisibility: 'hidden',
             }}
             className="fixed inset-0 z-99 bg-[#0a0a0a] flex flex-col"
           >
             {/* mt-16 md:mt-20 matches header height exactly */}
             <div
               className={[
-                "flex-1 overflow-y-auto mt-16 md:mt-20 ",
-                "[&::-webkit-scrollbar]:w-0.75",
-                "[&::-webkit-scrollbar-track]:bg-transparent",
-                "[&::-webkit-scrollbar-thumb]:bg-white/20",
-                "[&::-webkit-scrollbar-thumb]:rounded-full",
-                "[&::-webkit-scrollbar-thumb:hover]:bg-white/40",
-              ].join(" ")}
+                'flex-1 overflow-y-auto mt-16 md:mt-20 ',
+                '[&::-webkit-scrollbar]:w-0.75',
+                '[&::-webkit-scrollbar-track]:bg-transparent',
+                '[&::-webkit-scrollbar-thumb]:bg-white/20',
+                '[&::-webkit-scrollbar-thumb]:rounded-full',
+                '[&::-webkit-scrollbar-thumb:hover]:bg-white/40',
+              ].join(' ')}
             >
               <nav className="pt-4 md:pt-6">
                 {allMenuLinks.map((link, i) => {
-                  const isServices = link.label === "SERVICES";
+                  const isServices = link.label === 'SERVICES';
                   return (
                     <MagneticLink
                       key={link.label}
@@ -589,11 +540,7 @@ export default function Header() {
                       onClick={() => setMenuOpen(false)}
                       hasSubmenu={isServices}
                       submenuOpen={isServices && servicesOpen}
-                      onSubmenuToggle={
-                        isServices
-                          ? () => setServicesOpen((v) => !v)
-                          : undefined
-                      }
+                      onSubmenuToggle={isServices ? () => setServicesOpen((v) => !v) : undefined}
                     />
                   );
                 })}

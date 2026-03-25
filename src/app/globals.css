@@ -1,6 +1,6 @@
-@import "tailwindcss";
-@import "tw-animate-css";
-@import "shadcn/tailwind.css";
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
 
 @custom-variant dark (&:is(.dark *));
 
@@ -116,7 +116,7 @@
     padding: 0;
     background: var(--bg-primary);
     color: var(--text-primary);
-    font-family: "Stack Sans Text";
+    font-family: 'Stack Sans Text';
     line-height: 1.6;
     overflow-x: hidden;
     @apply bg-background text-foreground;
@@ -184,13 +184,7 @@
 
 /* ===== GRADIENT TEXT ===== */
 .gradient-text {
-  background: linear-gradient(
-    180deg,
-    #888888 0%,
-    #cccccc 40%,
-    #e0e0e0 60%,
-    transparent 100%
-  );
+  background: linear-gradient(180deg, #888888 0%, #cccccc 40%, #e0e0e0 60%, transparent 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -496,15 +490,10 @@
 }
 
 .hero-bg::after {
-  content: "";
+  content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0.1) 0%,
-    rgba(0, 0, 0, 0.3) 50%,
-    rgba(0, 0, 0, 0.65) 100%
-  );
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.3) 50%, rgba(0, 0, 0, 0.65) 100%);
   z-index: 1;
 }
 
@@ -544,14 +533,7 @@
 /* Modern DAD gradient for "Modern" */
 /* "Modern" gradient — dark gray top → light/transparent bottom */
 .gradient-text-modern {
-  background: linear-gradient(
-    180deg,
-    #666666 0%,
-    #999999 30%,
-    #c0c0c0 55%,
-    #e0e0e0 75%,
-    rgba(255, 255, 255, 0) 100%
-  );
+  background: linear-gradient(180deg, #666666 0%, #999999 30%, #c0c0c0 55%, #e0e0e0 75%, rgba(255, 255, 255, 0) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -559,14 +541,7 @@
 
 /* "DAD" gradient — red top → pink/transparent bottom */
 .gradient-text-dad {
-  background: linear-gradient(
-    180deg,
-    #e53935 0%,
-    #e53935 25%,
-    #ef7070 50%,
-    #f5b0b0 75%,
-    rgba(229, 57, 53, 0) 100%
-  );
+  background: linear-gradient(180deg, #e53935 0%, #e53935 25%, #ef7070 50%, #f5b0b0 75%, rgba(229, 57, 53, 0) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -760,20 +735,8 @@
 .services-slider {
   overflow: hidden;
   white-space: nowrap;
-  mask-image: linear-gradient(
-    to right,
-    transparent 0%,
-    black 5%,
-    black 95%,
-    transparent 100%
-  );
-  -webkit-mask-image: linear-gradient(
-    to right,
-    transparent 0%,
-    black 5%,
-    black 95%,
-    transparent 100%
-  );
+  mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
   margin-top: 4px;
 }
 
@@ -1053,11 +1016,7 @@
 /* Hero */
 .blog-hero {
   padding: 180px 0 60px;
-  background: linear-gradient(
-    180deg,
-    rgba(229, 57, 53, 0.06) 0%,
-    var(--bg-primary) 100%
-  );
+  background: linear-gradient(180deg, rgba(229, 57, 53, 0.06) 0%, var(--bg-primary) 100%);
   border-bottom: 1px solid var(--border);
 }
 
@@ -1274,11 +1233,7 @@
 .blog-post-hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    to bottom,
-    transparent 40%,
-    var(--bg-primary) 100%
-  );
+  background: linear-gradient(to bottom, transparent 40%, var(--bg-primary) 100%);
   z-index: 1;
 }
 

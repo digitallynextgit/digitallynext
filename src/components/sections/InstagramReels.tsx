@@ -1,100 +1,92 @@
-"use client";
+'use client';
 
-import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
-import Link from "next/link";
-import { useSectionTheme } from "@/context/SectionThemeContext";
+import { useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
+import Link from 'next/link';
+import { useSectionTheme } from '@/context/SectionThemeContext';
 
 const INSTAGRAM_REELS = [
   {
-    id: "reel1",
-    embedUrl: "https://www.instagram.com/reel/DUxx0CeEm1V/embed",
-    title: "Team Culture Reel",
+    id: 'reel1',
+    embedUrl: 'https://www.instagram.com/reel/DUxx0CeEm1V/embed',
+    title: 'Team Culture Reel',
   },
   {
-    id: "reel2",
-    embedUrl: "https://www.instagram.com/reel/DHvsqYGhjU3/embed",
-    title: "Behind the Scenes",
+    id: 'reel2',
+    embedUrl: 'https://www.instagram.com/reel/DHvsqYGhjU3/embed',
+    title: 'Behind the Scenes',
   },
   {
-    id: "reel3",
-    embedUrl: "https://www.instagram.com/reel/DT5KMCUEmYg/embed",
-    title: "Our Work Process",
+    id: 'reel3',
+    embedUrl: 'https://www.instagram.com/reel/DT5KMCUEmYg/embed',
+    title: 'Our Work Process',
   },
   {
-    id: "reel4",
-    embedUrl: "https://www.instagram.com/reel/DUsQ4aNkmla/embed",
-    title: "Our Work Process",
+    id: 'reel4',
+    embedUrl: 'https://www.instagram.com/reel/DUsQ4aNkmla/embed',
+    title: 'Our Work Process',
   },
   {
-    id: "reel5",
-    embedUrl: "https://www.instagram.com/reel/DTkIEw9Emsq/embed",
-    title: "Our Work Process",
+    id: 'reel5',
+    embedUrl: 'https://www.instagram.com/reel/DTkIEw9Emsq/embed',
+    title: 'Our Work Process',
   },
   {
-    id: "reel6",
-    embedUrl: "https://www.instagram.com/reel/DTze5OUEsBR/embed",
-    title: "Our Work Process",
+    id: 'reel6',
+    embedUrl: 'https://www.instagram.com/reel/DTze5OUEsBR/embed',
+    title: 'Our Work Process',
   },
 ];
 
 interface InstagramReelsProps {
-  theme?: "dark" | "light";
+  theme?: 'dark' | 'light';
 }
 
 export default function InstagramReels({ theme }: InstagramReelsProps) {
   const { theme: contextTheme } = useSectionTheme();
-  const isDark = (theme ?? contextTheme) === "dark";
+  const isDark = (theme ?? contextTheme) === 'dark';
 
   const sectionRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(sectionRef, { once: true, margin: "-80px" });
+  const isInView = useInView(sectionRef, { once: true, margin: '-80px' });
   const scrollRef = useRef<HTMLDivElement>(null);
 
-  const scroll = (dir: "left" | "right") => {
+  const scroll = (dir: 'left' | 'right') => {
     if (!scrollRef.current) return;
-    const cardWidth =
-      scrollRef.current.querySelector(".reel-card")?.clientWidth ?? 300;
+    const cardWidth = scrollRef.current.querySelector('.reel-card')?.clientWidth ?? 300;
     const gap = 24;
     scrollRef.current.scrollBy({
-      left: dir === "left" ? -(cardWidth + gap) : cardWidth + gap,
-      behavior: "smooth",
+      left: dir === 'left' ? -(cardWidth + gap) : cardWidth + gap,
+      behavior: 'smooth',
     });
   };
 
   return (
-    <section
-      ref={sectionRef}
-      className="py-10 md:py-16 lg:py-20 overflow-hidden"
-    >
+    <section ref={sectionRef} className="py-10 md:py-16 lg:py-20 overflow-hidden">
       <div className="max-w-7xl mx-auto px-5 md:px-12">
         {/* Header */}
         <div className="text-center mb-10">
           <motion.h2
             className={[
-              "font-extrabold tracking-tight leading-none mb-4 transition-colors duration-500",
-              isDark ? "text-white" : "text-[#1a1a1a]",
-            ].join(" ")}
+              'font-extrabold tracking-tight leading-none mb-4 transition-colors duration-500',
+              isDark ? 'text-white' : 'text-[#1a1a1a]',
+            ].join(' ')}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={{ once: true, margin: '-100px' }}
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           >
-            <span className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[80px]">
-              People &amp; Culture
-            </span>
-            <span className="text-[#0EC8C5] text-4xl sm:text-5xl md:text-7xl lg:text-8xl">
-              .
-            </span>
+            <span className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[80px]">People &amp; Culture</span>
+            <span className="text-[#0EC8C5] text-4xl sm:text-5xl md:text-7xl lg:text-8xl">.</span>
           </motion.h2>
 
           <motion.p
             className={[
-              "text-lg lg:text-2xl font-normal mb-2 lg:mb-3 transition-colors duration-500",
-              isDark ? "text-white" : "text-[#1a1a1a]",
-            ].join(" ")}
+              'text-lg lg:text-2xl font-normal mb-2 lg:mb-3 transition-colors duration-500',
+              isDark ? 'text-white' : 'text-[#1a1a1a]',
+            ].join(' ')}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={{ once: true, margin: '-100px' }}
             transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
           >
             The People Behind the Work
@@ -102,43 +94,39 @@ export default function InstagramReels({ theme }: InstagramReelsProps) {
 
           <motion.p
             className={[
-              "text-base md:text-lg lg:text-xl max-w-2xl mt-5 md:mt-7 mx-auto transition-colors duration-500",
-              isDark ? "text-white/50" : "text-[#787878]",
-            ].join(" ")}
+              'text-base md:text-lg lg:text-xl max-w-2xl mt-5 md:mt-7 mx-auto transition-colors duration-500',
+              isDark ? 'text-white/50' : 'text-[#787878]',
+            ].join(' ')}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={{ once: true, margin: '-100px' }}
             transition={{ duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
           >
-            Digitally Next is built by multidisciplinary teams who value
-            clarity,
-            <br className="hidden lg:block" /> collaboration, and
-            accountability.
+            Digitally Next is built by multidisciplinary teams who value clarity,
+            <br className="hidden lg:block" /> collaboration, and accountability.
           </motion.p>
         </div>
 
         {/* Navigation arrows */}
         <div className="flex justify-end gap-3 mb-4 lg:mb-6">
-          {["left", "right"].map((dir) => (
+          {['left', 'right'].map((dir) => (
             <button
               key={dir}
-              onClick={() => scroll(dir as "left" | "right")}
+              onClick={() => scroll(dir as 'left' | 'right')}
               className={[
-                "w-10 h-10 lg:w-11 lg:h-11 rounded-full border flex items-center justify-center cursor-pointer",
-                "hover:text-[#E53935] hover:border-[#E53935] transition-all duration-300 group",
+                'w-10 h-10 lg:w-11 lg:h-11 rounded-full border flex items-center justify-center cursor-pointer',
+                'hover:text-[#E53935] hover:border-[#E53935] transition-all duration-300 group',
                 isDark
-                  ? "border-white/20 bg-white/5 text-white/50 hover:bg-white/10"
-                  : "border-gray-300 bg-gray-50 text-gray-500 hover:bg-red-50",
-              ].join(" ")}
+                  ? 'border-white/20 bg-white/5 text-white/50 hover:bg-white/10'
+                  : 'border-gray-300 bg-gray-50 text-gray-500 hover:bg-red-50',
+              ].join(' ')}
               aria-label={`Scroll ${dir}`}
             >
               <svg
                 className={[
-                  "w-4 h-4 transition-transform duration-300",
-                  dir === "left"
-                    ? "group-hover:-translate-x-0.5"
-                    : "group-hover:translate-x-0.5",
-                ].join(" ")}
+                  'w-4 h-4 transition-transform duration-300',
+                  dir === 'left' ? 'group-hover:-translate-x-0.5' : 'group-hover:translate-x-0.5',
+                ].join(' ')}
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -147,7 +135,7 @@ export default function InstagramReels({ theme }: InstagramReelsProps) {
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  d={dir === "left" ? "M15 19l-7-7 7-7" : "M9 5l7 7-7 7"}
+                  d={dir === 'left' ? 'M15 19l-7-7 7-7' : 'M9 5l7 7-7 7'}
                 />
               </svg>
             </button>
@@ -158,18 +146,18 @@ export default function InstagramReels({ theme }: InstagramReelsProps) {
         <div
           ref={scrollRef}
           className={[
-            "flex gap-4 lg:gap-6 overflow-x-auto pb-4",
-            "[scrollbar-width:none] [&::-webkit-scrollbar]:hidden",
-            "[scroll-snap-type:x_mandatory]",
-          ].join(" ")}
+            'flex gap-4 lg:gap-6 overflow-x-auto pb-4',
+            '[scrollbar-width:none] [&::-webkit-scrollbar]:hidden',
+            '[scroll-snap-type:x_mandatory]',
+          ].join(' ')}
         >
           {INSTAGRAM_REELS.map((reel, index) => (
             <motion.div
               key={reel.id}
               className={[
-                "reel-card shrink-0 snap-start perspective-[1000px]",
-                "w-[85%] sm:w-[60%] md:w-[calc(33%-16px)] lg:w-[calc(25%-18px)]",
-              ].join(" ")}
+                'reel-card shrink-0 snap-start perspective-[1000px]',
+                'w-[85%] sm:w-[60%] md:w-[calc(33%-16px)] lg:w-[calc(25%-18px)]',
+              ].join(' ')}
               custom={index}
               initial={{ opacity: 0, y: 60, scale: 0.92 }}
               animate={
@@ -194,19 +182,19 @@ export default function InstagramReels({ theme }: InstagramReelsProps) {
               }
               style={{
                 // Safari: prevent 3D transform flickering and subpixel rendering artifacts
-                willChange: "transform, opacity",
-                WebkitBackfaceVisibility: "hidden",
-                backfaceVisibility: "hidden",
+                willChange: 'transform, opacity',
+                WebkitBackfaceVisibility: 'hidden',
+                backfaceVisibility: 'hidden',
               }}
             >
               <div
                 className={[
-                  "relative w-full aspect-9/16 rounded overflow-hidden",
-                  "transition-all duration-500 hover:shadow-lg",
+                  'relative w-full aspect-9/16 rounded overflow-hidden',
+                  'transition-all duration-500 hover:shadow-lg',
                   isDark
-                    ? "border border-white/10 bg-white/5 hover:border-white/30"
-                    : "border border-gray-200 bg-gray-50 hover:border-gray-400",
-                ].join(" ")}
+                    ? 'border border-white/10 bg-white/5 hover:border-white/30'
+                    : 'border border-gray-200 bg-gray-50 hover:border-gray-400',
+                ].join(' ')}
               >
                 <iframe
                   src={reel.embedUrl}
@@ -225,7 +213,7 @@ export default function InstagramReels({ theme }: InstagramReelsProps) {
           className="text-center mt-10 lg:mt-16"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-60px" }}
+          viewport={{ once: true, margin: '-60px' }}
           transition={{ duration: 0.6, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
         >
           <Link
@@ -233,13 +221,11 @@ export default function InstagramReels({ theme }: InstagramReelsProps) {
             target="_blank"
             rel="noopener noreferrer"
             className={[
-              "inline-flex items-center gap-3 px-6 py-3 lg:px-8 lg:py-4 rounded-full border",
-              "font-semibold text-sm tracking-wide no-underline",
-              "hover:border-[#E53935] hover:text-[#E53935] transition-all duration-300 group",
-              isDark
-                ? "border-white/20 text-white"
-                : "border-gray-300 text-[#1a1a1a]",
-            ].join(" ")}
+              'inline-flex items-center gap-3 px-6 py-3 lg:px-8 lg:py-4 rounded-full border',
+              'font-semibold text-sm tracking-wide no-underline',
+              'hover:border-[#E53935] hover:text-[#E53935] transition-all duration-300 group',
+              isDark ? 'border-white/20 text-white' : 'border-gray-300 text-[#1a1a1a]',
+            ].join(' ')}
           >
             <svg
               className="w-5 h-5 transition-transform duration-300 group-hover:scale-110"

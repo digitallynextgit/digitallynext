@@ -17,7 +17,7 @@ function getLocalPointerPos(e: MouseEvent | TouchEvent, rect: DOMRect): { x: num
   }
   return {
     x: clientX - rect.left,
-    y: clientY - rect.top
+    y: clientY - rect.top,
   };
 }
 
@@ -30,7 +30,7 @@ function getMouseDistance(p1: { x: number; y: number }, p2: { x: number; y: numb
 class ImageItem {
   public DOM: { el: HTMLDivElement; inner: HTMLDivElement | null } = {
     el: null as unknown as HTMLDivElement,
-    inner: null
+    inner: null,
   };
   public defaultStyle: gsap.TweenVars = { scale: 1, x: 0, y: 0, opacity: 0 };
   public rect: DOMRect | null = null;
@@ -73,7 +73,7 @@ class ImageTrailVariant1 {
   constructor(container: HTMLDivElement) {
     this.container = container;
     this.DOM = { el: container };
-    this.images = [...container.querySelectorAll('.content__img')].map(img => new ImageItem(img as HTMLDivElement));
+    this.images = [...container.querySelectorAll('.content__img')].map((img) => new ImageItem(img as HTMLDivElement));
     this.imagesTotal = this.images.length;
     this.imgPosition = 0;
     this.zIndexVal = 1;
@@ -127,7 +127,7 @@ class ImageTrailVariant1 {
     gsap
       .timeline({
         onStart: () => this.onImageActivated(),
-        onComplete: () => this.onImageDeactivated()
+        onComplete: () => this.onImageDeactivated(),
       })
       .fromTo(
         img.DOM.el,
@@ -136,13 +136,13 @@ class ImageTrailVariant1 {
           scale: 1,
           zIndex: this.zIndexVal,
           x: this.cacheMousePos.x - (img.rect?.width ?? 0) / 2,
-          y: this.cacheMousePos.y - (img.rect?.height ?? 0) / 2
+          y: this.cacheMousePos.y - (img.rect?.height ?? 0) / 2,
         },
         {
           duration: 0.4,
           ease: 'power1',
           x: this.mousePos.x - (img.rect?.width ?? 0) / 2,
-          y: this.mousePos.y - (img.rect?.height ?? 0) / 2
+          y: this.mousePos.y - (img.rect?.height ?? 0) / 2,
         },
         0
       )
@@ -152,7 +152,7 @@ class ImageTrailVariant1 {
           duration: 0.4,
           ease: 'power3',
           opacity: 0,
-          scale: 0.2
+          scale: 0.2,
         },
         0.4
       );
@@ -188,7 +188,7 @@ class ImageTrailVariant2 {
   constructor(container: HTMLDivElement) {
     this.container = container;
     this.DOM = { el: container };
-    this.images = [...container.querySelectorAll('.content__img')].map(img => new ImageItem(img as HTMLDivElement));
+    this.images = [...container.querySelectorAll('.content__img')].map((img) => new ImageItem(img as HTMLDivElement));
     this.imagesTotal = this.images.length;
     this.imgPosition = 0;
     this.zIndexVal = 1;
@@ -242,7 +242,7 @@ class ImageTrailVariant2 {
     gsap
       .timeline({
         onStart: () => this.onImageActivated(),
-        onComplete: () => this.onImageDeactivated()
+        onComplete: () => this.onImageDeactivated(),
       })
       .fromTo(
         img.DOM.el,
@@ -251,14 +251,14 @@ class ImageTrailVariant2 {
           scale: 0,
           zIndex: this.zIndexVal,
           x: this.cacheMousePos.x - (img.rect?.width ?? 0) / 2,
-          y: this.cacheMousePos.y - (img.rect?.height ?? 0) / 2
+          y: this.cacheMousePos.y - (img.rect?.height ?? 0) / 2,
         },
         {
           duration: 0.4,
           ease: 'power1',
           scale: 1,
           x: this.mousePos.x - (img.rect?.width ?? 0) / 2,
-          y: this.mousePos.y - (img.rect?.height ?? 0) / 2
+          y: this.mousePos.y - (img.rect?.height ?? 0) / 2,
         },
         0
       )
@@ -269,7 +269,7 @@ class ImageTrailVariant2 {
           duration: 0.4,
           ease: 'power1',
           scale: 1,
-          filter: 'brightness(100%)'
+          filter: 'brightness(100%)',
         },
         0
       )
@@ -279,7 +279,7 @@ class ImageTrailVariant2 {
           duration: 0.4,
           ease: 'power2',
           opacity: 0,
-          scale: 0.2
+          scale: 0.2,
         },
         0.45
       );
@@ -315,7 +315,7 @@ class ImageTrailVariant3 {
   constructor(container: HTMLDivElement) {
     this.container = container;
     this.DOM = { el: container };
-    this.images = [...container.querySelectorAll('.content__img')].map(img => new ImageItem(img as HTMLDivElement));
+    this.images = [...container.querySelectorAll('.content__img')].map((img) => new ImageItem(img as HTMLDivElement));
     this.imagesTotal = this.images.length;
     this.imgPosition = 0;
     this.zIndexVal = 1;
@@ -369,7 +369,7 @@ class ImageTrailVariant3 {
     gsap
       .timeline({
         onStart: () => this.onImageActivated(),
-        onComplete: () => this.onImageDeactivated()
+        onComplete: () => this.onImageDeactivated(),
       })
       .fromTo(
         img.DOM.el,
@@ -380,14 +380,14 @@ class ImageTrailVariant3 {
           xPercent: 0,
           yPercent: 0,
           x: this.cacheMousePos.x - (img.rect?.width ?? 0) / 2,
-          y: this.cacheMousePos.y - (img.rect?.height ?? 0) / 2
+          y: this.cacheMousePos.y - (img.rect?.height ?? 0) / 2,
         },
         {
           duration: 0.4,
           ease: 'power1',
           scale: 1,
           x: this.mousePos.x - (img.rect?.width ?? 0) / 2,
-          y: this.mousePos.y - (img.rect?.height ?? 0) / 2
+          y: this.mousePos.y - (img.rect?.height ?? 0) / 2,
         },
         0
       )
@@ -397,7 +397,7 @@ class ImageTrailVariant3 {
         {
           duration: 0.4,
           ease: 'power1',
-          scale: 1
+          scale: 1,
         },
         0
       )
@@ -409,7 +409,7 @@ class ImageTrailVariant3 {
           opacity: 0,
           scale: 0.2,
           xPercent: () => gsap.utils.random(-30, 30),
-          yPercent: -200
+          yPercent: -200,
         },
         0.6
       );
@@ -445,7 +445,7 @@ class ImageTrailVariant4 {
   constructor(container: HTMLDivElement) {
     this.container = container;
     this.DOM = { el: container };
-    this.images = [...container.querySelectorAll('.content__img')].map(img => new ImageItem(img as HTMLDivElement));
+    this.images = [...container.querySelectorAll('.content__img')].map((img) => new ImageItem(img as HTMLDivElement));
     this.imagesTotal = this.images.length;
     this.imgPosition = 0;
     this.zIndexVal = 1;
@@ -507,7 +507,7 @@ class ImageTrailVariant4 {
     gsap
       .timeline({
         onStart: () => this.onImageActivated(),
-        onComplete: () => this.onImageDeactivated()
+        onComplete: () => this.onImageDeactivated(),
       })
       .fromTo(
         img.DOM.el,
@@ -516,14 +516,14 @@ class ImageTrailVariant4 {
           scale: 0,
           zIndex: this.zIndexVal,
           x: this.cacheMousePos.x - (img.rect?.width ?? 0) / 2,
-          y: this.cacheMousePos.y - (img.rect?.height ?? 0) / 2
+          y: this.cacheMousePos.y - (img.rect?.height ?? 0) / 2,
         },
         {
           duration: 0.4,
           ease: 'power1',
           scale: 1,
           x: this.mousePos.x - (img.rect?.width ?? 0) / 2,
-          y: this.mousePos.y - (img.rect?.height ?? 0) / 2
+          y: this.mousePos.y - (img.rect?.height ?? 0) / 2,
         },
         0
       )
@@ -534,13 +534,13 @@ class ImageTrailVariant4 {
           filter: `brightness(${Math.max((400 * distance) / 100, 100)}%) contrast(${Math.max(
             (400 * distance) / 100,
             100
-          )}%)`
+          )}%)`,
         },
         {
           duration: 0.4,
           ease: 'power1',
           scale: 1,
-          filter: 'brightness(100%) contrast(100%)'
+          filter: 'brightness(100%) contrast(100%)',
         },
         0
       )
@@ -549,7 +549,7 @@ class ImageTrailVariant4 {
         {
           duration: 0.4,
           ease: 'power3',
-          opacity: 0
+          opacity: 0,
         },
         0.4
       )
@@ -559,7 +559,7 @@ class ImageTrailVariant4 {
           duration: 1.5,
           ease: 'power4',
           x: `+=${dx * 110}`,
-          y: `+=${dy * 110}`
+          y: `+=${dy * 110}`,
         },
         0.05
       );
@@ -596,7 +596,7 @@ class ImageTrailVariant5 {
   constructor(container: HTMLDivElement) {
     this.container = container;
     this.DOM = { el: container };
-    this.images = [...container.querySelectorAll('.content__img')].map(img => new ImageItem(img as HTMLDivElement));
+    this.images = [...container.querySelectorAll('.content__img')].map((img) => new ImageItem(img as HTMLDivElement));
     this.imagesTotal = this.images.length;
     this.imgPosition = 0;
     this.zIndexVal = 1;
@@ -664,7 +664,7 @@ class ImageTrailVariant5 {
     gsap
       .timeline({
         onStart: () => this.onImageActivated(),
-        onComplete: () => this.onImageDeactivated()
+        onComplete: () => this.onImageDeactivated(),
       })
       .fromTo(
         img.DOM.el,
@@ -675,7 +675,7 @@ class ImageTrailVariant5 {
           zIndex: this.zIndexVal,
           x: this.cacheMousePos.x - (img.rect?.width ?? 0) / 2,
           y: this.cacheMousePos.y - (img.rect?.height ?? 0) / 2,
-          rotation: startAngle
+          rotation: startAngle,
         },
         {
           duration: 1,
@@ -684,7 +684,7 @@ class ImageTrailVariant5 {
           filter: 'brightness(100%)',
           x: this.mousePos.x - (img.rect?.width ?? 0) / 2 + dx * 70,
           y: this.mousePos.y - (img.rect?.height ?? 0) / 2 + dy * 70,
-          rotation: this.lastAngle
+          rotation: this.lastAngle,
         },
         0
       )
@@ -693,7 +693,7 @@ class ImageTrailVariant5 {
         {
           duration: 0.4,
           ease: 'expo',
-          opacity: 0
+          opacity: 0,
         },
         0.5
       )
@@ -703,7 +703,7 @@ class ImageTrailVariant5 {
           duration: 1.5,
           ease: 'power4',
           x: `+=${dx * 120}`,
-          y: `+=${dy * 120}`
+          y: `+=${dy * 120}`,
         },
         0.05
       );
@@ -737,7 +737,7 @@ class ImageTrailVariant6 {
   constructor(container: HTMLDivElement) {
     this.container = container;
     this.DOM = { el: container };
-    this.images = [...container.querySelectorAll('.content__img')].map(img => new ImageItem(img as HTMLDivElement));
+    this.images = [...container.querySelectorAll('.content__img')].map((img) => new ImageItem(img as HTMLDivElement));
     this.imagesTotal = this.images.length;
     this.imgPosition = 0;
     this.zIndexVal = 1;
@@ -820,7 +820,7 @@ class ImageTrailVariant6 {
     gsap
       .timeline({
         onStart: () => this.onImageActivated(),
-        onComplete: () => this.onImageDeactivated()
+        onComplete: () => this.onImageDeactivated(),
       })
       .fromTo(
         img.DOM.el,
@@ -829,7 +829,7 @@ class ImageTrailVariant6 {
           scale: 0,
           zIndex: this.zIndexVal,
           x: this.cacheMousePos.x - (img.rect?.width ?? 0) / 2,
-          y: this.cacheMousePos.y - (img.rect?.height ?? 0) / 2
+          y: this.cacheMousePos.y - (img.rect?.height ?? 0) / 2,
         },
         {
           duration: 0.8,
@@ -837,7 +837,7 @@ class ImageTrailVariant6 {
           scale: scaleFactor,
           filter: `grayscale(${grayscaleValue * 100}%) brightness(${brightnessValue * 100}%) blur(${blurValue}px)`,
           x: this.mousePos.x - (img.rect?.width ?? 0) / 2,
-          y: this.mousePos.y - (img.rect?.height ?? 0) / 2
+          y: this.mousePos.y - (img.rect?.height ?? 0) / 2,
         },
         0
       )
@@ -847,7 +847,7 @@ class ImageTrailVariant6 {
         {
           duration: 0.8,
           ease: 'power3',
-          scale: 1
+          scale: 1,
         },
         0
       )
@@ -857,7 +857,7 @@ class ImageTrailVariant6 {
           duration: 0.4,
           ease: 'power3.in',
           opacity: 0,
-          scale: 0.2
+          scale: 0.2,
         },
         0.45
       );
@@ -904,7 +904,7 @@ class ImageTrailVariant7 {
   constructor(container: HTMLDivElement) {
     this.container = container;
     this.DOM = { el: container };
-    this.images = [...container.querySelectorAll('.content__img')].map(img => new ImageItem(img as HTMLDivElement));
+    this.images = [...container.querySelectorAll('.content__img')].map((img) => new ImageItem(img as HTMLDivElement));
     this.imagesTotal = this.images.length;
     this.imgPosition = 0;
     this.zIndexVal = 1;
@@ -963,7 +963,7 @@ class ImageTrailVariant7 {
     gsap
       .timeline({
         onStart: () => this.onImageActivated(),
-        onComplete: () => this.onImageDeactivated()
+        onComplete: () => this.onImageDeactivated(),
       })
       .fromTo(
         img.DOM.el,
@@ -973,7 +973,7 @@ class ImageTrailVariant7 {
           opacity: 1,
           zIndex: this.zIndexVal,
           x: this.cacheMousePos.x - (img.rect?.width ?? 0) / 2,
-          y: this.cacheMousePos.y - (img.rect?.height ?? 0) / 2
+          y: this.cacheMousePos.y - (img.rect?.height ?? 0) / 2,
         },
         {
           duration: 0.4,
@@ -981,7 +981,7 @@ class ImageTrailVariant7 {
           scale: scaleValue,
           rotationZ: gsap.utils.random(-3, 3),
           x: this.mousePos.x - (img.rect?.width ?? 0) / 2,
-          y: this.mousePos.y - (img.rect?.height ?? 0) / 2
+          y: this.mousePos.y - (img.rect?.height ?? 0) / 2,
         },
         0
       );
@@ -998,7 +998,7 @@ class ImageTrailVariant7 {
           if (this.activeImagesCount === 0) {
             this.isIdle = true;
           }
-        }
+        },
       });
     }
   }
@@ -1034,7 +1034,7 @@ class ImageTrailVariant8 {
   constructor(container: HTMLDivElement) {
     this.container = container;
     this.DOM = { el: container };
-    this.images = [...container.querySelectorAll('.content__img')].map(img => new ImageItem(img as HTMLDivElement));
+    this.images = [...container.querySelectorAll('.content__img')].map((img) => new ImageItem(img as HTMLDivElement));
     this.imagesTotal = this.images.length;
     this.imgPosition = 0;
     this.zIndexVal = 1;
@@ -1110,7 +1110,7 @@ class ImageTrailVariant8 {
     gsap
       .timeline({
         onStart: () => this.onImageActivated(),
-        onComplete: () => this.onImageDeactivated()
+        onComplete: () => this.onImageDeactivated(),
       })
       .set(this.DOM.el, { perspective: 1000 }, 0)
       .fromTo(
@@ -1124,7 +1124,7 @@ class ImageTrailVariant8 {
           y: this.cacheMousePos.y - (img.rect?.height ?? 0) / 2,
           rotationX: this.cachedRotation.x,
           rotationY: this.cachedRotation.y,
-          filter: `brightness(${brightness})`
+          filter: `brightness(${brightness})`,
         },
         {
           duration: 1,
@@ -1133,7 +1133,7 @@ class ImageTrailVariant8 {
           x: this.mousePos.x - (img.rect?.width ?? 0) / 2,
           y: this.mousePos.y - (img.rect?.height ?? 0) / 2,
           rotationX: this.rotation.x,
-          rotationY: this.rotation.y
+          rotationY: this.rotation.y,
         },
         0
       )
@@ -1143,7 +1143,7 @@ class ImageTrailVariant8 {
           duration: 0.4,
           ease: 'power2',
           opacity: 0,
-          z: -800
+          z: -800,
         },
         0.3
       );
@@ -1180,7 +1180,7 @@ const variantMap: Record<number, ImageTrailConstructor> = {
   5: ImageTrailVariant5,
   6: ImageTrailVariant6,
   7: ImageTrailVariant7,
-  8: ImageTrailVariant8
+  8: ImageTrailVariant8,
 };
 
 interface ImageTrailProps {

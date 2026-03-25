@@ -1,14 +1,7 @@
-"use client";
+'use client';
 
-import React, {
-  ReactNode,
-  UIEvent,
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
-import { motion, useInView } from "framer-motion";
+import React, { ReactNode, UIEvent, useCallback, useEffect, useRef, useState } from 'react';
+import { motion, useInView } from 'framer-motion';
 
 interface AnimatedItemProps {
   children: ReactNode;
@@ -51,30 +44,30 @@ interface AnimatedListProps {
 
 const AnimatedList: React.FC<AnimatedListProps> = ({
   items = [
-    "Item 1",
-    "Item 2",
-    "Item 3",
-    "Item 4",
-    "Item 5",
-    "Item 6",
-    "Item 7",
-    "Item 8",
-    "Item 9",
-    "Item 10",
-    "Item 11",
-    "Item 12",
-    "Item 13",
-    "Item 14",
-    "Item 15",
+    'Item 1',
+    'Item 2',
+    'Item 3',
+    'Item 4',
+    'Item 5',
+    'Item 6',
+    'Item 7',
+    'Item 8',
+    'Item 9',
+    'Item 10',
+    'Item 11',
+    'Item 12',
+    'Item 13',
+    'Item 14',
+    'Item 15',
   ],
   onItemSelect,
   showGradients = true,
   enableArrowNavigation = true,
-  className = "",
-  itemClassName = "",
+  className = '',
+  itemClassName = '',
   displayScrollbar = true,
   initialSelectedIndex = -1,
-  selectedItemClassName = "",
+  selectedItemClassName = '',
 }) => {
   const listRef = useRef<HTMLDivElement>(null);
   const [selectedIndex, setSelectedIndex] = useState<number>(initialSelectedIndex);
@@ -112,21 +105,21 @@ const AnimatedList: React.FC<AnimatedListProps> = ({
     if (!enableArrowNavigation) return;
     if (items.length === 0) return;
 
-    if (e.key === "ArrowDown") {
+    if (e.key === 'ArrowDown') {
       e.preventDefault();
       setKeyboardNav(true);
       setSelectedIndex((prev) => Math.min(prev + 1, items.length - 1));
       return;
     }
 
-    if (e.key === "ArrowUp") {
+    if (e.key === 'ArrowUp') {
       e.preventDefault();
       setKeyboardNav(true);
       setSelectedIndex((prev) => Math.max(prev - 1, 0));
       return;
     }
 
-    if (e.key === "Enter") {
+    if (e.key === 'Enter') {
       if (selectedIndex >= 0 && selectedIndex < items.length) {
         e.preventDefault();
         onItemSelect?.(items[selectedIndex], selectedIndex);
@@ -145,11 +138,11 @@ const AnimatedList: React.FC<AnimatedListProps> = ({
       const itemTop = selectedItem.offsetTop;
       const itemBottom = itemTop + selectedItem.offsetHeight;
       if (itemTop < containerScrollTop + extraMargin) {
-        container.scrollTo({ top: itemTop - extraMargin, behavior: "smooth" });
+        container.scrollTo({ top: itemTop - extraMargin, behavior: 'smooth' });
       } else if (itemBottom > containerScrollTop + containerHeight - extraMargin) {
         container.scrollTo({
           top: itemBottom - containerHeight + extraMargin,
-          behavior: "smooth",
+          behavior: 'smooth',
         });
       }
     }
@@ -165,13 +158,13 @@ const AnimatedList: React.FC<AnimatedListProps> = ({
         onKeyDown={handleKeyDown}
         className={`max-h-[450px] overflow-y-auto pr-4 ${
           displayScrollbar
-            ? "[&::-webkit-scrollbar]:w-[6px] [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-[#D9D9D9] [&::-webkit-scrollbar-thumb]:rounded-full"
-            : "scrollbar-hide"
+            ? '[&::-webkit-scrollbar]:w-[6px] [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-[#D9D9D9] [&::-webkit-scrollbar-thumb]:rounded-full'
+            : 'scrollbar-hide'
         }`}
         onScroll={handleScroll}
         style={{
-          scrollbarWidth: displayScrollbar ? "thin" : "none",
-          scrollbarColor: "#D9D9D9 transparent",
+          scrollbarWidth: displayScrollbar ? 'thin' : 'none',
+          scrollbarColor: '#D9D9D9 transparent',
         }}
       >
         {items.map((item, index) => (
@@ -184,15 +177,15 @@ const AnimatedList: React.FC<AnimatedListProps> = ({
           >
             <div
               className={[
-                "p-4 rounded-[10px] text-white",
-                "bg-gradient-to-r from-[#1A1032] to-[#07060E]",
-                "shadow-[0px_1px_0px_rgba(255,255,255,0.06)_inset]",
-                selectedIndex === index ? "from-[#0B0B0B] to-[#000000]" : "",
-                selectedIndex === index ? selectedItemClassName : "",
+                'p-4 rounded-[10px] text-white',
+                'bg-gradient-to-r from-[#1A1032] to-[#07060E]',
+                'shadow-[0px_1px_0px_rgba(255,255,255,0.06)_inset]',
+                selectedIndex === index ? 'from-[#0B0B0B] to-[#000000]' : '',
+                selectedIndex === index ? selectedItemClassName : '',
                 itemClassName,
               ]
                 .filter(Boolean)
-                .join(" ")}
+                .join(' ')}
             >
               <p className="m-0 text-[14px] md:text-[16px] font-medium">{item}</p>
             </div>

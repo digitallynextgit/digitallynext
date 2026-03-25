@@ -1,15 +1,8 @@
-"use client";
+'use client';
 
-import {
-  createContext,
-  useContext,
-  useState,
-  useCallback,
-  useRef,
-  useEffect,
-} from "react";
+import { createContext, useContext, useState, useCallback, useRef, useEffect } from 'react';
 
-type Theme = "light" | "dark";
+type Theme = 'light' | 'dark';
 
 interface ContextType {
   theme: Theme;
@@ -17,13 +10,13 @@ interface ContextType {
 }
 
 const SectionThemeContext = createContext<ContextType>({
-  theme: "light",
+  theme: 'light',
   registerSection: () => () => {},
 });
 
 export function SectionThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setThemeState] = useState<Theme>("light");
-  const currentThemeRef = useRef<Theme>("light");
+  const [theme, setThemeState] = useState<Theme>('light');
+  const currentThemeRef = useRef<Theme>('light');
 
   // Map element → its theme
   const themeMapRef = useRef<Map<HTMLElement, Theme>>(new Map());
@@ -40,9 +33,7 @@ export function SectionThemeProvider({ children }: { children: React.ReactNode }
         const intersecting = entries.find((e) => e.isIntersecting);
         if (!intersecting) return;
 
-        const sectionTheme = themeMapRef.current.get(
-          intersecting.target as HTMLElement
-        );
+        const sectionTheme = themeMapRef.current.get(intersecting.target as HTMLElement);
         if (!sectionTheme || sectionTheme === currentThemeRef.current) return;
 
         currentThemeRef.current = sectionTheme;
@@ -50,7 +41,7 @@ export function SectionThemeProvider({ children }: { children: React.ReactNode }
       },
       {
         // Only fires when section crosses the vertical midpoint of the viewport
-        rootMargin: "-50% 0px -50% 0px",
+        rootMargin: '-50% 0px -50% 0px',
         threshold: 0,
       }
     );
@@ -83,8 +74,8 @@ export function SectionThemeProvider({ children }: { children: React.ReactNode }
       <div
         className="fixed inset-0 -z-10"
         style={{
-          backgroundColor: theme === "dark" ? "#000000" : "#ffffff",
-          transition: "background-color 550ms cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+          backgroundColor: theme === 'dark' ? '#000000' : '#ffffff',
+          transition: 'background-color 550ms cubic-bezier(0.25, 0.46, 0.45, 0.94)',
         }}
       />
       {children}

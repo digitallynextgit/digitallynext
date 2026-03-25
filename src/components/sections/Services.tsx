@@ -1,25 +1,22 @@
-"use client";
+'use client';
 
-import { useRef, useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import Image from "next/image";
-import Link from "next/link";
-import { services } from "@/data/services";
-import AnimatedSection from "@/components/ui/AnimatedSection";
-import { useSectionTheme } from "@/context/SectionThemeContext";
+import { useRef, useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import Image from 'next/image';
+import Link from 'next/link';
+import { services } from '@/data/services';
+import AnimatedSection from '@/components/ui/AnimatedSection';
+import { useSectionTheme } from '@/context/SectionThemeContext';
 
 const maskStyle = {
-  maskImage:
-    "linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)",
-  WebkitMaskImage:
-    "linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)",
+  maskImage: 'linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)',
+  WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)',
 };
 
 /* ===== Mobile Accordion ===== */
 function MobileServices({ isDark }: { isDark: boolean }) {
   const [expandedIndex, setExpandedIndex] = useState<number | null>(0);
-  const toggle = (i: number) =>
-    setExpandedIndex(expandedIndex === i ? null : i);
+  const toggle = (i: number) => setExpandedIndex(expandedIndex === i ? null : i);
 
   return (
     <div className="lg:hidden">
@@ -35,29 +32,25 @@ function MobileServices({ isDark }: { isDark: boolean }) {
               >
                 <h3
                   className={[
-                    "text-2xl sm:text-3xl font-bold tracking-tight transition-colors duration-300",
+                    'text-2xl sm:text-3xl font-bold tracking-tight transition-colors duration-300',
                     isOpen
-                      ? "text-[#E53935]"
+                      ? 'text-[#E53935]'
                       : isDark
-                        ? "text-white/30 group-hover:text-white/70"
-                        : "text-black/30 group-hover:text-black/70",
-                  ].join(" ")}
+                        ? 'text-white/30 group-hover:text-white/70'
+                        : 'text-black/30 group-hover:text-black/70',
+                  ].join(' ')}
                 >
                   {service.title}
                 </h3>
                 <span
                   className={[
-                    "ml-4 flex items-center gap-0.5 text-sm font-mono shrink-0 transition-colors duration-300",
-                    isOpen
-                      ? "text-[#E53935]"
-                      : isDark
-                        ? "text-white/30"
-                        : "text-black/30",
-                  ].join(" ")}
+                    'ml-4 flex items-center gap-0.5 text-sm font-mono shrink-0 transition-colors duration-300',
+                    isOpen ? 'text-[#E53935]' : isDark ? 'text-white/30' : 'text-black/30',
+                  ].join(' ')}
                 >
-                  {"{ "}
-                  {String(i + 1).padStart(2, "0")}
-                  {" }"}
+                  {'{ '}
+                  {String(i + 1).padStart(2, '0')}
+                  {' }'}
                 </span>
               </button>
 
@@ -66,7 +59,7 @@ function MobileServices({ isDark }: { isDark: boolean }) {
                 {isOpen && (
                   <motion.div
                     initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: "auto", opacity: 1 }}
+                    animate={{ height: 'auto', opacity: 1 }}
                     exit={{ height: 0, opacity: 0 }}
                     transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
                     className="overflow-hidden"
@@ -75,12 +68,10 @@ function MobileServices({ isDark }: { isDark: boolean }) {
                       <Link href={`/services/${service.slug}`}>
                         <div
                           className={[
-                            "relative aspect-video rounded-sm overflow-hidden shadow-2xl mb-4 group",
-                            "border transition-colors duration-500",
-                            isDark
-                              ? "bg-[#1a1a1a] border-white/10"
-                              : "bg-[#f0f0f0] border-black/10",
-                          ].join(" ")}
+                            'relative aspect-video rounded-sm overflow-hidden shadow-2xl mb-4 group',
+                            'border transition-colors duration-500',
+                            isDark ? 'bg-[#1a1a1a] border-white/10' : 'bg-[#f0f0f0] border-black/10',
+                          ].join(' ')}
                         >
                           <Image
                             src={service.media}
@@ -92,12 +83,7 @@ function MobileServices({ isDark }: { isDark: boolean }) {
                           />
                           <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-300 flex items-center justify-center">
                             <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center gap-2 text-white font-semibold text-sm tracking-widest uppercase border border-white/60 px-4 py-2 rounded-sm backdrop-blur-sm">
-                              <Image
-                                src="/icons/enter.svg"
-                                alt=""
-                                width={16}
-                                height={16}
-                              />
+                              <Image src="/icons/enter.svg" alt="" width={16} height={16} />
                               View Details
                             </span>
                           </div>
@@ -107,9 +93,9 @@ function MobileServices({ isDark }: { isDark: boolean }) {
                       {/* Subtitle */}
                       <p
                         className={[
-                          "text-sm mb-4 leading-relaxed transition-colors duration-500",
-                          isDark ? "text-white/60" : "text-black/60",
-                        ].join(" ")}
+                          'text-sm mb-4 leading-relaxed transition-colors duration-500',
+                          isDark ? 'text-white/60' : 'text-black/60',
+                        ].join(' ')}
                       >
                         {service.hero.subtitle}
                       </p>
@@ -117,29 +103,26 @@ function MobileServices({ isDark }: { isDark: boolean }) {
                       {/* Slider */}
                       <div
                         className={[
-                          "rounded-sm py-2.5 overflow-hidden whitespace-nowrap mb-4",
-                          "transition-colors duration-500",
-                          isDark ? "bg-white/5" : "bg-black/5",
-                        ].join(" ")}
+                          'rounded-sm py-2.5 overflow-hidden whitespace-nowrap mb-4',
+                          'transition-colors duration-500',
+                          isDark ? 'bg-white/5' : 'bg-black/5',
+                        ].join(' ')}
                         style={maskStyle}
                       >
                         <motion.div
                           className={[
-                            "inline-flex text-xs font-light transition-colors duration-500",
-                            isDark ? "text-white/40" : "text-black/40",
-                          ].join(" ")}
-                          animate={{ x: ["0%", "-50%"] }}
+                            'inline-flex text-xs font-light transition-colors duration-500',
+                            isDark ? 'text-white/40' : 'text-black/40',
+                          ].join(' ')}
+                          animate={{ x: ['0%', '-50%'] }}
                           transition={{
                             duration: 25,
                             repeat: Infinity,
-                            ease: "linear",
+                            ease: 'linear',
                           }}
                         >
                           {[...Array(3)].map((_, j) => (
-                            <span
-                              key={j}
-                              className="shrink-0 flex items-center"
-                            >
+                            <span key={j} className="shrink-0 flex items-center">
                               {service.sliderText}
                               <span className="mx-4 opacity-40">·</span>
                             </span>
@@ -148,24 +131,16 @@ function MobileServices({ isDark }: { isDark: boolean }) {
                       </div>
 
                       {/* CTA */}
-                      <Link
-                        href={`/services/${service.slug}`}
-                        className="group inline-flex items-center gap-2 mt-1"
-                      >
+                      <Link href={`/services/${service.slug}`} className="group inline-flex items-center gap-2 mt-1">
                         <span className="text-[#E21F26] transition-transform duration-300 ease-out group-hover:-translate-x-1">
-                          <Image
-                            src="/icons/enter.svg"
-                            alt=""
-                            width={20}
-                            height={20}
-                          />
+                          <Image src="/icons/enter.svg" alt="" width={20} height={20} />
                         </span>
                         <span
                           className={[
-                            "text-sm font-semibold tracking-wide uppercase",
-                            "transition-colors duration-200 group-hover:text-[#E21F26]",
-                            isDark ? "text-white" : "text-black",
-                          ].join(" ")}
+                            'text-sm font-semibold tracking-wide uppercase',
+                            'transition-colors duration-200 group-hover:text-[#E21F26]',
+                            isDark ? 'text-white' : 'text-black',
+                          ].join(' ')}
                         >
                           Explore {service.title}
                         </span>
@@ -175,7 +150,7 @@ function MobileServices({ isDark }: { isDark: boolean }) {
                 )}
               </AnimatePresence>
               <div
-                className={`h-px bg-linear-to-r from-transparent ${isDark ? "via-white/10" : "via-black/10"} to-transparent transition-colors duration-500`}
+                className={`h-px bg-linear-to-r from-transparent ${isDark ? 'via-white/10' : 'via-black/10'} to-transparent transition-colors duration-500`}
               />
             </div>
           );
@@ -199,7 +174,7 @@ function DesktopServices({ isDark }: { isDark: boolean }) {
         ([entry]) => {
           if (entry.isIntersecting) setActiveIndex(index);
         },
-        { root: null, rootMargin: "-35% 0px -60% 0px", threshold: 0 },
+        { root: null, rootMargin: '-35% 0px -60% 0px', threshold: 0 }
       );
       observer.observe(ref);
       observers.push(observer);
@@ -214,16 +189,14 @@ function DesktopServices({ isDark }: { isDark: boolean }) {
         <div className="relative">
           <div
             className="lg:sticky lg:top-32 w-full max-w-115"
-            style={{ position: "-webkit-sticky" } as React.CSSProperties}
+            style={{ position: '-webkit-sticky' } as React.CSSProperties}
           >
             <div
               className={[
-                "relative aspect-4/3 overflow-hidden shadow-2xl",
-                "transition-colors duration-500",
-                isDark
-                  ? "bg-[#1a1a1a]"
-                  : "bg-[#f0f0f0]",
-              ].join(" ")}
+                'relative aspect-4/3 overflow-hidden shadow-2xl',
+                'transition-colors duration-500',
+                isDark ? 'bg-[#1a1a1a]' : 'bg-[#f0f0f0]',
+              ].join(' ')}
             >
               <AnimatePresence mode="popLayout">
                 <motion.div
@@ -232,7 +205,7 @@ function DesktopServices({ isDark }: { isDark: boolean }) {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
-                  transition={{ duration: 0.5, ease: "easeInOut" }}
+                  transition={{ duration: 0.5, ease: 'easeInOut' }}
                 >
                   <Image
                     src={services[activeIndex].media}
@@ -268,7 +241,7 @@ function DesktopServices({ isDark }: { isDark: boolean }) {
                 <motion.div
                   initial={{ opacity: 0 }}
                   animate={{ opacity: hoveredIndex === i ? 1 : 0 }}
-                  transition={{ duration: 0.2, ease: "easeOut" }}
+                  transition={{ duration: 0.2, ease: 'easeOut' }}
                   className="relative z-20 shrink-0 mt-2"
                 >
                   <Image
@@ -284,19 +257,19 @@ function DesktopServices({ isDark }: { isDark: boolean }) {
                 {/* Service title */}
                 <h3
                   className={[
-                    "min-w-0 whitespace-normal wrap-break-words",
-                    "text-3xl md:text-5xl font-bold leading-tight tracking-tight",
-                    "transition-colors duration-300",
+                    'min-w-0 whitespace-normal wrap-break-words',
+                    'text-3xl md:text-5xl font-bold leading-tight tracking-tight',
+                    'transition-colors duration-300',
                     hoveredIndex === i || activeIndex === i
-                      ? "text-[#E53935]"
+                      ? 'text-[#E53935]'
                       : activeIndex + 1 === i
                         ? isDark
-                          ? "text-white"
-                          : "text-black"
+                          ? 'text-white'
+                          : 'text-black'
                         : isDark
-                          ? "text-white/20"
-                          : "text-black/20",
-                  ].join(" ")}
+                          ? 'text-white/20'
+                          : 'text-black/20',
+                  ].join(' ')}
                 >
                   {service.title}
                 </h3>
@@ -305,22 +278,22 @@ function DesktopServices({ isDark }: { isDark: boolean }) {
               {/* Slider */}
               <div
                 className={[
-                  "rounded-sm py-3 overflow-hidden whitespace-nowrap mt-4",
-                  "transition-colors duration-500",
-                  isDark ? "bg-white/5" : "bg-black/5",
-                ].join(" ")}
+                  'rounded-sm py-3 overflow-hidden whitespace-nowrap mt-4',
+                  'transition-colors duration-500',
+                  isDark ? 'bg-white/5' : 'bg-black/5',
+                ].join(' ')}
                 style={maskStyle}
               >
                 <motion.div
                   className={[
-                    "inline-flex text-lg font-light transition-colors duration-500",
-                    isDark ? "text-white/60" : "text-black/60",
-                  ].join(" ")}
-                  animate={{ x: ["0%", "-50%"] }}
+                    'inline-flex text-lg font-light transition-colors duration-500',
+                    isDark ? 'text-white/60' : 'text-black/60',
+                  ].join(' ')}
+                  animate={{ x: ['0%', '-50%'] }}
                   transition={{
                     duration: 60,
                     repeat: Infinity,
-                    ease: "linear",
+                    ease: 'linear',
                   }}
                 >
                   {[...Array(4)].map((_, j) => (
@@ -335,32 +308,24 @@ function DesktopServices({ isDark }: { isDark: boolean }) {
               {/* Divider */}
               <div
                 className={[
-                  "my-12 h-px bg-linear-to-r from-transparent to-transparent transition-colors duration-500",
-                  isDark ? "via-white/8" : "via-black/8",
-                ].join(" ")}
+                  'my-12 h-px bg-linear-to-r from-transparent to-transparent transition-colors duration-500',
+                  isDark ? 'via-white/8' : 'via-black/8',
+                ].join(' ')}
               />
             </div>
           ))}
 
           {/* Inquire Now CTA */}
           <div className="pt-8 w-full flex justify-start pl-8">
-            <Link
-              href="/contact"
-              className="group inline-flex items-center gap-2"
-            >
+            <Link href="/contact" className="group inline-flex items-center gap-2">
               <span className="text-[#E21F26] transition-transform duration-300 ease-out group-hover:-translate-x-1">
-                <Image
-                  src="/icons/enter.svg"
-                  alt="arrow-right"
-                  width={32}
-                  height={32}
-                />
+                <Image src="/icons/enter.svg" alt="arrow-right" width={32} height={32} />
               </span>
               <span
                 className={[
-                  "mt-1 font-light text-2xl transition-colors duration-200 group-hover:text-[#E21F26]",
-                  isDark ? "text-white" : "text-black",
-                ].join(" ")}
+                  'mt-1 font-light text-2xl transition-colors duration-200 group-hover:text-[#E21F26]',
+                  isDark ? 'text-white' : 'text-black',
+                ].join(' ')}
               >
                 Inquire Now
               </span>
@@ -374,12 +339,12 @@ function DesktopServices({ isDark }: { isDark: boolean }) {
 
 /* ===== Main Export ===== */
 interface ServicesProps {
-  theme?: "dark" | "light";
+  theme?: 'dark' | 'light';
 }
 
 export default function Services({ theme }: ServicesProps) {
   const { theme: contextTheme } = useSectionTheme();
-  const isDark = (theme ?? contextTheme) === "dark";
+  const isDark = (theme ?? contextTheme) === 'dark';
 
   return (
     <section id="services" className={`py-10 md:py-16 lg:py-20`}>
@@ -387,9 +352,9 @@ export default function Services({ theme }: ServicesProps) {
         <AnimatedSection>
           <h2
             className={[
-              "text-2xl font-extrabold tracking-tight transition-colors duration-500",
-              isDark ? "text-white" : "text-[#1a1a1a]",
-            ].join(" ")}
+              'text-2xl font-extrabold tracking-tight transition-colors duration-500',
+              isDark ? 'text-white' : 'text-[#1a1a1a]',
+            ].join(' ')}
           >
             <span className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[80px]">
               Services
@@ -403,23 +368,15 @@ export default function Services({ theme }: ServicesProps) {
 
         {/* Mobile CTA */}
         <div className="pt-8 w-full flex justify-start lg:hidden">
-          <Link
-            href="/contact"
-            className="group inline-flex items-center gap-1 pl-1"
-          >
+          <Link href="/contact" className="group inline-flex items-center gap-1 pl-1">
             <span className="text-[#E21F26] transition-transform duration-300 ease-out group-hover:-translate-x-1">
-              <Image
-                src="/icons/enter.svg"
-                alt="arrow-right"
-                width={32}
-                height={32}
-              />
+              <Image src="/icons/enter.svg" alt="arrow-right" width={32} height={32} />
             </span>
             <span
               className={[
-                "mt-1 font-light text-2xl transition-colors duration-200 group-hover:text-[#E21F26]",
-                isDark ? "text-white" : "text-black",
-              ].join(" ")}
+                'mt-1 font-light text-2xl transition-colors duration-200 group-hover:text-[#E21F26]',
+                isDark ? 'text-white' : 'text-black',
+              ].join(' ')}
             >
               Inquire Now
             </span>

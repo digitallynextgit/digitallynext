@@ -1,17 +1,17 @@
-"use client";
+'use client';
 
-import Image from "next/image";
-import Link from "next/link";
-import { caseStudies } from "@/data/casestudy";
-import { useSectionTheme } from "@/context/SectionThemeContext";
+import Image from 'next/image';
+import Link from 'next/link';
+import { caseStudies } from '@/data/casestudy';
+import { useSectionTheme } from '@/context/SectionThemeContext';
 
 interface CaseStudiesHeroProps {
-  theme?: "dark" | "light";
+  theme?: 'dark' | 'light';
 }
 
 export default function CaseStudiesHero({ theme }: CaseStudiesHeroProps) {
   const { theme: contextTheme } = useSectionTheme();
-  const isDark = (theme ?? contextTheme) === "dark";
+  const isDark = (theme ?? contextTheme) === 'dark';
 
   const featuredCaseStudy = caseStudies[0];
 
@@ -22,10 +22,10 @@ export default function CaseStudiesHero({ theme }: CaseStudiesHeroProps) {
           <div className="flex flex-col gap-14 py-8">
             <h1
               className={[
-                "text-[clamp(2.5rem,4.4vw,3rem)] font-light m-0 text-left",
-                "transition-colors duration-500",
-                isDark ? "text-white" : "text-black",
-              ].join(" ")}
+                'text-[clamp(2.5rem,4.4vw,3rem)] font-light m-0 text-left',
+                'transition-colors duration-500',
+                isDark ? 'text-white' : 'text-black',
+              ].join(' ')}
             >
               We help brands show up
               <div className="font-bold">
@@ -35,25 +35,22 @@ export default function CaseStudiesHero({ theme }: CaseStudiesHeroProps) {
 
             <p
               className={[
-                "max-w-[761px] font-light text-[18px] leading-[1.7] text-left m-0",
-                "transition-colors duration-500",
-                isDark ? "text-white/50" : "text-[#737373]",
-              ].join(" ")}
+                'max-w-[761px] font-light text-[18px] leading-[1.7] text-left m-0',
+                'transition-colors duration-500',
+                isDark ? 'text-white/50' : 'text-[#737373]',
+              ].join(' ')}
             >
               {featuredCaseStudy?.listing.introText ??
-                "From ambitious startups to scaling enterprises — Digitally Next builds performance-driven creative systems that turn attention into measurable growth."}
+                'From ambitious startups to scaling enterprises — Digitally Next builds performance-driven creative systems that turn attention into measurable growth.'}
             </p>
 
-            <Link
-              href="#case-studies-list"
-              className="inline-flex items-center gap-[15.3px] w-fit"
-            >
+            <Link href="#case-studies-list" className="inline-flex items-center gap-[15.3px] w-fit">
               <Image src="/icons/enter.svg" alt="" width={36} height={16} />
               <span
                 className={[
-                  "text-[clamp(1.6rem,2.4vw,2.2rem)] leading-[1.3] font-normal mt-1 transition-colors duration-500 hover:text-[#E21F26]",
-                  isDark ? "text-white" : "text-black",
-                ].join(" ")}
+                  'text-[clamp(1.6rem,2.4vw,2.2rem)] leading-[1.3] font-normal mt-1 transition-colors duration-500 hover:text-[#E21F26]',
+                  isDark ? 'text-white' : 'text-black',
+                ].join(' ')}
               >
                 Explore Case Studies
               </span>

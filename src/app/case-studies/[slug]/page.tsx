@@ -1,7 +1,7 @@
-import type { Metadata } from "next";
-import { notFound } from "next/navigation";
-import CaseStudyDetailPage from "@/components/case-studies/CaseStudyDetailPage";
-import { getCaseStudyBySlug } from "@/data/casestudy";
+import type { Metadata } from 'next';
+import { notFound } from 'next/navigation';
+import CaseStudyDetailPage from '@/components/case-studies/CaseStudyDetailPage';
+import { getCaseStudyBySlug } from '@/data/casestudy';
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -12,7 +12,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const cs = getCaseStudyBySlug(slug);
 
   if (!cs) {
-    return { title: "Case Study Not Found | Digitally Next" };
+    return { title: 'Case Study Not Found | Digitally Next' };
   }
 
   return {
@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     openGraph: {
       title: cs.metaTitle,
       description: cs.metaDescription,
-      type: "website",
+      type: 'website',
     },
   };
 }
@@ -36,4 +36,3 @@ export default async function CaseStudyPage({ params }: Props) {
 
   return <CaseStudyDetailPage caseStudy={cs} />;
 }
-

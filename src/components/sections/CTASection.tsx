@@ -1,46 +1,34 @@
-"use client";
+'use client';
 
-import { motion } from "framer-motion";
-import Image from "next/image";
-import Link from "next/link";
-import { useSectionTheme } from "@/context/SectionThemeContext";
+import { motion } from 'framer-motion';
+import Image from 'next/image';
+import Link from 'next/link';
+import { useSectionTheme } from '@/context/SectionThemeContext';
 
 interface CTASectionProps {
-  theme?: "dark" | "light";
+  theme?: 'dark' | 'light';
 }
 
 export default function CTASection({ theme }: CTASectionProps) {
   const { theme: contextTheme } = useSectionTheme();
-  const isDark = (theme ?? contextTheme) === "dark";
+  const isDark = (theme ?? contextTheme) === 'dark';
 
   return (
     <section
       id="contact"
       className="relative overflow-hidden w-screen -mx-[calc((100vw-100%)/2)] py-10 md:py-16 lg:py-20"
-      style={{ background: isDark ? "#000000" : "#111111" }}
+      style={{ background: isDark ? '#000000' : '#111111' }}
     >
       {/* Video background */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="cta-video absolute inset-0 w-full h-full object-cover"
-        >
+        <video autoPlay loop muted playsInline className="cta-video absolute inset-0 w-full h-full object-cover">
           <source src="/videos/CTA video.mp4" type="video/mp4" />
         </video>
       </div>
 
       {/* Overlay */}
       <div className="absolute inset-0 z-10 pointer-events-none">
-        <Image
-          src="/CTA/overlay.webp"
-          alt=""
-          fill
-          priority
-          className="object-cover"
-        />
+        <Image src="/CTA/overlay.webp" alt="" fill priority className="object-cover" />
       </div>
 
       <div className="relative z-20 w-[95%] max-w-6xl mx-auto text-center">
@@ -49,7 +37,7 @@ export default function CTASection({ theme }: CTASectionProps) {
           className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-white leading-tight tracking-tight mb-8"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true, margin: '-100px' }}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
         >
           Let&apos;s Build Something <br className="hidden md:block" />
@@ -61,19 +49,17 @@ export default function CTASection({ theme }: CTASectionProps) {
           className="space-y-5 mb-10"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
+          viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
         >
           <p className="text-sm md:text-2xl text-white font-bold">
-            We work best with teams that value structure, clarity, and long-term
-            thinking.
+            We work best with teams that value structure, clarity, and long-term thinking.
           </p>
           <p className="text-sm md:text-2xl text-gray-300 leading-relaxed">
-            If you&apos;re looking for shortcuts, quick hacks, or transactional
-            execution, we may not be the right fit.
+            If you&apos;re looking for shortcuts, quick hacks, or transactional execution, we may not be the right fit.
           </p>
           <p className="text-sm md:text-2xl text-gray-300 leading-relaxed">
-            If you&apos;re building something meant to scale,{" "}
+            If you&apos;re building something meant to scale,{' '}
             <span className="font-bold text-white">let&apos;s talk.</span>
           </p>
         </motion.div>
@@ -82,7 +68,7 @@ export default function CTASection({ theme }: CTASectionProps) {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
+          viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
         >
           <Link
@@ -93,14 +79,12 @@ export default function CTASection({ theme }: CTASectionProps) {
             <span
               className="absolute inset-0 pointer-events-none transition-opacity duration-300 group-hover:opacity-0"
               style={{
-                background:
-                  "linear-gradient(90deg, #0EC8C5 0%, #FFFFFF 50%, #E21F26 100%)",
-                padding: "2px",
+                background: 'linear-gradient(90deg, #0EC8C5 0%, #FFFFFF 50%, #E21F26 100%)',
+                padding: '2px',
                 // Safari fix: use "destination-out" instead of "xor" for -webkit-mask-composite
-                WebkitMask:
-                  "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
-                WebkitMaskComposite: "destination-out",
-                maskComposite: "exclude",
+                WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+                WebkitMaskComposite: 'destination-out',
+                maskComposite: 'exclude',
               }}
             />
             {/* White border on hover */}
@@ -109,8 +93,7 @@ export default function CTASection({ theme }: CTASectionProps) {
             <span
               className="absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100 pointer-events-none"
               style={{
-                background:
-                  "linear-gradient(90deg, #0EC8C5 0%, #FFFFFF 50%, #E21F26 100%)",
+                background: 'linear-gradient(90deg, #0EC8C5 0%, #FFFFFF 50%, #E21F26 100%)',
               }}
             />
             <span className="relative z-10">GET IN TOUCH</span>

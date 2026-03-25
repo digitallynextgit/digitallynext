@@ -1,21 +1,21 @@
-import Image from "next/image";
-import Link from "next/link";
-import { Phone, Mail } from "lucide-react";
+import Image from 'next/image';
+import Link from 'next/link';
+import { Phone, Mail } from 'lucide-react';
 
 const navItems = [
-  { label: "Home", href: "/" },
+  { label: 'Home', href: '/' },
   //   { label: "Blog", href: "/blog" },
-  { label: "Contact", href: "/contact" },
-  { label: "About", href: "#about" },
-  { label: "Case Studies", href: "#case-studies" },
+  { label: 'Contact', href: '/contact' },
+  { label: 'About', href: '#about' },
+  { label: 'Case Studies', href: '#case-studies' },
 ];
 
 const socialItems = [
-  { label: "Instagram", href: "https://instagram.com/digitallynext" },
-  { label: "YouTube", href: "https://www.youtube.com/@digitallynext" },
+  { label: 'Instagram', href: 'https://instagram.com/digitallynext' },
+  { label: 'YouTube', href: 'https://www.youtube.com/@digitallynext' },
   {
-    label: "LinkedIn",
-    href: "https://www.linkedin.com/company/digitallynext/",
+    label: 'LinkedIn',
+    href: 'https://www.linkedin.com/company/digitallynext/',
   },
 ];
 
@@ -28,31 +28,24 @@ export default function Footer() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16 lg:gap-24 xl:gap-62">
             {/* Left — Tagline */}
             <div className="text-center md:text-left">
-              <h3
-                className="text-3xl md:text-4xl text-white leading-snug"
-                style={{ fontFamily: "Stack Sans Text" }}
-              >
-                <span className="font-bold xl:whitespace-nowrap">
-                  Modern DAD-enabled
-                </span>
-                <span style={{ color: "#0EC8C5" }}>.</span>
+              <h3 className="text-3xl md:text-4xl text-white leading-snug" style={{ fontFamily: 'Stack Sans Text' }}>
+                <span className="font-bold xl:whitespace-nowrap">Modern DAD-enabled</span>
+                <span style={{ color: '#0EC8C5' }}>.</span>
                 <br />
-                <span className="font-light xl:whitespace-nowrap">
-                  Decision-led
-                </span>
-                <span style={{ color: "#0EC8C5" }}>.</span>
+                <span className="font-light xl:whitespace-nowrap">Decision-led</span>
+                <span style={{ color: '#0EC8C5' }}>.</span>
                 <br />
                 <span className="font-light xl:whitespace-nowrap">
                   Built for <span className="text-red-600">global scale</span>
                 </span>
-                <span style={{ color: "#0EC8C5" }}>.</span>
+                <span style={{ color: '#0EC8C5' }}>.</span>
               </h3>
               {/* Contact details */}
               <div className="mt-5 flex flex-col gap-3 items-center md:items-start">
                 <a
                   href="tel:+919810409943"
                   className="flex items-center gap-2 text-white/70 hover:text-white transition-colors duration-200 text-base font-light"
-                  style={{ fontFamily: "Stack Sans Text" }}
+                  style={{ fontFamily: 'Stack Sans Text' }}
                 >
                   <Phone size={16} className="shrink-0" />
                   <span>+91 98104 09943</span>
@@ -60,7 +53,7 @@ export default function Footer() {
                 <a
                   href="mailto:contact@digitallynext.com"
                   className="flex items-center gap-2 text-white/70 hover:text-white transition-colors duration-200 text-base font-light"
-                  style={{ fontFamily: "Stack Sans Text" }}
+                  style={{ fontFamily: 'Stack Sans Text' }}
                 >
                   <Mail size={16} className="shrink-0" />
                   <span>contact@digitallynext.com</span>
@@ -72,7 +65,7 @@ export default function Footer() {
             <div className="text-center md:text-left md:pl-8 lg:pl-12 xl:pl-16">
               <h4
                 className="text-2xl font-normal uppercase tracking-widest text-white mb-5"
-                style={{ fontFamily: "Stack Sans Text" }}
+                style={{ fontFamily: 'Stack Sans Text' }}
               >
                 NAVIGATION
               </h4>
@@ -82,7 +75,7 @@ export default function Footer() {
                     <Link
                       href={item.href}
                       className="text-lg font-light text-white/70 hover:text-white transition-colors duration-200"
-                      style={{ fontFamily: "Stack Sans Text" }}
+                      style={{ fontFamily: 'Stack Sans Text' }}
                     >
                       {item.label}
                     </Link>
@@ -95,7 +88,7 @@ export default function Footer() {
             <div className="text-center md:text-left">
               <h4
                 className="text-2xl font-normal uppercase tracking-widest text-white mb-5"
-                style={{ fontFamily: "Stack Sans Text" }}
+                style={{ fontFamily: 'Stack Sans Text' }}
               >
                 SOCIAL MEDIA
               </h4>
@@ -107,7 +100,7 @@ export default function Footer() {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-lg font-light text-white/70 hover:text-white transition-colors duration-200"
-                      style={{ fontFamily: "Stack Sans Text" }}
+                      style={{ fontFamily: 'Stack Sans Text' }}
                     >
                       {item.label}
                     </a>
@@ -124,17 +117,16 @@ export default function Footer() {
             {/* Left — Copyright */}
             <span
               className="lg:text-lg text-sm text-white/80 text-center md:text-left block xl:whitespace-nowrap"
-              style={{ fontFamily: "Stack Sans Text" }}
+              style={{ fontFamily: 'Stack Sans Text' }}
             >
-             © {new Date().getFullYear()} Digitally Next. All Rights Reserved.
-              Reserved.
+              © {new Date().getFullYear()} Digitally Next. All Rights Reserved. Reserved.
             </span>
 
             {/* Center — Terms of Use */}
             <Link
               href="/terms-of-use"
               className="text-lg text-white/80 hover:text-white transition-colors duration-200 text-center md:text-left block md:pl-8 lg:pl-12 xl:pl-16 md:-ml-3.75"
-              style={{ fontFamily: "Stack Sans Text" }}
+              style={{ fontFamily: 'Stack Sans Text' }}
             >
               Terms of Use
             </Link>
@@ -144,7 +136,7 @@ export default function Footer() {
               <Link
                 href="/privacy-policy"
                 className="text-lg text-white/80 hover:text-white transition-colors duration-200"
-                style={{ fontFamily: "Stack Sans Text" }}
+                style={{ fontFamily: 'Stack Sans Text' }}
               >
                 Privacy Policy
               </Link>
@@ -153,12 +145,7 @@ export default function Footer() {
                 className="text-white/80 hover:text-white transition-colors duration-200 inline-flex items-center ml-10"
                 aria-label="Back to top"
               >
-                <Image
-                  src="/ani-icons/up_arrow.svg"
-                  alt="Back to top"
-                  width={10}
-                  height={10}
-                />
+                <Image src="/ani-icons/up_arrow.svg" alt="Back to top" width={10} height={10} />
               </a>
             </div>
           </div>
@@ -169,9 +156,8 @@ export default function Footer() {
       <div
         className="w-full flex justify-center items-center pt-12 md:pt-16 px-10 bg-black"
         style={{
-          WebkitMaskImage:
-            "linear-gradient(to bottom, white 20%, transparent 100%)",
-          maskImage: "linear-gradient(to bottom, black 20%, transparent 100%)",
+          WebkitMaskImage: 'linear-gradient(to bottom, white 20%, transparent 100%)',
+          maskImage: 'linear-gradient(to bottom, black 20%, transparent 100%)',
         }}
       >
         <Image

@@ -1,11 +1,11 @@
-import { NextRequest, NextResponse } from "next/server";
-import nodemailer from "nodemailer";
+import { NextRequest, NextResponse } from 'next/server';
+import nodemailer from 'nodemailer';
 // import { Client } from "@notionhq/client";
 // const notion = new Client({ auth: process.env.NOTION_API_KEY });
 // const DB_ID = process.env.NOTION_DATABASE_ID!;
 
 export const maxDuration = 30;
-export const dynamic = "force-dynamic";
+export const dynamic = 'force-dynamic';
 
 type CareersPayload = {
   fullName: string;
@@ -22,56 +22,41 @@ type CareersPayload = {
 
 function fromFormData(formData: FormData): CareersPayload {
   return {
-    fullName: String(formData.get("fullName") ?? "").trim(),
-    email: String(formData.get("email") ?? "").trim(),
-    phone: String(formData.get("phone") ?? "").trim(),
-    linkedIn: String(formData.get("linkedIn") ?? "").trim(),
-    portfolio: String(formData.get("portfolio") ?? "").trim(),
-    resumeUrl: String(formData.get("resumeUrl") ?? "").trim(),
-    message: String(formData.get("message") ?? "").trim(),
-    track: String(formData.get("track") ?? "").trim(),
-    department: String(formData.get("department") ?? "").trim(),
-    role: String(formData.get("role") ?? "").trim(),
+    fullName: String(formData.get('fullName') ?? '').trim(),
+    email: String(formData.get('email') ?? '').trim(),
+    phone: String(formData.get('phone') ?? '').trim(),
+    linkedIn: String(formData.get('linkedIn') ?? '').trim(),
+    portfolio: String(formData.get('portfolio') ?? '').trim(),
+    resumeUrl: String(formData.get('resumeUrl') ?? '').trim(),
+    message: String(formData.get('message') ?? '').trim(),
+    track: String(formData.get('track') ?? '').trim(),
+    department: String(formData.get('department') ?? '').trim(),
+    role: String(formData.get('role') ?? '').trim(),
   };
 }
 
 function buildHtml(p: CareersPayload): string {
   const rows: [string, string][] = [
-    ["Full Name", p.fullName || "—"],
-    ["Email", p.email || "—"],
-    ["Phone", p.phone || "—"],
-    [
-      "LinkedIn",
-      p.linkedIn
-        ? `<a href="${p.linkedIn}" style="color:#E21F26;">${p.linkedIn}</a>`
-        : "—",
-    ],
-    [
-      "Portfolio",
-      p.portfolio
-        ? `<a href="${p.portfolio}" style="color:#E21F26;">${p.portfolio}</a>`
-        : "—",
-    ],
-    [
-      "Resume URL",
-      p.resumeUrl
-        ? `<a href="${p.resumeUrl}" style="color:#E21F26;">${p.resumeUrl}</a>`
-        : "—",
-    ],
-    ["Track", p.track || "—"],
-    ["Department", p.department || "—"],
-    ["Role", p.role || "—"],
+    ['Full Name', p.fullName || '—'],
+    ['Email', p.email || '—'],
+    ['Phone', p.phone || '—'],
+    ['LinkedIn', p.linkedIn ? `<a href="${p.linkedIn}" style="color:#E21F26;">${p.linkedIn}</a>` : '—'],
+    ['Portfolio', p.portfolio ? `<a href="${p.portfolio}" style="color:#E21F26;">${p.portfolio}</a>` : '—'],
+    ['Resume URL', p.resumeUrl ? `<a href="${p.resumeUrl}" style="color:#E21F26;">${p.resumeUrl}</a>` : '—'],
+    ['Track', p.track || '—'],
+    ['Department', p.department || '—'],
+    ['Role', p.role || '—'],
   ];
 
   const tableRows = rows
     .map(
       ([label, value], i) => `
-      <tr style="background:${i % 2 === 0 ? "#f9f9f9" : "#ffffff"};">
+      <tr style="background:${i % 2 === 0 ? '#f9f9f9' : '#ffffff'};">
         <td style="padding:8px 12px; width:160px; font-weight:600;">${label}</td>
         <td style="padding:8px 12px;">${value}</td>
       </tr>`
     )
-    .join("");
+    .join('');
 
   return `
     <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #111111; max-width: 620px;">
@@ -85,9 +70,9 @@ function buildHtml(p: CareersPayload): string {
         p.message
           ? `<div style="margin-top:24px; padding:16px; background:#f9f9f9; border-left:3px solid #E21F26; border-radius:4px;">
               <p style="margin:0 0 8px; font-weight:600;">Message</p>
-              <p style="margin:0; white-space:pre-wrap;">${p.message.replace(/</g, "&lt;")}</p>
+              <p style="margin:0; white-space:pre-wrap;">${p.message.replace(/</g, '&lt;')}</p>
              </div>`
-          : ""
+          : ''
       }
     </div>
   `;
@@ -95,19 +80,19 @@ function buildHtml(p: CareersPayload): string {
 
 function buildText(p: CareersPayload): string {
   return [
-    `Full Name: ${p.fullName || "—"}`,
-    `Email: ${p.email || "—"}`,
-    `Phone: ${p.phone || "—"}`,
-    `LinkedIn: ${p.linkedIn || "—"}`,
-    `Portfolio: ${p.portfolio || "—"}`,
-    `Resume URL: ${p.resumeUrl || "—"}`,
-    `Track: ${p.track || "—"}`,
-    `Department: ${p.department || "—"}`,
-    `Role: ${p.role || "—"}`,
-    "",
+    `Full Name: ${p.fullName || '—'}`,
+    `Email: ${p.email || '—'}`,
+    `Phone: ${p.phone || '—'}`,
+    `LinkedIn: ${p.linkedIn || '—'}`,
+    `Portfolio: ${p.portfolio || '—'}`,
+    `Resume URL: ${p.resumeUrl || '—'}`,
+    `Track: ${p.track || '—'}`,
+    `Department: ${p.department || '—'}`,
+    `Role: ${p.role || '—'}`,
+    '',
     `Message:`,
-    p.message || "—",
-  ].join("\n");
+    p.message || '—',
+  ].join('\n');
 }
 
 export async function POST(req: NextRequest) {
@@ -122,26 +107,26 @@ export async function POST(req: NextRequest) {
       !payload.portfolio ||
       !payload.resumeUrl
     ) {
-      return NextResponse.json({ error: "All required fields must be filled." }, { status: 400 });
+      return NextResponse.json({ error: 'All required fields must be filled.' }, { status: 400 });
     }
 
     const user = process.env.GMAIL_USER;
     const pass = process.env.GMAIL_APP_PASSWORD;
 
     if (!user || !pass) {
-      console.error("Missing GMAIL_USER or GMAIL_APP_PASSWORD env variables.");
-      return NextResponse.json({ error: "Server configuration error." }, { status: 500 });
+      console.error('Missing GMAIL_USER or GMAIL_APP_PASSWORD env variables.');
+      return NextResponse.json({ error: 'Server configuration error.' }, { status: 500 });
     }
 
     const transporter = nodemailer.createTransport({
-      service: "gmail",
+      service: 'gmail',
       auth: { user, pass },
     });
 
     await transporter.sendMail({
       from: `Digitally Next Careers <${user}>`,
-      to: "careers@digitallynext.com",
-      subject: `New Application — ${payload.fullName}${payload.role ? ` (${payload.role})` : ""}`,
+      to: 'careers@digitallynext.com',
+      subject: `New Application — ${payload.fullName}${payload.role ? ` (${payload.role})` : ''}`,
       text: buildText(payload),
       html: buildHtml(payload),
     });
@@ -222,10 +207,9 @@ export async function POST(req: NextRequest) {
     // });
 
     return NextResponse.json({ success: true }, { status: 200 });
-
   } catch (err) {
-    console.error("[careers/route] error:", err);
-    const message = err instanceof Error ? err.message : "Internal server error.";
+    console.error('[careers/route] error:', err);
+    const message = err instanceof Error ? err.message : 'Internal server error.';
     return NextResponse.json({ error: message }, { status: 500 });
   }
 }

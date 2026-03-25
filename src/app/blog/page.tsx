@@ -1,12 +1,12 @@
-import { Metadata } from "next";
-import { client } from "@/sanity/client";
-import { allPostsQuery, allCategoriesQuery } from "@/sanity/queries";
-import BlogPageClient from "./BlogPageClient";
+import { Metadata } from 'next';
+import { client } from '@/sanity/client';
+import { allPostsQuery, allCategoriesQuery } from '@/sanity/queries';
+import BlogPageClient from './BlogPageClient';
 
 export const metadata: Metadata = {
-  title: "Blog | Digitally Next",
+  title: 'Blog | Digitally Next',
   description:
-    "Insights, strategies, and thought leadership from Digitally Next — your full-stack digital marketing partner.",
+    'Insights, strategies, and thought leadership from Digitally Next — your growth-driven global digital marketing partner.',
 };
 
 // Revalidate every 60 seconds

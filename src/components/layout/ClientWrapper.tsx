@@ -1,12 +1,12 @@
-"use client";
+'use client';
 
-import { ReactNode, useEffect } from "react";
-import Preloader from "@/components/ui/Preloader";
-import Header from "@/components/layout/Header";
-import NextTopLoader from "nextjs-toploader";
-import { usePathname } from "next/navigation";
-import { Toaster } from "react-hot-toast";
-import { SectionThemeProvider } from "../../context/SectionThemeContext";
+import { ReactNode, useEffect } from 'react';
+import Preloader from '@/components/ui/Preloader';
+import Header from '@/components/layout/Header';
+import NextTopLoader from 'nextjs-toploader';
+import { usePathname } from 'next/navigation';
+import { Toaster } from 'react-hot-toast';
+import { SectionThemeProvider } from '../../context/SectionThemeContext';
 
 export default function ClientWrapper({ children }: { children: ReactNode }) {
   const pathname = usePathname();
@@ -14,7 +14,7 @@ export default function ClientWrapper({ children }: { children: ReactNode }) {
     // Safari fix: "instant" behavior for scrollTo not supported before Safari 15.4
     // Use scrollTop assignment as fallback for older Safari
     try {
-      window.scrollTo({ top: 0, behavior: "instant" as ScrollBehavior });
+      window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior });
     } catch {
       window.scrollTo(0, 0);
     }

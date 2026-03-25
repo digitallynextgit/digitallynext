@@ -1,32 +1,31 @@
-"use client";
+'use client';
 
-import Image from "next/image";
-import type { CaseStudyDetail } from "@/data/casestudy";
-import { useSectionTheme } from "@/context/SectionThemeContext";
+import Image from 'next/image';
+import type { CaseStudyDetail } from '@/data/casestudy';
+import { useSectionTheme } from '@/context/SectionThemeContext';
 
 interface CaseStudyDetailHeroProps {
   detail: CaseStudyDetail;
   metaTitle: string;
-  theme?: "dark" | "light";
+  theme?: 'dark' | 'light';
 }
 
 export default function CaseStudyDetailHero({ detail, metaTitle, theme }: CaseStudyDetailHeroProps) {
   const { theme: contextTheme } = useSectionTheme();
-  const isDark = (theme ?? contextTheme) === "dark";
+  const isDark = (theme ?? contextTheme) === 'dark';
 
   return (
     <section className="w-full">
       <div className="mx-auto w-full max-w-[1280px] px-4">
         <div className="grid grid-cols-1 lg:grid-cols-[668px_1fr] gap-10 lg:gap-[84px] lg:items-stretch">
-
           {/* Left */}
           <div className="w-full flex flex-col gap-10 lg:gap-[72px]">
             <div className="w-full max-w-[482px] flex flex-col gap-4 lg:gap-[24px]">
               <div
                 className={[
-                  "text-[26px] md:text-[32px] leading-[1.07] font-light transition-colors duration-500",
-                  isDark ? "text-white" : "text-[#1a1a1a]",
-                ].join(" ")}
+                  'text-[26px] md:text-[32px] leading-[1.07] font-light transition-colors duration-500',
+                  isDark ? 'text-white' : 'text-[#1a1a1a]',
+                ].join(' ')}
               >
                 {detail.hero.title}
               </div>
@@ -49,10 +48,10 @@ export default function CaseStudyDetailHero({ detail, metaTitle, theme }: CaseSt
                     </div>
                     <div
                       className={[
-                        "capitalize text-[16px] md:text-[18px] leading-[1.3] font-normal whitespace-pre-line",
-                        "transition-colors duration-500",
-                        isDark ? "text-white" : "text-black",
-                      ].join(" ")}
+                        'capitalize text-[16px] md:text-[18px] leading-[1.3] font-normal whitespace-pre-line',
+                        'transition-colors duration-500',
+                        isDark ? 'text-white' : 'text-black',
+                      ].join(' ')}
                     >
                       {m.description}
                     </div>

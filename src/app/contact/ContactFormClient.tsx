@@ -1,27 +1,27 @@
-"use client";
+'use client';
 
-import Image from "next/image";
-import { useRef, useState } from "react";
-import toast from "react-hot-toast";
+import Image from 'next/image';
+import { useRef, useState } from 'react';
+import toast from 'react-hot-toast';
 
 const ENTITY_TYPES = [
-  "SMB/MSME",
-  "Start-up/D2C Brand",
-  "MNC",
-  "Education Entity",
-  "Self Employed",
-  "Portfolio in Making",
+  'SMB/MSME',
+  'Start-up/D2C Brand',
+  'MNC',
+  'Education Entity',
+  'Self Employed',
+  'Portfolio in Making',
 ];
 
 const SERVICES = [
-  "Performance, Distribution & Demand",
-  "Content, Culture & Media Creation",
-  "Platforms, Web & Digital Experience",
-  "Strategy, Brand & Growth Intelligence",
-  "AI Enablement & Decision Systems (ADAC-Powered)",
+  'Performance, Distribution & Demand',
+  'Content, Culture & Media Creation',
+  'Platforms, Web & Digital Experience',
+  'Strategy, Brand & Growth Intelligence',
+  'AI Enablement & Decision Systems (ADAC-Powered)',
 ];
 
-const CUSTOM_SERVICE = "Custom Services";
+const CUSTOM_SERVICE = 'Custom Services';
 
 type Props = {
   onSuccess?: () => void;
@@ -30,21 +30,17 @@ type Props = {
 export default function ContactFormClient({ onSuccess }: Props) {
   const formRef = useRef<HTMLFormElement>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [selectedEntity, setSelectedEntity] = useState("");
+  const [selectedEntity, setSelectedEntity] = useState('');
   const [selectedServices, setSelectedServices] = useState<string[]>([]);
   const [isCustomSelected, setIsCustomSelected] = useState(false);
-  const [customServiceNote, setCustomServiceNote] = useState("");
+  const [customServiceNote, setCustomServiceNote] = useState('');
 
   const toggleService = (service: string) =>
-    setSelectedServices((prev) =>
-      prev.includes(service)
-        ? prev.filter((s) => s !== service)
-        : [...prev, service]
-    );
+    setSelectedServices((prev) => (prev.includes(service) ? prev.filter((s) => s !== service) : [...prev, service]));
 
   const toggleCustom = () => {
     setIsCustomSelected((prev) => !prev);
-    if (isCustomSelected) setCustomServiceNote("");
+    if (isCustomSelected) setCustomServiceNote('');
   };
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -52,7 +48,7 @@ export default function ContactFormClient({ onSuccess }: Props) {
     if (isSubmitting) return;
 
     if (!selectedEntity) {
-      toast.error("Please select what best describes you.");
+      toast.error('Please select what best describes you.');
       return;
     }
 
@@ -60,47 +56,42 @@ export default function ContactFormClient({ onSuccess }: Props) {
     try {
       const formData = new FormData(event.currentTarget);
 
-      formData.set("entityType", selectedEntity);
-      formData.delete("services");
-      selectedServices.forEach((s) => formData.append("services", s));
+      formData.set('entityType', selectedEntity);
+      formData.delete('services');
+      selectedServices.forEach((s) => formData.append('services', s));
       if (isCustomSelected) {
-        formData.append("services", CUSTOM_SERVICE);
-        formData.set("customServiceNote", customServiceNote.trim());
+        formData.append('services', CUSTOM_SERVICE);
+        formData.set('customServiceNote', customServiceNote.trim());
       }
 
-      const response = await fetch("/api/contact", {
-        method: "POST",
+      const response = await fetch('/api/contact', {
+        method: 'POST',
         body: formData,
       });
 
       const result = (await response.json()) as { ok?: boolean; error?: string };
 
       if (!response.ok || !result.ok) {
-        toast.error(result.error || "Unable to send message.");
+        toast.error(result.error || 'Unable to send message.');
         return;
       }
 
-      toast.success("Message sent successfully.");
+      toast.success('Message sent successfully.');
       formRef.current?.reset();
-      setSelectedEntity("");
+      setSelectedEntity('');
       setSelectedServices([]);
       setIsCustomSelected(false);
-      setCustomServiceNote("");
+      setCustomServiceNote('');
       onSuccess?.();
     } catch {
-      toast.error("Unable to send message.");
+      toast.error('Unable to send message.');
     } finally {
       setIsSubmitting(false);
     }
   };
 
   return (
-    <form
-      ref={formRef}
-      className="grid gap-12"
-      style={{ fontFamily: "Stack Sans Text" }}
-      onSubmit={handleSubmit}
-    >
+    <form ref={formRef} className="grid gap-12" style={{ fontFamily: 'Stack Sans Text' }} onSubmit={handleSubmit}>
       {/* Row 1 — Name + Phone */}
       <div className="grid gap-6 sm:grid-cols-2">
         <label className="flex flex-col gap-2 text-xs font-semibold tracking-[0.12em] uppercase text-black">
@@ -193,8 +184,8 @@ export default function ContactFormClient({ onSuccess }: Props) {
               onClick={() => setSelectedEntity(type)}
               className={`px-4 py-2 rounded border text-xs font-semibold tracking-wide transition-all cursor-pointer ${
                 selectedEntity === type
-                  ? "bg-[#111111] border-[#111111] text-white"
-                  : "bg-white border-[#E0E0E0] text-[#4B4B4B] hover:border-[#E21F26] hover:text-[#E21F26]"
+                  ? 'bg-[#111111] border-[#111111] text-white'
+                  : 'bg-white border-[#E0E0E0] text-[#4B4B4B] hover:border-[#E21F26] hover:text-[#E21F26]'
               }`}
             >
               {type}
@@ -206,9 +197,7 @@ export default function ContactFormClient({ onSuccess }: Props) {
 
       {/* Services — pill multi-select */}
       <div className="space-y-3">
-        <p className="text-xs font-semibold tracking-[0.12em] uppercase text-black">
-          Services you want to explore
-        </p>
+        <p className="text-xs font-semibold tracking-[0.12em] uppercase text-black">Services you want to explore</p>
         <div className="flex flex-wrap gap-2">
           {SERVICES.map((service) => (
             <button
@@ -217,8 +206,8 @@ export default function ContactFormClient({ onSuccess }: Props) {
               onClick={() => toggleService(service)}
               className={`px-4 py-2 rounded border text-xs font-semibold tracking-wide transition-all cursor-pointer ${
                 selectedServices.includes(service)
-                  ? "bg-[#E21F26] border-[#E21F26] text-white"
-                  : "bg-white border-[#E0E0E0] text-[#4B4B4B] hover:border-[#E21F26] hover:text-[#E21F26]"
+                  ? 'bg-[#E21F26] border-[#E21F26] text-white'
+                  : 'bg-white border-[#E0E0E0] text-[#4B4B4B] hover:border-[#E21F26] hover:text-[#E21F26]'
               }`}
             >
               {service}
@@ -231,8 +220,8 @@ export default function ContactFormClient({ onSuccess }: Props) {
             onClick={toggleCustom}
             className={`px-4 py-2 rounded border text-xs font-semibold tracking-wide transition-all cursor-pointer ${
               isCustomSelected
-                ? "bg-[#111111] border-[#111111] text-white"
-                : "bg-white border-[#E0E0E0] text-[#4B4B4B] hover:border-[#111111] hover:text-[#111111]"
+                ? 'bg-[#111111] border-[#111111] text-white'
+                : 'bg-white border-[#E0E0E0] text-[#4B4B4B] hover:border-[#111111] hover:text-[#111111]'
             }`}
           >
             Custom
@@ -270,7 +259,7 @@ export default function ContactFormClient({ onSuccess }: Props) {
         type="submit"
         disabled={isSubmitting}
         className="inline-flex items-center gap-3 text-base sm:text-lg font-semibold tracking-[0.12em] uppercase text-[#111111] transition group cursor-pointer disabled:opacity-60"
-        style={{ fontFamily: "Stack Sans Text" }}
+        style={{ fontFamily: 'Stack Sans Text' }}
       >
         <Image
           src="/figma/services/arrow1.svg"
@@ -279,9 +268,7 @@ export default function ContactFormClient({ onSuccess }: Props) {
           height={26}
           className="transition-transform duration-300 group-hover:-translate-x-2"
         />
-        <span className="mt-0.5 group-hover:text-[#E21F26]">
-          {isSubmitting ? "Submitting..." : "Submit"}
-        </span>
+        <span className="mt-0.5 group-hover:text-[#E21F26]">{isSubmitting ? 'Submitting...' : 'Submit'}</span>
       </button>
     </form>
   );

@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
-import Image from "next/image";
-import { motion } from "framer-motion";
-import { X } from "lucide-react";
-import { useEffect, useId, useMemo, useRef, useState } from "react";
-import type { ServiceHeroSection, ServiceTheme } from "@/data/services";
-import ContactFormClient from "@/app/contact/ContactFormClient";
+import Image from 'next/image';
+import { motion } from 'framer-motion';
+import { X } from 'lucide-react';
+import { useEffect, useId, useMemo, useRef, useState } from 'react';
+import type { ServiceHeroSection, ServiceTheme } from '@/data/services';
+import ContactFormClient from '@/app/contact/ContactFormClient';
 
 type Props = {
   hero: ServiceHeroSection;
@@ -14,46 +14,35 @@ type Props = {
 
 const getFocusableElements = (container: HTMLElement) =>
   Array.from(
-    container.querySelectorAll<HTMLElement>(
-      'a[href], button, textarea, input, select, [tabindex]:not([tabindex="-1"])'
-    )
-  ).filter((el) => !el.hasAttribute("disabled") && !el.getAttribute("aria-hidden"));
+    container.querySelectorAll<HTMLElement>('a[href], button, textarea, input, select, [tabindex]:not([tabindex="-1"])')
+  ).filter((el) => !el.hasAttribute('disabled') && !el.getAttribute('aria-hidden'));
 
 export default function HeroSection({ hero, theme }: Props) {
-  const isCentered = hero.layout === "centered" || hero.layout === "stacked";
+  const isCentered = hero.layout === 'centered' || hero.layout === 'stacked';
 
   const quoteColor = hero.quoteColor ?? theme.accentAlt;
 
   const ctaTextColor = hero.ctaColor
     ? hero.ctaColor
-    : hero.ctaVariant === "accent"
+    : hero.ctaVariant === 'accent'
       ? theme.accent
-      : hero.ctaVariant === "alt"
+      : hero.ctaVariant === 'alt'
         ? theme.accentAlt
         : theme.heroText;
 
   // ---- MULTI QUOTE SUPPORT ----
   const quotes = useMemo(
-    () =>
-      Array.isArray(hero.quoteText)
-        ? hero.quoteText
-        : hero.quoteText
-          ? [hero.quoteText]
-          : [],
-    [hero.quoteText],
+    () => (Array.isArray(hero.quoteText) ? hero.quoteText : hero.quoteText ? [hero.quoteText] : []),
+    [hero.quoteText]
   );
 
   const [quoteIndex, setQuoteIndex] = useState(0);
 
   const activeQuote: string =
-    quotes.length > 0
-      ? quotes[quoteIndex]
-      : typeof hero.quoteText === "string"
-        ? hero.quoteText
-        : "";
+    quotes.length > 0 ? quotes[quoteIndex] : typeof hero.quoteText === 'string' ? hero.quoteText : '';
 
   // ---- TYPEWRITER ----
-  const [displayedText, setDisplayedText] = useState("");
+  const [displayedText, setDisplayedText] = useState('');
   const [isDone, setIsDone] = useState(false);
   const typeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const [contactOpen, setContactOpen] = useState(false);
@@ -65,7 +54,7 @@ export default function HeroSection({ hero, theme }: Props) {
   const lastActiveRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
-    setDisplayedText("");
+    setDisplayedText('');
     setIsDone(false);
     if (!activeQuote) return;
 
@@ -77,7 +66,7 @@ export default function HeroSection({ hero, theme }: Props) {
 
     const startTyping = () => {
       i = 0;
-      setDisplayedText("");
+      setDisplayedText('');
       setIsDone(false);
       const tick = () => {
         if (cancelled) return;
@@ -115,15 +104,15 @@ export default function HeroSection({ hero, theme }: Props) {
     if (!contactOpen) return;
     lastActiveRef.current = document.activeElement as HTMLElement;
     const prevOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
+    document.body.style.overflow = 'hidden';
     const timer = window.setTimeout(() => closeButtonRef.current?.focus(), 50);
     const onKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") {
+      if (e.key === 'Escape') {
         e.preventDefault();
         setContactOpen(false);
         return;
       }
-      if (e.key !== "Tab" || !panelRef.current) return;
+      if (e.key !== 'Tab' || !panelRef.current) return;
       const focusable = getFocusableElements(panelRef.current);
       if (!focusable.length) {
         e.preventDefault();
@@ -142,10 +131,10 @@ export default function HeroSection({ hero, theme }: Props) {
         first.focus();
       }
     };
-    document.addEventListener("keydown", onKeyDown);
+    document.addEventListener('keydown', onKeyDown);
     return () => {
       clearTimeout(timer);
-      document.removeEventListener("keydown", onKeyDown);
+      document.removeEventListener('keydown', onKeyDown);
       document.body.style.overflow = prevOverflow;
       lastActiveRef.current?.focus();
     };
@@ -173,38 +162,26 @@ export default function HeroSection({ hero, theme }: Props) {
               loop
               playsInline
               style={{
-                position: "absolute",
-                top: "50%",
-                left: "50%",
-                transform: "translate(-50%, -50%)",
-                minWidth: "100%",
-                minHeight: "100%",
-                width: "auto",
-                height: "auto",
-                objectFit: "cover",
+                position: 'absolute',
+                top: '50%',
+                left: '50%',
+                transform: 'translate(-50%, -50%)',
+                minWidth: '100%',
+                minHeight: '100%',
+                width: 'auto',
+                height: 'auto',
+                objectFit: 'cover',
               }}
             />
-            <div
-              className="absolute inset-0 z-10"
-              style={{ background: hero.overlay ?? "rgba(0,0,0,0.6)" }}
-            />
+            <div className="absolute inset-0 z-10" style={{ background: hero.overlay ?? 'rgba(0,0,0,0.6)' }} />
           </div>
         ) : hero.backgroundImage ? (
           <div className="absolute inset-0 z-0">
-            <Image
-              src={hero.backgroundImage}
-              alt=""
-              fill
-              className="object-cover object-center"
-              priority
-            />
+            <Image src={hero.backgroundImage} alt="" fill className="object-cover object-center" priority />
             <div className="absolute inset-0 z-10 bg-linear-to-b from-black/10 via-black/30 to-black/65" />
           </div>
         ) : hero.overlay ? (
-          <div
-            className="absolute inset-0 z-0"
-            style={{ background: hero.overlay }}
-          />
+          <div className="absolute inset-0 z-0" style={{ background: hero.overlay }} />
         ) : null}
 
         {/* Content wrapper */}
@@ -218,12 +195,10 @@ export default function HeroSection({ hero, theme }: Props) {
           >
             <div
               className={[
-                "flex-1 flex flex-col justify-center",
-                "pb-10 md:pb-14 lg:pb-20 lg:mt-20",
-                isCentered
-                  ? "mx-auto max-w-7xl text-center"
-                  : "max-w-276",
-              ].join(" ")}
+                'flex-1 flex flex-col justify-center',
+                'pb-10 md:pb-14 lg:pb-20 lg:mt-20',
+                isCentered ? 'mx-auto max-w-7xl text-center' : 'max-w-276',
+              ].join(' ')}
             >
               {/* Title */}
               <motion.div
@@ -236,13 +211,10 @@ export default function HeroSection({ hero, theme }: Props) {
                   {hero.titleLines.map((line, idx) => (
                     <span key={idx} className="block">
                       {line}
-                      {idx === hero.titleLines.length - 1 && (
-                        <span className="text-[#E21F26]">.</span>
-                      )}
+                      {idx === hero.titleLines.length - 1 && <span className="text-[#E21F26]">.</span>}
                     </span>
                   ))}
                 </h1>
-
 
                 {hero.subtitle && (
                   <motion.p
@@ -277,16 +249,14 @@ export default function HeroSection({ hero, theme }: Props) {
                     {displayedText}
                     <span
                       style={{
-                        display: "inline-block",
-                        width: "2px",
-                        marginLeft: "1px",
+                        display: 'inline-block',
+                        width: '2px',
+                        marginLeft: '1px',
                         opacity: isDone ? 0 : 1,
-                        animation: isDone
-                          ? "none"
-                          : "blink 0.8s step-start infinite",
+                        animation: isDone ? 'none' : 'blink 0.8s step-start infinite',
                         backgroundColor: quoteColor,
-                        verticalAlign: "middle",
-                        height: "1em",
+                        verticalAlign: 'middle',
+                        height: '1em',
                       }}
                       aria-hidden
                     />
@@ -307,10 +277,7 @@ export default function HeroSection({ hero, theme }: Props) {
                 </div>
 
                 {/* CTA */}
-                <div
-                  className={`pt-2 md:pt-4 lg:pt-7 ${isCentered ? "flex justify-center" : ""
-                    }`}
-                >
+                <div className={`pt-2 md:pt-4 lg:pt-7 ${isCentered ? 'flex justify-center' : ''}`}>
                   <button
                     type="button"
                     onClick={() => setContactOpen(true)}
@@ -350,7 +317,7 @@ export default function HeroSection({ hero, theme }: Props) {
           <div
             ref={panelRef}
             className="relative flex w-full flex-col overflow-hidden bg-white shadow-2xl"
-            style={{ maxWidth: 1060, borderRadius: 5, maxHeight: "calc(100svh - 4rem)" }}
+            style={{ maxWidth: 1060, borderRadius: 5, maxHeight: 'calc(100svh - 4rem)' }}
           >
             <div className="flex shrink-0 items-start justify-between gap-6 p-6 border-b">
               <div className="flex-1 min-w-0">

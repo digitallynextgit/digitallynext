@@ -1,4 +1,4 @@
-import { groq } from "next-sanity";
+import { groq } from 'next-sanity';
 
 // All posts for blog listing page
 export const allPostsQuery = groq`

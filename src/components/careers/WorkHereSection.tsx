@@ -1,74 +1,71 @@
-"use client";
+'use client';
 
-import Image from "next/image";
-import { useState } from "react";
-import { useSectionTheme } from "@/context/SectionThemeContext";
+import Image from 'next/image';
+import { useState } from 'react';
+import { useSectionTheme } from '@/context/SectionThemeContext';
 
 interface WorkHereSectionProps {
-  theme?: "dark" | "light";
+  theme?: 'dark' | 'light';
 }
 
 const rightItems = [
   {
-    icon: "/figma/careers/careers-icon-direction.svg",
+    icon: '/figma/careers/careers-icon-direction.svg',
     iconW: 52,
     iconH: 41,
-    title: "Direction",
-    desc: "Every project has a clear brief, a defined scope, and someone accountable.",
+    title: 'Direction',
+    desc: 'Every project has a clear brief, a defined scope, and someone accountable.',
   },
   {
-    icon: "/figma/careers/careers-icon-context.svg",
+    icon: '/figma/careers/careers-icon-context.svg',
     iconW: 52,
     iconH: 44,
-    title: "Context",
+    title: 'Context',
     desc: "You'll always know why your work matters — not just what needs to be done.",
   },
   {
-    icon: "/figma/careers/careers-icon-standards.svg",
+    icon: '/figma/careers/careers-icon-standards.svg',
     iconW: 52,
     iconH: 44,
-    title: "Standards",
+    title: 'Standards',
     desc: "Quality isn't negotiable. We'd rather do less, better.",
   },
 ];
 
 export default function WorkHereSection({ theme }: WorkHereSectionProps) {
   const { theme: contextTheme } = useSectionTheme();
-  const isDark = (theme ?? contextTheme) === "dark";
+  const isDark = (theme ?? contextTheme) === 'dark';
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null); // ← added
 
   return (
     <section
       className={[
-        "w-full flex justify-center items-center transition-colors duration-700",
-        isDark ? "bg-black" : "bg-white",
-      ].join(" ")}
+        'w-full flex justify-center items-center transition-colors duration-700',
+        isDark ? 'bg-black' : 'bg-white',
+      ].join(' ')}
     >
       <div className="w-full max-w-7xl mx-auto px-6 lg:px-10 py-12 md:py-16 lg:py-20">
-
         {/* Heading */}
         <h2
           className={[
-            "font-normal leading-tight mb-8 md:mb-12 lg:mb-16 transition-colors duration-700",
-            isDark ? "text-white" : "text-[#000000]",
-          ].join(" ")}
-          style={{ fontSize: "clamp(1.75rem, 4vw, 47px)" }}
+            'font-normal leading-tight mb-8 md:mb-12 lg:mb-16 transition-colors duration-700',
+            isDark ? 'text-white' : 'text-[#000000]',
+          ].join(' ')}
+          style={{ fontSize: 'clamp(1.75rem, 4vw, 47px)' }}
         >
-          What It&apos;s Like to{" "}
-          <span className="text-[#E21F26] font-semibold">Work Here</span>
+          What It&apos;s Like to <span className="text-[#E21F26] font-semibold">Work Here</span>
           <span className="text-[#0EC8C5]">.</span>
         </h2>
 
         {/* Two col layout */}
         <div className="flex flex-col md:flex-row gap-10 lg:gap-16">
-
           {/* LEFT COL */}
           <div className="flex-1 flex flex-col gap-6">
             <p
               className={[
-                "font-light text-[17px] leading-relaxed transition-colors duration-700",
-                isDark ? "text-[#A1A1A1]" : "text-[#737373]",
-              ].join(" ")}
+                'font-light text-[17px] leading-relaxed transition-colors duration-700',
+                isDark ? 'text-[#A1A1A1]' : 'text-[#737373]',
+              ].join(' ')}
             >
               <span className="block">We&apos;re not chaotic.</span>
               <span className="block">We&apos;re not clock-punching either.</span>
@@ -76,9 +73,9 @@ export default function WorkHereSection({ theme }: WorkHereSectionProps) {
 
             <p
               className={[
-                "font-light text-[16px] leading-relaxed transition-colors duration-700",
-                isDark ? "text-[#737373]" : "text-[#A1A1A1]",
-              ].join(" ")}
+                'font-light text-[16px] leading-relaxed transition-colors duration-700',
+                isDark ? 'text-[#737373]' : 'text-[#A1A1A1]',
+              ].join(' ')}
             >
               Work here has:
             </p>
@@ -86,18 +83,18 @@ export default function WorkHereSection({ theme }: WorkHereSectionProps) {
             <div className="flex flex-col gap-4">
               <p
                 className={[
-                  "font-light text-[16px] leading-relaxed transition-colors duration-700",
-                  isDark ? "text-[#A1A1A1]" : "text-[#737373]",
-                ].join(" ")}
+                  'font-light text-[16px] leading-relaxed transition-colors duration-700',
+                  isDark ? 'text-[#A1A1A1]' : 'text-[#737373]',
+                ].join(' ')}
               >
                 <span className="block">Ideas are welcomed.</span>
                 <span className="block">But they&apos;re expected to stand on something.</span>
               </p>
               <p
                 className={[
-                  "font-light text-[15px] leading-relaxed transition-colors duration-700",
-                  isDark ? "text-[#737373]" : "text-[#A1A1A1]",
-                ].join(" ")}
+                  'font-light text-[15px] leading-relaxed transition-colors duration-700',
+                  isDark ? 'text-[#737373]' : 'text-[#A1A1A1]',
+                ].join(' ')}
               >
                 <span className="block">If you like clarity more than noise,</span>
                 <span className="block">you&apos;ll feel comfortable fast.</span>
@@ -123,50 +120,35 @@ export default function WorkHereSection({ theme }: WorkHereSectionProps) {
                 onMouseEnter={() => setHoveredIndex(i)}
                 onMouseLeave={() => setHoveredIndex(null)}
                 className={[
-                  "flex flex-col gap-3 p-7 sm:p-8 cursor-default",
-                  "transition-colors duration-300",
-                  i !== 0 ? "border-t-0" : "",
-                  isDark ? "border border-[#2a2a2a]" : "border border-[#E5E5E5]",
+                  'flex flex-col gap-3 p-7 sm:p-8 cursor-default',
+                  'transition-colors duration-300',
+                  i !== 0 ? 'border-t-0' : '',
+                  isDark ? 'border border-[#2a2a2a]' : 'border border-[#E5E5E5]',
                   // ← same bg logic as ADAC cards
-                  hoveredIndex === i
-                    ? "bg-[rgba(14,200,197,0.08)]"
-                    : isDark
-                      ? "bg-[#0a0a0a]"
-                      : "bg-white",
-                ].join(" ")}
+                  hoveredIndex === i ? 'bg-[rgba(14,200,197,0.08)]' : isDark ? 'bg-[#0a0a0a]' : 'bg-white',
+                ].join(' ')}
               >
-                <Image
-                  src={item.icon}
-                  alt=""
-                  width={item.iconW}
-                  height={item.iconH}
-                />
+                <Image src={item.icon} alt="" width={item.iconW} height={item.iconH} />
                 {/* Title color changes on hover — same as ADAC */}
                 <div
                   className="text-[22px] sm:text-[24px] font-normal leading-tight transition-colors duration-300"
                   style={{
-                    color:
-                      hoveredIndex === i
-                        ? "#0EC8C5"
-                        : isDark
-                          ? "#FFFFFF"
-                          : "#000000",
+                    color: hoveredIndex === i ? '#0EC8C5' : isDark ? '#FFFFFF' : '#000000',
                   }}
                 >
                   {item.title}
                 </div>
                 <div
                   className={[
-                    "text-[15px] font-light leading-relaxed transition-colors duration-700",
-                    isDark ? "text-[#737373]" : "text-[#A1A1A1]",
-                  ].join(" ")}
+                    'text-[15px] font-light leading-relaxed transition-colors duration-700',
+                    isDark ? 'text-[#737373]' : 'text-[#A1A1A1]',
+                  ].join(' ')}
                 >
                   {item.desc}
                 </div>
               </div>
             ))}
           </div>
-
         </div>
       </div>
     </section>

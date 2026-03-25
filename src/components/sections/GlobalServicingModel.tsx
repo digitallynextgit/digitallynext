@@ -1,16 +1,16 @@
-"use client";
+'use client';
 
-import { useState, useEffect, useCallback } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import Image from "next/image";
-import Link from "next/link";
-import { useSectionTheme } from "@/context/SectionThemeContext";
+import { useState, useEffect, useCallback } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import Image from 'next/image';
+import Link from 'next/link';
+import { useSectionTheme } from '@/context/SectionThemeContext';
 
 const frameworks = [
   {
-    name: "C-Suite",
-    description: "Leadership & decision-aligned engagement",
-    cta: "Explore Framework",
+    name: 'C-Suite',
+    description: 'Leadership & decision-aligned engagement',
+    cta: 'Explore Framework',
     icon: (
       <Image
         src="/home/sm1.webp"
@@ -22,37 +22,25 @@ const frameworks = [
     ),
   },
   {
-    name: "KASA",
-    description: "Founder & leadership brand authority model",
-    cta: "Explore Framework",
+    name: 'KASA',
+    description: 'Founder & leadership brand authority model',
+    cta: 'Explore Framework',
     icon: (
-      <Image
-        src="/home/sm2.webp"
-        alt="KASA Icon"
-        width={112}
-        height={112}
-        className="w-full h-full object-contain"
-      />
+      <Image src="/home/sm2.webp" alt="KASA Icon" width={112} height={112} className="w-full h-full object-contain" />
     ),
   },
   {
-    name: "Profit",
-    description: "Plan-to-performance growth execution",
-    cta: "Explore Framework",
+    name: 'Profit',
+    description: 'Plan-to-performance growth execution',
+    cta: 'Explore Framework',
     icon: (
-      <Image
-        src="/home/sm3.webp"
-        alt="Profit Icon"
-        width={112}
-        height={112}
-        className="w-full h-full object-contain"
-      />
+      <Image src="/home/sm3.webp" alt="Profit Icon" width={112} height={112} className="w-full h-full object-contain" />
     ),
   },
   {
-    name: "Communication & Governance",
-    description: "Cadence · Ownership · Escalation",
-    cta: "Explore Model",
+    name: 'Communication & Governance',
+    description: 'Cadence · Ownership · Escalation',
+    cta: 'Explore Model',
     icon: (
       <Image
         src="/home/sm4.webp"
@@ -64,9 +52,9 @@ const frameworks = [
     ),
   },
   {
-    name: "Delivery Models",
-    description: "Satellite Office · Dedicated Pods · Build-Operate-Transfer",
-    cta: "Explore Models",
+    name: 'Delivery Models',
+    description: 'Satellite Office · Dedicated Pods · Build-Operate-Transfer',
+    cta: 'Explore Models',
     icon: (
       <Image
         src="/home/sm5.webp"
@@ -82,7 +70,7 @@ const frameworks = [
 const CYCLE_INTERVAL = 3000;
 
 interface GSMProps {
-  theme?: "dark" | "light";
+  theme?: 'dark' | 'light';
 }
 
 /* ===== Mobile Layout ===== */
@@ -91,12 +79,12 @@ function MobileGSM({ isDark }: { isDark: boolean }) {
     <div className="lg:hidden">
       <motion.h3
         className={[
-          "text-xl sm:text-2xl font-bold mb-6 sm:mb-8 transition-colors duration-500",
-          isDark ? "text-white" : "text-[#1a1a1a]",
-        ].join(" ")}
+          'text-xl sm:text-2xl font-bold mb-6 sm:mb-8 transition-colors duration-500',
+          isDark ? 'text-white' : 'text-[#1a1a1a]',
+        ].join(' ')}
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-60px" }}
+        viewport={{ once: true, margin: '-60px' }}
         transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
       >
         Our Operating Frameworks
@@ -104,12 +92,11 @@ function MobileGSM({ isDark }: { isDark: boolean }) {
 
       <p
         className={[
-          "text-[12px] sm:text-sm mb-6 sm:mb-8 leading-relaxed transition-colors duration-500",
-          isDark ? "text-white/60" : "text-black/60",
-        ].join(" ")}
+          'text-[12px] sm:text-sm mb-6 sm:mb-8 leading-relaxed transition-colors duration-500',
+          isDark ? 'text-white/60' : 'text-black/60',
+        ].join(' ')}
       >
-        All frameworks are powered by Modern DAD thinking and governed by the AI
-        Decision & Acceleration Center.
+        All frameworks are powered by Modern DAD thinking and governed by the AI Decision & Acceleration Center.
       </p>
 
       <div className="flex flex-col gap-3 sm:gap-4">
@@ -117,14 +104,12 @@ function MobileGSM({ isDark }: { isDark: boolean }) {
           <motion.div
             key={fw.name}
             className={[
-              "border-2 rounded p-4 sm:p-5 backdrop-blur-sm transition-colors duration-500",
-              isDark
-                ? "bg-black border-white/15"
-                : "bg-white border-black/10 shadow-sm",
-            ].join(" ")}
+              'border-2 rounded p-4 sm:p-5 backdrop-blur-sm transition-colors duration-500',
+              isDark ? 'bg-black border-white/15' : 'bg-white border-black/10 shadow-sm',
+            ].join(' ')}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-40px" }}
+            viewport={{ once: true, margin: '-40px' }}
             transition={{
               duration: 0.5,
               delay: i * 0.08,
@@ -138,9 +123,9 @@ function MobileGSM({ isDark }: { isDark: boolean }) {
               </div>
               <h4
                 className={[
-                  "text-base sm:text-lg font-bold tracking-tight wrap-break-word transition-colors duration-500",
-                  isDark ? "text-white" : "text-[#1a1a1a]",
-                ].join(" ")}
+                  'text-base sm:text-lg font-bold tracking-tight wrap-break-word transition-colors duration-500',
+                  isDark ? 'text-white' : 'text-[#1a1a1a]',
+                ].join(' ')}
               >
                 {fw.name}
               </h4>
@@ -149,29 +134,21 @@ function MobileGSM({ isDark }: { isDark: boolean }) {
             {/* Description */}
             <p
               className={[
-                "text-[12px] sm:text-xs leading-relaxed mb-3 transition-colors duration-500",
-                isDark ? "text-gray-400" : "text-gray-500",
-              ].join(" ")}
+                'text-[12px] sm:text-xs leading-relaxed mb-3 transition-colors duration-500',
+                isDark ? 'text-gray-400' : 'text-gray-500',
+              ].join(' ')}
             >
               {fw.description}
             </p>
 
             {/* CTA */}
-            <Link
-              href="#"
-              className="inline-flex items-center gap-2 hover:gap-4 transition-all duration-300"
-            >
-              <Image
-                src="/icons/enter.svg"
-                alt="arrow-right"
-                width={20}
-                height={20}
-              />
+            <Link href="#" className="inline-flex items-center gap-2 hover:gap-4 transition-all duration-300">
+              <Image src="/icons/enter.svg" alt="arrow-right" width={20} height={20} />
               <span
                 className={[
-                  "whitespace-nowrap text-[13px] mt-1 sm:text-[14px] font-semibold transition-colors duration-500",
-                  isDark ? "text-white/70" : "text-black/70",
-                ].join(" ")}
+                  'whitespace-nowrap text-[13px] mt-1 sm:text-[14px] font-semibold transition-colors duration-500',
+                  isDark ? 'text-white/70' : 'text-black/70',
+                ].join(' ')}
               >
                 {fw.cta}
               </span>
@@ -207,59 +184,48 @@ function DesktopGSM({ isDark }: { isDark: boolean }) {
         <motion.div
           initial={{ opacity: 0, x: -30 }}
           whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
+          viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
         >
           <h3
             className={[
-              "text-2xl md:text-4xl mb-10 transition-colors duration-500",
-              isDark ? "text-white" : "text-[#1a1a1a]",
-            ].join(" ")}
+              'text-2xl md:text-4xl mb-10 transition-colors duration-500',
+              isDark ? 'text-white' : 'text-[#1a1a1a]',
+            ].join(' ')}
           >
-            <span className="text-2xl md:text-5xl font-normal">
-              Our Operating Frameworks
-            </span>
+            <span className="text-2xl md:text-5xl font-normal">Our Operating Frameworks</span>
           </h3>
           <p
             className={[
-              "text-sm md:text-lg lg:text-xl xl:text-2xl font-light leading-relaxed max-w-md transition-colors duration-500",
-              isDark ? "text-[#787878]" : "text-black/70",
-            ].join(" ")}
+              'text-sm md:text-lg lg:text-xl xl:text-2xl font-light leading-relaxed max-w-md transition-colors duration-500',
+              isDark ? 'text-[#787878]' : 'text-black/70',
+            ].join(' ')}
           >
-            All frameworks are powered by Modern DAD thinking and governed by
-            the AI Decision & Acceleration Center.
+            All frameworks are powered by Modern DAD thinking and governed by the AI Decision & Acceleration Center.
           </p>
         </motion.div>
 
         {/* RIGHT — Auto-cycling card */}
-        <div
-          className="relative"
-          onMouseEnter={() => setIsPaused(true)}
-          onMouseLeave={() => setIsPaused(false)}
-        >
+        <div className="relative" onMouseEnter={() => setIsPaused(true)} onMouseLeave={() => setIsPaused(false)}>
           <AnimatePresence mode="wait">
             <motion.div
               key={activeIndex}
               className={[
-                "border-2 rounded p-8 md:p-10 backdrop-blur-sm transition-colors duration-500",
-                isDark
-                  ? "bg-black border-white/15"
-                  : "bg-white border-black/10 shadow-md",
-              ].join(" ")}
+                'border-2 rounded p-8 md:p-10 backdrop-blur-sm transition-colors duration-500',
+                isDark ? 'bg-black border-white/15' : 'bg-white border-black/10 shadow-md',
+              ].join(' ')}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
             >
-              <div className="mb-6 w-28 h-28 flex items-center justify-center rounded">
-                {active.icon}
-              </div>
+              <div className="mb-6 w-28 h-28 flex items-center justify-center rounded">{active.icon}</div>
               <div className="flex flex-row items-center justify-between">
                 <h4
                   className={[
-                    "text-2xl md:text-3xl font-bold mb-2 tracking-tight transition-colors duration-500",
-                    isDark ? "text-white" : "text-[#1a1a1a]",
-                  ].join(" ")}
+                    'text-2xl md:text-3xl font-bold mb-2 tracking-tight transition-colors duration-500',
+                    isDark ? 'text-white' : 'text-[#1a1a1a]',
+                  ].join(' ')}
                 >
                   {active.name}
                 </h4>
@@ -267,17 +233,12 @@ function DesktopGSM({ isDark }: { isDark: boolean }) {
                   href="#"
                   className="inline-flex items-center gap-2 text-[#E53935] font-semibold text-sm mb-4 hover:gap-4 transition-all duration-300"
                 >
-                  <Image
-                    src="/icons/enter.svg"
-                    alt="arrow-right"
-                    width={30}
-                    height={30}
-                  />
+                  <Image src="/icons/enter.svg" alt="arrow-right" width={30} height={30} />
                   <span
                     className={[
-                      "mt-1 whitespace-nowrap text-lg hover:text-[#E53935] transition-colors duration-500",
-                      isDark ? "text-white/70" : "text-black/70",
-                    ].join(" ")}
+                      'mt-1 whitespace-nowrap text-lg hover:text-[#E53935] transition-colors duration-500',
+                      isDark ? 'text-white/70' : 'text-black/70',
+                    ].join(' ')}
                   >
                     {active.cta}
                   </span>
@@ -285,9 +246,9 @@ function DesktopGSM({ isDark }: { isDark: boolean }) {
               </div>
               <p
                 className={[
-                  "text-sm leading-relaxed transition-colors duration-500",
-                  isDark ? "text-gray-400" : "text-gray-500",
-                ].join(" ")}
+                  'text-sm leading-relaxed transition-colors duration-500',
+                  isDark ? 'text-gray-400' : 'text-gray-500',
+                ].join(' ')}
               >
                 {active.description}
               </p>
@@ -301,13 +262,13 @@ function DesktopGSM({ isDark }: { isDark: boolean }) {
                 key={i}
                 onClick={() => setActiveIndex(i)}
                 className={[
-                  "h-1.5 rounded-full transition-all duration-500",
+                  'h-1.5 rounded-full transition-all duration-500',
                   activeIndex === i
-                    ? "w-8 bg-[#E53935]"
+                    ? 'w-8 bg-[#E53935]'
                     : isDark
-                      ? "w-3 bg-white/20 hover:bg-white/40"
-                      : "w-3 bg-black/20 hover:bg-black/40",
-                ].join(" ")}
+                      ? 'w-3 bg-white/20 hover:bg-white/40'
+                      : 'w-3 bg-black/20 hover:bg-black/40',
+                ].join(' ')}
                 aria-label={`Go to framework ${i + 1}`}
               />
             ))}
@@ -321,12 +282,12 @@ function DesktopGSM({ isDark }: { isDark: boolean }) {
 /* ===== Main Export ===== */
 export default function GlobalServicingModel({ theme }: GSMProps) {
   const { theme: contextTheme } = useSectionTheme();
-  const isDark = (theme ?? contextTheme) === "dark";
+  const isDark = (theme ?? contextTheme) === 'dark';
 
   return (
     <>
       <div
-        className={`h-px bg-linear-to-r from-transparent ${isDark ? "via-white/8" : "via-black/8"} to-transparent transition-colors duration-500`}
+        className={`h-px bg-linear-to-r from-transparent ${isDark ? 'via-white/8' : 'via-black/8'} to-transparent transition-colors duration-500`}
       />
       <section className={`py-10 md:py-16 lg:py-20`}>
         <div className="w-[92%] sm:w-[90%] lg:w-auto max-w-6xl mx-auto">
@@ -336,36 +297,32 @@ export default function GlobalServicingModel({ theme }: GSMProps) {
               className="mb-5 sm:mb-6"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
+              viewport={{ once: true, margin: '-100px' }}
               transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
             >
               <h2
                 className={[
-                  "font-extrabold tracking-tight leading-none text-center transition-colors duration-500",
-                  isDark ? "text-white" : "text-[#1a1a1a]",
-                ].join(" ")}
+                  'font-extrabold tracking-tight leading-none text-center transition-colors duration-500',
+                  isDark ? 'text-white' : 'text-[#1a1a1a]',
+                ].join(' ')}
               >
                 <span className="text-[#E53935] text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[80px]">
                   Global
-                </span>{" "}
-                <span className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[80px]">
-                  Servicing Model
-                </span>
-                <span className="text-[#0EC8C5] text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[80px]">
-                  .
-                </span>
+                </span>{' '}
+                <span className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[80px]">Servicing Model</span>
+                <span className="text-[#0EC8C5] text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[80px]">.</span>
               </h2>
             </motion.div>
 
             {/* Subtitle */}
             <motion.p
               className={[
-                "text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl mb-10 sm:mb-16 md:mb-20 text-center transition-colors duration-500",
-                isDark ? "text-[#787878]" : "text-black/70",
-              ].join(" ")}
+                'text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl mb-10 sm:mb-16 md:mb-20 text-center transition-colors duration-500',
+                isDark ? 'text-[#787878]' : 'text-black/70',
+              ].join(' ')}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
+              viewport={{ once: true, margin: '-100px' }}
               transition={{
                 duration: 0.6,
                 delay: 0.1,

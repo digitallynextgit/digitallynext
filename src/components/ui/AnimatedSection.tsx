@@ -1,13 +1,13 @@
-"use client";
+'use client';
 
-import { motion, useInView } from "framer-motion";
-import { useRef, ReactNode } from "react";
+import { motion, useInView } from 'framer-motion';
+import { useRef, ReactNode } from 'react';
 
 interface AnimatedSectionProps {
   children: ReactNode;
   className?: string;
   delay?: number;
-  direction?: "up" | "down" | "left" | "right" | "none";
+  direction?: 'up' | 'down' | 'left' | 'right' | 'none';
   once?: boolean;
 }
 
@@ -21,22 +21,20 @@ const directionVariants = {
 
 export default function AnimatedSection({
   children,
-  className = "",
+  className = '',
   delay = 0,
-  direction = "up",
+  direction = 'up',
   once = true,
 }: AnimatedSectionProps) {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once, margin: "-80px" });
+  const isInView = useInView(ref, { once, margin: '-80px' });
 
   return (
     <motion.div
       ref={ref}
       className={className}
       initial={directionVariants[direction]}
-      animate={
-        isInView ? { x: 0, y: 0, opacity: 1 } : directionVariants[direction]
-      }
+      animate={isInView ? { x: 0, y: 0, opacity: 1 } : directionVariants[direction]}
       transition={{
         duration: 0.7,
         delay,
@@ -44,9 +42,9 @@ export default function AnimatedSection({
       }}
       style={{
         // Safari GPU acceleration — prevents jitter and subpixel blurring on scroll animations
-        willChange: "transform, opacity",
-        WebkitBackfaceVisibility: "hidden",
-        backfaceVisibility: "hidden",
+        willChange: 'transform, opacity',
+        WebkitBackfaceVisibility: 'hidden',
+        backfaceVisibility: 'hidden',
       }}
     >
       {children}

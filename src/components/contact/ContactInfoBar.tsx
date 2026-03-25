@@ -1,33 +1,28 @@
-"use client";
+'use client';
 
-import Image from "next/image";
-import Link from "next/link";
-import { useSectionTheme } from "@/context/SectionThemeContext";
+import Image from 'next/image';
+import Link from 'next/link';
+import { useSectionTheme } from '@/context/SectionThemeContext';
 
 interface ContactInfoBarProps {
-  theme?: "dark" | "light";
+  theme?: 'dark' | 'light';
 }
 
 export default function ContactInfoBar({ theme }: ContactInfoBarProps) {
   const { theme: contextTheme } = useSectionTheme();
-  const isDark = (theme ?? contextTheme) === "dark";
+  const isDark = (theme ?? contextTheme) === 'dark';
 
   return (
-    <div
-      className={[
-        "transition-colors duration-700 ease-in-out",
-        isDark ? "bg-black" : "bg-[#111111]",
-      ].join(" ")}
-    >
+    <div className={['transition-colors duration-700 ease-in-out', isDark ? 'bg-black' : 'bg-[#111111]'].join(' ')}>
       <div className="max-w-7xl mx-auto w-full px-6 sm:px-8 lg:px-10 py-16 sm:py-20 lg:py-24">
         <div className="grid gap-8 md:grid-cols-3 md:gap-16 justify-items-center text-center">
           {/* General Inquiries */}
           <div className="space-y-2">
             <p
               className={[
-                "text-[10px] tracking-[0.22em] uppercase transition-colors duration-700",
-                isDark ? "text-white/55" : "text-white/40",
-              ].join(" ")}
+                'text-[10px] tracking-[0.22em] uppercase transition-colors duration-700',
+                isDark ? 'text-white/55' : 'text-white/40',
+              ].join(' ')}
             >
               General inquiries
             </p>
@@ -43,9 +38,9 @@ export default function ContactInfoBar({ theme }: ContactInfoBarProps) {
           <div className="space-y-2">
             <p
               className={[
-                "text-[10px] tracking-[0.22em] uppercase transition-colors duration-700",
-                isDark ? "text-white/55" : "text-white/40",
-              ].join(" ")}
+                'text-[10px] tracking-[0.22em] uppercase transition-colors duration-700',
+                isDark ? 'text-white/55' : 'text-white/40',
+              ].join(' ')}
             >
               Careers
             </p>
@@ -61,9 +56,9 @@ export default function ContactInfoBar({ theme }: ContactInfoBarProps) {
           <div className="space-y-2">
             <p
               className={[
-                "text-[10px] tracking-[0.22em] uppercase transition-colors duration-700",
-                isDark ? "text-white/55" : "text-white/40",
-              ].join(" ")}
+                'text-[10px] tracking-[0.22em] uppercase transition-colors duration-700',
+                isDark ? 'text-white/55' : 'text-white/40',
+              ].join(' ')}
             >
               Connect
             </p>
@@ -73,12 +68,7 @@ export default function ContactInfoBar({ theme }: ContactInfoBarProps) {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 text-white text-base sm:text-lg font-semibold hover:text-[#E21F26] transition-colors duration-200"
             >
-              <Image
-                src="/linkedin.png"
-                alt="linkedin"
-                height={15}
-                width={15}
-              />
+              <Image src="/linkedin.png" alt="linkedin" height={15} width={15} />
               LinkedIn
             </Link>
           </div>

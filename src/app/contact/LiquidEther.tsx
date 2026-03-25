@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import React, { useEffect, useRef } from "react";
-import * as THREE from "three";
+import React, { useEffect, useRef } from 'react';
+import * as THREE from 'three';
 
 export interface LiquidEtherProps {
   mouseForce?: number;
@@ -54,7 +54,7 @@ interface LiquidEtherWebGL {
   dispose: () => void;
 }
 
-const defaultColors = ["#5227FF", "#FF9FFC", "#B19EEF"];
+const defaultColors = ['#5227FF', '#FF9FFC', '#B19EEF'];
 
 export default function LiquidEther({
   mouseForce = 20,
@@ -69,7 +69,7 @@ export default function LiquidEther({
   isBounce = false,
   colors = defaultColors,
   style = {},
-  className = "",
+  className = '',
   autoDemo = true,
   autoSpeed = 0.5,
   autoIntensity = 2.2,
@@ -93,7 +93,7 @@ export default function LiquidEther({
       if (Array.isArray(stops) && stops.length > 0) {
         arr = stops.length === 1 ? [stops[0], stops[0]] : stops;
       } else {
-        arr = ["#ffffff", "#ffffff"];
+        arr = ['#ffffff', '#ffffff'];
       }
       const w = arr.length;
       const data = new Uint8Array(w * 4);
@@ -140,7 +140,7 @@ export default function LiquidEther({
           alpha: true,
           // iOS Safari: prefer default power mode, avoid high-performance GPU mode
           // that can cause context loss on mobile devices
-          powerPreference: "default",
+          powerPreference: 'default',
           // Allow degraded rendering rather than failing completely on older iOS
           failIfMajorPerformanceCaveat: false,
         });
@@ -149,9 +149,9 @@ export default function LiquidEther({
         this.renderer.setPixelRatio(this.pixelRatio);
         this.renderer.setSize(this.width, this.height);
         const el = this.renderer.domElement;
-        el.style.width = "100%";
-        el.style.height = "100%";
-        el.style.display = "block";
+        el.style.width = '100%';
+        el.style.height = '100%';
+        el.style.display = 'block';
         this.clock = new THREE.Clock();
         this.clock.start();
       }
@@ -161,8 +161,7 @@ export default function LiquidEther({
         this.width = Math.max(1, Math.floor(rect.width));
         this.height = Math.max(1, Math.floor(rect.height));
         this.aspect = this.width / this.height;
-        if (this.renderer)
-          this.renderer.setSize(this.width, this.height, false);
+        if (this.renderer) this.renderer.setSize(this.width, this.height, false);
       }
       update() {
         if (!this.clock) return;
@@ -199,42 +198,28 @@ export default function LiquidEther({
       init(container: HTMLElement) {
         this.container = container;
         this.docTarget = container.ownerDocument || null;
-        const defaultView =
-          this.docTarget?.defaultView ||
-          (typeof window !== "undefined" ? window : null);
+        const defaultView = this.docTarget?.defaultView || (typeof window !== 'undefined' ? window : null);
         if (!defaultView) return;
         this.listenerTarget = defaultView;
-        this.listenerTarget.addEventListener("mousemove", this._onMouseMove);
-        this.listenerTarget.addEventListener("touchstart", this._onTouchStart, {
+        this.listenerTarget.addEventListener('mousemove', this._onMouseMove);
+        this.listenerTarget.addEventListener('touchstart', this._onTouchStart, {
           passive: true,
         });
-        this.listenerTarget.addEventListener("touchmove", this._onTouchMove, {
+        this.listenerTarget.addEventListener('touchmove', this._onTouchMove, {
           passive: true,
         });
-        this.listenerTarget.addEventListener("touchend", this._onTouchEnd);
-        this.docTarget?.addEventListener("mouseleave", this._onDocumentLeave);
+        this.listenerTarget.addEventListener('touchend', this._onTouchEnd);
+        this.docTarget?.addEventListener('mouseleave', this._onDocumentLeave);
       }
       dispose() {
         if (this.listenerTarget) {
-          this.listenerTarget.removeEventListener(
-            "mousemove",
-            this._onMouseMove,
-          );
-          this.listenerTarget.removeEventListener(
-            "touchstart",
-            this._onTouchStart,
-          );
-          this.listenerTarget.removeEventListener(
-            "touchmove",
-            this._onTouchMove,
-          );
-          this.listenerTarget.removeEventListener("touchend", this._onTouchEnd);
+          this.listenerTarget.removeEventListener('mousemove', this._onMouseMove);
+          this.listenerTarget.removeEventListener('touchstart', this._onTouchStart);
+          this.listenerTarget.removeEventListener('touchmove', this._onTouchMove);
+          this.listenerTarget.removeEventListener('touchend', this._onTouchEnd);
         }
         if (this.docTarget) {
-          this.docTarget.removeEventListener(
-            "mouseleave",
-            this._onDocumentLeave,
-          );
+          this.docTarget.removeEventListener('mouseleave', this._onDocumentLeave);
         }
         this.listenerTarget = null;
         this.docTarget = null;
@@ -244,12 +229,7 @@ export default function LiquidEther({
         if (!this.container) return false;
         const rect = this.container.getBoundingClientRect();
         if (rect.width === 0 || rect.height === 0) return false;
-        return (
-          clientX >= rect.left &&
-          clientX <= rect.right &&
-          clientY >= rect.top &&
-          clientY <= rect.bottom
-        );
+        return clientX >= rect.left && clientX <= rect.right && clientY >= rect.top && clientY <= rect.bottom;
       }
       private updateHoverState(clientX: number, clientY: number) {
         this.isHoverInside = this.isPointInside(clientX, clientY);
@@ -314,9 +294,7 @@ export default function LiquidEther({
       }
       update() {
         if (this.takeoverActive) {
-          const t =
-            (performance.now() - this.takeoverStartTime) /
-            (this.takeoverDuration * 1000);
+          const t = (performance.now() - this.takeoverStartTime) / (this.takeoverDuration * 1000);
           if (t >= 1) {
             this.takeoverActive = false;
             this.coords.copy(this.takeoverTo);
@@ -329,10 +307,8 @@ export default function LiquidEther({
         }
         this.diff.subVectors(this.coords, this.coords_old);
         this.coords_old.copy(this.coords);
-        if (this.coords_old.x === 0 && this.coords_old.y === 0)
-          this.diff.set(0, 0);
-        if (this.isAutoActive && !this.takeoverActive)
-          this.diff.multiplyScalar(this.autoIntensity);
+        if (this.coords_old.x === 0 && this.coords_old.y === 0) this.diff.set(0, 0);
+        if (this.isAutoActive && !this.takeoverActive) this.diff.multiplyScalar(this.autoIntensity);
       }
     }
     const Mouse = new MouseClass();
@@ -359,7 +335,7 @@ export default function LiquidEther({
           speed: number;
           resumeDelay: number;
           rampDuration: number;
-        },
+        }
       ) {
         this.mouse = mouse;
         this.manager = manager;
@@ -371,10 +347,7 @@ export default function LiquidEther({
       }
       pickNewTarget() {
         const r = Math.random;
-        this.target.set(
-          (r() * 2 - 1) * (1 - this.margin),
-          (r() * 2 - 1) * (1 - this.margin),
-        );
+        this.target.set((r() * 2 - 1) * (1 - this.margin), (r() * 2 - 1) * (1 - this.margin));
       }
       forceStop() {
         this.active = false;
@@ -412,10 +385,7 @@ export default function LiquidEther({
         dir.normalize();
         let ramp = 1;
         if (this.rampDurationMs > 0) {
-          const t = Math.min(
-            1,
-            (now - this.activationTime) / this.rampDurationMs,
-          );
+          const t = Math.min(1, (now - this.activationTime) / this.rampDurationMs);
           ramp = t * t * (3 - 2 * t);
         }
         const step = this.speed * dtSec * ramp;
@@ -656,13 +626,9 @@ export default function LiquidEther({
       createBoundary() {
         const boundaryG = new THREE.BufferGeometry();
         const vertices_boundary = new Float32Array([
-          -1, -1, 0, -1, 1, 0, -1, 1, 0, 1, 1, 0, 1, 1, 0, 1, -1, 0, 1, -1, 0,
-          -1, -1, 0,
+          -1, -1, 0, -1, 1, 0, -1, 1, 0, 1, 1, 0, 1, 1, 0, 1, -1, 0, 1, -1, 0, -1, -1, 0,
         ]);
-        boundaryG.setAttribute(
-          "position",
-          new THREE.BufferAttribute(vertices_boundary, 3),
-        );
+        boundaryG.setAttribute('position', new THREE.BufferAttribute(vertices_boundary, 3));
         const boundaryM = new THREE.RawShaderMaterial({
           vertexShader: line_vert,
           fragmentShader: advection_frag,
@@ -678,9 +644,9 @@ export default function LiquidEther({
           BFECC?: boolean;
         };
         if (!this.uniforms) return;
-        if (typeof dt === "number") this.uniforms.dt.value = dt;
-        if (typeof isBounce === "boolean") this.line.visible = isBounce;
-        if (typeof BFECC === "boolean") this.uniforms.isBFECC.value = BFECC;
+        if (typeof dt === 'number') this.uniforms.dt.value = dt;
+        if (typeof isBounce === 'boolean') this.line.visible = isBounce;
+        if (typeof BFECC === 'boolean') this.uniforms.isBFECC.value = BFECC;
         super.update();
       }
     }
@@ -704,10 +670,7 @@ export default function LiquidEther({
             force: { value: new THREE.Vector2(0, 0) },
             center: { value: new THREE.Vector2(0, 0) },
             scale: {
-              value: new THREE.Vector2(
-                simProps.cursor_size,
-                simProps.cursor_size,
-              ),
+              value: new THREE.Vector2(simProps.cursor_size, simProps.cursor_size),
             },
           },
         });
@@ -724,14 +687,13 @@ export default function LiquidEther({
         const cursorSizeY = cursorSize * cellScale.y;
         const centerX = Math.min(
           Math.max(Mouse.coords.x, -1 + cursorSizeX + cellScale.x * 2),
-          1 - cursorSizeX - cellScale.x * 2,
+          1 - cursorSizeX - cellScale.x * 2
         );
         const centerY = Math.min(
           Math.max(Mouse.coords.y, -1 + cursorSizeY + cellScale.y * 2),
-          1 - cursorSizeY - cellScale.y * 2,
+          1 - cursorSizeY - cellScale.y * 2
         );
-        const uniforms = (this.mouse.material as THREE.RawShaderMaterial)
-          .uniforms;
+        const uniforms = (this.mouse.material as THREE.RawShaderMaterial).uniforms;
         uniforms.force.value.set(forceX, forceY);
         uniforms.center.value.set(centerX, centerY);
         uniforms.scale.value.set(cursorSize, cursorSize);
@@ -768,7 +730,7 @@ export default function LiquidEther({
         };
         if (!this.uniforms) return;
         let fbo_in: any, fbo_out: any;
-        if (typeof viscous === "number") this.uniforms.v.value = viscous;
+        if (typeof viscous === 'number') this.uniforms.v.value = viscous;
         const iter = iterations ?? 0;
         for (let i = 0; i < iter; i++) {
           if (i % 2 === 0) {
@@ -780,7 +742,7 @@ export default function LiquidEther({
           }
           this.uniforms.velocity_new.value = fbo_in.texture;
           this.props.output = fbo_out;
-          if (typeof dt === "number") this.uniforms.dt.value = dt;
+          if (typeof dt === 'number') this.uniforms.dt.value = dt;
           super.update();
         }
         return fbo_out;
@@ -940,11 +902,7 @@ export default function LiquidEther({
           wrapT: THREE.ClampToEdgeWrapping,
         } as const;
         for (const key in this.fbos) {
-          this.fbos[key] = new THREE.WebGLRenderTarget(
-            this.fboSize.x,
-            this.fboSize.y,
-            opts,
-          );
+          this.fbos[key] = new THREE.WebGLRenderTarget(this.fboSize.x, this.fboSize.y, opts);
         }
       }
       createShaderPass() {
@@ -993,14 +951,8 @@ export default function LiquidEther({
         });
       }
       calcSize() {
-        const width = Math.max(
-          1,
-          Math.round(this.options.resolution * Common.width),
-        );
-        const height = Math.max(
-          1,
-          Math.round(this.options.resolution * Common.height),
-        );
+        const width = Math.max(1, Math.round(this.options.resolution * Common.width));
+        const height = Math.max(1, Math.round(this.options.resolution * Common.height));
         this.cellScale.set(1 / width, 1 / height);
         this.fboSize.set(width, height);
       }
@@ -1061,7 +1013,7 @@ export default function LiquidEther({
               palette: { value: paletteTex },
               bgColor: { value: bgVec4 },
             },
-          }),
+          })
         );
         this.scene.add(this.output);
       }
@@ -1105,7 +1057,7 @@ export default function LiquidEther({
           rampDuration: props.autoRampDuration,
         });
         this.init();
-        window.addEventListener("resize", this._resize);
+        window.addEventListener('resize', this._resize);
         this._onVisibility = () => {
           const hidden = document.hidden;
           if (hidden) {
@@ -1114,7 +1066,7 @@ export default function LiquidEther({
             this.start();
           }
         };
-        document.addEventListener("visibilitychange", this._onVisibility);
+        document.addEventListener('visibilitychange', this._onVisibility);
       }
       init() {
         if (!Common.renderer) return;
@@ -1150,17 +1102,12 @@ export default function LiquidEther({
       }
       dispose() {
         try {
-          window.removeEventListener("resize", this._resize);
-          if (this._onVisibility)
-            document.removeEventListener(
-              "visibilitychange",
-              this._onVisibility,
-            );
+          window.removeEventListener('resize', this._resize);
+          if (this._onVisibility) document.removeEventListener('visibilitychange', this._onVisibility);
           Mouse.dispose();
           if (Common.renderer) {
             const canvas = Common.renderer.domElement;
-            if (canvas && canvas.parentNode)
-              canvas.parentNode.removeChild(canvas);
+            if (canvas && canvas.parentNode) canvas.parentNode.removeChild(canvas);
             Common.renderer.dispose();
           }
         } catch {
@@ -1170,12 +1117,12 @@ export default function LiquidEther({
     }
 
     const container = mountRef.current;
-    container.style.position = container.style.position || "relative";
-    container.style.overflow = container.style.overflow || "hidden";
+    container.style.position = container.style.position || 'relative';
+    container.style.overflow = container.style.overflow || 'hidden';
 
     // iOS Safari: check WebGL support before attempting to create context
-    const canvas = document.createElement("canvas");
-    const testCtx = canvas.getContext("webgl2") || canvas.getContext("webgl");
+    const canvas = document.createElement('canvas');
+    const testCtx = canvas.getContext('webgl2') || canvas.getContext('webgl');
     if (!testCtx) {
       // WebGL not available (very old iOS or restricted settings) — skip gracefully
       return;
@@ -1232,7 +1179,7 @@ export default function LiquidEther({
           webglRef.current.pause();
         }
       },
-      { threshold: [0, 0.01, 0.1] },
+      { threshold: [0, 0.01, 0.1] }
     );
     io.observe(container);
     intersectionObserverRef.current = io;
@@ -1340,9 +1287,7 @@ export default function LiquidEther({
   return (
     <div
       ref={mountRef}
-      className={`w-full h-full relative overflow-hidden pointer-events-none touch-none ${
-        className || ""
-      }`}
+      className={`w-full h-full relative overflow-hidden pointer-events-none touch-none ${className || ''}`}
       style={style}
     />
   );

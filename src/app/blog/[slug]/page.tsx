@@ -1,8 +1,8 @@
-import { Metadata } from "next";
-import { client } from "@/sanity/client";
-import { postBySlugQuery } from "@/sanity/queries";
-import { notFound } from "next/navigation";
-import BlogPostClient from "./BlogPostClient";
+import { Metadata } from 'next';
+import { client } from '@/sanity/client';
+import { postBySlugQuery } from '@/sanity/queries';
+import { notFound } from 'next/navigation';
+import BlogPostClient from './BlogPostClient';
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -18,7 +18,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post = await getPost(slug);
 
   if (!post) {
-    return { title: "Post Not Found | Digitally Next" };
+    return { title: 'Post Not Found | Digitally Next' };
   }
 
   return {
@@ -27,7 +27,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     openGraph: {
       title: post.title,
       description: post.excerpt,
-      type: "article",
+      type: 'article',
       publishedTime: post.publishedAt,
     },
   };

@@ -1,20 +1,20 @@
-"use client";
+'use client';
 
-import Hero from "@/components/sections/Hero";
-import ClientLogos from "@/components/sections/ClientLogos";
-import HowWeOperate from "@/components/sections/HowWeOperate";
-import Services from "@/components/sections/Services";
-import CaseStudies from "@/components/sections/CaseStudies";
-import ADAC from "@/components/sections/ADAC";
-import GlobalServicingModel from "@/components/sections/GlobalServicingModel";
-import InstagramReels from "@/components/sections/InstagramReels";
-import CTASection from "@/components/sections/CTASection";
-import Image from "next/image";
-import Link from "next/link";
-import { useEffect } from "react";
-import { ThemeSection } from "@/components/ui/ThemeSection.tsx";
-import AwardsAndRecognition from "@/components/sections/AwardsAndRecognition";
-import ProudlyWorkingWith from "@/components/sections/ProudlyWorkingWith";
+import Hero from '@/components/sections/Hero';
+import ClientLogos from '@/components/sections/ClientLogos';
+import HowWeOperate from '@/components/sections/HowWeOperate';
+import Services from '@/components/sections/Services';
+import CaseStudies from '@/components/sections/CaseStudies';
+import ADAC from '@/components/sections/ADAC';
+import GlobalServicingModel from '@/components/sections/GlobalServicingModel';
+import InstagramReels from '@/components/sections/InstagramReels';
+import CTASection from '@/components/sections/CTASection';
+import Image from 'next/image';
+import Link from 'next/link';
+import { useEffect } from 'react';
+import { ThemeSection } from '@/components/ui/ThemeSection.tsx';
+import AwardsAndRecognition from '@/components/sections/AwardsAndRecognition';
+import ProudlyWorkingWith from '@/components/sections/ProudlyWorkingWith';
 
 export default function Home() {
   return (
@@ -24,11 +24,7 @@ export default function Home() {
       </ThemeSection>
 
       <ThemeSection theme="light">
-        <Link
-          href="/contact"
-          className="block cursor-pointer"
-          style={{ position: "relative", zIndex: 10 }}
-        >
+        <Link href="/contact" className="block cursor-pointer" style={{ position: 'relative', zIndex: 10 }}>
           {/* Mobile */}
           <Image
             src="/banner/ipl-mobile.webp"

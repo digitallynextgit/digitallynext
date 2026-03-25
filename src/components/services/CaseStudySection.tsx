@@ -1,46 +1,42 @@
-"use client";
+'use client';
 
-import Image from "next/image";
-import Link from "next/link";
-import type { ServiceSection, ServiceTheme } from "@/data/services";
-import { useSectionTheme } from "@/context/SectionThemeContext";
+import Image from 'next/image';
+import Link from 'next/link';
+import type { ServiceSection, ServiceTheme } from '@/data/services';
+import { useSectionTheme } from '@/context/SectionThemeContext';
 
 type Props = {
-  section: Extract<ServiceSection, { type: "caseStudy" }>;
+  section: Extract<ServiceSection, { type: 'caseStudy' }>;
   theme: ServiceTheme;
 };
 
 export default function CaseStudySection({ section, theme }: Props) {
   const { theme: contextTheme } = useSectionTheme();
-  const isDark = contextTheme === "dark";
+  const isDark = contextTheme === 'dark';
 
   return (
     <section
       className={[
-        "transition-colors duration-700",
-        isDark
-          ? "bg-[#0A0A0A] border-b border-white/10"
-          : "bg-[#FAFAFA] border-b border-black/10",
-      ].join(" ")}
+        'transition-colors duration-700',
+        isDark ? 'bg-[#0A0A0A] border-b border-white/10' : 'bg-[#FAFAFA] border-b border-black/10',
+      ].join(' ')}
     >
       <div className="w-full max-w-[1280px] mx-auto px-8 py-10 sm:px-12 md:py-16 lg:py-20">
         <div className="flex flex-col gap-14">
-
           {/* ── ROW 1: Heading + CTA ── */}
           <div className="flex flex-col gap-6 lg:flex-row w-full lg:justify-between">
-
             {/* Heading */}
             <h2
               className={[
-                "font-bold lg:w-[588px] lg:shrink-0 transition-colors duration-700",
-                isDark ? "text-white" : "text-black",
-              ].join(" ")}
-              style={{ fontSize: "clamp(26px, 3.06vw, 44px)", lineHeight: "1.16" }}
+                'font-bold lg:w-[588px] lg:shrink-0 transition-colors duration-700',
+                isDark ? 'text-white' : 'text-black',
+              ].join(' ')}
+              style={{ fontSize: 'clamp(26px, 3.06vw, 44px)', lineHeight: '1.16' }}
               dangerouslySetInnerHTML={{ __html: section.heading }}
             />
 
             {/* Desktop spacer */}
-            <div className="hidden lg:block shrink-0" style={{ width: "104px" }} />
+            <div className="hidden lg:block shrink-0" style={{ width: '104px' }} />
 
             {/* CTA */}
             <Link
@@ -73,10 +69,10 @@ export default function CaseStudySection({ section, theme }: Props) {
               </svg>
               <span
                 className={[
-                  "group-hover:opacity-70 transition-opacity mt-1 font-normal",
-                  "text-[22px] leading-[33px] transition-colors duration-700",
-                  isDark ? "text-white" : "text-black",
-                ].join(" ")}
+                  'group-hover:opacity-70 transition-opacity mt-1 font-normal',
+                  'text-[22px] leading-[33px] transition-colors duration-700',
+                  isDark ? 'text-white' : 'text-black',
+                ].join(' ')}
               >
                 {section.ctaLabel}
               </span>
@@ -88,22 +84,16 @@ export default function CaseStudySection({ section, theme }: Props) {
             {section.cards.map((card, idx) => {
               const isLink = !!card.href;
               return isLink ? (
-                <Link
-                  key={idx}
-                  href={card.href!}
-                  className="flex flex-col group"
-                  style={{ gap: "36.81px" }}
-                >
+                <Link key={idx} href={card.href!} className="flex flex-col group" style={{ gap: '36.81px' }}>
                   <CardContent card={card} isDark={isDark} />
                 </Link>
               ) : (
-                <div key={idx} className="flex flex-col" style={{ gap: "36.81px" }}>
+                <div key={idx} className="flex flex-col" style={{ gap: '36.81px' }}>
                   <CardContent card={card} isDark={isDark} />
                 </div>
               );
             })}
           </div>
-
         </div>
       </div>
     </section>
@@ -127,11 +117,11 @@ function CardContent({ card, isDark }: CardContentProps) {
       {/* Image */}
       <div
         className="relative w-full overflow-hidden"
-        style={{ height: "clamp(220px, 29.5vw, 425px)", borderRadius: "5.18px" }}
+        style={{ height: 'clamp(220px, 29.5vw, 425px)', borderRadius: '5.18px' }}
       >
         <Image
           src={card.imageSrc}
-          alt={card.title.replace(/<[^>]+>/g, "")}
+          alt={card.title.replace(/<[^>]+>/g, '')}
           fill
           className="object-cover"
           sizes="(max-width: 768px) 100vw, 638px"
@@ -139,17 +129,17 @@ function CardContent({ card, isDark }: CardContentProps) {
       </div>
 
       {/* Info block */}
-      <div className="flex flex-col" style={{ gap: "43.21px" }}>
-        <div className="flex flex-col" style={{ gap: "13.6px" }}>
+      <div className="flex flex-col" style={{ gap: '43.21px' }}>
+        <div className="flex flex-col" style={{ gap: '13.6px' }}>
           {/* Description */}
           <p
             className={[
-              "hover:text-[#E21F26] transition-colors duration-700",
-              isDark ? "text-[#A1A1A1]" : "text-[#787878]",
-            ].join(" ")}
+              'hover:text-[#E21F26] transition-colors duration-700',
+              isDark ? 'text-[#A1A1A1]' : 'text-[#787878]',
+            ].join(' ')}
             style={{
-              fontSize: "clamp(16px, 1.57vw, 22.58px)",
-              lineHeight: "29px",
+              fontSize: 'clamp(16px, 1.57vw, 22.58px)',
+              lineHeight: '29px',
               fontWeight: 300,
             }}
           >
