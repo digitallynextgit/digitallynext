@@ -150,7 +150,7 @@ export default function CareerRolePageClient({ entry }: { entry: CareerRoleEntry
 
   return (
     <main className="bg-[#FAFAFA]">
-      <section className="mx-auto flex w-full max-w-7xl flex-col gap-8 px-6 py-12 md:px-8 md:py-28 lg:gap-10 lg:px-10 lg:py-36">
+      <section className="mx-auto flex w-full max-w-7xl flex-col gap-8 px-6 py-20 md:px-8 md:py-28 lg:gap-10 lg:px-10 lg:py-36">
         <div className="flex flex-col gap-4">
           <Link
             href={getCareerDepartmentHref(department)}

@@ -17,7 +17,7 @@ interface CareerDepartmentPageClientProps {
 export default function CareerDepartmentPageClient({ department, mode, roleEntries }: CareerDepartmentPageClientProps) {
   return (
     <main className="bg-[#FAFAFA]">
-      <section className="mx-auto flex w-full max-w-7xl flex-col gap-8 px-6 py-12 md:px-8 md:py-28 lg:gap-10 lg:px-10 lg:py-36">
+      <section className="mx-auto flex w-full max-w-7xl flex-col gap-8 px-6 py-20 md:px-8 md:py-28 lg:gap-10 lg:px-10 lg:py-36">
         <div className="flex flex-col gap-4">
           <Link
             href="/careers#open-positions"
@@ -50,7 +50,7 @@ export default function CareerDepartmentPageClient({ department, mode, roleEntri
           </div>
         </div>
 
-        <div className="rounded border border-[#E5E5E5] bg-white px-7 py-7">
+        {/* <div className="rounded border border-[#E5E5E5] bg-white px-7 py-7"> */}
           <div className="flex flex-col gap-3">
             {roleEntries.map((entry) => (
               <Link
@@ -92,7 +92,7 @@ export default function CareerDepartmentPageClient({ department, mode, roleEntri
               </Link>
             ))}
           </div>
-        </div>
+        {/* </div> */}
       </section>
     </main>
   );
