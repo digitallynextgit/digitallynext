@@ -6,7 +6,7 @@ import { ThemeSection } from '@/components/ui/ThemeSection.tsx';
 import { ScrollToHash } from '@/components/layout/ScrollToHash';
 
 export const metadata: Metadata = {
-  title: 'Digitally Next | Growth-Driven Global Digital Marketing Agenc',
+  title: 'Digitally Next | Growth-Driven Global Digital Marketing Agency',
   description:
     'Partner with Digitally Next for strategy, branding, performance marketing, content, web development, and AI-driven decisions. We transform brands digitally.',
   keywords: [
