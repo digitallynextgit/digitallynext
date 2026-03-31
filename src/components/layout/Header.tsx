@@ -84,7 +84,9 @@ const overlayVariants: Variants = {
     },
   },
   visible: {
-    clipPath: 'circle(170% at calc(100% - 40px) 40px)',
+    // 300vmax guarantees full coverage at any resolution/aspect ratio,
+    // including ultra-wide and 4K+ displays where 170% may fall short.
+    clipPath: 'circle(300vmax at calc(100% - 40px) 40px)',
     opacity: 1,
     transition: {
       duration: 0.5,
@@ -390,8 +392,8 @@ export default function Header() {
         transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
         className={['fixed top-0 left-0 right-0 z-100', 'transition-colors duration-500', headerBg].join(' ')}
       >
-        {/* h-16 md:h-20 — fixed, never changes */}
-        <div className="grid grid-cols-3 items-center h-14 md:h-16 lg:h-28 w-full px-5 md:px-7 lg:px-8">
+        {/* Heights dynamically scale infinitely on massive 4k/8k displays */}
+        <div className="grid grid-cols-3 items-center h-14 md:h-16 lg:h-28 2xl:h-[max(9rem,5vw)] w-full px-5 md:px-7 lg:px-8">
           {/* Col 1 — Award image | FLIP logo when menu open */}
           <div className="flex items-center justify-start">
             <AnimatePresence mode="wait">
@@ -517,10 +519,10 @@ export default function Header() {
             }}
             className="fixed inset-0 z-99 bg-[#0a0a0a] flex flex-col"
           >
-            {/* mt-16 md:mt-20 matches header height exactly */}
+            {/* Margins dynamically scale boundlessly with screen widths >1536px */ }
             <div
               className={[
-                'flex-1 overflow-y-auto mt-16 md:mt-20 ',
+                'flex-1 overflow-y-auto mt-14 md:mt-16 lg:mt-28 2xl:mt-[max(9rem,5vw)] ',
                 '[&::-webkit-scrollbar]:w-0.75',
                 '[&::-webkit-scrollbar-track]:bg-transparent',
                 '[&::-webkit-scrollbar-thumb]:bg-white/20',
