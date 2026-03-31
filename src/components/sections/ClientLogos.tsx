@@ -3,7 +3,7 @@
 import AnimatedSection from '@/components/ui/AnimatedSection';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { useSectionTheme } from '@/context/SectionThemeContext';
 
 interface ClientLogosProps {
@@ -69,14 +69,70 @@ function Divider({ isDark }: { isDark: boolean }) {
   );
 }
 
+// ~60px/sec — logos are smaller than career photos so slightly slower looks better
+const SCROLL_SPEED_PX_PER_SEC = 60;
+
 export default function ClientLogos({ theme }: ClientLogosProps) {
   const { theme: contextTheme } = useSectionTheme();
   const isDark = (theme ?? contextTheme) === 'dark';
-  const marqueeRef = useRef<HTMLDivElement>(null);
 
   const logoFiles = isDark ? logosWhite : logosBlack;
-  // 4 copies for seamless loop — translateX -25% = 1 full set
+  // 4 copies for seamless loop — reset point = scrollWidth / 4 (one full set)
   const allLogos = [...logoFiles, ...logoFiles, ...logoFiles, ...logoFiles];
+
+  const trackRef     = useRef<HTMLDivElement>(null);
+  const posRef       = useRef(0);                        // scroll offset in px
+  const oneSetRef    = useRef(0);                        // scrollWidth / 4
+  const rafRef       = useRef<number>(0);
+  const lastTimeRef  = useRef<number | undefined>(undefined);
+  const isPausedRef  = useRef(false);                    // hover pause
+
+  useEffect(() => {
+    const track = trackRef.current;
+    if (!track) return;
+
+    /*
+      Same rAF approach as GrowthCarouselSection:
+      CSS `animation: infinite` on iOS Safari flashes at the loop reset because
+      WebKit's compositor briefly renders position 0 before re-applying the
+      transform. rAF resets posRef BEFORE paint — Safari never sees position 0.
+
+      4 copies of logos → reset at scrollWidth/4 (one full set width).
+      margin-right on each item (not flex gap) → -oneSet px = perfect visual seam.
+    */
+
+    const measure = () => {
+      oneSetRef.current = track.scrollWidth / 4;
+    };
+    measure();
+
+    const ro = new ResizeObserver(measure);
+    ro.observe(track);
+
+    const tick = (now: number) => {
+      if (lastTimeRef.current !== undefined && !isPausedRef.current) {
+        const elapsed = now - lastTimeRef.current;
+        posRef.current += (SCROLL_SPEED_PX_PER_SEC * elapsed) / 1000;
+
+        // Reset when one full copy has been scrolled past
+        if (oneSetRef.current > 0 && posRef.current >= oneSetRef.current) {
+          posRef.current -= oneSetRef.current;
+        }
+
+        track.style.transform = `translate3d(${-posRef.current}px, 0, 0)`;
+      }
+      lastTimeRef.current = now;
+      rafRef.current = requestAnimationFrame(tick);
+    };
+
+    rafRef.current = requestAnimationFrame(tick);
+
+    return () => {
+      cancelAnimationFrame(rafRef.current);
+      ro.disconnect();
+    };
+  // Re-run when theme changes (logo set changes → new track width)
+  }, [isDark]);
 
   return (
     <>
@@ -115,48 +171,47 @@ export default function ClientLogos({ theme }: ClientLogosProps) {
           </AnimatedSection>
         </div>
 
-        {/* Marquee wrapper */}
-        <div
-          className="overflow-hidden py-4 mt-4"
-          style={{
-            // ✅ Both prefixes — Safari needs webkit
-            WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)',
-            maskImage: 'linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)',
-          }}
-        >
-          {/* 
-            ✅ Safari fix:
-            - translateZ(0) forces GPU layer — prevents jitter
-            - will-change: transform — hints browser to optimize
-            - animation defined inline via CSS custom property
-          */}
+        {/*
+          Marquee container:
+          - No mask-image here (causes double compositing on Android with will-change child).
+          - Fade effect via two absolute gradient overlay divs instead.
+        */}
+        <div className="overflow-hidden py-4 mt-4 relative">
+          {/* Left fade overlay */}
           <div
-            ref={marqueeRef}
-            className="flex gap-8"
+            className="absolute inset-y-0 left-0 z-10 pointer-events-none"
             style={{
-              width: 'max-content',
-              // ✅ Cross-browser animation
-              animation: 'clientMarquee 45s linear infinite',
-              // ✅ GPU acceleration — fixes Safari jitter
-              transform: 'translateZ(0)',
-              WebkitTransform: 'translateZ(0)',
-              willChange: 'transform',
-              // ✅ Prevents sub-pixel blurring in Safari
-              WebkitBackfaceVisibility: 'hidden',
-              backfaceVisibility: 'hidden',
+              width: '8%',
+              background: isDark
+                ? 'linear-gradient(to right, #000000, transparent)'
+                : 'linear-gradient(to right, #ffffff, transparent)',
             }}
-            onMouseEnter={() => {
-              if (marqueeRef.current) marqueeRef.current.style.animationPlayState = 'paused';
+          />
+          {/* Right fade overlay */}
+          <div
+            className="absolute inset-y-0 right-0 z-10 pointer-events-none"
+            style={{
+              width: '8%',
+              background: isDark
+                ? 'linear-gradient(to left, #000000, transparent)'
+                : 'linear-gradient(to left, #ffffff, transparent)',
             }}
-            onMouseLeave={() => {
-              if (marqueeRef.current) marqueeRef.current.style.animationPlayState = 'running';
-            }}
+          />
+
+          {/* Track — rAF drives the transform, not CSS animation */}
+          <div
+            ref={trackRef}
+            className="flex client-logos-track"
+            style={{ width: 'max-content' }}
+            onMouseEnter={() => { isPausedRef.current = true; }}
+            onMouseLeave={() => { isPausedRef.current = false; }}
           >
             {allLogos.map((logo, i) => (
               <div
                 key={i}
                 className={[
-                  'shrink-0 flex items-center justify-center',
+                  // margin-right on each item (not gap on flex) so -oneSet aligns perfectly at seam
+                  'shrink-0 mr-8 flex items-center justify-center',
                   'h-24 px-5',
                   'border-2 rounded-lg hover:rounded-full',
                   'transition-all duration-500',
@@ -164,7 +219,6 @@ export default function ClientLogos({ theme }: ClientLogosProps) {
                   isDark ? 'border-white/50 hover:border-white/70' : 'border-black/20 hover:border-black/30',
                 ].join(' ')}
                 style={{
-                  // ✅ Safari box-shadow fix — inline instead of Tailwind arbitrary
                   boxShadow: 'none',
                   transition: 'all 0.5s cubic-bezier(0.16,1,0.3,1)',
                 }}
@@ -174,8 +228,7 @@ export default function ClientLogos({ theme }: ClientLogosProps) {
                   alt="Client Logo"
                   width={140}
                   height={55}
-                  // ✅ Lazy load — first 8 eager, rest lazy
-                  loading={i < 8 ? 'eager' : 'lazy'}
+                  loading="eager"
                   style={{
                     width: 'auto',
                     height: '55px',
@@ -190,17 +243,6 @@ export default function ClientLogos({ theme }: ClientLogosProps) {
       </section>
 
       <Divider isDark={isDark} />
-
-      {/* 
-        ✅ Keyframe defined inline via style tag — works in all browsers
-        including Safari, Firefox, without needing globals.css
-      */}
-      <style>{`
-        @keyframes clientMarquee {
-          0%   { transform: translateX(0) translateZ(0); }
-          100% { transform: translateX(-25%) translateZ(0); }
-        }
-      `}</style>
     </>
   );
 }

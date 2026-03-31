@@ -47,12 +47,17 @@ export default function HeroSection({ theme }: HeroSectionProps) {
     <div
       ref={backgroundRef}
       className={[
-        'overflow-hidden transition-colors duration-700',
+        'transition-colors duration-700',
         isDark ? 'bg-black text-white' : 'bg-white text-black',
       ].join(' ')}
       style={{
         position: 'relative',
         height: 'clamp(600px, 100vh, 907px)',
+        // Safari fix: clipPath instead of overflow:hidden prevents GSAP/Framer animations from being cut off
+        clipPath: 'inset(0)',
+        // Safari GPU compositing — prevents z-index flicker on animated children
+        WebkitTransform: 'translateZ(0)',
+        isolation: 'isolate',
       }}
     >
       {/* Grid background */}
@@ -69,7 +74,9 @@ export default function HeroSection({ theme }: HeroSectionProps) {
       <div className="mt-6 md:mt-12 lg:mt-20">
         {/* 1. ImageTrail */}
         <div className="absolute inset-0 z-1">
-          <div className="h-full w-full relative overflow-hidden">
+          {/* Safari fix: overflow-visible on the wrapper lets ImageTrail images animate
+              freely without being clip-masked by the parent container */}
+          <div className="h-full w-full relative" style={{ overflow: 'visible' }}>
             <ImageTrail
               key="careers-hero-trail"
               items={[

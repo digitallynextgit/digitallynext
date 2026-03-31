@@ -41,7 +41,9 @@ export default function AnimatedSection({
         ease: [0.16, 1, 0.3, 1],
       }}
       style={{
-        // Safari GPU acceleration — prevents jitter and subpixel blurring on scroll animations
+        // willChange tells the browser to promote this element to a GPU layer.
+        // DO NOT also set WebkitTransform here — Framer Motion controls the transform
+        // on every frame, so a static initial value causes conflict and mobile jitter.
         willChange: 'transform, opacity',
         WebkitBackfaceVisibility: 'hidden',
         backfaceVisibility: 'hidden',
