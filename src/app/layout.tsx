@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     'Digitally Next',
   ],
   openGraph: {
-    title: 'Digitally Next | Growth-Driven Global Digital Marketing Agenc',
+    title: 'Digitally Next | Growth-Driven Global Digital Marketing Agency',
     description: 'Strategy, branding, performance marketing, AI-driven decisions — all under one roof.',
     siteName: 'Digitally Next',
     type: 'website',
