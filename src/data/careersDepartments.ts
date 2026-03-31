@@ -55,6 +55,14 @@ export const CAREERS_INTERNSHIP_DEPARTMENTS: CareersDepartment[] = [
     tone: 'teal',
     roles: [
       {
+        id: 'intern-digital-marketing',
+        title: 'Digital Marketing Intern',
+        description: {
+          intro:
+            'Are you someone who lives and breathes trends, creativity, and content? Do you enjoy blending strategy with aesthetics- whether it’s SEO, Graphics, Video editing or Social media? Join us as a Digital Marketing Intern and turn your ideas into impactful campaigns.',
+        },
+      },
+      {
         id: 'intern-graphic-designer',
         title: 'Graphic Designer Intern',
         description: {
@@ -84,14 +92,6 @@ export const CAREERS_INTERNSHIP_DEPARTMENTS: CareersDepartment[] = [
         description: {
           intro:
             'Are you a storyteller at heart with a flair for creating captivating content? Do you live and breathe social media trends? If so, we have the perfect opportunity for you! Join us as a Social Media Content Creator Intern and help us tell our story to the world.',
-        },
-      },
-      {
-        id: 'intern-digital-marketing',
-        title: 'Digital Marketing Intern',
-        description: {
-          intro:
-            'Are you someone who lives and breathes trends, creativity, and content? Do you enjoy blending strategy with aesthetics- whether it’s SEO, Graphics, Video editing or Social media? Join us as a Digital Marketing Intern and turn your ideas into impactful campaigns.',
         },
       },
       {
