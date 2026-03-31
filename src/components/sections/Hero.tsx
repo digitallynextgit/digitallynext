@@ -11,10 +11,17 @@ export default function Hero() {
 
   return (
     <section
-      className={['sticky top-0 z-0 overflow-hidden', 'flex items-center md:items-end', 'py-10 md:pt-16 lg:pt-20'].join(
+      className={['sticky top-0 z-0', 'flex items-center md:items-end', 'py-10 md:pt-16 lg:pt-20'].join(
         ' '
       )}
-      style={{ height: 'clamp(600px, 100vh, 1500px)' }}
+      style={{
+        height: 'clamp(600px, 100vh, 1500px)',
+        // Safari fix: clipPath clips the section without creating an overflow boundary.
+        // overflow:hidden on a sticky element causes Safari to clip animated children
+        // to their initial bounding rect.
+        clipPath: 'inset(0)',
+        WebkitClipPath: 'inset(0)',
+      }}
     >
       {/* Background image + gradient overlay */}
       <div
@@ -31,10 +38,19 @@ export default function Hero() {
 
       {/* Content */}
       <div className="relative z-2 px-6 md:px-12 w-full max-w-7xl mx-auto">
+        {/*
+          Safari + Android fix:
+          DO NOT set WebkitTransform as a static initial value on motion.div elements.
+          Framer Motion updates transform on every animation frame — a static initial
+          value forces the browser to reconcile two transform sources per frame,
+          causing jitter on mobile GPUs.
+          WebkitBackfaceVisibility is safe as a one-time hint (not updated per-frame).
+        */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
+          style={{ WebkitBackfaceVisibility: 'hidden', backfaceVisibility: 'hidden' }}
         >
           <p
             style={{ fontSize: 'clamp(3.1rem, 2.5vw, 1.35rem)' }}
@@ -48,7 +64,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="mix-blend-difference"
+          style={{ WebkitBackfaceVisibility: 'hidden', backfaceVisibility: 'hidden' }}
         >
           <h1 className="text-[14vw] lg:text-[9.5vw] font-bold text-white mb-6 uppercase">
             CAMPAIGNS<span className="text-[#0EC8C5]">.</span>
@@ -59,6 +75,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
+          style={{ WebkitBackfaceVisibility: 'hidden', backfaceVisibility: 'hidden' }}
         >
           <p style={{ fontSize: 'clamp(1.95rem, 2vw, 1.2rem)' }} className="text-white/85 mb-10 font-light">
             We build what tomorrow will <strong className="text-white font-black">remember.</strong>
@@ -69,6 +86,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.8 }}
+          style={{ WebkitBackfaceVisibility: 'hidden', backfaceVisibility: 'hidden' }}
         >
           <Link
             href="/contact"

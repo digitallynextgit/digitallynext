@@ -198,13 +198,17 @@
 }
 
 /* ===== MARQUEE ===== */
+/*
+  IMPORTANT — Why keyframes must be in globals.css, not in React <style> tags:
+  React injects <style> tags AFTER the component mounts (JS thread). This means
+  for 1-2 frames the browser sees the `animation` property but has no @keyframes
+  definition — causing the visible jitter/jump at start on Android/iOS.
+  Putting keyframes here ensures they are in the compiled CSS bundle, parsed
+  by the browser BEFORE any JS runs.
+*/
 @keyframes marquee {
-  0% {
-    transform: translateX(0) translateZ(0);
-  }
-  100% {
-    transform: translateX(-50%) translateZ(0);
-  }
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(-50%, 0, 0); }
 }
 
 .marquee-track {
@@ -212,16 +216,35 @@
   gap: 48px;
   animation: marquee 30s linear infinite;
   width: max-content;
-  /* Safari GPU acceleration */
   will-change: transform;
-  -webkit-transform: translateZ(0);
-  transform: translateZ(0);
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
 }
 
 .marquee-track:hover {
   animation-play-state: paused;
+}
+
+/* ===== CLIENT LOGOS MARQUEE ===== */
+/* Only GPU promotion hints — animation is JS rAF-driven, not CSS */
+.client-logos-track {
+  will-change: transform;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+/* ===== GROWTH CAROUSEL (CAREERS) ===== */
+/* 2 copies of items → translate -50% = 1 full set scrolled */
+@keyframes growthCarouselScroll {
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(-50%, 0, 0); }
+}
+
+/* Only GPU promotion hints — animation is JS rAF-driven, not CSS */
+.growth-carousel-track {
+  will-change: transform;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
 /* ===== GLASSMORPHISM ===== */
@@ -246,6 +269,28 @@
 .text-transparent {
   -webkit-text-fill-color: transparent;
   color: transparent;
+}
+
+/*
+  Safari clip-path fix:
+  When using clipPath: 'inset(0)' from JS/inline styles, Safari also requires
+  the -webkit- prefixed version. This rule ensures any element using clip-path
+  in CSS classes also gets the webkit prefix.
+*/
+[style*='clip-path'] {
+  clip-path: inherit;
+  -webkit-clip-path: inherit;
+}
+
+/*
+  Safari Framer Motion fix:
+  motion.div elements that animate opacity and transform sometimes get
+  clipped to their initial bounding box in Safari. Setting a non-zero
+  perspective on the parent prevents this.
+*/
+.framer-motion-safari-fix {
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
 }
 
 /* ===== BUTTONS ===== */
@@ -723,13 +768,12 @@
 }
 
 /* ---- Infinite Slider ---- */
+/*
+  Mobile + Safari fix: translate3d for smooth GPU interpolation (same as marquee).
+*/
 @keyframes services-slide {
-  0% {
-    transform: translateX(0) translateZ(0);
-  }
-  100% {
-    transform: translateX(-50%) translateZ(0);
-  }
+  0%   { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-50%, 0, 0); }
 }
 
 .services-slider {
@@ -747,10 +791,9 @@
   font-size: 0.9rem;
   color: rgba(255, 255, 255, 0.4);
   font-weight: 500;
-  /* Safari GPU acceleration */
+  /* DO NOT add transform/WebkitTransform here — conflicts with the animation.
+     will-change:transform alone is sufficient for GPU compositing. */
   will-change: transform;
-  -webkit-transform: translateZ(0);
-  transform: translateZ(0);
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
 }
