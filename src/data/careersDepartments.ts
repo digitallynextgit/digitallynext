@@ -87,6 +87,14 @@ export const CAREERS_INTERNSHIP_DEPARTMENTS: CareersDepartment[] = [
         },
       },
       {
+        id: 'intern-digital-marketing',
+        title: 'Digital Marketing Intern',
+        description: {
+          intro:
+            'Are you someone who lives and breathes trends, creativity, and content? Do you enjoy blending strategy with aesthetics- whether it’s SEO, Graphics, Video editing or Social media? Join us as a Digital Marketing Intern and turn your ideas into impactful campaigns.',
+        },
+      },
+      {
         id: 'intern-hr',
         title: 'HR Intern',
         description: {
