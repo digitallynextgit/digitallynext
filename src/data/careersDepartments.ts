@@ -282,7 +282,7 @@ export const CAREERS_DEPARTMENTS: CareersDepartment[] = [
   {
     id: 'performance',
     title: 'Performance (Organic and Paid)',
-    jobsLabel: 'Explore Open Roless',
+    jobsLabel: 'Explore Open Roles',
     tone: 'red',
     roles: [
       {
@@ -358,7 +358,7 @@ export const CAREERS_DEPARTMENTS: CareersDepartment[] = [
   {
     id: 'adac',
     title: 'AI Decision and Acceleration Centre (ADAC)',
-    jobsLabel: 'Explore Open Roless',
+    jobsLabel: 'Explore Open Roles',
     tone: 'teal',
     roles: [
       {
@@ -377,7 +377,7 @@ export const CAREERS_DEPARTMENTS: CareersDepartment[] = [
             'Process optimization mindset',
             'Research-driven & innovation-oriented approach',
           ],
-          currentOpenings: ['AI Strategist& Analysts'],
+          currentOpenings: ['AI Strategists & Analysts'],
         },
       },
       {
@@ -471,7 +471,7 @@ export const CAREERS_DEPARTMENTS: CareersDepartment[] = [
   {
     id: 'media',
     title: 'Media - Social and Digital Presence',
-    jobsLabel: 'Explore Open Roless',
+    jobsLabel: 'Explore Open Roles',
     tone: 'teal',
     roles: [
       {
@@ -514,7 +514,7 @@ export const CAREERS_DEPARTMENTS: CareersDepartment[] = [
             'Strong writing & articulation skills',
             'Relationship management & networking',
           ],
-          currentOpenings: ['PR& COMMUNICATIONS EXECUTIVE (1–2+ Years Exp)'],
+          currentOpenings: ['PR & COMMUNICATIONS EXECUTIVE (1–2+ Years Exp)'],
         },
       },
       {

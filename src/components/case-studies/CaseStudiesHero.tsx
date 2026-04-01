@@ -16,9 +16,9 @@ export default function CaseStudiesHero({ theme }: CaseStudiesHeroProps) {
   const featuredCaseStudy = caseStudies[0];
 
   return (
-    <section className="w-full py-10 md:py-16 lg:py-20">
+    <section className="w-full pt-14 md:pt-16 lg:pt-24 2xl:pt-28 pb-10 md:pb-16 lg:pb-20">
       <div className="mx-auto w-full max-w-[1280px] px-4 sm:px-6 lg:px-14">
-        <div className="mt-10 md:mt-20 lg:mt-32 grid grid-cols-1 lg:grid-cols-[784px_1fr] gap-12 lg:gap-[100px] items-center">
+        <div className="mt-6 md:mt-10 lg:mt-16 grid grid-cols-1 lg:grid-cols-[784px_1fr] gap-12 lg:gap-[100px] items-center">
           <div className="flex flex-col gap-14 py-8">
             <h1
               className={[

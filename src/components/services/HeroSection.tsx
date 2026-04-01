@@ -140,8 +140,7 @@ export default function HeroSection({ hero, theme }: Props) {
     };
   }, [contactOpen]);
 
-  // navbar approx 72px; adjust if needed
-  const headerHeight = 100;
+  // Navbar heights: h-14(56px) md:h-16(64px) lg:h-24(96px) 2xl:h-28(112px)
 
   return (
     <>
@@ -187,11 +186,8 @@ export default function HeroSection({ hero, theme }: Props) {
         {/* Content wrapper */}
         <div className="relative z-20 w-full max-w-7xl mx-auto px-6 md:px-12">
           <div
-            className="flex flex-col"
-            style={{
-              paddingTop: headerHeight,
-              minHeight: `calc(100vh - ${headerHeight}px)`,
-            }}
+            className="flex flex-col pt-14 md:pt-16 lg:pt-24 2xl:pt-28"
+            style={{ minHeight: 'calc(100vh - 56px)' }}
           >
             <div
               className={[

@@ -15,7 +15,7 @@ export default function ContactHero() {
         <div className="absolute inset-0 bg-black/40" />
       </div>
 
-      <div className="relative max-w-[1200px] mx-auto px-6 sm:px-8 lg:px-10 pt-[140px] pb-16 sm:pb-24">
+      <div className="relative max-w-[1200px] mx-auto px-6 sm:px-8 lg:px-10 pt-14 md:pt-16 lg:pt-24 2xl:pt-28 pb-16 sm:pb-24">
         <div className="max-w-[760px]">
           <h1 className="text-white font-extrabold leading-[1.05] tracking-[-0.02em] text-[44px] sm:text-[56px] lg:text-[72px]">
             Let&apos;s Build Something
