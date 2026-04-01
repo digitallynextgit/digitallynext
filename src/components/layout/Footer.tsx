@@ -1,3 +1,5 @@
+'use client';
+
 import Image from 'next/image';
 import Link from 'next/link';
 import { Phone, Mail } from 'lucide-react';
@@ -140,13 +142,13 @@ export default function Footer() {
               >
                 Privacy Policy
               </Link>
-              <a
-                href="#top"
-                className="text-white/80 hover:text-white transition-colors duration-200 inline-flex items-center ml-10"
+              <button
+                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                className="text-white/80 hover:text-white transition-colors duration-200 inline-flex items-center ml-10 cursor-pointer"
                 aria-label="Back to top"
               >
-                <Image src="/ani-icons/up_arrow.svg" alt="Back to top" width={10} height={10} />
-              </a>
+                <Image src="/ani-icons/up_arrow.svg" alt="" width={10} height={10} />
+              </button>
             </div>
           </div>
         </div>
