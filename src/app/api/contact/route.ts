@@ -1,5 +1,24 @@
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
+import { getCorsHeaders, validateField } from '@/lib/apiSecurity';
+
+// ── Simple in-memory rate limiter (10 req / 60s per IP) ──────────────────────
+const rateLimitMap = new Map<string, { count: number; resetAt: number }>();
+const RATE_LIMIT = 10;
+const WINDOW_MS = 60_000;
+
+function isRateLimited(ip: string): boolean {
+  const now = Date.now();
+  const entry = rateLimitMap.get(ip);
+  if (!entry || now > entry.resetAt) {
+    rateLimitMap.set(ip, { count: 1, resetAt: now + WINDOW_MS });
+    return false;
+  }
+  if (entry.count >= RATE_LIMIT) return true;
+  entry.count++;
+  return false;
+}
+// ─────────────────────────────────────────────────────────────────────────────
 
 type ContactPayload = {
   name: string;
@@ -15,30 +34,34 @@ type ContactPayload = {
 
 function fromFormData(formData: FormData): ContactPayload {
   return {
-    name: String(formData.get('name') ?? '').trim(),
-    phone: String(formData.get('phone') ?? '').trim(),
-    country: String(formData.get('country') ?? '').trim(),
-    city: String(formData.get('city') ?? '').trim(),
-    linkedIn: String(formData.get('linkedIn') ?? '').trim(),
-    entityType: String(formData.get('entityType') ?? '').trim(),
-    services: formData.getAll('services').map(String),
-    customServiceNote: String(formData.get('customServiceNote') ?? '').trim(),
-    message: String(formData.get('message') ?? '').trim(),
+    name: validateField(String(formData.get('name') ?? ''), 200),
+    phone: validateField(String(formData.get('phone') ?? ''), 30),
+    country: validateField(String(formData.get('country') ?? ''), 100),
+    city: validateField(String(formData.get('city') ?? ''), 100),
+    linkedIn: validateField(String(formData.get('linkedIn') ?? ''), 300),
+    entityType: validateField(String(formData.get('entityType') ?? ''), 100),
+    services: formData.getAll('services').map((s) => validateField(String(s), 100)),
+    customServiceNote: validateField(String(formData.get('customServiceNote') ?? ''), 500),
+    message: validateField(String(formData.get('message') ?? ''), 2000),
   };
 }
 
 function fromJson(raw: Record<string, unknown>): ContactPayload {
   const rawServices = raw.services;
   return {
-    name: String(raw.name ?? '').trim(),
-    phone: String(raw.phone ?? '').trim(),
-    country: String(raw.country ?? '').trim(),
-    city: String(raw.city ?? '').trim(),
-    linkedIn: String(raw.linkedIn ?? '').trim(),
-    entityType: String(raw.entityType ?? '').trim(),
-    services: Array.isArray(rawServices) ? rawServices.map(String) : rawServices ? [String(rawServices)] : [],
-    customServiceNote: String(raw.customServiceNote ?? '').trim(),
-    message: String(raw.message ?? '').trim(),
+    name: validateField(String(raw.name ?? ''), 200),
+    phone: validateField(String(raw.phone ?? ''), 30),
+    country: validateField(String(raw.country ?? ''), 100),
+    city: validateField(String(raw.city ?? ''), 100),
+    linkedIn: validateField(String(raw.linkedIn ?? ''), 300),
+    entityType: validateField(String(raw.entityType ?? ''), 100),
+    services: Array.isArray(rawServices)
+      ? rawServices.map((s) => validateField(String(s), 100))
+      : rawServices
+        ? [validateField(String(rawServices), 100)]
+        : [],
+    customServiceNote: validateField(String(raw.customServiceNote ?? ''), 500),
+    message: validateField(String(raw.message ?? ''), 2000),
   };
 }
 
@@ -115,7 +138,22 @@ function buildText(p: ContactPayload): string {
   ].join('\n');
 }
 
-export async function POST(request: Request) {
+// Handle CORS preflight
+export async function OPTIONS(request: NextRequest) {
+  const corsHeaders = getCorsHeaders(request.headers.get('origin'));
+  return new NextResponse(null, { status: 204, headers: corsHeaders });
+}
+
+export async function POST(request: NextRequest) {
+  const corsHeaders = getCorsHeaders(request.headers.get('origin'));
+  const ip = request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ?? 'unknown';
+  if (isRateLimited(ip)) {
+    return NextResponse.json(
+      { ok: false, error: 'Too many requests. Please wait and try again.' },
+      { status: 429, headers: corsHeaders }
+    );
+  }
+
   try {
     const contentType = request.headers.get('content-type') ?? '';
 

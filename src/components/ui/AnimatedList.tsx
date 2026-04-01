@@ -178,7 +178,7 @@ const AnimatedList: React.FC<AnimatedListProps> = ({
             <div
               className={[
                 'p-4 rounded-[10px] text-white',
-                'bg-gradient-to-r from-[#1A1032] to-[#07060E]',
+                'bg-linear-to-r from-[#1A1032] to-[#07060E]',
                 'shadow-[0px_1px_0px_rgba(255,255,255,0.06)_inset]',
                 selectedIndex === index ? 'from-[#0B0B0B] to-[#000000]' : '',
                 selectedIndex === index ? selectedItemClassName : '',
@@ -195,11 +195,11 @@ const AnimatedList: React.FC<AnimatedListProps> = ({
       {showGradients && (
         <>
           <div
-            className="absolute top-0 left-0 right-0 h-[50px] bg-gradient-to-b from-white to-transparent pointer-events-none transition-opacity duration-300 ease"
+            className="absolute top-0 left-0 right-0 h-12.5 bg-linear-to-b from-white to-transparent pointer-events-none transition-opacity duration-300 ease"
             style={{ opacity: topGradientOpacity }}
           ></div>
           <div
-            className="absolute bottom-0 left-0 right-0 h-[100px] bg-gradient-to-t from-white to-transparent pointer-events-none transition-opacity duration-300 ease"
+            className="absolute bottom-0 left-0 right-0 h-25 bg-linear-to-t from-white to-transparent pointer-events-none transition-opacity duration-300 ease"
             style={{ opacity: bottomGradientOpacity }}
           ></div>
         </>
