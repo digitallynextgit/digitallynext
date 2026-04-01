@@ -71,7 +71,7 @@ export default function HeroSection({ theme }: HeroSectionProps) {
         />
       </div>
 
-      <div className="mt-6 md:mt-12 lg:mt-20">
+      <div className="mt-14 md:mt-16 lg:mt-24 2xl:mt-28">
         {/* 1. ImageTrail */}
         <div className="absolute inset-0 z-1">
           {/* Safari fix: overflow-visible on the wrapper lets ImageTrail images animate

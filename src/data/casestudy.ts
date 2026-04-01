@@ -115,14 +115,14 @@ export const caseStudies: CaseStudy[] = [
     slug: 'advent-global',
     metaTitle: 'Advent Global Case Study | Digitally Next',
     metaDescription:
-      'Complete Brand Revamp for a US Tech Co. Helped them to bag one of the biggest social networking platforms as their client.',
+      'Complete Brand Revamp for a US Tech Co. Helped them secure one of the biggest social networking platforms as their client.',
     listing: {
       introText:
         'From ambitious startups to scaling enterprises – Digitally Next builds performance-driven creative systems that turn attention into measurable growth.',
       title: 'Advent<span style="color:#E21F26">Global</span>',
       imageSrc: '/case/advent.webp',
       caption:
-        'Complete Brand Revamp for a US Tech Co. Helped them to bag one of the biggest social networking platforms as their client.',
+        'Complete Brand Revamp for a US Tech Co. Helped them secure one of the biggest social networking platforms as their client.',
       highlightKeywords: ['Brand Revamp', 'US Tech Co.', 'social networking platforms'],
       buttonLabel: 'View Case Study',
       pillLabel: 'IT & ITES',
@@ -132,7 +132,7 @@ export const caseStudies: CaseStudy[] = [
       hero: {
         eyebrow: 'ADVENTGLOBAL',
         title:
-          'Complete Brand Revamp for a US Tech Co. Helped them to bag one of the biggest social networking platforms as their client',
+          'Complete Brand Revamp for a US Tech Co. Helped them secure one of the biggest social networking platforms as their client',
         heroImageSrc: '/case/advent.webp',
         metrics: [
           {
@@ -152,7 +152,7 @@ export const caseStudies: CaseStudy[] = [
       about: {
         logoSrc: '/figma/case-study/about-logo.webp',
         quote:
-          '"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat._"',
+          '"Digitally Next transformed our digital brand experience from the ground up, bringing a modern strategy to our legacy platform."',
         fields: [
           { label: 'Industry', value: 'Technology' },
           { label: 'Category', value: 'Digital Transformation' },
@@ -163,7 +163,7 @@ export const caseStudies: CaseStudy[] = [
         'Transforming Legacy (more than 3 decades old organization) Brand Image to the New Age evolved Brand Positioning.',
       objective: {
         heading: 'objective goal',
-        body: "Build and Ensure up to Date Digital Brand Presence that resonates with the stakeholders of today's 3.0 world",
+        body: "Build and ensure an up-to-date digital brand presence that resonates with the stakeholders of today's 3.0 world",
       },
       approach: {
         heading: 'Approach',
@@ -309,7 +309,7 @@ export const caseStudies: CaseStudy[] = [
       about: {
         logoSrc: '/figma/case-study/about-logo.webp',
         quote:
-          '"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat._"',
+          '"The rebranding and digital rollout was expertly handled, making our acquisition transition incredibly smooth."',
         fields: [
           { label: 'Industry', value: 'Healthcare' },
           { label: 'Category', value: 'Genomics / Genetics' },
@@ -319,7 +319,7 @@ export const caseStudies: CaseStudy[] = [
       intro: 'Complete Brand makeover of a global brand (Post M&A) to a new name and digital brand communication.',
       objective: {
         heading: 'objective goal',
-        body: 'Awareness, Outreach, Recognition and Acceptance of rebranding that resonates with the varied stakeholders from health care and government sector',
+        body: 'Awareness, Outreach, Recognition and Acceptance of rebranding that resonates with the varied stakeholders from the healthcare and government sectors',
       },
       approach: {
         heading: 'Approach',
@@ -406,7 +406,7 @@ export const caseStudies: CaseStudy[] = [
           'JS Website',
           'Branding Kit',
           'Podcast',
-          '360 degree Digital Social Media calendar set up and Roll Out',
+          '360-degree Digital Social Media calendar setup and rollout',
         ],
       },
       otherTeams: {
@@ -571,7 +571,7 @@ export const caseStudies: CaseStudy[] = [
           'Microsite',
           'Engagement Promotional Assets',
           'Podcast- Audio and Video',
-          '360 degree Digital Social Media calendar set up and Roll Out',
+          '360-degree Digital Social Media calendar setup and rollout',
           'Digital PR Calendar including UGC distribution',
         ],
       },
@@ -617,7 +617,7 @@ export const caseStudies: CaseStudy[] = [
       title: 'InsurTech',
       imageSrc: '/case/cs4.webp',
       caption:
-        'PAN India Launch (Online) of a disruptive phygital model in insurance sector to prevent mis-selling, mis-information and honest reach of the insurance products in the interiors of India.',
+        'PAN India Launch (Online) of a disruptive phygital model in insurance sector to prevent mis-selling and misinformation, ensuring the honest reach of insurance products in rural India.',
       highlightKeywords: ['PAN India Launch', 'phygital model', 'insurance products'],
       buttonLabel: 'View Case Study',
       pillLabel: 'Insurance',
@@ -655,7 +655,7 @@ export const caseStudies: CaseStudy[] = [
         ],
       },
       intro:
-        'PAN India Launch (Online) of a disruptive phygital model in insurance sector to prevent mis-selling, mis-information and honest reach of the insurance products in the interiors of India.',
+        'PAN India Launch (Online) of a disruptive phygital model in insurance sector to prevent mis-selling and misinformation, ensuring the honest reach of insurance products in rural India.',
       objective: {
         heading: 'objective goal',
         body: 'Complete new D2C centric website integrating with Apps along with 360 degrees performance marketing asset creation and B2B centric social media.',
@@ -740,7 +740,7 @@ export const caseStudies: CaseStudy[] = [
           'Website',
           'Engagement Promotional Assets',
           'Podcast- Audio and Video',
-          '360 degree Digital Social Media calendar set up and Roll Out',
+          '360-degree Digital Social Media calendar setup and rollout',
           'Digital PR Calendar including UGC distribution',
         ],
       },

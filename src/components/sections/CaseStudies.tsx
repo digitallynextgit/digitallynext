@@ -37,9 +37,22 @@ export default function CaseStudies({ theme }: CaseStudiesProps) {
     offset: ['start start', 'end start'],
   });
 
-  const headingScale = useTransform(scrollYProgress, [0, 0.35], [1, 0.88]);
-  const headingOpacity = useTransform(scrollYProgress, [0, 0.28, 0.42], [1, 0.6, 0]);
-  const headingY = useTransform(scrollYProgress, [0, 0.42], ['0%', '-18%']);
+  const headingScale = useTransform(scrollYProgress, (v) => {
+    if (v <= 0) return 1;
+    if (v >= 0.35) return 0.88;
+    return 1 - (v / 0.35) * 0.12;
+  });
+  const headingOpacity = useTransform(scrollYProgress, (v) => {
+    if (v <= 0) return 1;
+    if (v <= 0.28) return 1 - (v / 0.28) * 0.4;
+    if (v <= 0.42) return 0.6 - ((v - 0.28) / 0.14) * 0.6;
+    return 0;
+  });
+  const headingY = useTransform(scrollYProgress, (v) => {
+    if (v <= 0) return '0%';
+    if (v >= 0.42) return '-18%';
+    return `-${(v / 0.42) * 18}%`;
+  });
 
   return (
     <section id="case-studies" ref={sectionRef} className="relative overflow-visible">

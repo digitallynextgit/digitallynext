@@ -19,7 +19,7 @@ export default function CaseStudyDetailPage({ caseStudy }: { caseStudy: CaseStud
 
   return (
     <ThemeSection theme={pageTheme}>
-      <div className="mx-auto w-full pt-28 md:pt-36">
+      <div className="mx-auto w-full pt-28 md:pt-36 lg:pt-40 2xl:pt-44">
         <CaseStudyDetailHero detail={detail} metaTitle={caseStudy.metaTitle} />
         <CaseStudyAboutAndApproach detail={detail} />
         <CaseStudyFocusArea detail={detail} />

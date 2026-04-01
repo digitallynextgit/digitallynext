@@ -414,7 +414,7 @@ export const services: ServiceDetail[] = [
           {
             iconSrc: '/figma/services/ccmc-adapt.svg',
             title: 'Adapt across platforms',
-            description: 'Precision-driven media buying governed by data intelligence and attribution modelling.',
+            description: 'Precision-driven media buying governed by data intelligence and attribution modeling.',
           },
           {
             iconSrc: '/figma/services/ccmc-scale.svg',
@@ -434,7 +434,7 @@ export const services: ServiceDetail[] = [
           {
             title: 'SEO, AEO & GEO',
             description:
-              'Search engine optimisation, answer engine optimisation, and generative engine optimisation, unified discoverability.',
+              'Search engine optimization, answer engine optimization, and generative engine optimization for unified discoverability.',
             imageSrc: '/services/ss7.webp',
           },
           {
@@ -576,7 +576,7 @@ export const services: ServiceDetail[] = [
           {
             iconSrc: '/figma/services/pdd-paid-performance.svg',
             title: 'Paid Performance',
-            description: 'Precision-driven media buying governed by data intelligence and attribution modelling.',
+            description: 'Precision-driven media buying governed by data intelligence and attribution modeling.',
           },
           {
             iconSrc: '/figma/services/pdd-digital-pr.svg',
@@ -600,7 +600,7 @@ export const services: ServiceDetail[] = [
           {
             title: 'SEO, AEO & GEO',
             description:
-              'Search engine optimisation, answer engine optimisation, and generative engine optimisation, unified discoverability.',
+              'Search engine optimization, answer engine optimization, and generative engine optimization for unified discoverability.',
             imageSrc: '/services/ss7.webp',
           },
           {
@@ -716,7 +716,7 @@ export const services: ServiceDetail[] = [
         eyebrow: 'The Real Brief',
         heading: 'What brands are actually asking for',
         description:
-          'Behind these requests is a clear pattern:\n\nWhat brands need isn\u2019t more content.\nThey need content systems.',
+          'Behind these requests is a clear pattern:\n\nWhat brands need aren\'t just websites.\nThey need scalable digital foundations.',
         list: [
           { accent: 'accent', text: 'Websites are treated as <strong>projects</strong>,<br> not products' },
           { accent: 'alt', text: 'UX is <strong>designed</strong> without<br> conversion logic' },
@@ -795,7 +795,7 @@ export const services: ServiceDetail[] = [
             imageSrc: '/services/ss19.webp',
           },
           {
-            title: 'Performance Optimisation',
+            title: 'Performance Optimization',
             description:
               'Speed, stability, and scalable infrastructure, engineered for long-term performance, not short-term patches.',
             imageSrc: '/services/ss20.webp',
@@ -851,7 +851,7 @@ export const services: ServiceDetail[] = [
       mutedText: '#787878',
     },
     hero: {
-      breadcrumb: 'Services > Performance, Distribution & Demand.',
+      breadcrumb: 'Services > AI Enablement & Decision Systems (ADAC-Powered)',
       titleLines: ['AI Enablement & Decision', 'Systems (ADAC-Powered)'],
       layout: 'stacked',
       backgroundVideo: '/home/service5.mp4',
@@ -924,7 +924,7 @@ export const services: ServiceDetail[] = [
             iconSrc: '/services/icon7.png',
             title: 'AI with Defined Outcomes',
             description:
-              'Authority-building through earned media, strategic placements, and narrative-led distribution.',
+              'Integrating AI to execute with precision, measuring intelligence-driven outcomes rather than just outputs.',
           },
         ],
       },

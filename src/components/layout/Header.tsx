@@ -393,7 +393,7 @@ export default function Header() {
         className={['fixed top-0 left-0 right-0 z-100', 'transition-colors duration-500', headerBg].join(' ')}
       >
         {/* Heights dynamically scale infinitely on massive 4k/8k displays */}
-        <div className="grid grid-cols-3 items-center h-14 md:h-16 lg:h-28 2xl:h-[max(9rem,5vw)] w-full px-5 md:px-7 lg:px-8">
+        <div className="grid grid-cols-3 items-center h-14 md:h-16 lg:h-24 2xl:h-28 w-full px-5 md:px-7 lg:px-8">
           {/* Col 1 — Award image | FLIP logo when menu open */}
           <div className="flex items-center justify-start">
             <AnimatePresence mode="wait">
@@ -519,10 +519,10 @@ export default function Header() {
             }}
             className="fixed inset-0 z-99 bg-[#0a0a0a] flex flex-col"
           >
-            {/* Margins dynamically scale boundlessly with screen widths >1536px */ }
+            {/* Menu overlay margins explicitly match the header heights */}
             <div
               className={[
-                'flex-1 overflow-y-auto mt-14 md:mt-16 lg:mt-28 2xl:mt-[max(9rem,5vw)] ',
+                'flex-1 overflow-y-auto mt-14 md:mt-16 lg:mt-24 2xl:mt-28 ',
                 '[&::-webkit-scrollbar]:w-0.75',
                 '[&::-webkit-scrollbar-track]:bg-transparent',
                 '[&::-webkit-scrollbar-thumb]:bg-white/20',
