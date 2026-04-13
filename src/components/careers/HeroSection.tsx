@@ -167,7 +167,13 @@ export default function HeroSection({ theme }: HeroSectionProps) {
               whiteSpace: 'nowrap',
             }}
           >
-            <Image src="/figma/careers/careers-arrow.svg" alt="" width={36} height={15} />
+            <Image
+              src="/figma/careers/careers-arrow.svg"
+              alt=""
+              width={36}
+              height={15}
+              style={{ width: 'auto', height: 'auto' }}
+            />
             VIEW OPEN POSITIONS
           </Link>
         </div>

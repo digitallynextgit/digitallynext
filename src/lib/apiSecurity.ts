@@ -31,13 +31,13 @@ export function getCorsHeaders(requestOrigin: string | null): HeadersInit {
  */
 export function sanitizeText(input: string): string {
   return input
-    .replace(/<[^>]*>/g, '')           // strip HTML tags
-    .replace(/&/g, '&amp;')            // encode & first
-    .replace(/"/g, '&quot;')           // encode double quotes
-    .replace(/'/g, '&#x27;')           // encode single quotes
-    .replace(/</g, '&lt;')             // encode <
-    .replace(/>/g, '&gt;')             // encode >
-    .replace(/\//g, '&#x2F;')          // encode forward slash
+    .replace(/<[^>]*>/g, '') // strip HTML tags
+    .replace(/&/g, '&amp;') // encode & first
+    .replace(/"/g, '&quot;') // encode double quotes
+    .replace(/'/g, '&#x27;') // encode single quotes
+    .replace(/</g, '&lt;') // encode <
+    .replace(/>/g, '&gt;') // encode >
+    .replace(/\//g, '&#x2F;') // encode forward slash
     .trim();
 }
 

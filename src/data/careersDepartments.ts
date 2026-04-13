@@ -200,44 +200,43 @@ export const CAREERS_DEPARTMENTS: CareersDepartment[] = [
     tone: 'teal',
     roles: [
       {
-        id: 'visual-artist-graphic-designer',
-        title: 'Visual Artist aka Graphic Designer',
+        id: 'video-producer',
+        title: 'Video Producer',
         description: {
           intro:
-            'Fine arts, visual finesse, and visual treats are what our clients demand. We are looking for modern-day artists who can be inspired by Michelangelo and know how to create captivating visual treats for the audience of 2019!',
+            "Great video content doesn't happen by chance - it requires strong planning, creative direction, and smooth execution. This role is for someone who can conceptualize, plan, and manage end-to-end video production while coordinating with the internal video team to deliver high-quality, platform-ready content for brands.",
           jobEssence:
-            'Having a sound understanding Visual Content assets – Infographics | Memes | Social Media creative updates | Comic Strips | Mind Maps | Caricatures | Announcement creatives | landing page based on Storyboarding/Trends specific Scenarios.',
+            'The role focuses on planning, managing, and executing video content for internal and client requirements. It involves content ideation, shoot planning, on-ground production, and coordinating with the video editing team to ensure timely and impactful delivery. The position ensures videos are aligned with campaign goals, brand guidelines, and social media platform requirements.',
           keyRequirements: [
-            'Visualization',
-            'Adobe Photoshop',
-            'Adobe Illustrator',
-            'Any other related software',
-            'Familiarity with AI enabled tools',
+            'Video Content Planning & Concept Development',
+            'Shoot Planning, Coordination & On-Ground Production',
+            'Script & Content Flow Development for Videos',
+            'Coordination with Video Editing Team for Final Output',
+            'Platform-Focused Video Strategy (Reels, Shorts, YouTube, etc.)',
+            'Quality Control & Brand Alignment',
+            'Must have Agency Experience',
+            'Familiarity with AI-enabled tools for content creation and production',
           ],
-          currentOpenings: ['Junior Graphic Designer (1-2 Years Exp)', 'Senior Graphic Designer', 'Visual Lead'],
+          currentOpenings: ['Video Producer (3-4 Years Exp)'],
         },
       },
       {
-        id: 'video-editor',
-        title: 'Video Editor',
+        id: 'creative-head',
+        title: 'Creative Head',
         description: {
           intro:
-            'Every video you edit should be a movie, a story, a legendary portfolio having a capability to move mountains, arouse emotions among the audience. We are looking for someone who can create memories, and give the audience a reason to share it among their circle!',
+            'Creativity scales only when it’s managed well. This role is for someone who can lead, align, and elevate video, design, content, and social media teams to deliver consistent, high-impact brand communication across platforms.',
           jobEssence:
-            'Having a sound understanding of - Podcasts | Reels | Video shoot with multiple camera set-ups | YouTube | OTTs | Motion Graphics | Explanatory | Streaming/News Centric.',
+            'The role focuses on managing end-to-end creative execution across video, graphic design, content, and social media. It involves team coordination, quality control, campaign alignment, and ensuring timely, platform-optimized delivery while maintaining brand consistency and performance.',
           keyRequirements: [
-            'Adobe After Effects',
-            'Adobe Premiere Pro',
-            'Any related video editing software',
-            'Cinematography and Storytelling video editing',
-            'Familiarity with AI enabled outputs',
+            'Creative Team Management (Video, Graphic, Content & Social)',
+            'Content & Campaign Planning',
+            'Social Media Strategy & Execution Oversight',
+            'Quality Control & Brand Consistency',
+            'Must have Agency Experience',
+            'Familiarity with AI enabled tools',
           ],
-          currentOpenings: [
-            'Junior video editor (1-2 Years Exp)',
-            'Senior video editor',
-            'Video Producer',
-            'Video Production Lead',
-          ],
+          currentOpenings: ['Create Manager (4-5+ Years Exp)'],
         },
       },
       {
@@ -259,22 +258,39 @@ export const CAREERS_DEPARTMENTS: CareersDepartment[] = [
         },
       },
       {
-        id: 'creative-head',
-        title: 'Creative Head',
+        id: 'video-editor',
+        title: 'Video Editor',
         description: {
           intro:
-            'Creativity scales only when it’s managed well. This role is for someone who can lead, align, and elevate video, design, content, and social media teams to deliver consistent, high-impact brand communication across platforms.',
+            'Every video you edit should be a movie, a story, a legendary portfolio having a capability to move mountains, arouse emotions among the audience. We are looking for someone who can create memories, and give the audience a reason to share it among their circle!',
           jobEssence:
-            'The role focuses on managing end-to-end creative execution across video, graphic design, content, and social media. It involves team coordination, quality control, campaign alignment, and ensuring timely, platform-optimized delivery while maintaining brand consistency and performance.',
+            'Having a sound understanding of - Podcasts | Reels | Video shoot with multiple camera set-ups | YouTube | OTTs | Motion Graphics | Explanatory | Streaming/News Centric.',
           keyRequirements: [
-            'Creative Team Management (Video, Graphic, Content & Social)',
-            'Content & Campaign Planning',
-            'Social Media Strategy & Execution Oversight',
-            'Quality Control & Brand Consistency',
-            'Must have Agency Experience',
+            'Adobe After Effects',
+            'Adobe Premiere Pro',
+            'Any related video editing software',
+            'Cinematography and Storytelling video editing',
+            'Familiarity with AI enabled outputs',
+          ],
+          currentOpenings: ['Junior video editor (1-2 Years Exp)', 'Senior video editor', 'Video Production Lead'],
+        },
+      },
+      {
+        id: 'visual-artist-graphic-designer',
+        title: 'Visual Artist aka Graphic Designer',
+        description: {
+          intro:
+            'Fine arts, visual finesse, and visual treats are what our clients demand. We are looking for modern-day artists who can be inspired by Michelangelo and know how to create captivating visual treats for the audience of 2019!',
+          jobEssence:
+            'Having a sound understanding Visual Content assets – Infographics | Memes | Social Media creative updates | Comic Strips | Mind Maps | Caricatures | Announcement creatives | landing page based on Storyboarding/Trends specific Scenarios.',
+          keyRequirements: [
+            'Visualization',
+            'Adobe Photoshop',
+            'Adobe Illustrator',
+            'Any other related software',
             'Familiarity with AI enabled tools',
           ],
-          currentOpenings: ['Create Manager (4-5+ Years Exp)'],
+          currentOpenings: ['Junior Graphic Designer (1-2 Years Exp)', 'Senior Graphic Designer', 'Visual Lead'],
         },
       },
     ],

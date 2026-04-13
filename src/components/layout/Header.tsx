@@ -59,7 +59,7 @@ const SERVICES = [
 ];
 
 const MENU_EXTRA = [{ label: 'CONTACT', href: '/contact' }];
-const MotionLink = motion(Link);
+const MotionLink = motion.create(Link);
 
 function resolveRouteTheme(pathname: string): RouteHeaderTheme {
   if (ROUTE_THEMES[pathname]) return ROUTE_THEMES[pathname];

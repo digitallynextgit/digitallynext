@@ -30,11 +30,11 @@ export default function GrowthCarouselSection({ theme }: GrowthCarouselSectionPr
   const { theme: contextTheme } = useSectionTheme();
   const isDark = (theme ?? contextTheme) === 'dark';
 
-  const trackRef     = useRef<HTMLDivElement>(null);
-  const posRef       = useRef(0);                        // scroll offset in px
-  const halfWidthRef = useRef(0);                        // scrollWidth / 2
-  const rafRef       = useRef<number>(0);
-  const lastTimeRef  = useRef<number | undefined>(undefined);
+  const trackRef = useRef<HTMLDivElement>(null);
+  const posRef = useRef(0); // scroll offset in px
+  const halfWidthRef = useRef(0); // scrollWidth / 2
+  const rafRef = useRef<number>(0);
+  const lastTimeRef = useRef<number | undefined>(undefined);
 
   useEffect(() => {
     const track = trackRef.current;
@@ -115,11 +115,7 @@ export default function GrowthCarouselSection({ theme }: GrowthCarouselSectionPr
             />
 
             {/* Track — transform applied by rAF, not CSS animation */}
-            <div
-              ref={trackRef}
-              className="flex growth-carousel-track"
-              style={{ width: 'max-content' }}
-            >
+            <div ref={trackRef} className="flex growth-carousel-track" style={{ width: 'max-content' }}>
               {[...carouselItems, ...carouselItems].map((src, idx) => (
                 <div key={`${src}-${idx}`} className="shrink-0 mr-6 md:mr-8">
                   <Image

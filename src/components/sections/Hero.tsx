@@ -11,9 +11,7 @@ export default function Hero() {
 
   return (
     <section
-      className={['sticky top-0 z-0', 'flex items-center md:items-end', 'py-10 md:pt-16 lg:pt-20'].join(
-        ' '
-      )}
+      className={['sticky top-0 z-0', 'flex items-center md:items-end', 'py-10 md:pt-16 lg:pt-20'].join(' ')}
       style={{
         height: 'clamp(600px, 100vh, 1500px)',
         // Safari fix: clipPath clips the section without creating an overflow boundary.

@@ -402,12 +402,7 @@ export const caseStudies: CaseStudy[] = [
         headingHighlight: 'Digital Assets',
         subheading:
           'All frameworks are powered by Modern DAD thinking and governed by the AI Decision & Acceleration Center.',
-        items: [
-          'JS Website',
-          'Branding Kit',
-          'Podcast',
-          '360-degree Digital Social Media calendar setup and rollout',
-        ],
+        items: ['JS Website', 'Branding Kit', 'Podcast', '360-degree Digital Social Media calendar setup and rollout'],
       },
       otherTeams: {
         heading: 'Digitally next',

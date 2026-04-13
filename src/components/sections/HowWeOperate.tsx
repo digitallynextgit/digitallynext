@@ -95,6 +95,7 @@ export default function HowWeOperate({ theme }: HowWeOperateProps) {
                     }
                     alt={pillar.word}
                     fill
+                    sizes="(max-width: 768px) 120px, 15vw"
                     className="object-contain"
                   />
                 </div>

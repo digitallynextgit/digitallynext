@@ -207,8 +207,12 @@
   by the browser BEFORE any JS runs.
 */
 @keyframes marquee {
-  from { transform: translate3d(0, 0, 0); }
-  to   { transform: translate3d(-50%, 0, 0); }
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
 }
 
 .marquee-track {
@@ -236,8 +240,12 @@
 /* ===== GROWTH CAROUSEL (CAREERS) ===== */
 /* 2 copies of items → translate -50% = 1 full set scrolled */
 @keyframes growthCarouselScroll {
-  from { transform: translate3d(0, 0, 0); }
-  to   { transform: translate3d(-50%, 0, 0); }
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
 }
 
 /* Only GPU promotion hints — animation is JS rAF-driven, not CSS */
@@ -772,8 +780,12 @@
   Mobile + Safari fix: translate3d for smooth GPU interpolation (same as marquee).
 */
 @keyframes services-slide {
-  0%   { transform: translate3d(0, 0, 0); }
-  100% { transform: translate3d(-50%, 0, 0); }
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
 }
 
 .services-slider {

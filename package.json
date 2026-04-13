@@ -22,10 +22,10 @@
     "gsap": "^3.14.2",
     "lucide-react": "^0.563.0",
     "motion": "^12.34.4",
-    "next": "16.2.1",
+    "next": "16.2.3",
     "next-sanity": "^12.1.0",
     "nextjs-toploader": "^3.9.17",
-    "nodemailer": "^8.0.1",
+    "nodemailer": "^8.0.5",
     "radix-ui": "^1.4.3",
     "react": "^19.2.4",
     "react-dom": "19.2.3",
@@ -45,7 +45,7 @@
     "autoprefixer": "^10.4.27",
     "babel-plugin-react-compiler": "1.0.0",
     "eslint": "^9",
-    "eslint-config-next": "16.2.1",
+    "eslint-config-next": "16.2.3",
     "prettier": "^3.8.1",
     "shadcn": "^3.8.5",
     "tailwindcss": "^4",
@@ -54,7 +54,14 @@
   },
   "pnpm": {
     "overrides": {
-      "@vercel/frameworks>js-yaml": "3.14.2"
+      "@vercel/frameworks>js-yaml": "3.14.2",
+      "lodash": ">=4.18.0",
+      "lodash-es": ">=4.18.0",
+      "vite": ">=7.3.2",
+      "path-to-regexp": ">=8.4.0",
+      "hono": ">=4.12.12",
+      "@hono/node-server": ">=1.19.13",
+      "brace-expansion": ">=2.0.3"
     }
   }
 }

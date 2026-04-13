@@ -148,6 +148,7 @@ export default function AdacSection({ theme }: AdacSectionProps) {
                 alt=""
                 width={35}
                 height={16}
+                style={{ width: 'auto', height: 'auto' }}
                 className="group-hover:translate-x-1 transition-transform duration-300"
               />
               Open Roles in ADAC

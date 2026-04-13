@@ -147,7 +147,13 @@ export default function Footer() {
                 className="text-white/80 hover:text-white transition-colors duration-200 inline-flex items-center ml-10 cursor-pointer"
                 aria-label="Back to top"
               >
-                <Image src="/ani-icons/up_arrow.svg" alt="" width={10} height={10} />
+                <Image
+                  src="/ani-icons/up_arrow.svg"
+                  alt=""
+                  width={10}
+                  height={10}
+                  style={{ width: 'auto', height: 'auto' }}
+                />
               </button>
             </div>
           </div>

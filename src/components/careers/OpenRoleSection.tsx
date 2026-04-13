@@ -138,6 +138,7 @@ export default function OpenRolesSection({ theme }: OpenRolesSectionProps) {
                     alt=""
                     width={19}
                     height={10}
+                    style={{ width: 'auto', height: 'auto' }}
                     className="group-hover:translate-x-1 transition-transform duration-300"
                   />
                   <span className="group-hover:text-[#E21F26] transition-colors duration-300">{linkLabel}</span>

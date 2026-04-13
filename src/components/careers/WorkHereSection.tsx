@@ -128,7 +128,13 @@ export default function WorkHereSection({ theme }: WorkHereSectionProps) {
                   hoveredIndex === i ? 'bg-[rgba(14,200,197,0.08)]' : isDark ? 'bg-[#0a0a0a]' : 'bg-white',
                 ].join(' ')}
               >
-                <Image src={item.icon} alt="" width={item.iconW} height={item.iconH} />
+                <Image
+                  src={item.icon}
+                  alt=""
+                  width={item.iconW}
+                  height={item.iconH}
+                  style={{ width: 'auto', height: 'auto' }}
+                />
                 {/* Title color changes on hover — same as ADAC */}
                 <div
                   className="text-[22px] sm:text-[24px] font-normal leading-tight transition-colors duration-300"

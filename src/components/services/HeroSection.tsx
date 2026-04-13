@@ -185,10 +185,7 @@ export default function HeroSection({ hero, theme }: Props) {
 
         {/* Content wrapper */}
         <div className="relative z-20 w-full max-w-7xl mx-auto px-6 md:px-12">
-          <div
-            className="flex flex-col pt-14 md:pt-16 lg:pt-24 2xl:pt-28"
-            style={{ minHeight: 'calc(100vh - 56px)' }}
-          >
+          <div className="flex flex-col pt-14 md:pt-16 lg:pt-24 2xl:pt-28" style={{ minHeight: 'calc(100vh - 56px)' }}>
             <div
               className={[
                 'flex-1 flex flex-col justify-center',

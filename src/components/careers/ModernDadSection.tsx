@@ -129,7 +129,7 @@ export default function ModernDadSection({ theme }: ModernDadSectionProps) {
                               }}
                             >
                               <div className="relative w-full aspect-4/3 mt-5 rounded overflow-hidden">
-                                <Image src={image} alt={main} fill className="object-contain" />
+                                <Image src={image} alt={main} fill sizes="100vw" className="object-contain" />
                               </div>
                             </motion.div>
                           )}
@@ -150,6 +150,7 @@ export default function ModernDadSection({ theme }: ModernDadSectionProps) {
                     src={image}
                     alt=""
                     fill
+                    sizes="240px"
                     className="object-contain absolute"
                     style={{
                       transition: 'opacity 0.4s ease',

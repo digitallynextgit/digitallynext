@@ -51,47 +51,47 @@ export default function CareerDepartmentPageClient({ department, mode, roleEntri
         </div>
 
         {/* <div className="rounded border border-[#E5E5E5] bg-white px-7 py-7"> */}
-          <div className="flex flex-col gap-3">
-            {roleEntries.map((entry) => (
-              <Link
-                key={entry.role.id}
-                href={getCareerRoleHref(entry)}
-                className={[
-                  'flex w-full items-center justify-between rounded px-7 py-5 text-left transition-all duration-200 cursor-pointer',
-                  'bg-[rgba(226,31,38,0.04)] hover:bg-[rgba(226,31,38,0.09)]',
-                  'focus:outline-none focus:ring-2 focus:ring-black/20',
-                ].join(' ')}
-              >
-                <div className="flex flex-col gap-1.5">
-                  <div
-                    className="font-medium text-black"
-                    style={{
-                      fontSize: 'clamp(18px, 2.8vw, 36px)',
-                      letterSpacing: '-0.03em',
-                      lineHeight: 1.15,
-                    }}
-                  >
-                    {entry.role.title}
-                  </div>
-                  {entry.role.meta && (
-                    <div className="text-sm font-normal capitalize text-black/55">{entry.role.meta}</div>
-                  )}
+        <div className="flex flex-col gap-3">
+          {roleEntries.map((entry) => (
+            <Link
+              key={entry.roleSlug}
+              href={getCareerRoleHref(entry)}
+              className={[
+                'flex w-full items-center justify-between rounded px-7 py-5 text-left transition-all duration-200 cursor-pointer',
+                'bg-[rgba(226,31,38,0.04)] hover:bg-[rgba(226,31,38,0.09)]',
+                'focus:outline-none focus:ring-2 focus:ring-black/20',
+              ].join(' ')}
+            >
+              <div className="flex flex-col gap-1.5">
+                <div
+                  className="font-medium text-black"
+                  style={{
+                    fontSize: 'clamp(18px, 2.8vw, 36px)',
+                    letterSpacing: '-0.03em',
+                    lineHeight: 1.15,
+                  }}
+                >
+                  {entry.role.title}
                 </div>
+                {entry.role.meta && (
+                  <div className="text-sm font-normal capitalize text-black/55">{entry.role.meta}</div>
+                )}
+              </div>
 
-                <div className="ml-6 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-black/5 text-black/40 transition-all">
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                    <path
-                      d="M3 8h10M9 4l4 4-4 4"
-                      stroke="currentColor"
-                      strokeWidth="1.8"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </div>
-              </Link>
-            ))}
-          </div>
+              <div className="ml-6 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-black/5 text-black/40 transition-all">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <path
+                    d="M3 8h10M9 4l4 4-4 4"
+                    stroke="currentColor"
+                    strokeWidth="1.8"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </div>
+            </Link>
+          ))}
+        </div>
         {/* </div> */}
       </section>
     </main>

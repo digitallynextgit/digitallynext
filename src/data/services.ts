@@ -716,7 +716,7 @@ export const services: ServiceDetail[] = [
         eyebrow: 'The Real Brief',
         heading: 'What brands are actually asking for',
         description:
-          'Behind these requests is a clear pattern:\n\nWhat brands need aren\'t just websites.\nThey need scalable digital foundations.',
+          "Behind these requests is a clear pattern:\n\nWhat brands need aren't just websites.\nThey need scalable digital foundations.",
         list: [
           { accent: 'accent', text: 'Websites are treated as <strong>projects</strong>,<br> not products' },
           { accent: 'alt', text: 'UX is <strong>designed</strong> without<br> conversion logic' },

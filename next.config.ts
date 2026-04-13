@@ -53,6 +53,7 @@ const nextConfig: NextConfig = {
   allowedDevOrigins: ['192.168.29.103'],
 
   images: {
+    qualities: [100, 75],
     remotePatterns: [
       {
         protocol: 'https',

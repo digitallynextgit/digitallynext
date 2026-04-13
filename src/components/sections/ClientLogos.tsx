@@ -80,12 +80,12 @@ export default function ClientLogos({ theme }: ClientLogosProps) {
   // 4 copies for seamless loop — reset point = scrollWidth / 4 (one full set)
   const allLogos = [...logoFiles, ...logoFiles, ...logoFiles, ...logoFiles];
 
-  const trackRef     = useRef<HTMLDivElement>(null);
-  const posRef       = useRef(0);                        // scroll offset in px
-  const oneSetRef    = useRef(0);                        // scrollWidth / 4
-  const rafRef       = useRef<number>(0);
-  const lastTimeRef  = useRef<number | undefined>(undefined);
-  const isPausedRef  = useRef(false);                    // hover pause
+  const trackRef = useRef<HTMLDivElement>(null);
+  const posRef = useRef(0); // scroll offset in px
+  const oneSetRef = useRef(0); // scrollWidth / 4
+  const rafRef = useRef<number>(0);
+  const lastTimeRef = useRef<number | undefined>(undefined);
+  const isPausedRef = useRef(false); // hover pause
 
   useEffect(() => {
     const track = trackRef.current;
@@ -131,7 +131,7 @@ export default function ClientLogos({ theme }: ClientLogosProps) {
       cancelAnimationFrame(rafRef.current);
       ro.disconnect();
     };
-  // Re-run when theme changes (logo set changes → new track width)
+    // Re-run when theme changes (logo set changes → new track width)
   }, [isDark]);
 
   return (
@@ -203,8 +203,12 @@ export default function ClientLogos({ theme }: ClientLogosProps) {
             ref={trackRef}
             className="flex client-logos-track"
             style={{ width: 'max-content' }}
-            onMouseEnter={() => { isPausedRef.current = true; }}
-            onMouseLeave={() => { isPausedRef.current = false; }}
+            onMouseEnter={() => {
+              isPausedRef.current = true;
+            }}
+            onMouseLeave={() => {
+              isPausedRef.current = false;
+            }}
           >
             {allLogos.map((logo, i) => (
               <div
