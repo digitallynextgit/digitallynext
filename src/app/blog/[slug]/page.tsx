@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+import type { Metadata } from 'next';
 import { client } from '@/sanity/client';
 import { postBySlugQuery } from '@/sanity/queries';
 import { notFound } from 'next/navigation';
@@ -8,8 +8,17 @@ interface Props {
   params: Promise<{ slug: string }>;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-async function getPost(slug: string): Promise<any> {
+// Minimal type for metadata — full Post type lives in BlogPostClient
+interface SanityPostMeta {
+  _id: string;
+  title: string;
+  slug: { current: string };
+  excerpt?: string;
+  publishedAt?: string;
+  [key: string]: unknown;
+}
+
+async function getPost(slug: string): Promise<SanityPostMeta | null> {
   return client.fetch(postBySlugQuery, { slug });
 }
 

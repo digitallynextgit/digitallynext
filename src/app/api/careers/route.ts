@@ -1,11 +1,27 @@
 import { NextRequest, NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
-// import { Client } from "@notionhq/client";
-// const notion = new Client({ auth: process.env.NOTION_API_KEY });
-// const DB_ID = process.env.NOTION_DATABASE_ID!;
+import { getCorsHeaders, validateField } from '@/lib/apiSecurity';
 
 export const maxDuration = 30;
 export const dynamic = 'force-dynamic';
+
+// ── Simple in-memory rate limiter (10 req / 60s per IP) ──────────────────────
+const rateLimitMap = new Map<string, { count: number; resetAt: number }>();
+const RATE_LIMIT = 10;
+const WINDOW_MS = 60_000;
+
+function isRateLimited(ip: string): boolean {
+  const now = Date.now();
+  const entry = rateLimitMap.get(ip);
+  if (!entry || now > entry.resetAt) {
+    rateLimitMap.set(ip, { count: 1, resetAt: now + WINDOW_MS });
+    return false;
+  }
+  if (entry.count >= RATE_LIMIT) return true;
+  entry.count++;
+  return false;
+}
+// ─────────────────────────────────────────────────────────────────────────────
 
 type CareersPayload = {
   fullName: string;
@@ -22,16 +38,16 @@ type CareersPayload = {
 
 function fromFormData(formData: FormData): CareersPayload {
   return {
-    fullName: String(formData.get('fullName') ?? '').trim(),
-    email: String(formData.get('email') ?? '').trim(),
-    phone: String(formData.get('phone') ?? '').trim(),
-    linkedIn: String(formData.get('linkedIn') ?? '').trim(),
-    portfolio: String(formData.get('portfolio') ?? '').trim(),
-    resumeUrl: String(formData.get('resumeUrl') ?? '').trim(),
-    message: String(formData.get('message') ?? '').trim(),
-    track: String(formData.get('track') ?? '').trim(),
-    department: String(formData.get('department') ?? '').trim(),
-    role: String(formData.get('role') ?? '').trim(),
+    fullName: validateField(String(formData.get('fullName') ?? ''), 200),
+    email: validateField(String(formData.get('email') ?? ''), 200),
+    phone: validateField(String(formData.get('phone') ?? ''), 30),
+    linkedIn: validateField(String(formData.get('linkedIn') ?? ''), 300),
+    portfolio: validateField(String(formData.get('portfolio') ?? ''), 300),
+    resumeUrl: validateField(String(formData.get('resumeUrl') ?? ''), 500),
+    message: validateField(String(formData.get('message') ?? ''), 2000),
+    track: validateField(String(formData.get('track') ?? ''), 100),
+    department: validateField(String(formData.get('department') ?? ''), 100),
+    role: validateField(String(formData.get('role') ?? ''), 200),
   };
 }
 
@@ -95,7 +111,22 @@ function buildText(p: CareersPayload): string {
   ].join('\n');
 }
 
+// Handle CORS preflight
+export async function OPTIONS(req: NextRequest) {
+  const corsHeaders = getCorsHeaders(req.headers.get('origin'));
+  return new NextResponse(null, { status: 204, headers: corsHeaders });
+}
+
 export async function POST(req: NextRequest) {
+  const corsHeaders = getCorsHeaders(req.headers.get('origin'));
+  const ip = req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ?? 'unknown';
+  if (isRateLimited(ip)) {
+    return NextResponse.json(
+      { error: 'Too many requests. Please wait and try again.' },
+      { status: 429, headers: corsHeaders }
+    );
+  }
+
   try {
     const payload = fromFormData(await req.formData());
 
@@ -130,81 +161,6 @@ export async function POST(req: NextRequest) {
       text: buildText(payload),
       html: buildHtml(payload),
     });
-
-    // const data = await req.formData();
-    // const fullName   = (data.get("fullName")   as string) ?? "";
-    // const email      = (data.get("email")      as string) ?? "";
-    // const phone      = (data.get("phone")      as string) ?? "";
-    // const linkedIn   = (data.get("linkedIn")   as string) ?? "";
-    // const portfolio  = (data.get("portfolio")  as string) ?? "";
-    // const message    = (data.get("message")    as string) ?? "";
-    // const track      = (data.get("track")      as string) ?? "";
-    // const department = (data.get("department") as string) ?? "";
-    // const role       = (data.get("role")       as string) ?? "";
-    // const resumeFile = data.get("resume") as File | null;
-    // if (!fullName || !email || !phone || !linkedIn || !portfolio || !resumeFile) {
-    //   return NextResponse.json({ error: "All required fields must be filled." }, { status: 400 });
-    // }
-    // const fileUpload = await notion.fileUploads.create({
-    //   mode: "single_part",
-    //   filename: resumeFile.name,
-    //   content_type: resumeFile.type || "application/pdf",
-    // });
-    // const resumeBuffer = await resumeFile.arrayBuffer();
-    // await notion.fileUploads.send({
-    //   file_upload_id: fileUpload.id,
-    //   file: {
-    //     filename: resumeFile.name,
-    //     data: new Blob([resumeBuffer], { type: resumeFile.type }),
-    //   },
-    // });
-    // await notion.pages.create({
-    //   parent: { database_id: DB_ID },
-    //   properties: {
-    //     Name: {
-    //       title: [{ text: { content: fullName } }],
-    //     },
-    //     Email: {
-    //       email: email,
-    //     },
-    //     Phone: {
-    //       phone_number: phone,
-    //     },
-    //     LinkedIn: {
-    //       url: linkedIn.startsWith("http") ? linkedIn : `https://${linkedIn}`,
-    //     },
-    //     Portfolio: {
-    //       url: portfolio.startsWith("http") ? portfolio : `https://${portfolio}`,
-    //     },
-    //     Resume: {
-    //       files: [
-    //         {
-    //           name: resumeFile.name,
-    //           type: "file_upload",
-    //           file_upload: { id: fileUpload.id },
-    //         },
-    //       ],
-    //     },
-    //     Department: {
-    //       select: { name: department || "Unknown" },
-    //     },
-    //     Role: {
-    //       rich_text: [{ text: { content: role } }],
-    //     },
-    //     Track: {
-    //       select: { name: track || "Unknown" },
-    //     },
-    //     Message: {
-    //       rich_text: [{ text: { content: message } }],
-    //     },
-    //     "Applied At": {
-    //       date: { start: new Date().toISOString() },
-    //     },
-    //     Status: {
-    //       select: { name: "New" },
-    //     },
-    //   },
-    // });
 
     return NextResponse.json({ success: true }, { status: 200 });
   } catch (err) {

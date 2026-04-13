@@ -32,7 +32,6 @@
     "react-hot-toast": "^2.6.0",
     "react-spring": "^10.0.3",
     "sanity": "^5.10.0",
-    "styled-components": "^6.3.9",
     "tailwind-merge": "^3.5.0",
     "three": "^0.183.1"
   },
