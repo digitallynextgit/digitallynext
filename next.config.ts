@@ -36,9 +36,9 @@ const securityHeaders = [
       "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://fonts.googleapis.com https://core.sanity-cdn.com",
       "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
       "font-src 'self' https://fonts.gstatic.com",
-      `img-src 'self' data: blob: https://cdn.sanity.io https://*.sanity.io https://images.pexels.com https://*.cdninstagram.com https://*.fbcdn.net ${ALLOWED_ORIGIN}`,
+      `img-src 'self' data: blob: https://cdn.sanity.io https://*.sanity.io https://images.pexels.com https://*.cdninstagram.com https://*.fbcdn.net https://flagcdn.com https://s.wordpress.com ${ALLOWED_ORIGIN}`,
       "connect-src 'self' https://*.sanity.io https://*.api.sanity.io https://*.cdninstagram.com https://*.fbcdn.net",
-      "frame-src 'self' https://www.instagram.com https://instagram.com",
+      "frame-src 'self' https://www.instagram.com https://instagram.com https://gajnaoverseas.com https://www.gajnaoverseas.com",
       "frame-ancestors 'self'",
       "base-uri 'self'",
       "form-action 'self'",
@@ -62,6 +62,10 @@ const nextConfig: NextConfig = {
       {
         protocol: 'https',
         hostname: 'images.pexels.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'flagcdn.com',
       },
     ],
   },

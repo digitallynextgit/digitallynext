@@ -1,0 +1,2848 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Digitally Next — Website Design & Development Agency India</title>
+<meta name="description" content="A website design and development agency in India, building for brands across the USA, Canada, Australia, and beyond.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Stack+Sans+Text:wght@200;300;400;500;600;700&family=Stack+Sans+Headline:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* =========================================
+   CSS CUSTOM PROPERTIES
+========================================= */
+:root {
+  --red: #ED2226;
+  --cyan: #0EC8C5;
+  --black: #0A0A0A;
+  --off-black: #111111;
+  --charcoal: #1A1A1A;
+  --dark-grey: #242424;
+  --mid-grey: #3A3A3A;
+  --light-grey: #F4F4F2;
+  --off-white: #FAFAF8;
+  --white: #FFFFFF;
+  --font-display: 'Stack Sans Headline', sans-serif;
+  --font-body: 'Stack Sans Text', sans-serif;
+  --transition: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --transition-fast: 0.2s var(--transition);
+  --transition-med: 0.4s var(--transition);
+  --transition-slow: 0.7s var(--transition);
+}
+
+/* =========================================
+   RESET & BASE
+========================================= */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-body);
+  background: var(--white);
+  color: var(--black);
+  overflow-x: hidden;
+  cursor: none;
+}
+img { max-width: 100%; display: block; }
+a { text-decoration: none; color: inherit; }
+
+/* =========================================
+   CUSTOM CURSOR
+========================================= */
+.cursor {
+  width: 12px; height: 12px;
+  background: var(--red);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s, height 0.3s, background 0.3s;
+  mix-blend-mode: multiply;
+}
+.cursor-ring {
+  width: 36px; height: 36px;
+  border: 1.5px solid var(--red);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  transition: transform 0.12s ease, width 0.3s, height 0.3s, opacity 0.3s;
+  opacity: 0.5;
+}
+.cursor.hover { width: 6px; height: 6px; background: var(--cyan); }
+.cursor-ring.hover { width: 52px; height: 52px; border-color: var(--cyan); opacity: 0.8; }
+
+/* =========================================
+   NAV
+========================================= */
+nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 1000;
+  padding: 20px 60px;
+  display: flex; align-items: center; justify-content: space-between;
+  transition: background var(--transition-med), padding var(--transition-med);
+}
+nav.scrolled {
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(20px);
+  padding: 14px 60px;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+.nav-logo {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+.nav-logo svg {
+  height: 36px;
+  width: auto;
+}
+/* Footer logo — keep red, make black paths white for dark bg */
+.logo-footer { margin-bottom: 20px; }
+.logo-footer svg path:not(.cls-1) { fill: var(--white); }
+.logo-footer svg { height: 32px; width: auto; }
+
+.nav-links {
+  display: flex; align-items: center; gap: 36px;
+  list-style: none;
+}
+.nav-links a {
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  color: var(--charcoal);
+  transition: color var(--transition-fast);
+  position: relative;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute; bottom: -2px; left: 0; right: 100%;
+  height: 1.5px; background: var(--red);
+  transition: right var(--transition-fast);
+}
+.nav-links a:hover { color: var(--red); }
+.nav-links a:hover::after { right: 0; }
+.nav-cta {
+  background: var(--black);
+  color: var(--white);
+  padding: 10px 22px;
+  border-radius: 100px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  transition: background var(--transition-fast), transform var(--transition-fast);
+}
+.nav-cta:hover { background: var(--red); transform: scale(1.03); }
+
+/* =========================================
+   HERO SECTION — 2-COLUMN LAYOUT
+========================================= */
+#hero {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  padding: 100px 60px 80px 60px;
+  position: relative;
+  overflow: hidden;
+  background: var(--off-white);
+  gap: 0;
+}
+.hero-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-right: 48px;
+  z-index: 2;
+}
+.hero-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+.hero-grain {
+  position: absolute; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+}
+.hero-accent-line {
+  position: absolute; top: 0; left: 60px; right: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--red) 0%, var(--cyan) 100%);
+}
+.hero-eyebrow {
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: 28px;
+  animation: fadeUp 0.8s var(--transition) both;
+}
+.hero-eyebrow-tag {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--red);
+  background: rgba(237,34,38,0.07);
+  padding: 6px 14px;
+  border-radius: 100px;
+}
+.hero-eyebrow-line { width: 40px; height: 1.5px; background: var(--red); }
+
+.hero-h1 {
+  font-family: var(--font-display);
+  font-size: clamp(48px, 5.5vw, 84px);
+  font-weight: 700;
+  line-height: 0.95;
+  letter-spacing: -3px;
+  color: var(--black);
+  margin-bottom: 24px;
+  animation: fadeUp 0.9s 0.1s var(--transition) both;
+}
+.hero-h1 em { font-style: normal; color: var(--red); }
+
+.hero-h2 {
+  font-size: clamp(13px, 1.1vw, 16px);
+  font-weight: 400;
+  line-height: 1.75;
+  color: #555;
+  max-width: 460px;
+  margin-bottom: 32px;
+  animation: fadeUp 0.9s 0.2s var(--transition) both;
+}
+.hero-h2 strong { color: var(--black); font-weight: 600; }
+
+.hero-sub-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  animation: fadeUp 0.9s 0.25s var(--transition) both;
+}
+.hero-cta-group {
+  display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+
+/* Mascot — inline in left column */
+.hero-mascot-inline {
+  display: flex; align-items: center; gap: 16px;
+  animation: fadeUp 0.9s 0.35s var(--transition) both;
+}
+.mascot-mini {
+  width: 56px; height: 64px;
+  background: linear-gradient(135deg, var(--red) 0%, #c41a1e 100%);
+  border-radius: 28px 28px 20px 20px;
+  position: relative;
+  flex-shrink: 0;
+  box-shadow: 0 8px 24px rgba(237,34,38,0.3);
+  animation: float 4s ease-in-out infinite;
+}
+.mascot-mini::before {
+  content: '';
+  position: absolute; top: 16px; left: 50%;
+  transform: translateX(-50%);
+  width: 22px; height: 10px;
+  border-radius: 100px;
+  display: flex; gap: 6px;
+  background: transparent;
+  box-shadow: -7px 0 0 4px white, 7px 0 0 4px white;
+}
+.mascot-mini::after {
+  content: '';
+  position: absolute; top: -10px; left: 50%;
+  transform: translateX(-50%);
+  width: 3px; height: 12px;
+  background: rgba(255,255,255,0.6);
+  border-radius: 100px;
+}
+.mascot-mini-text {
+  font-size: 12px;
+  color: #888;
+  line-height: 1.5;
+}
+.mascot-mini-text strong { display: block; color: var(--black); font-weight: 600; font-size: 13px; }
+
+/* Scroll indicator — bottom of left column */
+.scroll-indicator {
+  display: flex; align-items: center; gap: 12px;
+  margin-top: 40px;
+  animation: fadeUp 1s 0.5s both;
+}
+.scroll-line {
+  width: 40px; height: 1px;
+  background: var(--mid-grey);
+  position: relative; overflow: hidden;
+}
+.scroll-line::after {
+  content: '';
+  position: absolute; left: -100%; top: 0; bottom: 0; right: 0;
+  background: var(--red);
+  animation: scrollSlide 2s ease-in-out infinite;
+}
+@keyframes scrollSlide {
+  0% { left: -100%; right: 100%; }
+  50% { left: 0; right: 0; }
+  100% { left: 100%; right: -100%; }
+}
+.scroll-text { font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: #888; }
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: var(--red);
+  color: var(--white);
+  padding: 16px 32px;
+  border-radius: 100px;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  position: relative; overflow: hidden;
+}
+.btn-primary::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: var(--cyan);
+  transform: translateX(-100%);
+  transition: transform var(--transition-med);
+}
+.btn-primary:hover::before { transform: translateX(0); }
+.btn-primary:hover { transform: scale(1.04); box-shadow: 0 16px 48px rgba(237,34,38,0.35); }
+.btn-primary span, .btn-primary svg { position: relative; z-index: 1; }
+
+.btn-ghost {
+  display: inline-flex; align-items: center; gap: 8px;
+  color: var(--black);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  transition: color var(--transition-fast), gap var(--transition-fast);
+}
+.btn-ghost:hover { color: var(--red); gap: 14px; }
+
+/* =========================================
+   HERO CAROUSEL
+========================================= */
+.hero-carousel-outer {
+  width: 100%;
+  max-width: 640px;
+  position: relative;
+  user-select: none;
+}
+/* Fade masks at both edges */
+.hero-carousel-outer::before,
+.hero-carousel-outer::after {
+  content: '';
+  position: absolute; top: 0; bottom: 48px;
+  width: 120px;
+  z-index: 3;
+  pointer-events: none;
+}
+.hero-carousel-outer::before {
+  left: 0;
+  background: linear-gradient(to right, var(--off-white) 0%, transparent 100%);
+}
+.hero-carousel-outer::after {
+  right: 0;
+  background: linear-gradient(to left, var(--off-white) 0%, transparent 100%);
+}
+.hero-carousel-viewport {
+  overflow: hidden;
+  width: 100%;
+  padding: 12px 0;
+}
+.hero-carousel-track {
+  display: flex;
+  gap: 20px;
+  transition: transform 0.75s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: transform;
+  transform: translateX(110px); /* default: centers first 420px card in ~640px container */
+}
+.carousel-slide {
+  flex-shrink: 0;
+  width: 420px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  transition: opacity 0.6s ease, filter 0.6s ease, transform 0.6s ease;
+  opacity: 0.3;
+  filter: grayscale(100%);
+  transform: scale(0.92);
+  transform-origin: center center;
+}
+.carousel-slide.active {
+  opacity: 1;
+  filter: none;
+  transform: scale(1);
+}
+.carousel-browser-chrome {
+  background: rgba(0,0,0,0.06);
+  padding: 8px 12px;
+  display: flex; align-items: center; gap: 8px;
+  border-radius: 16px 16px 0 0;
+  border: 1px solid rgba(0,0,0,0.07);
+  border-bottom: none;
+}
+.carousel-browser-chrome .browser-dots { display: flex; gap: 5px; }
+.carousel-browser-chrome .browser-dot { width: 8px; height: 8px; border-radius: 50%; }
+.carousel-browser-chrome .browser-dot:nth-child(1) { background: #FF5F57; }
+.carousel-browser-chrome .browser-dot:nth-child(2) { background: #FEBC2E; }
+.carousel-browser-chrome .browser-dot:nth-child(3) { background: #28C840; }
+.carousel-browser-chrome .bc-url {
+  flex: 1;
+  background: rgba(0,0,0,0.05);
+  border-radius: 100px;
+  padding: 4px 12px;
+  font-size: 10px;
+  color: #888;
+  font-family: monospace;
+  letter-spacing: 0.2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+/* Frame wrap — clips the iframe */
+.carousel-frame-wrap {
+  width: 420px;
+  height: 272px;
+  overflow: hidden;
+  position: relative;
+  border-radius: 0 0 16px 16px;
+  border: 1px solid rgba(0,0,0,0.07);
+  border-top: none;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.12);
+}
+.carousel-slide.active .carousel-frame-wrap {
+  box-shadow: 0 32px 80px rgba(0,0,0,0.18), 0 0 0 2px rgba(237,34,38,0.12);
+}
+.carousel-frame-wrap iframe {
+  width: 1440px;
+  height: 850px;
+  border: none;
+  transform: scale(0.29167);
+  transform-origin: top left;
+  pointer-events: none;
+  position: absolute;
+  top: 0; left: 0;
+}
+/* CSS fallback shown until/if iframe fails */
+.carousel-fallback {
+  position: absolute; inset: 0;
+  z-index: 1;
+  display: flex; flex-direction: column; justify-content: flex-end;
+  padding: 20px;
+}
+.carousel-fallback-label {
+  font-size: 18px; font-weight: 700;
+  font-family: var(--font-display);
+  color: rgba(255,255,255,0.9);
+  letter-spacing: -0.5px;
+}
+/* When iframe loads, it sits on top of fallback via z-index */
+.carousel-frame-wrap iframe { z-index: 2; }
+/* Slide info label */
+.carousel-label {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 12px 4px 0;
+}
+.carousel-site-name {
+  font-size: 14px; font-weight: 700;
+  font-family: var(--font-display);
+  color: var(--black);
+  letter-spacing: -0.3px;
+}
+.carousel-platform-tag {
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 1px; text-transform: uppercase;
+  color: var(--cyan);
+  background: rgba(14,200,197,0.08);
+  border: 1px solid rgba(14,200,197,0.2);
+  padding: 3px 10px;
+  border-radius: 100px;
+}
+/* Dots */
+.carousel-dots {
+  display: flex; justify-content: center; align-items: center;
+  gap: 6px;
+  margin-top: 20px;
+}
+.carousel-dot {
+  width: 6px; height: 6px;
+  border-radius: 100px;
+  background: rgba(0,0,0,0.15);
+  transition: width 0.3s ease, background 0.3s ease;
+  cursor: pointer;
+}
+.carousel-dot.active {
+  width: 20px;
+  background: var(--red);
+}
+/* Tag above carousel */
+.carousel-eyebrow {
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 2.5px; text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 14px;
+  display: flex; align-items: center; gap: 8px;
+  padding-left: 4px;
+}
+.carousel-eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 16px; height: 1.5px;
+  background: var(--red);
+}
+
+/* =========================================
+   CAROUSEL FALLBACK — CSS SITE MOCKUPS
+========================================= */
+.carousel-fallback {
+  position: absolute; inset: 0; z-index: 1;
+  display: flex; flex-direction: column;
+  font-family: var(--font-body);
+  overflow: hidden;
+}
+.cf-nav {
+  display: flex; align-items: center; gap: 12px;
+  padding: 12px 18px; flex-shrink: 0;
+}
+.cf-logo { font-weight: 700; font-size: 11px; letter-spacing: 0.5px; flex-shrink: 0; }
+.cf-nav-pills { display: flex; gap: 8px; flex: 1; }
+.cf-np { height: 7px; border-radius: 3px; background: currentColor; opacity: 0.18; }
+.cf-cta-pill { height: 22px; border-radius: 100px; flex-shrink: 0; opacity: 0.9; padding: 0 12px; display: flex; align-items: center; font-size: 8px; font-weight: 700; letter-spacing: 0.5px; }
+.cf-body { flex: 1; padding: 14px 20px; display: flex; flex-direction: column; justify-content: center; }
+.cf-tag { font-size: 8px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; opacity: 0.55; margin-bottom: 6px; }
+.cf-h1 { font-family: var(--font-display); font-size: 20px; font-weight: 700; line-height: 1.1; letter-spacing: -0.8px; margin-bottom: 8px; }
+.cf-sub { font-size: 9px; line-height: 1.6; opacity: 0.5; max-width: 200px; margin-bottom: 12px; }
+.cf-btns { display: flex; gap: 8px; }
+.cf-btn { height: 24px; border-radius: 100px; padding: 0 14px; font-size: 8px; font-weight: 700; display: inline-flex; align-items: center; }
+.cf-stats { display: flex; gap: 16px; margin-top: 10px; padding-top: 10px; border-top: 1px solid currentColor; opacity: 0.15; }
+.cf-stats { opacity: 1; }
+.cf-stat { display: flex; flex-direction: column; gap: 2px; }
+.cf-stat-n { font-size: 15px; font-weight: 700; font-family: var(--font-display); letter-spacing: -0.5px; }
+.cf-stat-l { font-size: 7px; text-transform: uppercase; letter-spacing: 1px; opacity: 0.45; }
+.cf-grid { display: flex; gap: 6px; margin-top: 10px; }
+.cf-card { flex: 1; border-radius: 6px; }
+.cf-ticker { font-size: 8px; font-weight: 600; letter-spacing: 0.5px; padding: 5px 0; opacity: 0.6; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes pulse {
+  0%, 100% { transform: translateX(-50%) scale(1); opacity: 1; }
+  50% { transform: translateX(-50%) scale(1.3); opacity: 0.7; }
+}
+
+/* =========================================
+   NUMBERS BAR
+========================================= */
+#numbers {
+  background: var(--black);
+  padding: 60px;
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+}
+.stat-item {
+  padding: 0 40px;
+  border-right: 1px solid rgba(255,255,255,0.08);
+  opacity: 0; transform: translateY(20px);
+  transition: opacity 0.6s, transform 0.6s;
+}
+.stat-item:first-child { padding-left: 0; }
+.stat-item:last-child { border-right: none; }
+.stat-item.visible { opacity: 1; transform: none; }
+.stat-number {
+  font-family: var(--font-display);
+  font-size: 64px;
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1;
+  letter-spacing: -3px;
+}
+.stat-number span { color: var(--red); }
+.stat-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.5);
+  margin-top: 8px;
+  letter-spacing: 0.3px;
+}
+
+/* =========================================
+   TECH STACK
+========================================= */
+#tech-stack {
+  padding: 100px 60px;
+  background: var(--off-white);
+}
+.section-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 16px;
+}
+.section-headline {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 5vw, 64px);
+  font-weight: 700;
+  letter-spacing: -2px;
+  line-height: 1.05;
+  color: var(--black);
+  margin-bottom: 16px;
+}
+.section-subline {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.7;
+  color: #666;
+  max-width: 560px;
+  margin-bottom: 60px;
+}
+.tech-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+}
+.tech-card {
+  background: var(--white);
+  border: 1px solid rgba(0,0,0,0.07);
+  border-radius: 16px;
+  padding: 32px 24px;
+  text-align: center;
+  transition: transform var(--transition-med), box-shadow var(--transition-med), border-color var(--transition-med);
+  cursor: default;
+}
+.tech-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+  border-color: var(--red);
+}
+.tech-icon {
+  width: 48px; height: 48px;
+  margin: 0 auto 16px;
+  display: flex; align-items: center; justify-content: center;
+}
+.tech-name {
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--black);
+  letter-spacing: -0.1px;
+}
+.tech-sub {
+  font-size: 11px;
+  color: #999;
+  margin-top: 4px;
+}
+
+/* SVG tech icons */
+.icon-wp rect { fill: #21759B; rx: 8; }
+.icon-shopify { fill: #96BF48; }
+.icon-next { fill: var(--black); }
+.icon-react { fill: #61DAFB; }
+.icon-custom { fill: var(--red); }
+
+/* =========================================
+   PROCESS SECTION
+========================================= */
+#process {
+  padding: 100px 60px;
+  background: var(--black);
+  overflow: hidden;
+}
+#process .section-label { color: var(--cyan); }
+#process .section-headline { color: var(--white); }
+#process .section-subline { color: rgba(255,255,255,0.5); }
+
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+}
+.process-step {
+  background: var(--off-black);
+  padding: 36px 32px;
+  border: 1px solid rgba(255,255,255,0.05);
+  position: relative; overflow: hidden;
+  transition: background var(--transition-med), transform var(--transition-fast);
+  opacity: 0; transform: translateY(20px);
+  transition: opacity 0.5s, transform 0.5s, background 0.3s;
+}
+.process-step.visible { opacity: 1; transform: none; }
+.process-step:hover { background: var(--charcoal); }
+.process-step::before {
+  content: '';
+  position: absolute; left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: linear-gradient(var(--red), var(--cyan));
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+}
+.process-step:hover::before { opacity: 1; }
+.step-number {
+  font-family: var(--font-display);
+  font-size: 72px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.04);
+  line-height: 1;
+  position: absolute; top: 16px; right: 24px;
+  letter-spacing: -4px;
+}
+.step-num-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--red);
+  margin-bottom: 12px;
+  display: block;
+}
+.step-title {
+  font-family: var(--font-body);
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 8px;
+  letter-spacing: -0.1px;
+}
+.step-desc {
+  font-size: 13px;
+  line-height: 1.65;
+  color: rgba(255,255,255,0.45);
+}
+
+/* =========================================
+   TEAMS SECTION
+========================================= */
+#teams {
+  padding: 100px 60px;
+  background: var(--off-white);
+}
+.teams-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 60px; }
+.team-pills {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.team-pill {
+  background: var(--white);
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: 20px;
+  padding: 28px 32px;
+  display: flex; align-items: center; gap: 16px;
+  transition: transform var(--transition-med), border-color var(--transition-fast), box-shadow var(--transition-med);
+  cursor: default;
+}
+.team-pill:hover {
+  transform: translateX(6px);
+  border-color: var(--red);
+  box-shadow: 4px 0 0 var(--red);
+}
+.team-pill-icon {
+  width: 44px; height: 44px;
+  background: rgba(237,34,38,0.08);
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.team-pill-name {
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--black);
+  letter-spacing: -0.1px;
+}
+.team-pill-sub { font-size: 11px; color: #999; margin-top: 2px; }
+
+/* =========================================
+   GLOBAL SERVICING
+========================================= */
+#global {
+  padding: 100px 60px;
+  background: var(--black);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+#global .section-label { color: var(--cyan); }
+#global .section-headline { color: var(--white); max-width: 500px; }
+.global-subline {
+  font-size: 15px; line-height: 1.7;
+  color: rgba(255,255,255,0.55);
+  margin-top: 16px; margin-bottom: 40px;
+}
+.global-closing {
+  font-size: 14px;
+  color: rgba(255,255,255,0.4);
+  font-style: italic;
+  margin-top: 36px;
+}
+.global-trust-points {
+  display: flex; flex-direction: column; gap: 0;
+  background: var(--charcoal);
+  border-radius: 24px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.06);
+}
+.trust-point {
+  padding: 32px 36px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  display: flex; gap: 20px; align-items: flex-start;
+  transition: background var(--transition-fast);
+}
+.trust-point:last-child { border-bottom: none; }
+.trust-point:hover { background: var(--dark-grey); }
+.trust-point-icon {
+  width: 40px; height: 40px;
+  background: linear-gradient(135deg, var(--red), var(--cyan));
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.trust-point-title {
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 6px;
+  letter-spacing: -0.1px;
+}
+.trust-point-desc { font-size: 13px; color: rgba(255,255,255,0.45); line-height: 1.6; }
+
+/* =========================================
+   COUNTRIES
+========================================= */
+#countries {
+  padding: 80px 60px;
+  background: var(--off-white);
+  text-align: center;
+}
+.countries-subline {
+  font-size: 15px; color: #777; max-width: 500px; margin: 0 auto 48px;
+}
+.countries-flow {
+  display: flex; flex-wrap: wrap; gap: 12px;
+  justify-content: center;
+}
+.country-tag {
+  background: var(--white);
+  border: 1.5px solid rgba(0,0,0,0.1);
+  border-radius: 100px;
+  padding: 10px 20px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--black);
+  display: flex; align-items: center; gap: 8px;
+  transition: all var(--transition-fast);
+  cursor: default;
+}
+.country-tag:hover {
+  background: var(--red);
+  color: var(--white);
+  border-color: var(--red);
+  transform: scale(1.05);
+}
+
+/* =========================================
+   PORTFOLIO SECTION — THE STAR
+========================================= */
+#portfolio {
+  padding: 100px 60px;
+  background: var(--black);
+}
+#portfolio .section-label { color: var(--cyan); }
+.portfolio-header {
+  display: flex; justify-content: space-between; align-items: flex-end;
+  margin-bottom: 48px;
+}
+.portfolio-headline { color: var(--white); margin-bottom: 8px; }
+.portfolio-subline {
+  font-size: 15px; color: rgba(255,255,255,0.45); max-width: 500px; line-height: 1.65;
+}
+
+/* Filter Pills */
+.filter-bar {
+  display: flex; flex-wrap: wrap; gap: 8px;
+  margin-bottom: 48px;
+}
+.filter-btn {
+  background: rgba(255,255,255,0.05);
+  color: rgba(255,255,255,0.55);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 100px;
+  padding: 8px 18px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  font-family: var(--font-body);
+}
+.filter-btn:hover, .filter-btn.active {
+  background: var(--red);
+  color: var(--white);
+  border-color: var(--red);
+}
+
+/* Portfolio Grid */
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+/* Portfolio Card */
+.portfolio-card {
+  background: var(--charcoal);
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.06);
+  transition: transform var(--transition-med), box-shadow var(--transition-med), border-color var(--transition-fast);
+  cursor: pointer;
+  position: relative;
+}
+.portfolio-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 32px 64px rgba(0,0,0,0.5);
+  border-color: rgba(255,255,255,0.15);
+}
+
+/* Browser mockup header */
+.browser-bar {
+  background: rgba(255,255,255,0.04);
+  padding: 10px 14px;
+  display: flex; align-items: center; gap: 10px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.browser-dots { display: flex; gap: 5px; }
+.browser-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+}
+.browser-dot:nth-child(1) { background: #FF5F57; }
+.browser-dot:nth-child(2) { background: #FEBC2E; }
+.browser-dot:nth-child(3) { background: #28C840; }
+.browser-url {
+  flex: 1;
+  background: rgba(255,255,255,0.06);
+  border-radius: 100px;
+  padding: 5px 14px;
+  font-size: 10px;
+  color: rgba(255,255,255,0.35);
+  font-family: monospace;
+  letter-spacing: 0.3px;
+}
+
+/* Website preview area */
+.site-preview {
+  height: 200px;
+  position: relative;
+  overflow: hidden;
+}
+.site-preview-bg {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column;
+}
+.preview-hero-bar {
+  padding: 16px 20px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.preview-nav-dots { display: flex; gap: 12px; }
+.preview-nav-dot {
+  width: 32px; height: 3px; border-radius: 100px;
+  background: rgba(255,255,255,0.2);
+}
+.preview-hero-text { flex: 1; padding: 0 20px; }
+.preview-h1-bar {
+  height: 16px; border-radius: 4px;
+  background: rgba(255,255,255,0.2);
+  margin-bottom: 8px;
+  width: 70%;
+}
+.preview-h2-bar {
+  height: 10px; border-radius: 4px;
+  background: rgba(255,255,255,0.12);
+  width: 50%;
+}
+.preview-content { flex: 1; padding: 12px 20px; }
+.preview-content-row {
+  display: flex; gap: 10px; margin-bottom: 8px;
+}
+.preview-block {
+  height: 80px; border-radius: 8px;
+  background: rgba(255,255,255,0.06);
+  flex: 1;
+}
+.preview-block.tall { height: 100%; }
+
+/* Card info section */
+.card-info {
+  padding: 20px 22px 22px;
+}
+.card-tags {
+  display: flex; gap: 6px; flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+.card-tag {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 100px;
+  border: 1px solid rgba(255,255,255,0.12);
+  color: rgba(255,255,255,0.45);
+}
+.card-tag.platform { color: var(--cyan); border-color: rgba(14,200,197,0.25); }
+.card-title {
+  font-family: var(--font-display);
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: -0.5px;
+  margin-bottom: 8px;
+  line-height: 1.15;
+}
+.card-oneliner {
+  font-size: 12px;
+  line-height: 1.65;
+  color: rgba(255,255,255,0.4);
+  margin-bottom: 16px;
+}
+.card-result {
+  background: rgba(14,200,197,0.07);
+  border: 1px solid rgba(14,200,197,0.15);
+  border-radius: 10px;
+  padding: 12px 14px;
+  font-size: 11px;
+  line-height: 1.6;
+  color: rgba(14,200,197,0.7);
+  margin-bottom: 16px;
+}
+.card-result::before {
+  content: '↗ ';
+  font-weight: 700;
+  color: var(--cyan);
+}
+.card-link {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: rgba(255,255,255,0.3);
+  transition: color var(--transition-fast), gap var(--transition-fast);
+}
+.card-link:hover { color: var(--white); gap: 10px; }
+
+/* Hover overlay on cards */
+.card-hover-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, transparent 50%, rgba(237,34,38,0.12) 100%);
+  opacity: 0;
+  transition: opacity var(--transition-med);
+  pointer-events: none;
+}
+.portfolio-card:hover .card-hover-overlay { opacity: 1; }
+
+/* Featured card (large) */
+.portfolio-card.featured {
+  grid-column: span 2;
+}
+.portfolio-card.featured .site-preview { height: 260px; }
+.portfolio-card.featured .card-title { font-size: 24px; }
+
+/* =========================================
+   FAQ SECTION
+========================================= */
+#faq {
+  padding: 100px 60px;
+  background: var(--off-white);
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 80px;
+  align-items: start;
+}
+.faq-left { position: sticky; top: 120px; }
+.faq-left .section-subline { color: #777; margin-bottom: 36px; }
+.faq-count {
+  font-family: var(--font-display);
+  font-size: 100px;
+  font-weight: 700;
+  color: rgba(0,0,0,0.04);
+  line-height: 1;
+  letter-spacing: -6px;
+  margin-bottom: -20px;
+}
+.faq-list { display: flex; flex-direction: column; gap: 0; }
+.faq-item {
+  border-top: 1px solid rgba(0,0,0,0.08);
+  overflow: hidden;
+}
+.faq-item:last-child { border-bottom: 1px solid rgba(0,0,0,0.08); }
+.faq-q {
+  padding: 24px 0;
+  display: flex; justify-content: space-between; align-items: center;
+  cursor: pointer; gap: 20px;
+}
+.faq-q h3 {
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--black);
+  letter-spacing: -0.1px;
+  line-height: 1.35;
+}
+.faq-toggle {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.05);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  transition: background var(--transition-fast), transform var(--transition-fast);
+}
+.faq-item.open .faq-toggle { background: var(--red); transform: rotate(45deg); }
+.faq-a {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s var(--transition);
+}
+.faq-a-inner {
+  padding: 0 0 24px;
+  font-size: 14px;
+  line-height: 1.75;
+  color: #666;
+}
+.faq-item.open .faq-a { max-height: 300px; }
+
+/* =========================================
+   CTA SECTION
+========================================= */
+#cta {
+  padding: 120px 60px;
+  background: var(--red);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.cta-bg-text {
+  position: absolute;
+  font-family: var(--font-display);
+  font-size: 200px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.05);
+  letter-spacing: -10px;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+  pointer-events: none;
+}
+#cta .section-label {
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 24px;
+}
+.cta-headline {
+  font-family: var(--font-display);
+  font-size: clamp(48px, 7vw, 100px);
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: -3px;
+  line-height: 0.95;
+  margin-bottom: 24px;
+  position: relative;
+}
+.cta-sub {
+  font-size: 17px;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 48px;
+  position: relative;
+}
+.btn-cta-white {
+  display: inline-flex; align-items: center; gap: 12px;
+  background: var(--white);
+  color: var(--red);
+  padding: 18px 40px;
+  border-radius: 100px;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: -0.2px;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  position: relative;
+}
+.btn-cta-white:hover {
+  transform: scale(1.06);
+  box-shadow: 0 24px 60px rgba(0,0,0,0.2);
+}
+.cta-mascot {
+  position: absolute;
+  right: 10%;
+  bottom: 0;
+  width: 140px;
+}
+
+/* =========================================
+   FOOTER
+========================================= */
+footer {
+  background: var(--black);
+  padding: 60px;
+  display: grid;
+  grid-template-columns: 260px 1fr 1fr 1fr;
+  gap: 40px;
+}
+.footer-brand { padding-bottom: 8px; }
+.footer-tagline { font-size: 13px; color: rgba(255,255,255,0.4); line-height: 1.6; }
+.footer-col-title {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.3);
+  margin-bottom: 20px;
+}
+.footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.footer-links a {
+  font-size: 13px;
+  color: rgba(255,255,255,0.5);
+  transition: color var(--transition-fast);
+}
+.footer-links a:hover { color: var(--white); }
+.footer-bottom {
+  background: var(--off-black);
+  padding: 20px 60px;
+  display: flex; justify-content: space-between; align-items: center;
+  border-top: 1px solid rgba(255,255,255,0.04);
+}
+.footer-bottom p { font-size: 12px; color: rgba(255,255,255,0.25); }
+
+/* =========================================
+   SCROLL ANIMATIONS
+========================================= */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.7s var(--transition), transform 0.7s var(--transition);
+}
+.reveal.visible { opacity: 1; transform: none; }
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+
+/* =========================================
+   HIDDEN FILTER STATE
+========================================= */
+.portfolio-card[data-hidden="true"] {
+  display: none;
+}
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+@media (max-width: 1100px) {
+  nav { padding: 16px 30px; }
+  #hero { padding: 100px 30px 60px; grid-template-columns: 1fr; }
+  .hero-right { display: none; }
+  .hero-left { padding-right: 0; }
+  #numbers { padding: 40px 30px; grid-template-columns: repeat(2, 1fr); gap: 30px; }
+  .stat-item { border-right: none; padding-left: 0; }
+  #tech-stack, #process, #teams, #global, #countries, #portfolio, #faq { padding: 70px 30px; }
+  .tech-grid { grid-template-columns: repeat(3, 1fr); }
+  .portfolio-grid { grid-template-columns: 1fr 1fr; }
+  .portfolio-card.featured { grid-column: span 2; }
+  #global { grid-template-columns: 1fr; gap: 50px; }
+  #faq { grid-template-columns: 1fr; }
+  .faq-left { position: static; }
+  footer { grid-template-columns: 1fr 1fr; gap: 40px; }
+}
+@media (max-width: 700px) {
+  nav { padding: 14px 20px; }
+  .nav-links { display: none; }
+  #hero { padding: 90px 20px 60px; }
+  .hero-sub-row { flex-direction: column; gap: 30px; }
+  .hero-mascot { display: none; }
+  #numbers { padding: 40px 20px; }
+  #tech-stack, #process, #teams, #global, #countries, #portfolio, #faq, #cta { padding: 60px 20px; }
+  .tech-grid { grid-template-columns: repeat(2, 1fr); }
+  .process-grid { grid-template-columns: 1fr; }
+  .portfolio-grid { grid-template-columns: 1fr; }
+  .portfolio-card.featured { grid-column: span 1; }
+  footer { grid-template-columns: 1fr; padding: 40px 20px; }
+  .footer-bottom { padding: 16px 20px; flex-direction: column; gap: 8px; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- CURSOR -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-logo">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 971.81 205.6" role="img" aria-label="Digitally Next">
+      <defs><style>.cls-1{fill:#e21f26}</style></defs>
+      <g>
+        <g>
+          <path class="cls-1" d="M15.6.46h70.33v3.38s-8.02,2.82-8.23,8.23c-.14,3.36-.27,5.62,1.47,8.89,1.74,3.27,17.31,28.28,17.31,28.28l6.91,11.54,34.02-34.64s6.44-6.01,0-15.89c-2.73-3.67-4.8-4.94-6.73-6.59V.46h41.01v3.57s-1.39-.76-10.6,6.69c-9.22,7.45-26.26,26.51-26.26,26.51l-28.28,28.91,38.13,63.88s.5,20.45-28.03,24.11l-37.37-60.22-30.68,30.8s-7.32,7.57,5.43,11.36l.61.21-.14,2.85s-10.58-.07-16.62-6.92c-6.04-6.85-7.33-11.33-7.94-14.32l2.92-1.09s1.97,6.04,5.97,5.77c4-.27,7.6-4.48,7.6-4.48l30.46-29.38L29.06,13.5S21.95,3.78,15.6,3.6V.46Z"/>
+          <path class="cls-1" d="M118.37,156.46s-3.56,13.25,7.24,20.74c0,0,8.59-3.07,15.34-6.5,6.75-3.44,9.69-5.77,23.19-9.2,13.5-3.44,20.25-7.36,36.94-22.21,16.69-14.85,15.95-19.88,15.95-19.88,0,0-4.91-.61-16.93,6.14-12.03,6.75-17.42,11.53-29.33,10.92-11.9-.61-22.09-5.15-22.09-5.15,0,0-2.33.61-2.58,3.44-.25,2.82-2.82,17.92-27.73,21.72Z"/>
+          <path class="cls-1" d="M126.96,178.67s.86,5.03,3.07,6.99c0,0,4.29,1.47,14.36-4.17,10.06-5.64,13.74-8.96,13.74-8.96l-1.1-4.17s19.9-2.83,34.26-14.98c14.36-12.15,26.89-22.79,26.18-30.79,0,0-1.86,4.15-4.99,7.88-3.13,3.73-17.24,19.79-33.51,27.92-14.67,6.65-19.13,5.27-26.58,8.71-7.45,3.44-18.76,10.64-25.42,11.57Z"/>
+          <path class="cls-1" d="M26.95,116.59s6.21,24.84,27.13,23.79c0,0,2.29,1.34,1.15,3.06-1.15,1.72-.29,6.97-.29,6.97,0,0,5.73,8.98,11.75,17.19,6.02,8.22,24.17,9.07,34.77,16.24,0,0,2.58,1.34-.96,2.29-3.53.96-17.77,2.67-31.14.86-13.37-1.81-24.55-5.25-28.66-7.64-4.11-2.39-8.41-10.99-9.55-13.76-1.15-2.77-6.4-14.33-9.55-17.86-3.15-3.53-11.37-15.86-13.18-19.58-1.81-3.73,6.69-11.37,18.53-11.56Z"/>
+          <path class="cls-1" d="M0,132.64l6.4-4.32s5.56,9.87,13.13,19.22c4.35,5.25,9.01,16.7,11.15,21.58,4.09,6.98,6.73,10.05,7.58,10.64.85.6,10.56,6.56,27.76,8.51,17.2,1.96,28.44,1.79,35.42-1.11,0,0,1.59-.34-.56,1.47s-15.28,4.58-32.43,2.49c-17.15-2.1-30.38-7.86-30.38-7.86,0,0-3.4-2.46-5.5-6.07-2.1-3.62-5.89-10.57-7.2-13.98-1.31-3.4-3.41-6.4-3.93-7.45l-3.67,1.96s-3.19-.52-9.59-8.9c-5.19-8.39-8.18-16.19-8.18-16.19Z"/>
+        </g>
+        <g>
+          <g>
+            <path class="cls-1" d="M718.23,0h12.99v86.58h-12.99V0ZM766.96,86.58L722.68,0h14.84l44.4,86.58h-14.97ZM773.39,0h12.99v86.58h-12.99V0Z"/>
+            <path class="cls-1" d="M832.51,88.55c-7.17,0-13.4-1.55-18.68-4.64-5.28-3.09-9.38-7.4-12.31-12.92-2.93-5.52-4.39-11.83-4.39-18.92s1.46-13.52,4.39-19.05c2.93-5.52,7.03-9.85,12.31-12.99,5.28-3.13,11.5-4.7,18.68-4.7,4.7,0,9.11.91,13.23,2.72,4.12,1.81,7.67,4.5,10.64,8.04,2.97,3.55,5.17,7.85,6.62,12.92,1.44,5.07,1.79,10.86,1.05,17.38h-59.37v-11.25h51.95l-5.57,3.96c.25-3.96-.33-7.56-1.73-10.82-1.4-3.26-3.51-5.88-6.31-7.85-2.8-1.98-6.31-2.97-10.51-2.97-4.87,0-8.91,1.07-12.12,3.22-3.21,2.15-5.61,5.07-7.17,8.78-1.57,3.71-2.35,7.91-2.35,12.61s.78,8.76,2.35,12.43c1.56,3.67,3.96,6.58,7.17,8.72,3.22,2.15,7.25,3.22,12.12,3.22s8.72-1.15,11.56-3.46c2.84-2.31,4.8-5.11,5.88-8.41h14.1c-1.07,4.78-3.03,8.97-5.87,12.55-2.84,3.59-6.43,6.39-10.76,8.41-4.33,2.02-9.3,3.03-14.9,3.03Z"/>
+            <path class="cls-1" d="M933.3,17.32h36.49v11.38h-36.49v-11.38ZM943.69,0h13.36v67.78c0,2.56.62,4.43,1.86,5.63,1.24,1.2,3.05,1.79,5.44,1.79h7.42v11.38h-7.54c-6.84,0-11.98-1.67-15.4-5.01-3.42-3.34-5.13-7.93-5.13-13.79V0Z"/>
+            <path class="cls-1" d="M893.4,17.32v1.86c-5.05,0-5.76,2.94-2.14,8.81l9.47,15.04,10.81-15.14c4.06-5.71,3.49-8.62-1.71-8.71v-1.86h17.57v1.86c-4.7.06-9.08,2.98-13.14,8.76l-12.14,17.23,19.52,30.85c3.68,5.78,7.68,8.66,12,8.66v1.9h-28.56v-1.9c5.11-.06,5.81-3.01,2.09-8.86l-12.66-20.09-15.52,20.42c-4.25,5.59-3.7,8.42,1.67,8.52v1.9h-17.56v-1.9c4.69-.1,9.11-2.94,13.23-8.52l16.8-22.47-16.47-25.94c-3.55-5.71-7.46-8.57-11.71-8.57v-1.86h28.47Z"/>
+          </g>
+          <g>
+            <path d="M262.91,143.53h38v6.62h-38v-6.62ZM278.08,143.53h7.59v48.28h-7.59v-48.28Z"/>
+            <path d="M313.19,140.08h7.45v51.72h-7.45v-51.72ZM320.64,172.56l-1.1-7.59c0-1.2.21-2.53.62-4,.41-1.47,1.14-2.88,2.17-4.24,1.03-1.36,2.45-2.47,4.24-3.34,1.79-.87,4.05-1.31,6.76-1.31,2.48,0,4.71.51,6.69,1.52,1.98,1.01,3.53,2.68,4.66,5,1.13,2.32,1.69,5.46,1.69,9.41v23.79h-7.45v-22.9c0-2.11-.21-3.94-.62-5.48-.41-1.54-1.16-2.74-2.24-3.59-1.08-.85-2.61-1.28-4.59-1.28-1.84,0-3.59.53-5.24,1.59-1.66,1.06-3,2.62-4.03,4.69-1.03,2.07-1.55,4.64-1.55,7.72Z"/>
+            <path d="M359.95,140.08h8.34v8.48h-8.34v-8.48ZM360.36,153.18h7.45v38.62h-7.45v-38.62Z"/>
+            <path d="M382.36,153.18h7.45v6.34c.55-1.29,1.34-2.49,2.38-3.62,1.03-1.13,2.4-2.05,4.1-2.76,1.7-.71,3.77-1.07,6.21-1.07s4.71.51,6.69,1.52c1.98,1.01,3.53,2.68,4.66,5,1.13,2.32,1.69,5.46,1.69,9.41v23.79h-7.45v-22.9c0-2.11-.21-3.94-.62-5.48-.41-1.54-1.16-2.74-2.24-3.59-1.08-.85-2.61-1.28-4.59-1.28-1.84,0-3.59.53-5.24,1.59-1.65,1.06-3,2.62-4.03,4.69-1.03,2.07-1.55,4.64-1.55,7.72v19.24h-7.45v-38.62Z"/>
+            <path d="M429.46,140.08h7.45v51.72h-7.45v-51.72ZM459.67,153.18l-24.76,29.93-2.14-8.21,17.93-21.72h8.97ZM439.46,169.18l7.1-1.24,14.69,23.86h-8.48l-13.31-22.62Z"/>
+            <path d="M470.64,183.32h8.34v8.48h-8.34v-8.48Z"/>
+            <path d="M526.98,143.53h7.24l-14.9,48.28h-7.93l15.59-48.28ZM518.98,174.01h26v6.62h-26v-6.62ZM537.32,143.53l15.93,48.28h-7.93l-15.24-48.28h7.24Z"/>
+            <path d="M599.74,175.6c-.14,3.31-.96,6.28-2.45,8.9-1.5,2.62-3.58,4.68-6.24,6.17-2.67,1.49-5.82,2.24-9.45,2.24-4,0-7.47-.86-10.41-2.59-2.94-1.72-5.23-4.13-6.86-7.21-1.63-3.08-2.45-6.6-2.45-10.55s.82-7.54,2.45-10.62c1.63-3.08,3.92-5.49,6.86-7.24,2.94-1.75,6.41-2.62,10.41-2.62,3.49,0,6.58.77,9.24,2.31,2.67,1.54,4.76,3.54,6.28,6,1.52,2.46,2.34,5.12,2.48,7.97h-7.86c-.09-1.61-.51-3.13-1.24-4.55-.74-1.42-1.83-2.6-3.28-3.52-1.45-.92-3.32-1.38-5.62-1.38-2.71,0-4.96.59-6.76,1.76-1.79,1.17-3.13,2.79-4,4.86-.87,2.07-1.31,4.41-1.31,7.03s.44,4.89,1.31,6.93c.87,2.05,2.21,3.66,4,4.83,1.79,1.17,4.04,1.76,6.76,1.76,2.39,0,4.33-.49,5.83-1.48,1.49-.99,2.61-2.29,3.34-3.9.74-1.61,1.15-3.31,1.24-5.1h7.72Z"/>
+            <path d="M609.53,153.18h20.35v6.34h-20.35v-6.34ZM615.32,143.53h7.45v37.79c0,1.43.34,2.47,1.03,3.14.69.67,1.7,1,3.03,1h4.14v6.34h-4.21c-3.82,0-6.68-.93-8.59-2.79-1.91-1.86-2.86-4.42-2.86-7.69v-37.79Z"/>
+            <path d="M642.36,183.32h8.34v8.48h-8.34v-8.48Z"/>
+            <path d="M685.32,191.8v-48.28h16.35c5.1,0,9.42,1.05,12.97,3.14,3.54,2.09,6.23,4.94,8.07,8.55,1.84,3.61,2.76,7.74,2.76,12.38s-.92,8.85-2.76,12.48c-1.84,3.63-4.53,6.49-8.07,8.59-3.54,2.09-7.86,3.14-12.97,3.14h-16.35ZM692.91,185.11h8.76c3.63,0,6.62-.79,8.97-2.38,2.34-1.59,4.08-3.7,5.21-6.35,1.13-2.64,1.69-5.57,1.69-8.79s-.56-6.08-1.69-8.72c-1.13-2.64-2.86-4.75-5.21-6.31-2.35-1.56-5.33-2.34-8.97-2.34h-8.76v34.9Z"/>
+            <path d="M738.15,140.08h8.34v8.48h-8.34v-8.48ZM738.57,153.18h7.45v38.62h-7.45v-38.62Z"/>
+            <path d="M766.57,179.6c.23,2.34,1.24,4.09,3.03,5.24,1.79,1.15,3.93,1.72,6.41,1.72s4.4-.47,5.9-1.41c1.49-.94,2.24-2.38,2.24-4.31,0-1.19-.45-2.1-1.34-2.72-.9-.62-2.07-1.11-3.52-1.48-1.45-.37-3.03-.69-4.76-.97-1.72-.28-3.46-.62-5.21-1.03-1.75-.41-3.34-1.02-4.79-1.83-1.45-.8-2.61-1.9-3.48-3.28-.87-1.38-1.31-3.17-1.31-5.38,0-2.07.64-4.03,1.93-5.9,1.29-1.86,3.13-3.36,5.52-4.48,2.39-1.13,5.15-1.69,8.28-1.69,2.8,0,5.37.56,7.69,1.69,2.32,1.13,4.2,2.68,5.62,4.66,1.42,1.98,2.14,4.28,2.14,6.9h-7.1c-.18-2.34-1.09-4.08-2.72-5.21-1.63-1.13-3.6-1.69-5.9-1.69-2.67,0-4.68.54-6.03,1.62-1.36,1.08-2.03,2.45-2.03,4.1,0,1.24.44,2.21,1.31,2.9.87.69,2.04,1.23,3.48,1.62,1.45.39,3.04.71,4.79.97,1.75.25,3.48.59,5.21,1,1.72.41,3.31,1,4.76,1.76,1.45.76,2.62,1.82,3.52,3.17.9,1.36,1.35,3.12,1.35,5.28,0,2.44-.66,4.55-1.97,6.35-1.31,1.79-3.14,3.2-5.48,4.21-2.34,1.01-5.15,1.52-8.41,1.52-3.04,0-5.78-.59-8.24-1.76-2.46-1.17-4.41-2.76-5.86-4.76-1.45-2-2.22-4.26-2.31-6.79h7.31Z"/>
+            <path d="M804.63,153.18h7.45v38.62h-7.45v-38.62ZM812.08,171.53l-1.03-5.72c0-1.19.15-2.57.45-4.14.3-1.56.92-3.07,1.86-4.52.94-1.45,2.34-2.66,4.21-3.62,1.86-.97,4.33-1.45,7.41-1.45v7.45c-2.71,0-5.03.37-6.97,1.1-1.93.74-3.4,1.97-4.41,3.69-1.01,1.72-1.52,4.13-1.52,7.21Z"/>
+            <path d="M862.22,172.43l1.1,7.59c0,1.2-.21,2.53-.62,4-.41,1.47-1.14,2.89-2.17,4.24-1.03,1.36-2.45,2.47-4.24,3.34-1.79.87-4.07,1.31-6.83,1.31-2.48,0-4.7-.51-6.66-1.52-1.95-1.01-3.49-2.69-4.62-5.03-1.13-2.34-1.69-5.47-1.69-9.38v-23.79h7.38v22.9c0,2.07.22,3.87.66,5.41.44,1.54,1.2,2.75,2.28,3.62,1.08.87,2.61,1.31,4.59,1.31,1.84,0,3.59-.54,5.24-1.62,1.66-1.08,3-2.66,4.03-4.72,1.04-2.07,1.55-4.62,1.55-7.66ZM869.67,191.8h-7.45v-38.62h7.45v38.62Z"/>
+            <path d="M883.74,205.6v-52.41h7.45v52.41h-7.45ZM903.6,192.91c-3.08,0-5.63-.63-7.66-1.9-2.02-1.26-3.61-2.95-4.76-5.07v-26.83c1.2-2.21,2.82-3.93,4.86-5.17,2.04-1.24,4.56-1.86,7.55-1.86,3.54,0,6.61.87,9.21,2.62,2.6,1.75,4.61,4.16,6.03,7.24,1.42,3.08,2.14,6.62,2.14,10.62s-.71,7.47-2.14,10.55c-1.43,3.08-3.44,5.48-6.03,7.21-2.6,1.72-5.67,2.59-9.21,2.59ZM902.56,186.15c2.25,0,4.17-.57,5.76-1.72,1.59-1.15,2.82-2.75,3.69-4.79.87-2.05,1.31-4.4,1.31-7.07s-.44-5.17-1.31-7.24c-.87-2.07-2.1-3.67-3.69-4.79-1.59-1.13-3.51-1.69-5.76-1.69-2.53,0-4.64.6-6.35,1.79-1.7,1.2-2.96,2.83-3.79,4.9-.83,2.07-1.24,4.41-1.24,7.03s.41,4.89,1.24,6.93c.83,2.05,2.09,3.67,3.79,4.86,1.7,1.2,3.82,1.79,6.35,1.79Z"/>
+            <path d="M930.63,153.18h20.35v6.34h-20.35v-6.34ZM936.43,143.53h7.45v37.79c0,1.43.34,2.47,1.03,3.14.69.67,1.7,1,3.03,1h4.14v6.34h-4.21c-3.82,0-6.68-.93-8.59-2.79-1.91-1.86-2.86-4.42-2.86-7.69v-37.79Z"/>
+            <path d="M963.46,183.32h8.34v8.48h-8.34v-8.48Z"/>
+          </g>
+          <g>
+            <path d="M261.56,88.15V6.3h29.23c8.65,0,15.98,1.77,21.98,5.32,6,3.55,10.56,8.38,13.68,14.5,3.12,6.12,4.68,13.11,4.68,20.99s-1.56,15.01-4.68,21.16c-3.12,6.16-7.68,11.01-13.68,14.56-6,3.55-13.33,5.32-21.98,5.32h-29.23ZM276.53,75.05h14.26c5.77,0,10.48-1.29,14.15-3.86,3.66-2.57,6.35-5.96,8.07-10.17,1.71-4.21,2.57-8.85,2.57-13.91s-.86-9.59-2.57-13.8c-1.72-4.21-4.4-7.6-8.07-10.17-3.67-2.57-8.38-3.86-14.15-3.86h-14.26v55.77Z"/>
+            <path d="M340.6.46h16.02v16.13h-16.02V.46ZM341.3,22.67h14.73v65.48h-14.73V22.67Z"/>
+            <path d="M395.2,87.68c-6,0-11.22-1.36-15.67-4.09-4.44-2.73-7.85-6.61-10.23-11.63-2.38-5.03-3.57-10.89-3.57-17.6s1.19-12.69,3.57-17.71c2.38-5.03,5.79-8.92,10.23-11.69,4.44-2.77,9.66-4.15,15.67-4.15,7.79,0,13.66,2.22,17.6,6.66,3.94,4.44,6.49,10.72,7.66,18.82l-.23,16.25c-.62,5.07-1.85,9.49-3.68,13.27-1.83,3.78-4.46,6.7-7.89,8.77-3.43,2.07-7.91,3.1-13.45,3.1ZM400.23,113.4c-6.94,0-12.57-1.09-16.9-3.27-4.33-2.18-7.62-5.01-9.88-8.48-2.26-3.47-3.7-7.04-4.33-10.7h15.2c.78,3.43,2.57,5.83,5.38,7.19,2.81,1.36,6.31,2.05,10.52,2.05,2.81,0,5.32-.51,7.54-1.52,2.22-1.01,3.99-2.65,5.32-4.91,1.32-2.26,1.99-5.3,1.99-9.12h14.73c0,6.16-1.31,11.38-3.92,15.67-2.61,4.29-6.12,7.54-10.52,9.76-4.4,2.22-9.45,3.33-15.14,3.33ZM397.54,74.47c5.92,0,10.33-1.85,13.21-5.55,2.88-3.7,4.33-8.55,4.33-14.56s-1.44-11.09-4.33-14.79c-2.88-3.7-7.29-5.55-13.21-5.55-5.3,0-9.41,1.83-12.34,5.5-2.92,3.66-4.38,8.61-4.38,14.85s1.46,11.05,4.38,14.67c2.92,3.62,7.03,5.44,12.34,5.44ZM415.08,84.64V22.67h14.73v61.97h-14.73Z"/>
+            <path d="M441.62.46h16.02v16.13h-16.02V.46ZM442.32,22.67h14.73v65.48h-14.73V22.67Z"/>
+            <path d="M466.99,22.67h34.49v12.51h-34.49v-12.51ZM475.64,6.3h14.73v62.9c0,2.18.54,3.8,1.64,4.85,1.09,1.05,2.73,1.58,4.91,1.58h6.43v12.51h-6.55c-7.02,0-12.3-1.64-15.84-4.91-3.55-3.27-5.32-7.95-5.32-14.03V6.3Z"/>
+            <path d="M539.71,20.8c9.12,0,16.02,2.69,20.69,8.07s7.02,12.67,7.02,21.86h-14.62c0-3.27-.37-6.18-1.11-8.71-.74-2.53-2.07-4.54-3.97-6.02-1.91-1.48-4.58-2.22-8.01-2.22-4.52,0-7.95,1.17-10.29,3.51-2.34,2.34-3.51,5.14-3.51,8.42h-15.43c0-4.36,1.15-8.44,3.45-12.22,2.3-3.78,5.63-6.84,10-9.18,4.36-2.34,9.62-3.51,15.78-3.51ZM554.09,47.23l2.46,10.17c-9.98-.7-17.27.1-21.86,2.4-4.6,2.3-6.9,5.28-6.9,8.94,0,2.73.94,4.76,2.81,6.08,1.87,1.33,4.29,1.99,7.25,1.99,2.57,0,4.99-.47,7.25-1.4,2.26-.94,4.11-2.47,5.55-4.62,1.44-2.14,2.16-4.97,2.16-8.48l3.16,5.38c-.23,4.37-1.19,8.22-2.86,11.58-1.68,3.35-4.03,5.98-7.07,7.89-3.04,1.91-6.78,2.86-11.22,2.86s-8.11-.8-11.46-2.4c-3.35-1.6-6-3.92-7.95-6.96-1.95-3.04-2.92-6.74-2.92-11.11s.84-7.68,2.51-10.41c1.68-2.73,3.96-4.91,6.84-6.55,2.88-1.64,6.12-2.84,9.71-3.62,3.58-.78,7.33-1.27,11.22-1.46,3.9-.19,7.68-.29,11.34-.29ZM552.8,50.73h14.62v37.41h-14.62v-37.41Z"/>
+            <path d="M578.88.46h14.73v87.69h-14.73V.46Z"/>
+            <path d="M605.65.46h14.73v87.69h-14.73V.46Z"/>
+            <path d="M649.61,88.15l-20.46-65.48h15.78l18.47,65.48h-13.8ZM636.28,111.53v-12.51h7.37c2.57,0,4.56-.49,5.96-1.46,1.4-.98,2.51-2.3,3.33-3.98.82-1.68,1.58-3.61,2.28-5.79l19.17-65.12h15.78l-20.46,65.48c-1.25,4.05-2.55,7.54-3.92,10.46-1.37,2.92-2.94,5.34-4.74,7.25-1.79,1.91-4.09,3.33-6.9,4.27-2.81.94-6.31,1.4-10.52,1.4h-7.37Z"/>
+          </g>
+        </g>
+      </g>
+    </svg>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#process">Process</a></li>
+    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#global">Global</a></li>
+    <li><a href="#faq">FAQ</a></li>
+  </ul>
+  <a href="#cta" class="nav-cta">Book a Call →</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-accent-line"></div>
+  <div class="hero-grain"></div>
+
+  <!-- LEFT: All content -->
+  <div class="hero-left">
+    <div class="hero-eyebrow">
+      <span class="hero-eyebrow-tag">Website Design &amp; Development Agency India</span>
+      <div class="hero-eyebrow-line"></div>
+    </div>
+
+    <h1 class="hero-h1">
+      Websites That<br>
+      Mean <em>Business.</em>
+    </h1>
+
+    <div class="hero-sub-row">
+      <h2 class="hero-h2">
+        A <strong>website design and development agency in India</strong>, building for brands across the <strong>USA, Canada, Australia,</strong> and beyond. Every website starts with understanding your world — and ends with something your audience remembers.
+      </h2>
+
+      <div class="hero-cta-group">
+        <a href="#cta" class="btn-primary">
+          <span>Book a Free 30-min Call</span>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
+        </a>
+        <a href="#portfolio" class="btn-ghost">
+          See Our Work
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 4l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Mascot — inline, small -->
+    <div class="hero-mascot-inline">
+      <div class="mascot-mini"></div>
+      <div class="mascot-mini-text">
+        <strong>10+ Years of Web Experience</strong>
+        50+ websites · 6 industries · Global delivery
+      </div>
+    </div>
+
+    <div class="scroll-indicator">
+      <div class="scroll-line"></div>
+      <span class="scroll-text">Scroll to explore</span>
+    </div>
+  </div>
+
+  <!-- RIGHT: Auto-scrolling website carousel -->
+  <div class="hero-right">
+    <div class="carousel-eyebrow">Our latest work</div>
+    <div class="hero-carousel-outer" id="heroCarousel">
+      <div class="hero-carousel-viewport">
+        <div class="hero-carousel-track" id="carouselTrack">
+
+          <!-- Slide 1: Advent Global -->
+          <div class="carousel-slide active" data-index="0">
+            <div class="carousel-browser-chrome">
+              <div class="browser-dots"><div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-dot"></div></div>
+              <div class="bc-url">adventglobal.com</div>
+            </div>
+            <div class="carousel-frame-wrap">
+              <div class="carousel-fallback" style="background:#090e1a;color:white;">
+                <div class="cf-nav" style="border-bottom:1px solid rgba(255,255,255,0.06)">
+                  <div class="cf-logo" style="color:#e21f26;letter-spacing:1px">ADVENT GLOBAL</div>
+                  <div class="cf-nav-pills"><div class="cf-np" style="width:38px"></div><div class="cf-np" style="width:30px"></div><div class="cf-np" style="width:44px"></div><div class="cf-np" style="width:34px"></div></div>
+                  <div class="cf-cta-pill" style="background:#e21f26;color:white">Contact Us</div>
+                </div>
+                <div class="cf-body">
+                  <div class="cf-tag" style="color:#e21f26">IT Services · SAP · QA · Staffing</div>
+                  <div class="cf-h1" style="font-size:22px">Innovate,<br>Transform,<br><span style="color:#e21f26">Succeed</span></div>
+                  <div class="cf-sub">Think, Emerge, Connect, Hustle</div>
+                  <div class="cf-btns">
+                    <div class="cf-btn" style="background:#e21f26;color:white">Our Services</div>
+                    <div class="cf-btn" style="border:1px solid rgba(255,255,255,0.2);color:white">About Us</div>
+                  </div>
+                </div>
+                <div style="position:absolute;right:20px;top:50%;transform:translateY(-50%);width:90px;height:90px;border-radius:50%;background:radial-gradient(circle,#e21f2620,transparent);border:1px solid rgba(226,31,38,0.15)"></div>
+              </div>
+              <iframe src="https://adventglobal.com" loading="lazy" scrolling="no" title="Advent Global Solutions website"></iframe>
+            </div>
+            <div class="carousel-label">
+              <span class="carousel-site-name">Advent Global</span>
+              <span class="carousel-platform-tag">WordPress</span>
+            </div>
+          </div>
+
+          <!-- Slide 2: Khaleej -->
+          <div class="carousel-slide" data-index="1">
+            <div class="carousel-browser-chrome">
+              <div class="browser-dots"><div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-dot"></div></div>
+              <div class="bc-url">khaleej.in</div>
+            </div>
+            <div class="carousel-frame-wrap">
+              <div class="carousel-fallback" style="background:#fafaf8;color:#1a1a1a;">
+                <div class="cf-nav" style="border-bottom:1px solid rgba(0,0,0,0.07);justify-content:space-between">
+                  <div class="cf-nav-pills" style="flex:none;gap:12px"><div class="cf-np" style="width:36px;background:#1a1a1a"></div><div class="cf-np" style="width:48px;background:#1a1a1a"></div><div class="cf-np" style="width:36px;background:#1a1a1a"></div></div>
+                  <div class="cf-logo" style="font-size:14px;letter-spacing:4px;font-weight:600;color:#1a1a1a">KHALEEJ</div>
+                  <div style="display:flex;gap:10px;align-items:center"><div class="cf-np" style="width:16px;height:16px;border-radius:50%;background:#1a1a1a;opacity:0.2"></div><div class="cf-np" style="width:16px;height:16px;border-radius:50%;background:#1a1a1a;opacity:0.2"></div></div>
+                </div>
+                <div style="padding:8px 18px;flex:1;display:flex;flex-direction:column;">
+                  <div style="font-size:9px;letter-spacing:2px;text-transform:uppercase;opacity:0.4;margin-bottom:6px;text-align:center">New Season Collection</div>
+                  <div class="cf-grid">
+                    <div class="cf-card" style="background:linear-gradient(180deg,#e8d5c4,#c9a882);height:130px;position:relative">
+                      <div style="position:absolute;bottom:8px;left:8px;font-size:8px;font-weight:600;color:#1a1a1a;opacity:0.7">Capes</div>
+                    </div>
+                    <div style="display:flex;flex-direction:column;gap:6px;flex:0.7">
+                      <div class="cf-card" style="background:linear-gradient(180deg,#6d28d9,#4c1d95);height:60px"></div>
+                      <div class="cf-card" style="background:linear-gradient(180deg,#374151,#1f2937);height:60px"></div>
+                    </div>
+                  </div>
+                  <div class="cf-ticker" style="margin-top:8px;color:#1a1a1a">Designer Capes · Ponchos · Kaftans · Co-ord Sets · Dresses · Night Wear</div>
+                </div>
+              </div>
+              <iframe src="https://khaleej.in" loading="lazy" scrolling="no" title="Khaleej luxury fashion website"></iframe>
+            </div>
+            <div class="carousel-label">
+              <span class="carousel-site-name">Khaleej</span>
+              <span class="carousel-platform-tag">Shopify</span>
+            </div>
+          </div>
+
+          <!-- Slide 3: Gajna Overseas -->
+          <div class="carousel-slide" data-index="2">
+            <div class="carousel-browser-chrome">
+              <div class="browser-dots"><div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-dot"></div></div>
+              <div class="bc-url">gajnaoverseas.com</div>
+            </div>
+            <div class="carousel-frame-wrap">
+              <div class="carousel-fallback" style="background:#1c0a00;color:#f0d5a8;">
+                <div class="cf-nav" style="border-bottom:1px solid rgba(240,213,168,0.1)">
+                  <div class="cf-logo" style="color:#d4a255;letter-spacing:2px;font-size:10px">GAJNA OVERSEAS</div>
+                  <div class="cf-nav-pills"><div class="cf-np" style="width:36px;background:#d4a255"></div><div class="cf-np" style="width:30px;background:#d4a255"></div><div class="cf-np" style="width:44px;background:#d4a255"></div></div>
+                  <div class="cf-cta-pill" style="background:#d4a255;color:#1c0a00">Export Inquiry</div>
+                </div>
+                <div class="cf-body">
+                  <div class="cf-tag" style="color:#d4a255">Green Coffee Beans · Indian Origin</div>
+                  <div class="cf-h1" style="color:#f0d5a8">Gajna Coffee<br><span style="color:#d4a255">Brewing</span><br>Excellence...</div>
+                  <div class="cf-sub" style="color:#f0d5a8">Exporter of premium green coffee beans. USA · Europe · Middle East</div>
+                  <div class="cf-btns">
+                    <div class="cf-btn" style="background:#d4a255;color:#1c0a00">Our Coffees</div>
+                    <div class="cf-btn" style="border:1px solid rgba(212,162,85,0.35);color:#d4a255">Our Story</div>
+                  </div>
+                </div>
+                <div style="position:absolute;right:16px;bottom:16px;width:64px;height:64px;border-radius:50%;background:radial-gradient(#6b3000,#1c0a00);border:1.5px solid rgba(212,162,85,0.3)"></div>
+              </div>
+              <iframe src="https://gajnaoverseas.com" loading="lazy" scrolling="no" title="Gajna Overseas coffee export website"></iframe>
+            </div>
+            <div class="carousel-label">
+              <span class="carousel-site-name">Gajna Overseas</span>
+              <span class="carousel-platform-tag">Next.js</span>
+            </div>
+          </div>
+
+          <!-- Slide 4: Talentifix -->
+          <div class="carousel-slide" data-index="3">
+            <div class="carousel-browser-chrome">
+              <div class="browser-dots"><div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-dot"></div></div>
+              <div class="bc-url">talentifix.com</div>
+            </div>
+            <div class="carousel-frame-wrap">
+              <div class="carousel-fallback" style="background:#08091a;color:white;">
+                <div class="cf-nav" style="border-bottom:1px solid rgba(255,255,255,0.06)">
+                  <div style="display:flex;align-items:center;gap:6px">
+                    <div style="width:20px;height:20px;border-radius:6px;background:linear-gradient(135deg,#f093fb,#f5576c)"></div>
+                    <div class="cf-logo" style="color:white">TalentiFi-X</div>
+                  </div>
+                  <div class="cf-nav-pills"><div class="cf-np" style="width:36px"></div><div class="cf-np" style="width:30px"></div><div class="cf-np" style="width:44px"></div></div>
+                  <div class="cf-cta-pill" style="background:linear-gradient(90deg,#f093fb,#f5576c);color:white">Get Started</div>
+                </div>
+                <div class="cf-body">
+                  <div class="cf-tag" style="color:#f093fb">AI-Powered Talent Platform</div>
+                  <div class="cf-h1" style="color:white">Intelligent Hiring<br>for the <span style="background:linear-gradient(90deg,#f093fb,#f5576c);-webkit-background-clip:text;-webkit-text-fill-color:transparent">AI Age</span></div>
+                  <div class="cf-sub">Where intelligent matching meets human potential</div>
+                  <div class="cf-btns">
+                    <div class="cf-btn" style="background:linear-gradient(90deg,#f093fb,#f5576c);color:white">Hire Talent</div>
+                    <div class="cf-btn" style="border:1px solid rgba(240,147,251,0.3);color:#f093fb">Find Jobs</div>
+                  </div>
+                </div>
+                <div style="position:absolute;right:0;top:0;width:120px;height:120px;background:radial-gradient(#f093fb15,transparent);pointer-events:none"></div>
+              </div>
+              <iframe src="https://talentifix.com" loading="lazy" scrolling="no" title="Talentifix IT staffing website"></iframe>
+            </div>
+            <div class="carousel-label">
+              <span class="carousel-site-name">Talentifix</span>
+              <span class="carousel-platform-tag">Next.js</span>
+            </div>
+          </div>
+
+          <!-- Slide 5: House of Nandini -->
+          <div class="carousel-slide" data-index="4">
+            <div class="carousel-browser-chrome">
+              <div class="browser-dots"><div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-dot"></div></div>
+              <div class="bc-url">houseofnandini.com</div>
+            </div>
+            <div class="carousel-frame-wrap">
+              <div class="carousel-fallback" style="background:#f5e6d3;color:#2d1a0e;">
+                <div class="cf-nav" style="border-bottom:1px solid rgba(45,26,14,0.1);justify-content:space-between">
+                  <div></div>
+                  <div class="cf-logo" style="font-size:12px;letter-spacing:3px;font-weight:600;font-family:Georgia,serif">HOUSE OF NANDINI</div>
+                  <div class="cf-cta-pill" style="border:1.5px solid rgba(45,26,14,0.3);color:#2d1a0e;font-size:7px">Shop Now</div>
+                </div>
+                <div class="cf-body">
+                  <div class="cf-tag" style="color:#8b5e3c">Lucknow's Finest · Chikankari Artisan</div>
+                  <div class="cf-h1" style="font-family:Georgia,serif;color:#2d1a0e;font-size:19px">The Art of<br>Chikankari</div>
+                  <div class="cf-sub" style="color:#6b4226">Handcrafted ethnic wear · Made with love · Heritage fashion for the modern woman</div>
+                  <div class="cf-btns">
+                    <div class="cf-btn" style="background:#2d1a0e;color:#f5e6d3">Explore Collection</div>
+                  </div>
+                  <div class="cf-grid" style="margin-top:10px">
+                    <div class="cf-card" style="background:linear-gradient(135deg,#c9a882,#a07850);height:50px;border-radius:6px;opacity:0.7"></div>
+                    <div class="cf-card" style="background:linear-gradient(135deg,#8b5e3c,#6b4226);height:50px;border-radius:6px;opacity:0.7"></div>
+                    <div class="cf-card" style="background:linear-gradient(135deg,#d4a574,#b8845a);height:50px;border-radius:6px;opacity:0.7"></div>
+                  </div>
+                </div>
+              </div>
+              <iframe src="https://houseofnandini.com" loading="lazy" scrolling="no" title="House of Nandini ethnic fashion website"></iframe>
+            </div>
+            <div class="carousel-label">
+              <span class="carousel-site-name">House of Nandini</span>
+              <span class="carousel-platform-tag">Shopify</span>
+            </div>
+          </div>
+
+          <!-- Slide 6: NeoTech World Lab -->
+          <div class="carousel-slide" data-index="5">
+            <div class="carousel-browser-chrome">
+              <div class="browser-dots"><div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-dot"></div></div>
+              <div class="bc-url">neotechworldlab.com</div>
+            </div>
+            <div class="carousel-frame-wrap">
+              <div class="carousel-fallback" style="background:#001f4d;color:white;">
+                <div class="cf-nav" style="border-bottom:1px solid rgba(255,255,255,0.08)">
+                  <div class="cf-logo" style="color:white;font-size:10px;letter-spacing:1.5px">NEOTECH WORLD LAB</div>
+                  <div class="cf-nav-pills"><div class="cf-np" style="width:44px"></div><div class="cf-np" style="width:36px"></div><div class="cf-np" style="width:52px"></div></div>
+                  <div class="cf-cta-pill" style="background:#0ea5e9;color:white">Book a Test</div>
+                </div>
+                <div class="cf-body">
+                  <div class="cf-tag" style="color:#7dd3fc">Genetic Testing · Healthcare · B2B & B2C</div>
+                  <div class="cf-h1" style="color:white">Advanced Genetic<br>Testing <span style="color:#0ea5e9">Solutions</span></div>
+                  <div class="cf-sub">Making complex science clear, trustworthy, and accessible. India & Global markets.</div>
+                  <div class="cf-btns">
+                    <div class="cf-btn" style="background:#0ea5e9;color:white">Our Tests</div>
+                    <div class="cf-btn" style="border:1px solid rgba(14,165,233,0.35);color:#7dd3fc">For Institutions</div>
+                  </div>
+                  <div class="cf-stats" style="margin-top:12px;border-top:1px solid rgba(255,255,255,0.08);padding-top:12px">
+                    <div class="cf-stat"><div class="cf-stat-n" style="color:#0ea5e9">50+</div><div class="cf-stat-l">Tests Available</div></div>
+                    <div class="cf-stat"><div class="cf-stat-n" style="color:#0ea5e9">B2B</div><div class="cf-stat-l">& B2C</div></div>
+                    <div class="cf-stat"><div class="cf-stat-n" style="color:#0ea5e9">India</div><div class="cf-stat-l">& Global</div></div>
+                  </div>
+                </div>
+              </div>
+              <iframe src="https://neotechworldlab.com" loading="lazy" scrolling="no" title="NeoTech World Lab healthcare website"></iframe>
+            </div>
+            <div class="carousel-label">
+              <span class="carousel-site-name">NeoTech World Lab</span>
+              <span class="carousel-platform-tag">Next.js</span>
+            </div>
+          </div>
+
+          <!-- Slide 7: Mauli -->
+          <div class="carousel-slide" data-index="6">
+            <div class="carousel-browser-chrome">
+              <div class="browser-dots"><div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-dot"></div></div>
+              <div class="bc-url">mauli.co</div>
+            </div>
+            <div class="carousel-frame-wrap">
+              <div class="carousel-fallback" style="background:#f7f4f0;color:#1a1a1a;">
+                <div class="cf-nav" style="border-bottom:1px solid rgba(0,0,0,0.07);justify-content:space-between;padding:14px 20px">
+                  <div style="display:flex;gap:14px;font-size:8px;color:rgba(0,0,0,0.4);font-weight:500;text-transform:uppercase;letter-spacing:1.5px;align-items:center">
+                    <span>Women</span><span>Men</span><span>Capes</span>
+                  </div>
+                  <div style="font-size:16px;font-weight:300;letter-spacing:6px;color:#1a1a1a;font-family:Georgia,serif">MAULI</div>
+                  <div style="display:flex;gap:10px;align-items:center;font-size:8px;color:rgba(0,0,0,0.4);letter-spacing:1px">
+                    <span>SEARCH</span><span>BAG (0)</span>
+                  </div>
+                </div>
+                <div class="cf-body" style="align-items:center;text-align:center">
+                  <div style="font-size:8px;letter-spacing:3px;text-transform:uppercase;color:rgba(0,0,0,0.35);margin-bottom:8px">Pure Cashmere · Handcrafted</div>
+                  <div style="font-size:19px;font-weight:300;letter-spacing:1px;color:#1a1a1a;font-family:Georgia,serif;line-height:1.3;margin-bottom:10px">Mauli Cashmere</div>
+                  <div style="font-size:8px;color:rgba(0,0,0,0.45);letter-spacing:0.5px;max-width:180px;line-height:1.6;margin-bottom:14px">Buy Pure Cashmere Shawls Online, Handcrafted with Love</div>
+                  <div style="display:flex;gap:8px;justify-content:center">
+                    <div style="width:10px;height:10px;border-radius:50%;background:#1a1a1a"></div>
+                    <div style="width:10px;height:10px;border-radius:50%;background:#8b7355;border:1px solid rgba(0,0,0,0.1)"></div>
+                    <div style="width:10px;height:10px;border-radius:50%;background:#d4c4b0;border:1px solid rgba(0,0,0,0.1)"></div>
+                    <div style="width:10px;height:10px;border-radius:50%;background:#c9a882;border:1px solid rgba(0,0,0,0.1)"></div>
+                  </div>
+                </div>
+                <div style="position:absolute;bottom:20px;right:0;left:0;text-align:center">
+                  <div style="font-size:7px;letter-spacing:2px;text-transform:uppercase;color:rgba(0,0,0,0.25)">INDIA | ₹ &nbsp;·&nbsp; GLOBAL | $</div>
+                </div>
+              </div>
+              <iframe src="https://mauli.co" loading="lazy" scrolling="no" title="Mauli luxury cashmere website"></iframe>
+            </div>
+            <div class="carousel-label">
+              <span class="carousel-site-name">Mauli</span>
+              <span class="carousel-platform-tag">Shopify</span>
+            </div>
+          </div>
+
+          <!-- Slide 8: Sanjivani Edge -->
+          <div class="carousel-slide" data-index="7">
+            <div class="carousel-browser-chrome">
+              <div class="browser-dots"><div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-dot"></div></div>
+              <div class="bc-url">sanjivaniedge.com</div>
+            </div>
+            <div class="carousel-frame-wrap">
+              <div class="carousel-fallback" style="background:#0a0f1e;color:white;">
+                <div class="cf-nav" style="border-bottom:1px solid rgba(255,255,255,0.07)">
+                  <div style="display:flex;align-items:center;gap:7px">
+                    <div style="width:18px;height:18px;border-radius:4px;background:linear-gradient(135deg,#22d3ee,#3b82f6)"></div>
+                    <div class="cf-logo" style="color:white;font-size:10px">SANJIVANI EDGE</div>
+                  </div>
+                  <div class="cf-nav-pills"><div class="cf-np" style="width:44px"></div><div class="cf-np" style="width:36px"></div><div class="cf-np" style="width:52px"></div></div>
+                  <div class="cf-cta-pill" style="border:1px solid rgba(34,211,238,0.4);color:#22d3ee">Get In Touch</div>
+                </div>
+                <div class="cf-body">
+                  <div class="cf-tag" style="color:#22d3ee">IT · ERP · Digital Transformation</div>
+                  <div class="cf-h1" style="color:white;font-size:17px">Rooted in Values...<br><span style="color:#22d3ee">Engineered for</span><br>the Future...</div>
+                  <div class="cf-sub" style="margin-top:8px">Delivering IT, ERP, and Digital Transformation Solutions that power enterprise evolution.</div>
+                  <div class="cf-stats" style="margin-top:12px">
+                    <div class="cf-stat"><div class="cf-stat-n" style="color:#22d3ee">8</div><div class="cf-stat-l">Domains</div></div>
+                    <div class="cf-stat"><div class="cf-stat-n" style="color:#22d3ee">100%</div><div class="cf-stat-l">Delivery Gov.</div></div>
+                    <div class="cf-stat"><div class="cf-stat-n" style="color:#22d3ee">200+</div><div class="cf-stat-l">Capabilities</div></div>
+                  </div>
+                </div>
+                <div style="position:absolute;right:14px;bottom:14px;width:60px;height:60px;border-radius:50%;background:radial-gradient(#22d3ee15,transparent);border:1px solid rgba(34,211,238,0.1)"></div>
+              </div>
+              <iframe src="https://sanjivaniedge.com" loading="lazy" scrolling="no" title="Sanjivani Edge technology website"></iframe>
+            </div>
+            <div class="carousel-label">
+              <span class="carousel-site-name">Sanjivani Edge</span>
+              <span class="carousel-platform-tag">Next.js</span>
+            </div>
+          </div>
+
+          <!-- Slide 9: Opinova Foundation -->
+          <div class="carousel-slide" data-index="8">
+            <div class="carousel-browser-chrome">
+              <div class="browser-dots"><div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-dot"></div></div>
+              <div class="bc-url">opinovafoundation.com</div>
+            </div>
+            <div class="carousel-frame-wrap">
+              <div class="carousel-fallback" style="background:#032a1e;color:white;">
+                <div class="cf-nav" style="border-bottom:1px solid rgba(255,255,255,0.07)">
+                  <div style="display:flex;align-items:center;gap:7px">
+                    <div style="width:18px;height:18px;border-radius:50%;background:rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:white">O</div>
+                    <div class="cf-logo" style="color:white;font-size:10px;letter-spacing:0.5px">OPINOVA FOUNDATION</div>
+                  </div>
+                  <div class="cf-nav-pills"><div class="cf-np" style="width:44px"></div><div class="cf-np" style="width:36px"></div><div class="cf-np" style="width:36px"></div><div class="cf-np" style="width:44px"></div></div>
+                  <div class="cf-cta-pill" style="background:#059669;color:white">Contribute</div>
+                </div>
+                <div class="cf-body">
+                  <div class="cf-h1" style="color:white;font-size:17px;text-transform:uppercase;letter-spacing:-0.5px">EMPOWERING<br>COMMUNITIES.<br><span style="color:#34d399;font-size:14px;text-transform:none;letter-spacing:0">Inspiring Change.</span></div>
+                  <div class="cf-sub" style="margin-top:10px">Building capacity, confidence, and opportunity so every empowered life sparks change for others.</div>
+                  <div class="cf-stats" style="margin-top:12px">
+                    <div class="cf-stat"><div class="cf-stat-n" style="color:#34d399">1000+</div><div class="cf-stat-l">Healthcare</div></div>
+                    <div class="cf-stat"><div class="cf-stat-n" style="color:#34d399">200+</div><div class="cf-stat-l">Mentorship hrs</div></div>
+                    <div class="cf-stat"><div class="cf-stat-n" style="color:#34d399">100+</div><div class="cf-stat-l">Rural families</div></div>
+                  </div>
+                </div>
+                <div style="position:absolute;right:0;top:0;width:100px;height:100px;background:radial-gradient(#05966920,transparent);pointer-events:none"></div>
+              </div>
+              <iframe src="https://opinovafoundation.com" loading="lazy" scrolling="no" title="Opinova Foundation non-profit website"></iframe>
+            </div>
+            <div class="carousel-label">
+              <span class="carousel-site-name">Opinova Foundation</span>
+              <span class="carousel-platform-tag">Next.js</span>
+            </div>
+          </div>
+
+          <!-- Slide 10: H2S -->
+          <div class="carousel-slide" data-index="9">
+            <div class="carousel-browser-chrome">
+              <div class="browser-dots"><div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-dot"></div></div>
+              <div class="bc-url">h2s.co.in</div>
+            </div>
+            <div class="carousel-frame-wrap">
+              <div class="carousel-fallback" style="background:#f0f9ff;color:#0c4a6e;">
+                <div class="cf-ticker" style="background:#0ea5e9;color:white;padding:4px 0;text-align:center;font-size:7px;letter-spacing:1px;opacity:1">🛍️ Extra ₹50 off on prepaid orders &nbsp;·&nbsp; 📦 Free Delivery &nbsp;·&nbsp; 🚚 Pan India Delivery</div>
+                <div class="cf-nav" style="border-bottom:1px solid rgba(12,74,110,0.08)">
+                  <div class="cf-nav-pills"><div class="cf-np" style="width:36px;background:#0c4a6e"></div><div class="cf-np" style="width:52px;background:#0c4a6e"></div><div class="cf-np" style="width:36px;background:#0c4a6e"></div></div>
+                  <div style="width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,#0ea5e9,#0369a1);flex-shrink:0"></div>
+                  <div style="display:flex;gap:10px;align-items:center">
+                    <div class="cf-cta-pill" style="background:#0369a1;color:white">Shop Now</div>
+                  </div>
+                </div>
+                <div class="cf-body">
+                  <div style="display:flex;align-items:center;gap:14px">
+                    <div style="flex:1">
+                      <div class="cf-tag" style="color:#0369a1">Water Softener · Hard Water Solution · India</div>
+                      <div class="cf-h1" style="color:#0c4a6e;font-size:19px">Pure Water,<br>Better <span style="color:#0369a1">Living.</span></div>
+                      <div class="cf-sub" style="color:#0c4a6e">Hard2Soft water softener cartridge. Simple, trustworthy, easy to install.</div>
+                      <div class="cf-btns" style="margin-top:10px">
+                        <div class="cf-btn" style="background:#0369a1;color:white">Buy Now</div>
+                        <div class="cf-btn" style="border:1px solid rgba(3,105,161,0.3);color:#0369a1">How It Works</div>
+                      </div>
+                    </div>
+                    <div style="width:64px;height:64px;border-radius:50%;background:radial-gradient(#bae6fd,#7dd3fc);border:3px solid white;box-shadow:0 4px 16px rgba(14,165,233,0.2);flex-shrink:0"></div>
+                  </div>
+                </div>
+              </div>
+              <iframe src="https://h2s.co.in" loading="lazy" scrolling="no" title="H2S water softener website"></iframe>
+            </div>
+            <div class="carousel-label">
+              <span class="carousel-site-name">H2S</span>
+              <span class="carousel-platform-tag">Shopify</span>
+            </div>
+          </div>
+
+        </div><!-- /track -->
+      </div><!-- /viewport -->
+
+      <!-- Dot indicators -->
+      <div class="carousel-dots" id="carouselDots">
+        <div class="carousel-dot active" data-dot="0"></div>
+        <div class="carousel-dot" data-dot="1"></div>
+        <div class="carousel-dot" data-dot="2"></div>
+        <div class="carousel-dot" data-dot="3"></div>
+        <div class="carousel-dot" data-dot="4"></div>
+        <div class="carousel-dot" data-dot="5"></div>
+        <div class="carousel-dot" data-dot="6"></div>
+        <div class="carousel-dot" data-dot="7"></div>
+        <div class="carousel-dot" data-dot="8"></div>
+        <div class="carousel-dot" data-dot="9"></div>
+      </div>
+    </div><!-- /carousel-outer -->
+  </div><!-- /hero-right -->
+
+</section>
+
+<!-- NUMBERS BAR -->
+<section id="numbers">
+  <div class="stat-item">
+    <div class="stat-number">50<span>+</span></div>
+    <div class="stat-label">Websites Delivered</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-number">6</div>
+    <div class="stat-label">Industries Served</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-number">3</div>
+    <div class="stat-label">Platforms (WordPress, Shopify, Next.js)</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-number">10<span>+</span></div>
+    <div class="stat-label">Years of Web Experience</div>
+  </div>
+</section>
+
+<!-- TECH STACK -->
+<section id="tech-stack">
+  <div class="section-label">Technologies We Build On</div>
+  <h2 class="section-headline reveal">Our Tech Stack</h2>
+  <p class="section-subline reveal reveal-delay-1">We build professional websites on the world's most trusted platforms — from WordPress and Shopify to custom Next.js and React.js development.</p>
+
+  <div class="tech-grid">
+    <div class="tech-card reveal">
+      <div class="tech-icon">
+        <svg width="40" height="40" viewBox="0 0 40 40"><rect width="40" height="40" rx="8" fill="#21759B"/><text x="20" y="27" text-anchor="middle" fill="white" font-size="18" font-weight="bold">W</text></svg>
+      </div>
+      <div class="tech-name">WordPress</div>
+      <div class="tech-sub">CMS &amp; Themes</div>
+    </div>
+    <div class="tech-card reveal reveal-delay-1">
+      <div class="tech-icon">
+        <svg width="40" height="40" viewBox="0 0 40 40"><rect width="40" height="40" rx="8" fill="#96BF48"/><text x="20" y="27" text-anchor="middle" fill="white" font-size="14" font-weight="bold">SH</text></svg>
+      </div>
+      <div class="tech-name">Shopify</div>
+      <div class="tech-sub">E-Commerce</div>
+    </div>
+    <div class="tech-card reveal reveal-delay-2">
+      <div class="tech-icon">
+        <svg width="40" height="40" viewBox="0 0 40 40"><rect width="40" height="40" rx="8" fill="#0A0A0A"/><text x="20" y="27" text-anchor="middle" fill="white" font-size="12" font-weight="bold">N.js</text></svg>
+      </div>
+      <div class="tech-name">Next.js</div>
+      <div class="tech-sub">React Framework</div>
+    </div>
+    <div class="tech-card reveal reveal-delay-3">
+      <div class="tech-icon">
+        <svg width="40" height="40" viewBox="0 0 40 40"><rect width="40" height="40" rx="8" fill="#20232A"/><text x="20" y="27" text-anchor="middle" fill="#61DAFB" font-size="12" font-weight="bold">RCT</text></svg>
+      </div>
+      <div class="tech-name">React.js</div>
+      <div class="tech-sub">UI Library</div>
+    </div>
+    <div class="tech-card reveal reveal-delay-3">
+      <div class="tech-icon">
+        <svg width="40" height="40" viewBox="0 0 40 40"><rect width="40" height="40" rx="8" fill="#ED2226"/><text x="20" y="27" text-anchor="middle" fill="white" font-size="12" font-weight="bold">&lt;/&gt;</text></svg>
+      </div>
+      <div class="tech-name">Custom Code</div>
+      <div class="tech-sub">Bespoke Development</div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="section-label">How We Build</div>
+  <h2 class="section-headline reveal">Our Process</h2>
+  <p class="section-subline reveal reveal-delay-1">From brief to handover — a structured 11-step website development process that covers strategy, design, content, SEO, AEO readiness, and go-live.</p>
+
+  <div class="process-grid">
+    <div class="process-step reveal">
+      <div class="step-number">01</div>
+      <span class="step-num-label">Step 01</span>
+      <div class="step-title">Understand</div>
+      <div class="step-desc">Business requirements, stakeholders &amp; expectations.</div>
+    </div>
+    <div class="process-step reveal reveal-delay-1">
+      <div class="step-number">02</div>
+      <span class="step-num-label">Step 02</span>
+      <div class="step-title">Study, Research &amp; Benchmark</div>
+      <div class="step-desc">Competitor analysis, reference websites &amp; new tech relevant to your project.</div>
+    </div>
+    <div class="process-step reveal reveal-delay-2">
+      <div class="step-number">03</div>
+      <span class="step-num-label">Step 03</span>
+      <div class="step-title">Prepare</div>
+      <div class="step-desc">User &amp; visitor journey mapping — for prospects, existing clients &amp; partners.</div>
+    </div>
+    <div class="process-step reveal">
+      <div class="step-number">04</div>
+      <span class="step-num-label">Step 04</span>
+      <div class="step-title">Finalise Structure</div>
+      <div class="step-desc">Sitemap, domain name &amp; hosting subscriptions.</div>
+    </div>
+    <div class="process-step reveal reveal-delay-1">
+      <div class="step-number">05</div>
+      <span class="step-num-label">Step 05</span>
+      <div class="step-title">Content Creation</div>
+      <div class="step-desc">Conversion-centric, SEO &amp; AEO friendly content written for real users.</div>
+    </div>
+    <div class="process-step reveal reveal-delay-2">
+      <div class="step-number">06</div>
+      <span class="step-num-label">Step 06</span>
+      <div class="step-title">Visuals</div>
+      <div class="step-desc">Banners &amp; creatives for WordPress/Shopify OR UI/UX framework &amp; wireframes for coded websites.</div>
+    </div>
+    <div class="process-step reveal">
+      <div class="step-number">07</div>
+      <span class="step-num-label">Step 07</span>
+      <div class="step-title">Development</div>
+      <div class="step-desc">Custom coding, theme &amp; template customisation, platform configuration, API &amp; plugin integration.</div>
+    </div>
+    <div class="process-step reveal reveal-delay-1">
+      <div class="step-number">08</div>
+      <span class="step-num-label">Step 08</span>
+      <div class="step-title">Quality &amp; Optimisation</div>
+      <div class="step-desc">Mobile optimisation, speed &amp; performance testing, cross-browser testing.</div>
+    </div>
+    <div class="process-step reveal reveal-delay-2">
+      <div class="step-number">09</div>
+      <span class="step-num-label">Step 09</span>
+      <div class="step-title">Analytics, On-Page SEO &amp; UAT</div>
+      <div class="step-desc">Google Analytics integration, on-page SEO initiated &amp; user acceptance testing.</div>
+    </div>
+    <div class="process-step reveal">
+      <div class="step-number">10</div>
+      <span class="step-num-label">Step 10</span>
+      <div class="step-title">Go Live &amp; Training</div>
+      <div class="step-desc">Formal launch + hands-on training session for your team.</div>
+    </div>
+    <div class="process-step reveal reveal-delay-1" style="grid-column: span 2;">
+      <div class="step-number">11</div>
+      <span class="step-num-label">Step 11</span>
+      <div class="step-title">Handover</div>
+      <div class="step-desc">Official handover of the website with full documentation. Your site. Your ownership. Completely.</div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAMS -->
+<section id="teams">
+  <div class="teams-header">
+    <div>
+      <div class="section-label">Who Builds It</div>
+      <h2 class="section-headline reveal">The Teams Behind<br>Your Website</h2>
+    </div>
+    <p class="section-subline reveal" style="margin-bottom:0;">Every project is a collaboration across six specialist teams.</p>
+  </div>
+  <div class="team-pills">
+    <div class="team-pill reveal">
+      <div class="team-pill-icon">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 2l2.5 5H17l-4 3.5 1.5 5.5L10 13l-4.5 3L7 10.5 3 7h4.5L10 2z" fill="#ED2226"/></svg>
+      </div>
+      <div>
+        <div class="team-pill-name">Brand &amp; Strategy</div>
+        <div class="team-pill-sub">Foundation of every project</div>
+      </div>
+    </div>
+    <div class="team-pill reveal reveal-delay-1">
+      <div class="team-pill-icon">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="2" y="4" width="16" height="12" rx="2" stroke="#ED2226" stroke-width="2"/><path d="M6 9h8M6 12h5" stroke="#ED2226" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </div>
+      <div>
+        <div class="team-pill-name">Marketing Content Management</div>
+        <div class="team-pill-sub">Words that convert</div>
+      </div>
+    </div>
+    <div class="team-pill reveal reveal-delay-2">
+      <div class="team-pill-icon">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="7" stroke="#ED2226" stroke-width="2"/><path d="M7 10l2 2 4-4" stroke="#ED2226" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </div>
+      <div>
+        <div class="team-pill-name">Visual Impact Management</div>
+        <div class="team-pill-sub">Design that stops scrollers</div>
+      </div>
+    </div>
+    <div class="team-pill reveal">
+      <div class="team-pill-icon">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 6l4-3 4 3 4-3" stroke="#ED2226" stroke-width="1.5" stroke-linecap="round"/><path d="M4 10l4-3 4 3 4-3M4 14l4-3 4 3 4-3" stroke="#ED2226" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </div>
+      <div>
+        <div class="team-pill-name">Web Essentials Management</div>
+        <div class="team-pill-sub">The technical backbone</div>
+      </div>
+    </div>
+    <div class="team-pill reveal reveal-delay-1">
+      <div class="team-pill-icon">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="8" r="3" stroke="#ED2226" stroke-width="2"/><path d="M4 18c0-3.3 2.7-6 6-6s6 2.7 6 6" stroke="#ED2226" stroke-width="2" stroke-linecap="round"/></svg>
+      </div>
+      <div>
+        <div class="team-pill-name">Organic Search (SEO)</div>
+        <div class="team-pill-sub">Ranking that sticks</div>
+      </div>
+    </div>
+    <div class="team-pill reveal reveal-delay-2">
+      <div class="team-pill-icon">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 3v14M3 10h14" stroke="#ED2226" stroke-width="2" stroke-linecap="round"/><circle cx="10" cy="10" r="3" fill="#ED2226" opacity="0.3"/></svg>
+      </div>
+      <div>
+        <div class="team-pill-name">AI Search Readiness</div>
+        <div class="team-pill-sub">Built for ChatGPT &amp; Perplexity era</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GLOBAL SERVICING -->
+<section id="global">
+  <div>
+    <div class="section-label">Global Servicing</div>
+    <h2 class="section-headline reveal">Built for Global.<br>Delivered with<br>Structure.</h2>
+    <p class="global-subline reveal reveal-delay-1">We have built structured frameworks for working with international clients — from communication cadence to delivery ownership. Whether you are in <strong style="color:rgba(255,255,255,0.75)">New York, Toronto, Sydney, or Dubai,</strong> you get the same predictable, transparent website development experience.</p>
+    <a href="#cta" class="btn-primary reveal reveal-delay-2" style="width:fit-content">
+      <span>See How We Work</span>
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
+    </a>
+    <p class="global-closing reveal reveal-delay-3">Want to understand our full engagement frameworks?<br>We will walk you through it on a call.</p>
+  </div>
+
+  <div class="global-trust-points reveal reveal-delay-1">
+    <div class="trust-point">
+      <div class="trust-point-icon">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="7" r="3" stroke="white" stroke-width="2"/><path d="M4 18c0-3.3 2.7-6 6-6s6 2.7 6 6" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
+      </div>
+      <div>
+        <div class="trust-point-title">Dedicated Point of Contact</div>
+        <div class="trust-point-desc">One person owns your project. Always. No ticket systems, no confusion, no dropped balls.</div>
+      </div>
+    </div>
+    <div class="trust-point">
+      <div class="trust-point-icon">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="7" stroke="white" stroke-width="2"/><path d="M10 6v4l3 2" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </div>
+      <div>
+        <div class="trust-point-title">Your Timezone, Our Commitment</div>
+        <div class="trust-point-desc">All client calls scheduled during your business hours. We adapt to you, not the other way around.</div>
+      </div>
+    </div>
+    <div class="trust-point">
+      <div class="trust-point-icon">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
+      </div>
+      <div>
+        <div class="trust-point-title">Structured Delivery</div>
+        <div class="trust-point-desc">Fixed milestones, fortnightly reports, zero surprises. You always know where your project stands.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COUNTRIES -->
+<section id="countries">
+  <div class="section-label">Our Global Footprint</div>
+  <h2 class="section-headline reveal" style="margin-bottom:12px;">Brands We've Served,<br>Around the World</h2>
+  <p class="countries-subline reveal reveal-delay-1">From Delhi to the world — here's where our website development and digital marketing work has made an impact.</p>
+  <div class="countries-flow reveal reveal-delay-2">
+    <div class="country-tag">🇮🇳 India</div>
+    <div class="country-tag">🇺🇸 United States</div>
+    <div class="country-tag">🇨🇦 Canada</div>
+    <div class="country-tag">🇦🇺 Australia</div>
+    <div class="country-tag">🇳🇿 New Zealand</div>
+    <div class="country-tag">🇦🇪 UAE</div>
+    <div class="country-tag">🇸🇦 Saudi Arabia</div>
+    <div class="country-tag">🇬🇧 United Kingdom</div>
+    <div class="country-tag">🇸🇬 Singapore</div>
+    <div class="country-tag">🇩🇪 Germany</div>
+    <div class="country-tag">🇳🇱 Netherlands</div>
+    <div class="country-tag">🇧🇭 Bahrain</div>
+  </div>
+</section>
+
+<!-- PORTFOLIO — THE STAR SECTION -->
+<section id="portfolio">
+  <div class="portfolio-header">
+    <div>
+      <div class="section-label">Our Work</div>
+      <h2 class="section-headline portfolio-headline reveal">Explore Our Websites</h2>
+      <p class="portfolio-subline reveal reveal-delay-1">Browse our website design and development work across industries, business models, and platforms. From WordPress and Shopify to custom Next.js builds — filter by what matters to you.</p>
+    </div>
+  </div>
+
+  <!-- Filter Bar -->
+  <div class="filter-bar">
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="technology">Technology</button>
+    <button class="filter-btn" data-filter="fashion">Fashion &amp; Apparel</button>
+    <button class="filter-btn" data-filter="healthcare">Healthcare</button>
+    <button class="filter-btn" data-filter="food">Food &amp; Beverage</button>
+    <button class="filter-btn" data-filter="home">Home &amp; Lifestyle</button>
+    <button class="filter-btn" data-filter="social">Social Sector</button>
+    <button class="filter-btn" data-filter="b2b">B2B</button>
+    <button class="filter-btn" data-filter="d2c">D2C</button>
+    <button class="filter-btn" data-filter="wordpress">WordPress</button>
+    <button class="filter-btn" data-filter="shopify">Shopify</button>
+    <button class="filter-btn" data-filter="nextjs">Next.js</button>
+  </div>
+
+  <!-- Portfolio Grid -->
+  <div class="portfolio-grid" id="portfolioGrid">
+
+    <!-- Card 1: Advent Global — Featured -->
+    <div class="portfolio-card featured reveal"
+      data-categories="technology b2b wordpress">
+      <div class="card-hover-overlay"></div>
+      <div class="browser-bar">
+        <div class="browser-dots"><div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-dot"></div></div>
+        <div class="browser-url">adventglobal.com</div>
+      </div>
+      <div class="site-preview">
+        <div class="site-preview-bg" style="background: linear-gradient(135deg, #1a2a6c 0%, #b21f1f 60%, #fdbb2d 100%);">
+          <div class="preview-hero-bar">
+            <div style="display:flex;gap:20px;align-items:center;">
+              <div style="width:80px;height:24px;border-radius:4px;background:rgba(255,255,255,0.2);"></div>
+              <div class="preview-nav-dots"><div class="preview-nav-dot"></div><div class="preview-nav-dot"></div><div class="preview-nav-dot"></div><div class="preview-nav-dot"></div></div>
+            </div>
+            <div style="width:100px;height:28px;border-radius:100px;background:#ED2226;"></div>
+          </div>
+          <div style="padding:20px 30px;">
+            <div style="font-family:'Stack Sans Text',sans-serif;font-size:28px;font-weight:900;color:white;letter-spacing:-0.5px;text-shadow:0 2px 8px rgba(0,0,0,0.3);">Advent Global Solutions</div>
+            <div style="font-size:13px;color:rgba(255,255,255,0.7);margin-top:6px;">30 Years of IT Excellence · Enterprise Solutions</div>
+            <div style="display:flex;gap:10px;margin-top:16px;">
+              <div style="background:rgba(255,255,255,0.15);backdrop-filter:blur(10px);border-radius:8px;padding:10px 16px;font-size:10px;color:white;">IT Services</div>
+              <div style="background:rgba(255,255,255,0.15);backdrop-filter:blur(10px);border-radius:8px;padding:10px 16px;font-size:10px;color:white;">Consulting</div>
+              <div style="background:rgba(255,255,255,0.15);backdrop-filter:blur(10px);border-radius:8px;padding:10px 16px;font-size:10px;color:white;">Enterprise</div>
+            </div>
+          </div>
+          <div style="position:absolute;right:30px;bottom:20px;width:180px;height:100px;border-radius:12px;background:rgba(255,255,255,0.1);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.2);"></div>
+        </div>
+      </div>
+      <div class="card-info">
+        <div class="card-tags">
+          <span class="card-tag">Technology</span>
+          <span class="card-tag">B2B</span>
+          <span class="card-tag">IT Services</span>
+          <span class="card-tag platform">WordPress</span>
+        </div>
+        <div class="card-title">Advent Global</div>
+        <div class="card-oneliner">A complete brand revamp and custom WordPress website for a 30-year legacy IT services company — parallax animations, enterprise-grade design, and a conversion-friendly architecture built to attract global B2B clients.</div>
+        <div class="card-result">Shortly after launch, this professionally redesigned WordPress website helped the company onboard a landmark enterprise client — proof that world-class web design drives real business outcomes for IT firms in international markets.</div>
+        <a href="https://adventglobal.com" target="_blank" class="card-link">Visit Site →</a>
+      </div>
+    </div>
+
+    <!-- Card 2: Khaleej -->
+    <div class="portfolio-card reveal reveal-delay-1"
+      data-categories="fashion d2c shopify">
+      <div class="card-hover-overlay"></div>
+      <div class="browser-bar">
+        <div class="browser-dots"><div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-dot"></div></div>
+        <div class="browser-url">khaleej.in</div>
+      </div>
+      <div class="site-preview">
+        <div class="site-preview-bg" style="background: linear-gradient(135deg, #1a0a2e 0%, #6d28d9 50%, #c026d3 100%);">
+          <div style="padding:16px 20px;display:flex;justify-content:space-between;align-items:center;">
+            <div style="font-size:16px;font-weight:800;color:white;letter-spacing:3px;">KHALEEJ</div>
+            <div style="display:flex;gap:14px;">
+              <div style="width:16px;height:16px;border-radius:50%;border:1.5px solid rgba(255,255,255,0.5);"></div>
+              <div style="width:16px;height:16px;border-radius:50%;border:1.5px solid rgba(255,255,255,0.5);"></div>
+            </div>
+          </div>
+          <div style="padding:0 20px;display:flex;gap:12px;flex:1;">
+            <div style="flex:1;background:rgba(255,255,255,0.1);border-radius:8px;border:1px solid rgba(255,255,255,0.15);overflow:hidden;position:relative;">
+              <div style="position:absolute;bottom:0;left:0;right:0;padding:10px;background:linear-gradient(transparent,rgba(0,0,0,0.7));font-size:10px;color:white;">Luxury Collection</div>
+            </div>
+            <div style="width:100px;display:flex;flex-direction:column;gap:8px;">
+              <div style="flex:1;background:rgba(255,255,255,0.08);border-radius:6px;border:1px solid rgba(255,255,255,0.1);"></div>
+              <div style="flex:1;background:rgba(255,255,255,0.08);border-radius:6px;border:1px solid rgba(255,255,255,0.1);"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-info">
+        <div class="card-tags">
+          <span class="card-tag">Fashion &amp; Apparel</span>
+          <span class="card-tag">D2C</span>
+          <span class="card-tag">Luxury</span>
+          <span class="card-tag platform">Shopify</span>
+        </div>
+        <div class="card-title">Khaleej</div>
+        <div class="card-oneliner">A high-performance Shopify store for a luxury women's fashion brand — deeply optimised product pages, seamless mobile-first experience, and a conversion-focused design built to turn browsers into buyers.</div>
+        <div class="card-result">Achieved 5X ROAS within the first month — generated enough revenue to cover the entire year's business targets.</div>
+        <a href="https://khaleej.in" target="_blank" class="card-link">Visit Site →</a>
+      </div>
+    </div>
+
+    <!-- Card 3: Gajna Overseas -->
+    <div class="portfolio-card reveal"
+      data-categories="food b2b nextjs">
+      <div class="card-hover-overlay"></div>
+      <div class="browser-bar">
+        <div class="browser-dots"><div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-dot"></div></div>
+        <div class="browser-url">gajnaoverseas.com</div>
+      </div>
+      <div class="site-preview">
+        <div class="site-preview-bg" style="background: linear-gradient(135deg, #1c0a00 0%, #3d1a00 50%, #6b3000 100%);">
+          <div style="padding:14px 20px;display:flex;justify-content:space-between;align-items:center;">
+            <div style="font-size:14px;font-weight:700;color:#d4a255;letter-spacing:1px;">GAJNA OVERSEAS</div>
+          </div>
+          <div style="padding:8px 20px;flex:1;display:flex;flex-direction:column;justify-content:center;">
+            <div style="font-size:22px;font-weight:800;color:white;line-height:1.1;">India's Finest<br><span style="color:#d4a255;">Specialty Coffee</span></div>
+            <div style="font-size:10px;color:rgba(255,255,255,0.5);margin-top:8px;">Export-Ready · USA · Europe · Middle East</div>
+            <div style="display:flex;gap:8px;margin-top:12px;">
+              <div style="background:#d4a255;border-radius:100px;padding:6px 14px;font-size:9px;color:#1c0a00;font-weight:700;">Our Coffees</div>
+              <div style="border:1px solid rgba(212,162,85,0.4);border-radius:100px;padding:6px 14px;font-size:9px;color:#d4a255;">Our Story</div>
+            </div>
+          </div>
+          <div style="position:absolute;right:20px;bottom:16px;width:60px;height:60px;border-radius:50%;background:radial-gradient(#6b3000,#1c0a00);border:2px solid rgba(212,162,85,0.3);"></div>
+        </div>
+      </div>
+      <div class="card-info">
+        <div class="card-tags">
+          <span class="card-tag">Food &amp; Beverage</span>
+          <span class="card-tag">B2B</span>
+          <span class="card-tag">Export</span>
+          <span class="card-tag platform">Next.js</span>
+        </div>
+        <div class="card-title">Gajna Overseas</div>
+        <div class="card-oneliner">A warm, brand-forward Next.js website for an Indian specialty coffee exporter — crafted to open doors in the USA, Europe, and Middle East by telling the authentic story behind every bean.</div>
+        <div class="card-result">Gave Gajna Overseas a credible, export-ready digital presence that speaks directly to international buyers.</div>
+        <a href="https://gajnaoverseas.com" target="_blank" class="card-link">Visit Site →</a>
+      </div>
+    </div>
+
+    <!-- Card 4: Talentifix -->
+    <div class="portfolio-card reveal reveal-delay-1"
+      data-categories="technology b2b nextjs">
+      <div class="card-hover-overlay"></div>
+      <div class="browser-bar">
+        <div class="browser-dots"><div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-dot"></div></div>
+        <div class="browser-url">talentifix.com</div>
+      </div>
+      <div class="site-preview">
+        <div class="site-preview-bg" style="background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);">
+          <div style="padding:14px 20px;display:flex;justify-content:space-between;align-items:center;">
+            <div style="display:flex;align-items:center;gap:6px;">
+              <div style="width:24px;height:24px;border-radius:6px;background:linear-gradient(135deg,#f093fb,#f5576c);"></div>
+              <div style="font-size:13px;font-weight:800;color:white;">Talentifix</div>
+            </div>
+          </div>
+          <div style="padding:8px 20px;flex:1;display:flex;flex-direction:column;justify-content:center;">
+            <div style="font-size:20px;font-weight:800;color:white;line-height:1.1;">IT Staffing<br><span style="background:linear-gradient(90deg,#f093fb,#f5576c);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">Reimagined.</span></div>
+            <div style="font-size:10px;color:rgba(255,255,255,0.4);margin-top:8px;">4 weeks to launch · High organic traffic</div>
+          </div>
+          <div style="padding:12px 20px;display:flex;gap:8px;">
+            <div style="flex:1;height:30px;border-radius:6px;background:rgba(240,147,251,0.15);border:1px solid rgba(240,147,251,0.2);"></div>
+            <div style="flex:1;height:30px;border-radius:6px;background:rgba(245,87,108,0.15);border:1px solid rgba(245,87,108,0.2);"></div>
+          </div>
+        </div>
+      </div>
+      <div class="card-info">
+        <div class="card-tags">
+          <span class="card-tag">Technology</span>
+          <span class="card-tag">B2B</span>
+          <span class="card-tag">Staffing</span>
+          <span class="card-tag platform">Next.js</span>
+        </div>
+        <div class="card-title">Talentifix</div>
+        <div class="card-oneliner">A custom-coded Next.js website that brought fresh, new-generation energy to the IT staffing industry — bold UI/UX design that broke every convention in a space known for dull, corporate web presence.</div>
+        <div class="card-result">Went live in just 4 weeks. Has been driving high organic traffic since launch.</div>
+        <a href="https://talentifix.com" target="_blank" class="card-link">Visit Site →</a>
+      </div>
+    </div>
+
+    <!-- Card 5: House of Nandini — Featured -->
+    <div class="portfolio-card featured reveal"
+      data-categories="fashion d2c shopify">
+      <div class="card-hover-overlay"></div>
+      <div class="browser-bar">
+        <div class="browser-dots"><div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-dot"></div></div>
+        <div class="browser-url">houseofnandini.com</div>
+      </div>
+      <div class="site-preview">
+        <div class="site-preview-bg" style="background: linear-gradient(135deg, #f5e6d3 0%, #e8c9a0 50%, #d4a574 100%);">
+          <div style="padding:14px 24px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(0,0,0,0.08);">
+            <div style="font-size:18px;font-weight:700;color:#2d1a0e;letter-spacing:2px;font-family:'Georgia',serif;">HOUSE OF NANDINI</div>
+            <div style="display:flex;gap:16px;font-size:10px;color:#6b4226;">Collections · Story · Care</div>
+          </div>
+          <div style="flex:1;display:flex;gap:16px;padding:16px 24px;">
+            <div style="flex:2;display:flex;flex-direction:column;justify-content:center;">
+              <div style="font-size:10px;letter-spacing:2px;color:#6b4226;margin-bottom:8px;">LUCKNOW'S FINEST</div>
+              <div style="font-size:22px;font-weight:700;color:#2d1a0e;font-family:'Georgia',serif;line-height:1.2;">The Art of<br>Chikankari</div>
+              <div style="margin-top:12px;font-size:9px;color:#8b5e3c;">Handcrafted Ethnic Wear · Made with Love</div>
+              <div style="margin-top:14px;width:100px;height:28px;border-radius:4px;background:#2d1a0e;"></div>
+            </div>
+            <div style="flex:1;display:flex;flex-direction:column;gap:8px;">
+              <div style="flex:1;border-radius:8px;background:rgba(107,66,38,0.15);border:1px solid rgba(107,66,38,0.2);position:relative;overflow:hidden;">
+                <div style="position:absolute;inset:0;background:repeating-linear-gradient(45deg,rgba(107,66,38,0.05),rgba(107,66,38,0.05) 2px,transparent 2px,transparent 8px);"></div>
+              </div>
+              <div style="flex:1;border-radius:8px;background:rgba(107,66,38,0.1);border:1px solid rgba(107,66,38,0.15);"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-info">
+        <div class="card-tags">
+          <span class="card-tag">Fashion &amp; Apparel</span>
+          <span class="card-tag">D2C</span>
+          <span class="card-tag">Heritage</span>
+          <span class="card-tag platform">Shopify</span>
+        </div>
+        <div class="card-title">House of Nandini</div>
+        <div class="card-oneliner">A beautifully crafted Shopify store that captures the soul of Lucknow's chikankari artisan tradition — merging heritage ethnic fashion with modern D2C e-commerce, built for women who appreciate craft as much as design.</div>
+        <div class="card-result">Launched at a physical inauguration event attended by prominent TV anchor Ms. Richa Anirudh Thatte, who publicly praised the store's authentic cultural identity — creating immediate brand credibility.</div>
+        <a href="https://houseofnandini.com" target="_blank" class="card-link">Visit Site →</a>
+      </div>
+    </div>
+
+    <!-- Card 6: NeoTech World Lab -->
+    <div class="portfolio-card reveal"
+      data-categories="healthcare b2b nextjs">
+      <div class="card-hover-overlay"></div>
+      <div class="browser-bar">
+        <div class="browser-dots"><div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-dot"></div></div>
+        <div class="browser-url">neotechworldlab.com</div>
+      </div>
+      <div class="site-preview">
+        <div class="site-preview-bg" style="background: linear-gradient(135deg, #003d7a 0%, #0070c4 50%, #00a8e8 100%);">
+          <div style="padding:12px 18px;display:flex;justify-content:space-between;align-items:center;">
+            <div style="font-size:11px;font-weight:800;color:white;letter-spacing:1px;">NEOTECH WORLD LAB</div>
+            <div style="width:60px;height:20px;border-radius:100px;background:rgba(255,255,255,0.15);"></div>
+          </div>
+          <div style="padding:8px 18px;flex:1;display:flex;gap:12px;">
+            <div style="flex:1;display:flex;flex-direction:column;justify-content:center;">
+              <div style="font-size:16px;font-weight:800;color:white;line-height:1.2;">Advanced Genetic<br>Testing Solutions</div>
+              <div style="font-size:9px;color:rgba(255,255,255,0.6);margin-top:6px;">B2B · B2C · Healthcare · India &amp; Global</div>
+              <div style="display:flex;gap:6px;margin-top:10px;">
+                <div style="background:white;border-radius:100px;padding:5px 12px;font-size:8px;color:#003d7a;font-weight:700;">Our Tests</div>
+                <div style="border:1px solid rgba(255,255,255,0.4);border-radius:100px;padding:5px 12px;font-size:8px;color:white;">Learn More</div>
+              </div>
+            </div>
+            <div style="width:70px;display:flex;flex-direction:column;gap:6px;justify-content:center;">
+              <div style="height:28px;border-radius:6px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);"></div>
+              <div style="height:28px;border-radius:6px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.15);"></div>
+              <div style="height:28px;border-radius:6px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-info">
+        <div class="card-tags">
+          <span class="card-tag">Healthcare</span>
+          <span class="card-tag">B2B &amp; B2C</span>
+          <span class="card-tag">Life Sciences</span>
+          <span class="card-tag platform">Next.js</span>
+        </div>
+        <div class="card-title">NeoTech World Lab</div>
+        <div class="card-oneliner">A credibility-first Next.js website for a genetic testing lab serving both individual consumers and institutional clients — designed to make complex science feel clear, trustworthy, and accessible.</div>
+        <div class="card-result">Successfully bridges a highly technical healthcare offering with everyday consumer accessibility.</div>
+        <a href="https://neotechworldlab.com" target="_blank" class="card-link">Visit Site →</a>
+      </div>
+    </div>
+
+    <!-- Card 7: Mauli -->
+    <div class="portfolio-card reveal reveal-delay-1"
+      data-categories="fashion d2c shopify">
+      <div class="card-hover-overlay"></div>
+      <div class="browser-bar">
+        <div class="browser-dots"><div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-dot"></div></div>
+        <div class="browser-url">mauli.co</div>
+      </div>
+      <div class="site-preview">
+        <div class="site-preview-bg" style="background: linear-gradient(135deg, #f0ece4 0%, #e8ddd0 50%, #d9ccbb 100%);">
+          <div style="padding:12px 18px;display:flex;justify-content:center;border-bottom:1px solid rgba(0,0,0,0.06);">
+            <div style="font-size:20px;font-weight:300;color:#2a2a2a;letter-spacing:8px;font-family:'Georgia',serif;">MAULI</div>
+          </div>
+          <div style="flex:1;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px;padding:16px;">
+            <div style="font-size:12px;color:#6b5d4f;letter-spacing:3px;text-transform:uppercase;">Premium Cashmere</div>
+            <div style="width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,#c9b99a,#a89070);border:3px solid rgba(255,255,255,0.8);"></div>
+            <div style="display:flex;gap:8px;">
+              <div style="width:10px;height:10px;border-radius:50%;background:#2a2a2a;"></div>
+              <div style="width:10px;height:10px;border-radius:50%;background:#8b7355;border:1px solid rgba(0,0,0,0.1);"></div>
+              <div style="width:10px;height:10px;border-radius:50%;background:#d4c4b0;border:1px solid rgba(0,0,0,0.1);"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-info">
+        <div class="card-tags">
+          <span class="card-tag">Fashion &amp; Apparel</span>
+          <span class="card-tag">D2C</span>
+          <span class="card-tag">Luxury</span>
+          <span class="card-tag platform">Shopify</span>
+        </div>
+        <div class="card-title">Mauli</div>
+        <div class="card-oneliner">A refined, minimal Shopify e-commerce store for a premium cashmere women's brand — where every design decision is as intentional as the product itself, built to convert high-intent D2C shoppers.</div>
+        <div class="card-result">Achieved 4X ROAS within 2 months — generated revenues that covered the brand's entire annual business targets.</div>
+        <a href="https://mauli.co" target="_blank" class="card-link">Visit Site →</a>
+      </div>
+    </div>
+
+    <!-- Card 8: Sanjivani Edge -->
+    <div class="portfolio-card reveal"
+      data-categories="technology b2b nextjs">
+      <div class="card-hover-overlay"></div>
+      <div class="browser-bar">
+        <div class="browser-dots"><div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-dot"></div></div>
+        <div class="browser-url">sanjivaniedge.com</div>
+      </div>
+      <div class="site-preview">
+        <div class="site-preview-bg" style="background: linear-gradient(135deg, #0d1117 0%, #1a2332 50%, #0d2137 100%);">
+          <div style="padding:12px 18px;display:flex;align-items:center;gap:8px;">
+            <div style="width:20px;height:20px;border-radius:4px;background:linear-gradient(135deg,#22d3ee,#3b82f6);"></div>
+            <div style="font-size:12px;font-weight:700;color:white;letter-spacing:0.5px;">SANJIVANI EDGE</div>
+          </div>
+          <div style="padding:8px 18px;flex:1;display:flex;flex-direction:column;justify-content:center;">
+            <div style="font-size:18px;font-weight:800;color:white;line-height:1.2;">Enterprise Edge<br><span style="color:#22d3ee;">Solutions.</span></div>
+            <div style="font-size:9px;color:rgba(255,255,255,0.4);margin-top:6px;">B2B · India &amp; International Markets</div>
+            <div style="display:flex;gap:12px;margin-top:14px;">
+              <div style="height:2px;flex:1;border-radius:100px;background:linear-gradient(90deg,#22d3ee,transparent);"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-info">
+        <div class="card-tags">
+          <span class="card-tag">Technology</span>
+          <span class="card-tag">B2B</span>
+          <span class="card-tag">Enterprise</span>
+          <span class="card-tag platform">Next.js</span>
+        </div>
+        <div class="card-title">Sanjivani Edge</div>
+        <div class="card-oneliner">A sharp, professional Next.js website for a technology edge solutions company — clean architecture, precise messaging, and a design built to convert the right enterprise visitors into qualified business conversations.</div>
+        <div class="card-result">Positioned Sanjivani Edge as a credible technology partner for enterprise clients across India and international markets.</div>
+        <a href="https://sanjivaniedge.com" target="_blank" class="card-link">Visit Site →</a>
+      </div>
+    </div>
+
+    <!-- Card 9: Opinova Foundation -->
+    <div class="portfolio-card reveal reveal-delay-1"
+      data-categories="social nextjs">
+      <div class="card-hover-overlay"></div>
+      <div class="browser-bar">
+        <div class="browser-dots"><div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-dot"></div></div>
+        <div class="browser-url">opinovafoundation.com</div>
+      </div>
+      <div class="site-preview">
+        <div class="site-preview-bg" style="background: linear-gradient(135deg, #064e3b 0%, #065f46 50%, #047857 100%);">
+          <div style="padding:12px 18px;display:flex;align-items:center;gap:8px;">
+            <div style="width:24px;height:24px;border-radius:50%;background:rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;font-size:10px;color:white;">O</div>
+            <div style="font-size:11px;font-weight:700;color:white;letter-spacing:1px;">OPINOVA FOUNDATION</div>
+          </div>
+          <div style="padding:8px 18px;flex:1;display:flex;flex-direction:column;justify-content:center;">
+            <div style="font-size:18px;font-weight:800;color:white;line-height:1.2;">Empowering<br>Communities.</div>
+            <div style="font-size:9px;color:rgba(255,255,255,0.5);margin-top:6px;">Non-Profit · Social Impact · India</div>
+            <div style="margin-top:14px;width:90px;height:26px;border-radius:100px;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.25);"></div>
+          </div>
+        </div>
+      </div>
+      <div class="card-info">
+        <div class="card-tags">
+          <span class="card-tag">Social Sector</span>
+          <span class="card-tag">Non-Profit</span>
+          <span class="card-tag platform">Next.js</span>
+        </div>
+        <div class="card-title">Opinova Foundation</div>
+        <div class="card-oneliner">A purpose-driven Next.js website for a non-profit foundation focused on community empowerment — designed with the same strategic care and creative depth we bring to every commercial website development project.</div>
+        <div class="card-result">Gave Opinova Foundation a dignified, professional digital home that elevated their credibility with donors, grant bodies, and the communities they serve.</div>
+        <a href="https://opinovafoundation.com" target="_blank" class="card-link">Visit Site →</a>
+      </div>
+    </div>
+
+    <!-- Card 10: H2S -->
+    <div class="portfolio-card reveal reveal-delay-2"
+      data-categories="home d2c shopify">
+      <div class="card-hover-overlay"></div>
+      <div class="browser-bar">
+        <div class="browser-dots"><div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-dot"></div></div>
+        <div class="browser-url">h2s.co.in</div>
+      </div>
+      <div class="site-preview">
+        <div class="site-preview-bg" style="background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 50%, #7dd3fc 100%);">
+          <div style="padding:12px 18px;display:flex;justify-content:space-between;align-items:center;">
+            <div style="font-size:16px;font-weight:800;color:#0369a1;letter-spacing:-0.5px;">H2S</div>
+            <div style="font-size:9px;color:#0369a1;background:rgba(3,105,161,0.1);padding:4px 10px;border-radius:100px;">Water Softeners</div>
+          </div>
+          <div style="padding:8px 18px;flex:1;display:flex;align-items:center;gap:16px;">
+            <div style="flex:1;">
+              <div style="font-size:16px;font-weight:800;color:#0c4a6e;line-height:1.2;">Pure Water,<br>Better Living.</div>
+              <div style="font-size:9px;color:#0369a1;margin-top:6px;">D2C · Home &amp; Lifestyle · India</div>
+              <div style="margin-top:10px;width:80px;height:24px;border-radius:4px;background:#0369a1;"></div>
+            </div>
+            <div style="width:60px;height:60px;border-radius:50%;background:radial-gradient(circle,#bae6fd,#38bdf8);border:3px solid rgba(255,255,255,0.8);"></div>
+          </div>
+        </div>
+      </div>
+      <div class="card-info">
+        <div class="card-tags">
+          <span class="card-tag">Home &amp; Lifestyle</span>
+          <span class="card-tag">D2C</span>
+          <span class="card-tag platform">Shopify</span>
+        </div>
+        <div class="card-title">H2S</div>
+        <div class="card-oneliner">A clean, conversion-focused Shopify store for a D2C home water softener brand — making a technical product feel simple, trustworthy, and easy to buy for everyday consumers across India.</div>
+        <div class="card-result">Successfully simplified a technical home lifestyle product for D2C consumers, driving online sales directly to end users.</div>
+        <a href="https://h2s.co.in" target="_blank" class="card-link">Visit Site →</a>
+      </div>
+    </div>
+
+  </div><!-- /portfolio-grid -->
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="faq-left">
+    <div class="section-label">Questions &amp; Answers</div>
+    <h2 class="section-headline reveal" style="font-size:clamp(32px,4vw,48px);">Everything You Want to Know</h2>
+    <p class="section-subline reveal reveal-delay-1">Common questions from our clients in India, the USA, Canada, Australia, and beyond — before they start their website project with us.</p>
+    <div class="faq-count reveal reveal-delay-2">07</div>
+  </div>
+
+  <div class="faq-list reveal reveal-delay-1">
+    <div class="faq-item">
+      <div class="faq-q">
+        <h3>How long does it take to build a website with Digitally Next?</h3>
+        <div class="faq-toggle">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1v10M1 6h10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+      </div>
+      <div class="faq-a">
+        <div class="faq-a-inner">Timelines depend on the scope and complexity of the project. A standard WordPress or Shopify website development project typically goes live in 4 to 6 weeks. Custom coded websites on Next.js or React.js may take 8 to 12 weeks. We always agree on a fixed timeline before the project begins — and we stick to it. Our clients in the USA, Canada, and Australia consistently note that our structured delivery process removes the uncertainty they've experienced with other agencies.</div>
+      </div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">
+        <h3>What platforms do you build websites on?</h3>
+        <div class="faq-toggle">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1v10M1 6h10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+      </div>
+      <div class="faq-a">
+        <div class="faq-a-inner">We build on WordPress, Shopify, Next.js, and React.js, as well as fully custom coded solutions depending on your business needs. As a website design and development agency in India with 10+ years of experience, our team recommends the right platform based on your goals, target audience, budget, and long-term scalability — whether you're a D2C brand in the USA or a B2B enterprise in the Middle East.</div>
+      </div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">
+        <h3>Do you work with clients based in the USA, Canada, Australia, and other countries?</h3>
+        <div class="faq-toggle">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1v10M1 6h10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+      </div>
+      <div class="faq-a">
+        <div class="faq-a-inner">Yes — we are an India-based web design agency actively working with international clients across the USA, Canada, Australia, New Zealand, the Middle East, and Europe. We have structured global servicing frameworks including dedicated points of contact, timezone-aligned calls, and fortnightly progress reports. Distance has never been a barrier to delivering world-class website development.</div>
+      </div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">
+        <h3>Is the website built with SEO and AEO in mind?</h3>
+        <div class="faq-toggle">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1v10M1 6h10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+      </div>
+      <div class="faq-a">
+        <div class="faq-a-inner">Absolutely. Every website we build includes on-page SEO as a standard part of our 11-step process — from meta titles and descriptions to structured content, fast loading speeds, and mobile-first optimisation. We also ensure the website is AEO (Answer Engine Optimisation) and GEO (Generative Engine Optimisation) ready, so it has the best chance of being featured in AI-powered search results on platforms like Google AI Overviews, ChatGPT, and Perplexity.</div>
+      </div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">
+        <h3>What is included in the website handover?</h3>
+        <div class="faq-toggle">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1v10M1 6h10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+      </div>
+      <div class="faq-a">
+        <div class="faq-a-inner">Every website we deliver — whether it's a WordPress site, Shopify store, or custom Next.js build — comes with a hands-on training session for your team, full documentation, and an official handover. We also offer post-handover support and maintenance packages for clients who want continued assistance after go-live.</div>
+      </div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">
+        <h3>Can you handle both design and development, or do we need to bring our own designer?</h3>
+        <div class="faq-toggle">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1v10M1 6h10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+      </div>
+      <div class="faq-a">
+        <div class="faq-a-inner">We handle everything in-house — brand strategy, content writing, UI/UX design, and website development. You bring your vision and business goals. Our six specialist teams take care of the rest, end to end. This is what makes Digitally Next different from a typical web development agency — we are a full-service creative and technical partner.</div>
+      </div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">
+        <h3>What makes Digitally Next different from other web development agencies in India?</h3>
+        <div class="faq-toggle">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1v10M1 6h10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+      </div>
+      <div class="faq-a">
+        <div class="faq-a-inner">We don't just build websites — we build digital business assets. Every project goes through a structured 11-step process covering research, user journey mapping, content strategy, visual design, development, quality optimisation, and handover. With 10+ years of experience, 50+ websites delivered across 6 industries, and clients in the USA, Canada, Australia, Middle East, and India — we bring both creative depth and strategic thinking to every project we take on.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <div class="cta-bg-text">NEXT</div>
+  <div class="section-label">Let's Build Together</div>
+  <h2 class="cta-headline">Have a website<br>in mind?</h2>
+  <p class="cta-sub">Tell us about your brand and what you need. We'll take it from there.</p>
+  <a href="mailto:hello@digitallynext.com" class="btn-cta-white">
+    Book a Free 30-min Call →
+  </a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">
+    <div class="nav-logo logo-footer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 971.81 205.6" role="img" aria-label="Digitally Next">
+        <defs><style>.cls-1{fill:#e21f26}</style></defs>
+        <g>
+          <g>
+            <path class="cls-1" d="M15.6.46h70.33v3.38s-8.02,2.82-8.23,8.23c-.14,3.36-.27,5.62,1.47,8.89,1.74,3.27,17.31,28.28,17.31,28.28l6.91,11.54,34.02-34.64s6.44-6.01,0-15.89c-2.73-3.67-4.8-4.94-6.73-6.59V.46h41.01v3.57s-1.39-.76-10.6,6.69c-9.22,7.45-26.26,26.51-26.26,26.51l-28.28,28.91,38.13,63.88s.5,20.45-28.03,24.11l-37.37-60.22-30.68,30.8s-7.32,7.57,5.43,11.36l.61.21-.14,2.85s-10.58-.07-16.62-6.92c-6.04-6.85-7.33-11.33-7.94-14.32l2.92-1.09s1.97,6.04,5.97,5.77c4-.27,7.6-4.48,7.6-4.48l30.46-29.38L29.06,13.5S21.95,3.78,15.6,3.6V.46Z"/>
+            <path class="cls-1" d="M118.37,156.46s-3.56,13.25,7.24,20.74c0,0,8.59-3.07,15.34-6.5,6.75-3.44,9.69-5.77,23.19-9.2,13.5-3.44,20.25-7.36,36.94-22.21,16.69-14.85,15.95-19.88,15.95-19.88,0,0-4.91-.61-16.93,6.14-12.03,6.75-17.42,11.53-29.33,10.92-11.9-.61-22.09-5.15-22.09-5.15,0,0-2.33.61-2.58,3.44-.25,2.82-2.82,17.92-27.73,21.72Z"/>
+            <path class="cls-1" d="M126.96,178.67s.86,5.03,3.07,6.99c0,0,4.29,1.47,14.36-4.17,10.06-5.64,13.74-8.96,13.74-8.96l-1.1-4.17s19.9-2.83,34.26-14.98c14.36-12.15,26.89-22.79,26.18-30.79,0,0-1.86,4.15-4.99,7.88-3.13,3.73-17.24,19.79-33.51,27.92-14.67,6.65-19.13,5.27-26.58,8.71-7.45,3.44-18.76,10.64-25.42,11.57Z"/>
+            <path class="cls-1" d="M26.95,116.59s6.21,24.84,27.13,23.79c0,0,2.29,1.34,1.15,3.06-1.15,1.72-.29,6.97-.29,6.97,0,0,5.73,8.98,11.75,17.19,6.02,8.22,24.17,9.07,34.77,16.24,0,0,2.58,1.34-.96,2.29-3.53.96-17.77,2.67-31.14.86-13.37-1.81-24.55-5.25-28.66-7.64-4.11-2.39-8.41-10.99-9.55-13.76-1.15-2.77-6.4-14.33-9.55-17.86-3.15-3.53-11.37-15.86-13.18-19.58-1.81-3.73,6.69-11.37,18.53-11.56Z"/>
+            <path class="cls-1" d="M0,132.64l6.4-4.32s5.56,9.87,13.13,19.22c4.35,5.25,9.01,16.7,11.15,21.58,4.09,6.98,6.73,10.05,7.58,10.64.85.6,10.56,6.56,27.76,8.51,17.2,1.96,28.44,1.79,35.42-1.11,0,0,1.59-.34-.56,1.47s-15.28,4.58-32.43,2.49c-17.15-2.1-30.38-7.86-30.38-7.86,0,0-3.4-2.46-5.5-6.07-2.1-3.62-5.89-10.57-7.2-13.98-1.31-3.4-3.41-6.4-3.93-7.45l-3.67,1.96s-3.19-.52-9.59-8.9c-5.19-8.39-8.18-16.19-8.18-16.19Z"/>
+          </g>
+          <g>
+            <g>
+              <path class="cls-1" d="M718.23,0h12.99v86.58h-12.99V0ZM766.96,86.58L722.68,0h14.84l44.4,86.58h-14.97ZM773.39,0h12.99v86.58h-12.99V0Z"/>
+              <path class="cls-1" d="M832.51,88.55c-7.17,0-13.4-1.55-18.68-4.64-5.28-3.09-9.38-7.4-12.31-12.92-2.93-5.52-4.39-11.83-4.39-18.92s1.46-13.52,4.39-19.05c2.93-5.52,7.03-9.85,12.31-12.99,5.28-3.13,11.5-4.7,18.68-4.7,4.7,0,9.11.91,13.23,2.72,4.12,1.81,7.67,4.5,10.64,8.04,2.97,3.55,5.17,7.85,6.62,12.92,1.44,5.07,1.79,10.86,1.05,17.38h-59.37v-11.25h51.95l-5.57,3.96c.25-3.96-.33-7.56-1.73-10.82-1.4-3.26-3.51-5.88-6.31-7.85-2.8-1.98-6.31-2.97-10.51-2.97-4.87,0-8.91,1.07-12.12,3.22-3.21,2.15-5.61,5.07-7.17,8.78-1.57,3.71-2.35,7.91-2.35,12.61s.78,8.76,2.35,12.43c1.56,3.67,3.96,6.58,7.17,8.72,3.22,2.15,7.25,3.22,12.12,3.22s8.72-1.15,11.56-3.46c2.84-2.31,4.8-5.11,5.88-8.41h14.1c-1.07,4.78-3.03,8.97-5.87,12.55-2.84,3.59-6.43,6.39-10.76,8.41-4.33,2.02-9.3,3.03-14.9,3.03Z"/>
+              <path class="cls-1" d="M933.3,17.32h36.49v11.38h-36.49v-11.38ZM943.69,0h13.36v67.78c0,2.56.62,4.43,1.86,5.63,1.24,1.2,3.05,1.79,5.44,1.79h7.42v11.38h-7.54c-6.84,0-11.98-1.67-15.4-5.01-3.42-3.34-5.13-7.93-5.13-13.79V0Z"/>
+              <path class="cls-1" d="M893.4,17.32v1.86c-5.05,0-5.76,2.94-2.14,8.81l9.47,15.04,10.81-15.14c4.06-5.71,3.49-8.62-1.71-8.71v-1.86h17.57v1.86c-4.7.06-9.08,2.98-13.14,8.76l-12.14,17.23,19.52,30.85c3.68,5.78,7.68,8.66,12,8.66v1.9h-28.56v-1.9c5.11-.06,5.81-3.01,2.09-8.86l-12.66-20.09-15.52,20.42c-4.25,5.59-3.7,8.42,1.67,8.52v1.9h-17.56v-1.9c4.69-.1,9.11-2.94,13.23-8.52l16.8-22.47-16.47-25.94c-3.55-5.71-7.46-8.57-11.71-8.57v-1.86h28.47Z"/>
+            </g>
+            <g>
+              <path d="M262.91,143.53h38v6.62h-38v-6.62ZM278.08,143.53h7.59v48.28h-7.59v-48.28Z"/>
+              <path d="M313.19,140.08h7.45v51.72h-7.45v-51.72ZM320.64,172.56l-1.1-7.59c0-1.2.21-2.53.62-4,.41-1.47,1.14-2.88,2.17-4.24,1.03-1.36,2.45-2.47,4.24-3.34,1.79-.87,4.05-1.31,6.76-1.31,2.48,0,4.71.51,6.69,1.52,1.98,1.01,3.53,2.68,4.66,5,1.13,2.32,1.69,5.46,1.69,9.41v23.79h-7.45v-22.9c0-2.11-.21-3.94-.62-5.48-.41-1.54-1.16-2.74-2.24-3.59-1.08-.85-2.61-1.28-4.59-1.28-1.84,0-3.59.53-5.24,1.59-1.66,1.06-3,2.62-4.03,4.69-1.03,2.07-1.55,4.64-1.55,7.72Z"/>
+              <path d="M359.95,140.08h8.34v8.48h-8.34v-8.48ZM360.36,153.18h7.45v38.62h-7.45v-38.62Z"/>
+              <path d="M382.36,153.18h7.45v6.34c.55-1.29,1.34-2.49,2.38-3.62,1.03-1.13,2.4-2.05,4.1-2.76,1.7-.71,3.77-1.07,6.21-1.07s4.71.51,6.69,1.52c1.98,1.01,3.53,2.68,4.66,5,1.13,2.32,1.69,5.46,1.69,9.41v23.79h-7.45v-22.9c0-2.11-.21-3.94-.62-5.48-.41-1.54-1.16-2.74-2.24-3.59-1.08-.85-2.61-1.28-4.59-1.28-1.84,0-3.59.53-5.24,1.59-1.65,1.06-3,2.62-4.03,4.69-1.03,2.07-1.55,4.64-1.55,7.72v19.24h-7.45v-38.62Z"/>
+              <path d="M429.46,140.08h7.45v51.72h-7.45v-51.72ZM459.67,153.18l-24.76,29.93-2.14-8.21,17.93-21.72h8.97ZM439.46,169.18l7.1-1.24,14.69,23.86h-8.48l-13.31-22.62Z"/>
+              <path d="M470.64,183.32h8.34v8.48h-8.34v-8.48Z"/>
+              <path d="M526.98,143.53h7.24l-14.9,48.28h-7.93l15.59-48.28ZM518.98,174.01h26v6.62h-26v-6.62ZM537.32,143.53l15.93,48.28h-7.93l-15.24-48.28h7.24Z"/>
+              <path d="M599.74,175.6c-.14,3.31-.96,6.28-2.45,8.9-1.5,2.62-3.58,4.68-6.24,6.17-2.67,1.49-5.82,2.24-9.45,2.24-4,0-7.47-.86-10.41-2.59-2.94-1.72-5.23-4.13-6.86-7.21-1.63-3.08-2.45-6.6-2.45-10.55s.82-7.54,2.45-10.62c1.63-3.08,3.92-5.49,6.86-7.24,2.94-1.75,6.41-2.62,10.41-2.62,3.49,0,6.58.77,9.24,2.31,2.67,1.54,4.76,3.54,6.28,6,1.52,2.46,2.34,5.12,2.48,7.97h-7.86c-.09-1.61-.51-3.13-1.24-4.55-.74-1.42-1.83-2.6-3.28-3.52-1.45-.92-3.32-1.38-5.62-1.38-2.71,0-4.96.59-6.76,1.76-1.79,1.17-3.13,2.79-4,4.86-.87,2.07-1.31,4.41-1.31,7.03s.44,4.89,1.31,6.93c.87,2.05,2.21,3.66,4,4.83,1.79,1.17,4.04,1.76,6.76,1.76,2.39,0,4.33-.49,5.83-1.48,1.49-.99,2.61-2.29,3.34-3.9.74-1.61,1.15-3.31,1.24-5.1h7.72Z"/>
+              <path d="M609.53,153.18h20.35v6.34h-20.35v-6.34ZM615.32,143.53h7.45v37.79c0,1.43.34,2.47,1.03,3.14.69.67,1.7,1,3.03,1h4.14v6.34h-4.21c-3.82,0-6.68-.93-8.59-2.79-1.91-1.86-2.86-4.42-2.86-7.69v-37.79Z"/>
+              <path d="M642.36,183.32h8.34v8.48h-8.34v-8.48Z"/>
+              <path d="M685.32,191.8v-48.28h16.35c5.1,0,9.42,1.05,12.97,3.14,3.54,2.09,6.23,4.94,8.07,8.55,1.84,3.61,2.76,7.74,2.76,12.38s-.92,8.85-2.76,12.48c-1.84,3.63-4.53,6.49-8.07,8.59-3.54,2.09-7.86,3.14-12.97,3.14h-16.35ZM692.91,185.11h8.76c3.63,0,6.62-.79,8.97-2.38,2.34-1.59,4.08-3.7,5.21-6.35,1.13-2.64,1.69-5.57,1.69-8.79s-.56-6.08-1.69-8.72c-1.13-2.64-2.86-4.75-5.21-6.31-2.35-1.56-5.33-2.34-8.97-2.34h-8.76v34.9Z"/>
+              <path d="M738.15,140.08h8.34v8.48h-8.34v-8.48ZM738.57,153.18h7.45v38.62h-7.45v-38.62Z"/>
+              <path d="M766.57,179.6c.23,2.34,1.24,4.09,3.03,5.24,1.79,1.15,3.93,1.72,6.41,1.72s4.4-.47,5.9-1.41c1.49-.94,2.24-2.38,2.24-4.31,0-1.19-.45-2.1-1.34-2.72-.9-.62-2.07-1.11-3.52-1.48-1.45-.37-3.03-.69-4.76-.97-1.72-.28-3.46-.62-5.21-1.03-1.75-.41-3.34-1.02-4.79-1.83-1.45-.8-2.61-1.9-3.48-3.28-.87-1.38-1.31-3.17-1.31-5.38,0-2.07.64-4.03,1.93-5.9,1.29-1.86,3.13-3.36,5.52-4.48,2.39-1.13,5.15-1.69,8.28-1.69,2.8,0,5.37.56,7.69,1.69,2.32,1.13,4.2,2.68,5.62,4.66,1.42,1.98,2.14,4.28,2.14,6.9h-7.1c-.18-2.34-1.09-4.08-2.72-5.21-1.63-1.13-3.6-1.69-5.9-1.69-2.67,0-4.68.54-6.03,1.62-1.36,1.08-2.03,2.45-2.03,4.1,0,1.24.44,2.21,1.31,2.9.87.69,2.04,1.23,3.48,1.62,1.45.39,3.04.71,4.79.97,1.75.25,3.48.59,5.21,1,1.72.41,3.31,1,4.76,1.76,1.45.76,2.62,1.82,3.52,3.17.9,1.36,1.35,3.12,1.35,5.28,0,2.44-.66,4.55-1.97,6.35-1.31,1.79-3.14,3.2-5.48,4.21-2.34,1.01-5.15,1.52-8.41,1.52-3.04,0-5.78-.59-8.24-1.76-2.46-1.17-4.41-2.76-5.86-4.76-1.45-2-2.22-4.26-2.31-6.79h7.31Z"/>
+              <path d="M804.63,153.18h7.45v38.62h-7.45v-38.62ZM812.08,171.53l-1.03-5.72c0-1.19.15-2.57.45-4.14.3-1.56.92-3.07,1.86-4.52.94-1.45,2.34-2.66,4.21-3.62,1.86-.97,4.33-1.45,7.41-1.45v7.45c-2.71,0-5.03.37-6.97,1.1-1.93.74-3.4,1.97-4.41,3.69-1.01,1.72-1.52,4.13-1.52,7.21Z"/>
+              <path d="M862.22,172.43l1.1,7.59c0,1.2-.21,2.53-.62,4-.41,1.47-1.14,2.89-2.17,4.24-1.03,1.36-2.45,2.47-4.24,3.34-1.79.87-4.07,1.31-6.83,1.31-2.48,0-4.7-.51-6.66-1.52-1.95-1.01-3.49-2.69-4.62-5.03-1.13-2.34-1.69-5.47-1.69-9.38v-23.79h7.38v22.9c0,2.07.22,3.87.66,5.41.44,1.54,1.2,2.75,2.28,3.62,1.08.87,2.61,1.31,4.59,1.31,1.84,0,3.59-.54,5.24-1.62,1.66-1.08,3-2.66,4.03-4.72,1.04-2.07,1.55-4.62,1.55-7.66ZM869.67,191.8h-7.45v-38.62h7.45v38.62Z"/>
+              <path d="M883.74,205.6v-52.41h7.45v52.41h-7.45ZM903.6,192.91c-3.08,0-5.63-.63-7.66-1.9-2.02-1.26-3.61-2.95-4.76-5.07v-26.83c1.2-2.21,2.82-3.93,4.86-5.17,2.04-1.24,4.56-1.86,7.55-1.86,3.54,0,6.61.87,9.21,2.62,2.6,1.75,4.61,4.16,6.03,7.24,1.42,3.08,2.14,6.62,2.14,10.62s-.71,7.47-2.14,10.55c-1.43,3.08-3.44,5.48-6.03,7.21-2.6,1.72-5.67,2.59-9.21,2.59ZM902.56,186.15c2.25,0,4.17-.57,5.76-1.72,1.59-1.15,2.82-2.75,3.69-4.79.87-2.05,1.31-4.4,1.31-7.07s-.44-5.17-1.31-7.24c-.87-2.07-2.1-3.67-3.69-4.79-1.59-1.13-3.51-1.69-5.76-1.69-2.53,0-4.64.6-6.35,1.79-1.7,1.2-2.96,2.83-3.79,4.9-.83,2.07-1.24,4.41-1.24,7.03s.41,4.89,1.24,6.93c.83,2.05,2.09,3.67,3.79,4.86,1.7,1.2,3.82,1.79,6.35,1.79Z"/>
+              <path d="M930.63,153.18h20.35v6.34h-20.35v-6.34ZM936.43,143.53h7.45v37.79c0,1.43.34,2.47,1.03,3.14.69.67,1.7,1,3.03,1h4.14v6.34h-4.21c-3.82,0-6.68-.93-8.59-2.79-1.91-1.86-2.86-4.42-2.86-7.69v-37.79Z"/>
+              <path d="M963.46,183.32h8.34v8.48h-8.34v-8.48Z"/>
+            </g>
+            <g>
+              <path d="M261.56,88.15V6.3h29.23c8.65,0,15.98,1.77,21.98,5.32,6,3.55,10.56,8.38,13.68,14.5,3.12,6.12,4.68,13.11,4.68,20.99s-1.56,15.01-4.68,21.16c-3.12,6.16-7.68,11.01-13.68,14.56-6,3.55-13.33,5.32-21.98,5.32h-29.23ZM276.53,75.05h14.26c5.77,0,10.48-1.29,14.15-3.86,3.66-2.57,6.35-5.96,8.07-10.17,1.71-4.21,2.57-8.85,2.57-13.91s-.86-9.59-2.57-13.8c-1.72-4.21-4.4-7.6-8.07-10.17-3.67-2.57-8.38-3.86-14.15-3.86h-14.26v55.77Z"/>
+              <path d="M340.6.46h16.02v16.13h-16.02V.46ZM341.3,22.67h14.73v65.48h-14.73V22.67Z"/>
+              <path d="M395.2,87.68c-6,0-11.22-1.36-15.67-4.09-4.44-2.73-7.85-6.61-10.23-11.63-2.38-5.03-3.57-10.89-3.57-17.6s1.19-12.69,3.57-17.71c2.38-5.03,5.79-8.92,10.23-11.69,4.44-2.77,9.66-4.15,15.67-4.15,7.79,0,13.66,2.22,17.6,6.66,3.94,4.44,6.49,10.72,7.66,18.82l-.23,16.25c-.62,5.07-1.85,9.49-3.68,13.27-1.83,3.78-4.46,6.7-7.89,8.77-3.43,2.07-7.91,3.1-13.45,3.1ZM400.23,113.4c-6.94,0-12.57-1.09-16.9-3.27-4.33-2.18-7.62-5.01-9.88-8.48-2.26-3.47-3.7-7.04-4.33-10.7h15.2c.78,3.43,2.57,5.83,5.38,7.19,2.81,1.36,6.31,2.05,10.52,2.05,2.81,0,5.32-.51,7.54-1.52,2.22-1.01,3.99-2.65,5.32-4.91,1.32-2.26,1.99-5.3,1.99-9.12h14.73c0,6.16-1.31,11.38-3.92,15.67-2.61,4.29-6.12,7.54-10.52,9.76-4.4,2.22-9.45,3.33-15.14,3.33ZM397.54,74.47c5.92,0,10.33-1.85,13.21-5.55,2.88-3.7,4.33-8.55,4.33-14.56s-1.44-11.09-4.33-14.79c-2.88-3.7-7.29-5.55-13.21-5.55-5.3,0-9.41,1.83-12.34,5.5-2.92,3.66-4.38,8.61-4.38,14.85s1.46,11.05,4.38,14.67c2.92,3.62,7.03,5.44,12.34,5.44ZM415.08,84.64V22.67h14.73v61.97h-14.73Z"/>
+              <path d="M441.62.46h16.02v16.13h-16.02V.46ZM442.32,22.67h14.73v65.48h-14.73V22.67Z"/>
+              <path d="M466.99,22.67h34.49v12.51h-34.49v-12.51ZM475.64,6.3h14.73v62.9c0,2.18.54,3.8,1.64,4.85,1.09,1.05,2.73,1.58,4.91,1.58h6.43v12.51h-6.55c-7.02,0-12.3-1.64-15.84-4.91-3.55-3.27-5.32-7.95-5.32-14.03V6.3Z"/>
+              <path d="M539.71,20.8c9.12,0,16.02,2.69,20.69,8.07s7.02,12.67,7.02,21.86h-14.62c0-3.27-.37-6.18-1.11-8.71-.74-2.53-2.07-4.54-3.97-6.02-1.91-1.48-4.58-2.22-8.01-2.22-4.52,0-7.95,1.17-10.29,3.51-2.34,2.34-3.51,5.14-3.51,8.42h-15.43c0-4.36,1.15-8.44,3.45-12.22,2.3-3.78,5.63-6.84,10-9.18,4.36-2.34,9.62-3.51,15.78-3.51ZM554.09,47.23l2.46,10.17c-9.98-.7-17.27.1-21.86,2.4-4.6,2.3-6.9,5.28-6.9,8.94,0,2.73.94,4.76,2.81,6.08,1.87,1.33,4.29,1.99,7.25,1.99,2.57,0,4.99-.47,7.25-1.4,2.26-.94,4.11-2.47,5.55-4.62,1.44-2.14,2.16-4.97,2.16-8.48l3.16,5.38c-.23,4.37-1.19,8.22-2.86,11.58-1.68,3.35-4.03,5.98-7.07,7.89-3.04,1.91-6.78,2.86-11.22,2.86s-8.11-.8-11.46-2.4c-3.35-1.6-6-3.92-7.95-6.96-1.95-3.04-2.92-6.74-2.92-11.11s.84-7.68,2.51-10.41c1.68-2.73,3.96-4.91,6.84-6.55,2.88-1.64,6.12-2.84,9.71-3.62,3.58-.78,7.33-1.27,11.22-1.46,3.9-.19,7.68-.29,11.34-.29ZM552.8,50.73h14.62v37.41h-14.62v-37.41Z"/>
+              <path d="M578.88.46h14.73v87.69h-14.73V.46Z"/>
+              <path d="M605.65.46h14.73v87.69h-14.73V.46Z"/>
+              <path d="M649.61,88.15l-20.46-65.48h15.78l18.47,65.48h-13.8ZM636.28,111.53v-12.51h7.37c2.57,0,4.56-.49,5.96-1.46,1.4-.98,2.51-2.3,3.33-3.98.82-1.68,1.58-3.61,2.28-5.79l19.17-65.12h15.78l-20.46,65.48c-1.25,4.05-2.55,7.54-3.92,10.46-1.37,2.92-2.94,5.34-4.74,7.25-1.79,1.91-4.09,3.33-6.9,4.27-2.81.94-6.31,1.4-10.52,1.4h-7.37Z"/>
+            </g>
+          </g>
+        </g>
+      </svg>
+    </div>
+    <p class="footer-tagline">A website design and development agency in India, building digital business assets for brands worldwide.</p>
+  </div>
+  <div>
+    <div class="footer-col-title">Services</div>
+    <ul class="footer-links">
+      <li><a href="#">WordPress Development</a></li>
+      <li><a href="#">Shopify Development</a></li>
+      <li><a href="#">Next.js Development</a></li>
+      <li><a href="#">SEO &amp; AEO</a></li>
+    </ul>
+  </div>
+  <div>
+    <div class="footer-col-title">Industries</div>
+    <ul class="footer-links">
+      <li><a href="#">Technology &amp; IT</a></li>
+      <li><a href="#">Fashion &amp; Apparel</a></li>
+      <li><a href="#">Healthcare</a></li>
+      <li><a href="#">Food &amp; Beverage</a></li>
+    </ul>
+  </div>
+  <div>
+    <div class="footer-col-title">Company</div>
+    <ul class="footer-links">
+      <li><a href="#">About Us</a></li>
+      <li><a href="#">Our Process</a></li>
+      <li><a href="#">Portfolio</a></li>
+      <li><a href="https://web.digitallynext.com/" target="_blank">Live Site</a></li>
+    </ul>
+  </div>
+</footer>
+<div class="footer-bottom">
+  <p>© 2026 Digitally Next. All rights reserved.</p>
+  <p>Built in India · Delivered Globally</p>
+</div>
+
+<script>
+// =========================================
+// CUSTOM CURSOR
+// =========================================
+const cursor = document.getElementById('cursor');
+const cursorRing = document.getElementById('cursorRing');
+let mx = 0, my = 0, rx = 0, ry = 0;
+
+document.addEventListener('mousemove', e => {
+  mx = e.clientX; my = e.clientY;
+  cursor.style.left = mx + 'px';
+  cursor.style.top = my + 'px';
+});
+
+function animateRing() {
+  rx += (mx - rx) * 0.12;
+  ry += (my - ry) * 0.12;
+  cursorRing.style.left = rx + 'px';
+  cursorRing.style.top = ry + 'px';
+  requestAnimationFrame(animateRing);
+}
+animateRing();
+
+document.querySelectorAll('a, button, .portfolio-card, .tech-card, .team-pill, .faq-q').forEach(el => {
+  el.addEventListener('mouseenter', () => { cursor.classList.add('hover'); cursorRing.classList.add('hover'); });
+  el.addEventListener('mouseleave', () => { cursor.classList.remove('hover'); cursorRing.classList.remove('hover'); });
+});
+
+// =========================================
+// NAV SCROLL
+// =========================================
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 50);
+});
+
+// =========================================
+// SCROLL REVEAL
+// =========================================
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(el => {
+    if (el.isIntersecting) { el.target.classList.add('visible'); }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.reveal, .stat-item, .process-step').forEach(el => observer.observe(el));
+
+// =========================================
+// FAQ ACCORDION
+// =========================================
+document.querySelectorAll('.faq-q').forEach(q => {
+  q.addEventListener('click', () => {
+    const item = q.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  });
+});
+
+// =========================================
+// PORTFOLIO FILTER
+// =========================================
+const filterBtns = document.querySelectorAll('.filter-btn');
+const cards = document.querySelectorAll('.portfolio-card');
+
+filterBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    filterBtns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const filter = btn.dataset.filter;
+    cards.forEach(card => {
+      const cats = card.dataset.categories || '';
+      if (filter === 'all' || cats.includes(filter)) {
+        card.removeAttribute('data-hidden');
+        card.style.display = '';
+      } else {
+        card.setAttribute('data-hidden', 'true');
+        card.style.display = 'none';
+      }
+    });
+  });
+});
+
+// =========================================
+// HERO CAROUSEL
+// =========================================
+(function() {
+  const track       = document.getElementById('carouselTrack');
+  const outer       = document.getElementById('heroCarousel');
+  if (!track || !outer) return;
+
+  const slides      = document.querySelectorAll('.carousel-slide');
+  const dots        = document.querySelectorAll('.carousel-dot');
+  const CARD_W      = 420;
+  const GAP         = 20;
+  const STRIDE      = CARD_W + GAP;
+  const TOTAL       = slides.length;
+  let current       = 0;
+  let autoTimer     = null;
+
+  function getCenterOffset() {
+    return Math.max(0, (outer.offsetWidth - CARD_W) / 2);
+  }
+
+  function goTo(n, instant) {
+    current = ((n % TOTAL) + TOTAL) % TOTAL;
+    const tx = -(current * STRIDE) + getCenterOffset();
+    if (instant) {
+      track.style.transition = 'none';
+      track.style.transform = `translateX(${tx}px)`;
+      // Re-enable transition after frame
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => { track.style.transition = ''; });
+      });
+    } else {
+      track.style.transform = `translateX(${tx}px)`;
+    }
+    slides.forEach((s, i) => s.classList.toggle('active', i === current));
+    dots.forEach((d, i)   => d.classList.toggle('active', i === current));
+  }
+
+  function next() { goTo(current + 1); }
+
+  function startAuto() {
+    clearInterval(autoTimer);
+    autoTimer = setInterval(next, 3600);
+  }
+
+  outer.addEventListener('mouseenter', () => clearInterval(autoTimer));
+  outer.addEventListener('mouseleave', startAuto);
+
+  dots.forEach(d => {
+    d.addEventListener('click', () => { goTo(parseInt(d.dataset.dot)); startAuto(); });
+  });
+
+  // Swipe support
+  let startX = 0;
+  outer.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
+  outer.addEventListener('touchend',   e => {
+    const dx = e.changedTouches[0].clientX - startX;
+    if (Math.abs(dx) > 40) { dx < 0 ? goTo(current + 1) : goTo(current - 1); startAuto(); }
+  });
+
+  // Init after full page load for correct offsetWidth
+  function init() {
+    goTo(0, true);
+    startAuto();
+  }
+
+  if (document.readyState === 'complete') {
+    init();
+  } else {
+    window.addEventListener('load', init);
+  }
+
+  window.addEventListener('resize', () => { goTo(current, true); });
+})();
+const processObserver = new IntersectionObserver((entries) => {
+  entries.forEach(el => {
+    if (el.isIntersecting) {
+      const steps = el.target.querySelectorAll('.process-step');
+      steps.forEach((step, i) => {
+        setTimeout(() => step.classList.add('visible'), i * 80);
+      });
+      processObserver.unobserve(el.target);
+    }
+  });
+}, { threshold: 0.1 });
+const processGrid = document.querySelector('.process-grid');
+if (processGrid) processObserver.observe(processGrid);
+</script>
+</body>
+</html>
