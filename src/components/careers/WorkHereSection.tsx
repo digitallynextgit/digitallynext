@@ -122,18 +122,21 @@ export default function WorkHereSection({ theme }: WorkHereSectionProps) {
                 className={[
                   'flex flex-col gap-3 p-7 sm:p-8 cursor-default',
                   'transition-colors duration-300',
-                  i !== 0 ? 'border-t-0' : '',
-                  isDark ? 'border border-[#2a2a2a]' : 'border border-[#E5E5E5]',
-                  // ← same bg logic as ADAC cards
                   hoveredIndex === i ? 'bg-[rgba(14,200,197,0.08)]' : isDark ? 'bg-[#0a0a0a]' : 'bg-white',
                 ].join(' ')}
+                style={{
+                  borderStyle: 'solid',
+                  borderWidth: '1px',
+                  borderTopWidth: i === 0 ? '1px' : '0',
+                  borderColor: isDark ? '#2a2a2a' : '#E5E5E5',
+                }}
               >
                 <Image
                   src={item.icon}
                   alt=""
                   width={item.iconW}
                   height={item.iconH}
-                  style={{ width: 'auto', height: 'auto' }}
+                  style={{ width: item.iconW, height: item.iconH, flexShrink: 0 }}
                 />
                 {/* Title color changes on hover — same as ADAC */}
                 <div
