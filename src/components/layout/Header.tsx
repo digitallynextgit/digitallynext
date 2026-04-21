@@ -25,6 +25,7 @@ const ROUTE_THEMES: Record<string, RouteHeaderTheme> = {
   '/privacy-policy': { linkColor: 'white', logo: 'white' },
   '/case-studies': { linkColor: 'black', logo: 'dark' },
   '/careers': { linkColor: 'black', logo: 'dark' },
+  '/design-portfolio': { linkColor: 'black', logo: 'dark' },
 };
 
 const NOT_FOUND_THEME: RouteHeaderTheme = { linkColor: 'white', logo: 'white' };

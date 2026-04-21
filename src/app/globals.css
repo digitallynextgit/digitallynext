@@ -775,6 +775,98 @@
   background: rgba(255, 255, 255, 0.08);
 }
 
+/* ===== DESIGN PORTFOLIO PAGE =====
+   Keyframes + the custom red/cyan cursor live here because:
+   - Keyframes must be in the compiled CSS bundle (see marquee comment above) to avoid hydration jitter.
+   - The cursor element is rendered via React.createPortal into <body>, so it sits outside any Tailwind-scoped tree.
+   Everything else on the page is plain Tailwind utilities applied inline. */
+@keyframes dpFadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes dpFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+@keyframes dpScrollSlide {
+  0% { left: -100%; right: 100%; }
+  50% { left: 0; right: 0; }
+  100% { left: 100%; right: -100%; }
+}
+/* Subtle flag-flutter for the country flags grid. The transform-origin is
+   pinned to the left edge so the right side travels the most — that's where
+   the cloth would flap if it were attached to a pole on the left. */
+@keyframes dpFlagWave {
+  0%, 100% { transform: perspective(600px) rotateY(0deg) skewY(0deg); }
+  25% { transform: perspective(600px) rotateY(-10deg) skewY(0.6deg); }
+  50% { transform: perspective(600px) rotateY(0deg) skewY(0deg); }
+  75% { transform: perspective(600px) rotateY(10deg) skewY(-0.6deg); }
+}
+.dp-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 12px;
+  height: 12px;
+  background: #ed2226;
+  border-radius: 9999px;
+  pointer-events: none;
+  z-index: 2147483647;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s, height 0.3s, background 0.3s, opacity 0.2s;
+}
+.dp-cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 36px;
+  height: 36px;
+  border: 1.5px solid #ed2226;
+  border-radius: 9999px;
+  pointer-events: none;
+  z-index: 2147483646;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  transition: transform 0.12s ease, width 0.3s, height 0.3s, opacity 0.3s, border-color 0.3s;
+}
+.dp-cursor.hover {
+  width: 6px;
+  height: 6px;
+  background: #0ec8c5;
+}
+.dp-cursor-ring.hover {
+  width: 52px;
+  height: 52px;
+  border-color: #0ec8c5;
+  opacity: 0.8;
+}
+.dp-page,
+.dp-page * {
+  cursor: none;
+}
+/* Reveal-on-scroll. Opacity-only because adding `transform` to the base state
+   would clash with Tailwind's hover transforms (hover:-translate-y-1.5 etc.)
+   on cards and team pills. Specificity bumped via .dp-page so this rule beats
+   any single-class Tailwind transition utility on the same element. */
+.dp-page .dp-reveal {
+  opacity: 0;
+  transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.dp-page .dp-reveal[data-visible] {
+  opacity: 1;
+}
+@media (max-width: 700px) {
+  .dp-cursor,
+  .dp-cursor-ring {
+    display: none;
+  }
+  .dp-page,
+  .dp-page * {
+    cursor: auto;
+  }
+}
+
 /* ---- Infinite Slider ---- */
 /*
   Mobile + Safari fix: translate3d for smooth GPU interpolation (same as marquee).
