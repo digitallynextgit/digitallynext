@@ -16,6 +16,7 @@ type CarouselSlide = {
   platform: string;
   fallback: ReactNode;
   fallbackBg: CSSProperties;
+  screenshotSrc?: string;
   // When true, render a live <iframe> instead of an mShots screenshot.
   // Only enable this for sites that explicitly allow being framed (no
   // X-Frame-Options or frame-ancestors restrictions). Domain must also
@@ -169,6 +170,7 @@ const CAROUSEL_SLIDES: CarouselSlide[] = [
     src: 'https://houseofnandini.com',
     name: 'House of Nandini',
     platform: 'Shopify',
+    screenshotSrc: '/portfolio/house-of-nandini-preview.png',
     fallbackBg: { background: '#f5e6d3', color: '#2d1a0e' },
     fallback: (
       <FallbackShell>
@@ -341,6 +343,7 @@ const CAROUSEL_SLIDES: CarouselSlide[] = [
     src: 'https://h2s.co.in',
     name: 'H2S',
     platform: 'Shopify',
+    screenshotSrc: '/portfolio/h2s-preview.png',
     fallbackBg: { background: '#f0f9ff', color: '#0c4a6e' },
     fallback: (
       <FallbackShell>
@@ -841,6 +844,8 @@ export default function DesignPortfolioClient() {
                       <SitePreview
                         src={slide.src}
                         title={slide.name}
+                        screenshotSrc={slide.screenshotSrc}
+                        screenshotClassName={slide.screenshotSrc ? 'object-contain object-center' : undefined}
                         useIframe={slide.useIframe}
                         iframeHeight={850}
                         iframeScale={0.29167}
@@ -1028,7 +1033,7 @@ export default function DesignPortfolioClient() {
             We have built structured frameworks for working with international clients — from communication cadence to delivery ownership. Whether you are in <strong className="text-white/75">New York, Toronto, Sydney, or Dubai,</strong> you get the same predictable, transparent website development experience.
           </p>
           <Link
-            href="/careers"
+            href="/case-studies"
             className={cn(
               'dp-reveal w-fit relative overflow-hidden inline-flex items-center gap-2.5 bg-[#ED2226] text-white px-8 py-4 rounded-full text-sm font-bold tracking-[0.3px] transition-transform duration-200 hover:scale-[1.04] hover:shadow-[0_16px_48px_rgba(237,34,38,0.35)]',
               "before:content-[''] before:absolute before:inset-0 before:bg-[#0EC8C5] before:-translate-x-full before:transition-transform before:duration-[400ms] hover:before:translate-x-0 [&>span]:relative [&>span]:z-[1] [&>svg]:relative [&>svg]:z-[1]",
@@ -1235,6 +1240,94 @@ type PortfolioCardData = {
 
 const PORTFOLIO_CARDS: PortfolioCardData[] = [
   {
+    categories: ['food', 'b2b', 'nextjs'],
+    url: 'gajnaoverseas.com',
+    href: 'https://gajnaoverseas.com',
+    useIframe: true,
+    tags: ['Food & Beverage', 'B2B', 'Export'],
+    platformTag: 'Next.js',
+    title: 'Gajna Overseas',
+    oneliner: 'A warm, brand-forward Next.js website for an Indian specialty coffee exporter — crafted to open doors in the USA, Europe, and Middle East by telling the authentic story behind every bean.',
+    result: 'Gave Gajna Overseas a credible, export-ready digital presence that speaks directly to international buyers.',
+    preview: (
+      <div className="absolute inset-0 flex flex-col" style={{ background: 'linear-gradient(135deg, #1c0a00 0%, #3d1a00 50%, #6b3000 100%)' }}>
+        <div className="px-5 py-3.5 flex justify-between items-center">
+          <div className="text-sm font-bold text-[#d4a255] tracking-[1px]">GAJNA OVERSEAS</div>
+        </div>
+        <div className="px-5 py-2 flex-1 flex flex-col justify-center">
+          <div className="text-[22px] font-extrabold text-white leading-[1.1]">India&apos;s Finest<br /><span className="text-[#d4a255]">Specialty Coffee</span></div>
+          <div className="text-[10px] text-white/50 mt-2">Export-Ready · USA · Europe · Middle East</div>
+          <div className="flex gap-2 mt-3">
+            <div className="bg-[#d4a255] rounded-full px-3.5 py-1.5 text-[9px] text-[#1c0a00] font-bold">Our Coffees</div>
+            <div className="border border-[rgba(212,162,85,0.4)] rounded-full px-3.5 py-1.5 text-[9px] text-[#d4a255]">Our Story</div>
+          </div>
+        </div>
+        <div className="absolute right-5 bottom-4 w-[60px] h-[60px] rounded-full border-2 border-[rgba(212,162,85,0.3)] bg-[radial-gradient(#6b3000,#1c0a00)]" />
+      </div>
+    ),
+  },
+  {
+    categories: ['technology', 'b2b', 'nextjs'],
+    url: 'talentifix.com',
+    href: 'https://talentifix.com',
+    tags: ['Technology', 'B2B', 'Staffing'],
+    platformTag: 'Next.js',
+    title: 'Talentifix',
+    oneliner: 'A custom-coded Next.js website that brought fresh, new-generation energy to the IT staffing industry — bold UI/UX design that broke every convention in a space known for dull, corporate web presence.',
+    result: 'Went live in just 4 weeks. Has been driving high organic traffic since launch.',
+    preview: (
+      <div className="absolute inset-0 flex flex-col" style={{ background: 'linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%)' }}>
+        <div className="px-5 py-3.5 flex justify-between items-center">
+          <div className="flex items-center gap-1.5">
+            <div className="w-6 h-6 rounded-md bg-[linear-gradient(135deg,#f093fb,#f5576c)]" />
+            <div className="text-[13px] font-extrabold text-white">Talentifix</div>
+          </div>
+        </div>
+        <div className="px-5 py-2 flex-1 flex flex-col justify-center">
+          <div className="text-[20px] font-extrabold text-white leading-[1.1]">IT Staffing<br /><span className="bg-[linear-gradient(90deg,#f093fb,#f5576c)] bg-clip-text text-transparent">Reimagined.</span></div>
+          <div className="text-[10px] text-white/40 mt-2">4 weeks to launch · High organic traffic</div>
+        </div>
+        <div className="px-5 py-3 flex gap-2">
+          <div className="flex-1 h-[30px] rounded-md bg-[rgba(240,147,251,0.15)] border border-[rgba(240,147,251,0.2)]" />
+          <div className="flex-1 h-[30px] rounded-md bg-[rgba(245,87,108,0.15)] border border-[rgba(245,87,108,0.2)]" />
+        </div>
+      </div>
+    ),
+  },
+  {
+    categories: ['healthcare', 'b2b', 'nextjs'],
+    url: 'neotechworldlab.com',
+    href: 'https://neotechworldlab.com',
+    tags: ['Healthcare', 'B2B & B2C', 'Life Sciences'],
+    platformTag: 'Next.js',
+    title: 'NeoTech World Lab',
+    oneliner: 'A credibility-first Next.js website for a genetic testing lab serving both individual consumers and institutional clients — designed to make complex science feel clear, trustworthy, and accessible.',
+    result: 'Successfully bridges a highly technical healthcare offering with everyday consumer accessibility.',
+    preview: (
+      <div className="absolute inset-0 flex flex-col" style={{ background: 'linear-gradient(135deg, #003d7a 0%, #0070c4 50%, #00a8e8 100%)' }}>
+        <div className="px-[18px] py-3 flex justify-between items-center">
+          <div className="text-[11px] font-extrabold text-white tracking-[1px]">NEOTECH WORLD LAB</div>
+          <div className="w-[60px] h-5 rounded-full bg-white/15" />
+        </div>
+        <div className="px-[18px] py-2 flex-1 flex gap-3">
+          <div className="flex-1 flex flex-col justify-center">
+            <div className="text-base font-extrabold text-white leading-[1.2]">Advanced Genetic<br />Testing Solutions</div>
+            <div className="text-[9px] text-white/60 mt-1.5">B2B · B2C · Healthcare · India &amp; Global</div>
+            <div className="flex gap-1.5 mt-2.5">
+              <div className="bg-white rounded-full px-3 py-1.5 text-[8px] text-[#003d7a] font-bold">Our Tests</div>
+              <div className="border border-white/40 rounded-full px-3 py-1.5 text-[8px] text-white">Learn More</div>
+            </div>
+          </div>
+          <div className="w-[70px] flex flex-col gap-1.5 justify-center">
+            <div className="h-7 rounded-md bg-white/10 border border-white/20" />
+            <div className="h-7 rounded-md bg-white/[0.07] border border-white/15" />
+            <div className="h-7 rounded-md bg-white/5 border border-white/10" />
+          </div>
+        </div>
+      </div>
+    ),
+  },
+  {
     categories: ['technology', 'b2b', 'wordpress'],
     url: 'adventglobal.com',
     href: 'https://adventglobal.com',
@@ -1300,61 +1393,6 @@ const PORTFOLIO_CARDS: PortfolioCardData[] = [
     ),
   },
   {
-    categories: ['food', 'b2b', 'nextjs'],
-    url: 'gajnaoverseas.com',
-    href: 'https://gajnaoverseas.com',
-    useIframe: true,
-    tags: ['Food & Beverage', 'B2B', 'Export'],
-    platformTag: 'Next.js',
-    title: 'Gajna Overseas',
-    oneliner: 'A warm, brand-forward Next.js website for an Indian specialty coffee exporter — crafted to open doors in the USA, Europe, and Middle East by telling the authentic story behind every bean.',
-    result: 'Gave Gajna Overseas a credible, export-ready digital presence that speaks directly to international buyers.',
-    preview: (
-      <div className="absolute inset-0 flex flex-col" style={{ background: 'linear-gradient(135deg, #1c0a00 0%, #3d1a00 50%, #6b3000 100%)' }}>
-        <div className="px-5 py-3.5 flex justify-between items-center">
-          <div className="text-sm font-bold text-[#d4a255] tracking-[1px]">GAJNA OVERSEAS</div>
-        </div>
-        <div className="px-5 py-2 flex-1 flex flex-col justify-center">
-          <div className="text-[22px] font-extrabold text-white leading-[1.1]">India&apos;s Finest<br /><span className="text-[#d4a255]">Specialty Coffee</span></div>
-          <div className="text-[10px] text-white/50 mt-2">Export-Ready · USA · Europe · Middle East</div>
-          <div className="flex gap-2 mt-3">
-            <div className="bg-[#d4a255] rounded-full px-3.5 py-1.5 text-[9px] text-[#1c0a00] font-bold">Our Coffees</div>
-            <div className="border border-[rgba(212,162,85,0.4)] rounded-full px-3.5 py-1.5 text-[9px] text-[#d4a255]">Our Story</div>
-          </div>
-        </div>
-        <div className="absolute right-5 bottom-4 w-[60px] h-[60px] rounded-full border-2 border-[rgba(212,162,85,0.3)] bg-[radial-gradient(#6b3000,#1c0a00)]" />
-      </div>
-    ),
-  },
-  {
-    categories: ['technology', 'b2b', 'nextjs'],
-    url: 'talentifix.com',
-    href: 'https://talentifix.com',
-    tags: ['Technology', 'B2B', 'Staffing'],
-    platformTag: 'Next.js',
-    title: 'Talentifix',
-    oneliner: 'A custom-coded Next.js website that brought fresh, new-generation energy to the IT staffing industry — bold UI/UX design that broke every convention in a space known for dull, corporate web presence.',
-    result: 'Went live in just 4 weeks. Has been driving high organic traffic since launch.',
-    preview: (
-      <div className="absolute inset-0 flex flex-col" style={{ background: 'linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%)' }}>
-        <div className="px-5 py-3.5 flex justify-between items-center">
-          <div className="flex items-center gap-1.5">
-            <div className="w-6 h-6 rounded-md bg-[linear-gradient(135deg,#f093fb,#f5576c)]" />
-            <div className="text-[13px] font-extrabold text-white">Talentifix</div>
-          </div>
-        </div>
-        <div className="px-5 py-2 flex-1 flex flex-col justify-center">
-          <div className="text-[20px] font-extrabold text-white leading-[1.1]">IT Staffing<br /><span className="bg-[linear-gradient(90deg,#f093fb,#f5576c)] bg-clip-text text-transparent">Reimagined.</span></div>
-          <div className="text-[10px] text-white/40 mt-2">4 weeks to launch · High organic traffic</div>
-        </div>
-        <div className="px-5 py-3 flex gap-2">
-          <div className="flex-1 h-[30px] rounded-md bg-[rgba(240,147,251,0.15)] border border-[rgba(240,147,251,0.2)]" />
-          <div className="flex-1 h-[30px] rounded-md bg-[rgba(245,87,108,0.15)] border border-[rgba(245,87,108,0.2)]" />
-        </div>
-      </div>
-    ),
-  },
-  {
     categories: ['fashion', 'd2c', 'shopify'],
     url: 'houseofnandini.com',
     href: 'https://houseofnandini.com',
@@ -1383,39 +1421,6 @@ const PORTFOLIO_CARDS: PortfolioCardData[] = [
               <div className="absolute inset-0 bg-[repeating-linear-gradient(45deg,rgba(107,66,38,0.05),rgba(107,66,38,0.05)_2px,transparent_2px,transparent_8px)]" />
             </div>
             <div className="flex-1 rounded-lg bg-[rgba(107,66,38,0.1)] border border-[rgba(107,66,38,0.15)]" />
-          </div>
-        </div>
-      </div>
-    ),
-  },
-  {
-    categories: ['healthcare', 'b2b', 'nextjs'],
-    url: 'neotechworldlab.com',
-    href: 'https://neotechworldlab.com',
-    tags: ['Healthcare', 'B2B & B2C', 'Life Sciences'],
-    platformTag: 'Next.js',
-    title: 'NeoTech World Lab',
-    oneliner: 'A credibility-first Next.js website for a genetic testing lab serving both individual consumers and institutional clients — designed to make complex science feel clear, trustworthy, and accessible.',
-    result: 'Successfully bridges a highly technical healthcare offering with everyday consumer accessibility.',
-    preview: (
-      <div className="absolute inset-0 flex flex-col" style={{ background: 'linear-gradient(135deg, #003d7a 0%, #0070c4 50%, #00a8e8 100%)' }}>
-        <div className="px-[18px] py-3 flex justify-between items-center">
-          <div className="text-[11px] font-extrabold text-white tracking-[1px]">NEOTECH WORLD LAB</div>
-          <div className="w-[60px] h-5 rounded-full bg-white/15" />
-        </div>
-        <div className="px-[18px] py-2 flex-1 flex gap-3">
-          <div className="flex-1 flex flex-col justify-center">
-            <div className="text-base font-extrabold text-white leading-[1.2]">Advanced Genetic<br />Testing Solutions</div>
-            <div className="text-[9px] text-white/60 mt-1.5">B2B · B2C · Healthcare · India &amp; Global</div>
-            <div className="flex gap-1.5 mt-2.5">
-              <div className="bg-white rounded-full px-3 py-1.5 text-[8px] text-[#003d7a] font-bold">Our Tests</div>
-              <div className="border border-white/40 rounded-full px-3 py-1.5 text-[8px] text-white">Learn More</div>
-            </div>
-          </div>
-          <div className="w-[70px] flex flex-col gap-1.5 justify-center">
-            <div className="h-7 rounded-md bg-white/10 border border-white/20" />
-            <div className="h-7 rounded-md bg-white/[0.07] border border-white/15" />
-            <div className="h-7 rounded-md bg-white/5 border border-white/10" />
           </div>
         </div>
       </div>
@@ -1499,6 +1504,7 @@ const PORTFOLIO_CARDS: PortfolioCardData[] = [
     categories: ['home', 'd2c', 'shopify'],
     url: 'h2s.co.in',
     href: 'https://h2s.co.in',
+    screenshotSrc: '/portfolio/h2s-preview.png',
     tags: ['Home & Lifestyle', 'D2C'],
     platformTag: 'Shopify',
     title: 'H2S',
@@ -1545,6 +1551,7 @@ function SitePreview({
   fallback,
   className,
   screenshotSrc,
+  screenshotClassName,
   useIframe = false,
   iframeWidth = 1440,
   iframeHeight = 850,
@@ -1557,6 +1564,7 @@ function SitePreview({
   fallback: ReactNode;
   className?: string;
   screenshotSrc?: string;
+  screenshotClassName?: string;
   useIframe?: boolean;
   iframeWidth?: number;
   iframeHeight?: number;
@@ -1576,7 +1584,7 @@ function SitePreview({
           alt={`${title} screenshot`}
           fill
           quality={100}
-          className="absolute inset-0 z-[2] object-cover object-top"
+          className={cn('absolute inset-0 z-[2] object-cover object-top', screenshotClassName)}
           sizes="(max-width: 700px) 100vw, (max-width: 1100px) 100vw, 900px"
         />
       ) : useIframe ? (
