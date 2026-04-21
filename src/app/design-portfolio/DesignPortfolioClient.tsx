@@ -1575,8 +1575,9 @@ function SitePreview({
           src={screenshotSrc}
           alt={`${title} screenshot`}
           fill
+          quality={100}
           className="absolute inset-0 z-[2] object-cover object-top"
-          sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 33vw"
+          sizes="(max-width: 700px) 100vw, (max-width: 1100px) 100vw, 900px"
         />
       ) : useIframe ? (
         <iframe
