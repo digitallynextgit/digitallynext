@@ -341,7 +341,7 @@ const CAROUSEL_SLIDES: CarouselSlide[] = [
   {
     url: 'h2s.co.in',
     src: 'https://h2s.co.in',
-    name: 'H2S',
+    name: 'Hard2Soft',
     platform: 'Shopify',
     screenshotSrc: '/portfolio/h2s-preview.png',
     fallbackBg: { background: '#f0f9ff', color: '#0c4a6e' },
@@ -1507,7 +1507,7 @@ const PORTFOLIO_CARDS: PortfolioCardData[] = [
     screenshotSrc: '/portfolio/h2s-preview.png',
     tags: ['Home & Lifestyle', 'D2C'],
     platformTag: 'Shopify',
-    title: 'H2S',
+    title: 'Hard2Soft',
     oneliner: 'A clean, conversion-focused Shopify store for a D2C home water softener brand — making a technical product feel simple, trustworthy, and easy to buy for everyday consumers across India.',
     result: 'Successfully simplified a technical home lifestyle product for D2C consumers, driving online sales directly to end users.',
     preview: (
