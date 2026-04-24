@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import Link from 'next/link';
 import { useSectionTheme } from '@/context/SectionThemeContext';
 import type { ServiceSection, ServiceTheme } from '@/data/services';
 
@@ -23,37 +24,62 @@ export default function FeatureGridSection({ section, theme }: Props) {
       <div className="w-full max-w-[1440px] mx-auto px-6 py-10 sm:px-12 md:py-16 lg:px-[120px] lg:py-20">
         <div className="max-w-[1200px] mx-auto flex flex-col gap-12 lg:gap-20">
           {/* ── Header Block ── */}
-          <div className="flex flex-col gap-4 lg:gap-6">
-            {/* Eyebrow */}
-            <p
-              className="text-[13px] lg:text-base font-medium uppercase"
-              style={{ color: theme.accent, letterSpacing: '3px' }}
-            >
-              {section.eyebrow}
-            </p>
+          <div
+            className={[
+              'flex flex-col gap-4 lg:gap-6',
+              section.ctaLabel ? 'lg:flex-row lg:justify-between' : '',
+            ].join(' ')}
+          >
+            {/* Left col */}
+            <div className="flex flex-col gap-4 lg:gap-6">
+              {/* Eyebrow */}
+              <p
+                className="text-[13px] lg:text-base font-medium uppercase"
+                style={{ color: theme.accent, letterSpacing: '3px' }}
+              >
+                {section.eyebrow}
+              </p>
 
-            {/* Heading */}
-            <h2
-              className={[
-                'font-bold leading-[1.1] tracking-[-0.02em] text-[32px] sm:text-[44px] lg:text-[60px]',
-                'transition-colors duration-700',
-                isDark ? 'text-white' : 'text-[#000000]',
-              ].join(' ')}
-            >
-              {section.headingLines.map((line, idx) => (
-                <span key={idx} className="block" dangerouslySetInnerHTML={{ __html: line }} />
-              ))}
-            </h2>
+              {/* Heading */}
+              <h2
+                className={[
+                  'font-bold leading-[1.1] tracking-[-0.02em] text-[32px] sm:text-[44px] lg:text-[60px]',
+                  'transition-colors duration-700',
+                  isDark ? 'text-white' : 'text-[#000000]',
+                ].join(' ')}
+              >
+                {section.headingLines.map((line, idx) => (
+                  <span key={idx} className="block" dangerouslySetInnerHTML={{ __html: line }} />
+                ))}
+              </h2>
 
-            {/* Description */}
-            <p
-              className={[
-                'text-base sm:text-lg lg:text-2xl leading-relaxed whitespace-pre-line font-light',
-                'transition-colors duration-700',
-                isDark ? 'text-[#737373]' : 'text-[#787878]',
-              ].join(' ')}
-              dangerouslySetInnerHTML={{ __html: section.description }}
-            />
+              {/* Description */}
+              <p
+                className={[
+                  'text-base sm:text-lg lg:text-2xl leading-relaxed whitespace-pre-line font-light',
+                  'transition-colors duration-700',
+                  isDark ? 'text-[#737373]' : 'text-[#787878]',
+                ].join(' ')}
+                dangerouslySetInnerHTML={{ __html: section.description }}
+              />
+            </div>
+
+            {/* Right col — CTA pinned to top */}
+            {section.ctaLabel && section.ctaHref && (
+              <div className="shrink-0 lg:pt-1">
+                <Link
+                  href={section.ctaHref}
+                  className="group inline-flex items-center gap-3 no-underline w-fit"
+                >
+                  <span className="transition-transform duration-300 ease-out group-hover:-translate-x-2">
+                    <Image src="/figma/services/arrow1.svg" alt="" width={30} height={20} />
+                  </span>
+                  <span className="text-[18px] leading-snug font-normal text-[#E21F26] transition-opacity duration-200 group-hover:opacity-70">
+                    {section.ctaLabel}
+                  </span>
+                </Link>
+              </div>
+            )}
           </div>
 
           {/* ── Card Grid ──
