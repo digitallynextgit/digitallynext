@@ -9,6 +9,7 @@ export const siteConfig = {
 
 export const navLinksLeft = [
   { label: 'HOME', href: '/' },
+  { label: 'PORTFOLIO', href: '/design-portfolio' },
   { label: 'SERVICES', href: '/#services' },
 ];
 

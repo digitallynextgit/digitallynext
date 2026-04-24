@@ -82,6 +82,8 @@ export type ServiceSection =
       description: string;
       cards: ServiceFeatureCard[];
       footerText?: string;
+      ctaLabel?: string;
+      ctaHref?: string;
     }
   | {
       type: 'scope';
@@ -763,6 +765,8 @@ export const services: ServiceDetail[] = [
           },
         ],
         footerText: 'From brand sites to high-traffic platforms to D2C commerce ecosystems.',
+        ctaLabel: 'Explore Our Portfolio',
+        ctaHref: '/design-portfolio',
       },
       {
         type: 'scope',
@@ -921,7 +925,7 @@ export const services: ServiceDetail[] = [
               'Define the level of human oversight required, ensuring strategy, ethics, and contextual nuance remain intact.',
           },
           {
-            iconSrc: '/services/icon7.png',
+            iconSrc: '/services/Icon7.png',
             title: 'AI with Defined Outcomes',
             description:
               'Integrating AI to execute with precision, measuring intelligence-driven outcomes rather than just outputs.',
