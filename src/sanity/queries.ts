@@ -2,7 +2,7 @@ import { groq } from 'next-sanity';
 
 // All posts for blog listing page
 export const allPostsQuery = groq`
-  *[_type == "post"] | order(coalesce(featured, false) desc, publishedAt desc) {
+  *[_type == "post"] | order(publishedAt desc) {
     _id,
     title,
     slug,

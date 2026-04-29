@@ -177,19 +177,19 @@ export default function BlogPostClient({ post }: { post: Post }) {
 
   useEffect(() => {
     if (!headings.length) return;
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) setActiveId(entry.target.id);
-        });
-      },
-      { rootMargin: '-20% 0% -70% 0%', threshold: 0 }
-    );
-    headings.forEach((h) => {
-      const el = document.getElementById(h.id);
-      if (el) observer.observe(el);
-    });
-    return () => observer.disconnect();
+    const OFFSET = 140; // navbar height + buffer
+    const onScroll = () => {
+      const scrollY = window.scrollY + OFFSET;
+      let current = headings[0].id;
+      for (const h of headings) {
+        const el = document.getElementById(h.id);
+        if (el && el.offsetTop <= scrollY) current = h.id;
+      }
+      setActiveId(current);
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener('scroll', onScroll);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [post.body]);
 
