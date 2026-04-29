@@ -3,7 +3,7 @@ import { client } from '@/sanity/client';
 import { postBySlugQuery } from '@/sanity/queries';
 import { notFound } from 'next/navigation';
 import BlogPostClient from './BlogPostClient';
-import { DUMMY_POSTS } from '../dummyPosts';
+// import { DUMMY_POSTS } from '../dummyPosts';
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -27,8 +27,9 @@ async function getPost(slug: string): Promise<SanityPostMeta | null> {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const post = await getPost(slug);
-  const dummy = DUMMY_POSTS.find((d) => d.slug.current === slug);
-  const resolved = post ?? dummy;
+  // const dummy = DUMMY_POSTS.find((d) => d.slug.current === slug);
+  const resolved = post ?? null;
+  // const resolved = post ?? dummy;
 
   if (!resolved) return { title: 'Post Not Found | Digitally Next' };
 
@@ -55,8 +56,8 @@ export default async function BlogPostPage({ params }: Props) {
 
   if (post) return <BlogPostClient post={post} />;
 
-  const dummy = DUMMY_POSTS.find((d) => d.slug.current === slug);
-  if (dummy) return <BlogPostClient post={dummy} />;
+  // const dummy = DUMMY_POSTS.find((d) => d.slug.current === slug);
+  // if (dummy) return <BlogPostClient post={dummy} />;
 
   notFound();
 }

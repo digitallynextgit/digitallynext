@@ -6,7 +6,6 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { ArrowRight, Calendar, User } from 'lucide-react';
 import { urlFor } from '@/sanity/image';
-import { DUMMY_POSTS, DUMMY_CATEGORIES } from './dummyPosts';
 
 interface Post {
   _id: string;
@@ -37,10 +36,9 @@ function formatDate(dateStr?: string) {
 export default function BlogPageClient({ posts, categories }: { posts: Post[]; categories: Category[] }) {
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
 
-  const allPosts = [...posts, ...DUMMY_POSTS];
+  const allPosts = [...posts];
   const allCategories = [
     ...categories,
-    ...DUMMY_CATEGORIES.filter((d) => !categories.some((c) => c._id === d._id)),
   ];
 
   const filteredPosts = activeCategory
@@ -60,7 +58,7 @@ export default function BlogPageClient({ posts, categories }: { posts: Post[]; c
             >
               Insights &amp; Ideas<span className="text-[#E21F26]">.</span>
             </h1>
-            <p className="mt-4 text-[#787878] max-w-[520px] leading-relaxed" style={{ fontSize: 'clamp(1rem, 2vw, 1.2rem)' }}>
+            <p className="mt-4 text-[#787878] max-w-130 leading-relaxed" style={{ fontSize: 'clamp(1rem, 2vw, 1.2rem)' }}>
               Strategies, trends, and thought leadership from the Digitally Next team.
             </p>
           </motion.div>
@@ -121,7 +119,7 @@ export default function BlogPageClient({ posts, categories }: { posts: Post[]; c
                   className="group flex flex-col w-full bg-white border border-black/10 rounded-xl overflow-hidden hover:-translate-y-1.5 hover:shadow-[0_20px_60px_rgba(0,0,0,0.1)] transition-all duration-300"
                 >
                   {/* Image */}
-                  <div className="relative w-full aspect-[16/10] overflow-hidden bg-[#f5f5f5]">
+                  <div className="relative w-full aspect-16/10 overflow-hidden bg-[#f5f5f5]">
                     {post.mainImage?.asset ? (
                       <Image
                         src={urlFor(post.mainImage).width(600).height(340).url()}
