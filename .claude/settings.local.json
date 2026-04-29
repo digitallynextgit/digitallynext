@@ -2,7 +2,9 @@
   "permissions": {
     "allow": [
       "Bash(npx eslint *)",
-      "Bash(npm run *)"
+      "Bash(npm run *)",
+      "Read(//c/Users/Karan/.claude/projects/c--Users-Karan-Desktop-Projects-Digitally-next-projects-digitallynext/memory/**)",
+      "Bash(pnpm build *)"
     ]
   }
 }

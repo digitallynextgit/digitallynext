@@ -2,19 +2,27 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowLeft, Calendar, User } from 'lucide-react';
+import { ArrowLeft, Calendar, Clock, ChevronDown, User } from 'lucide-react';
 import { PortableText, PortableTextComponents } from '@portabletext/react';
 import { urlFor } from '@/sanity/image';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+interface FaqItem {
+  question: string;
+  answer: string;
+}
+
 interface Post {
   _id: string;
   title: string;
   slug: { current: string };
   mainImage?: { asset: { _ref: string }; alt?: string };
+  heroImageUrl?: string;
   excerpt?: string;
   publishedAt?: string;
+  readTime?: number;
+  faqsJson?: string;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   body?: any[];
   categories?: { _id: string; title: string }[];
@@ -26,309 +34,288 @@ interface Post {
   };
 }
 
-function formatDate(dateStr?: string) {
-  if (!dateStr) return '';
-  return new Date(dateStr).toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  });
+function parseFaqs(json?: string): FaqItem[] {
+  if (!json) return [];
+  try {
+    const parsed = JSON.parse(json);
+    if (Array.isArray(parsed)) return parsed as FaqItem[];
+  } catch { /* invalid JSON — silently ignore */ }
+  return [];
 }
 
-const portableTextComponents: PortableTextComponents = {
-  types: {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    image: ({ value }: { value: any }) => {
-      if (!value?.asset?._ref) return null;
-      return (
-        <figure className="blog-content-image">
-          <Image
-            src={urlFor(value).width(1200).url()}
-            alt={value.alt || 'Blog image'}
-            width={1200}
-            height={675}
-            style={{ width: '100%', height: 'auto', borderRadius: 12 }}
-          />
-          {value.caption && <figcaption className="blog-content-caption">{value.caption}</figcaption>}
-        </figure>
-      );
+interface TocItem {
+  id: string;
+  text: string;
+  level: 2 | 3;
+}
+
+function formatDate(dateStr?: string) {
+  if (!dateStr) return '';
+  return new Date(dateStr).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+}
+
+function slugify(text: string) {
+  return text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+}
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function extractHeadings(body: any[]): TocItem[] {
+  return body
+    .filter((b) => b.style === 'h2' || b.style === 'h3')
+    .map((b) => ({
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      id: slugify((b.children ?? []).map((c: any) => c.text).join('')),
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      text: (b.children ?? []).map((c: any) => c.text).join(''),
+      level: (b.style === 'h2' ? 2 : 3) as 2 | 3,
+    }));
+}
+
+function makePortableComponents(isDummy: boolean): PortableTextComponents {
+  return {
+    types: {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      image: ({ value }: { value: any }) => {
+        if (!value?.asset?._ref) return null;
+        return (
+          <figure className="my-8">
+            <Image src={urlFor(value).width(1200).url()} alt={value.alt || 'Blog image'} width={1200} height={675} className="w-full h-auto rounded-xl" />
+            {value.caption && <figcaption className="text-center text-[13px] text-[#A1A1A1] mt-3 italic">{value.caption}</figcaption>}
+          </figure>
+        );
+      },
     },
-  },
-  marks: {
-    link: ({ children, value }) => {
-      const rel = !value.href?.startsWith('/') ? 'noopener noreferrer' : undefined;
-      const target = !value.href?.startsWith('/') ? '_blank' : undefined;
-      return (
-        <a href={value.href} target={target} rel={rel} style={{ color: 'var(--accent)', textDecoration: 'underline' }}>
+    marks: {
+      link: ({ children, value }) => {
+        const rel = !value.href?.startsWith('/') ? 'noopener noreferrer' : undefined;
+        const target = !value.href?.startsWith('/') ? '_blank' : undefined;
+        return <a href={value.href} target={target} rel={rel} className="text-[#E21F26] underline underline-offset-2">{children}</a>;
+      },
+      code: ({ children }) => (
+        <code className="bg-[#f5f5f5] text-[#E21F26] px-1.5 py-0.5 rounded text-[0.9em] font-mono">{children}</code>
+      ),
+    },
+    block: {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      h2: ({ children, value }: any) => {
+        const text = (value.children ?? []).map((c: { text: string }) => c.text).join('');
+        const id = slugify(text);
+        const isFaq = text === 'Frequently Asked Questions';
+        return (
+          <h2
+            id={id}
+            className={[
+              'font-bold mt-12 mb-4 scroll-mt-32',
+              isFaq
+                ? 'text-[clamp(1.4rem,2.5vw,1.75rem)] text-[#E21F26] border-t border-black/10 pt-10'
+                : 'text-[clamp(1.5rem,3vw,2rem)] text-black',
+            ].join(' ')}
+          >
+            {children}
+          </h2>
+        );
+      },
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      h3: ({ children, value }: any) => {
+        const text = (value.children ?? []).map((c: { text: string }) => c.text).join('');
+        const id = slugify(text);
+        return (
+          <h3 id={id} className="text-[clamp(1.1rem,2vw,1.25rem)] font-semibold mt-6 mb-2 text-black scroll-mt-32">
+            {children}
+          </h3>
+        );
+      },
+      blockquote: ({ children }) => (
+        <blockquote className="border-l-[3px] border-[#E21F26] pl-6 py-1 my-7 bg-[#fafafa] rounded-r-lg italic text-[#555555] text-[1.05rem] leading-[1.7]">
           {children}
-        </a>
-      );
+        </blockquote>
+      ),
+      normal: ({ children }) => (
+        <p className="text-[1.05rem] leading-[1.85] text-[#444444] mb-5">{children}</p>
+      ),
     },
-    code: ({ children }) => (
-      <code
-        style={{
-          background: 'var(--bg-surface)',
-          padding: '2px 6px',
-          borderRadius: 4,
-          fontSize: '0.9em',
-        }}
+    list: {
+      bullet: ({ children }) => <ul className="list-disc pl-6 my-4 space-y-2">{children}</ul>,
+      number: ({ children }) => <ol className="list-decimal pl-6 my-4 space-y-2">{children}</ol>,
+    },
+    listItem: {
+      bullet: ({ children }) => <li className="text-[1.05rem] leading-[1.8] text-[#444444]">{children}</li>,
+      number: ({ children }) => <li className="text-[1.05rem] leading-[1.8] text-[#444444]">{children}</li>,
+    },
+  };
+}
+
+function FaqAccordionItem({ faq, index }: { faq: FaqItem; index: number }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <div className="border-b border-black/10 last:border-b-0">
+      <button
+        onClick={() => setOpen((o) => !o)}
+        className="w-full flex items-center justify-between gap-4 py-5 text-left cursor-pointer"
+        aria-expanded={open}
       >
-        {children}
-      </code>
-    ),
-  },
-  block: {
-    h2: ({ children }) => (
-      <h2
-        style={{
-          fontSize: 'clamp(1.5rem, 3vw, 2rem)',
-          fontWeight: 700,
-          marginTop: 48,
-          marginBottom: 16,
-          color: 'var(--text-primary)',
-        }}
+        <span className="text-[15px] font-semibold text-black leading-snug">{faq.question}</span>
+        <ChevronDown
+          size={18}
+          className={`shrink-0 text-[#E21F26] transition-transform duration-300 ${open ? 'rotate-180' : ''}`}
+        />
+      </button>
+      <div
+        className={`overflow-hidden transition-all duration-300 ease-in-out ${open ? 'max-h-96 pb-5' : 'max-h-0'}`}
       >
-        {children}
-      </h2>
-    ),
-    h3: ({ children }) => (
-      <h3
-        style={{
-          fontSize: 'clamp(1.25rem, 2.5vw, 1.5rem)',
-          fontWeight: 700,
-          marginTop: 36,
-          marginBottom: 12,
-          color: 'var(--text-primary)',
-        }}
-      >
-        {children}
-      </h3>
-    ),
-    blockquote: ({ children }) => <blockquote className="blog-content-quote">{children}</blockquote>,
-    normal: ({ children }) => (
-      <p
-        style={{
-          fontSize: '1.1rem',
-          lineHeight: 1.8,
-          color: 'var(--text-secondary)',
-          marginBottom: 20,
-        }}
-      >
-        {children}
-      </p>
-    ),
-  },
-  list: {
-    bullet: ({ children }) => <ul className="blog-content-list">{children}</ul>,
-    number: ({ children }) => <ol className="blog-content-list blog-content-list-numbered">{children}</ol>,
-  },
-  listItem: {
-    bullet: ({ children }) => <li className="blog-content-list-item">{children}</li>,
-    number: ({ children }) => <li className="blog-content-list-item">{children}</li>,
-  },
-};
+        <p className="text-[15px] leading-relaxed text-[#555555]">{faq.answer}</p>
+      </div>
+    </div>
+  );
+}
 
 export default function BlogPostClient({ post }: { post: Post }) {
+  const headings = post.body ? extractHeadings(post.body) : [];
+  const [activeId, setActiveId] = useState<string>('');
+  const isDummy = !post.mainImage?.asset;
+  const faqs = parseFaqs(post.faqsJson);
+
+  useEffect(() => {
+    if (!headings.length) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setActiveId(entry.target.id);
+        });
+      },
+      { rootMargin: '-20% 0% -70% 0%', threshold: 0 }
+    );
+    headings.forEach((h) => {
+      const el = document.getElementById(h.id);
+      if (el) observer.observe(el);
+    });
+    return () => observer.disconnect();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [post.body]);
+
+  const heroSrc = post.heroImageUrl ?? (post.mainImage?.asset ? urlFor(post.mainImage).width(1920).height(700).url() : null);
+
   return (
-    <article style={{ background: 'var(--bg-primary)', minHeight: '100vh' }}>
-      {/* Hero Image */}
-      <div className="blog-post-hero">
-        {post.mainImage?.asset ? (
-          <Image
-            src={urlFor(post.mainImage).width(1600).height(600).url()}
-            alt={post.mainImage.alt || post.title}
-            fill
-            priority
-            style={{ objectFit: 'cover' }}
-          />
+    <article className="bg-white min-h-screen">
+      {/* ── Hero Image ── */}
+      <div className="relative w-full h-[320px] md:h-[440px] lg:h-[520px] overflow-hidden bg-[#f0f0f0] mt-14 md:mt-16 lg:mt-24 2xl:mt-28">
+        {heroSrc ? (
+          <Image src={heroSrc} alt={post.title} fill priority className="object-cover object-center" unoptimized={!!post.heroImageUrl} />
         ) : (
-          <div
-            style={{
-              width: '100%',
-              height: '100%',
-              background: 'linear-gradient(135deg, var(--bg-surface) 0%, #E5393522 100%)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}
-          >
-            <span
-              style={{
-                fontSize: 120,
-                fontWeight: 900,
-                color: 'rgba(255,255,255,0.03)',
-              }}
-            >
-              DN
-            </span>
+          <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-[#f5f5f5] to-[#e8e8e8]">
+            <span className="text-[120px] font-black text-black/5 leading-none">DN</span>
           </div>
         )}
-        <div className="blog-post-hero-overlay" />
+        {/* Bottom blend into white */}
+        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-white via-white/60 to-transparent" />
       </div>
 
-      {/* Content */}
-      <div className="container" style={{ maxWidth: 800 }}>
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          style={{ marginTop: -80, position: 'relative', zIndex: 2 }}
-        >
+      {/* ── Content ── */}
+      <div className="max-w-7xl mx-auto px-6 lg:px-10 pb-24">
+        <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
           {/* Back link */}
-          <Link
-            href="/blog"
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: 6,
-              fontSize: 14,
-              color: 'var(--text-secondary)',
-              marginBottom: 24,
-              transition: 'color 0.2s',
-            }}
-          >
+          <Link href="/blog" className="inline-flex items-center gap-2 text-[14px] text-[#A1A1A1] hover:text-black transition-colors duration-200 mt-4 mb-8">
             <ArrowLeft size={14} /> Back to Blog
           </Link>
 
-          {/* Categories */}
-          {post.categories && post.categories.length > 0 && (
-            <div
-              style={{
-                display: 'flex',
-                gap: 8,
-                flexWrap: 'wrap',
-                marginBottom: 16,
-              }}
-            >
-              {post.categories.map((cat) => (
-                <span key={cat._id} className="blog-card-category" style={{ position: 'static' }}>
-                  {cat.title}
-                </span>
-              ))}
-            </div>
-          )}
-
-          {/* Title */}
-          <h1
-            style={{
-              fontSize: 'clamp(2rem, 5vw, 3rem)',
-              fontWeight: 800,
-              lineHeight: 1.15,
-              marginBottom: 20,
-              letterSpacing: '-0.02em',
-            }}
-          >
-            {post.title}
-          </h1>
-
-          {/* Meta */}
-          <div
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: 20,
-              marginBottom: 40,
-              flexWrap: 'wrap',
-            }}
-          >
-            {post.author && (
-              <div
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: 10,
-                }}
-              >
-                {post.author.image?.asset ? (
-                  <Image
-                    src={urlFor(post.author.image).width(40).height(40).url()}
-                    alt={post.author.name}
-                    width={40}
-                    height={40}
-                    style={{ borderRadius: '50%', objectFit: 'cover' }}
-                  />
-                ) : (
-                  <div
-                    style={{
-                      width: 40,
-                      height: 40,
-                      borderRadius: '50%',
-                      background: 'var(--bg-surface)',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      color: 'var(--text-muted)',
-                    }}
-                  >
-                    <User size={18} />
-                  </div>
-                )}
-                <span
-                  style={{
-                    fontSize: 15,
-                    fontWeight: 600,
-                    color: 'var(--text-primary)',
-                  }}
-                >
-                  {post.author.name}
-                </span>
+          {/* Post header — full width above the two-column layout */}
+          <div className="mb-10">
+            {post.categories && post.categories.length > 0 && (
+              <div className="flex gap-2 flex-wrap mb-4">
+                {post.categories.map((cat) => (
+                  <span key={cat._id} className="bg-[#E21F26] text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full">
+                    {cat.title}
+                  </span>
+                ))}
               </div>
             )}
-            {post.publishedAt && (
-              <span
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: 6,
-                  fontSize: 14,
-                  color: 'var(--text-muted)',
-                }}
-              >
-                <Calendar size={14} />
-                {formatDate(post.publishedAt)}
-              </span>
-            )}
+
+            <h1 className="font-extrabold leading-[1.15] tracking-[-0.02em] text-black mb-5" style={{ fontSize: 'clamp(2rem, 4.5vw, 3rem)' }}>
+              {post.title}
+            </h1>
+
+            <div className="flex items-center gap-5 flex-wrap mb-8">
+              {post.author && (
+                <div className="flex items-center gap-2.5">
+                  {post.author.image?.asset ? (
+                    <Image src={urlFor(post.author.image).width(40).height(40).url()} alt={post.author.name} width={40} height={40} className="rounded-full object-cover" />
+                  ) : (
+                    <div className="w-9 h-9 rounded-full bg-[#f0f0f0] flex items-center justify-center">
+                      <User size={16} className="text-[#A1A1A1]" />
+                    </div>
+                  )}
+                  <span className="text-[15px] font-semibold text-black">{post.author.name}</span>
+                </div>
+              )}
+              {post.publishedAt && (
+                <span className="flex items-center gap-1.5 text-[14px] text-[#A1A1A1]">
+                  <Calendar size={14} />
+                  {formatDate(post.publishedAt)}
+                </span>
+              )}
+              {post.readTime && (
+                <span className="flex items-center gap-1.5 text-[14px] text-[#A1A1A1]">
+                  <Clock size={14} />
+                  {post.readTime} min read
+                </span>
+              )}
+            </div>
+
+            <div className="h-px bg-black/10" />
           </div>
 
-          {/* Divider */}
-          <div
-            style={{
-              height: 1,
-              background: 'var(--border)',
-              marginBottom: 40,
-            }}
-          />
+          {/* ── Two-column: TOC + Body ── */}
+          <div className="grid grid-cols-1 lg:grid-cols-[220px_1fr] gap-10 lg:gap-16 items-start">
 
-          {/* Body */}
-          {post.body && (
-            <div className="blog-content">
-              <PortableText value={post.body} components={portableTextComponents} />
+            {/* Table of Contents */}
+            {headings.length > 0 && (
+              <aside className="hidden lg:block sticky top-32 self-start">
+                <p className="text-[10px] font-bold tracking-[0.2em] uppercase text-[#A1A1A1] mb-4">Contents</p>
+                <nav className="flex flex-col">
+                  {headings.map((h) => (
+                    <button
+                      key={h.id}
+                      onClick={() => document.getElementById(h.id)?.scrollIntoView({ behavior: 'smooth' })}
+                      className={[
+                        'text-left py-1.5 border-l-2 transition-all duration-200 cursor-pointer',
+                        h.level === 3 ? 'pl-5 text-[13px]' : 'pl-3 text-[13px] font-medium',
+                        activeId === h.id
+                          ? 'border-[#E21F26] text-[#E21F26]'
+                          : 'border-black/10 text-[#A1A1A1] hover:border-black/30 hover:text-black',
+                      ].join(' ')}
+                    >
+                      {h.text}
+                    </button>
+                  ))}
+                </nav>
+              </aside>
+            )}
+
+            {/* Article body */}
+            <div className="min-w-0">
+              {post.body && <PortableText value={post.body} components={makePortableComponents(isDummy)} />}
+
+              {/* FAQs from Sanity JSON field */}
+              {faqs.length > 0 && (
+                <div className="mt-12">
+                  <h2 className="text-[clamp(1.4rem,2.5vw,1.75rem)] font-bold text-[#E21F26] border-t border-black/10 pt-10 mb-6 scroll-mt-32" id="frequently-asked-questions">
+                    Frequently Asked Questions
+                  </h2>
+                  <div className="flex flex-col">
+                    {faqs.map((faq, i) => (
+                      <FaqAccordionItem key={i} faq={faq} index={i} />
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Bottom nav */}
+              <div className="h-px bg-black/10 mt-14 mb-8" />
+              <Link href="/blog" className="inline-flex items-center gap-2 text-[14px] font-semibold text-[#E21F26] hover:gap-3 transition-all duration-200">
+                <ArrowLeft size={14} /> Back to all posts
+              </Link>
             </div>
-          )}
-
-          {/* Bottom divider + back link */}
-          <div
-            style={{
-              height: 1,
-              background: 'var(--border)',
-              margin: '60px 0 30px',
-            }}
-          />
-          <Link
-            href="/blog"
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: 6,
-              fontSize: 14,
-              color: 'var(--accent)',
-              fontWeight: 600,
-              marginBottom: 80,
-              transition: 'gap 0.2s',
-            }}
-          >
-            <ArrowLeft size={14} /> Back to all posts
-          </Link>
+          </div>
         </motion.div>
       </div>
     </article>

@@ -2,13 +2,15 @@ import { groq } from 'next-sanity';
 
 // All posts for blog listing page
 export const allPostsQuery = groq`
-  *[_type == "post"] | order(publishedAt desc) {
+  *[_type == "post"] | order(coalesce(featured, false) desc, publishedAt desc) {
     _id,
     title,
     slug,
     mainImage,
     excerpt,
     publishedAt,
+    featured,
+    readTime,
     "categories": categories[]->{ _id, title },
     "author": author->{ name, image }
   }
@@ -23,6 +25,11 @@ export const postBySlugQuery = groq`
     mainImage,
     excerpt,
     publishedAt,
+    featured,
+    readTime,
+    faqsJson,
+    metaTitle,
+    metaDescription,
     body,
     "categories": categories[]->{ _id, title },
     "author": author->{ name, slug, image, bio }
