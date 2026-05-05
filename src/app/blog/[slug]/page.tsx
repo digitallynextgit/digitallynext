@@ -34,11 +34,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!resolved) return { title: 'Post Not Found | Digitally Next' };
 
   const metaTitle = (resolved as SanityPostMeta).metaTitle || `${resolved.title} | Digitally Next Blog`;
-  const metaDesc = (resolved as SanityPostMeta).metaDescription || resolved.excerpt || `Read ${resolved.title} on the Digitally Next blog.`;
+  const metaDesc =
+    (resolved as SanityPostMeta).metaDescription ||
+    resolved.excerpt ||
+    `Read ${resolved.title} on the Digitally Next blog.`;
 
   return {
     title: metaTitle,
     description: metaDesc,
+    alternates: {
+      canonical: `https://www.digitallynext.com/blog/${slug}`,
+    },
     openGraph: {
       title: metaTitle,
       description: metaDesc,

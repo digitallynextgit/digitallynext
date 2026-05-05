@@ -4,6 +4,9 @@ export const metadata: Metadata = {
   title: 'Careers | Digitally Next — Build Work That Matters',
   description:
     'Join the Digitally Next team. We hire for how you think. Explore open roles in strategy, creative, performance, ADAC, and more.',
+  alternates: {
+    canonical: 'https://www.digitallynext.com/careers',
+  },
   openGraph: {
     title: 'Careers | Digitally Next',
     description:

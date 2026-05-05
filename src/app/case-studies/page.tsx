@@ -7,6 +7,9 @@ import { ThemeSection } from '@/components/ui/ThemeSection.tsx';
 export const metadata = {
   title: 'Case Studies | Digitally Next',
   description: 'Explore case studies from Digitally Next.',
+  alternates: {
+    canonical: 'https://www.digitallynext.com/case-studies',
+  },
 };
 
 export default function CaseStudiesPage() {

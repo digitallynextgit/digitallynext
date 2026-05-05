@@ -37,9 +37,7 @@ export default function BlogPageClient({ posts, categories }: { posts: Post[]; c
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
 
   const allPosts = [...posts];
-  const allCategories = [
-    ...categories,
-  ];
+  const allCategories = [...categories];
 
   const filteredPosts = activeCategory
     ? allPosts.filter((p) => p.categories?.some((c) => c._id === activeCategory))
@@ -58,7 +56,10 @@ export default function BlogPageClient({ posts, categories }: { posts: Post[]; c
             >
               Insights &amp; Ideas<span className="text-[#E21F26]">.</span>
             </h1>
-            <p className="mt-4 text-[#787878] max-w-130 leading-relaxed" style={{ fontSize: 'clamp(1rem, 2vw, 1.2rem)' }}>
+            <p
+              className="mt-4 text-[#787878] max-w-130 leading-relaxed"
+              style={{ fontSize: 'clamp(1rem, 2vw, 1.2rem)' }}
+            >
               Strategies, trends, and thought leadership from the Digitally Next team.
             </p>
           </motion.div>
@@ -166,9 +167,7 @@ export default function BlogPageClient({ posts, categories }: { posts: Post[]; c
                       )}
                     </div>
 
-                    <h3 className="text-[17px] font-bold leading-snug text-black mb-2.5 line-clamp-2">
-                      {post.title}
-                    </h3>
+                    <h3 className="text-[17px] font-bold leading-snug text-black mb-2.5 line-clamp-2">{post.title}</h3>
 
                     {post.excerpt && (
                       <p className="text-[14px] text-[#787878] leading-relaxed line-clamp-3 mb-4">{post.excerpt}</p>

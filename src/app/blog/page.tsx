@@ -7,6 +7,9 @@ export const metadata: Metadata = {
   title: 'Blog | Digitally Next',
   description:
     'Insights, strategies, and thought leadership from Digitally Next — your growth-driven global digital marketing partner.',
+  alternates: {
+    canonical: 'https://www.digitallynext.com/blog',
+  },
 };
 
 // Revalidate every 60 seconds

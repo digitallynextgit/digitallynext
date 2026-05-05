@@ -8,6 +8,9 @@ export const metadata: Metadata = {
   title: 'Contact Us | Digitally Next',
   description:
     "We work best with teams that value structure, clarity, and long-term thinking. Let's build something that lasts.",
+  alternates: {
+    canonical: 'https://www.digitallynext.com/contact',
+  },
   openGraph: {
     title: 'Contact Us | Digitally Next',
     description:

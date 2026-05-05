@@ -20,6 +20,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `${entry.role.title} | Digitally Next Careers`,
     description: entry.role.description?.intro ?? `Apply for ${entry.role.title} at Digitally Next.`,
+    alternates: {
+      canonical: `https://www.digitallynext.com/careers/${departmentSlug}/${roleSlug}`,
+    },
     openGraph: {
       title: `${entry.role.title} | Digitally Next Careers`,
       description: entry.role.description?.intro ?? `Apply for ${entry.role.title} at Digitally Next.`,

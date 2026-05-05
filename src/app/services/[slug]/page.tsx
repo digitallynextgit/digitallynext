@@ -18,6 +18,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: service.metaTitle,
     description: service.metaDescription,
+    alternates: {
+      canonical: `https://www.digitallynext.com/services/${slug}`,
+    },
     openGraph: {
       title: service.metaTitle,
       description: service.metaDescription,

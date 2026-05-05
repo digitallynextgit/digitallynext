@@ -25,10 +25,9 @@ export default function FeatureGridSection({ section, theme }: Props) {
         <div className="max-w-[1200px] mx-auto flex flex-col gap-12 lg:gap-20">
           {/* ── Header Block ── */}
           <div
-            className={[
-              'flex flex-col gap-4 lg:gap-6',
-              section.ctaLabel ? 'lg:flex-row lg:justify-between' : '',
-            ].join(' ')}
+            className={['flex flex-col gap-4 lg:gap-6', section.ctaLabel ? 'lg:flex-row lg:justify-between' : ''].join(
+              ' '
+            )}
           >
             {/* Left col */}
             <div className="flex flex-col gap-4 lg:gap-6">
@@ -67,10 +66,7 @@ export default function FeatureGridSection({ section, theme }: Props) {
             {/* Right col — CTA pinned to top */}
             {section.ctaLabel && section.ctaHref && (
               <div className="shrink-0 lg:pt-1">
-                <Link
-                  href={section.ctaHref}
-                  className="group inline-flex items-center gap-3 no-underline w-fit"
-                >
+                <Link href={section.ctaHref} className="group inline-flex items-center gap-3 no-underline w-fit">
                   <span className="transition-transform duration-300 ease-out group-hover:-translate-x-2">
                     <Image src="/figma/services/arrow1.svg" alt="" width={30} height={20} />
                   </span>

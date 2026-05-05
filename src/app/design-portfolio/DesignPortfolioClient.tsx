@@ -46,7 +46,11 @@ const CAROUSEL_SLIDES: CarouselSlide[] = [
         <FallbackBody>
           <FallbackTag style={{ color: '#e21f26' }}>IT Services · SAP · QA · Staffing</FallbackTag>
           <FallbackH1 style={{ fontSize: 22 }}>
-            Innovate,<br />Transform,<br /><span style={{ color: '#e21f26' }}>Succeed</span>
+            Innovate,
+            <br />
+            Transform,
+            <br />
+            <span style={{ color: '#e21f26' }}>Succeed</span>
           </FallbackH1>
           <FallbackSub>Think, Emerge, Connect, Hustle</FallbackSub>
           <div className="flex gap-2">
@@ -117,9 +121,15 @@ const CAROUSEL_SLIDES: CarouselSlide[] = [
         <FallbackBody>
           <FallbackTag style={{ color: '#d4a255' }}>Green Coffee Beans · Indian Origin</FallbackTag>
           <FallbackH1 style={{ color: '#f0d5a8' }}>
-            Gajna Coffee<br /><span style={{ color: '#d4a255' }}>Brewing</span><br />Excellence...
+            Gajna Coffee
+            <br />
+            <span style={{ color: '#d4a255' }}>Brewing</span>
+            <br />
+            Excellence...
           </FallbackH1>
-          <FallbackSub style={{ color: '#f0d5a8' }}>Exporter of premium green coffee beans. USA · Europe · Middle East</FallbackSub>
+          <FallbackSub style={{ color: '#f0d5a8' }}>
+            Exporter of premium green coffee beans. USA · Europe · Middle East
+          </FallbackSub>
           <div className="flex gap-2">
             <FallbackBtn className="bg-[#d4a255] text-[#1c0a00]">Our Coffees</FallbackBtn>
             <FallbackBtn className="border border-[rgba(212,162,85,0.35)] text-[#d4a255]">Our Story</FallbackBtn>
@@ -152,7 +162,9 @@ const CAROUSEL_SLIDES: CarouselSlide[] = [
         <FallbackBody>
           <FallbackTag style={{ color: '#f093fb' }}>AI-Powered Talent Platform</FallbackTag>
           <FallbackH1 style={{ color: 'white' }}>
-            Intelligent Hiring<br />for the{' '}
+            Intelligent Hiring
+            <br />
+            for the{' '}
             <span className="bg-[linear-gradient(90deg,#f093fb,#f5576c)] bg-clip-text text-transparent">AI Age</span>
           </FallbackH1>
           <FallbackSub>Where intelligent matching meets human potential</FallbackSub>
@@ -177,12 +189,20 @@ const CAROUSEL_SLIDES: CarouselSlide[] = [
         <FallbackNav style={{ borderBottom: '1px solid rgba(45,26,14,0.1)', justifyContent: 'space-between' }}>
           <div />
           <div className="font-semibold text-[12px] tracking-[3px] shrink-0 font-serif">HOUSE OF NANDINI</div>
-          <FallbackCTA className="border-[1.5px] border-[rgba(45,26,14,0.3)] text-[#2d1a0e] !text-[7px]">Shop Now</FallbackCTA>
+          <FallbackCTA className="border-[1.5px] border-[rgba(45,26,14,0.3)] text-[#2d1a0e] !text-[7px]">
+            Shop Now
+          </FallbackCTA>
         </FallbackNav>
         <FallbackBody>
           <FallbackTag style={{ color: '#8b5e3c' }}>Lucknow&apos;s Finest · Chikankari Artisan</FallbackTag>
-          <FallbackH1 className="font-serif" style={{ color: '#2d1a0e', fontSize: 19 }}>The Art of<br />Chikankari</FallbackH1>
-          <FallbackSub style={{ color: '#6b4226' }}>Handcrafted ethnic wear · Made with love · Heritage fashion for the modern woman</FallbackSub>
+          <FallbackH1 className="font-serif" style={{ color: '#2d1a0e', fontSize: 19 }}>
+            The Art of
+            <br />
+            Chikankari
+          </FallbackH1>
+          <FallbackSub style={{ color: '#6b4226' }}>
+            Handcrafted ethnic wear · Made with love · Heritage fashion for the modern woman
+          </FallbackSub>
           <div className="flex gap-2">
             <FallbackBtn className="bg-[#2d1a0e] text-[#f5e6d3]">Explore Collection</FallbackBtn>
           </div>
@@ -215,9 +235,13 @@ const CAROUSEL_SLIDES: CarouselSlide[] = [
         <FallbackBody>
           <FallbackTag style={{ color: '#7dd3fc' }}>Genetic Testing · Healthcare · B2B & B2C</FallbackTag>
           <FallbackH1 style={{ color: 'white' }}>
-            Advanced Genetic<br />Testing <span style={{ color: '#0ea5e9' }}>Solutions</span>
+            Advanced Genetic
+            <br />
+            Testing <span style={{ color: '#0ea5e9' }}>Solutions</span>
           </FallbackH1>
-          <FallbackSub>Making complex science clear, trustworthy, and accessible. India &amp; Global markets.</FallbackSub>
+          <FallbackSub>
+            Making complex science clear, trustworthy, and accessible. India &amp; Global markets.
+          </FallbackSub>
           <div className="flex gap-2">
             <FallbackBtn className="bg-[#0ea5e9] text-white">Our Tests</FallbackBtn>
             <FallbackBtn className="border border-[rgba(14,165,233,0.35)] text-[#7dd3fc]">For Institutions</FallbackBtn>
@@ -241,17 +265,24 @@ const CAROUSEL_SLIDES: CarouselSlide[] = [
       <FallbackShell>
         <div className="flex items-center gap-3 px-5 py-3.5 shrink-0 justify-between border-b border-black/[0.07]">
           <div className="flex gap-3.5 text-[8px] text-black/40 font-medium uppercase tracking-[1.5px] items-center">
-            <span>Women</span><span>Men</span><span>Capes</span>
+            <span>Women</span>
+            <span>Men</span>
+            <span>Capes</span>
           </div>
           <div className="text-[16px] font-light tracking-[6px] text-[#1a1a1a] font-serif">MAULI</div>
           <div className="flex gap-2.5 items-center text-[8px] text-black/40 tracking-[1px]">
-            <span>SEARCH</span><span>BAG (0)</span>
+            <span>SEARCH</span>
+            <span>BAG (0)</span>
           </div>
         </div>
         <FallbackBody className="items-center text-center">
           <div className="text-[8px] tracking-[3px] uppercase text-black/35 mb-2">Pure Cashmere · Handcrafted</div>
-          <div className="text-[19px] font-light tracking-wide text-[#1a1a1a] font-serif leading-[1.3] mb-2.5">Mauli Cashmere</div>
-          <div className="text-[8px] text-black/45 tracking-[0.5px] max-w-[180px] leading-[1.6] mb-3.5">Buy Pure Cashmere Shawls Online, Handcrafted with Love</div>
+          <div className="text-[19px] font-light tracking-wide text-[#1a1a1a] font-serif leading-[1.3] mb-2.5">
+            Mauli Cashmere
+          </div>
+          <div className="text-[8px] text-black/45 tracking-[0.5px] max-w-[180px] leading-[1.6] mb-3.5">
+            Buy Pure Cashmere Shawls Online, Handcrafted with Love
+          </div>
           <div className="flex gap-2 justify-center">
             <div className="w-2.5 h-2.5 rounded-full bg-[#1a1a1a]" />
             <div className="w-2.5 h-2.5 rounded-full bg-[#8b7355] border border-black/10" />
@@ -260,7 +291,7 @@ const CAROUSEL_SLIDES: CarouselSlide[] = [
           </div>
         </FallbackBody>
         <div className="absolute bottom-5 left-0 right-0 text-center">
-          <div className="text-[7px] tracking-[2px] uppercase text-black/25">INDIA | ₹  ·  GLOBAL | $</div>
+          <div className="text-[7px] tracking-[2px] uppercase text-black/25">INDIA | ₹ · GLOBAL | $</div>
         </div>
       </FallbackShell>
     ),
@@ -288,9 +319,15 @@ const CAROUSEL_SLIDES: CarouselSlide[] = [
         <FallbackBody>
           <FallbackTag style={{ color: '#22d3ee' }}>IT · ERP · Digital Transformation</FallbackTag>
           <FallbackH1 style={{ color: 'white', fontSize: 17 }}>
-            Rooted in Values...<br /><span style={{ color: '#22d3ee' }}>Engineered for</span><br />the Future...
+            Rooted in Values...
+            <br />
+            <span style={{ color: '#22d3ee' }}>Engineered for</span>
+            <br />
+            the Future...
           </FallbackH1>
-          <FallbackSub className="mt-2">Delivering IT, ERP, and Digital Transformation Solutions that power enterprise evolution.</FallbackSub>
+          <FallbackSub className="mt-2">
+            Delivering IT, ERP, and Digital Transformation Solutions that power enterprise evolution.
+          </FallbackSub>
           <FallbackStats>
             <FallbackStat n="8" l="Domains" color="#22d3ee" />
             <FallbackStat n="100%" l="Delivery Gov." color="#22d3ee" />
@@ -311,7 +348,9 @@ const CAROUSEL_SLIDES: CarouselSlide[] = [
       <FallbackShell>
         <FallbackNav style={{ borderBottom: '1px solid rgba(255,255,255,0.07)' }}>
           <div className="flex items-center gap-[7px]">
-            <div className="w-[18px] h-[18px] rounded-full bg-white/15 flex items-center justify-center text-[9px] font-bold text-white">O</div>
+            <div className="w-[18px] h-[18px] rounded-full bg-white/15 flex items-center justify-center text-[9px] font-bold text-white">
+              O
+            </div>
             <div className="font-bold text-[10px] tracking-[0.5px] text-white">OPINOVA FOUNDATION</div>
           </div>
           <div className="flex gap-2 flex-1">
@@ -324,10 +363,17 @@ const CAROUSEL_SLIDES: CarouselSlide[] = [
         </FallbackNav>
         <FallbackBody>
           <FallbackH1 style={{ color: 'white', fontSize: 17, textTransform: 'uppercase', letterSpacing: '-0.5px' }}>
-            EMPOWERING<br />COMMUNITIES.<br />
-            <span style={{ color: '#34d399', fontSize: 14, textTransform: 'none', letterSpacing: 0 }}>Inspiring Change.</span>
+            EMPOWERING
+            <br />
+            COMMUNITIES.
+            <br />
+            <span style={{ color: '#34d399', fontSize: 14, textTransform: 'none', letterSpacing: 0 }}>
+              Inspiring Change.
+            </span>
           </FallbackH1>
-          <FallbackSub className="mt-2.5">Building capacity, confidence, and opportunity so every empowered life sparks change for others.</FallbackSub>
+          <FallbackSub className="mt-2.5">
+            Building capacity, confidence, and opportunity so every empowered life sparks change for others.
+          </FallbackSub>
           <FallbackStats>
             <FallbackStat n="1000+" l="Healthcare" color="#34d399" />
             <FallbackStat n="200+" l="Mentorship hrs" color="#34d399" />
@@ -348,7 +394,7 @@ const CAROUSEL_SLIDES: CarouselSlide[] = [
     fallback: (
       <FallbackShell>
         <div className="text-[7px] font-semibold tracking-[1px] py-1 truncate text-center text-white bg-[#0ea5e9]">
-          Extra ₹50 off on prepaid orders  ·  Free Delivery  ·  Pan India Delivery
+          Extra ₹50 off on prepaid orders · Free Delivery · Pan India Delivery
         </div>
         <FallbackNav style={{ borderBottom: '1px solid rgba(12,74,110,0.08)' }}>
           <div className="flex gap-2 flex-1">
@@ -366,9 +412,13 @@ const CAROUSEL_SLIDES: CarouselSlide[] = [
             <div className="flex-1">
               <FallbackTag style={{ color: '#0369a1' }}>Water Softener · Hard Water Solution · India</FallbackTag>
               <FallbackH1 style={{ color: '#0c4a6e', fontSize: 19 }}>
-                Pure Water,<br />Better <span style={{ color: '#0369a1' }}>Living.</span>
+                Pure Water,
+                <br />
+                Better <span style={{ color: '#0369a1' }}>Living.</span>
               </FallbackH1>
-              <FallbackSub style={{ color: '#0c4a6e' }}>Hard2Soft water softener cartridge. Simple, trustworthy, easy to install.</FallbackSub>
+              <FallbackSub style={{ color: '#0c4a6e' }}>
+                Hard2Soft water softener cartridge. Simple, trustworthy, easy to install.
+              </FallbackSub>
               <div className="flex gap-2 mt-2.5">
                 <FallbackBtn className="bg-[#0369a1] text-white">Buy Now</FallbackBtn>
                 <FallbackBtn className="border border-[rgba(3,105,161,0.3)] text-[#0369a1]">How It Works</FallbackBtn>
@@ -387,28 +437,77 @@ const CAROUSEL_SLIDES: CarouselSlide[] = [
 // (kept here so each slide stays declarative)
 // ============================================================
 function FallbackShell({ children }: { children: ReactNode }) {
-  return <div className="absolute inset-0 z-[1] flex flex-col overflow-hidden font-[var(--font-body,inherit)]">{children}</div>;
+  return (
+    <div className="absolute inset-0 z-[1] flex flex-col overflow-hidden font-[var(--font-body,inherit)]">
+      {children}
+    </div>
+  );
 }
 function FallbackNav({ children, style }: { children: ReactNode; style?: CSSProperties }) {
-  return <div className="flex items-center gap-3 px-[18px] py-3 shrink-0" style={style}>{children}</div>;
+  return (
+    <div className="flex items-center gap-3 px-[18px] py-3 shrink-0" style={style}>
+      {children}
+    </div>
+  );
 }
 function FallbackBody({ children, className }: { children: ReactNode; className?: string }) {
   return <div className={cn('flex-1 px-5 py-3.5 flex flex-col justify-center', className)}>{children}</div>;
 }
 function FallbackTag({ children, style }: { children: ReactNode; style?: CSSProperties }) {
-  return <div className="text-[8px] font-bold tracking-[2px] uppercase opacity-55 mb-1.5" style={style}>{children}</div>;
+  return (
+    <div className="text-[8px] font-bold tracking-[2px] uppercase opacity-55 mb-1.5" style={style}>
+      {children}
+    </div>
+  );
 }
-function FallbackH1({ children, style, className }: { children: ReactNode; style?: CSSProperties; className?: string }) {
-  return <div className={cn('text-[20px] font-bold leading-[1.1] tracking-[-0.8px] mb-2', className)} style={style}>{children}</div>;
+function FallbackH1({
+  children,
+  style,
+  className,
+}: {
+  children: ReactNode;
+  style?: CSSProperties;
+  className?: string;
+}) {
+  return (
+    <div className={cn('text-[20px] font-bold leading-[1.1] tracking-[-0.8px] mb-2', className)} style={style}>
+      {children}
+    </div>
+  );
 }
-function FallbackSub({ children, style, className }: { children: ReactNode; style?: CSSProperties; className?: string }) {
-  return <div className={cn('text-[9px] leading-[1.6] opacity-50 max-w-[200px] mb-3', className)} style={style}>{children}</div>;
+function FallbackSub({
+  children,
+  style,
+  className,
+}: {
+  children: ReactNode;
+  style?: CSSProperties;
+  className?: string;
+}) {
+  return (
+    <div className={cn('text-[9px] leading-[1.6] opacity-50 max-w-[200px] mb-3', className)} style={style}>
+      {children}
+    </div>
+  );
 }
 function FallbackBtn({ children, className }: { children: ReactNode; className?: string }) {
-  return <div className={cn('h-6 rounded-full px-3.5 text-[8px] font-bold inline-flex items-center', className)}>{children}</div>;
+  return (
+    <div className={cn('h-6 rounded-full px-3.5 text-[8px] font-bold inline-flex items-center', className)}>
+      {children}
+    </div>
+  );
 }
 function FallbackCTA({ children, className }: { children: ReactNode; className?: string }) {
-  return <div className={cn('h-[22px] rounded-full shrink-0 opacity-90 px-3 flex items-center text-[8px] font-bold tracking-[0.5px]', className)}>{children}</div>;
+  return (
+    <div
+      className={cn(
+        'h-[22px] rounded-full shrink-0 opacity-90 px-3 flex items-center text-[8px] font-bold tracking-[0.5px]',
+        className
+      )}
+    >
+      {children}
+    </div>
+  );
 }
 function FallbackPill({ width, style }: { width: number; style?: CSSProperties }) {
   return <div className="h-[7px] rounded-[3px] bg-current opacity-[0.18]" style={{ width, ...style }} />;
@@ -419,7 +518,9 @@ function FallbackStats({ children }: { children: ReactNode }) {
 function FallbackStat({ n, l, color }: { n: string; l: string; color: string }) {
   return (
     <div className="flex flex-col gap-0.5">
-      <div className="text-[15px] font-bold tracking-[-0.5px]" style={{ color }}>{n}</div>
+      <div className="text-[15px] font-bold tracking-[-0.5px]" style={{ color }}>
+        {n}
+      </div>
       <div className="text-[7px] uppercase tracking-[1px] opacity-45">{l}</div>
     </div>
   );
@@ -429,8 +530,18 @@ function FallbackStat({ n, l, color }: { n: string; l: string; color: string }) 
 // FILTERS / FAQS / DATA
 // ============================================================
 type FilterKey =
-  | 'all' | 'technology' | 'fashion' | 'healthcare' | 'food' | 'home'
-  | 'social' | 'b2b' | 'd2c' | 'wordpress' | 'shopify' | 'nextjs';
+  | 'all'
+  | 'technology'
+  | 'fashion'
+  | 'healthcare'
+  | 'food'
+  | 'home'
+  | 'social'
+  | 'b2b'
+  | 'd2c'
+  | 'wordpress'
+  | 'shopify'
+  | 'nextjs';
 
 const FILTERS: { key: FilterKey; label: string }[] = [
   { key: 'all', label: 'All' },
@@ -448,27 +559,77 @@ const FILTERS: { key: FilterKey; label: string }[] = [
 ];
 
 const FAQS = [
-  { q: 'How long does it take to build a website with Digitally Next?', a: "Timelines depend on the scope and complexity of the project. A standard WordPress or Shopify website development project typically goes live in 4 to 6 weeks. Custom coded websites on Next.js or React.js may take 8 to 12 weeks. We always agree on a fixed timeline before the project begins — and we stick to it. Our clients in the USA, Canada, and Australia consistently note that our structured delivery process removes the uncertainty they've experienced with other agencies." },
-  { q: 'What platforms do you build websites on?', a: "We build on WordPress, Shopify, Next.js, and React.js, as well as fully custom coded solutions depending on your business needs. As a website design and development agency in India with 10+ years of experience, our team recommends the right platform based on your goals, target audience, budget, and long-term scalability — whether you're a D2C brand in the USA or a B2B enterprise in the Middle East." },
-  { q: 'Do you work with clients based in the USA, Canada, Australia, and other countries?', a: 'Yes — we are an India-based web design agency actively working with international clients across the USA, Canada, Australia, New Zealand, the Middle East, and Europe. We have structured global servicing frameworks including dedicated points of contact, timezone-aligned calls, and fortnightly progress reports. Distance has never been a barrier to delivering world-class website development.' },
-  { q: 'Is the website built with SEO and AEO in mind?', a: 'Absolutely. Every website we build includes on-page SEO as a standard part of our 11-step process — from meta titles and descriptions to structured content, fast loading speeds, and mobile-first optimisation. We also ensure the website is AEO (Answer Engine Optimisation) and GEO (Generative Engine Optimisation) ready, so it has the best chance of being featured in AI-powered search results on platforms like Google AI Overviews, ChatGPT, and Perplexity.' },
-  { q: 'What is included in the website handover?', a: "Every website we deliver — whether it's a WordPress site, Shopify store, or custom Next.js build — comes with a hands-on training session for your team, full documentation, and an official handover. We also offer post-handover support and maintenance packages for clients who want continued assistance after go-live." },
-  { q: 'Can you handle both design and development, or do we need to bring our own designer?', a: 'We handle everything in-house — brand strategy, content writing, UI/UX design, and website development. You bring your vision and business goals. Our six specialist teams take care of the rest, end to end. This is what makes Digitally Next different from a typical web development agency — we are a full-service creative and technical partner.' },
-  { q: 'What makes Digitally Next different from other web development agencies in India?', a: "We don't just build websites — we build digital business assets. Every project goes through a structured 11-step process covering research, user journey mapping, content strategy, visual design, development, quality optimisation, and handover. With 10+ years of experience, 50+ websites delivered across 6 industries, and clients in the USA, Canada, Australia, Middle East, and India — we bring both creative depth and strategic thinking to every project we take on." },
+  {
+    q: 'How long does it take to build a website with Digitally Next?',
+    a: "Timelines depend on the scope and complexity of the project. A standard WordPress or Shopify website development project typically goes live in 4 to 6 weeks. Custom coded websites on Next.js or React.js may take 8 to 12 weeks. We always agree on a fixed timeline before the project begins — and we stick to it. Our clients in the USA, Canada, and Australia consistently note that our structured delivery process removes the uncertainty they've experienced with other agencies.",
+  },
+  {
+    q: 'What platforms do you build websites on?',
+    a: "We build on WordPress, Shopify, Next.js, and React.js, as well as fully custom coded solutions depending on your business needs. As a website design and development agency in India with 10+ years of experience, our team recommends the right platform based on your goals, target audience, budget, and long-term scalability — whether you're a D2C brand in the USA or a B2B enterprise in the Middle East.",
+  },
+  {
+    q: 'Do you work with clients based in the USA, Canada, Australia, and other countries?',
+    a: 'Yes — we are an India-based web design agency actively working with international clients across the USA, Canada, Australia, New Zealand, the Middle East, and Europe. We have structured global servicing frameworks including dedicated points of contact, timezone-aligned calls, and fortnightly progress reports. Distance has never been a barrier to delivering world-class website development.',
+  },
+  {
+    q: 'Is the website built with SEO and AEO in mind?',
+    a: 'Absolutely. Every website we build includes on-page SEO as a standard part of our 11-step process — from meta titles and descriptions to structured content, fast loading speeds, and mobile-first optimisation. We also ensure the website is AEO (Answer Engine Optimisation) and GEO (Generative Engine Optimisation) ready, so it has the best chance of being featured in AI-powered search results on platforms like Google AI Overviews, ChatGPT, and Perplexity.',
+  },
+  {
+    q: 'What is included in the website handover?',
+    a: "Every website we deliver — whether it's a WordPress site, Shopify store, or custom Next.js build — comes with a hands-on training session for your team, full documentation, and an official handover. We also offer post-handover support and maintenance packages for clients who want continued assistance after go-live.",
+  },
+  {
+    q: 'Can you handle both design and development, or do we need to bring our own designer?',
+    a: 'We handle everything in-house — brand strategy, content writing, UI/UX design, and website development. You bring your vision and business goals. Our six specialist teams take care of the rest, end to end. This is what makes Digitally Next different from a typical web development agency — we are a full-service creative and technical partner.',
+  },
+  {
+    q: 'What makes Digitally Next different from other web development agencies in India?',
+    a: "We don't just build websites — we build digital business assets. Every project goes through a structured 11-step process covering research, user journey mapping, content strategy, visual design, development, quality optimisation, and handover. With 10+ years of experience, 50+ websites delivered across 6 industries, and clients in the USA, Canada, Australia, Middle East, and India — we bring both creative depth and strategic thinking to every project we take on.",
+  },
 ];
 
 const PROCESS_STEPS = [
   { n: '01', title: 'Understand', desc: 'Business requirements, stakeholders & expectations.' },
-  { n: '02', title: 'Study, Research & Benchmark', desc: 'Competitor analysis, reference websites & new tech relevant to your project.' },
+  {
+    n: '02',
+    title: 'Study, Research & Benchmark',
+    desc: 'Competitor analysis, reference websites & new tech relevant to your project.',
+  },
   { n: '03', title: 'Prepare', desc: 'User & visitor journey mapping — for prospects, existing clients & partners.' },
   { n: '04', title: 'Finalise Structure', desc: 'Sitemap, domain name & hosting subscriptions.' },
-  { n: '05', title: 'Content Creation', desc: 'Conversion-centric, SEO & AEO friendly content written for real users.' },
-  { n: '06', title: 'Visuals', desc: 'Banners & creatives for WordPress/Shopify OR UI/UX framework & wireframes for coded websites.' },
-  { n: '07', title: 'Development', desc: 'Custom coding, theme & template customisation, platform configuration, API & plugin integration.' },
-  { n: '08', title: 'Quality & Optimisation', desc: 'Mobile optimisation, speed & performance testing, cross-browser testing.' },
-  { n: '09', title: 'Analytics, On-Page SEO & UAT', desc: 'Google Analytics integration, on-page SEO initiated & user acceptance testing.' },
+  {
+    n: '05',
+    title: 'Content Creation',
+    desc: 'Conversion-centric, SEO & AEO friendly content written for real users.',
+  },
+  {
+    n: '06',
+    title: 'Visuals',
+    desc: 'Banners & creatives for WordPress/Shopify OR UI/UX framework & wireframes for coded websites.',
+  },
+  {
+    n: '07',
+    title: 'Development',
+    desc: 'Custom coding, theme & template customisation, platform configuration, API & plugin integration.',
+  },
+  {
+    n: '08',
+    title: 'Quality & Optimisation',
+    desc: 'Mobile optimisation, speed & performance testing, cross-browser testing.',
+  },
+  {
+    n: '09',
+    title: 'Analytics, On-Page SEO & UAT',
+    desc: 'Google Analytics integration, on-page SEO initiated & user acceptance testing.',
+  },
   { n: '10', title: 'Go Live & Training', desc: 'Formal launch + hands-on training session for your team.' },
-  { n: '11', title: 'Handover', desc: 'Official handover of the website with full documentation. Your site. Your ownership. Completely.', wide: true },
+  {
+    n: '11',
+    title: 'Handover',
+    desc: 'Official handover of the website with full documentation. Your site. Your ownership. Completely.',
+    wide: true,
+  },
 ];
 
 const COUNTRIES: { code: string; name: string }[] = [
@@ -489,8 +650,10 @@ const COUNTRIES: { code: string; name: string }[] = [
 // ============================================================
 // SHARED CLASS STRINGS — sections share the same padding cadence
 // ============================================================
-const SECTION_PAD = 'py-[100px] px-[60px] max-[1100px]:py-[70px] max-[1100px]:px-[30px] max-[700px]:py-[60px] max-[700px]:px-5';
-const SECTION_HEADLINE = "font-['Stack_Sans_Headline','Stack_Sans_Text',sans-serif] text-[clamp(36px,5vw,64px)] font-bold tracking-[-2px] leading-[1.05] mb-4 text-[#0A0A0A]";
+const SECTION_PAD =
+  'py-[100px] px-[60px] max-[1100px]:py-[70px] max-[1100px]:px-[30px] max-[700px]:py-[60px] max-[700px]:px-5';
+const SECTION_HEADLINE =
+  "font-['Stack_Sans_Headline','Stack_Sans_Text',sans-serif] text-[clamp(36px,5vw,64px)] font-bold tracking-[-2px] leading-[1.05] mb-4 text-[#0A0A0A]";
 const SECTION_LABEL = 'text-[11px] font-bold tracking-[3px] uppercase mb-4 text-[#ED2226]';
 const SECTION_SUBLINE = 'text-base font-normal leading-[1.7] text-[#666] max-w-[560px] mb-[60px] max-[700px]:mb-8';
 const REVEAL_DELAY = ['', '[transition-delay:0.1s]', '[transition-delay:0.2s]', '[transition-delay:0.3s]'];
@@ -501,7 +664,6 @@ const EASE = 'cubic-bezier(0.25,0.46,0.45,0.94)';
 const fadeUp = (duration: string, delay = '0s'): CSSProperties => ({
   animation: `dpFadeUp ${duration} ${delay} ${EASE} both`,
 });
-
 
 // ============================================================
 // PAGE
@@ -519,7 +681,9 @@ export default function DesignPortfolioClient() {
   const rootRef = useRef<HTMLDivElement>(null);
   const autoTimer = useRef<ReturnType<typeof setInterval> | null>(null);
 
-  useEffect(() => { setHasMounted(true); }, []);
+  useEffect(() => {
+    setHasMounted(true);
+  }, []);
 
   // Custom cursor
   useEffect(() => {
@@ -528,17 +692,22 @@ export default function DesignPortfolioClient() {
     const root = rootRef.current;
     if (!cursor || !ring || !root) return;
 
-    let mx = 0, my = 0, rx = 0, ry = 0;
+    let mx = 0,
+      my = 0,
+      rx = 0,
+      ry = 0;
     let raf = 0;
     let revealed = false;
 
     const onMove = (e: MouseEvent) => {
-      mx = e.clientX; my = e.clientY;
+      mx = e.clientX;
+      my = e.clientY;
       cursor.style.left = mx + 'px';
       cursor.style.top = my + 'px';
       if (!revealed) {
         revealed = true;
-        rx = mx; ry = my;
+        rx = mx;
+        ry = my;
         ring.style.left = rx + 'px';
         ring.style.top = ry + 'px';
         cursor.style.opacity = '1';
@@ -558,9 +727,15 @@ export default function DesignPortfolioClient() {
     raf = requestAnimationFrame(animateRing);
 
     const hoverEls = root.querySelectorAll('a, button, [data-cursor-hover]');
-    const onEnter = () => { cursor.classList.add('hover'); ring.classList.add('hover'); };
-    const onLeave = () => { cursor.classList.remove('hover'); ring.classList.remove('hover'); };
-    hoverEls.forEach(el => {
+    const onEnter = () => {
+      cursor.classList.add('hover');
+      ring.classList.add('hover');
+    };
+    const onLeave = () => {
+      cursor.classList.remove('hover');
+      ring.classList.remove('hover');
+    };
+    hoverEls.forEach((el) => {
       el.addEventListener('mouseenter', onEnter);
       el.addEventListener('mouseleave', onLeave);
     });
@@ -568,7 +743,7 @@ export default function DesignPortfolioClient() {
     return () => {
       document.removeEventListener('mousemove', onMove);
       cancelAnimationFrame(raf);
-      hoverEls.forEach(el => {
+      hoverEls.forEach((el) => {
         el.removeEventListener('mouseenter', onEnter);
         el.removeEventListener('mouseleave', onLeave);
       });
@@ -588,14 +763,18 @@ export default function DesignPortfolioClient() {
       track.style.transition = 'none';
       track.style.transform = `translateX(${tx}px)`;
       requestAnimationFrame(() => {
-        requestAnimationFrame(() => { track.style.transition = ''; });
+        requestAnimationFrame(() => {
+          track.style.transition = '';
+        });
       });
     } else {
       track.style.transform = `translateX(${tx}px)`;
     }
   };
 
-  useEffect(() => { positionCarousel(carouselIdx, false); }, [carouselIdx]);
+  useEffect(() => {
+    positionCarousel(carouselIdx, false);
+  }, [carouselIdx]);
 
   useEffect(() => {
     const init = () => positionCarousel(carouselIdx, true);
@@ -612,11 +791,13 @@ export default function DesignPortfolioClient() {
 
   // Auto-advance
   useEffect(() => {
-    const clearTimer = () => { if (autoTimer.current) clearInterval(autoTimer.current); };
+    const clearTimer = () => {
+      if (autoTimer.current) clearInterval(autoTimer.current);
+    };
     const start = () => {
       clearTimer();
       autoTimer.current = setInterval(() => {
-        setCarouselIdx(i => (i + 1) % CAROUSEL_SLIDES.length);
+        setCarouselIdx((i) => (i + 1) % CAROUSEL_SLIDES.length);
       }, 3600);
     };
     start();
@@ -636,11 +817,13 @@ export default function DesignPortfolioClient() {
     const outer = carouselOuterRef.current;
     if (!outer) return;
     let startX = 0;
-    const onStart = (e: TouchEvent) => { startX = e.touches[0].clientX; };
+    const onStart = (e: TouchEvent) => {
+      startX = e.touches[0].clientX;
+    };
     const onEnd = (e: TouchEvent) => {
       const dx = e.changedTouches[0].clientX - startX;
       if (Math.abs(dx) > 40) {
-        setCarouselIdx(i => {
+        setCarouselIdx((i) => {
           const len = CAROUSEL_SLIDES.length;
           return dx < 0 ? (i + 1) % len : (i - 1 + len) % len;
         });
@@ -671,7 +854,7 @@ export default function DesignPortfolioClient() {
           }
         });
       },
-      { threshold: 0.1, rootMargin: '0px 0px -40px 0px' },
+      { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
     );
 
     let raf1 = 0;
@@ -689,16 +872,19 @@ export default function DesignPortfolioClient() {
     };
   }, []);
 
-
   return (
-    <div ref={rootRef} className="dp-page bg-white text-[#0A0A0A] overflow-x-hidden font-['Stack_Sans_Text',sans-serif]">
-      {hasMounted && createPortal(
-        <>
-          <div className="dp-cursor" ref={cursorRef} />
-          <div className="dp-cursor-ring" ref={cursorRingRef} />
-        </>,
-        document.body,
-      )}
+    <div
+      ref={rootRef}
+      className="dp-page bg-white text-[#0A0A0A] overflow-x-hidden font-['Stack_Sans_Text',sans-serif]"
+    >
+      {hasMounted &&
+        createPortal(
+          <>
+            <div className="dp-cursor" ref={cursorRef} />
+            <div className="dp-cursor-ring" ref={cursorRingRef} />
+          </>,
+          document.body
+        )}
 
       {/* HERO */}
       <section
@@ -709,7 +895,8 @@ export default function DesignPortfolioClient() {
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
-            backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E\")",
+            backgroundImage:
+              "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E\")",
           }}
         />
 
@@ -726,7 +913,8 @@ export default function DesignPortfolioClient() {
             className="font-['Stack_Sans_Headline','Stack_Sans_Text',sans-serif] text-[clamp(40px,5.5vw,84px)] font-bold leading-[0.95] tracking-[-3px] max-[700px]:tracking-[-1.5px] text-[#0A0A0A] mb-6 max-[700px]:mb-4"
             style={fadeUp('0.9s', '0.1s')}
           >
-            Websites That<br />
+            Websites That
+            <br />
             Mean <span className="text-[#ED2226]">Business.</span>
           </h1>
 
@@ -735,7 +923,9 @@ export default function DesignPortfolioClient() {
               className="text-[clamp(13px,1.1vw,16px)] font-normal leading-[1.75] text-[#555] max-w-[460px] mb-8 max-[700px]:mb-5 [&_strong]:text-[#0A0A0A] [&_strong]:font-semibold"
               style={fadeUp('0.9s', '0.2s')}
             >
-              A <strong>website design and development agency in India</strong>, building for brands across the <strong>USA, Canada, Australia,</strong> and beyond. Every website starts with understanding your world — and ends with something your audience remembers.
+              A <strong>website design and development agency in India</strong>, building for brands across the{' '}
+              <strong>USA, Canada, Australia,</strong> and beyond. Every website starts with understanding your world —
+              and ends with something your audience remembers.
             </h2>
 
             <div className="flex items-center gap-5 flex-wrap mb-10 max-[700px]:mb-6">
@@ -744,14 +934,18 @@ export default function DesignPortfolioClient() {
                 className="relative overflow-hidden inline-flex items-center gap-2.5 bg-[#ED2226] text-white px-8 py-4 rounded-full text-sm font-bold tracking-[0.3px] transition-transform duration-200 hover:scale-[1.04] hover:shadow-[0_16px_48px_rgba(237,34,38,0.35)] before:content-[''] before:absolute before:inset-0 before:bg-[#0EC8C5] before:-translate-x-full before:transition-transform before:duration-[400ms] hover:before:translate-x-0 [&>span]:relative [&>span]:z-[1] [&>svg]:relative [&>svg]:z-[1]"
               >
                 <span>Book a Free 30-min Call</span>
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="white" strokeWidth="2" strokeLinecap="round" /></svg>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="M3 8h10M9 4l4 4-4 4" stroke="white" strokeWidth="2" strokeLinecap="round" />
+                </svg>
               </Link>
               <a
                 href="#portfolio"
                 className="inline-flex items-center gap-2 text-[#0A0A0A] text-[13px] font-semibold tracking-[0.3px] transition-[color,gap] duration-200 hover:text-[#ED2226] hover:gap-3.5"
               >
                 See Our Work
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7h10M8 4l3 3-3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" /></svg>
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                  <path d="M2 7h10M8 4l3 3-3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+                </svg>
               </a>
             </div>
           </div>
@@ -781,7 +975,10 @@ export default function DesignPortfolioClient() {
             </div>
           </div>
 
-          <div className="flex items-center gap-3 mt-10 max-[700px]:mt-7" style={{ animation: 'dpFadeUp 1s 0.5s both' }}>
+          <div
+            className="flex items-center gap-3 mt-10 max-[700px]:mt-7"
+            style={{ animation: 'dpFadeUp 1s 0.5s both' }}
+          >
             <div className="w-10 h-px bg-[#3A3A3A] relative overflow-hidden after:content-[''] after:absolute after:top-0 after:bottom-0 after:bg-[#ED2226] after:[animation:dpScrollSlide_2s_ease-in-out_infinite]" />
             <span className="text-[11px] font-semibold tracking-[2px] uppercase text-[#888]">Scroll to explore</span>
           </div>
@@ -830,7 +1027,9 @@ export default function DesignPortfolioClient() {
                       }}
                       className={cn(
                         'shrink-0 w-[420px] flex flex-col origin-center transition-[opacity,filter,transform] duration-[600ms] ease-[ease] select-none',
-                        active ? 'opacity-100 [filter:none] scale-100' : 'opacity-30 [filter:grayscale(100%)] scale-[0.92]'
+                        active
+                          ? 'opacity-100 [filter:none] scale-100'
+                          : 'opacity-30 [filter:grayscale(100%)] scale-[0.92]'
                       )}
                     >
                       <div className="bg-black/[0.06] px-3 py-2 flex items-center gap-2 rounded-t-2xl border border-b-0 border-black/[0.07]">
@@ -839,7 +1038,9 @@ export default function DesignPortfolioClient() {
                           <div className="w-2 h-2 rounded-full bg-[#FEBC2E]" />
                           <div className="w-2 h-2 rounded-full bg-[#28C840]" />
                         </div>
-                        <div className="flex-1 bg-black/[0.05] rounded-full px-3 py-1 text-[10px] text-[#888] font-mono tracking-[0.2px] truncate">{slide.url}</div>
+                        <div className="flex-1 bg-black/[0.05] rounded-full px-3 py-1 text-[10px] text-[#888] font-mono tracking-[0.2px] truncate">
+                          {slide.url}
+                        </div>
                       </div>
                       <SitePreview
                         src={slide.src}
@@ -862,8 +1063,12 @@ export default function DesignPortfolioClient() {
                         }
                       />
                       <div className="flex items-center justify-between pt-3 px-1">
-                        <span className="text-sm font-bold text-[#0A0A0A] font-['Stack_Sans_Headline','Stack_Sans_Text',sans-serif] tracking-[-0.3px]">{slide.name}</span>
-                        <span className="text-[10px] font-bold tracking-[1px] uppercase text-[#0EC8C5] bg-[rgba(14,200,197,0.08)] border border-[rgba(14,200,197,0.2)] px-2.5 py-[3px] rounded-full">{slide.platform}</span>
+                        <span className="text-sm font-bold text-[#0A0A0A] font-['Stack_Sans_Headline','Stack_Sans_Text',sans-serif] tracking-[-0.3px]">
+                          {slide.name}
+                        </span>
+                        <span className="text-[10px] font-bold tracking-[1px] uppercase text-[#0EC8C5] bg-[rgba(14,200,197,0.08)] border border-[rgba(14,200,197,0.2)] px-2.5 py-[3px] rounded-full">
+                          {slide.platform}
+                        </span>
                       </div>
                     </div>
                   );
@@ -880,10 +1085,12 @@ export default function DesignPortfolioClient() {
                   className="p-2.5 border-0 bg-transparent flex items-center justify-center"
                   onClick={() => setCarouselIdx(i)}
                 >
-                  <span className={cn(
-                    'block h-1.5 rounded-full transition-[width,background] duration-300',
-                    i === carouselIdx ? 'w-5 bg-[#ED2226]' : 'w-1.5 bg-black/15'
-                  )} />
+                  <span
+                    className={cn(
+                      'block h-1.5 rounded-full transition-[width,background] duration-300',
+                      i === carouselIdx ? 'w-5 bg-[#ED2226]' : 'w-1.5 bg-black/15'
+                    )}
+                  />
                 </button>
               ))}
             </div>
@@ -906,7 +1113,7 @@ export default function DesignPortfolioClient() {
               key={stat.label}
               className={cn(
                 'dp-reveal text-center lg:px-10',
-                i < arr.length - 1 && 'lg:border-r lg:border-white/[0.08]',
+                i < arr.length - 1 && 'lg:border-r lg:border-white/[0.08]'
               )}
               style={{ transitionDelay: `${i * 60}ms` }}
             >
@@ -924,7 +1131,10 @@ export default function DesignPortfolioClient() {
       <section id="tech-stack" className={cn(SECTION_PAD, 'bg-[#FAFAF8]')}>
         <div className={SECTION_LABEL}>Technologies We Build On</div>
         <h2 className={cn(SECTION_HEADLINE, 'dp-reveal')}>Our Tech Stack</h2>
-        <p className={cn(SECTION_SUBLINE, 'dp-reveal', REVEAL_DELAY[1])}>We build professional websites on the world&apos;s most trusted platforms — from WordPress and Shopify to custom Next.js and React.js development.</p>
+        <p className={cn(SECTION_SUBLINE, 'dp-reveal', REVEAL_DELAY[1])}>
+          We build professional websites on the world&apos;s most trusted platforms — from WordPress and Shopify to
+          custom Next.js and React.js development.
+        </p>
 
         <div className="grid grid-cols-5 gap-4 max-[1100px]:grid-cols-3 max-[700px]:grid-cols-2">
           {[
@@ -938,13 +1148,22 @@ export default function DesignPortfolioClient() {
               key={t.name}
               className={cn(
                 'dp-reveal bg-white border border-black/[0.07] rounded-2xl px-6 py-8 text-center transition-[transform,box-shadow,border-color] duration-[400ms] hover:-translate-y-1.5 hover:shadow-[0_20px_40px_rgba(0,0,0,0.08)] hover:border-[#ED2226]',
-                REVEAL_DELAY[Math.min(i, 3)],
+                REVEAL_DELAY[Math.min(i, 3)]
               )}
             >
               <div className="w-12 h-12 mx-auto mb-4 flex items-center justify-center">
                 <svg width="40" height="40" viewBox="0 0 40 40">
                   <rect width="40" height="40" rx="8" fill={t.bg} />
-                  <text x="20" y="27" textAnchor="middle" fill={t.textColor || 'white'} fontSize={t.label.length > 2 ? '12' : '18'} fontWeight="bold">{t.label}</text>
+                  <text
+                    x="20"
+                    y="27"
+                    textAnchor="middle"
+                    fill={t.textColor || 'white'}
+                    fontSize={t.label.length > 2 ? '12' : '18'}
+                    fontWeight="bold"
+                  >
+                    {t.label}
+                  </text>
                 </svg>
               </div>
               <div className="text-[15px] font-bold text-[#0A0A0A] tracking-[-0.1px]">{t.name}</div>
@@ -958,7 +1177,10 @@ export default function DesignPortfolioClient() {
       <section id="process" className={cn(SECTION_PAD, 'bg-[#0A0A0A] overflow-hidden')}>
         <div className={cn(SECTION_LABEL, '!text-[#0EC8C5]')}>How We Build</div>
         <h2 className={cn(SECTION_HEADLINE, '!text-white dp-reveal')}>Our Process</h2>
-        <p className={cn(SECTION_SUBLINE, '!text-white/50 dp-reveal', REVEAL_DELAY[1])}>From brief to handover — a structured 11-step website development process that covers strategy, design, content, SEO, AEO readiness, and go-live.</p>
+        <p className={cn(SECTION_SUBLINE, '!text-white/50 dp-reveal', REVEAL_DELAY[1])}>
+          From brief to handover — a structured 11-step website development process that covers strategy, design,
+          content, SEO, AEO readiness, and go-live.
+        </p>
 
         <div className="grid grid-cols-3 gap-[2px] max-[1100px]:grid-cols-2 max-[700px]:grid-cols-1">
           {PROCESS_STEPS.map((step, i) => (
@@ -967,14 +1189,16 @@ export default function DesignPortfolioClient() {
               className={cn(
                 'dp-reveal group bg-[#111111] px-8 py-9 max-[700px]:px-6 max-[700px]:py-6 border border-white/[0.05] relative overflow-hidden transition-[background] duration-300 hover:bg-[#1A1A1A]',
                 "before:content-[''] before:absolute before:left-0 before:top-0 before:bottom-0 before:w-[3px] before:opacity-0 before:transition-opacity before:duration-200 before:bg-[linear-gradient(#ED2226,#0EC8C5)] hover:before:opacity-100",
-                REVEAL_DELAY[i % 3],
+                REVEAL_DELAY[i % 3]
               )}
               style={{
                 ...(step.wide ? { gridColumn: 'span 2' } : {}),
                 transitionDelay: `${(i % 3) * 80}ms`,
               }}
             >
-              <div className="font-['Stack_Sans_Headline','Stack_Sans_Text',sans-serif] text-[72px] font-bold text-white/[0.04] leading-none absolute top-4 right-6 tracking-[-4px]">{step.n}</div>
+              <div className="font-['Stack_Sans_Headline','Stack_Sans_Text',sans-serif] text-[72px] font-bold text-white/[0.04] leading-none absolute top-4 right-6 tracking-[-4px]">
+                {step.n}
+              </div>
               <span className="text-[11px] font-bold tracking-[2px] text-[#ED2226] mb-3 block">Step {step.n}</span>
               <div className="text-[17px] font-bold text-white mb-2 tracking-[-0.1px]">{step.title}</div>
               <div className="text-[13px] leading-[1.65] text-white/45">{step.desc}</div>
@@ -988,29 +1212,91 @@ export default function DesignPortfolioClient() {
         <div className="flex justify-between items-end mb-[60px] max-[700px]:mb-8 max-[700px]:flex-col max-[700px]:items-start max-[700px]:gap-4">
           <div>
             <div className={SECTION_LABEL}>Who Builds It</div>
-            <h2 className={cn(SECTION_HEADLINE, 'dp-reveal')}>The Teams Behind<br />Your Website</h2>
+            <h2 className={cn(SECTION_HEADLINE, 'dp-reveal')}>
+              The Teams Behind
+              <br />
+              Your Website
+            </h2>
           </div>
-          <p className={cn(SECTION_SUBLINE, '!mb-0 dp-reveal')}>Every project is a collaboration across six specialist teams.</p>
+          <p className={cn(SECTION_SUBLINE, '!mb-0 dp-reveal')}>
+            Every project is a collaboration across six specialist teams.
+          </p>
         </div>
         <div className="grid grid-cols-3 gap-4 max-[1100px]:grid-cols-2 max-[700px]:grid-cols-1">
           {[
-            { name: 'Brand & Strategy', sub: 'Foundation of every project', icon: <path d="M10 2l2.5 5H17l-4 3.5 1.5 5.5L10 13l-4.5 3L7 10.5 3 7h4.5L10 2z" fill="#ED2226" /> },
-            { name: 'Marketing Content Management', sub: 'Words that convert', icon: <><rect x="2" y="4" width="16" height="12" rx="2" stroke="#ED2226" strokeWidth="2" /><path d="M6 9h8M6 12h5" stroke="#ED2226" strokeWidth="1.5" strokeLinecap="round" /></> },
-            { name: 'Visual Impact Management', sub: 'Design that stops scrollers', icon: <><circle cx="10" cy="10" r="7" stroke="#ED2226" strokeWidth="2" /><path d="M7 10l2 2 4-4" stroke="#ED2226" strokeWidth="1.5" strokeLinecap="round" /></> },
-            { name: 'Web Essentials Management', sub: 'The technical backbone', icon: <><path d="M4 6l4-3 4 3 4-3" stroke="#ED2226" strokeWidth="1.5" strokeLinecap="round" /><path d="M4 10l4-3 4 3 4-3M4 14l4-3 4 3 4-3" stroke="#ED2226" strokeWidth="1.5" strokeLinecap="round" /></> },
-            { name: 'Organic Search (SEO)', sub: 'Ranking that sticks', icon: <><circle cx="10" cy="8" r="3" stroke="#ED2226" strokeWidth="2" /><path d="M4 18c0-3.3 2.7-6 6-6s6 2.7 6 6" stroke="#ED2226" strokeWidth="2" strokeLinecap="round" /></> },
-            { name: 'AI Search Readiness', sub: 'Built for ChatGPT & Perplexity era', icon: <><path d="M10 3v14M3 10h14" stroke="#ED2226" strokeWidth="2" strokeLinecap="round" /><circle cx="10" cy="10" r="3" fill="#ED2226" opacity="0.3" /></> },
+            {
+              name: 'Brand & Strategy',
+              sub: 'Foundation of every project',
+              icon: <path d="M10 2l2.5 5H17l-4 3.5 1.5 5.5L10 13l-4.5 3L7 10.5 3 7h4.5L10 2z" fill="#ED2226" />,
+            },
+            {
+              name: 'Marketing Content Management',
+              sub: 'Words that convert',
+              icon: (
+                <>
+                  <rect x="2" y="4" width="16" height="12" rx="2" stroke="#ED2226" strokeWidth="2" />
+                  <path d="M6 9h8M6 12h5" stroke="#ED2226" strokeWidth="1.5" strokeLinecap="round" />
+                </>
+              ),
+            },
+            {
+              name: 'Visual Impact Management',
+              sub: 'Design that stops scrollers',
+              icon: (
+                <>
+                  <circle cx="10" cy="10" r="7" stroke="#ED2226" strokeWidth="2" />
+                  <path d="M7 10l2 2 4-4" stroke="#ED2226" strokeWidth="1.5" strokeLinecap="round" />
+                </>
+              ),
+            },
+            {
+              name: 'Web Essentials Management',
+              sub: 'The technical backbone',
+              icon: (
+                <>
+                  <path d="M4 6l4-3 4 3 4-3" stroke="#ED2226" strokeWidth="1.5" strokeLinecap="round" />
+                  <path
+                    d="M4 10l4-3 4 3 4-3M4 14l4-3 4 3 4-3"
+                    stroke="#ED2226"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                  />
+                </>
+              ),
+            },
+            {
+              name: 'Organic Search (SEO)',
+              sub: 'Ranking that sticks',
+              icon: (
+                <>
+                  <circle cx="10" cy="8" r="3" stroke="#ED2226" strokeWidth="2" />
+                  <path d="M4 18c0-3.3 2.7-6 6-6s6 2.7 6 6" stroke="#ED2226" strokeWidth="2" strokeLinecap="round" />
+                </>
+              ),
+            },
+            {
+              name: 'AI Search Readiness',
+              sub: 'Built for ChatGPT & Perplexity era',
+              icon: (
+                <>
+                  <path d="M10 3v14M3 10h14" stroke="#ED2226" strokeWidth="2" strokeLinecap="round" />
+                  <circle cx="10" cy="10" r="3" fill="#ED2226" opacity="0.3" />
+                </>
+              ),
+            },
           ].map((t, i) => (
             <div
               key={t.name}
               data-cursor-hover
               className={cn(
                 'dp-reveal bg-white border border-black/[0.08] rounded-[20px] px-8 py-7 flex items-center gap-4 transition-[transform,border-color,box-shadow] duration-[400ms] hover:translate-x-1.5 hover:border-[#ED2226] hover:shadow-[4px_0_0_#ED2226]',
-                REVEAL_DELAY[i % 3],
+                REVEAL_DELAY[i % 3]
               )}
             >
               <div className="w-11 h-11 bg-[rgba(237,34,38,0.08)] rounded-xl flex items-center justify-center shrink-0">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">{t.icon}</svg>
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                  {t.icon}
+                </svg>
               </div>
               <div>
                 <div className="text-[15px] font-bold text-[#0A0A0A] tracking-[-0.1px]">{t.name}</div>
@@ -1024,39 +1310,87 @@ export default function DesignPortfolioClient() {
       {/* GLOBAL */}
       <section
         id="global"
-        className={cn(SECTION_PAD, 'bg-[#0A0A0A] grid grid-cols-2 gap-20 items-center max-[1100px]:grid-cols-1 max-[1100px]:gap-[50px]')}
+        className={cn(
+          SECTION_PAD,
+          'bg-[#0A0A0A] grid grid-cols-2 gap-20 items-center max-[1100px]:grid-cols-1 max-[1100px]:gap-[50px]'
+        )}
       >
         <div>
           <div className={cn(SECTION_LABEL, '!text-[#0EC8C5]')}>Global Servicing</div>
-          <h2 className={cn(SECTION_HEADLINE, '!text-white max-w-[500px] dp-reveal')}>Built for Global.<br />Delivered with<br />Structure.</h2>
+          <h2 className={cn(SECTION_HEADLINE, '!text-white max-w-[500px] dp-reveal')}>
+            Built for Global.
+            <br />
+            Delivered with
+            <br />
+            Structure.
+          </h2>
           <p className={cn('text-[15px] leading-[1.7] text-white/55 mt-4 mb-10 dp-reveal', REVEAL_DELAY[1])}>
-            We have built structured frameworks for working with international clients — from communication cadence to delivery ownership. Whether you are in <strong className="text-white/75">New York, Toronto, Sydney, or Dubai,</strong> you get the same predictable, transparent website development experience.
+            We have built structured frameworks for working with international clients — from communication cadence to
+            delivery ownership. Whether you are in{' '}
+            <strong className="text-white/75">New York, Toronto, Sydney, or Dubai,</strong> you get the same
+            predictable, transparent website development experience.
           </p>
           <Link
             href="/case-studies"
             className={cn(
               'dp-reveal w-fit relative overflow-hidden inline-flex items-center gap-2.5 bg-[#ED2226] text-white px-8 py-4 rounded-full text-sm font-bold tracking-[0.3px] transition-transform duration-200 hover:scale-[1.04] hover:shadow-[0_16px_48px_rgba(237,34,38,0.35)]',
               "before:content-[''] before:absolute before:inset-0 before:bg-[#0EC8C5] before:-translate-x-full before:transition-transform before:duration-[400ms] hover:before:translate-x-0 [&>span]:relative [&>span]:z-[1] [&>svg]:relative [&>svg]:z-[1]",
-              REVEAL_DELAY[2],
+              REVEAL_DELAY[2]
             )}
           >
             <span>See How We Work</span>
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="white" strokeWidth="2" strokeLinecap="round" /></svg>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="white" strokeWidth="2" strokeLinecap="round" />
+            </svg>
           </Link>
           <p className={cn('text-sm text-white/40 italic mt-9 dp-reveal', REVEAL_DELAY[3])}>
-            Want to understand our full engagement frameworks?<br />We will walk you through it on a call.
+            Want to understand our full engagement frameworks?
+            <br />
+            We will walk you through it on a call.
           </p>
         </div>
 
-        <div className={cn('dp-reveal flex flex-col bg-[#1A1A1A] rounded-3xl overflow-hidden border border-white/[0.06]', REVEAL_DELAY[1])}>
+        <div
+          className={cn(
+            'dp-reveal flex flex-col bg-[#1A1A1A] rounded-3xl overflow-hidden border border-white/[0.06]',
+            REVEAL_DELAY[1]
+          )}
+        >
           {[
-            { title: 'Dedicated Point of Contact', desc: 'One person owns your project. Always. No ticket systems, no confusion, no dropped balls.', icon: <><circle cx="10" cy="7" r="3" stroke="white" strokeWidth="2" /><path d="M4 18c0-3.3 2.7-6 6-6s6 2.7 6 6" stroke="white" strokeWidth="2" strokeLinecap="round" /></> },
-            { title: 'Your Timezone, Our Commitment', desc: 'All client calls scheduled during your business hours. We adapt to you, not the other way around.', icon: <><circle cx="10" cy="10" r="7" stroke="white" strokeWidth="2" /><path d="M10 6v4l3 2" stroke="white" strokeWidth="1.5" strokeLinecap="round" /></> },
-            { title: 'Structured Delivery', desc: 'Fixed milestones, fortnightly reports, zero surprises. You always know where your project stands.', icon: <path d="M4 10l4 4 8-8" stroke="white" strokeWidth="2" strokeLinecap="round" /> },
-          ].map(p => (
-            <div key={p.title} className="px-9 py-8 max-[700px]:px-5 max-[700px]:py-5 border-b border-white/[0.06] last:border-b-0 flex gap-4 items-start transition-colors duration-200 hover:bg-[#242424]">
+            {
+              title: 'Dedicated Point of Contact',
+              desc: 'One person owns your project. Always. No ticket systems, no confusion, no dropped balls.',
+              icon: (
+                <>
+                  <circle cx="10" cy="7" r="3" stroke="white" strokeWidth="2" />
+                  <path d="M4 18c0-3.3 2.7-6 6-6s6 2.7 6 6" stroke="white" strokeWidth="2" strokeLinecap="round" />
+                </>
+              ),
+            },
+            {
+              title: 'Your Timezone, Our Commitment',
+              desc: 'All client calls scheduled during your business hours. We adapt to you, not the other way around.',
+              icon: (
+                <>
+                  <circle cx="10" cy="10" r="7" stroke="white" strokeWidth="2" />
+                  <path d="M10 6v4l3 2" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
+                </>
+              ),
+            },
+            {
+              title: 'Structured Delivery',
+              desc: 'Fixed milestones, fortnightly reports, zero surprises. You always know where your project stands.',
+              icon: <path d="M4 10l4 4 8-8" stroke="white" strokeWidth="2" strokeLinecap="round" />,
+            },
+          ].map((p) => (
+            <div
+              key={p.title}
+              className="px-9 py-8 max-[700px]:px-5 max-[700px]:py-5 border-b border-white/[0.06] last:border-b-0 flex gap-4 items-start transition-colors duration-200 hover:bg-[#242424]"
+            >
               <div className="w-10 h-10 rounded-[10px] flex items-center justify-center shrink-0 bg-[linear-gradient(135deg,#ED2226,#0EC8C5)]">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">{p.icon}</svg>
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                  {p.icon}
+                </svg>
               </div>
               <div>
                 <div className="text-base font-bold text-white mb-1.5 tracking-[-0.1px]">{p.title}</div>
@@ -1068,10 +1402,20 @@ export default function DesignPortfolioClient() {
       </section>
 
       {/* COUNTRIES */}
-      <section id="countries" className="bg-[#FAFAF8] py-20 px-[60px] text-center max-[1100px]:px-[30px] max-[700px]:px-5 max-[700px]:py-[60px]">
+      <section
+        id="countries"
+        className="bg-[#FAFAF8] py-20 px-[60px] text-center max-[1100px]:px-[30px] max-[700px]:px-5 max-[700px]:py-[60px]"
+      >
         <div className={SECTION_LABEL}>Our Global Footprint</div>
-        <h2 className={cn(SECTION_HEADLINE, '!mb-3 dp-reveal')}>Brands We&apos;ve Served,<br />Around the World</h2>
-        <p className={cn('text-[15px] text-[#777] max-w-[500px] mx-auto mb-12 dp-reveal', REVEAL_DELAY[1])}>From Delhi to the world — here&apos;s where our website development and digital marketing work has made an impact.</p>
+        <h2 className={cn(SECTION_HEADLINE, '!mb-3 dp-reveal')}>
+          Brands We&apos;ve Served,
+          <br />
+          Around the World
+        </h2>
+        <p className={cn('text-[15px] text-[#777] max-w-[500px] mx-auto mb-12 dp-reveal', REVEAL_DELAY[1])}>
+          From Delhi to the world — here&apos;s where our website development and digital marketing work has made an
+          impact.
+        </p>
         {/* Flag grid: 6 columns × 2 rows on desktop (collapses on smaller screens).
             Flags ~3× the original pill size, name underneath, no container chrome.
             Each flag has a subtle perspective-based wave animation, staggered
@@ -1091,7 +1435,7 @@ export default function DesignPortfolioClient() {
                   transformOrigin: 'left center',
                 }}
               >
-                  <Image
+                <Image
                   src={`https://flagcdn.com/w160/${c.code}.png`}
                   width={84}
                   height={60}
@@ -1114,7 +1458,10 @@ export default function DesignPortfolioClient() {
           <div>
             <div className={cn(SECTION_LABEL, '!text-[#0EC8C5]')}>Our Work</div>
             <h2 className={cn(SECTION_HEADLINE, '!text-white !mb-2 dp-reveal')}>Explore Our Websites</h2>
-            <p className={cn('text-[15px] text-white/45 max-w-[500px] leading-[1.65] dp-reveal', REVEAL_DELAY[1])}>Browse our website design and development work across industries, business models, and platforms. From WordPress and Shopify to custom Next.js builds — filter by what matters to you.</p>
+            <p className={cn('text-[15px] text-white/45 max-w-[500px] leading-[1.65] dp-reveal', REVEAL_DELAY[1])}>
+              Browse our website design and development work across industries, business models, and platforms. From
+              WordPress and Shopify to custom Next.js builds — filter by what matters to you.
+            </p>
           </div>
         </div>
 
@@ -1143,13 +1490,31 @@ export default function DesignPortfolioClient() {
       {/* FAQ */}
       <section
         id="faq"
-        className={cn(SECTION_PAD, 'bg-[#FAFAF8] grid grid-cols-[360px_1fr] gap-20 items-start max-[1100px]:grid-cols-1 max-[1100px]:gap-12')}
+        className={cn(
+          SECTION_PAD,
+          'bg-[#FAFAF8] grid grid-cols-[360px_1fr] gap-20 items-start max-[1100px]:grid-cols-1 max-[1100px]:gap-12'
+        )}
       >
         <div className="sticky top-[120px] max-[1100px]:static">
           <div className={SECTION_LABEL}>Questions &amp; Answers</div>
-          <h2 className={cn(SECTION_HEADLINE, 'text-[clamp(32px,4vw,48px)]! dp-reveal')} style={{ fontSize: 'clamp(32px,4vw,48px)' }}>Everything You Want to Know</h2>
-          <p className={cn(SECTION_SUBLINE, '!text-[#777] !mb-9 dp-reveal', REVEAL_DELAY[1])}>Common questions from our clients in India, the USA, Canada, Australia, and beyond — before they start their website project with us.</p>
-          <div className={cn("font-['Stack_Sans_Headline','Stack_Sans_Text',sans-serif] text-[100px] max-[700px]:text-[64px] font-bold text-black/[0.04] leading-none tracking-[-6px] max-[700px]:tracking-[-3px] -mb-5 dp-reveal", REVEAL_DELAY[2])}>07</div>
+          <h2
+            className={cn(SECTION_HEADLINE, 'text-[clamp(32px,4vw,48px)]! dp-reveal')}
+            style={{ fontSize: 'clamp(32px,4vw,48px)' }}
+          >
+            Everything You Want to Know
+          </h2>
+          <p className={cn(SECTION_SUBLINE, '!text-[#777] !mb-9 dp-reveal', REVEAL_DELAY[1])}>
+            Common questions from our clients in India, the USA, Canada, Australia, and beyond — before they start their
+            website project with us.
+          </p>
+          <div
+            className={cn(
+              "font-['Stack_Sans_Headline','Stack_Sans_Text',sans-serif] text-[100px] max-[700px]:text-[64px] font-bold text-black/[0.04] leading-none tracking-[-6px] max-[700px]:tracking-[-3px] -mb-5 dp-reveal",
+              REVEAL_DELAY[2]
+            )}
+          >
+            07
+          </div>
         </div>
 
         <div className="flex flex-col">
@@ -1198,18 +1563,32 @@ export default function DesignPortfolioClient() {
       </section>
 
       {/* CTA */}
-      <section id="cta" className="py-[120px] px-[60px] bg-[#ED2226] text-center relative overflow-hidden max-[700px]:py-[60px] max-[700px]:px-5">
-        <div className="absolute font-['Stack_Sans_Headline','Stack_Sans_Text',sans-serif] text-[clamp(80px,20vw,200px)] font-bold text-white/5 tracking-[-10px] max-[700px]:tracking-[-4px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 whitespace-nowrap pointer-events-none">NEXT</div>
+      <section
+        id="cta"
+        className="py-[120px] px-[60px] bg-[#ED2226] text-center relative overflow-hidden max-[700px]:py-[60px] max-[700px]:px-5"
+      >
+        <div className="absolute font-['Stack_Sans_Headline','Stack_Sans_Text',sans-serif] text-[clamp(80px,20vw,200px)] font-bold text-white/5 tracking-[-10px] max-[700px]:tracking-[-4px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 whitespace-nowrap pointer-events-none">
+          NEXT
+        </div>
         <div className={cn(SECTION_LABEL, '!text-white/60 !mb-6 dp-reveal')}>Let&apos;s Build Together</div>
-        <h2 className={cn("dp-reveal font-['Stack_Sans_Headline','Stack_Sans_Text',sans-serif] text-[clamp(48px,7vw,100px)] font-bold text-white tracking-[-3px] leading-[0.95] mb-6 relative", REVEAL_DELAY[1])}>
-          Have a website<br />in mind?
+        <h2
+          className={cn(
+            "dp-reveal font-['Stack_Sans_Headline','Stack_Sans_Text',sans-serif] text-[clamp(48px,7vw,100px)] font-bold text-white tracking-[-3px] leading-[0.95] mb-6 relative",
+            REVEAL_DELAY[1]
+          )}
+        >
+          Have a website
+          <br />
+          in mind?
         </h2>
-        <p className={cn('dp-reveal text-[17px] text-white/70 mb-12 relative', REVEAL_DELAY[2])}>Tell us about your brand and what you need. We&apos;ll take it from there.</p>
+        <p className={cn('dp-reveal text-[17px] text-white/70 mb-12 relative', REVEAL_DELAY[2])}>
+          Tell us about your brand and what you need. We&apos;ll take it from there.
+        </p>
         <Link
           href="/contact"
           className={cn(
             'dp-reveal inline-flex items-center gap-3 bg-white text-[#ED2226] px-10 py-[18px] max-[700px]:px-7 max-[700px]:py-[14px] rounded-full text-[15px] font-bold tracking-[-0.2px] transition-[transform,box-shadow] duration-200 hover:scale-[1.06] hover:shadow-[0_24px_60px_rgba(0,0,0,0.2)] relative',
-            REVEAL_DELAY[3],
+            REVEAL_DELAY[3]
           )}
         >
           Book a Free 30-min Call →
@@ -1247,19 +1626,32 @@ const PORTFOLIO_CARDS: PortfolioCardData[] = [
     tags: ['Food & Beverage', 'B2B', 'Export'],
     platformTag: 'Next.js',
     title: 'Gajna Overseas',
-    oneliner: 'A warm, brand-forward Next.js website for an Indian specialty coffee exporter — crafted to open doors in the USA, Europe, and Middle East by telling the authentic story behind every bean.',
-    result: 'Gave Gajna Overseas a credible, export-ready digital presence that speaks directly to international buyers.',
+    oneliner:
+      'A warm, brand-forward Next.js website for an Indian specialty coffee exporter — crafted to open doors in the USA, Europe, and Middle East by telling the authentic story behind every bean.',
+    result:
+      'Gave Gajna Overseas a credible, export-ready digital presence that speaks directly to international buyers.',
     preview: (
-      <div className="absolute inset-0 flex flex-col" style={{ background: 'linear-gradient(135deg, #1c0a00 0%, #3d1a00 50%, #6b3000 100%)' }}>
+      <div
+        className="absolute inset-0 flex flex-col"
+        style={{ background: 'linear-gradient(135deg, #1c0a00 0%, #3d1a00 50%, #6b3000 100%)' }}
+      >
         <div className="px-5 py-3.5 flex justify-between items-center">
           <div className="text-sm font-bold text-[#d4a255] tracking-[1px]">GAJNA OVERSEAS</div>
         </div>
         <div className="px-5 py-2 flex-1 flex flex-col justify-center">
-          <div className="text-[22px] font-extrabold text-white leading-[1.1]">India&apos;s Finest<br /><span className="text-[#d4a255]">Specialty Coffee</span></div>
+          <div className="text-[22px] font-extrabold text-white leading-[1.1]">
+            India&apos;s Finest
+            <br />
+            <span className="text-[#d4a255]">Specialty Coffee</span>
+          </div>
           <div className="text-[10px] text-white/50 mt-2">Export-Ready · USA · Europe · Middle East</div>
           <div className="flex gap-2 mt-3">
-            <div className="bg-[#d4a255] rounded-full px-3.5 py-1.5 text-[9px] text-[#1c0a00] font-bold">Our Coffees</div>
-            <div className="border border-[rgba(212,162,85,0.4)] rounded-full px-3.5 py-1.5 text-[9px] text-[#d4a255]">Our Story</div>
+            <div className="bg-[#d4a255] rounded-full px-3.5 py-1.5 text-[9px] text-[#1c0a00] font-bold">
+              Our Coffees
+            </div>
+            <div className="border border-[rgba(212,162,85,0.4)] rounded-full px-3.5 py-1.5 text-[9px] text-[#d4a255]">
+              Our Story
+            </div>
           </div>
         </div>
         <div className="absolute right-5 bottom-4 w-[60px] h-[60px] rounded-full border-2 border-[rgba(212,162,85,0.3)] bg-[radial-gradient(#6b3000,#1c0a00)]" />
@@ -1273,10 +1665,14 @@ const PORTFOLIO_CARDS: PortfolioCardData[] = [
     tags: ['Technology', 'B2B', 'Staffing'],
     platformTag: 'Next.js',
     title: 'Talentifix',
-    oneliner: 'A custom-coded Next.js website that brought fresh, new-generation energy to the IT staffing industry — bold UI/UX design that broke every convention in a space known for dull, corporate web presence.',
+    oneliner:
+      'A custom-coded Next.js website that brought fresh, new-generation energy to the IT staffing industry — bold UI/UX design that broke every convention in a space known for dull, corporate web presence.',
     result: 'Went live in just 4 weeks. Has been driving high organic traffic since launch.',
     preview: (
-      <div className="absolute inset-0 flex flex-col" style={{ background: 'linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%)' }}>
+      <div
+        className="absolute inset-0 flex flex-col"
+        style={{ background: 'linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%)' }}
+      >
         <div className="px-5 py-3.5 flex justify-between items-center">
           <div className="flex items-center gap-1.5">
             <div className="w-6 h-6 rounded-md bg-[linear-gradient(135deg,#f093fb,#f5576c)]" />
@@ -1284,7 +1680,13 @@ const PORTFOLIO_CARDS: PortfolioCardData[] = [
           </div>
         </div>
         <div className="px-5 py-2 flex-1 flex flex-col justify-center">
-          <div className="text-[20px] font-extrabold text-white leading-[1.1]">IT Staffing<br /><span className="bg-[linear-gradient(90deg,#f093fb,#f5576c)] bg-clip-text text-transparent">Reimagined.</span></div>
+          <div className="text-[20px] font-extrabold text-white leading-[1.1]">
+            IT Staffing
+            <br />
+            <span className="bg-[linear-gradient(90deg,#f093fb,#f5576c)] bg-clip-text text-transparent">
+              Reimagined.
+            </span>
+          </div>
           <div className="text-[10px] text-white/40 mt-2">4 weeks to launch · High organic traffic</div>
         </div>
         <div className="px-5 py-3 flex gap-2">
@@ -1301,17 +1703,25 @@ const PORTFOLIO_CARDS: PortfolioCardData[] = [
     tags: ['Healthcare', 'B2B & B2C', 'Life Sciences'],
     platformTag: 'Next.js',
     title: 'NeoTech World Lab',
-    oneliner: 'A credibility-first Next.js website for a genetic testing lab serving both individual consumers and institutional clients — designed to make complex science feel clear, trustworthy, and accessible.',
+    oneliner:
+      'A credibility-first Next.js website for a genetic testing lab serving both individual consumers and institutional clients — designed to make complex science feel clear, trustworthy, and accessible.',
     result: 'Successfully bridges a highly technical healthcare offering with everyday consumer accessibility.',
     preview: (
-      <div className="absolute inset-0 flex flex-col" style={{ background: 'linear-gradient(135deg, #003d7a 0%, #0070c4 50%, #00a8e8 100%)' }}>
+      <div
+        className="absolute inset-0 flex flex-col"
+        style={{ background: 'linear-gradient(135deg, #003d7a 0%, #0070c4 50%, #00a8e8 100%)' }}
+      >
         <div className="px-[18px] py-3 flex justify-between items-center">
           <div className="text-[11px] font-extrabold text-white tracking-[1px]">NEOTECH WORLD LAB</div>
           <div className="w-[60px] h-5 rounded-full bg-white/15" />
         </div>
         <div className="px-[18px] py-2 flex-1 flex gap-3">
           <div className="flex-1 flex flex-col justify-center">
-            <div className="text-base font-extrabold text-white leading-[1.2]">Advanced Genetic<br />Testing Solutions</div>
+            <div className="text-base font-extrabold text-white leading-[1.2]">
+              Advanced Genetic
+              <br />
+              Testing Solutions
+            </div>
             <div className="text-[9px] text-white/60 mt-1.5">B2B · B2C · Healthcare · India &amp; Global</div>
             <div className="flex gap-1.5 mt-2.5">
               <div className="bg-white rounded-full px-3 py-1.5 text-[8px] text-[#003d7a] font-bold">Our Tests</div>
@@ -1336,25 +1746,36 @@ const PORTFOLIO_CARDS: PortfolioCardData[] = [
     tags: ['Technology', 'B2B', 'IT Services'],
     platformTag: 'WordPress',
     title: 'Advent Global',
-    oneliner: 'A complete brand revamp and custom WordPress website for a 30-year legacy IT services company — parallax animations, enterprise-grade design, and a conversion-friendly architecture built to attract global B2B clients.',
-    result: 'Shortly after launch, this professionally redesigned WordPress website helped the company onboard a landmark enterprise client — proof that world-class web design drives real business outcomes for IT firms in international markets.',
+    oneliner:
+      'A complete brand revamp and custom WordPress website for a 30-year legacy IT services company — parallax animations, enterprise-grade design, and a conversion-friendly architecture built to attract global B2B clients.',
+    result:
+      'Shortly after launch, this professionally redesigned WordPress website helped the company onboard a landmark enterprise client — proof that world-class web design drives real business outcomes for IT firms in international markets.',
     preview: (
-      <div className="absolute inset-0 flex flex-col" style={{ background: 'linear-gradient(135deg, #1a2a6c 0%, #b21f1f 60%, #fdbb2d 100%)' }}>
+      <div
+        className="absolute inset-0 flex flex-col"
+        style={{ background: 'linear-gradient(135deg, #1a2a6c 0%, #b21f1f 60%, #fdbb2d 100%)' }}
+      >
         <div className="px-5 py-4 flex items-center justify-between">
           <div className="flex gap-5 items-center">
             <div className="w-20 h-6 rounded bg-white/20" />
             <div className="flex gap-3">
-              {[0, 1, 2, 3].map(i => <div key={i} className="w-8 h-[3px] rounded-full bg-white/20" />)}
+              {[0, 1, 2, 3].map((i) => (
+                <div key={i} className="w-8 h-[3px] rounded-full bg-white/20" />
+              ))}
             </div>
           </div>
           <div className="w-[100px] h-7 rounded-full bg-[#ED2226]" />
         </div>
         <div className="px-[30px] py-5">
-          <div className="text-[28px] font-black text-white tracking-[-0.5px] [text-shadow:0_2px_8px_rgba(0,0,0,0.3)] font-['Stack_Sans_Text',sans-serif]">Advent Global Solutions</div>
+          <div className="text-[28px] font-black text-white tracking-[-0.5px] [text-shadow:0_2px_8px_rgba(0,0,0,0.3)] font-['Stack_Sans_Text',sans-serif]">
+            Advent Global Solutions
+          </div>
           <div className="text-[13px] text-white/70 mt-1.5">30 Years of IT Excellence · Enterprise Solutions</div>
           <div className="flex gap-2.5 mt-4">
-            {['IT Services', 'Consulting', 'Enterprise'].map(t => (
-              <div key={t} className="bg-white/15 backdrop-blur-sm rounded-lg px-4 py-2.5 text-[10px] text-white">{t}</div>
+            {['IT Services', 'Consulting', 'Enterprise'].map((t) => (
+              <div key={t} className="bg-white/15 backdrop-blur-sm rounded-lg px-4 py-2.5 text-[10px] text-white">
+                {t}
+              </div>
             ))}
           </div>
         </div>
@@ -1369,10 +1790,15 @@ const PORTFOLIO_CARDS: PortfolioCardData[] = [
     tags: ['Fashion & Apparel', 'D2C', 'Luxury'],
     platformTag: 'Shopify',
     title: 'Khaleej',
-    oneliner: "A high-performance Shopify store for a luxury women's fashion brand — deeply optimised product pages, seamless mobile-first experience, and a conversion-focused design built to turn browsers into buyers.",
-    result: "Achieved 5X ROAS within the first month — generated enough revenue to cover the entire year's business targets.",
+    oneliner:
+      "A high-performance Shopify store for a luxury women's fashion brand — deeply optimised product pages, seamless mobile-first experience, and a conversion-focused design built to turn browsers into buyers.",
+    result:
+      "Achieved 5X ROAS within the first month — generated enough revenue to cover the entire year's business targets.",
     preview: (
-      <div className="absolute inset-0 flex flex-col" style={{ background: 'linear-gradient(135deg, #1a0a2e 0%, #6d28d9 50%, #c026d3 100%)' }}>
+      <div
+        className="absolute inset-0 flex flex-col"
+        style={{ background: 'linear-gradient(135deg, #1a0a2e 0%, #6d28d9 50%, #c026d3 100%)' }}
+      >
         <div className="px-5 py-4 flex justify-between items-center">
           <div className="text-base font-extrabold text-white tracking-[3px]">KHALEEJ</div>
           <div className="flex gap-3.5">
@@ -1382,7 +1808,9 @@ const PORTFOLIO_CARDS: PortfolioCardData[] = [
         </div>
         <div className="px-5 flex gap-3 flex-1">
           <div className="flex-1 bg-white/10 rounded-lg border border-white/15 overflow-hidden relative">
-            <div className="absolute bottom-0 left-0 right-0 p-2.5 text-[10px] text-white bg-[linear-gradient(transparent,rgba(0,0,0,0.7))]">Luxury Collection</div>
+            <div className="absolute bottom-0 left-0 right-0 p-2.5 text-[10px] text-white bg-[linear-gradient(transparent,rgba(0,0,0,0.7))]">
+              Luxury Collection
+            </div>
           </div>
           <div className="w-[100px] flex flex-col gap-2">
             <div className="flex-1 bg-white/[0.08] rounded-md border border-white/10" />
@@ -1401,10 +1829,15 @@ const PORTFOLIO_CARDS: PortfolioCardData[] = [
     tags: ['Fashion & Apparel', 'D2C', 'Heritage'],
     platformTag: 'Shopify',
     title: 'House of Nandini',
-    oneliner: "A beautifully crafted Shopify store that captures the soul of Lucknow's chikankari artisan tradition — merging heritage ethnic fashion with modern D2C e-commerce, built for women who appreciate craft as much as design.",
-    result: "Launched at a physical inauguration event attended by prominent TV anchor Ms. Richa Anirudh Thatte, who publicly praised the store's authentic cultural identity — creating immediate brand credibility.",
+    oneliner:
+      "A beautifully crafted Shopify store that captures the soul of Lucknow's chikankari artisan tradition — merging heritage ethnic fashion with modern D2C e-commerce, built for women who appreciate craft as much as design.",
+    result:
+      "Launched at a physical inauguration event attended by prominent TV anchor Ms. Richa Anirudh Thatte, who publicly praised the store's authentic cultural identity — creating immediate brand credibility.",
     preview: (
-      <div className="absolute inset-0 flex flex-col" style={{ background: 'linear-gradient(135deg, #f5e6d3 0%, #e8c9a0 50%, #d4a574 100%)' }}>
+      <div
+        className="absolute inset-0 flex flex-col"
+        style={{ background: 'linear-gradient(135deg, #f5e6d3 0%, #e8c9a0 50%, #d4a574 100%)' }}
+      >
         <div className="px-6 py-3.5 flex justify-between items-center border-b border-black/[0.08]">
           <div className="text-lg font-bold text-[#2d1a0e] tracking-[2px] font-serif">HOUSE OF NANDINI</div>
           <div className="flex gap-4 text-[10px] text-[#6b4226]">Collections · Story · Care</div>
@@ -1412,7 +1845,11 @@ const PORTFOLIO_CARDS: PortfolioCardData[] = [
         <div className="flex-1 flex gap-4 px-6 py-4">
           <div className="flex-[2] flex flex-col justify-center">
             <div className="text-[10px] tracking-[2px] text-[#6b4226] mb-2">LUCKNOW&apos;S FINEST</div>
-            <div className="text-[22px] font-bold text-[#2d1a0e] font-serif leading-[1.2]">The Art of<br />Chikankari</div>
+            <div className="text-[22px] font-bold text-[#2d1a0e] font-serif leading-[1.2]">
+              The Art of
+              <br />
+              Chikankari
+            </div>
             <div className="mt-3 text-[9px] text-[#8b5e3c]">Handcrafted Ethnic Wear · Made with Love</div>
             <div className="mt-3.5 w-[100px] h-7 rounded bg-[#2d1a0e]" />
           </div>
@@ -1433,10 +1870,15 @@ const PORTFOLIO_CARDS: PortfolioCardData[] = [
     tags: ['Fashion & Apparel', 'D2C', 'Luxury'],
     platformTag: 'Shopify',
     title: 'Mauli',
-    oneliner: "A refined, minimal Shopify e-commerce store for a premium cashmere women's brand — where every design decision is as intentional as the product itself, built to convert high-intent D2C shoppers.",
-    result: "Achieved 4X ROAS within 2 months — generated revenues that covered the brand's entire annual business targets.",
+    oneliner:
+      "A refined, minimal Shopify e-commerce store for a premium cashmere women's brand — where every design decision is as intentional as the product itself, built to convert high-intent D2C shoppers.",
+    result:
+      "Achieved 4X ROAS within 2 months — generated revenues that covered the brand's entire annual business targets.",
     preview: (
-      <div className="absolute inset-0 flex flex-col" style={{ background: 'linear-gradient(135deg, #f0ece4 0%, #e8ddd0 50%, #d9ccbb 100%)' }}>
+      <div
+        className="absolute inset-0 flex flex-col"
+        style={{ background: 'linear-gradient(135deg, #f0ece4 0%, #e8ddd0 50%, #d9ccbb 100%)' }}
+      >
         <div className="px-[18px] py-3 flex justify-center border-b border-black/[0.06]">
           <div className="text-xl font-light text-[#2a2a2a] tracking-[8px] font-serif">MAULI</div>
         </div>
@@ -1459,16 +1901,25 @@ const PORTFOLIO_CARDS: PortfolioCardData[] = [
     tags: ['Technology', 'B2B', 'Enterprise'],
     platformTag: 'Next.js',
     title: 'Sanjivani Edge',
-    oneliner: 'A sharp, professional Next.js website for a technology edge solutions company — clean architecture, precise messaging, and a design built to convert the right enterprise visitors into qualified business conversations.',
-    result: 'Positioned Sanjivani Edge as a credible technology partner for enterprise clients across India and international markets.',
+    oneliner:
+      'A sharp, professional Next.js website for a technology edge solutions company — clean architecture, precise messaging, and a design built to convert the right enterprise visitors into qualified business conversations.',
+    result:
+      'Positioned Sanjivani Edge as a credible technology partner for enterprise clients across India and international markets.',
     preview: (
-      <div className="absolute inset-0 flex flex-col" style={{ background: 'linear-gradient(135deg, #0d1117 0%, #1a2332 50%, #0d2137 100%)' }}>
+      <div
+        className="absolute inset-0 flex flex-col"
+        style={{ background: 'linear-gradient(135deg, #0d1117 0%, #1a2332 50%, #0d2137 100%)' }}
+      >
         <div className="px-[18px] py-3 flex items-center gap-2">
           <div className="w-5 h-5 rounded bg-[linear-gradient(135deg,#22d3ee,#3b82f6)]" />
           <div className="text-xs font-bold text-white tracking-[0.5px]">SANJIVANI EDGE</div>
         </div>
         <div className="px-[18px] py-2 flex-1 flex flex-col justify-center">
-          <div className="text-lg font-extrabold text-white leading-[1.2]">Enterprise Edge<br /><span className="text-[#22d3ee]">Solutions.</span></div>
+          <div className="text-lg font-extrabold text-white leading-[1.2]">
+            Enterprise Edge
+            <br />
+            <span className="text-[#22d3ee]">Solutions.</span>
+          </div>
           <div className="text-[9px] text-white/40 mt-1.5">B2B · India &amp; International Markets</div>
           <div className="flex gap-3 mt-3.5">
             <div className="h-0.5 flex-1 rounded-full bg-[linear-gradient(90deg,#22d3ee,transparent)]" />
@@ -1484,16 +1935,27 @@ const PORTFOLIO_CARDS: PortfolioCardData[] = [
     tags: ['Social Sector', 'Non-Profit'],
     platformTag: 'Next.js',
     title: 'Opinova Foundation',
-    oneliner: 'A purpose-driven Next.js website for a non-profit foundation focused on community empowerment — designed with the same strategic care and creative depth we bring to every commercial website development project.',
-    result: 'Gave Opinova Foundation a dignified, professional digital home that elevated their credibility with donors, grant bodies, and the communities they serve.',
+    oneliner:
+      'A purpose-driven Next.js website for a non-profit foundation focused on community empowerment — designed with the same strategic care and creative depth we bring to every commercial website development project.',
+    result:
+      'Gave Opinova Foundation a dignified, professional digital home that elevated their credibility with donors, grant bodies, and the communities they serve.',
     preview: (
-      <div className="absolute inset-0 flex flex-col" style={{ background: 'linear-gradient(135deg, #064e3b 0%, #065f46 50%, #047857 100%)' }}>
+      <div
+        className="absolute inset-0 flex flex-col"
+        style={{ background: 'linear-gradient(135deg, #064e3b 0%, #065f46 50%, #047857 100%)' }}
+      >
         <div className="px-[18px] py-3 flex items-center gap-2">
-          <div className="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center text-[10px] text-white">O</div>
+          <div className="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center text-[10px] text-white">
+            O
+          </div>
           <div className="text-[11px] font-bold text-white tracking-[1px]">OPINOVA FOUNDATION</div>
         </div>
         <div className="px-[18px] py-2 flex-1 flex flex-col justify-center">
-          <div className="text-lg font-extrabold text-white leading-[1.2]">Empowering<br />Communities.</div>
+          <div className="text-lg font-extrabold text-white leading-[1.2]">
+            Empowering
+            <br />
+            Communities.
+          </div>
           <div className="text-[9px] text-white/50 mt-1.5">Non-Profit · Social Impact · India</div>
           <div className="mt-3.5 w-[90px] h-[26px] rounded-full bg-white/15 border border-white/25" />
         </div>
@@ -1508,17 +1970,28 @@ const PORTFOLIO_CARDS: PortfolioCardData[] = [
     tags: ['Home & Lifestyle', 'D2C'],
     platformTag: 'Shopify',
     title: 'Hard2Soft',
-    oneliner: 'A clean, conversion-focused Shopify store for a D2C home water softener brand — making a technical product feel simple, trustworthy, and easy to buy for everyday consumers across India.',
-    result: 'Successfully simplified a technical home lifestyle product for D2C consumers, driving online sales directly to end users.',
+    oneliner:
+      'A clean, conversion-focused Shopify store for a D2C home water softener brand — making a technical product feel simple, trustworthy, and easy to buy for everyday consumers across India.',
+    result:
+      'Successfully simplified a technical home lifestyle product for D2C consumers, driving online sales directly to end users.',
     preview: (
-      <div className="absolute inset-0 flex flex-col" style={{ background: 'linear-gradient(135deg, #e0f2fe 0%, #bae6fd 50%, #7dd3fc 100%)' }}>
+      <div
+        className="absolute inset-0 flex flex-col"
+        style={{ background: 'linear-gradient(135deg, #e0f2fe 0%, #bae6fd 50%, #7dd3fc 100%)' }}
+      >
         <div className="px-[18px] py-3 flex justify-between items-center">
           <div className="text-base font-extrabold text-[#0369a1] tracking-[-0.5px]">H2S</div>
-          <div className="text-[9px] text-[#0369a1] bg-[rgba(3,105,161,0.1)] px-2.5 py-1 rounded-full">Water Softeners</div>
+          <div className="text-[9px] text-[#0369a1] bg-[rgba(3,105,161,0.1)] px-2.5 py-1 rounded-full">
+            Water Softeners
+          </div>
         </div>
         <div className="px-[18px] py-2 flex-1 flex items-center gap-4">
           <div className="flex-1">
-            <div className="text-base font-extrabold text-[#0c4a6e] leading-[1.2]">Pure Water,<br />Better Living.</div>
+            <div className="text-base font-extrabold text-[#0c4a6e] leading-[1.2]">
+              Pure Water,
+              <br />
+              Better Living.
+            </div>
             <div className="text-[9px] text-[#0369a1] mt-1.5">D2C · Home &amp; Lifestyle · India</div>
             <div className="mt-2.5 w-20 h-6 rounded bg-[#0369a1]" />
           </div>
@@ -1637,7 +2110,7 @@ function PortfolioGrid({ filter }: { filter: FilterKey }) {
               'dp-reveal group relative bg-[#1A1A1A] rounded-[20px] overflow-hidden border border-white/[0.06] transition-[transform,box-shadow,border-color] duration-[400ms] hover:-translate-y-2 hover:shadow-[0_32px_64px_rgba(0,0,0,0.5)] hover:border-white/15 block',
               card.featured && 'col-span-2 max-[700px]:col-span-1',
               REVEAL_DELAY[i % 3],
-              !visible && 'hidden',
+              !visible && 'hidden'
             )}
             style={{ transitionDelay: `${(i % 3) * 80}ms` }}
           >
@@ -1648,7 +2121,9 @@ function PortfolioGrid({ filter }: { filter: FilterKey }) {
                 <div className="w-2 h-2 rounded-full bg-[#FEBC2E]" />
                 <div className="w-2 h-2 rounded-full bg-[#28C840]" />
               </div>
-              <div className="flex-1 bg-white/[0.06] rounded-full px-3.5 py-1.5 text-[10px] text-white/35 font-mono tracking-[0.3px]">{card.url}</div>
+              <div className="flex-1 bg-white/[0.06] rounded-full px-3.5 py-1.5 text-[10px] text-white/35 font-mono tracking-[0.3px]">
+                {card.url}
+              </div>
             </div>
             <SitePreview
               src={card.href}
@@ -1662,21 +2137,30 @@ function PortfolioGrid({ filter }: { filter: FilterKey }) {
             />
             <div className="px-[22px] pt-5 pb-[22px]">
               <div className="flex gap-1.5 flex-wrap mb-3">
-                {card.tags.map(t => (
-                  <span key={t} className="text-[9px] font-bold tracking-[1.5px] uppercase px-2.5 py-1 rounded-full border border-white/[0.12] text-white/45">{t}</span>
+                {card.tags.map((t) => (
+                  <span
+                    key={t}
+                    className="text-[9px] font-bold tracking-[1.5px] uppercase px-2.5 py-1 rounded-full border border-white/[0.12] text-white/45"
+                  >
+                    {t}
+                  </span>
                 ))}
-                <span className="text-[9px] font-bold tracking-[1.5px] uppercase px-2.5 py-1 rounded-full border border-[rgba(14,200,197,0.25)] text-[#0EC8C5]">{card.platformTag}</span>
+                <span className="text-[9px] font-bold tracking-[1.5px] uppercase px-2.5 py-1 rounded-full border border-[rgba(14,200,197,0.25)] text-[#0EC8C5]">
+                  {card.platformTag}
+                </span>
               </div>
               <div
                 className={cn(
                   "font-['Stack_Sans_Headline','Stack_Sans_Text',sans-serif] font-bold text-white tracking-[-0.5px] mb-2 leading-[1.15]",
-                  card.featured ? 'text-2xl' : 'text-[19px]',
+                  card.featured ? 'text-2xl' : 'text-[19px]'
                 )}
               >
                 {card.title}
               </div>
               <div className="text-xs leading-[1.65] text-white/40 mb-4">{card.oneliner}</div>
-              <div className="bg-[rgba(14,200,197,0.07)] border border-[rgba(14,200,197,0.15)] rounded-[10px] px-3.5 py-3 text-[11px] leading-[1.6] text-[rgba(14,200,197,0.7)] mb-4 before:content-['✓_'] before:font-bold before:text-[#0EC8C5]">{card.result}</div>
+              <div className="bg-[rgba(14,200,197,0.07)] border border-[rgba(14,200,197,0.15)] rounded-[10px] px-3.5 py-3 text-[11px] leading-[1.6] text-[rgba(14,200,197,0.7)] mb-4 before:content-['✓_'] before:font-bold before:text-[#0EC8C5]">
+                {card.result}
+              </div>
               <span className="inline-flex items-center gap-1.5 text-[11px] font-bold tracking-[0.5px] text-white/30 transition-[color,gap] duration-200 group-hover:text-white group-hover:gap-2.5">
                 Visit Site →
               </span>

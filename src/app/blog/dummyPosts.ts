@@ -13,30 +13,30 @@ export interface DummyPost {
 }
 
 export const DUMMY_POSTS: DummyPost[] = [
-{
-  _id: '',
-  title: '',
-  slug: { current: '' },
-  heroImageUrl: '',
-  excerpt: '',
-  publishedAt: '',
-  categories: [{ _id: '', title: '' }],
-  author: { name: '' },
-  body: [
-    {
-      _type: '',
-      style: '',
-      _key: '',
-      children: [
-        {
-          _type: '',
-          _key: '',
-          text: ''
-        }
-      ]
-    }
-  ]
-},
+  {
+    _id: '',
+    title: '',
+    slug: { current: '' },
+    heroImageUrl: '',
+    excerpt: '',
+    publishedAt: '',
+    categories: [{ _id: '', title: '' }],
+    author: { name: '' },
+    body: [
+      {
+        _type: '',
+        style: '',
+        _key: '',
+        children: [
+          {
+            _type: '',
+            _key: '',
+            text: '',
+          },
+        ],
+      },
+    ],
+  },
 ];
 
 export const DUMMY_CATEGORIES = [
