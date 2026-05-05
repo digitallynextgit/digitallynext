@@ -149,7 +149,7 @@ export default function Footer() {
               >
                 <Image
                   src="/ani-icons/up_arrow.svg"
-                  alt=""
+                  alt="Back to top arrow"
                   width={10}
                   height={10}
                   style={{ width: 'auto', height: 'auto' }}

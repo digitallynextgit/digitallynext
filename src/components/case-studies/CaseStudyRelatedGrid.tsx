@@ -24,7 +24,7 @@ export default function CaseStudyRelatedGrid({ detail, theme }: CaseStudyRelated
               <div className="w-full overflow-hidden rounded-[8px] md:rounded-[5.177px]">
                 <Image
                   src={cs.imageSrc}
-                  alt=""
+                  alt={cs.description}
                   width={638}
                   height={425}
                   className="w-full h-auto object-cover"

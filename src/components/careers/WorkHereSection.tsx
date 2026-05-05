@@ -133,7 +133,7 @@ export default function WorkHereSection({ theme }: WorkHereSectionProps) {
               >
                 <Image
                   src={item.icon}
-                  alt=""
+                  alt={`${item.title} icon`}
                   width={item.iconW}
                   height={item.iconH}
                   style={{ width: item.iconW, height: item.iconH, flexShrink: 0 }}

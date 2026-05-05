@@ -83,7 +83,7 @@ function MobileServices({ isDark }: { isDark: boolean }) {
                           />
                           <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-300 flex items-center justify-center">
                             <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center gap-2 text-white font-semibold text-sm tracking-widest uppercase border border-white/60 px-4 py-2 rounded-sm backdrop-blur-sm">
-                              <Image src="/icons/enter.svg" alt="" width={16} height={16} />
+                              <Image src="/icons/enter.svg" alt="View details arrow" width={16} height={16} />
                               View Details
                             </span>
                           </div>
@@ -133,7 +133,7 @@ function MobileServices({ isDark }: { isDark: boolean }) {
                       {/* CTA */}
                       <Link href={`/services/${service.slug}`} className="group inline-flex items-center gap-2 mt-1">
                         <span className="text-[#E21F26] transition-transform duration-300 ease-out group-hover:-translate-x-1">
-                          <Image src="/icons/enter.svg" alt="" width={20} height={20} />
+                          <Image src="/icons/enter.svg" alt={`Explore ${service.title} arrow`} width={20} height={20} />
                         </span>
                         <span
                           className={[

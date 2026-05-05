@@ -62,7 +62,7 @@ export default function CaseStudiesList({ theme }: CaseStudiesListProps) {
       >
         <Image
           src={iconMap[field.label] ?? '/figma/case-study/icon-cloud-lightning.svg'}
-          alt=""
+          alt={`${field.label} icon`}
           width={14}
           height={14}
           className="h-[14px] w-[14px]"

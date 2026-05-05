@@ -47,7 +47,7 @@ export default function WhoThrivesSection({ theme }: WhoThrivesSectionProps) {
       {/* Default background */}
       <Image
         src={DEFAULT_BG}
-        alt=""
+        alt="Digitally Next team collaborating in the office"
         fill
         sizes="100vw"
         className="object-cover"
@@ -62,7 +62,7 @@ export default function WhoThrivesSection({ theme }: WhoThrivesSectionProps) {
         <Image
           key={index}
           src={trait.image}
-          alt=""
+          alt={`${trait.before}${trait.bold}${trait.after}`}
           fill
           sizes="100vw"
           className="object-cover"

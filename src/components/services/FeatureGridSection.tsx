@@ -68,7 +68,7 @@ export default function FeatureGridSection({ section, theme }: Props) {
               <div className="shrink-0 lg:pt-1">
                 <Link href={section.ctaHref} className="group inline-flex items-center gap-3 no-underline w-fit">
                   <span className="transition-transform duration-300 ease-out group-hover:-translate-x-2">
-                    <Image src="/figma/services/arrow1.svg" alt="" width={30} height={20} />
+                    <Image src="/figma/services/arrow1.svg" alt={`${section.ctaLabel} arrow`} width={30} height={20} />
                   </span>
                   <span className="text-[18px] leading-snug font-normal text-[#E21F26] transition-opacity duration-200 group-hover:opacity-70">
                     {section.ctaLabel}

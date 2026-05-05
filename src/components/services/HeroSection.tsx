@@ -176,7 +176,13 @@ export default function HeroSection({ hero, theme }: Props) {
           </div>
         ) : hero.backgroundImage ? (
           <div className="absolute inset-0 z-0">
-            <Image src={hero.backgroundImage} alt="" fill className="object-cover object-center" priority />
+            <Image
+              src={hero.backgroundImage}
+              alt={`${hero.titleLines.join(' ')} background`}
+              fill
+              className="object-cover object-center"
+              priority
+            />
             <div className="absolute inset-0 z-10 bg-linear-to-b from-black/10 via-black/30 to-black/65" />
           </div>
         ) : hero.overlay ? (
@@ -279,7 +285,7 @@ export default function HeroSection({ hero, theme }: Props) {
                     className="group inline-flex items-center gap-3 cursor-pointer"
                   >
                     <span className="transition-transform duration-300 ease-out group-hover:-translate-x-2">
-                      <Image src={hero.arrowSrc!} alt="" width={30} height={20} />
+                      <Image src={hero.arrowSrc!} alt={`${hero.ctaLabel} arrow`} width={30} height={20} />
                     </span>
                     <span
                       className="capitalize font-normal text-xl mt-1 transition-colors duration-200 group-hover:text-[#E21F26]"

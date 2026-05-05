@@ -263,7 +263,7 @@ export default function ContactFormClient({ onSuccess }: Props) {
       >
         <Image
           src="/figma/services/arrow1.svg"
-          alt=""
+          alt="Submit form arrow"
           width={26}
           height={26}
           className="transition-transform duration-300 group-hover:-translate-x-2"

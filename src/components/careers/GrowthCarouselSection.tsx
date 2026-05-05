@@ -120,7 +120,7 @@ export default function GrowthCarouselSection({ theme }: GrowthCarouselSectionPr
                 <div key={`${src}-${idx}`} className="shrink-0 mr-6 md:mr-8">
                   <Image
                     src={src}
-                    alt=""
+                    alt="Digitally Next team and culture moment"
                     width={360}
                     height={240}
                     loading="eager"

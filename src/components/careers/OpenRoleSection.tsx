@@ -135,7 +135,7 @@ export default function OpenRolesSection({ theme }: OpenRolesSectionProps) {
                 >
                   <Image
                     src="/figma/careers/careers-arrow-link.svg"
-                    alt=""
+                    alt={`${linkLabel} arrow`}
                     width={19}
                     height={10}
                     style={{ width: 'auto', height: 'auto' }}

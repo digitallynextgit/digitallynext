@@ -56,7 +56,7 @@ export default function CaseStudyFocusArea({ detail, theme }: CaseStudyFocusArea
               <div className="flex flex-col gap-3 md:gap-[16px]">
                 <Image
                   src="/figma/case-study/icon-check.svg"
-                  alt=""
+                  alt={`${first?.title ?? 'Focus area'} check icon`}
                   width={34}
                   height={34}
                   className="w-[34px] h-[34px]"
@@ -76,7 +76,7 @@ export default function CaseStudyFocusArea({ detail, theme }: CaseStudyFocusArea
                 <div className="flex flex-col gap-3 md:gap-[16px]">
                   <Image
                     src="/figma/case-study/icon-check.svg"
-                    alt=""
+                    alt={`${c.title} check icon`}
                     width={34}
                     height={34}
                     className="w-[34px] h-[34px]"

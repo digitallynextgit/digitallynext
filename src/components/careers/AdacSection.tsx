@@ -145,7 +145,7 @@ export default function AdacSection({ theme }: AdacSectionProps) {
             >
               <Image
                 src="/figma/careers/careers-arrow-link.svg"
-                alt=""
+                alt="Open roles in ADAC arrow"
                 width={35}
                 height={16}
                 style={{ width: 'auto', height: 'auto' }}

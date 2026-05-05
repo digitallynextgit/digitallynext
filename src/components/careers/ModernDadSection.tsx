@@ -144,11 +144,11 @@ export default function ModernDadSection({ theme }: ModernDadSectionProps) {
             {/* Right image — sm+ only, hover controlled */}
             <div className="hidden sm:flex items-center justify-end shrink-0 self-center" style={{ width: 260 }}>
               <div className="relative" style={{ width: 240, height: 300 }}>
-                {items.map(({ image, sub }, index) => (
+                {items.map(({ image, sub, main }, index) => (
                   <Image
                     key={sub}
                     src={image}
-                    alt=""
+                    alt={`${sub} ${main}`}
                     fill
                     sizes="240px"
                     className="object-contain absolute"

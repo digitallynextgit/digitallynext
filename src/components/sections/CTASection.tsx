@@ -28,7 +28,7 @@ export default function CTASection({ theme }: CTASectionProps) {
 
       {/* Overlay */}
       <div className="absolute inset-0 z-10 pointer-events-none">
-        <Image src="/CTA/overlay.webp" alt="" fill priority className="object-cover" />
+        <Image src="/CTA/overlay.webp" alt="Call to action gradient overlay" fill priority className="object-cover" />
       </div>
 
       <div className="relative z-20 w-[95%] max-w-6xl mx-auto text-center">

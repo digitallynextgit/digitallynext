@@ -169,7 +169,7 @@ export default function HeroSection({ theme }: HeroSectionProps) {
           >
             <Image
               src="/figma/careers/careers-arrow.svg"
-              alt=""
+              alt="View open positions arrow"
               width={36}
               height={15}
               style={{ width: 'auto', height: 'auto' }}

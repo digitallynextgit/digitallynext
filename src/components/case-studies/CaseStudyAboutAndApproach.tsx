@@ -127,7 +127,13 @@ export default function CaseStudyAboutAndApproach({ detail, theme }: CaseStudyAb
                   }
                 >
                   <div className="h-full flex flex-col gap-4">
-                    <Image src={card.iconSrc} alt="" width={28} height={28} className="w-[28px] h-[28px]" />
+                    <Image
+                      src={card.iconSrc}
+                      alt={`${card.label} icon`}
+                      width={28}
+                      height={28}
+                      className="w-[28px] h-[28px]"
+                    />
                     <div
                       className={[
                         'text-[14px] md:text-[16px] leading-[1.4] font-semibold transition-colors duration-500',

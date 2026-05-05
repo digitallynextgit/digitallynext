@@ -11,7 +11,7 @@ export default function CaseStudyDetailCTA({ detail }: { detail: CaseStudyDetail
       <div className="absolute inset-0">
         <Image
           src={detail.cta.backgroundImageSrc}
-          alt=""
+          alt={`${detail.cta.headingLines.join(' ')} background`}
           fill
           className="object-cover"
           priority={false}
