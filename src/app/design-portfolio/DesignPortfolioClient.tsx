@@ -182,7 +182,7 @@ const CAROUSEL_SLIDES: CarouselSlide[] = [
     src: 'https://houseofnandini.com',
     name: 'House of Nandini',
     platform: 'Shopify',
-    screenshotSrc: '/portfolio/house-of-nandini-preview.png',
+    screenshotSrc: '/portfolio/house-of-nandini-preview.webp',
     fallbackBg: { background: '#f5e6d3', color: '#2d1a0e' },
     fallback: (
       <FallbackShell>
@@ -389,7 +389,7 @@ const CAROUSEL_SLIDES: CarouselSlide[] = [
     src: 'https://h2s.co.in',
     name: 'Hard2Soft',
     platform: 'Shopify',
-    screenshotSrc: '/portfolio/h2s-preview.png',
+    screenshotSrc: '/portfolio/h2s-preview.webp',
     fallbackBg: { background: '#f0f9ff', color: '#0c4a6e' },
     fallback: (
       <FallbackShell>
@@ -1825,7 +1825,7 @@ const PORTFOLIO_CARDS: PortfolioCardData[] = [
     url: 'houseofnandini.com',
     href: 'https://houseofnandini.com',
     featured: true,
-    screenshotSrc: '/portfolio/house-of-nandini-preview.png',
+    screenshotSrc: '/portfolio/house-of-nandini-preview.webp',
     tags: ['Fashion & Apparel', 'D2C', 'Heritage'],
     platformTag: 'Shopify',
     title: 'House of Nandini',
@@ -1966,7 +1966,7 @@ const PORTFOLIO_CARDS: PortfolioCardData[] = [
     categories: ['home', 'd2c', 'shopify'],
     url: 'h2s.co.in',
     href: 'https://h2s.co.in',
-    screenshotSrc: '/portfolio/h2s-preview.png',
+    screenshotSrc: '/portfolio/h2s-preview.webp',
     tags: ['Home & Lifestyle', 'D2C'],
     platformTag: 'Shopify',
     title: 'Hard2Soft',
