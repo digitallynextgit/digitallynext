@@ -19,19 +19,19 @@ const traits = [
     before: 'Ask "',
     bold: 'why',
     after: '" before "how"',
-    image: 'https://images.pexels.com/photos/5428836/pexels-photo-5428836.jpeg',
+    image: '/figma/careers/pexels-photo-5428836.webp',
   },
   {
     before: 'Care about ',
     bold: 'outcomes',
     after: ', not just effort',
-    image: 'https://images.pexels.com/photos/265087/pexels-photo-265087.jpeg',
+    image: '/figma/careers/pexels-photo-265087.webp',
   },
   {
     before: 'Want to ',
     bold: 'grow',
     after: ' without pretending',
-    image: 'https://images.pexels.com/photos/4173195/pexels-photo-4173195.jpeg',
+    image: '/figma/careers/pexels-photo-4173195.webp',
   },
 ];
 
