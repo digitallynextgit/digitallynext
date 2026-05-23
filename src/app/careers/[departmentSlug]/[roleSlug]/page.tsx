@@ -1,7 +1,9 @@
 import type { Metadata } from 'next';
+import Script from 'next/script';
 import { notFound } from 'next/navigation';
 import CareerRolePageClient from '@/components/careers/CareerRolePageClient';
 import { getCareerRoleBySlugs, getCareerRoleEntries } from '@/data/careersDepartments';
+import { buildMetadata, webPageJsonLd } from '@/app/utils/seo';
 
 interface Props {
   params: Promise<{ departmentSlug: string; roleSlug: string }>;
@@ -17,18 +19,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     };
   }
 
-  return {
+  return buildMetadata({
     title: `${entry.role.title} | Digitally Next Careers`,
     description: entry.role.description?.intro ?? `Apply for ${entry.role.title} at Digitally Next.`,
-    alternates: {
-      canonical: `https://www.digitallynext.com/careers/${departmentSlug}/${roleSlug}`,
-    },
-    openGraph: {
-      title: `${entry.role.title} | Digitally Next Careers`,
-      description: entry.role.description?.intro ?? `Apply for ${entry.role.title} at Digitally Next.`,
-      type: 'website',
-    },
-  };
+    path: `/careers/${departmentSlug}/${roleSlug}`,
+  });
 }
 
 export function generateStaticParams() {
@@ -46,5 +41,18 @@ export default async function CareerRolePage({ params }: Props) {
     notFound();
   }
 
-  return <CareerRolePageClient entry={entry} />;
+  return (
+    <>
+      <Script id={`ld-role-${departmentSlug}-${roleSlug}`} type="application/ld+json" strategy="afterInteractive">
+        {JSON.stringify(
+          webPageJsonLd({
+            title: `${entry.role.title} | Digitally Next Careers`,
+            description: entry.role.description?.intro ?? `Apply for ${entry.role.title} at Digitally Next.`,
+            path: `/careers/${departmentSlug}/${roleSlug}`,
+          })
+        )}
+      </Script>
+      <CareerRolePageClient entry={entry} />
+    </>
+  );
 }

@@ -1,26 +1,30 @@
-import type { Metadata } from 'next';
+import Script from 'next/script';
 import ContactFormClient from './ContactFormClient';
 import ContactHero from '@/components/contact/ContactHero';
 import ContactInfoBar from '@/components/contact/ContactInfoBar';
 import ContactLiquidCTA from '@/components/contact/ContactLiquidCTA';
+import { buildMetadata, webPageJsonLd } from '@/app/utils/seo';
 
-export const metadata: Metadata = {
+export const metadata = buildMetadata({
   title: 'Contact Us | Digitally Next',
   description:
     "We work best with teams that value structure, clarity, and long-term thinking. Let's build something that lasts.",
-  alternates: {
-    canonical: 'https://www.digitallynext.com/contact',
-  },
-  openGraph: {
-    title: 'Contact Us | Digitally Next',
-    description:
-      "We work best with teams that value structure, clarity, and long-term thinking. Let's build something that lasts.",
-  },
-};
+  path: '/contact',
+});
 
 export default function ContactPage() {
   return (
     <main id="contact" className="font-[Stack_Sans_Text]">
+      <Script id="ld-contact" type="application/ld+json" strategy="afterInteractive">
+        {JSON.stringify(
+          webPageJsonLd({
+            title: 'Contact Us | Digitally Next',
+            description:
+              "We work best with teams that value structure, clarity, and long-term thinking. Let's build something that lasts.",
+            path: '/contact',
+          })
+        )}
+      </Script>
       <ContactHero />
 
       <section id="contact-form" aria-label="Contact Form" className="bg-white">

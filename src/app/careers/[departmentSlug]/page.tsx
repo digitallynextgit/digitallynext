@@ -1,7 +1,9 @@
 import type { Metadata } from 'next';
+import Script from 'next/script';
 import { notFound } from 'next/navigation';
 import CareerDepartmentPageClient from '@/components/careers/CareerDepartmentPageClient';
 import { getCareerDepartmentBySlug, getCareerDepartmentEntries, getCareerRoleEntries } from '@/data/careersDepartments';
+import { buildMetadata, webPageJsonLd } from '@/app/utils/seo';
 
 interface Props {
   params: Promise<{ departmentSlug: string }>;
@@ -17,18 +19,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     };
   }
 
-  return {
+  return buildMetadata({
     title: `${entry.department.title} | Digitally Next Careers`,
     description: `Explore roles in ${entry.department.title} at Digitally Next.`,
-    alternates: {
-      canonical: `https://www.digitallynext.com/careers/${departmentSlug}`,
-    },
-    openGraph: {
-      title: `${entry.department.title} | Digitally Next Careers`,
-      description: `Explore roles in ${entry.department.title} at Digitally Next.`,
-      type: 'website',
-    },
-  };
+    path: `/careers/${departmentSlug}`,
+  });
 }
 
 export function generateStaticParams() {
@@ -47,5 +42,18 @@ export default async function CareerDepartmentPage({ params }: Props) {
 
   const roleEntries = getCareerRoleEntries().filter((roleEntry) => roleEntry.departmentSlug === departmentSlug);
 
-  return <CareerDepartmentPageClient department={entry.department} mode={entry.mode} roleEntries={roleEntries} />;
+  return (
+    <>
+      <Script id={`ld-dept-${departmentSlug}`} type="application/ld+json" strategy="afterInteractive">
+        {JSON.stringify(
+          webPageJsonLd({
+            title: `${entry.department.title} | Digitally Next Careers`,
+            description: `Explore roles in ${entry.department.title} at Digitally Next.`,
+            path: `/careers/${departmentSlug}`,
+          })
+        )}
+      </Script>
+      <CareerDepartmentPageClient department={entry.department} mode={entry.mode} roleEntries={roleEntries} />
+    </>
+  );
 }

@@ -1,9 +1,10 @@
 import type { Metadata } from 'next';
+import Script from 'next/script';
 import { client } from '@/sanity/client';
 import { postBySlugQuery } from '@/sanity/queries';
 import { notFound } from 'next/navigation';
 import BlogPostClient from './BlogPostClient';
-// import { DUMMY_POSTS } from '../dummyPosts';
+import { buildMetadata, articleJsonLd } from '@/app/utils/seo';
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -17,6 +18,7 @@ interface SanityPostMeta {
   publishedAt?: string;
   metaTitle?: string;
   metaDescription?: string;
+  author?: { name: string };
   [key: string]: unknown;
 }
 
@@ -27,31 +29,17 @@ async function getPost(slug: string): Promise<SanityPostMeta | null> {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const post = await getPost(slug);
-  // const dummy = DUMMY_POSTS.find((d) => d.slug.current === slug);
-  const resolved = post ?? null;
-  // const resolved = post ?? dummy;
 
-  if (!resolved) return { title: 'Post Not Found | Digitally Next' };
+  if (!post) return { title: 'Post Not Found | Digitally Next' };
 
-  const metaTitle = (resolved as SanityPostMeta).metaTitle || `${resolved.title} | Digitally Next Blog`;
-  const metaDesc =
-    (resolved as SanityPostMeta).metaDescription ||
-    resolved.excerpt ||
-    `Read ${resolved.title} on the Digitally Next blog.`;
+  const metaTitle = post.metaTitle || `${post.title} | Digitally Next Blog`;
+  const metaDesc = post.metaDescription || post.excerpt || `Read ${post.title} on the Digitally Next blog.`;
 
-  return {
+  return buildMetadata({
     title: metaTitle,
     description: metaDesc,
-    alternates: {
-      canonical: `https://www.digitallynext.com/blog/${slug}`,
-    },
-    openGraph: {
-      title: metaTitle,
-      description: metaDesc,
-      type: 'article',
-      publishedTime: resolved.publishedAt,
-    },
-  };
+    path: `/blog/${slug}`,
+  });
 }
 
 export const revalidate = 60;
@@ -60,10 +48,25 @@ export default async function BlogPostPage({ params }: Props) {
   const { slug } = await params;
   const post = await getPost(slug);
 
-  if (post) return <BlogPostClient post={post} />;
+  if (!post) notFound();
 
-  // const dummy = DUMMY_POSTS.find((d) => d.slug.current === slug);
-  // if (dummy) return <BlogPostClient post={dummy} />;
+  const title = post.metaTitle || `${post.title} | Digitally Next Blog`;
+  const description = post.metaDescription || post.excerpt || `Read ${post.title} on the Digitally Next blog.`;
 
-  notFound();
+  return (
+    <>
+      <Script id={`ld-blog-${slug}`} type="application/ld+json" strategy="afterInteractive">
+        {JSON.stringify(
+          articleJsonLd({
+            title,
+            description,
+            path: `/blog/${slug}`,
+            datePublished: post.publishedAt,
+            authorName: post.author?.name,
+          })
+        )}
+      </Script>
+      <BlogPostClient post={post} />
+    </>
+  );
 }

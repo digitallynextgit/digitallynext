@@ -1,7 +1,9 @@
 import type { Metadata } from 'next';
+import Script from 'next/script';
 import { notFound } from 'next/navigation';
 import ServiceDetailPage from '@/components/services/ServiceDetailPage';
 import { getServiceBySlug } from '@/data/services';
+import { buildMetadata, webPageJsonLd } from '@/app/utils/seo';
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -15,18 +17,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     return { title: 'Service Not Found | Digitally Next' };
   }
 
-  return {
+  return buildMetadata({
     title: service.metaTitle,
     description: service.metaDescription,
-    alternates: {
-      canonical: `https://www.digitallynext.com/services/${slug}`,
-    },
-    openGraph: {
-      title: service.metaTitle,
-      description: service.metaDescription,
-      type: 'website',
-    },
-  };
+    path: `/services/${slug}`,
+  });
 }
 
 export default async function ServicePage({ params }: Props) {
@@ -37,5 +32,18 @@ export default async function ServicePage({ params }: Props) {
     notFound();
   }
 
-  return <ServiceDetailPage service={service} />;
+  return (
+    <>
+      <Script id={`ld-service-${slug}`} type="application/ld+json" strategy="afterInteractive">
+        {JSON.stringify(
+          webPageJsonLd({
+            title: service.metaTitle,
+            description: service.metaDescription,
+            path: `/services/${slug}`,
+          })
+        )}
+      </Script>
+      <ServiceDetailPage service={service} />
+    </>
+  );
 }

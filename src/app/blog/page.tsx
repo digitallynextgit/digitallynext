@@ -1,16 +1,15 @@
-import { Metadata } from 'next';
+import Script from 'next/script';
 import { client } from '@/sanity/client';
 import { allPostsQuery, allCategoriesQuery } from '@/sanity/queries';
+import { buildMetadata, webPageJsonLd } from '@/app/utils/seo';
 import BlogPageClient from './BlogPageClient';
 
-export const metadata: Metadata = {
+export const metadata = buildMetadata({
   title: 'Blog | Digitally Next',
   description:
     'Insights, strategies, and thought leadership from Digitally Next — your growth-driven global digital marketing partner.',
-  alternates: {
-    canonical: 'https://www.digitallynext.com/blog',
-  },
-};
+  path: '/blog',
+});
 
 // Revalidate every 60 seconds
 export const revalidate = 60;
@@ -37,5 +36,19 @@ export default async function BlogPage() {
     client.fetch(allCategoriesQuery),
   ]);
 
-  return <BlogPageClient posts={posts} categories={categories} />;
+  return (
+    <>
+      <Script id="ld-blog" type="application/ld+json" strategy="afterInteractive">
+        {JSON.stringify(
+          webPageJsonLd({
+            title: 'Blog | Digitally Next',
+            description:
+              'Insights, strategies, and thought leadership from Digitally Next — your growth-driven global digital marketing partner.',
+            path: '/blog',
+          })
+        )}
+      </Script>
+      <BlogPageClient posts={posts} categories={categories} />
+    </>
+  );
 }

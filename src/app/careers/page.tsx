@@ -1,54 +1,28 @@
-'use client';
+import Script from 'next/script';
+import { buildMetadata, webPageJsonLd } from '@/app/utils/seo';
+import CareersPageClient from './CareersPageClient';
 
-import HeroSection from '@/components/careers/HeroSection';
-import WorkHereSection from '@/components/careers/WorkHereSection';
-import GrowthSection from '@/components/careers/GrowthSection';
-import GrowthCarouselSection from '@/components/careers/GrowthCarouselSection';
-import ModernDadSection from '@/components/careers/ModernDadSection';
-import AdacSection from '@/components/careers/AdacSection';
-import WhoThrivesSection from '@/components/careers/WhoThrivesSection';
-import OpenRolesSection from '@/components/careers/OpenRoleSection';
-import CareersCtaSection from '@/components/careers/CareersCtaSection';
-import { ThemeSection } from '@/components/ui/ThemeSection.tsx';
+export const metadata = buildMetadata({
+  title: 'Careers | Digitally Next',
+  description:
+    'Join Digitally Next — a growth-driven global digital marketing agency. Explore open roles across strategy, performance, content, design, and engineering.',
+  path: '/careers',
+});
 
 export default function CareersPage() {
   return (
-    <main>
-      <ThemeSection theme="light">
-        <HeroSection />
-      </ThemeSection>
-
-      <ThemeSection theme="light">
-        <WorkHereSection />
-      </ThemeSection>
-
-      <ThemeSection theme="light">
-        <GrowthSection />
-      </ThemeSection>
-
-      <ThemeSection theme="light">
-        <GrowthCarouselSection />
-      </ThemeSection>
-
-      <ThemeSection theme="dark">
-        <ModernDadSection />
-      </ThemeSection>
-
-      <ThemeSection theme="light">
-        <AdacSection />
-      </ThemeSection>
-
-      <ThemeSection theme="light">
-        <WhoThrivesSection />
-      </ThemeSection>
-
-      <ThemeSection theme="light">
-        <OpenRolesSection />
-      </ThemeSection>
-
-      <ThemeSection theme="light">
-        <CareersCtaSection />
-      </ThemeSection>
-    </main>
+    <>
+      <Script id="ld-careers" type="application/ld+json" strategy="afterInteractive">
+        {JSON.stringify(
+          webPageJsonLd({
+            title: 'Careers | Digitally Next',
+            description:
+              'Join Digitally Next — explore open roles across strategy, performance, content, design, and engineering.',
+            path: '/careers',
+          })
+        )}
+      </Script>
+      <CareersPageClient />
+    </>
   );
 }
