@@ -55,6 +55,14 @@ export const CAREERS_INTERNSHIP_DEPARTMENTS: CareersDepartment[] = [
     tone: 'teal',
     roles: [
       {
+        id: 'intern-seo-aeo',
+        title: 'SEO / AEO Intern',
+        description: {
+          intro:
+            'Are you passionate about digital marketing, search engines and AI-driven search? Do you enjoy optimizing content and improving online visibility? Join us as an SEO / AEO Intern and gain hands-on experience in SEO, AEO, content strategy and organic growth.',
+        },
+      },
+      {
         id: 'intern-digital-marketing',
         title: 'Digital Marketing Intern',
         description: {

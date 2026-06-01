@@ -1,7 +1,4 @@
-import {
-  CAREERS_DEPARTMENTS,
-  CAREERS_INTERNSHIP_DEPARTMENTS,
-} from '@/data/careersDepartments';
+import { CAREERS_DEPARTMENTS, CAREERS_INTERNSHIP_DEPARTMENTS } from '@/data/careersDepartments';
 
 // Helper function to get position name from a role ID
 export function getPositionNameById(id: string): string {
