@@ -6,10 +6,10 @@ import { useRouter } from 'next/navigation';
 import { useSectionTheme } from '@/context/SectionThemeContext';
 import DepartmentSelectionModal from '@/components/careers/DepartmentSelectionModal';
 import {
-  CAREERS_DEPARTMENTS,
-  CAREERS_INTERNSHIP_DEPARTMENTS,
-  getCareerDepartmentById,
-  type CareersDepartment,
+  CAREERS_DEPARTMENT_GROUPS,
+  CAREERS_INTERNSHIP_GROUPS,
+  getCareerDepartmentSlug,
+  type CareersDepartmentGroup,
 } from '@/data/careersDepartments';
 import Link from 'next/link';
 
@@ -41,8 +41,8 @@ export default function OpenRolesSection({ theme }: OpenRolesSectionProps) {
   const [modalMode, setModalMode] = useState<'full-time' | 'internship'>('full-time');
   const [selectedDepartmentId, setSelectedDepartmentId] = useState<string | null>(null);
 
-  const departments = useMemo<CareersDepartment[]>(
-    () => (modalMode === 'internship' ? CAREERS_INTERNSHIP_DEPARTMENTS : CAREERS_DEPARTMENTS),
+  const groups = useMemo<CareersDepartmentGroup[]>(
+    () => (modalMode === 'internship' ? CAREERS_INTERNSHIP_GROUPS : CAREERS_DEPARTMENT_GROUPS),
     [modalMode]
   );
 
@@ -177,14 +177,16 @@ export default function OpenRolesSection({ theme }: OpenRolesSectionProps) {
       <DepartmentSelectionModal
         open={modalOpen}
         mode={modalMode}
-        departments={departments}
+        groups={groups}
         selectedDepartmentId={selectedDepartmentId}
-        onSelectDepartment={(id) => {
-          const entry = getCareerDepartmentById(modalMode, id);
-          if (!entry) return;
-          setSelectedDepartmentId(id);
+        onSelectSubDepartment={(subDepartmentId) => {
+          const subDepartment = groups
+            .flatMap((g) => g.subDepartments)
+            .find((d) => d.id === subDepartmentId);
+          if (!subDepartment) return;
+          setSelectedDepartmentId(subDepartmentId);
           setModalOpen(false);
-          router.push(`/careers/${entry.departmentSlug}`);
+          router.push(`/careers/${getCareerDepartmentSlug(subDepartment)}`);
         }}
         onClose={handleClose}
       />
