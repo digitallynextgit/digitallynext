@@ -5,7 +5,15 @@
       "Bash(npm run *)",
       "Read(//c/Users/Karan/.claude/projects/c--Users-Karan-Desktop-Projects-Digitally-next-projects-digitallynext/memory/**)",
       "Bash(pnpm build *)",
-      "Bash(npx tsc *)"
+      "Bash(npx tsc *)",
+      "Bash(ls \"C:/Users/Karan/Desktop/webp DN\")",
+      "Read(//c/Users/Karan/Desktop/webp DN/**)",
+      "Bash(node scripts/seed-blog-4-brand-invisible-ai.mjs)",
+      "Bash(node scripts/seed-blog-6-full-service-vs-specialist.mjs)",
+      "Bash(node scripts/seed-blog-7-indian-agency-us-uk.mjs)",
+      "Bash(Get-Content \"C:\\\\Users\\\\Karan\\\\.claude\\\\projects\\\\c--Users-Karan-Desktop-Projects-Digitally-next-projects-digitallynext\\\\daaffb7a-8330-4a06-b373-08e21687968d.jsonl\")",
+      "Bash(Select-Object -Last 200)",
+      "Bash(Out-String)"
     ]
   }
 }
