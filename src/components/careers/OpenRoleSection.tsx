@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useSectionTheme } from '@/context/SectionThemeContext';
 import DepartmentSelectionModal from '@/components/careers/DepartmentSelectionModal';
@@ -40,6 +40,28 @@ export default function OpenRolesSection({ theme }: OpenRolesSectionProps) {
   const [modalOpen, setModalOpen] = useState(false);
   const [modalMode, setModalMode] = useState<'full-time' | 'internship'>('full-time');
   const [selectedDepartmentId, setSelectedDepartmentId] = useState<string | null>(null);
+
+  // Auto-open the modal when returning from a sub-department page via "Back to Departments".
+  // The link sets ?openModal=full-time (or internship); we read it once on mount,
+  // open the modal in that mode, then strip the param so a refresh doesn't reopen it.
+  // The setState-in-effect rule is suppressed because SSR + useState lazy init can't read
+  // window.location, and a ref guard prevents cascading renders.
+  const openModalHandledRef = useRef(false);
+  useEffect(() => {
+    if (openModalHandledRef.current || typeof window === 'undefined') return;
+    const params = new URLSearchParams(window.location.search);
+    const requested = params.get('openModal');
+    if (requested !== 'full-time' && requested !== 'internship') return;
+    openModalHandledRef.current = true;
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setModalMode(requested);
+    setSelectedDepartmentId(null);
+    setModalOpen(true);
+    params.delete('openModal');
+    const search = params.toString();
+    const url = window.location.pathname + (search ? `?${search}` : '') + window.location.hash;
+    window.history.replaceState({}, '', url);
+  }, []);
 
   const groups = useMemo<CareersDepartmentGroup[]>(
     () => (modalMode === 'internship' ? CAREERS_INTERNSHIP_GROUPS : CAREERS_DEPARTMENT_GROUPS),
