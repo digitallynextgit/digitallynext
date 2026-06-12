@@ -7,6 +7,7 @@ import GrowthCarouselSection from '@/components/careers/GrowthCarouselSection';
 import ModernDadSection from '@/components/careers/ModernDadSection';
 import AdacSection from '@/components/careers/AdacSection';
 import WhoThrivesSection from '@/components/careers/WhoThrivesSection';
+import EmployeeStoriesSection from '@/components/careers/EmployeeStoriesSection';
 import OpenRolesSection from '@/components/careers/OpenRoleSection';
 import CareersCtaSection from '@/components/careers/CareersCtaSection';
 import { ThemeSection } from '@/components/ui/ThemeSection.tsx';
@@ -20,6 +21,10 @@ export default function CareersPageClient() {
 
       <ThemeSection theme="light">
         <WorkHereSection />
+      </ThemeSection>
+
+      <ThemeSection theme="light">
+        <EmployeeStoriesSection />
       </ThemeSection>
 
       <ThemeSection theme="light">

@@ -7,6 +7,7 @@ import type {
   CareersDepartmentGroup,
   CareersTone,
 } from '@/data/careersDepartments';
+import PositionSearchBar from '@/components/careers/PositionSearchBar';
 
 type ModalMode = 'full-time' | 'internship';
 
@@ -14,8 +15,16 @@ interface ModalProps {
   open: boolean;
   mode: ModalMode;
   groups: CareersDepartmentGroup[];
+  /**
+   * When set, the modal opens directly at step 2 (sub-departments) for this
+   * group instead of step 1 (groups overview). Used for "Open Roles in <Group>"
+   * deep links. null/undefined = open at step 1.
+   */
+  initialGroupId?: string | null;
   selectedDepartmentId: string | null;
   onSelectSubDepartment: (subDepartmentId: string) => void;
+  /** Called when the user picks a position via the search bar. */
+  onSelectPosition: (href: string) => void;
   onClose: () => void;
 }
 
@@ -51,8 +60,10 @@ export default function DepartmentSelectionModal({
   open,
   mode,
   groups,
+  initialGroupId,
   selectedDepartmentId,
   onSelectSubDepartment,
+  onSelectPosition,
   onClose,
 }: ModalProps) {
   const dialogId = useId();
@@ -66,10 +77,11 @@ export default function DepartmentSelectionModal({
   // Two-step flow: null = showing parent groups; non-null = showing one group's sub-departments
   const [activeGroupId, setActiveGroupId] = useState<string | null>(null);
 
-  // Reset to step 1 every time the modal re-opens
+  // When the modal opens, jump straight to step 2 if a group was pre-selected
+  // (e.g. via "Open Roles in ADAC" deep link). Otherwise start at step 1.
   useEffect(() => {
-    if (open) setActiveGroupId(null);
-  }, [open]);
+    if (open) setActiveGroupId(initialGroupId ?? null);
+  }, [open, initialGroupId]);
 
   // Smoothly scroll to the top when changing step
   useEffect(() => {
@@ -280,6 +292,11 @@ export default function DepartmentSelectionModal({
           >
             <X strokeWidth={2.5} className="h-5 w-5" />
           </button>
+        </div>
+
+        {/* Position search bar — searches across all roles & current openings */}
+        <div className="shrink-0 border-b border-black/8 px-6 py-3">
+          <PositionSearchBar groups={groups} onSelectPosition={onSelectPosition} />
         </div>
 
         <div

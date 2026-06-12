@@ -314,7 +314,7 @@ export const CAREERS_DEPARTMENT_GROUPS: CareersDepartmentGroup[] = [
           },
           {
             id: 'seo-specialist',
-            title: 'SEO - Search Engine Optimisation Specialist',
+            title: 'SEO/AEO/GEO Specialist',
             description: {
               intro:
                 'It’s not just keywords… it’s the art of being discovered. Like hidden trails leading to breathtaking views, or a compass guiding travelers home, your expertise ensures brands are found where it matters most. We’re looking for someone who understands the rhythm of search engines, the pulse of online audiences, and can weave strategy with creativity to amplify a brand’s digital heartbeat.',
@@ -643,6 +643,72 @@ export function getCareerGroupSlug(group: CareersDepartmentGroup) {
 
 export function getGroupsForMode(mode: CareersMode): CareersDepartmentGroup[] {
   return mode === 'internship' ? CAREERS_INTERNSHIP_GROUPS : CAREERS_DEPARTMENT_GROUPS;
+}
+
+// ─── Searchable positions (for the modal search bar) ────────────────────────
+
+export type SearchablePosition = {
+  /** Stable unique id (used as a React key and as aria-activedescendant). */
+  id: string;
+  /** Text shown in the dropdown — either an individual opening or the role title. */
+  title: string;
+  /** Parent role title (used as a secondary label when title === an opening). */
+  roleTitle: string;
+  /** Group code (e.g. SMG, ADAC). */
+  groupCode: string;
+  /** Parent department title (used as the dropdown section header). */
+  departmentTitle: string;
+  /** Slug used to navigate to the parent role page. */
+  departmentSlug: string;
+  /** Slug used to navigate to the parent role page. */
+  roleSlug: string;
+  /** Pre-built href to the role detail page where the position is listed. */
+  href: string;
+};
+
+/**
+ * Flattens groups → departments → roles → currentOpenings into a single list of
+ * searchable positions. Roles without currentOpenings contribute a single entry
+ * (the role title itself). All entries link to the parent role detail page.
+ */
+export function getSearchablePositions(groups: CareersDepartmentGroup[]): SearchablePosition[] {
+  const items: SearchablePosition[] = [];
+  for (const group of groups) {
+    for (const dept of group.subDepartments) {
+      const departmentSlug = getCareerDepartmentSlug(dept);
+      for (const role of dept.roles) {
+        const roleSlug = getCareerRoleSlug(role);
+        const href = `/careers/${departmentSlug}/${roleSlug}`;
+        const openings = role.description?.currentOpenings ?? [];
+        if (openings.length === 0) {
+          items.push({
+            id: `${group.id}__${dept.id}__${role.id}`,
+            title: role.title,
+            roleTitle: role.title,
+            groupCode: group.code,
+            departmentTitle: dept.title,
+            departmentSlug,
+            roleSlug,
+            href,
+          });
+        } else {
+          openings.forEach((opening, idx) => {
+            items.push({
+              id: `${group.id}__${dept.id}__${role.id}__${idx}`,
+              title: opening,
+              roleTitle: role.title,
+              groupCode: group.code,
+              departmentTitle: dept.title,
+              departmentSlug,
+              roleSlug,
+              href,
+            });
+          });
+        }
+      }
+    }
+  }
+  return items;
 }
 
 export function getCareerRoleEntries(): CareerRoleEntry[] {

@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useSectionTheme } from '@/context/SectionThemeContext';
 import DepartmentSelectionModal from '@/components/careers/DepartmentSelectionModal';
@@ -40,27 +40,49 @@ export default function OpenRolesSection({ theme }: OpenRolesSectionProps) {
   const [modalOpen, setModalOpen] = useState(false);
   const [modalMode, setModalMode] = useState<'full-time' | 'internship'>('full-time');
   const [selectedDepartmentId, setSelectedDepartmentId] = useState<string | null>(null);
+  // When the modal is opened via URL with ?group=<id>, this pre-selects that group
+  // so the modal opens directly at step 2 (sub-departments). null = step 1 (groups).
+  const [initialGroupId, setInitialGroupId] = useState<string | null>(null);
 
-  // Auto-open the modal when returning from a sub-department page via "Back to Departments".
-  // The link sets ?openModal=full-time (or internship); we read it once on mount,
-  // open the modal in that mode, then strip the param so a refresh doesn't reopen it.
-  // The setState-in-effect rule is suppressed because SSR + useState lazy init can't read
-  // window.location, and a ref guard prevents cascading renders.
-  const openModalHandledRef = useRef(false);
+  // Auto-open the modal on initial mount when arriving via "Back to Departments"
+  // from a sub-department page (cross-page navigation). The URL carries
+  // ?openModal=<mode>[&group=<id>] which we read once, then strip.
   useEffect(() => {
-    if (openModalHandledRef.current || typeof window === 'undefined') return;
+    if (typeof window === 'undefined') return;
     const params = new URLSearchParams(window.location.search);
     const requested = params.get('openModal');
     if (requested !== 'full-time' && requested !== 'internship') return;
-    openModalHandledRef.current = true;
+    const requestedGroup = params.get('group');
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setModalMode(requested);
     setSelectedDepartmentId(null);
+    setInitialGroupId(requestedGroup || null);
     setModalOpen(true);
     params.delete('openModal');
+    params.delete('group');
     const search = params.toString();
     const url = window.location.pathname + (search ? `?${search}` : '') + window.location.hash;
     window.history.replaceState({}, '', url);
+  }, []);
+
+  // Listen for same-page modal-open requests dispatched as a window event.
+  // Other sections (e.g. "Open Roles in ADAC" in AdacSection) dispatch this
+  // event instead of relying on URL navigation, which is more reliable for
+  // already-mounted components than useSearchParams reactivity.
+  useEffect(() => {
+    const handler = (event: Event) => {
+      const detail = (event as CustomEvent).detail as
+        | { mode?: 'full-time' | 'internship'; group?: string }
+        | undefined;
+      if (!detail) return;
+      if (detail.mode !== 'full-time' && detail.mode !== 'internship') return;
+      setModalMode(detail.mode);
+      setSelectedDepartmentId(null);
+      setInitialGroupId(detail.group ?? null);
+      setModalOpen(true);
+    };
+    window.addEventListener('careers:openModal', handler);
+    return () => window.removeEventListener('careers:openModal', handler);
   }, []);
 
   const groups = useMemo<CareersDepartmentGroup[]>(
@@ -71,6 +93,9 @@ export default function OpenRolesSection({ theme }: OpenRolesSectionProps) {
   const openModal = (mode: 'full-time' | 'internship') => {
     setModalMode(mode);
     setSelectedDepartmentId(null);
+    // Clear any group pinned by a previous URL deep-link so manual button
+    // clicks always start at step 1 (groups overview).
+    setInitialGroupId(null);
     setModalOpen(true);
   };
 
@@ -200,6 +225,7 @@ export default function OpenRolesSection({ theme }: OpenRolesSectionProps) {
         open={modalOpen}
         mode={modalMode}
         groups={groups}
+        initialGroupId={initialGroupId}
         selectedDepartmentId={selectedDepartmentId}
         onSelectSubDepartment={(subDepartmentId) => {
           const subDepartment = groups
@@ -209,6 +235,10 @@ export default function OpenRolesSection({ theme }: OpenRolesSectionProps) {
           setSelectedDepartmentId(subDepartmentId);
           setModalOpen(false);
           router.push(`/careers/${getCareerDepartmentSlug(subDepartment)}`);
+        }}
+        onSelectPosition={(href) => {
+          setModalOpen(false);
+          router.push(href);
         }}
         onClose={handleClose}
       />

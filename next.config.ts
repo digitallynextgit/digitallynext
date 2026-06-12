@@ -38,7 +38,7 @@ const securityHeaders = [
       "font-src 'self' https://fonts.gstatic.com",
       `img-src 'self' data: blob: https://cdn.sanity.io https://*.sanity.io https://images.pexels.com https://*.cdninstagram.com https://*.fbcdn.net https://flagcdn.com https://s.wordpress.com https://images.unsplash.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://*.googletagmanager.com https://*.clarity.ms ${ALLOWED_ORIGIN}`,
       "connect-src 'self' https://*.sanity.io https://*.api.sanity.io https://*.cdninstagram.com https://*.fbcdn.net https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://*.clarity.ms https://c.bing.com",
-      "frame-src 'self' https://www.instagram.com https://instagram.com https://gajnaoverseas.com https://www.gajnaoverseas.com",
+      "frame-src 'self' https://www.instagram.com https://instagram.com https://www.linkedin.com https://linkedin.com https://gajnaoverseas.com https://www.gajnaoverseas.com",
       "frame-ancestors 'self'",
       "base-uri 'self'",
       "form-action 'self'",
