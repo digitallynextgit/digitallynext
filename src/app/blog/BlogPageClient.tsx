@@ -3,9 +3,12 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { ArrowRight, Calendar, User } from 'lucide-react';
 import { urlFor } from '@/sanity/image';
+import BlogSearchBar from '@/components/blog/BlogSearchBar';
+import BlogFilterButton from '@/components/blog/BlogFilterButton';
 
 interface Post {
   _id: string;
@@ -34,6 +37,7 @@ function formatDate(dateStr?: string) {
 }
 
 export default function BlogPageClient({ posts, categories }: { posts: Post[]; categories: Category[] }) {
+  const router = useRouter();
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
 
   const allPosts = [...posts];
@@ -66,34 +70,17 @@ export default function BlogPageClient({ posts, categories }: { posts: Post[]; c
         </div>
       </section>
 
-      {/* ── Category Filters ── */}
+      {/* ── Toolbar: Search + Filter ── */}
       <div className="border-b border-black/10">
-        <div className="max-w-7xl mx-auto px-6 lg:px-10 py-6 flex gap-3 flex-wrap">
-          <button
-            onClick={() => setActiveCategory(null)}
-            className={[
-              'px-5 py-2 rounded-full text-[13px] font-semibold border transition-all duration-200 cursor-pointer',
-              activeCategory === null
-                ? 'bg-black text-white border-black'
-                : 'bg-white text-[#555555] border-black/20 hover:border-black hover:text-black',
-            ].join(' ')}
-          >
-            All
-          </button>
-          {allCategories.map((cat) => (
-            <button
-              key={cat._id}
-              onClick={() => setActiveCategory(cat._id)}
-              className={[
-                'px-5 py-2 rounded-full text-[13px] font-semibold border transition-all duration-200 cursor-pointer',
-                activeCategory === cat._id
-                  ? 'bg-black text-white border-black'
-                  : 'bg-white text-[#555555] border-black/20 hover:border-black hover:text-black',
-              ].join(' ')}
-            >
-              {cat.title}
-            </button>
-          ))}
+        <div className="max-w-7xl mx-auto px-6 lg:px-10 py-6 flex items-center gap-3">
+          <div className="flex-1 min-w-0">
+            <BlogSearchBar posts={allPosts} onSelectPost={(href) => router.push(href)} />
+          </div>
+          <BlogFilterButton
+            categories={allCategories}
+            activeCategoryId={activeCategory}
+            onSelectCategory={setActiveCategory}
+          />
         </div>
       </div>
 
