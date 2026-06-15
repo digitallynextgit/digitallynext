@@ -69,3 +69,19 @@ export const postsByCategoryQuery = groq`
     "author": author->{ name, image }
   }
 `;
+
+// Latest 3 posts that carry a specific category title (e.g. "Career Talks - HR Corner").
+// Used by the careers page "People Playbook" section.
+export const latestPostsByCategoryTitleQuery = groq`
+  *[_type == "post" && $title in categories[]->title] | order(publishedAt desc)[0...3] {
+    _id,
+    title,
+    slug,
+    mainImage,
+    excerpt,
+    publishedAt,
+    readTime,
+    "categories": categories[]->{ _id, title },
+    "author": author->{ name, image }
+  }
+`;

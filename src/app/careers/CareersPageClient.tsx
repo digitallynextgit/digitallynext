@@ -8,11 +8,18 @@ import ModernDadSection from '@/components/careers/ModernDadSection';
 import AdacSection from '@/components/careers/AdacSection';
 import WhoThrivesSection from '@/components/careers/WhoThrivesSection';
 import EmployeeStoriesSection from '@/components/careers/EmployeeStoriesSection';
+import PeoplePlaybookSection, { type PlaybookPost } from '@/components/careers/PeoplePlaybookSection';
 import OpenRolesSection from '@/components/careers/OpenRoleSection';
 import CareersCtaSection from '@/components/careers/CareersCtaSection';
 import { ThemeSection } from '@/components/ui/ThemeSection.tsx';
 
-export default function CareersPageClient() {
+export type HrCornerPost = PlaybookPost;
+
+interface CareersPageClientProps {
+  hrCornerPosts: HrCornerPost[];
+}
+
+export default function CareersPageClient({ hrCornerPosts }: CareersPageClientProps) {
   return (
     <main>
       <ThemeSection theme="light">
@@ -29,6 +36,10 @@ export default function CareersPageClient() {
 
       <ThemeSection theme="light">
         <GrowthSection />
+      </ThemeSection>
+
+      <ThemeSection theme="light">
+        <PeoplePlaybookSection posts={hrCornerPosts} />
       </ThemeSection>
 
       <ThemeSection theme="light">

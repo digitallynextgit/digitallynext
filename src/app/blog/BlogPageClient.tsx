@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
@@ -9,6 +9,7 @@ import { ArrowRight, Calendar, User } from 'lucide-react';
 import { urlFor } from '@/sanity/image';
 import BlogSearchBar from '@/components/blog/BlogSearchBar';
 import BlogFilterButton from '@/components/blog/BlogFilterButton';
+import { slugifyTag } from '@/lib/categorySlug';
 
 interface Post {
   _id: string;
@@ -42,6 +43,23 @@ export default function BlogPageClient({ posts, categories }: { posts: Post[]; c
 
   const allPosts = [...posts];
   const allCategories = [...categories];
+
+  // Auto-apply a category filter when arriving via /blog?tag=<slug>
+  // (e.g. from the "View All" button on the careers People Playbook section).
+  // The tag slug is matched against slugified category titles. Reads the URL
+  // once on mount via window.location to avoid useSearchParams Suspense churn.
+  const tagAppliedRef = useRef(false);
+  useEffect(() => {
+    if (tagAppliedRef.current || typeof window === 'undefined') return;
+    const params = new URLSearchParams(window.location.search);
+    const tag = params.get('tag');
+    if (!tag) return;
+    const match = allCategories.find((c) => slugifyTag(c.title) === tag);
+    if (!match) return;
+    tagAppliedRef.current = true;
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setActiveCategory(match._id);
+  }, [allCategories]);
 
   const filteredPosts = activeCategory
     ? allPosts.filter((p) => p.categories?.some((c) => c._id === activeCategory))

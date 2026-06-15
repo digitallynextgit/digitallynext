@@ -1,6 +1,8 @@
 import Script from 'next/script';
+import { client } from '@/sanity/client';
+import { latestPostsByCategoryTitleQuery } from '@/sanity/queries';
 import { buildMetadata, webPageJsonLd } from '@/app/utils/seo';
-import CareersPageClient from './CareersPageClient';
+import CareersPageClient, { type HrCornerPost } from './CareersPageClient';
 
 export const metadata = buildMetadata({
   title: 'Careers | Digitally Next',
@@ -9,7 +11,14 @@ export const metadata = buildMetadata({
   path: '/careers',
 });
 
-export default function CareersPage() {
+// Revalidate every 60 seconds so newly published HR Corner posts show up promptly
+export const revalidate = 60;
+
+export default async function CareersPage() {
+  const hrCornerPosts: HrCornerPost[] = await client.fetch(latestPostsByCategoryTitleQuery, {
+    title: 'Career Talks - HR Corner',
+  });
+
   return (
     <>
       <Script id="ld-careers" type="application/ld+json" strategy="afterInteractive">
@@ -22,7 +31,7 @@ export default function CareersPage() {
           })
         )}
       </Script>
-      <CareersPageClient />
+      <CareersPageClient hrCornerPosts={hrCornerPosts} />
     </>
   );
 }
