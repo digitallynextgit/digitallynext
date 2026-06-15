@@ -206,12 +206,17 @@ export default function BlogPostClient({ post }: { post: Post }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [post.body]);
 
+  // Pull natural width — height is allowed to vary so Sanity doesn't force a crop
+  // at the CDN level. The container's fixed height + object-cover handles the
+  // visual crop on the client, anchored to the top.
   const heroSrc =
-    post.heroImageUrl ?? (post.mainImage?.asset ? urlFor(post.mainImage).width(1920).height(700).url() : null);
+    post.heroImageUrl ?? (post.mainImage?.asset ? urlFor(post.mainImage).width(1920).url() : null);
 
   return (
     <article className="bg-white min-h-screen">
       {/* ── Hero Image ── */}
+      {/* mt matches the fixed navbar height (h-14 / md:h-16 / lg:h-24 / 2xl:h-28)
+          so the hero starts flush at the navbar's bottom edge. */}
       <div className="relative w-full h-[320px] md:h-[440px] lg:h-[520px] overflow-hidden bg-[#f0f0f0] mt-14 md:mt-16 lg:mt-24 2xl:mt-28">
         {heroSrc ? (
           <Image
@@ -219,7 +224,11 @@ export default function BlogPostClient({ post }: { post: Post }) {
             alt={post.title}
             fill
             priority
-            className="object-cover object-center"
+            // object-cover fills the container; object-top anchors the image's
+            // top edge to the container's top edge, so any vertical overflow is
+            // clipped from the BOTTOM. Head/face area at top is preserved,
+            // the bottom of the source is chopped off.
+            className="object-cover object-top"
             unoptimized={!!post.heroImageUrl}
           />
         ) : (
@@ -227,7 +236,7 @@ export default function BlogPostClient({ post }: { post: Post }) {
             <span className="text-[120px] font-black text-black/5 leading-none">DN</span>
           </div>
         )}
-        {/* Bottom blend into white */}
+        {/* Bottom blend into white — softens the chop edge into the article body */}
         <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-white via-white/60 to-transparent" />
       </div>
 
