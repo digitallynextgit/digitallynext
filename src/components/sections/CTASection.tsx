@@ -32,7 +32,7 @@ export default function CTASection({ theme }: CTASectionProps) {
       </div>
 
       <div className="relative z-20 w-[95%] max-w-6xl mx-auto text-center">
-        {/* Heading — always white (video bg pe) */}
+        {/* Heading - always white (video bg pe) */}
         <motion.h2
           className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-white leading-tight tracking-tight mb-8"
           initial={{ opacity: 0, y: 30 }}

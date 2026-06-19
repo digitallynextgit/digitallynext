@@ -127,7 +127,7 @@ export default function CaseStudies({ theme }: CaseStudiesProps) {
                             (e.target as HTMLImageElement).style.display = 'none';
                           }}
                         />
-                        {/* Category pill — top-left overlay */}
+                        {/* Category pill - top-left overlay */}
                         <span
                           className="absolute top-3 left-3 z-10 text-xs font-semibold uppercase tracking-[0.06em] px-4 py-1.5 border-[1.5px] rounded-full transition-all duration-200 cursor-pointer"
                           style={{

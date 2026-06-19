@@ -112,7 +112,7 @@ export default function Preloader() {
             transition={phase === 'reveal' ? splitTransition : {}}
           />
 
-          {/* Center content — sits on the seam between halves */}
+          {/* Center content - sits on the seam between halves */}
           <motion.div
             style={{
               position: 'absolute',

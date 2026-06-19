@@ -205,7 +205,7 @@ function DesktopGSM({ isDark }: { isDark: boolean }) {
           </p>
         </motion.div>
 
-        {/* RIGHT — Auto-cycling card */}
+        {/* RIGHT - Auto-cycling card */}
         <div className="relative" onMouseEnter={() => setIsPaused(true)} onMouseLeave={() => setIsPaused(false)}>
           <AnimatePresence mode="wait">
             <motion.div

@@ -1,5 +1,5 @@
 /**
- * Seed script — Blog 5
+ * Seed script - Blog 5
  * "The AI Marketing Trap: Why Brands That Automate Everything Lose What Made Them Worth Following"
  *
  * Usage:
@@ -26,7 +26,7 @@ try {
     }
   }
 } catch {
-  console.warn('⚠  Could not read .env — make sure env vars are set in your shell.');
+  console.warn('⚠  Could not read .env - make sure env vars are set in your shell.');
 }
 
 // ── Sanity client ──
@@ -305,7 +305,7 @@ async function main() {
     };
     console.log('  ✓ Uploaded main image');
   } else {
-    console.log('  ⚠  Image not found at public/blog/ai-marketing-trap.jpg — skipping image');
+    console.log('  ⚠  Image not found at public/blog/ai-marketing-trap.jpg - skipping image');
   }
 
   const doc = {

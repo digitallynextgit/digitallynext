@@ -1124,7 +1124,7 @@ export default function LiquidEther({
     const canvas = document.createElement('canvas');
     const testCtx = canvas.getContext('webgl2') || canvas.getContext('webgl');
     if (!testCtx) {
-      // WebGL not available (very old iOS or restricted settings) — skip gracefully
+      // WebGL not available (very old iOS or restricted settings) - skip gracefully
       return;
     }
 
@@ -1140,7 +1140,7 @@ export default function LiquidEther({
         autoRampDuration,
       });
     } catch {
-      // WebGL context creation failed on this device — degrade gracefully
+      // WebGL context creation failed on this device - degrade gracefully
       return;
     }
     webglRef.current = webgl;

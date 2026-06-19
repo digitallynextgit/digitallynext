@@ -39,7 +39,7 @@ export default function Hero() {
         {/*
           Safari + Android fix:
           DO NOT set WebkitTransform as a static initial value on motion.div elements.
-          Framer Motion updates transform on every animation frame — a static initial
+          Framer Motion updates transform on every animation frame - a static initial
           value forces the browser to reconcile two transform sources per frame,
           causing jitter on mobile GPUs.
           WebkitBackfaceVisibility is safe as a one-time hint (not updated per-frame).

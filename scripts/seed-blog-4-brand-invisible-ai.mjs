@@ -1,5 +1,5 @@
 /**
- * Seed script — Blog 4
+ * Seed script - Blog 4
  * "Your Brand Is Invisible to ChatGPT, Gemini, and Perplexity: Here Is Exactly How to Fix That"
  *
  * Usage:
@@ -26,7 +26,7 @@ try {
     }
   }
 } catch {
-  console.warn('⚠  Could not read .env — make sure env vars are set in your shell.');
+  console.warn('⚠  Could not read .env - make sure env vars are set in your shell.');
 }
 
 // ── Sanity client ──
@@ -266,7 +266,7 @@ async function main() {
     };
     console.log('  ✓ Uploaded main image');
   } else {
-    console.log('  ⚠  Image not found at public/blog/brand-invisible-ai.jpg — skipping image');
+    console.log('  ⚠  Image not found at public/blog/brand-invisible-ai.jpg - skipping image');
   }
 
   // 4. Create post

@@ -8,7 +8,7 @@ const securityHeaders = [
     key: 'Strict-Transport-Security',
     value: 'max-age=63072000; includeSubDomains; preload',
   },
-  // Prevent clickjacking — only allow framing from same origin
+  // Prevent clickjacking - only allow framing from same origin
   {
     key: 'X-Frame-Options',
     value: 'SAMEORIGIN',
@@ -28,7 +28,7 @@ const securityHeaders = [
     key: 'Permissions-Policy',
     value: 'camera=(), microphone=(), geolocation=()',
   },
-  // Content Security Policy — blocks inline scripts from external origins
+  // Content Security Policy - blocks inline scripts from external origins
   {
     key: 'Content-Security-Policy',
     value: [

@@ -41,7 +41,7 @@ export default function CaseStudiesHero({ theme }: CaseStudiesHeroProps) {
               ].join(' ')}
             >
               {featuredCaseStudy?.listing.introText ??
-                'From ambitious startups to scaling enterprises — Digitally Next builds performance-driven creative systems that turn attention into measurable growth.'}
+                'From ambitious startups to scaling enterprises - Digitally Next builds performance-driven creative systems that turn attention into measurable growth.'}
             </p>
 
             <Link href="#case-studies-list" className="inline-flex items-center gap-[15.3px] w-fit">

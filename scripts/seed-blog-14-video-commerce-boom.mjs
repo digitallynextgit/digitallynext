@@ -1,5 +1,5 @@
 /**
- * Seed script — Blog 14
+ * Seed script - Blog 14
  * "The Video-Commerce Boom"
  *
  * Usage:
@@ -26,7 +26,7 @@ try {
     }
   }
 } catch {
-  console.warn('⚠  Could not read .env — make sure env vars are set in your shell.');
+  console.warn('⚠  Could not read .env - make sure env vars are set in your shell.');
 }
 
 // ── Sanity client ──
@@ -213,11 +213,11 @@ async function main() {
     mainImage = {
       _type: 'image',
       asset: { _type: 'reference', _ref: asset._id },
-      alt: 'Video-commerce boom — discovery-led shopping through short-form video and live streaming platforms',
+      alt: 'Video-commerce boom - discovery-led shopping through short-form video and live streaming platforms',
     };
     console.log('  ✓ Uploaded main image');
   } else {
-    console.log('  ⚠  Image not found at public/blog/video-commerce-boom.jpg — skipping image');
+    console.log('  ⚠  Image not found at public/blog/video-commerce-boom.jpg - skipping image');
   }
 
   const doc = {

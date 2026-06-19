@@ -40,7 +40,7 @@ function parseFaqs(json?: string): FaqItem[] {
     const parsed = JSON.parse(json);
     if (Array.isArray(parsed)) return parsed as FaqItem[];
   } catch {
-    /* invalid JSON — silently ignore */
+    /* invalid JSON - silently ignore */
   }
   return [];
 }
@@ -206,11 +206,10 @@ export default function BlogPostClient({ post }: { post: Post }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [post.body]);
 
-  // Pull natural width — height is allowed to vary so Sanity doesn't force a crop
+  // Pull natural width - height is allowed to vary so Sanity doesn't force a crop
   // at the CDN level. The container's fixed height + object-cover handles the
   // visual crop on the client, anchored to the top.
-  const heroSrc =
-    post.heroImageUrl ?? (post.mainImage?.asset ? urlFor(post.mainImage).width(1920).url() : null);
+  const heroSrc = post.heroImageUrl ?? (post.mainImage?.asset ? urlFor(post.mainImage).width(1920).url() : null);
 
   return (
     <article className="bg-white min-h-screen">
@@ -236,7 +235,7 @@ export default function BlogPostClient({ post }: { post: Post }) {
             <span className="text-[120px] font-black text-black/5 leading-none">DN</span>
           </div>
         )}
-        {/* Bottom blend into white — softens the chop edge into the article body */}
+        {/* Bottom blend into white - softens the chop edge into the article body */}
         <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-white via-white/60 to-transparent" />
       </div>
 
@@ -251,7 +250,7 @@ export default function BlogPostClient({ post }: { post: Post }) {
             <ArrowLeft size={14} /> Back to Blog
           </Link>
 
-          {/* Post header — full width above the two-column layout */}
+          {/* Post header - full width above the two-column layout */}
           <div className="mb-10">
             {post.categories && post.categories.length > 0 && (
               <div className="flex gap-2 flex-wrap mb-4">

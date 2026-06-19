@@ -671,7 +671,7 @@ export const caseStudies: CaseStudy[] = [
       },
       focusArea: {
         heading: 'Focus Area',
-        body: 'Executed the first-ever PAN India online launch of a disruptive phygital InsurTech model targeting tier-II and tier-III cities across Bharat. The strategy tackled insurance mis-selling and misinformation by building an honest, tech-driven D2C model that reached 6,000+ pin codes in just two years. A complete 360° digital rollout, including website, podcasts, social media, and digital PR — helped the brand secure Series B funding and a special mention by TiE.',
+        body: 'Executed the first-ever PAN India online launch of a disruptive phygital InsurTech model targeting tier-II and tier-III cities across Bharat. The strategy tackled insurance mis-selling and misinformation by building an honest, tech-driven D2C model that reached 6,000+ pin codes in just two years. A complete 360° digital rollout, including website, podcasts, social media, and digital PR - helped the brand secure Series B funding and a special mention by TiE.',
         cards: [
           {
             title: 'D2C Website',
@@ -774,14 +774,14 @@ export const caseStudies: CaseStudy[] = [
     slug: 'fintech-student-value-card',
     metaTitle: 'Fintech Student Value Card Case Study | Digitally Next',
     metaDescription:
-      'Digital Branding for a Fintech — Student value cards (endorsed by UNESCO) with a spread in 125+ Countries.',
+      'Digital Branding for a Fintech - Student value cards (endorsed by UNESCO) with a spread in 125+ Countries.',
     listing: {
       introText:
         'From ambitious startups to scaling enterprises – Digitally Next builds performance-driven creative systems that turn attention into measurable growth.',
       title: 'Fintech Student Value Card',
       imageSrc: '/case/cs5.webp',
       caption:
-        'Digital Branding for a Fintech — Student value cards (endorsed by UNESCO) with a spread in 125+ Countries.',
+        'Digital Branding for a Fintech - Student value cards (endorsed by UNESCO) with a spread in 125+ Countries.',
       highlightKeywords: ['Fintech', 'Student value cards', 'UNESCO', '125+ Countries'],
       buttonLabel: 'View Case Study',
       pillLabel: 'Value Card Services',
@@ -791,7 +791,7 @@ export const caseStudies: CaseStudy[] = [
       hero: {
         eyebrow: 'FINTECH',
         title:
-          'Digital Branding for a Fintech — Student value cards (endorsed by UNESCO) with a spread in 125+ Countries',
+          'Digital Branding for a Fintech - Student value cards (endorsed by UNESCO) with a spread in 125+ Countries',
         heroImageSrc: '/case/cs5.webp',
         metrics: [
           {
@@ -940,7 +940,7 @@ export const caseStudies: CaseStudy[] = [
     slug: 'real-estate-advisory',
     metaTitle: 'Real Estate Advisory Case Study | Digitally Next',
     metaDescription:
-      '140 years+ old Global name in advisory and standards advocacy in built environment — land, real estate, construction and infrastructure.',
+      '140 years+ old Global name in advisory and standards advocacy in built environment - land, real estate, construction and infrastructure.',
     listing: {
       introText:
         'From ambitious startups to scaling enterprises – Digitally Next builds performance-driven creative systems that turn attention into measurable growth.',
@@ -957,7 +957,7 @@ export const caseStudies: CaseStudy[] = [
       hero: {
         eyebrow: 'REAL ESTATE ADVISORY',
         title:
-          '140 years+ old Global name in advisory and standards advocacy in built environment — land, real estate, construction and infrastructure.',
+          '140 years+ old Global name in advisory and standards advocacy in built environment - land, real estate, construction and infrastructure.',
         heroImageSrc: '/case/cs6.webp',
         metrics: [
           {
@@ -1271,13 +1271,13 @@ export const caseStudies: CaseStudy[] = [
     id: 8,
     slug: 'judaica-art-gallery',
     metaTitle: 'Judaica Art Gallery Case Study | Digitally Next',
-    metaDescription: 'Launch of a high end Judaica Art gallery and 5 Artists for International Markets — US & UK.',
+    metaDescription: 'Launch of a high end Judaica Art gallery and 5 Artists for International Markets - US & UK.',
     listing: {
       introText:
         'From ambitious startups to scaling enterprises – Digitally Next builds performance-driven creative systems that turn attention into measurable growth.',
       title: 'Judaica Art Gallery',
       imageSrc: '/case/c3.webp',
-      caption: 'Launch of a high end Judaica Art gallery and 5 Artists for International Markets — US & UK.',
+      caption: 'Launch of a high end Judaica Art gallery and 5 Artists for International Markets - US & UK.',
       highlightKeywords: ['Judaica Art', '5 Artists', 'International Markets', 'US & UK'],
       buttonLabel: 'View Case Study',
       pillLabel: 'UK',
@@ -1286,7 +1286,7 @@ export const caseStudies: CaseStudy[] = [
       theme: 'light',
       hero: {
         eyebrow: 'JUDAICA ART GALLERY',
-        title: 'Launch of a high end Judaica Art gallery and 5 Artists for International Markets — US | UK',
+        title: 'Launch of a high end Judaica Art gallery and 5 Artists for International Markets - US | UK',
         heroImageSrc: '/case/c3.webp',
         metrics: [
           {
@@ -1410,7 +1410,7 @@ export const caseStudies: CaseStudy[] = [
           'Artist Portfolio Websites (x5)',
           '360° Social Media Calendar',
           'Digital PR & Publications Calendar',
-          'Personal Branding — 5 Artists',
+          'Personal Branding - 5 Artists',
           'SEO Strategy',
           'Visual Communication Plan',
           'Art Collector Outreach Programme',

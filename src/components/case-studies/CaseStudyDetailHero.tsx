@@ -61,7 +61,7 @@ export default function CaseStudyDetailHero({ detail, metaTitle, theme }: CaseSt
             </div>
           </div>
 
-          {/* Right — Hero image */}
+          {/* Right - Hero image */}
           <div className="relative w-full overflow-hidden rounded-[10px] aspect-513/518 lg:aspect-auto lg:h-full">
             <Image
               src={detail.hero.heroImageSrc}

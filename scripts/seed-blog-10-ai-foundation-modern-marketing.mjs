@@ -1,5 +1,5 @@
 /**
- * Seed script — Blog 10
+ * Seed script - Blog 10
  * "AI as the Foundation of Modern Marketing"
  *
  * Usage:
@@ -26,7 +26,7 @@ try {
     }
   }
 } catch {
-  console.warn('⚠  Could not read .env — make sure env vars are set in your shell.');
+  console.warn('⚠  Could not read .env - make sure env vars are set in your shell.');
 }
 
 // ── Sanity client ──
@@ -68,7 +68,7 @@ async function getOrCreateAuthor(name) {
   return created._id;
 }
 
-// Block builders — keep portable text construction terse and consistent.
+// Block builders - keep portable text construction terse and consistent.
 const p = (text) => ({
   _type: 'block',
   _key: key(),
@@ -242,7 +242,7 @@ async function main() {
     };
     console.log('  ✓ Uploaded main image');
   } else {
-    console.log('  ⚠  Image not found at public/blog/ai-foundation-modern-marketing.jpg — skipping image');
+    console.log('  ⚠  Image not found at public/blog/ai-foundation-modern-marketing.jpg - skipping image');
   }
 
   const doc = {

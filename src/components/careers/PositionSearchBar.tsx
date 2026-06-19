@@ -133,9 +133,7 @@ export default function PositionSearchBar({ groups, onSelectPosition }: Position
     return (
       <>
         {text.slice(0, idx)}
-        <mark className="rounded-sm bg-yellow-200/80 px-0.5 text-black">
-          {text.slice(idx, idx + q.length)}
-        </mark>
+        <mark className="rounded-sm bg-yellow-200/80 px-0.5 text-black">{text.slice(idx, idx + q.length)}</mark>
         {text.slice(idx + q.length)}
       </>
     );

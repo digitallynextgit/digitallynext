@@ -63,7 +63,7 @@ export default function FeatureGridSection({ section, theme }: Props) {
               />
             </div>
 
-            {/* Right col — CTA pinned to top */}
+            {/* Right col - CTA pinned to top */}
             {section.ctaLabel && section.ctaHref && (
               <div className="shrink-0 lg:pt-1">
                 <Link href={section.ctaHref} className="group inline-flex items-center gap-3 no-underline w-fit">
@@ -79,7 +79,7 @@ export default function FeatureGridSection({ section, theme }: Props) {
           </div>
 
           {/* ── Card Grid ──
-              gap: 1px trick — container bg acts as border
+              gap: 1px trick - container bg acts as border
           ── */}
           <div
             className={['flex flex-wrap transition-colors duration-700', isDark ? 'bg-white/10' : 'bg-black/10'].join(
@@ -121,7 +121,7 @@ export default function FeatureGridSection({ section, theme }: Props) {
               </div>
             ))}
 
-            {/* Odd last card — full width */}
+            {/* Odd last card - full width */}
             {lastCard && (
               <div
                 className={[

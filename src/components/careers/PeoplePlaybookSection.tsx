@@ -1,9 +1,10 @@
 'use client';
 
+import { useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { ArrowRight, Calendar, User } from 'lucide-react';
+import { ArrowRight, Calendar, ChevronLeft, ChevronRight, User } from 'lucide-react';
 import { urlFor } from '@/sanity/image';
 import { slugifyTag } from '@/lib/categorySlug';
 
@@ -36,6 +37,19 @@ function formatDate(dateStr?: string) {
 }
 
 export default function PeoplePlaybookSection({ posts }: PeoplePlaybookSectionProps) {
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  const scroll = (dir: 'left' | 'right') => {
+    if (!scrollRef.current) return;
+    const card = scrollRef.current.querySelector<HTMLElement>('.playbook-card');
+    const cardWidth = card?.clientWidth ?? 320;
+    const gap = 28; // matches gap-7
+    scrollRef.current.scrollBy({
+      left: dir === 'left' ? -(cardWidth + gap) : cardWidth + gap,
+      behavior: 'smooth',
+    });
+  };
+
   // No posts → render nothing. Avoids an empty section on the careers page.
   if (!posts || posts.length === 0) return null;
 
@@ -76,73 +90,105 @@ export default function PeoplePlaybookSection({ posts }: PeoplePlaybookSectionPr
           </Link>
         </div>
 
-        {/* Cards */}
-        <div className="mt-10 grid grid-cols-1 gap-7 sm:grid-cols-2 lg:grid-cols-3">
-          {posts.slice(0, 3).map((post, i) => (
-            <motion.div
-              key={post._id}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-60px' }}
-              transition={{ duration: 0.5, delay: i * 0.08, ease: [0.16, 1, 0.3, 1] }}
-              className="flex"
-            >
-              <Link
-                href={`/blog/${post.slug.current}`}
-                className="group flex w-full flex-col overflow-hidden rounded-xl border border-black/10 bg-white transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_20px_60px_rgba(0,0,0,0.1)]"
+        {/* Cards carousel */}
+        <div className="relative mt-10">
+          {/* Navigation arrows overlaid on the container (like the LinkedIn carousel) */}
+          {posts.length > 1 &&
+            (['left', 'right'] as const).map((dir) => (
+              <button
+                key={dir}
+                onClick={() => scroll(dir)}
+                className={[
+                  'absolute top-1/2 z-20 -translate-y-1/2',
+                  dir === 'left' ? 'left-1 lg:-left-4' : 'right-1 lg:-right-4',
+                  'flex h-10 w-10 items-center justify-center rounded-full border border-gray-200 bg-white shadow-lg lg:h-12 lg:w-12',
+                  'text-gray-600 transition-all duration-300 hover:border-[#E21F26] hover:bg-red-50 hover:text-[#E21F26]',
+                ].join(' ')}
+                aria-label={`Scroll ${dir}`}
               >
-                {/* Image */}
-                <div className="relative aspect-16/10 w-full overflow-hidden bg-[#f5f5f5]">
-                  {post.mainImage?.asset ? (
-                    <Image
-                      src={urlFor(post.mainImage).width(600).height(340).url()}
-                      alt={post.mainImage.alt || post.title}
-                      fill
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                      className="object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
-                  ) : (
-                    <div className="flex h-full w-full items-center justify-center bg-[#f0f0f0]">
-                      <span className="text-5xl font-black text-black/5">DN</span>
-                    </div>
-                  )}
-                  {post.categories?.[0] && (
-                    <span className="absolute left-3.5 top-3.5 z-10 rounded-full bg-[#E21F26] px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-white">
-                      {post.categories[0].title}
-                    </span>
-                  )}
-                </div>
+                {dir === 'left' ? <ChevronLeft size={20} /> : <ChevronRight size={20} />}
+              </button>
+            ))}
 
-                {/* Body */}
-                <div className="flex flex-1 flex-col p-5">
-                  <div className="mb-3 flex items-center gap-4">
-                    {post.author && (
-                      <span className="flex items-center gap-1.5 text-[12px] text-[#A1A1A1]">
-                        <User size={12} />
-                        {post.author.name}
-                      </span>
+          {/* Scrollable track */}
+          <div
+            ref={scrollRef}
+            className={[
+              // Horizontal-only scroll: lock the vertical axis so wheel-scrolling
+              // over the carousel scrolls the page, not the container. py gives
+              // room for the card hover lift/shadow; overscroll-x-contain stops
+              // horizontal over-scroll from triggering browser back-navigation.
+              'flex gap-7 overflow-x-auto overflow-y-hidden overscroll-x-contain py-3',
+              '[scrollbar-width:none] [&::-webkit-scrollbar]:hidden',
+              '[scroll-snap-type:x_mandatory]',
+            ].join(' ')}
+          >
+            {posts.map((post, i) => (
+              <motion.div
+                key={post._id}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-60px' }}
+                transition={{ duration: 0.5, delay: (i % 3) * 0.08, ease: [0.16, 1, 0.3, 1] }}
+                className="playbook-card flex w-[85%] shrink-0 snap-start sm:w-[70%] md:w-[calc(50%-14px)] lg:w-[calc(33.333%-19px)]"
+              >
+                <Link
+                  href={`/blog/${post.slug.current}`}
+                  className="group flex w-full flex-col overflow-hidden rounded-xl border border-black/10 bg-white transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md"
+                >
+                  {/* Image */}
+                  <div className="relative aspect-16/10 w-full overflow-hidden bg-[#f5f5f5]">
+                    {post.mainImage?.asset ? (
+                      <Image
+                        src={urlFor(post.mainImage).width(600).height(340).url()}
+                        alt={post.mainImage.alt || post.title}
+                        fill
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                    ) : (
+                      <div className="flex h-full w-full items-center justify-center bg-[#f0f0f0]">
+                        <span className="text-5xl font-black text-black/5">DN</span>
+                      </div>
                     )}
-                    {post.publishedAt && (
-                      <span className="flex items-center gap-1.5 text-[12px] text-[#A1A1A1]">
-                        <Calendar size={12} />
-                        {formatDate(post.publishedAt)}
+                    {post.categories?.[0] && (
+                      <span className="absolute left-3.5 top-3.5 z-10 rounded-full bg-[#E21F26] px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-white">
+                        {post.categories[0].title}
                       </span>
                     )}
                   </div>
 
-                  <h3 className="mb-2.5 line-clamp-2 text-[17px] font-bold leading-snug text-black">{post.title}</h3>
+                  {/* Body */}
+                  <div className="flex flex-1 flex-col p-5">
+                    <div className="mb-3 flex items-center gap-4">
+                      {post.author && (
+                        <span className="flex items-center gap-1.5 text-[12px] text-[#A1A1A1]">
+                          <User size={12} />
+                          {post.author.name}
+                        </span>
+                      )}
+                      {post.publishedAt && (
+                        <span className="flex items-center gap-1.5 text-[12px] text-[#A1A1A1]">
+                          <Calendar size={12} />
+                          {formatDate(post.publishedAt)}
+                        </span>
+                      )}
+                    </div>
 
-                  {post.excerpt && (
-                    <p className="mb-4 line-clamp-3 text-[14px] leading-relaxed text-[#787878]">{post.excerpt}</p>
-                  )}
+                    <h3 className="mb-2.5 line-clamp-2 text-[17px] font-bold leading-snug text-black">{post.title}</h3>
 
-                  <span className="mt-auto inline-flex items-center gap-1.5 text-[13px] font-semibold text-[#E21F26] transition-all duration-200 group-hover:gap-3">
-                    Read More <ArrowRight size={13} />
-                  </span>
-                </div>
-              </Link>
-            </motion.div>
-          ))}
+                    {post.excerpt && (
+                      <p className="mb-4 line-clamp-3 text-[14px] leading-relaxed text-[#787878]">{post.excerpt}</p>
+                    )}
+
+                    <span className="mt-auto inline-flex items-center gap-1.5 text-[13px] font-semibold text-[#E21F26] transition-all duration-200 group-hover:gap-3">
+                      Read More <ArrowRight size={13} />
+                    </span>
+                  </div>
+                </Link>
+              </motion.div>
+            ))}
+          </div>
         </div>
 
         {/* View all (mobile) */}

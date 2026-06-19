@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: 'Digitally Next | Growth-Driven Global Digital Marketing Agency',
-    description: 'Strategy, branding, performance marketing, AI-driven decisions — all under one roof.',
+    description: 'Strategy, branding, performance marketing, AI-driven decisions - all under one roof.',
     siteName: 'Digitally Next',
     url: 'https://www.digitallynext.com',
     type: 'website',
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Digitally Next | Growth-Driven Global Digital Marketing Agency',
-    description: 'Strategy, branding, performance marketing, AI-driven decisions — all under one roof.',
+    description: 'Strategy, branding, performance marketing, AI-driven decisions - all under one roof.',
     images: ['/logo1.webp'],
   },
   alternates: {

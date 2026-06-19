@@ -1,5 +1,5 @@
 /**
- * Seed script — creates one dummy blog post in Sanity with all fields.
+ * Seed script - creates one dummy blog post in Sanity with all fields.
  *
  * Usage:
  *   node scripts/seed-blog.mjs
@@ -33,7 +33,7 @@ try {
     }
   }
 } catch {
-  console.warn('⚠  Could not read .env — make sure env vars are set in your shell.');
+  console.warn('⚠  Could not read .env - make sure env vars are set in your shell.');
 }
 
 // ── Sanity client (write token required) ──
@@ -53,7 +53,7 @@ const body = [
   {
     _type: 'block', _key: key(), style: 'normal',
     markDefs: [],
-    children: [{ _type: 'span', _key: key(), text: "The digital landscape has fundamentally shifted. Brands that still treat their online presence as a series of disconnected campaigns are falling behind those who have built coherent, integrated digital ecosystems. A growth-driven strategy is no longer a differentiator — it's the entry ticket.", marks: [] }],
+    children: [{ _type: 'span', _key: key(), text: "The digital landscape has fundamentally shifted. Brands that still treat their online presence as a series of disconnected campaigns are falling behind those who have built coherent, integrated digital ecosystems. A growth-driven strategy is no longer a differentiator - it's the entry ticket.", marks: [] }],
   },
   {
     _type: 'block', _key: key(), style: 'h2',
@@ -63,7 +63,7 @@ const body = [
   {
     _type: 'block', _key: key(), style: 'normal',
     markDefs: [],
-    children: [{ _type: 'span', _key: key(), text: "Growth-driven digital strategy means every channel, every asset, and every campaign is oriented toward measurable business outcomes. Your SEO informs your paid strategy. Your content feeds your CRM. Your website is architected to convert — not just to exist.", marks: [] }],
+    children: [{ _type: 'span', _key: key(), text: "Growth-driven digital strategy means every channel, every asset, and every campaign is oriented toward measurable business outcomes. Your SEO informs your paid strategy. Your content feeds your CRM. Your website is architected to convert - not just to exist.", marks: [] }],
   },
   {
     _type: 'block', _key: key(), style: 'h2',
@@ -73,7 +73,7 @@ const body = [
   {
     _type: 'block', _key: key(), style: 'normal',
     markDefs: [],
-    children: [{ _type: 'span', _key: key(), text: "The brands winning today invested in integrated infrastructure 18–24 months ago. They built systems, not campaigns. They hired for strategy before execution. And they made data the decision-maker at every layer of their marketing — not gut instinct.", marks: [] }],
+    children: [{ _type: 'span', _key: key(), text: "The brands winning today invested in integrated infrastructure 18–24 months ago. They built systems, not campaigns. They hired for strategy before execution. And they made data the decision-maker at every layer of their marketing - not gut instinct.", marks: [] }],
   },
   {
     _type: 'block', _key: key(), style: 'h2',
@@ -83,7 +83,7 @@ const body = [
   {
     _type: 'block', _key: key(), style: 'normal',
     markDefs: [],
-    children: [{ _type: 'span', _key: key(), text: "Start with a channel audit. Map every digital touchpoint to a business outcome. Identify where data is siloed and where integration is missing. Then build a focused 90-day plan that closes the gaps — channel by channel, system by system.", marks: [] }],
+    children: [{ _type: 'span', _key: key(), text: "Start with a channel audit. Map every digital touchpoint to a business outcome. Identify where data is siloed and where integration is missing. Then build a focused 90-day plan that closes the gaps - channel by channel, system by system.", marks: [] }],
   },
   {
     _type: 'block', _key: key(), style: 'blockquote',
@@ -108,7 +108,7 @@ const body = [
   {
     _type: 'block', _key: key(), style: 'normal', listItem: 'bullet', level: 1,
     markDefs: [],
-    children: [{ _type: 'span', _key: key(), text: 'Attribution that connects spend to revenue — not just clicks', marks: [] }],
+    children: [{ _type: 'span', _key: key(), text: 'Attribution that connects spend to revenue - not just clicks', marks: [] }],
   },
   {
     _type: 'block', _key: key(), style: 'normal', listItem: 'bullet', level: 1,
@@ -118,7 +118,7 @@ const body = [
   {
     _type: 'block', _key: key(), style: 'normal', listItem: 'bullet', level: 1,
     markDefs: [],
-    children: [{ _type: 'span', _key: key(), text: 'Quarterly review cycles — not annual planning locked in stone', marks: [] }],
+    children: [{ _type: 'span', _key: key(), text: 'Quarterly review cycles - not annual planning locked in stone', marks: [] }],
   },
 ];
 
@@ -126,7 +126,7 @@ const body = [
 const faqsJson = JSON.stringify([
   {
     question: 'What is a growth-driven digital strategy?',
-    answer: "It's an approach where every digital channel, campaign, and asset is tied directly to measurable business outcomes — revenue, qualified leads, customer retention — rather than platform vanity metrics like impressions or reach.",
+    answer: "It's an approach where every digital channel, campaign, and asset is tied directly to measurable business outcomes - revenue, qualified leads, customer retention - rather than platform vanity metrics like impressions or reach.",
   },
   {
     question: 'How long does it take to see results?',
@@ -138,7 +138,7 @@ const faqsJson = JSON.stringify([
   },
   {
     question: 'Where do we start if our current strategy is fragmented?',
-    answer: 'Start with a full channel audit — map every touchpoint to a business outcome. Identify data silos and missing integrations. Then prioritise the 2–3 highest-leverage fixes for the next 90 days.',
+    answer: 'Start with a full channel audit - map every touchpoint to a business outcome. Identify data silos and missing integrations. Then prioritise the 2–3 highest-leverage fixes for the next 90 days.',
   },
 ], null, 2);
 
@@ -149,7 +149,7 @@ const doc = {
   // ── Core content ──
   title: 'Why Your Brand Needs a Growth-Driven Digital Strategy in 2025',
   slug: { _type: 'slug', current: 'growth-driven-digital-strategy-2025' },
-  excerpt: "In an era of fragmented attention, a unified digital approach isn't optional — it's essential for survival and long-term brand equity.",
+  excerpt: "In an era of fragmented attention, a unified digital approach isn't optional - it's essential for survival and long-term brand equity.",
   publishedAt: new Date().toISOString(),
   body,
 
@@ -162,7 +162,7 @@ const doc = {
 
   // ── SEO ──
   metaTitle: 'Growth-Driven Digital Strategy in 2025 | Digitally Next Blog',
-  metaDescription: "Learn why growth-driven digital strategy is the baseline for brands in 2025 — and how to build one that connects data, channels, and business outcomes.",
+  metaDescription: "Learn why growth-driven digital strategy is the baseline for brands in 2025 - and how to build one that connects data, channels, and business outcomes.",
 
   // Note: author, mainImage, and categories are references.
   // To link them, fetch their _ids from Sanity first and uncomment below.

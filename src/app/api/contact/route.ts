@@ -67,15 +67,15 @@ function fromJson(raw: Record<string, unknown>): ContactPayload {
 
 function buildHtml(p: ContactPayload): string {
   const servicesHtml =
-    p.services.length > 0 ? p.services.map((s) => `<li style="margin-bottom:4px;">${s}</li>`).join('') : '<li>—</li>';
+    p.services.length > 0 ? p.services.map((s) => `<li style="margin-bottom:4px;">${s}</li>`).join('') : '<li>-</li>';
 
   const rows: [string, string][] = [
-    ['Name', p.name || '—'],
-    ['Phone', p.phone || '—'],
-    ['Country', p.country || '—'],
-    ['City', p.city || '—'],
-    ['LinkedIn', p.linkedIn ? `<a href="${p.linkedIn}" style="color:#E21F26;">${p.linkedIn}</a>` : '—'],
-    ['Entity Type', p.entityType || '—'],
+    ['Name', p.name || '-'],
+    ['Phone', p.phone || '-'],
+    ['Country', p.country || '-'],
+    ['City', p.city || '-'],
+    ['LinkedIn', p.linkedIn ? `<a href="${p.linkedIn}" style="color:#E21F26;">${p.linkedIn}</a>` : '-'],
+    ['Entity Type', p.entityType || '-'],
   ];
 
   const tableRows = rows
@@ -124,17 +124,17 @@ function buildHtml(p: ContactPayload): string {
 
 function buildText(p: ContactPayload): string {
   return [
-    `Name: ${p.name || '—'}`,
-    `Phone: ${p.phone || '—'}`,
-    `Country: ${p.country || '—'}`,
-    `City: ${p.city || '—'}`,
-    `LinkedIn: ${p.linkedIn || '—'}`,
-    `Entity Type: ${p.entityType || '—'}`,
-    `Services: ${p.services.join(', ') || '—'}`,
-    `Custom Note: ${p.customServiceNote || '—'}`,
+    `Name: ${p.name || '-'}`,
+    `Phone: ${p.phone || '-'}`,
+    `Country: ${p.country || '-'}`,
+    `City: ${p.city || '-'}`,
+    `LinkedIn: ${p.linkedIn || '-'}`,
+    `Entity Type: ${p.entityType || '-'}`,
+    `Services: ${p.services.join(', ') || '-'}`,
+    `Custom Note: ${p.customServiceNote || '-'}`,
     '',
     `Message:`,
-    p.message || '—',
+    p.message || '-',
   ].join('\n');
 }
 
@@ -181,7 +181,7 @@ export async function POST(request: NextRequest) {
     await transporter.sendMail({
       from: `Digitally Next Contact <${user}>`,
       to: 'contact@digitallynext.com',
-      subject: `New Inquiry — ${payload.name}${payload.entityType ? ` (${payload.entityType})` : ''}`,
+      subject: `New Inquiry - ${payload.name}${payload.entityType ? ` (${payload.entityType})` : ''}`,
       text: buildText(payload),
       html: buildHtml(payload),
     });

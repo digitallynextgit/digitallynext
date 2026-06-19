@@ -239,7 +239,7 @@ Performance Marketer (4-7 Years Exp)
 
 
 6.1 FULL STACK DEVELOPER
-Turning code into high-impact brand experiences. In a world where digital performance defines perception, this role goes beyond building websites — it’s about engineering fast, scalable, and conversion-focused platforms. If you think in systems, care about performance, and build with ownership, you’ll fit right in.
+Turning code into high-impact brand experiences. In a world where digital performance defines perception, this role goes beyond building websites - it’s about engineering fast, scalable, and conversion-focused platforms. If you think in systems, care about performance, and build with ownership, you’ll fit right in.
 Job Essence
 The role focuses on building end-to-end web applications using modern frontend and backend technologies. This includes developing scalable architectures, optimizing performance and SEO readiness, integrating APIs and databases, and managing deployments to ensure stability, speed, and long-term reliability.
 Key Requirements
@@ -279,7 +279,7 @@ Senior Full Stack Developer(2-4 years Exp)
 
 7. AI Decision and Acceleration Centre (ADAC)
 7.1 AI STRATEGISTS  AND ANALYSTS
-Intelligence is the new competitive advantage. At ADAC, we don’t just use AI — we design decision systems that accelerate growth. As part of this team, you turn data into direction, insights into action, and automation into measurable business impact.
+Intelligence is the new competitive advantage. At ADAC, we don’t just use AI - we design decision systems that accelerate growth. As part of this team, you turn data into direction, insights into action, and automation into measurable business impact.
 If you think beyond dashboards and understand how intelligence can shape strategy, this role is built for you.
 Job Essence
 The role focuses on leveraging data, AI tools, and analytical frameworks to drive smarter business decisions. This includes identifying automation opportunities, building AI-powered workflows, analyzing performance data, and translating complex insights into clear strategic recommendations.
@@ -307,7 +307,7 @@ AI Strategist& Analysts
 
 
 7.2 AI Content & Creative Specialists
-Creativity is evolving — and AI is its new co-creator. This role sits at the intersection of imagination and intelligence. If you know how to use AI not just as a tool, but as a creative accelerator, you’ll thrive here.
+Creativity is evolving - and AI is its new co-creator. This role sits at the intersection of imagination and intelligence. If you know how to use AI not just as a tool, but as a creative accelerator, you’ll thrive here.
 Job Essence
 The role focuses on leveraging AI tools to enhance content creation, visual storytelling, and creative workflows. This includes generating AI-assisted copies, visuals, concepts, and campaign ideas while ensuring brand consistency and originality.
 Key Requirements
@@ -360,7 +360,7 @@ Current Openings
 AI Performance Specialist 
 
 4.4 AI-First Web Developers
-Development is no longer just code — it’s intelligent architecture. As an AI-First Web Developer, you build platforms that are not just responsive, but adaptive. You integrate automation, AI APIs, and smart systems into scalable digital infrastructure.
+Development is no longer just code - it’s intelligent architecture. As an AI-First Web Developer, you build platforms that are not just responsive, but adaptive. You integrate automation, AI APIs, and smart systems into scalable digital infrastructure.
 
 
 
@@ -396,7 +396,7 @@ Current Openings
 
 
 8.1 HR EXECUTIVE
-Behind every high-performing team is a strong HR backbone that attracts, nurtures, and empowers talent. As an HR Executive, you won’t just manage processes — you’ll help shape culture, drive engagement and create an environment where people do their best work.
+Behind every high-performing team is a strong HR backbone that attracts, nurtures, and empowers talent. As an HR Executive, you won’t just manage processes - you’ll help shape culture, drive engagement and create an environment where people do their best work.
 Job Essence
 The role focuses on managing core HR operations including recruitment, onboarding, performance management, employee engagement, employer branding and compliance and as a whole ensuring smooth employee lifecycle management.
 Key Requirements
@@ -436,7 +436,7 @@ Current Openings
 
 
 9.1 SOCIAL MEDIA OPTIMIZATION SPECIALIST - LinkedIN | Meta | X | YouTube
-Visibility is power in today’s digital-first world. Social media isn’t just about posting content — it’s about shaping perception, driving engagement, and building brand authority. If you understand how to engineer reach, relevance, and impact across platforms, we’d love to have you on board.
+Visibility is power in today’s digital-first world. Social media isn’t just about posting content - it’s about shaping perception, driving engagement, and building brand authority. If you understand how to engineer reach, relevance, and impact across platforms, we’d love to have you on board.
 
 
 Job Essence
@@ -464,7 +464,7 @@ SMO - YouTube Specialist
 
 
 9.2 PR AND COMMUNICATION EXECUTIVE
-Perception is powerful. In a world driven by narratives, brands don’t just need visibility — they need credibility. As a PR & Communications Executive, you shape how the world sees, hears, and remembers us. If you understand storytelling, media relationships, and strategic messaging, this role is for you.
+Perception is powerful. In a world driven by narratives, brands don’t just need visibility - they need credibility. As a PR & Communications Executive, you shape how the world sees, hears, and remembers us. If you understand storytelling, media relationships, and strategic messaging, this role is for you.
 Job Essence
 The role focuses on managing brand communication and media presence to strengthen reputation and positioning. This includes drafting press releases, coordinating with media houses, ensuring consistent brand messaging, and supporting external and internal communication strategies.
 Key Requirements

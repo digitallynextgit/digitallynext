@@ -3,7 +3,7 @@ export const siteConfig = {
   subtitle: 'Think. Act. Disrupt.',
   tagline: "We Don't Just Build Campaigns",
   description:
-    'Growth-driven global digital marketing agency. Strategy, branding, performance marketing, AI-driven decisions — all under one roof.',
+    'Growth-driven global digital marketing agency. Strategy, branding, performance marketing, AI-driven decisions - all under one roof.',
   url: 'https://www.digitallynext.com',
 };
 
@@ -59,7 +59,7 @@ export const insights = [
     id: 1,
     title: 'Why Your Brand Needs a Growth-Driven Global Digital Strategy in 2025',
     excerpt:
-      "In an era of fragmented attention, a unified digital approach isn't optional — it's essential for survival.",
+      "In an era of fragmented attention, a unified digital approach isn't optional - it's essential for survival.",
     date: 'Feb 10, 2025',
     category: 'Strategy',
   },
@@ -80,4 +80,4 @@ export const insights = [
 ];
 
 export const philosophy =
-  'In a noisy world, we choose clarity. Digitally Next is where stories are shaped and strategies are born. We walk with giants and guide the underdogs — not as service providers, but as partners in purpose.';
+  'In a noisy world, we choose clarity. Digitally Next is where stories are shaped and strategies are born. We walk with giants and guide the underdogs - not as service providers, but as partners in purpose.';

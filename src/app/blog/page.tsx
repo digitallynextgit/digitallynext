@@ -7,7 +7,7 @@ import BlogPageClient from './BlogPageClient';
 export const metadata = buildMetadata({
   title: 'Blog | Digitally Next',
   description:
-    'Insights, strategies, and thought leadership from Digitally Next — your growth-driven global digital marketing partner.',
+    'Insights, strategies, and thought leadership from Digitally Next - your growth-driven global digital marketing partner.',
   path: '/blog',
 });
 
@@ -43,7 +43,7 @@ export default async function BlogPage() {
           webPageJsonLd({
             title: 'Blog | Digitally Next',
             description:
-              'Insights, strategies, and thought leadership from Digitally Next — your growth-driven global digital marketing partner.',
+              'Insights, strategies, and thought leadership from Digitally Next - your growth-driven global digital marketing partner.',
             path: '/blog',
           })
         )}

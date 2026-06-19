@@ -1,5 +1,5 @@
 /**
- * Seed script — Blog 2 of 3
+ * Seed script - Blog 2 of 3
  * "How Brands Are Adapting to AI-Driven Search: GEO and AEO Explained"
  *
  * Usage:
@@ -29,7 +29,7 @@ try {
     }
   }
 } catch {
-  console.warn('⚠  Could not read .env — make sure env vars are set in your shell.');
+  console.warn('⚠  Could not read .env - make sure env vars are set in your shell.');
 }
 
 // ── Sanity client ──
@@ -261,7 +261,7 @@ async function main() {
     };
     console.log('  ✓ Uploaded main image');
   } else {
-    console.log('  ⚠  Image not found at public/blog/geo-aeo-ai-driven-search.jpg — skipping image');
+    console.log('  ⚠  Image not found at public/blog/geo-aeo-ai-driven-search.jpg - skipping image');
   }
 
   // 4. Create post

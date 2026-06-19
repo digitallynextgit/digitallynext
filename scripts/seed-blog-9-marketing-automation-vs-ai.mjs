@@ -1,5 +1,5 @@
 /**
- * Seed script — Blog 9
+ * Seed script - Blog 9
  * "Marketing Automation vs. AI Marketing: Are They the Same Thing or Completely Different?"
  *
  * Usage:
@@ -26,7 +26,7 @@ try {
     }
   }
 } catch {
-  console.warn('⚠  Could not read .env — make sure env vars are set in your shell.');
+  console.warn('⚠  Could not read .env - make sure env vars are set in your shell.');
 }
 
 // ── Sanity client ──
@@ -244,7 +244,7 @@ async function main() {
     };
     console.log('  ✓ Uploaded main image');
   } else {
-    console.log('  ⚠  Image not found at public/blog/marketing-automation-vs-ai.jpg — skipping image');
+    console.log('  ⚠  Image not found at public/blog/marketing-automation-vs-ai.jpg - skipping image');
   }
 
   const doc = {

@@ -7,13 +7,13 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Digitally Next | Growth-Driven Global Digital Marketing Agency',
     description:
-      'Strategy, branding, performance marketing, content, web & AI — all under one roof. We build what tomorrow will remember.',
+      'Strategy, branding, performance marketing, content, web & AI - all under one roof. We build what tomorrow will remember.',
     url: 'https://www.digitallynext.com',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Digitally Next | Growth-Driven Global Digital Marketing Agency',
-    description: 'Strategy, branding, performance marketing, content, web & AI — all under one roof.',
+    description: 'Strategy, branding, performance marketing, content, web & AI - all under one roof.',
   },
 };

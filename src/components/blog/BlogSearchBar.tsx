@@ -52,7 +52,7 @@ export default function BlogSearchBar({ posts, onSelectPost, perTagLimit = 3 }: 
   useEffect(() => {
     if (typeof navigator === 'undefined') return;
     const platform =
-      // @ts-expect-error — userAgentData is the modern API, falls back to platform
+      // @ts-expect-error - userAgentData is the modern API, falls back to platform
       navigator.userAgentData?.platform ?? navigator.platform ?? '';
     setIsMac(/mac/i.test(platform));
   }, []);
@@ -109,7 +109,7 @@ export default function BlogSearchBar({ posts, onSelectPost, perTagLimit = 3 }: 
     });
   }, [filtered, perTagLimit]);
 
-  // Flat list in display order — for keyboard nav indexing
+  // Flat list in display order - for keyboard nav indexing
   const visibleFlat = useMemo<SearchItem[]>(() => grouped.flatMap((g) => g.items), [grouped]);
 
   // Reset highlight when the visible list changes
@@ -210,9 +210,7 @@ export default function BlogSearchBar({ posts, onSelectPost, perTagLimit = 3 }: 
     return (
       <>
         {text.slice(0, idx)}
-        <mark className="rounded-sm bg-yellow-200/80 px-0.5 text-black">
-          {text.slice(idx, idx + q.length)}
-        </mark>
+        <mark className="rounded-sm bg-yellow-200/80 px-0.5 text-black">{text.slice(idx, idx + q.length)}</mark>
         {text.slice(idx + q.length)}
       </>
     );
@@ -226,7 +224,7 @@ export default function BlogSearchBar({ posts, onSelectPost, perTagLimit = 3 }: 
 
   return (
     <>
-      {/* Trigger — looks like a search input but opens the modal on click */}
+      {/* Trigger - looks like a search input but opens the modal on click */}
       <button
         ref={triggerRef}
         type="button"
@@ -282,7 +280,7 @@ export default function BlogSearchBar({ posts, onSelectPost, perTagLimit = 3 }: 
                 Search blog posts
               </h2>
 
-              {/* Header — search input */}
+              {/* Header - search input */}
               <div className="flex shrink-0 items-center gap-2 border-b border-black/8 px-4 py-3">
                 <Search className="h-4 w-4 shrink-0 text-black/45" strokeWidth={2.25} aria-hidden="true" />
                 <input
@@ -327,7 +325,7 @@ export default function BlogSearchBar({ posts, onSelectPost, perTagLimit = 3 }: 
                 </button>
               </div>
 
-              {/* Body — grouped results */}
+              {/* Body - grouped results */}
               <div
                 ref={listboxRef}
                 id={listboxId}
@@ -419,7 +417,7 @@ export default function BlogSearchBar({ posts, onSelectPost, perTagLimit = 3 }: 
                 )}
               </div>
 
-              {/* Footer — keyboard hints + result count */}
+              {/* Footer - keyboard hints + result count */}
               <div className="flex shrink-0 items-center justify-between border-t border-black/8 bg-[#FAFAFA] px-4 py-2.5 text-[11px] text-black/55">
                 <div className="flex items-center gap-4">
                   <span className="inline-flex items-center gap-1.5">
@@ -442,9 +440,7 @@ export default function BlogSearchBar({ posts, onSelectPost, perTagLimit = 3 }: 
                   </span>
                 </div>
                 <span className="font-semibold tabular-nums">
-                  {totalFiltered === 0
-                    ? '0 results'
-                    : `${totalVisible} of ${totalFiltered}`}
+                  {totalFiltered === 0 ? '0 results' : `${totalVisible} of ${totalFiltered}`}
                 </span>
               </div>
             </motion.div>

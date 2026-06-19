@@ -51,12 +51,12 @@ export default function PeopleCulture() {
           {[
             {
               title: 'Global Perspective',
-              desc: 'We work across continents — understanding diverse markets, cultures, and digital landscapes to deliver global impact.',
+              desc: 'We work across continents - understanding diverse markets, cultures, and digital landscapes to deliver global impact.',
               icon: '🌍',
             },
             {
               title: 'Innovation First',
-              desc: "We don't follow trends — we set them. Our team constantly experiments with emerging tech, platforms, and strategies.",
+              desc: "We don't follow trends - we set them. Our team constantly experiments with emerging tech, platforms, and strategies.",
               icon: '⚡',
             },
             {

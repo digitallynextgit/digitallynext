@@ -141,7 +141,7 @@ const subMenuVariants: Variants = {
 };
 
 // ─────────────────────────────────────────────
-// SubItem — same slide + arrow animation as parent links
+// SubItem - same slide + arrow animation as parent links
 // ─────────────────────────────────────────────
 function SubItem({ href, label, index, onClick }: { href: string; label: string; index: number; onClick: () => void }) {
   const hoverX = useMotionValue(0);
@@ -179,7 +179,7 @@ function SubItem({ href, label, index, onClick }: { href: string; label: string;
 }
 
 // ─────────────────────────────────────────────
-// MagneticLink — red label on hover + stays red while submenu open
+// MagneticLink - red label on hover + stays red while submenu open
 // ─────────────────────────────────────────────
 function MagneticLink({
   href,
@@ -299,7 +299,7 @@ function MagneticLink({
         </MotionLink>
       )}
 
-      {/* Services accordion — no border-l, no bg hover on items */}
+      {/* Services accordion - no border-l, no bg hover on items */}
       <AnimatePresence>
         {hasSubmenu && submenuOpen && (
           <motion.div
@@ -396,7 +396,7 @@ export default function Header() {
       >
         {/* Heights dynamically scale infinitely on massive 4k/8k displays */}
         <div className="grid grid-cols-3 items-center h-14 md:h-16 lg:h-24 2xl:h-28 w-full px-5 md:px-7 lg:px-8">
-          {/* Col 1 — Award image | FLIP logo when menu open */}
+          {/* Col 1 - Award image | FLIP logo when menu open */}
           <div className="flex items-center justify-start">
             <AnimatePresence mode="wait">
               {menuOpen ? (
@@ -436,7 +436,7 @@ export default function Header() {
             </AnimatePresence>
           </div>
 
-          {/* Col 2 — Center logo, FLIP to col-1 on menu open */}
+          {/* Col 2 - Center logo, FLIP to col-1 on menu open */}
           <div className="flex items-center justify-center">
             <AnimatePresence>
               {!menuOpen && (
@@ -461,7 +461,7 @@ export default function Header() {
             </AnimatePresence>
           </div>
 
-          {/* Col 3 — Hamburger / Close */}
+          {/* Col 3 - Hamburger / Close */}
           <div className="flex items-center justify-end">
             <button
               onClick={() => setMenuOpen((v) => !v)}

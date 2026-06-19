@@ -54,7 +54,7 @@ const logosBlack = [
   '/home/client31.webp',
 ];
 
-// Divider — inline style instead of bg-linear-to-r (Tailwind v4 only)
+// Divider - inline style instead of bg-linear-to-r (Tailwind v4 only)
 function Divider({ isDark }: { isDark: boolean }) {
   return (
     <div
@@ -69,7 +69,7 @@ function Divider({ isDark }: { isDark: boolean }) {
   );
 }
 
-// ~60px/sec — logos are smaller than career photos so slightly slower looks better
+// ~60px/sec - logos are smaller than career photos so slightly slower looks better
 const SCROLL_SPEED_PX_PER_SEC = 60;
 
 export default function ClientLogos({ theme }: ClientLogosProps) {
@@ -77,7 +77,7 @@ export default function ClientLogos({ theme }: ClientLogosProps) {
   const isDark = (theme ?? contextTheme) === 'dark';
 
   const logoFiles = isDark ? logosWhite : logosBlack;
-  // 4 copies for seamless loop — reset point = scrollWidth / 4 (one full set)
+  // 4 copies for seamless loop - reset point = scrollWidth / 4 (one full set)
   const allLogos = [...logoFiles, ...logoFiles, ...logoFiles, ...logoFiles];
 
   const trackRef = useRef<HTMLDivElement>(null);
@@ -95,7 +95,7 @@ export default function ClientLogos({ theme }: ClientLogosProps) {
       Same rAF approach as GrowthCarouselSection:
       CSS `animation: infinite` on iOS Safari flashes at the loop reset because
       WebKit's compositor briefly renders position 0 before re-applying the
-      transform. rAF resets posRef BEFORE paint — Safari never sees position 0.
+      transform. rAF resets posRef BEFORE paint - Safari never sees position 0.
 
       4 copies of logos → reset at scrollWidth/4 (one full set width).
       margin-right on each item (not flex gap) → -oneSet px = perfect visual seam.
@@ -198,7 +198,7 @@ export default function ClientLogos({ theme }: ClientLogosProps) {
             }}
           />
 
-          {/* Track — rAF drives the transform, not CSS animation */}
+          {/* Track - rAF drives the transform, not CSS animation */}
           <div
             ref={trackRef}
             className="flex client-logos-track"

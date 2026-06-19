@@ -92,7 +92,7 @@ export default function ContactFormClient({ onSuccess }: Props) {
 
   return (
     <form ref={formRef} className="grid gap-12" style={{ fontFamily: 'Stack Sans Text' }} onSubmit={handleSubmit}>
-      {/* Row 1 — Name + Phone */}
+      {/* Row 1 - Name + Phone */}
       <div className="grid gap-6 sm:grid-cols-2">
         <label className="flex flex-col gap-2 text-xs font-semibold tracking-[0.12em] uppercase text-black">
           <span>
@@ -121,7 +121,7 @@ export default function ContactFormClient({ onSuccess }: Props) {
         </label>
       </div>
 
-      {/* Row 2 — Country + City */}
+      {/* Row 2 - Country + City */}
       <div className="grid gap-6 sm:grid-cols-2">
         <label className="flex flex-col gap-2 text-xs font-semibold tracking-[0.12em] uppercase text-black">
           <span>Country</span>
@@ -171,7 +171,7 @@ export default function ContactFormClient({ onSuccess }: Props) {
         />
       </label>
 
-      {/* Are you a — pill single-select */}
+      {/* Are you a - pill single-select */}
       <div className="space-y-3">
         <p className="text-xs font-semibold tracking-[0.12em] uppercase text-black">
           Are you a <span className="text-[#E21F26]">*</span>
@@ -195,7 +195,7 @@ export default function ContactFormClient({ onSuccess }: Props) {
         <input type="hidden" name="entityType" value={selectedEntity} />
       </div>
 
-      {/* Services — pill multi-select */}
+      {/* Services - pill multi-select */}
       <div className="space-y-3">
         <p className="text-xs font-semibold tracking-[0.12em] uppercase text-black">Services you want to explore</p>
         <div className="flex flex-wrap gap-2">

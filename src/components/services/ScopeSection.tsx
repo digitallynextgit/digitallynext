@@ -128,10 +128,10 @@ export default function ScopeSection({ section, theme }: Props) {
 
             {/* ── Items ── */}
             <div>
-              {/* DESKTOP — sticky image left + scrollable right */}
+              {/* DESKTOP - sticky image left + scrollable right */}
               {/* ↑ col 1 wider (480px) for bigger image */}
               <div className="hidden lg:grid grid-cols-[480px_1fr] gap-14 items-start">
-                {/* LEFT — Sticky image (bigger) */}
+                {/* LEFT - Sticky image (bigger) */}
                 <div className="sticky top-28">
                   <div
                     className={[
@@ -200,7 +200,7 @@ export default function ScopeSection({ section, theme }: Props) {
                   {/* ── dots removed ── */}
                 </div>
 
-                {/* RIGHT — Scrollable items */}
+                {/* RIGHT - Scrollable items */}
                 <div className="flex flex-col">
                   {section.items.map((item, idx) => (
                     <div
@@ -264,7 +264,7 @@ export default function ScopeSection({ section, theme }: Props) {
                 </div>
               </div>
 
-              {/* MOBILE — unchanged */}
+              {/* MOBILE - unchanged */}
               <div className="flex flex-col lg:hidden">
                 {section.items.map((item, idx) => (
                   <div key={idx}>

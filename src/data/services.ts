@@ -137,7 +137,7 @@ export const services: ServiceDetail[] = [
       'D2C market entry & growth strategy · Brand & digital strategy · Positioning & GTM · Market & audience intelligence · Founder & niche authority strategy · Community & ecosystem strategy',
     metaTitle: 'Strategy, Brand & Growth Intelligence | Digitally Next',
     metaDescription:
-      'Where direction is defined before execution begins — authority-led growth strategy for D2C, B2B, and niche markets.',
+      'Where direction is defined before execution begins - authority-led growth strategy for D2C, B2B, and niche markets.',
     theme: {
       heroBg: '#0A0A0A',
       heroText: '#FFFFFF',
@@ -158,14 +158,14 @@ export const services: ServiceDetail[] = [
       subtitle: 'Where direction is defined before execution begins',
       quoteLead: 'We often see brands say things like this',
       quoteText: [
-        '“We’re entering the D2C market and need a complete go-to-market strategy — from positioning to digital rollout.”',
+        '“We’re entering the D2C market and need a complete go-to-market strategy - from positioning to digital rollout.”',
         '“We want D2C scale without becoming discount-led.”',
         '“We’re launching a new B2B vertical and need global visibility, not just lead ads.”',
         '“We know the product is strong, but the market is crowded.”',
         '“We want a digital strategy before we start hiring agencies or running campaigns.”',
         '“We need clarity first. Execution can follow.”',
-        '“We need to define who we’re really for — and why we’ll win.”',
-        '“This isn’t mass marketing — it’s niche, high-value.”',
+        '“We need to define who we’re really for - and why we’ll win.”',
+        '“This isn’t mass marketing - it’s niche, high-value.”',
         '“We need PR, thought leadership, and influence working together.”',
       ],
       quoteColor: '#1BB9B4',
@@ -334,7 +334,7 @@ export const services: ServiceDetail[] = [
     sliderText:
       'Content strategy · Video & visual production · Podcast production · UGC programs · Social content systems · Creative asset libraries',
     metaTitle: 'Content, Culture & Media Creation | Digitally Next',
-    metaDescription: 'Content systems that travel across formats, platforms, and teams — without losing meaning.',
+    metaDescription: 'Content systems that travel across formats, platforms, and teams - without losing meaning.',
     theme: {
       heroBg: '#0A0A0A',
       heroText: '#FFFFFF',
@@ -502,7 +502,7 @@ export const services: ServiceDetail[] = [
       'Brand & digital strategy · Positioning & GTM · Personal & founder branding · Community strategy · Podcast strategy & narrative design · Market & audience research',
     metaTitle: 'Performance, Distribution & Demand | Digitally Next',
     metaDescription:
-      'Performance, Distribution & Demand — a system-first approach to growth that compounds across channels.',
+      'Performance, Distribution & Demand - a system-first approach to growth that compounds across channels.',
     theme: {
       heroBg: '#0A0A0A',
       heroText: '#FFFFFF',
@@ -667,7 +667,7 @@ export const services: ServiceDetail[] = [
       'Websites & landing experiences · UX & conversion design · Web applications · CMS & headless architecture · Analytics & CRO · E-commerce & D2C platforms',
     metaTitle: 'Platforms, Web & Digital Experience | Digitally Next',
     metaDescription:
-      'Conversion-focused digital platforms built as infrastructure — designed to evolve, integrate, and scale.',
+      'Conversion-focused digital platforms built as infrastructure - designed to evolve, integrate, and scale.',
     theme: {
       heroBg: '#0A0A0A',
       heroText: '#FFFFFF',
@@ -842,7 +842,7 @@ export const services: ServiceDetail[] = [
       'AI governance & decision frameworks · Branding AI enablement · Content AI acceleration · Performance AI optimization · Web & platform AI intelligence · ADAC-powered operations',
     metaTitle: 'AI Enablement & Decision Systems (ADAC-Powered) | Digitally Next',
     metaDescription:
-      'Intelligence without dilution — a governed AI practice that decides how, where, and why AI is applied across your digital work.',
+      'Intelligence without dilution - a governed AI practice that decides how, where, and why AI is applied across your digital work.',
     theme: {
       heroBg: '#0A0A0A',
       heroText: '#FFFFFF',

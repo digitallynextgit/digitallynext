@@ -1,5 +1,5 @@
 /**
- * Seed script — Blog 16
+ * Seed script - Blog 16
  * "Will AI Replace the Agency Fresher? Our Honest, Optimistic Answer"
  *
  * Usage:
@@ -26,7 +26,7 @@ try {
     }
   }
 } catch {
-  console.warn('⚠  Could not read .env — make sure env vars are set in your shell.');
+  console.warn('⚠  Could not read .env - make sure env vars are set in your shell.');
 }
 
 // ── Sanity client ──
@@ -138,7 +138,7 @@ const body = [
     "The fresher who thrives in 2026 isn't the one who avoids AI. It's the one who uses it faster, prompts it better, and then asks the question AI still can't: Is this actually good? Does this feel true to the brand? Would a real person respond to this?"
   ),
   p(
-    "That critical layer - taste, context, cultural instinct, client empathy — is exactly what AI doesn't have. And it's exactly what a sharp fresher can develop in months, not years."
+    "That critical layer - taste, context, cultural instinct, client empathy - is exactly what AI doesn't have. And it's exactly what a sharp fresher can develop in months, not years."
   ),
 
   // ── Section 5 ──
@@ -227,11 +227,11 @@ async function main() {
     mainImage = {
       _type: 'image',
       asset: { _type: 'reference', _ref: asset._id },
-      alt: 'Will AI replace the agency fresher — an honest, optimistic answer for the 2026 entry-level role',
+      alt: 'Will AI replace the agency fresher - an honest, optimistic answer for the 2026 entry-level role',
     };
     console.log('  ✓ Uploaded main image');
   } else {
-    console.log('  ⚠  Image not found at public/blog/ai-and-the-agency-fresher.jpg — skipping image');
+    console.log('  ⚠  Image not found at public/blog/ai-and-the-agency-fresher.jpg - skipping image');
   }
 
   const doc = {

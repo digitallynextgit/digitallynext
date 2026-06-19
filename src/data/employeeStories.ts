@@ -1,5 +1,5 @@
 /**
- * Employee Stories — LinkedIn post embeds for the careers page.
+ * Employee Stories - LinkedIn post embeds for the careers page.
  *
  * How to add a new story:
  *  1. Open the LinkedIn post in your browser
@@ -13,7 +13,7 @@
  */
 
 export type EmployeeStory = {
-  /** Sort key — lower = shown first. Keep numbers unique. */
+  /** Sort key - lower = shown first. Keep numbers unique. */
   order_id: number;
   /** Stable unique identifier (used as React key). */
   id: string;
@@ -37,7 +37,8 @@ export const EMPLOYEE_STORIES: EmployeeStory[] = [
     title: 'Employee story 2',
   },
   {
-    order_id: 3,
+    // Digitally Next company post - pinned to the end of the list.
+    order_id: 6,
     id: 'story-3',
     embedUrl: 'https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7423055126136954881?collapsed=1',
     title: 'Employee story 3',

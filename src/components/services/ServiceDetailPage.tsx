@@ -39,12 +39,12 @@ export default function ServiceDetailPage({ service }: Props) {
 
   return (
     <main>
-      {/* ── Hero — dark background ── */}
+      {/* ── Hero - dark background ── */}
       <ThemeSection theme={'light'}>
         <HeroSection hero={service.hero} theme={service.theme} />
       </ThemeSection>
 
-      {/* ── Dynamic Sections — light surface ── */}
+      {/* ── Dynamic Sections - light surface ── */}
       {service.sections.map((section, idx) => {
         if (section.type === 'realBrief') {
           return (

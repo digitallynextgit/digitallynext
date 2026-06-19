@@ -79,18 +79,20 @@ export default function EmployeeStoriesSection({ theme }: EmployeeStoriesSection
           </motion.p>
         </div>
 
-        {/* Navigation arrows */}
-        <div className="flex justify-end gap-3 mb-4 lg:mb-6">
-          {['left', 'right'].map((dir) => (
+        {/* Story cards (LinkedIn embeds) with navigation arrows overlaid on the container */}
+        <div className="relative">
+          {(['left', 'right'] as const).map((dir) => (
             <button
               key={dir}
-              onClick={() => scroll(dir as 'left' | 'right')}
+              onClick={() => scroll(dir)}
               className={[
-                'w-10 h-10 lg:w-11 lg:h-11 rounded-full border flex items-center justify-center cursor-pointer',
+                'absolute top-1/2 -translate-y-1/2 z-20',
+                dir === 'left' ? 'left-1 lg:-left-4' : 'right-1 lg:-right-4',
+                'w-10 h-10 lg:w-12 lg:h-12 rounded-full border flex items-center justify-center cursor-pointer shadow-lg',
                 'hover:text-[#E53935] hover:border-[#E53935] transition-all duration-300 group',
                 isDark
-                  ? 'border-white/20 bg-white/5 text-white/50 hover:bg-white/10'
-                  : 'border-gray-300 bg-gray-50 text-gray-500 hover:bg-red-50',
+                  ? 'border-white/20 bg-neutral-900/90 text-white/70 hover:bg-neutral-900'
+                  : 'border-gray-200 bg-white text-gray-600 hover:bg-red-50',
               ].join(' ')}
               aria-label={`Scroll ${dir}`}
             >
@@ -112,74 +114,74 @@ export default function EmployeeStoriesSection({ theme }: EmployeeStoriesSection
               </svg>
             </button>
           ))}
-        </div>
 
-        {/* Story cards (LinkedIn embeds — native render, no transform) */}
-        <div
-          ref={scrollRef}
-          className={[
-            'flex gap-4 lg:gap-6 overflow-x-auto pb-4',
-            '[scrollbar-width:none] [&::-webkit-scrollbar]:hidden',
-            '[scroll-snap-type:x_mandatory]',
-          ].join(' ')}
-        >
-          {stories.map((story, index) => (
-            <motion.div
-              key={story.id}
-              className={[
-                'story-card shrink-0 snap-start perspective-[1000px]',
-                // 1 / 2 / 3 cards visible at sm / md / lg+ breakpoints
-                'w-[85%] sm:w-[70%] md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]',
-              ].join(' ')}
-              custom={index}
-              initial={{ opacity: 0, y: 60, scale: 0.92 }}
-              animate={
-                isInView
-                  ? {
-                      opacity: 1,
-                      y: 0,
-                      scale: 1,
-                      rotateY: 0,
-                      transition: {
-                        duration: 0.7,
-                        delay: index * 0.15,
-                        ease: [0.16, 1, 0.3, 1],
-                      },
-                    }
-                  : {
-                      opacity: 0,
-                      y: 60,
-                      scale: 0.92,
-                      rotateY: index % 2 === 0 ? -8 : 8,
-                    }
-              }
-              style={{
-                willChange: 'transform, opacity',
-                WebkitBackfaceVisibility: 'hidden',
-                backfaceVisibility: 'hidden',
-              }}
-            >
-              <div
+          {/* Scrollable track */}
+          <div
+            ref={scrollRef}
+            className={[
+              'flex gap-4 lg:gap-6 overflow-x-auto pb-4',
+              '[scrollbar-width:none] [&::-webkit-scrollbar]:hidden',
+              '[scroll-snap-type:x_mandatory]',
+            ].join(' ')}
+          >
+            {stories.map((story, index) => (
+              <motion.div
+                key={story.id}
                 className={[
-                  // 504:669 matches LinkedIn's native embed dimensions so the post
-                  // renders without cropping or excess whitespace.
-                  'relative w-full aspect-504/669 rounded overflow-hidden',
-                  'transition-all duration-500 hover:shadow-lg',
-                  isDark
-                    ? 'border border-white/10 bg-white/5 hover:border-white/30'
-                    : 'border border-gray-200 bg-gray-50 hover:border-gray-400',
+                  'story-card shrink-0 snap-start perspective-[1000px]',
+                  // 1 / 2 / 3 cards visible at sm / md / lg+ breakpoints
+                  'w-[85%] sm:w-[70%] md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]',
                 ].join(' ')}
+                custom={index}
+                initial={{ opacity: 0, y: 60, scale: 0.92 }}
+                animate={
+                  isInView
+                    ? {
+                        opacity: 1,
+                        y: 0,
+                        scale: 1,
+                        rotateY: 0,
+                        transition: {
+                          duration: 0.7,
+                          delay: index * 0.15,
+                          ease: [0.16, 1, 0.3, 1],
+                        },
+                      }
+                    : {
+                        opacity: 0,
+                        y: 60,
+                        scale: 0.92,
+                        rotateY: index % 2 === 0 ? -8 : 8,
+                      }
+                }
+                style={{
+                  willChange: 'transform, opacity',
+                  WebkitBackfaceVisibility: 'hidden',
+                  backfaceVisibility: 'hidden',
+                }}
               >
-                <iframe
-                  src={story.embedUrl}
-                  className="absolute inset-0 w-full h-full border-0"
-                  allowFullScreen
-                  loading="lazy"
-                  title={story.title}
-                />
-              </div>
-            </motion.div>
-          ))}
+                <div
+                  className={[
+                    // 504:669 matches LinkedIn's native embed dimensions so the post
+                    // renders without cropping or excess whitespace.
+                    'relative w-full aspect-504/669 rounded overflow-hidden',
+                    'transition-all duration-500 hover:shadow-lg',
+                    isDark
+                      ? 'border border-white/10 bg-white/5 hover:border-white/30'
+                      : 'border border-gray-200 bg-gray-50 hover:border-gray-400',
+                  ].join(' ')}
+                >
+                  <iframe
+                    src={story.embedUrl}
+                    className="absolute inset-0 w-full h-full border-0"
+                    allowFullScreen
+                    loading="lazy"
+                    title={story.title}
+                  />
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
 
         {/* LinkedIn CTA */}

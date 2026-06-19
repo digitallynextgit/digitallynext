@@ -50,7 +50,7 @@ export default function GrowthCarouselSection({ theme }: GrowthCarouselSectionPr
 
       With rAF, the position reset (posRef -= halfWidth) happens inside the JS
       loop, BEFORE the browser paints. Safari never renders the element at
-      position 0. Android Chrome is equally smooth — no regression.
+      position 0. Android Chrome is equally smooth - no regression.
     */
 
     const measure = () => {
@@ -93,7 +93,7 @@ export default function GrowthCarouselSection({ theme }: GrowthCarouselSectionPr
       <div className="flex justify-center items-center">
         <div className="w-full pb-10 md:pb-16 lg:pb-20">
           <div className="overflow-hidden relative">
-            {/* Left fade — gradient overlay, not mask-image (mask causes double compositing) */}
+            {/* Left fade - gradient overlay, not mask-image (mask causes double compositing) */}
             <div
               className="absolute inset-y-0 left-0 z-10 pointer-events-none"
               style={{
@@ -114,7 +114,7 @@ export default function GrowthCarouselSection({ theme }: GrowthCarouselSectionPr
               }}
             />
 
-            {/* Track — transform applied by rAF, not CSS animation */}
+            {/* Track - transform applied by rAF, not CSS animation */}
             <div ref={trackRef} className="flex growth-carousel-track" style={{ width: 'max-content' }}>
               {[...carouselItems, ...carouselItems].map((src, idx) => (
                 <div key={`${src}-${idx}`} className="shrink-0 mr-6 md:mr-8">

@@ -53,15 +53,15 @@ function fromFormData(formData: FormData): CareersPayload {
 
 function buildHtml(p: CareersPayload): string {
   const rows: [string, string][] = [
-    ['Full Name', p.fullName || '—'],
-    ['Email', p.email || '—'],
-    ['Phone', p.phone || '—'],
-    ['LinkedIn', p.linkedIn ? `<a href="${p.linkedIn}" style="color:#E21F26;">${p.linkedIn}</a>` : '—'],
-    ['Portfolio', p.portfolio ? `<a href="${p.portfolio}" style="color:#E21F26;">${p.portfolio}</a>` : '—'],
-    ['Resume URL', p.resumeUrl ? `<a href="${p.resumeUrl}" style="color:#E21F26;">${p.resumeUrl}</a>` : '—'],
-    ['Track', p.track || '—'],
-    ['Department', p.department || '—'],
-    ['Role', p.role || '—'],
+    ['Full Name', p.fullName || '-'],
+    ['Email', p.email || '-'],
+    ['Phone', p.phone || '-'],
+    ['LinkedIn', p.linkedIn ? `<a href="${p.linkedIn}" style="color:#E21F26;">${p.linkedIn}</a>` : '-'],
+    ['Portfolio', p.portfolio ? `<a href="${p.portfolio}" style="color:#E21F26;">${p.portfolio}</a>` : '-'],
+    ['Resume URL', p.resumeUrl ? `<a href="${p.resumeUrl}" style="color:#E21F26;">${p.resumeUrl}</a>` : '-'],
+    ['Track', p.track || '-'],
+    ['Department', p.department || '-'],
+    ['Role', p.role || '-'],
   ];
 
   const tableRows = rows
@@ -96,18 +96,18 @@ function buildHtml(p: CareersPayload): string {
 
 function buildText(p: CareersPayload): string {
   return [
-    `Full Name: ${p.fullName || '—'}`,
-    `Email: ${p.email || '—'}`,
-    `Phone: ${p.phone || '—'}`,
-    `LinkedIn: ${p.linkedIn || '—'}`,
-    `Portfolio: ${p.portfolio || '—'}`,
-    `Resume URL: ${p.resumeUrl || '—'}`,
-    `Track: ${p.track || '—'}`,
-    `Department: ${p.department || '—'}`,
-    `Role: ${p.role || '—'}`,
+    `Full Name: ${p.fullName || '-'}`,
+    `Email: ${p.email || '-'}`,
+    `Phone: ${p.phone || '-'}`,
+    `LinkedIn: ${p.linkedIn || '-'}`,
+    `Portfolio: ${p.portfolio || '-'}`,
+    `Resume URL: ${p.resumeUrl || '-'}`,
+    `Track: ${p.track || '-'}`,
+    `Department: ${p.department || '-'}`,
+    `Role: ${p.role || '-'}`,
     '',
     `Message:`,
-    p.message || '—',
+    p.message || '-',
   ].join('\n');
 }
 
@@ -157,7 +157,7 @@ export async function POST(req: NextRequest) {
     await transporter.sendMail({
       from: `Digitally Next Careers <${user}>`,
       to: 'careers@digitallynext.com',
-      subject: `New Application — ${payload.fullName}${payload.role ? ` (${payload.role})` : ''}`,
+      subject: `New Application - ${payload.fullName}${payload.role ? ` (${payload.role})` : ''}`,
       text: buildText(payload),
       html: buildHtml(payload),
     });

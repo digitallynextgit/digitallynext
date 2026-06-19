@@ -561,31 +561,31 @@ const FILTERS: { key: FilterKey; label: string }[] = [
 const FAQS = [
   {
     q: 'How long does it take to build a website with Digitally Next?',
-    a: "Timelines depend on the scope and complexity of the project. A standard WordPress or Shopify website development project typically goes live in 4 to 6 weeks. Custom coded websites on Next.js or React.js may take 8 to 12 weeks. We always agree on a fixed timeline before the project begins — and we stick to it. Our clients in the USA, Canada, and Australia consistently note that our structured delivery process removes the uncertainty they've experienced with other agencies.",
+    a: "Timelines depend on the scope and complexity of the project. A standard WordPress or Shopify website development project typically goes live in 4 to 6 weeks. Custom coded websites on Next.js or React.js may take 8 to 12 weeks. We always agree on a fixed timeline before the project begins - and we stick to it. Our clients in the USA, Canada, and Australia consistently note that our structured delivery process removes the uncertainty they've experienced with other agencies.",
   },
   {
     q: 'What platforms do you build websites on?',
-    a: "We build on WordPress, Shopify, Next.js, and React.js, as well as fully custom coded solutions depending on your business needs. As a website design and development agency in India with 10+ years of experience, our team recommends the right platform based on your goals, target audience, budget, and long-term scalability — whether you're a D2C brand in the USA or a B2B enterprise in the Middle East.",
+    a: "We build on WordPress, Shopify, Next.js, and React.js, as well as fully custom coded solutions depending on your business needs. As a website design and development agency in India with 10+ years of experience, our team recommends the right platform based on your goals, target audience, budget, and long-term scalability - whether you're a D2C brand in the USA or a B2B enterprise in the Middle East.",
   },
   {
     q: 'Do you work with clients based in the USA, Canada, Australia, and other countries?',
-    a: 'Yes — we are an India-based web design agency actively working with international clients across the USA, Canada, Australia, New Zealand, the Middle East, and Europe. We have structured global servicing frameworks including dedicated points of contact, timezone-aligned calls, and fortnightly progress reports. Distance has never been a barrier to delivering world-class website development.',
+    a: 'Yes - we are an India-based web design agency actively working with international clients across the USA, Canada, Australia, New Zealand, the Middle East, and Europe. We have structured global servicing frameworks including dedicated points of contact, timezone-aligned calls, and fortnightly progress reports. Distance has never been a barrier to delivering world-class website development.',
   },
   {
     q: 'Is the website built with SEO and AEO in mind?',
-    a: 'Absolutely. Every website we build includes on-page SEO as a standard part of our 11-step process — from meta titles and descriptions to structured content, fast loading speeds, and mobile-first optimisation. We also ensure the website is AEO (Answer Engine Optimisation) and GEO (Generative Engine Optimisation) ready, so it has the best chance of being featured in AI-powered search results on platforms like Google AI Overviews, ChatGPT, and Perplexity.',
+    a: 'Absolutely. Every website we build includes on-page SEO as a standard part of our 11-step process - from meta titles and descriptions to structured content, fast loading speeds, and mobile-first optimisation. We also ensure the website is AEO (Answer Engine Optimisation) and GEO (Generative Engine Optimisation) ready, so it has the best chance of being featured in AI-powered search results on platforms like Google AI Overviews, ChatGPT, and Perplexity.',
   },
   {
     q: 'What is included in the website handover?',
-    a: "Every website we deliver — whether it's a WordPress site, Shopify store, or custom Next.js build — comes with a hands-on training session for your team, full documentation, and an official handover. We also offer post-handover support and maintenance packages for clients who want continued assistance after go-live.",
+    a: "Every website we deliver - whether it's a WordPress site, Shopify store, or custom Next.js build - comes with a hands-on training session for your team, full documentation, and an official handover. We also offer post-handover support and maintenance packages for clients who want continued assistance after go-live.",
   },
   {
     q: 'Can you handle both design and development, or do we need to bring our own designer?',
-    a: 'We handle everything in-house — brand strategy, content writing, UI/UX design, and website development. You bring your vision and business goals. Our six specialist teams take care of the rest, end to end. This is what makes Digitally Next different from a typical web development agency — we are a full-service creative and technical partner.',
+    a: 'We handle everything in-house - brand strategy, content writing, UI/UX design, and website development. You bring your vision and business goals. Our six specialist teams take care of the rest, end to end. This is what makes Digitally Next different from a typical web development agency - we are a full-service creative and technical partner.',
   },
   {
     q: 'What makes Digitally Next different from other web development agencies in India?',
-    a: "We don't just build websites — we build digital business assets. Every project goes through a structured 11-step process covering research, user journey mapping, content strategy, visual design, development, quality optimisation, and handover. With 10+ years of experience, 50+ websites delivered across 6 industries, and clients in the USA, Canada, Australia, Middle East, and India — we bring both creative depth and strategic thinking to every project we take on.",
+    a: "We don't just build websites - we build digital business assets. Every project goes through a structured 11-step process covering research, user journey mapping, content strategy, visual design, development, quality optimisation, and handover. With 10+ years of experience, 50+ websites delivered across 6 industries, and clients in the USA, Canada, Australia, Middle East, and India - we bring both creative depth and strategic thinking to every project we take on.",
   },
 ];
 
@@ -596,7 +596,7 @@ const PROCESS_STEPS = [
     title: 'Study, Research & Benchmark',
     desc: 'Competitor analysis, reference websites & new tech relevant to your project.',
   },
-  { n: '03', title: 'Prepare', desc: 'User & visitor journey mapping — for prospects, existing clients & partners.' },
+  { n: '03', title: 'Prepare', desc: 'User & visitor journey mapping - for prospects, existing clients & partners.' },
   { n: '04', title: 'Finalise Structure', desc: 'Sitemap, domain name & hosting subscriptions.' },
   {
     n: '05',
@@ -648,7 +648,7 @@ const COUNTRIES: { code: string; name: string }[] = [
 ];
 
 // ============================================================
-// SHARED CLASS STRINGS — sections share the same padding cadence
+// SHARED CLASS STRINGS - sections share the same padding cadence
 // ============================================================
 const SECTION_PAD =
   'py-[100px] px-[60px] max-[1100px]:py-[70px] max-[1100px]:px-[30px] max-[700px]:py-[60px] max-[700px]:px-5';
@@ -658,7 +658,7 @@ const SECTION_LABEL = 'text-[11px] font-bold tracking-[3px] uppercase mb-4 text-
 const SECTION_SUBLINE = 'text-base font-normal leading-[1.7] text-[#666] max-w-[560px] mb-[60px] max-[700px]:mb-8';
 const REVEAL_DELAY = ['', '[transition-delay:0.1s]', '[transition-delay:0.2s]', '[transition-delay:0.3s]'];
 
-// Reusable inline animation strings — kept here so Tailwind's arbitrary-value
+// Reusable inline animation strings - kept here so Tailwind's arbitrary-value
 // parser never has to deal with cubic-bezier() commas (which it mangles).
 const EASE = 'cubic-bezier(0.25,0.46,0.45,0.94)';
 const fadeUp = (duration: string, delay = '0s'): CSSProperties => ({
@@ -837,7 +837,7 @@ export default function DesignPortfolioClient() {
     };
   }, []);
 
-  // Scroll reveal — IntersectionObserver fades elements in as they enter view.
+  // Scroll reveal - IntersectionObserver fades elements in as they enter view.
   // Observation is deferred via double-rAF so the initial opacity:0 state is
   // committed to the GPU before the first observer callback fires; otherwise
   // above-the-fold elements snap to visible without ever transitioning.
@@ -924,7 +924,7 @@ export default function DesignPortfolioClient() {
               style={fadeUp('0.9s', '0.2s')}
             >
               A <strong>website design and development agency in India</strong>, building for brands across the{' '}
-              <strong>USA, Canada, Australia,</strong> and beyond. Every website starts with understanding your world —
+              <strong>USA, Canada, Australia,</strong> and beyond. Every website starts with understanding your world -
               and ends with something your audience remembers.
             </h2>
 
@@ -984,7 +984,7 @@ export default function DesignPortfolioClient() {
           </div>
         </div>
 
-        {/* HERO RIGHT — carousel */}
+        {/* HERO RIGHT - carousel */}
         <div className="flex flex-col justify-center items-center relative z-[2] max-[1100px]:hidden">
           <div className="text-[10px] font-bold tracking-[2.5px] uppercase text-[#ED2226] mb-3.5 flex items-center gap-2 pl-1 before:content-[''] before:inline-block before:w-4 before:h-[1.5px] before:bg-[#ED2226]">
             Our latest work
@@ -1132,7 +1132,7 @@ export default function DesignPortfolioClient() {
         <div className={SECTION_LABEL}>Technologies We Build On</div>
         <h2 className={cn(SECTION_HEADLINE, 'dp-reveal')}>Our Tech Stack</h2>
         <p className={cn(SECTION_SUBLINE, 'dp-reveal', REVEAL_DELAY[1])}>
-          We build professional websites on the world&apos;s most trusted platforms — from WordPress and Shopify to
+          We build professional websites on the world&apos;s most trusted platforms - from WordPress and Shopify to
           custom Next.js and React.js development.
         </p>
 
@@ -1178,7 +1178,7 @@ export default function DesignPortfolioClient() {
         <div className={cn(SECTION_LABEL, '!text-[#0EC8C5]')}>How We Build</div>
         <h2 className={cn(SECTION_HEADLINE, '!text-white dp-reveal')}>Our Process</h2>
         <p className={cn(SECTION_SUBLINE, '!text-white/50 dp-reveal', REVEAL_DELAY[1])}>
-          From brief to handover — a structured 11-step website development process that covers strategy, design,
+          From brief to handover - a structured 11-step website development process that covers strategy, design,
           content, SEO, AEO readiness, and go-live.
         </p>
 
@@ -1325,7 +1325,7 @@ export default function DesignPortfolioClient() {
             Structure.
           </h2>
           <p className={cn('text-[15px] leading-[1.7] text-white/55 mt-4 mb-10 dp-reveal', REVEAL_DELAY[1])}>
-            We have built structured frameworks for working with international clients — from communication cadence to
+            We have built structured frameworks for working with international clients - from communication cadence to
             delivery ownership. Whether you are in{' '}
             <strong className="text-white/75">New York, Toronto, Sydney, or Dubai,</strong> you get the same
             predictable, transparent website development experience.
@@ -1413,7 +1413,7 @@ export default function DesignPortfolioClient() {
           Around the World
         </h2>
         <p className={cn('text-[15px] text-[#777] max-w-[500px] mx-auto mb-12 dp-reveal', REVEAL_DELAY[1])}>
-          From Delhi to the world — here&apos;s where our website development and digital marketing work has made an
+          From Delhi to the world - here&apos;s where our website development and digital marketing work has made an
           impact.
         </p>
         {/* Flag grid: 6 columns × 2 rows on desktop (collapses on smaller screens).
@@ -1460,7 +1460,7 @@ export default function DesignPortfolioClient() {
             <h2 className={cn(SECTION_HEADLINE, '!text-white !mb-2 dp-reveal')}>Explore Our Websites</h2>
             <p className={cn('text-[15px] text-white/45 max-w-[500px] leading-[1.65] dp-reveal', REVEAL_DELAY[1])}>
               Browse our website design and development work across industries, business models, and platforms. From
-              WordPress and Shopify to custom Next.js builds — filter by what matters to you.
+              WordPress and Shopify to custom Next.js builds - filter by what matters to you.
             </p>
           </div>
         </div>
@@ -1504,7 +1504,7 @@ export default function DesignPortfolioClient() {
             Everything You Want to Know
           </h2>
           <p className={cn(SECTION_SUBLINE, '!text-[#777] !mb-9 dp-reveal', REVEAL_DELAY[1])}>
-            Common questions from our clients in India, the USA, Canada, Australia, and beyond — before they start their
+            Common questions from our clients in India, the USA, Canada, Australia, and beyond - before they start their
             website project with us.
           </p>
           <div
@@ -1613,7 +1613,7 @@ type PortfolioCardData = {
   title: string;
   oneliner: string;
   result: string;
-  // Same flag as CarouselSlide.useIframe — see comment there.
+  // Same flag as CarouselSlide.useIframe - see comment there.
   useIframe?: boolean;
 };
 
@@ -1627,7 +1627,7 @@ const PORTFOLIO_CARDS: PortfolioCardData[] = [
     platformTag: 'Next.js',
     title: 'Gajna Overseas',
     oneliner:
-      'A warm, brand-forward Next.js website for an Indian specialty coffee exporter — crafted to open doors in the USA, Europe, and Middle East by telling the authentic story behind every bean.',
+      'A warm, brand-forward Next.js website for an Indian specialty coffee exporter - crafted to open doors in the USA, Europe, and Middle East by telling the authentic story behind every bean.',
     result:
       'Gave Gajna Overseas a credible, export-ready digital presence that speaks directly to international buyers.',
     preview: (
@@ -1666,7 +1666,7 @@ const PORTFOLIO_CARDS: PortfolioCardData[] = [
     platformTag: 'Next.js',
     title: 'Talentifix',
     oneliner:
-      'A custom-coded Next.js website that brought fresh, new-generation energy to the IT staffing industry — bold UI/UX design that broke every convention in a space known for dull, corporate web presence.',
+      'A custom-coded Next.js website that brought fresh, new-generation energy to the IT staffing industry - bold UI/UX design that broke every convention in a space known for dull, corporate web presence.',
     result: 'Went live in just 4 weeks. Has been driving high organic traffic since launch.',
     preview: (
       <div
@@ -1704,7 +1704,7 @@ const PORTFOLIO_CARDS: PortfolioCardData[] = [
     platformTag: 'Next.js',
     title: 'NeoTech World Lab',
     oneliner:
-      'A credibility-first Next.js website for a genetic testing lab serving both individual consumers and institutional clients — designed to make complex science feel clear, trustworthy, and accessible.',
+      'A credibility-first Next.js website for a genetic testing lab serving both individual consumers and institutional clients - designed to make complex science feel clear, trustworthy, and accessible.',
     result: 'Successfully bridges a highly technical healthcare offering with everyday consumer accessibility.',
     preview: (
       <div
@@ -1747,9 +1747,9 @@ const PORTFOLIO_CARDS: PortfolioCardData[] = [
     platformTag: 'WordPress',
     title: 'Advent Global',
     oneliner:
-      'A complete brand revamp and custom WordPress website for a 30-year legacy IT services company — parallax animations, enterprise-grade design, and a conversion-friendly architecture built to attract global B2B clients.',
+      'A complete brand revamp and custom WordPress website for a 30-year legacy IT services company - parallax animations, enterprise-grade design, and a conversion-friendly architecture built to attract global B2B clients.',
     result:
-      'Shortly after launch, this professionally redesigned WordPress website helped the company onboard a landmark enterprise client — proof that world-class web design drives real business outcomes for IT firms in international markets.',
+      'Shortly after launch, this professionally redesigned WordPress website helped the company onboard a landmark enterprise client - proof that world-class web design drives real business outcomes for IT firms in international markets.',
     preview: (
       <div
         className="absolute inset-0 flex flex-col"
@@ -1791,9 +1791,9 @@ const PORTFOLIO_CARDS: PortfolioCardData[] = [
     platformTag: 'Shopify',
     title: 'Khaleej',
     oneliner:
-      "A high-performance Shopify store for a luxury women's fashion brand — deeply optimised product pages, seamless mobile-first experience, and a conversion-focused design built to turn browsers into buyers.",
+      "A high-performance Shopify store for a luxury women's fashion brand - deeply optimised product pages, seamless mobile-first experience, and a conversion-focused design built to turn browsers into buyers.",
     result:
-      "Achieved 5X ROAS within the first month — generated enough revenue to cover the entire year's business targets.",
+      "Achieved 5X ROAS within the first month - generated enough revenue to cover the entire year's business targets.",
     preview: (
       <div
         className="absolute inset-0 flex flex-col"
@@ -1830,9 +1830,9 @@ const PORTFOLIO_CARDS: PortfolioCardData[] = [
     platformTag: 'Shopify',
     title: 'House of Nandini',
     oneliner:
-      "A beautifully crafted Shopify store that captures the soul of Lucknow's chikankari artisan tradition — merging heritage ethnic fashion with modern D2C e-commerce, built for women who appreciate craft as much as design.",
+      "A beautifully crafted Shopify store that captures the soul of Lucknow's chikankari artisan tradition - merging heritage ethnic fashion with modern D2C e-commerce, built for women who appreciate craft as much as design.",
     result:
-      "Launched at a physical inauguration event attended by prominent TV anchor Ms. Richa Anirudh Thatte, who publicly praised the store's authentic cultural identity — creating immediate brand credibility.",
+      "Launched at a physical inauguration event attended by prominent TV anchor Ms. Richa Anirudh Thatte, who publicly praised the store's authentic cultural identity - creating immediate brand credibility.",
     preview: (
       <div
         className="absolute inset-0 flex flex-col"
@@ -1871,9 +1871,9 @@ const PORTFOLIO_CARDS: PortfolioCardData[] = [
     platformTag: 'Shopify',
     title: 'Mauli',
     oneliner:
-      "A refined, minimal Shopify e-commerce store for a premium cashmere women's brand — where every design decision is as intentional as the product itself, built to convert high-intent D2C shoppers.",
+      "A refined, minimal Shopify e-commerce store for a premium cashmere women's brand - where every design decision is as intentional as the product itself, built to convert high-intent D2C shoppers.",
     result:
-      "Achieved 4X ROAS within 2 months — generated revenues that covered the brand's entire annual business targets.",
+      "Achieved 4X ROAS within 2 months - generated revenues that covered the brand's entire annual business targets.",
     preview: (
       <div
         className="absolute inset-0 flex flex-col"
@@ -1902,7 +1902,7 @@ const PORTFOLIO_CARDS: PortfolioCardData[] = [
     platformTag: 'Next.js',
     title: 'Sanjivani Edge',
     oneliner:
-      'A sharp, professional Next.js website for a technology edge solutions company — clean architecture, precise messaging, and a design built to convert the right enterprise visitors into qualified business conversations.',
+      'A sharp, professional Next.js website for a technology edge solutions company - clean architecture, precise messaging, and a design built to convert the right enterprise visitors into qualified business conversations.',
     result:
       'Positioned Sanjivani Edge as a credible technology partner for enterprise clients across India and international markets.',
     preview: (
@@ -1936,7 +1936,7 @@ const PORTFOLIO_CARDS: PortfolioCardData[] = [
     platformTag: 'Next.js',
     title: 'Opinova Foundation',
     oneliner:
-      'A purpose-driven Next.js website for a non-profit foundation focused on community empowerment — designed with the same strategic care and creative depth we bring to every commercial website development project.',
+      'A purpose-driven Next.js website for a non-profit foundation focused on community empowerment - designed with the same strategic care and creative depth we bring to every commercial website development project.',
     result:
       'Gave Opinova Foundation a dignified, professional digital home that elevated their credibility with donors, grant bodies, and the communities they serve.',
     preview: (
@@ -1971,7 +1971,7 @@ const PORTFOLIO_CARDS: PortfolioCardData[] = [
     platformTag: 'Shopify',
     title: 'Hard2Soft',
     oneliner:
-      'A clean, conversion-focused Shopify store for a D2C home water softener brand — making a technical product feel simple, trustworthy, and easy to buy for everyday consumers across India.',
+      'A clean, conversion-focused Shopify store for a D2C home water softener brand - making a technical product feel simple, trustworthy, and easy to buy for everyday consumers across India.',
     result:
       'Successfully simplified a technical home lifestyle product for D2C consumers, driving online sales directly to end users.',
     preview: (

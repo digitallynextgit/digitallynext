@@ -42,7 +42,7 @@ export default function AnimatedSection({
       }}
       style={{
         // willChange tells the browser to promote this element to a GPU layer.
-        // DO NOT also set WebkitTransform here — Framer Motion controls the transform
+        // DO NOT also set WebkitTransform here - Framer Motion controls the transform
         // on every frame, so a static initial value causes conflict and mobile jitter.
         willChange: 'transform, opacity',
         WebkitBackfaceVisibility: 'hidden',

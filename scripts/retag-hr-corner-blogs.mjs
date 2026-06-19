@@ -1,5 +1,5 @@
 /**
- * Retag script — set the "Career Talks - HR Corner" category as the ONLY
+ * Retag script - set the "Career Talks - HR Corner" category as the ONLY
  * category on the two HR Corner blog posts.
  *
  * Targets:
@@ -28,7 +28,7 @@ try {
     if (k && !process.env[k]) process.env[k] = rest.join('=').replace(/^['"]|['"]$/g, '');
   }
 } catch {
-  console.warn('⚠  Could not read .env — make sure env vars are set in your shell.');
+  console.warn('⚠  Could not read .env - make sure env vars are set in your shell.');
 }
 
 const client = createClient({
@@ -73,7 +73,7 @@ async function main() {
       { slug }
     );
     if (!post) {
-      console.log(`  ⚠  No post found for slug "${slug}" — skipped.`);
+      console.log(`  ⚠  No post found for slug "${slug}" - skipped.`);
       continue;
     }
 

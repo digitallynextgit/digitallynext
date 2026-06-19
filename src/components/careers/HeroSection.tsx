@@ -53,7 +53,7 @@ export default function HeroSection({ theme }: HeroSectionProps) {
         backgroundColor: isDark ? '#000000' : '#f0f0f0',
         // Safari fix: clipPath instead of overflow:hidden prevents GSAP/Framer animations from being cut off
         clipPath: 'inset(0)',
-        // Safari GPU compositing — prevents z-index flicker on animated children
+        // Safari GPU compositing - prevents z-index flicker on animated children
         WebkitTransform: 'translateZ(0)',
         isolation: 'isolate',
       }}
@@ -69,7 +69,7 @@ export default function HeroSection({ theme }: HeroSectionProps) {
         />
       </div>
 
-      {/* 1. ImageTrail — absolute, fills full hero area behind navbar */}
+      {/* 1. ImageTrail - absolute, fills full hero area behind navbar */}
       <div className="absolute inset-0 z-1">
         {/* Safari fix: overflow-visible on the wrapper lets ImageTrail images animate
             freely without being clip-masked by the parent container */}
@@ -94,7 +94,7 @@ export default function HeroSection({ theme }: HeroSectionProps) {
         </div>
       </div>
 
-      {/* 2. Hero content — top-padded to clear the fixed navbar, then vertically centred in remaining space */}
+      {/* 2. Hero content - top-padded to clear the fixed navbar, then vertically centred in remaining space */}
       <div
         className="relative z-2 pointer-events-none w-full h-full flex flex-col justify-center items-center pt-14 md:pt-16 lg:pt-24 2xl:pt-28 px-6"
         style={{ gap: 56 }}
@@ -148,7 +148,7 @@ export default function HeroSection({ theme }: HeroSectionProps) {
                 isDark ? 'text-[#737373]' : 'text-[#A1A1A1]',
               ].join(' ')}
             >
-              <div>DigitallyNext is where structure meets ambition —</div>
+              <div>DigitallyNext is where structure meets ambition -</div>
               <div>and where good thinking gets taken seriously.</div>
             </div>
           </div>

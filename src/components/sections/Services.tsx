@@ -185,7 +185,7 @@ function DesktopServices({ isDark }: { isDark: boolean }) {
   return (
     <div className="hidden lg:block">
       <div className="grid grid-cols-[44%_1fr] gap-2 mt-10">
-        {/* LEFT — Sticky media */}
+        {/* LEFT - Sticky media */}
         <div className="relative">
           <div
             className="lg:sticky lg:top-32 w-full max-w-115"
@@ -221,7 +221,7 @@ function DesktopServices({ isDark }: { isDark: boolean }) {
           </div>
         </div>
 
-        {/* RIGHT — Scrollable items */}
+        {/* RIGHT - Scrollable items */}
         <div className="flex flex-col overflow-x-hidden overflow-y-hidden min-w-0">
           {services.map((service, i) => (
             <div

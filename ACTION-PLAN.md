@@ -1,10 +1,10 @@
-# Action Plan — digitallynext.com
+# Action Plan - digitallynext.com
 
 Prioritized fix list, sorted by impact ÷ effort. File paths and line numbers are clickable in your IDE.
 
 ---
 
-## CRITICAL — Fix this week
+## CRITICAL - Fix this week
 
 ### 1. Add `Organization` + `WebSite` JSON-LD to root layout
 **File:** `src/app/layout.tsx` (after line 64, inside `<head>`)
@@ -119,7 +119,7 @@ Delete `public/robots.txt` and `public/sitemap.xml` after these are merged and v
 
 Design a 1200×630 hero card (logo + tagline + brand colors). Save to `public/og/og-default.webp`. Update:
 ```ts
-images: [{ url: '/og/og-default.webp', width: 1200, height: 630, alt: 'Digitally Next — growth-driven global digital marketing agency' }],
+images: [{ url: '/og/og-default.webp', width: 1200, height: 630, alt: 'Digitally Next - growth-driven global digital marketing agency' }],
 ```
 Same change for `twitter.images`.
 
@@ -141,7 +141,7 @@ const navItems = [
 
 ---
 
-## HIGH — Fix within 2 weeks
+## HIGH - Fix within 2 weeks
 
 ### 5. Add `Service` schema to each services page
 **File:** `src/app/services/[slug]/page.tsx`
@@ -151,7 +151,7 @@ const navItems = [
 ### 6. Add `Article` + `Person` schema to blog posts
 **File:** `src/app/blog/[slug]/BlogPostClient.tsx` (or move emission to `page.tsx`)
 **Effort:** 1 hr
-**Why:** Sanity already stores `author`, `publishedAt`, `mainImage`, `excerpt` — wire these into JSON-LD. Required for Top Stories eligibility and AI citation preference.
+**Why:** Sanity already stores `author`, `publishedAt`, `mainImage`, `excerpt` - wire these into JSON-LD. Required for Top Stories eligibility and AI citation preference.
 
 ### 7. Add `BreadcrumbList` schema + visible breadcrumbs
 **Files:** `src/app/services/[slug]/page.tsx`, `src/app/case-studies/[slug]/page.tsx`, `src/app/blog/[slug]/page.tsx`, `src/app/careers/[departmentSlug]/[roleSlug]/page.tsx`
@@ -177,16 +177,16 @@ Then remove the manual `<link rel="preconnect">` / `<link rel="stylesheet">` blo
 **File:** `src/app/page.tsx:1`
 **Effort:** 1 hr
 **Why:** `'use client'` at the page level forces the entire tree into the client bundle and prevents per-page metadata. Remove `'use client'`, then mark only the truly interactive children:
-- `Hero` is already `'use client'` — fine.
-- `InstagramReels`, `GlobalServicingModel`, animation-heavy sections — keep as client.
+- `Hero` is already `'use client'` - fine.
+- `InstagramReels`, `GlobalServicingModel`, animation-heavy sections - keep as client.
 - Static sections (`AwardsAndRecognition`, `ProudlyWorkingWith`, `CTASection`) can stay server.
-- The `useEffect` import on line 14 of `page.tsx` is unused — remove it.
+- The `useEffect` import on line 14 of `page.tsx` is unused - remove it.
 
 ### 10. Rewrite case-studies index description
 **File:** `src/app/case-studies/page.tsx:9`
 **Effort:** 5 min
 **Current:** `'Explore case studies from Digitally Next.'`
-**Suggested:** `'Real performance, brand, and platform results from Digitally Next — campaigns and product builds across InsurTech, FinTech, hearing-tech, real estate, legal, and global launches.'`
+**Suggested:** `'Real performance, brand, and platform results from Digitally Next - campaigns and product builds across InsurTech, FinTech, hearing-tech, real estate, legal, and global launches.'`
 
 ### 11. Rewrite homepage H1 for keyword alignment
 **File:** `src/components/sections/Hero.tsx:67-69`
@@ -196,19 +196,19 @@ Then remove the manual `<link rel="preconnect">` / `<link rel="stylesheet">` blo
 Suggestion (preserves the brand voice):
 - Kicker `<p>`: `WE DON'T JUST BUILD CAMPAIGNS.`
 - H1: `Digital marketing agency building what tomorrow remembers`
-- Subhead `<p>`: `Strategy, brand, performance, content, and AI-driven decision systems — under one roof, for global scale.`
+- Subhead `<p>`: `Strategy, brand, performance, content, and AI-driven decision systems - under one roof, for global scale.`
 
 ### 12. Reduce homepage payload
 **Effort:** 4–6 hr (investigation)
 **Files:** various, especially `src/components/sections/GlobalServicingModel.tsx` and animation libs in `package.json`
 **Action:**
 - Audit which of `framer-motion`, `motion`, `gsap`, `react-spring`, `three`, `cobe`, `dotted-map` are actually used in the homepage tree. Pick one animation lib (`framer-motion` is the most commonly imported in this codebase).
-- The world-map SVG in `GlobalServicingModel` may be the largest single contributor — consider lazy-loading it (`dynamic(() => import('...'), { ssr: false })`) and rendering a static placeholder for crawlers.
+- The world-map SVG in `GlobalServicingModel` may be the largest single contributor - consider lazy-loading it (`dynamic(() => import('...'), { ssr: false })`) and rendering a static placeholder for crawlers.
 - Run `next build && npx next-bundle-analyzer` (after wiring `@next/bundle-analyzer`) and address the top 3 chunks.
 
 ---
 
-## MEDIUM — Fix within 1 month
+## MEDIUM - Fix within 1 month
 
 ### 13. Build `app/llms.txt` for AI crawlers
 **File:** create `src/app/llms.txt/route.ts`
@@ -250,11 +250,11 @@ Two ~120-word paragraphs: "What we do" (factual capability list) and "How we wor
 
 ---
 
-## LOW — Backlog
+## LOW - Backlog
 
 ### 21. Consolidate animation libs (drop `motion`, `react-spring` if unused)
 ### 22. Add `manifest.json` + `theme-color` meta for PWA polish
-### 23. Tighten CSP — replace `'unsafe-inline'` with nonces for inline `<script>` (would need a Next.js middleware-based nonce strategy)
+### 23. Tighten CSP - replace `'unsafe-inline'` with nonces for inline `<script>` (would need a Next.js middleware-based nonce strategy)
 ### 24. Convert hero `b1.webp` to AVIF with WebP fallback
 ### 25. Per-page Twitter cards with custom imagery
 ### 26. Add internal linking between related case studies (currently each case-study page sits alone)
@@ -265,16 +265,16 @@ Two ~120-word paragraphs: "What we do" (factual capability list) and "How we wor
 
 ## Implementation order (suggested sprints)
 
-**Sprint 1 (this week — ~6 hrs):**
+**Sprint 1 (this week - ~6 hrs):**
 - Items 1–4 (schema, sitemap, OG image, footer fix). Highest impact, lowest risk.
 
-**Sprint 2 (next week — ~10 hrs):**
+**Sprint 2 (next week - ~10 hrs):**
 - Items 5–7 (per-page schema rollout) + 8 (`next/font`) + 9 (server component split).
 
-**Sprint 3 (week 3 — ~12 hrs):**
+**Sprint 3 (week 3 - ~12 hrs):**
 - Items 10–12 (content rewrites + payload reduction). Bundle analysis is the unknown.
 
-**Sprint 4 (week 4 — ~8 hrs):**
+**Sprint 4 (week 4 - ~8 hrs):**
 - Items 13–20 (AI readiness, careers schema, hygiene).
 
 After Sprint 1 ships, re-run `/seo audit https://www.digitallynext.com` and expect the score to move from ~64 to ~78. After Sprint 3, target is ~85+.

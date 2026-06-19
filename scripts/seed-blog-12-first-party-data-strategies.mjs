@@ -1,5 +1,5 @@
 /**
- * Seed script — Blog 12
+ * Seed script - Blog 12
  * "First-Party Data Strategies Replacing Third-Party Tracking"
  *
  * Usage:
@@ -26,7 +26,7 @@ try {
     }
   }
 } catch {
-  console.warn('⚠  Could not read .env — make sure env vars are set in your shell.');
+  console.warn('⚠  Could not read .env - make sure env vars are set in your shell.');
 }
 
 // ── Sanity client ──
@@ -222,11 +222,11 @@ async function main() {
     mainImage = {
       _type: 'image',
       asset: { _type: 'reference', _ref: asset._id },
-      alt: 'First-party data strategies replacing third-party cookies — customer data flowing into brand-owned systems',
+      alt: 'First-party data strategies replacing third-party cookies - customer data flowing into brand-owned systems',
     };
     console.log('  ✓ Uploaded main image');
   } else {
-    console.log('  ⚠  Image not found at public/blog/first-party-data-strategies.jpg — skipping image');
+    console.log('  ⚠  Image not found at public/blog/first-party-data-strategies.jpg - skipping image');
   }
 
   const doc = {

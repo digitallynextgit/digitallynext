@@ -9,13 +9,13 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: 'Privacy Policy | Digitally Next',
-    description: 'Digitally Next Privacy Policy — your data, your rights, our commitment.',
+    description: 'Digitally Next Privacy Policy - your data, your rights, our commitment.',
     url: 'https://www.digitallynext.com/privacy-policy',
     type: 'website',
   },
   twitter: {
     card: 'summary',
     title: 'Privacy Policy | Digitally Next',
-    description: 'Digitally Next Privacy Policy — your data, your rights, our commitment.',
+    description: 'Digitally Next Privacy Policy - your data, your rights, our commitment.',
   },
 };

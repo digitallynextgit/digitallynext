@@ -21,7 +21,7 @@ const rightItems = [
     iconW: 52,
     iconH: 44,
     title: 'Context',
-    desc: "You'll always know why your work matters — not just what needs to be done.",
+    desc: "You'll always know why your work matters - not just what needs to be done.",
   },
   {
     icon: '/figma/careers/careers-icon-standards.svg',
@@ -138,7 +138,7 @@ export default function WorkHereSection({ theme }: WorkHereSectionProps) {
                   height={item.iconH}
                   style={{ width: item.iconW, height: item.iconH, flexShrink: 0 }}
                 />
-                {/* Title color changes on hover — same as ADAC */}
+                {/* Title color changes on hover - same as ADAC */}
                 <div
                   className="text-[22px] sm:text-[24px] font-normal leading-tight transition-colors duration-300"
                   style={{

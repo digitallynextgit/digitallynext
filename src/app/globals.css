@@ -199,10 +199,10 @@
 
 /* ===== MARQUEE ===== */
 /*
-  IMPORTANT — Why keyframes must be in globals.css, not in React <style> tags:
+  IMPORTANT - Why keyframes must be in globals.css, not in React <style> tags:
   React injects <style> tags AFTER the component mounts (JS thread). This means
   for 1-2 frames the browser sees the `animation` property but has no @keyframes
-  definition — causing the visible jitter/jump at start on Android/iOS.
+  definition - causing the visible jitter/jump at start on Android/iOS.
   Putting keyframes here ensures they are in the compiled CSS bundle, parsed
   by the browser BEFORE any JS runs.
 */
@@ -230,7 +230,7 @@
 }
 
 /* ===== CLIENT LOGOS MARQUEE ===== */
-/* Only GPU promotion hints — animation is JS rAF-driven, not CSS */
+/* Only GPU promotion hints - animation is JS rAF-driven, not CSS */
 .client-logos-track {
   will-change: transform;
   -webkit-backface-visibility: hidden;
@@ -248,7 +248,7 @@
   }
 }
 
-/* Only GPU promotion hints — animation is JS rAF-driven, not CSS */
+/* Only GPU promotion hints - animation is JS rAF-driven, not CSS */
 .growth-carousel-track {
   will-change: transform;
   -webkit-backface-visibility: hidden;
@@ -584,7 +584,7 @@
 }
 
 /* Modern DAD gradient for "Modern" */
-/* "Modern" gradient — dark gray top → light/transparent bottom */
+/* "Modern" gradient - dark gray top → light/transparent bottom */
 .gradient-text-modern {
   background: linear-gradient(180deg, #666666 0%, #999999 30%, #c0c0c0 55%, #e0e0e0 75%, rgba(255, 255, 255, 0) 100%);
   -webkit-background-clip: text;
@@ -592,7 +592,7 @@
   background-clip: text;
 }
 
-/* "DAD" gradient — red top → pink/transparent bottom */
+/* "DAD" gradient - red top → pink/transparent bottom */
 .gradient-text-dad {
   background: linear-gradient(180deg, #e53935 0%, #e53935 25%, #ef7070 50%, #f5b0b0 75%, rgba(229, 57, 53, 0) 100%);
   -webkit-background-clip: text;
@@ -814,7 +814,7 @@
   }
 }
 /* Subtle flag-flutter for the country flags grid. The transform-origin is
-   pinned to the left edge so the right side travels the most — that's where
+   pinned to the left edge so the right side travels the most - that's where
    the cloth would flap if it were attached to a pole on the left. */
 @keyframes dpFlagWave {
   0%,
@@ -933,7 +933,7 @@
   font-size: 0.9rem;
   color: rgba(255, 255, 255, 0.4);
   font-weight: 500;
-  /* DO NOT add transform/WebkitTransform here — conflicts with the animation.
+  /* DO NOT add transform/WebkitTransform here - conflicts with the animation.
      will-change:transform alone is sufficient for GPU compositing. */
   will-change: transform;
   -webkit-backface-visibility: hidden;
@@ -1032,7 +1032,7 @@
 
 /* ... (omitted styles) ... */
 
-/* Cards float over sticky heading — no background blocker */
+/* Cards float over sticky heading - no background blocker */
 .cs-cards-container {
   position: relative;
   z-index: 2;

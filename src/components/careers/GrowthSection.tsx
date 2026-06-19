@@ -10,7 +10,7 @@ const items = [
   {
     num: '01',
     title: { bold: 'Learn', rest: ' by building' },
-    desc: 'Real projects from day one. You learn by doing the work — not watching someone else do it.',
+    desc: 'Real projects from day one. You learn by doing the work - not watching someone else do it.',
   },
   {
     num: '02',
@@ -133,7 +133,7 @@ export default function GrowthSection({ theme }: GrowthSectionProps) {
           ].join(' ')}
         >
           <div>Growth here isn&apos;t loud.</div>
-          <div>But it&apos;s real — and it compounds.</div>
+          <div>But it&apos;s real - and it compounds.</div>
         </div>
       </div>
     </section>

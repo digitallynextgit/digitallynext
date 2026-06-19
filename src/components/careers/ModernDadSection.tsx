@@ -114,7 +114,7 @@ export default function ModernDadSection({ theme }: ModernDadSectionProps) {
                         </div>
                       </div>
 
-                      {/* Inline image — xs only (below sm hidden) */}
+                      {/* Inline image - xs only (below sm hidden) */}
                       <div className="sm:hidden overflow-hidden">
                         <AnimatePresence initial={false}>
                           {isTapActive && (
@@ -141,7 +141,7 @@ export default function ModernDadSection({ theme }: ModernDadSectionProps) {
               </div>
             </div>
 
-            {/* Right image — sm+ only, hover controlled */}
+            {/* Right image - sm+ only, hover controlled */}
             <div className="hidden sm:flex items-center justify-end shrink-0 self-center" style={{ width: 260 }}>
               <div className="relative" style={{ width: 240, height: 300 }}>
                 {items.map(({ image, sub, main }, index) => (
@@ -170,7 +170,7 @@ export default function ModernDadSection({ theme }: ModernDadSectionProps) {
               isDark ? 'border-t border-[#262626] text-[#737373]' : 'border-t border-[#E5E5E5] text-[#A1A1A1]',
             ].join(' ')}
           >
-            <div>That&apos;s Modern DAD —</div>
+            <div>That&apos;s Modern DAD -</div>
             <div>how we keep work sharp, relevant, and future-ready.</div>
           </div>
         </div>

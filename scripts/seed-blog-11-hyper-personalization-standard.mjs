@@ -1,5 +1,5 @@
 /**
- * Seed script — Blog 11
+ * Seed script - Blog 11
  * "Hyper-Personalization as the Standard"
  *
  * Usage:
@@ -26,7 +26,7 @@ try {
     }
   }
 } catch {
-  console.warn('⚠  Could not read .env — make sure env vars are set in your shell.');
+  console.warn('⚠  Could not read .env - make sure env vars are set in your shell.');
 }
 
 // ── Sanity client ──
@@ -225,11 +225,11 @@ async function main() {
     mainImage = {
       _type: 'image',
       asset: { _type: 'reference', _ref: asset._id },
-      alt: 'Hyper-personalization in modern marketing — real-time data driving individual customer experiences',
+      alt: 'Hyper-personalization in modern marketing - real-time data driving individual customer experiences',
     };
     console.log('  ✓ Uploaded main image');
   } else {
-    console.log('  ⚠  Image not found at public/blog/hyper-personalization-standard.jpg — skipping image');
+    console.log('  ⚠  Image not found at public/blog/hyper-personalization-standard.jpg - skipping image');
   }
 
   const doc = {

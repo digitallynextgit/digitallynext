@@ -11,17 +11,17 @@ interface AdacSectionProps {
 const cards = [
   {
     title: 'What AI should touch',
-    desc: "Repetitive workflows, data processing, pattern recognition — AI accelerates what doesn't need human nuance.",
+    desc: "Repetitive workflows, data processing, pattern recognition - AI accelerates what doesn't need human nuance.",
     extraClass: '',
   },
   {
     title: 'What humans must own',
-    desc: 'Strategy, relationships, ethical judgment, creative vision — the work that defines who we are.',
+    desc: 'Strategy, relationships, ethical judgment, creative vision - the work that defines who we are.',
     extraClass: 'border-t lg:border-t-0 lg:border-l',
   },
   {
     title: 'Where judgment matters',
-    desc: "The grey zone. Where speed and quality collide. Where the answer isn't obvious — and shouldn't be automated.",
+    desc: "The grey zone. Where speed and quality collide. Where the answer isn't obvious - and shouldn't be automated.",
     extraClass: 'border-t lg:border-t-0 lg:border-l',
   },
 ];
@@ -144,9 +144,7 @@ export default function AdacSection({ theme }: AdacSectionProps) {
                     detail: { mode: 'full-time', group: 'adac' },
                   })
                 );
-                document
-                  .getElementById('open-positions')
-                  ?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                document.getElementById('open-positions')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
               }}
               className={[
                 'group inline-flex items-center gap-3 shrink-0 cursor-pointer',

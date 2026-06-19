@@ -18,7 +18,7 @@ export default function WorldMap({ dots = [], lineColor = '#0ea5e9', theme = 'li
   const svgRef = useRef<SVGSVGElement>(null);
   const isDark = theme === 'dark';
 
-  // Build DottedMap exactly once — height:100 diagonal matches the original
+  // Build DottedMap exactly once - height:100 diagonal matches the original
   const map = useMemo(() => new DottedMap({ height: 100, grid: 'diagonal' }), []);
 
   const svgMap = useMemo(
@@ -33,7 +33,7 @@ export default function WorldMap({ dots = [], lineColor = '#0ea5e9', theme = 'li
   );
 
   // The SVG from getSVG() uses viewBox="0 0 {image.width} {image.height}"
-  // getPin() returns coordinates in the SAME space — so our overlay SVG
+  // getPin() returns coordinates in the SAME space - so our overlay SVG
   // must use the EXACT same viewBox.
   const mapWidth = map.image.width;
   const mapHeight = map.image.height;
@@ -53,7 +53,7 @@ export default function WorldMap({ dots = [], lineColor = '#0ea5e9', theme = 'li
 
   return (
     <div className={`w-full aspect-2/1 rounded-lg relative font-sans ${isDark ? 'bg-black' : 'bg-[#F5F5F5]'}`}>
-      {/* Base dotted map — uses its own internal SVG coordinate space */}
+      {/* Base dotted map - uses its own internal SVG coordinate space */}
       <img
         src={`data:image/svg+xml;utf8,${encodeURIComponent(svgMap)}`}
         className="h-full w-full pointer-events-none select-none"
@@ -65,7 +65,7 @@ export default function WorldMap({ dots = [], lineColor = '#0ea5e9', theme = 'li
         draggable={false}
       />
 
-      {/* Overlay SVG — SAME viewBox as the dotted map SVG for pixel-perfect alignment */}
+      {/* Overlay SVG - SAME viewBox as the dotted map SVG for pixel-perfect alignment */}
       <svg
         ref={svgRef}
         viewBox={`0 0 ${mapWidth} ${mapHeight}`}

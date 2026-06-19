@@ -23,7 +23,7 @@ export default function RealBriefSection({ section, theme }: Props) {
         <div className="flex flex-col lg:flex-row lg:justify-between lg:items-start lg:gap-60">
           {/* LEFT */}
           <div className="lg:w-[380px] lg:shrink-0 lg:sticky lg:top-[100px]">
-            {/* Eyebrow — service-specific accent, inline style theek hai */}
+            {/* Eyebrow - service-specific accent, inline style theek hai */}
             <div className="text-[11px] font-semibold tracking-[0.22em] uppercase" style={{ color: theme.accent }}>
               {section.eyebrow}
             </div>
@@ -71,7 +71,7 @@ export default function RealBriefSection({ section, theme }: Props) {
                       isDark ? 'border-white/10' : 'border-black/10',
                     ].join(' ')}
                   >
-                    {/* Left bar — service accent color */}
+                    {/* Left bar - service accent color */}
                     <div className="w-[3px] shrink-0 rounded-full" style={{ backgroundColor: barColor }} />
                     {/* Item text */}
                     <p
@@ -88,7 +88,7 @@ export default function RealBriefSection({ section, theme }: Props) {
           </div>
         </div>
 
-        {/* ── Highlight Bar — inverted bg ── */}
+        {/* ── Highlight Bar - inverted bg ── */}
         <div
           className={[
             'mt-12 lg:mt-16 py-6 sm:py-8 px-6 sm:px-12 text-center rounded-[3px]',

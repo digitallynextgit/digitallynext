@@ -14,11 +14,7 @@ interface BlogFilterButtonProps {
   onSelectCategory: (id: string | null) => void;
 }
 
-export default function BlogFilterButton({
-  categories,
-  activeCategoryId,
-  onSelectCategory,
-}: BlogFilterButtonProps) {
+export default function BlogFilterButton({ categories, activeCategoryId, onSelectCategory }: BlogFilterButtonProps) {
   const reactId = useId();
   const popupId = `${reactId}-popup`;
   const containerRef = useRef<HTMLDivElement>(null);

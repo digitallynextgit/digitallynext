@@ -41,7 +41,7 @@ export function sanitizeText(input: string): string {
     .trim();
 }
 
-/** SQL-injection pattern detector — rejects inputs containing common SQL keywords in dangerous contexts. */
+/** SQL-injection pattern detector - rejects inputs containing common SQL keywords in dangerous contexts. */
 const SQL_INJECTION_PATTERN =
   /(\b(SELECT|INSERT|UPDATE|DELETE|DROP|CREATE|ALTER|EXEC|UNION|SCRIPT)\b)|(-{2})|\/\*|\*\//gi;
 
@@ -50,7 +50,7 @@ export function hasSqlInjection(input: string): boolean {
 }
 
 /**
- * Validates a string field — returns sanitized value or throws if suspicious.
+ * Validates a string field - returns sanitized value or throws if suspicious.
  * Pass maxLength to truncate overly long inputs.
  */
 export function validateField(value: string, maxLength = 500): string {

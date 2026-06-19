@@ -2,11 +2,7 @@
 
 import { X, ChevronLeft } from 'lucide-react';
 import { useCallback, useEffect, useId, useMemo, useRef, useState } from 'react';
-import type {
-  CareersDepartment,
-  CareersDepartmentGroup,
-  CareersTone,
-} from '@/data/careersDepartments';
+import type { CareersDepartment, CareersDepartmentGroup, CareersTone } from '@/data/careersDepartments';
 import PositionSearchBar from '@/components/careers/PositionSearchBar';
 
 type ModalMode = 'full-time' | 'internship';
@@ -144,7 +140,7 @@ export default function DepartmentSelectionModal({
   }, [open, handleClose, activeGroupId]);
 
   const activeGroup = useMemo<CareersDepartmentGroup | null>(
-    () => (activeGroupId ? groups.find((g) => g.id === activeGroupId) ?? null : null),
+    () => (activeGroupId ? (groups.find((g) => g.id === activeGroupId) ?? null) : null),
     [activeGroupId, groups]
   );
 
@@ -160,7 +156,7 @@ export default function DepartmentSelectionModal({
   };
 
   const subtitle = activeGroup
-    ? `${activeGroup.code} · ${activeGroup.title} — pick a department.`
+    ? `${activeGroup.code} · ${activeGroup.title} - pick a department.`
     : mode === 'internship'
       ? 'Select a department to explore internship openings.'
       : 'Select a group to explore departments.';
@@ -184,13 +180,7 @@ export default function DepartmentSelectionModal({
         ].join(' ')}
       >
         <div className="flex flex-col gap-1.5">
-          <div
-            className={[
-              'text-xs font-bold uppercase tracking-[0.16em]',
-              tone.titleColor,
-              'opacity-70',
-            ].join(' ')}
-          >
+          <div className={['text-xs font-bold uppercase tracking-[0.16em]', tone.titleColor, 'opacity-70'].join(' ')}>
             {group.code}
           </div>
           <div
@@ -275,8 +265,7 @@ export default function DepartmentSelectionModal({
               id={titleId}
               className="text-[clamp(24px,4vw,48px)] font-extrabold leading-tight tracking-tight text-black"
             >
-              Join Us At <span className="font-black">Digitally</span>{' '}
-              <span className="text-[#E21F26]">Next</span>.
+              Join Us At <span className="font-black">Digitally</span> <span className="text-[#E21F26]">Next</span>.
             </h2>
             <p id={descId} className="mt-1.5 text-sm text-black/50">
               {subtitle}
@@ -294,7 +283,7 @@ export default function DepartmentSelectionModal({
           </button>
         </div>
 
-        {/* Position search bar — searches across all roles & current openings */}
+        {/* Position search bar - searches across all roles & current openings */}
         <div className="shrink-0 border-b border-black/8 px-6 py-3">
           <PositionSearchBar groups={groups} onSelectPosition={onSelectPosition} />
         </div>
@@ -304,9 +293,7 @@ export default function DepartmentSelectionModal({
           className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-6 py-6 [-webkit-overflow-scrolling:touch] [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
         >
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {activeGroup
-              ? activeGroup.subDepartments.map(renderSubDepartmentCard)
-              : groups.map(renderGroupCard)}
+            {activeGroup ? activeGroup.subDepartments.map(renderSubDepartmentCard) : groups.map(renderGroupCard)}
           </div>
         </div>
 

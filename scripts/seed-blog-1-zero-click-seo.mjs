@@ -1,5 +1,5 @@
 /**
- * Seed script — Blog 1 of 3
+ * Seed script - Blog 1 of 3
  * "How Brands Are Winning with Zero-Click SEO in 2026"
  *
  * Usage:
@@ -12,7 +12,7 @@
  *
  * Image:
  *   Place zero-click-seo-2026.jpg inside public/blog/ before running,
- *   or skip — the script will create the post without a main image.
+ *   or skip - the script will create the post without a main image.
  */
 
 import { createClient } from '@sanity/client';
@@ -35,7 +35,7 @@ try {
     }
   }
 } catch {
-  console.warn('⚠  Could not read .env — make sure env vars are set in your shell.');
+  console.warn('⚠  Could not read .env - make sure env vars are set in your shell.');
 }
 
 // ── Sanity client ──
@@ -229,7 +229,7 @@ async function main() {
     ['SEO', 'AI Search', 'Digital Strategy'].map(getOrCreateCategory)
   );
 
-  // 3. Image upload (optional — place file at public/blog/zero-click-seo-2026.jpg)
+  // 3. Image upload (optional - place file at public/blog/zero-click-seo-2026.jpg)
   let mainImage = undefined;
   const imagePath = resolve(__dirname, '../public/blog/zero-click-seo-2026.jpg');
   if (existsSync(imagePath)) {
@@ -245,7 +245,7 @@ async function main() {
     };
     console.log('  ✓ Uploaded main image');
   } else {
-    console.log('  ⚠  Image not found at public/blog/zero-click-seo-2026.jpg — skipping image');
+    console.log('  ⚠  Image not found at public/blog/zero-click-seo-2026.jpg - skipping image');
   }
 
   // 4. Create post

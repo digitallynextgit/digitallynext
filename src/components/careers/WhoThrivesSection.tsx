@@ -91,7 +91,7 @@ export default function WhoThrivesSection({ theme }: WhoThrivesSectionProps) {
 
           {/* Traits Grid */}
           <div className="mt-16 max-w-200 mx-auto grid grid-cols-1 md:grid-cols-2 md:gap-x-16">
-            {/* Left col — traits 0, 2 */}
+            {/* Left col - traits 0, 2 */}
             <div>
               {[0, 2].map((traitIdx) => {
                 const trait = traits[traitIdx];
@@ -121,7 +121,7 @@ export default function WhoThrivesSection({ theme }: WhoThrivesSectionProps) {
               })}
             </div>
 
-            {/* Right col — traits 1, 3 */}
+            {/* Right col - traits 1, 3 */}
             <div>
               {[1, 3].map((traitIdx) => {
                 const trait = traits[traitIdx];

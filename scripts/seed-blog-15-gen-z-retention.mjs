@@ -1,5 +1,5 @@
 /**
- * Seed script — Blog 15
+ * Seed script - Blog 15
  * "Beyond the Pay check: What Actually Makes Gen Z Stay"
  *
  * Usage:
@@ -26,7 +26,7 @@ try {
     }
   }
 } catch {
-  console.warn('⚠  Could not read .env — make sure env vars are set in your shell.');
+  console.warn('⚠  Could not read .env - make sure env vars are set in your shell.');
 }
 
 // ── Sanity client ──
@@ -135,16 +135,16 @@ const body = [
   p(
     'Gen Z and younger millennials were 13 points less likely over just five years to strongly agree that "someone at work seems to care about me as a person." The percentage who felt they had opportunities to learn and grow dropped from 48% in 2020 to just 37% in 2025.'
   ),
-  bullet('Feeling seen by someone at work — down sharply'),
-  bullet('Growth conversations with managers — near absent'),
-  bullet('Connection to what the organisation actually stands for — fading fast'),
-  bullet('Feeling like their opinions move something — declining every year'),
+  bullet('Feeling seen by someone at work - down sharply'),
+  bullet('Growth conversations with managers - near absent'),
+  bullet('Connection to what the organisation actually stands for - fading fast'),
+  bullet('Feeling like their opinions move something - declining every year'),
   p("Notice what's not on that list? Salary."),
   p(
-    'Deloitte\'s 2025 Gen Z Survey describes what this generation wants as a "trifecta" — money, meaning, and wellbeing. Money gets them through the door. Meaning and wellbeing decide if they stay.'
+    'Deloitte\'s 2025 Gen Z Survey describes what this generation wants as a "trifecta" - money, meaning, and wellbeing. Money gets them through the door. Meaning and wellbeing decide if they stay.'
   ),
   p(
-    "44% of Gen Z have turned down job offers because the company's values didn't align with their own. They're not just evaluating your package — they're evaluating your culture, your leadership, and whether you actually live what you say on your careers page."
+    "44% of Gen Z have turned down job offers because the company's values didn't align with their own. They're not just evaluating your package - they're evaluating your culture, your leadership, and whether you actually live what you say on your careers page."
   ),
 
   // ── Section 4 ──
@@ -152,17 +152,17 @@ const body = [
 
   h3('① Recognition and not the annual appraisal kind'),
   p(
-    "Gallup's data shows Gen Z and younger millennials saw the steepest drops specifically in recognition and feeling cared about — and the flight risk is immediate. One genuine shoutout in a team call. One \"did everyone see what she pulled off this week?\" — that's it. Costs nothing. Changes everything."
+    "Gallup's data shows Gen Z and younger millennials saw the steepest drops specifically in recognition and feeling cared about - and the flight risk is immediate. One genuine shoutout in a team call. One \"did everyone see what she pulled off this week?\" - that's it. Costs nothing. Changes everything."
   ),
 
   h3('② A visible next step, not a vague promise'),
   p(
-    "70% of Gen Z graduates expect a promotion within their first 18 months. It's not entitlement — it's a desire for visible progress, structured development, and clarity about what comes next. Ambiguous career paths lose this generation fast. They want a map, not a motivational speech."
+    "70% of Gen Z graduates expect a promotion within their first 18 months. It's not entitlement - it's a desire for visible progress, structured development, and clarity about what comes next. Ambiguous career paths lose this generation fast. They want a map, not a motivational speech."
   ),
 
   h3('③ The feeling that someone actually cares'),
   p(
-    "Gallup's 2026 report found that manager engagement dropped from 31% in 2022 to just 22% in 2025 — and disengaged managers are now the primary driver of disengaged teams. The best manager at your agency isn't the one with the sharpest briefs. It's the one who notices when someone's been quiet for two days."
+    "Gallup's 2026 report found that manager engagement dropped from 31% in 2022 to just 22% in 2025 - and disengaged managers are now the primary driver of disengaged teams. The best manager at your agency isn't the one with the sharpest briefs. It's the one who notices when someone's been quiet for two days."
   ),
 
   h3('④ Values they can actually see in action'),
@@ -224,7 +224,7 @@ const faqsJson = JSON.stringify(
 
 // ── Main ──
 async function main() {
-  console.log('🚀  Starting seed for Blog 15: Beyond the Pay check — What Makes Gen Z Stay...\n');
+  console.log('🚀  Starting seed for Blog 15: Beyond the Pay check - What Makes Gen Z Stay...\n');
 
   const authorId = await getOrCreateAuthor('Editorial Team');
 
@@ -243,11 +243,11 @@ async function main() {
     mainImage = {
       _type: 'image',
       asset: { _type: 'reference', _ref: asset._id },
-      alt: 'Beyond the pay check — what actually makes Gen Z stay at agencies',
+      alt: 'Beyond the pay check - what actually makes Gen Z stay at agencies',
     };
     console.log('  ✓ Uploaded main image');
   } else {
-    console.log('  ⚠  Image not found at public/blog/gen-z-retention-paycheck.jpg — skipping image');
+    console.log('  ⚠  Image not found at public/blog/gen-z-retention-paycheck.jpg - skipping image');
   }
 
   const doc = {
@@ -255,7 +255,7 @@ async function main() {
     title: 'Beyond the Pay check: What Actually Makes Gen Z Stay',
     slug: { _type: 'slug', current: 'beyond-the-paycheck-what-makes-gen-z-stay' },
     excerpt:
-      "Employee engagement is at its lowest since 2020 and Gen Z is leading the slide — but it isn't about salary. Here is what actually keeps them, backed by Gallup, Deloitte, and what we are building inside Digitally Next.",
+      "Employee engagement is at its lowest since 2020 and Gen Z is leading the slide - but it isn't about salary. Here is what actually keeps them, backed by Gallup, Deloitte, and what we are building inside Digitally Next.",
     publishedAt: '2026-06-20T10:00:00.000Z',
     featured: false,
     readTime: 7,

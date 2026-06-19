@@ -55,7 +55,7 @@ export default function ProudlyWorkingWith({ theme }: ProudlyWorkingWithProps) {
     setHoveredName(null);
   };
 
-  // All 12 dots always shown — hovered country turns blue, rest stay red. No lines.
+  // All 12 dots always shown - hovered country turns blue, rest stay red. No lines.
   const mapDots = useMemo(
     () =>
       locations.map((l) => ({

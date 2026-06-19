@@ -9,7 +9,7 @@ import { buildMetadata, webPageJsonLd } from '@/app/utils/seo';
 export const metadata = buildMetadata({
   title: 'Case Studies | Digitally Next',
   description:
-    'Explore case studies from Digitally Next — proven results across strategy, branding, performance marketing, and digital experiences.',
+    'Explore case studies from Digitally Next - proven results across strategy, branding, performance marketing, and digital experiences.',
   path: '/case-studies',
 });
 

@@ -1,5 +1,5 @@
 /**
- * Seed script — Blog 13
+ * Seed script - Blog 13
  * "Conversational Search Redefining SEO"
  *
  * Usage:
@@ -26,7 +26,7 @@ try {
     }
   }
 } catch {
-  console.warn('⚠  Could not read .env — make sure env vars are set in your shell.');
+  console.warn('⚠  Could not read .env - make sure env vars are set in your shell.');
 }
 
 // ── Sanity client ──
@@ -217,11 +217,11 @@ async function main() {
     mainImage = {
       _type: 'image',
       asset: { _type: 'reference', _ref: asset._id },
-      alt: 'Conversational AI search rebuilding SEO — query, synthesis, and cited sources in a generated answer',
+      alt: 'Conversational AI search rebuilding SEO - query, synthesis, and cited sources in a generated answer',
     };
     console.log('  ✓ Uploaded main image');
   } else {
-    console.log('  ⚠  Image not found at public/blog/conversational-search-seo.jpg — skipping image');
+    console.log('  ⚠  Image not found at public/blog/conversational-search-seo.jpg - skipping image');
   }
 
   const doc = {

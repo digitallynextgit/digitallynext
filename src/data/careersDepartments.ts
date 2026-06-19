@@ -147,7 +147,7 @@ export const CAREERS_INTERNSHIP_GROUPS: CareersDepartmentGroup[] = [
 //   HR   (single sub-department: Human Resources)
 
 export const CAREERS_DEPARTMENT_GROUPS: CareersDepartmentGroup[] = [
-  // ─── SMG — Strategic Management Group ─────────────────────────────────
+  // ─── SMG - Strategic Management Group ─────────────────────────────────
   {
     id: 'smg',
     code: 'SMG',
@@ -157,7 +157,7 @@ export const CAREERS_DEPARTMENT_GROUPS: CareersDepartmentGroup[] = [
     subDepartments: [
       {
         id: 'business-support-group',
-        title: 'BSG — Business Support Group',
+        title: 'BSG - Business Support Group',
         jobsLabel: 'Explore Open Roles',
         tone: 'teal',
         roles: [
@@ -184,7 +184,7 @@ export const CAREERS_DEPARTMENT_GROUPS: CareersDepartmentGroup[] = [
       },
       {
         id: 'marketing-services-group',
-        title: 'MSG — Marketing Services Group',
+        title: 'MSG - Marketing Services Group',
         jobsLabel: 'Explore Open Roles',
         tone: 'red',
         roles: [
@@ -237,7 +237,7 @@ export const CAREERS_DEPARTMENT_GROUPS: CareersDepartmentGroup[] = [
             title: 'SMO - Social Media Optimisation - LinkedIN | Meta | X | YouTube',
             description: {
               intro:
-                'Visibility is power in today’s digital-first world. Social media isn’t just about posting content — it’s about shaping perception, driving engagement, and building brand authority. If you understand how to engineer reach, relevance, and impact across platforms, we’d love to have you on board.',
+                'Visibility is power in today’s digital-first world. Social media isn’t just about posting content - it’s about shaping perception, driving engagement, and building brand authority. If you understand how to engineer reach, relevance, and impact across platforms, we’d love to have you on board.',
               jobEssence:
                 'The role focuses on optimizing social media presence across platforms to maximize reach, engagement, and performance. This includes platform-specific content optimization, trend analysis, audience behavior tracking, and data-backed strategies to ensure the brand remains memorable, relevant, and influential.',
               keyRequirements: [
@@ -261,7 +261,7 @@ export const CAREERS_DEPARTMENT_GROUPS: CareersDepartmentGroup[] = [
             title: 'PR and Communications Executive',
             description: {
               intro:
-                'Perception is powerful. In a world driven by narratives, brands don’t just need visibility — they need credibility. As a PR & Communications Executive, you shape how the world sees, hears, and remembers us. If you understand storytelling, media relationships, and strategic messaging, this role is for you.',
+                'Perception is powerful. In a world driven by narratives, brands don’t just need visibility - they need credibility. As a PR & Communications Executive, you shape how the world sees, hears, and remembers us. If you understand storytelling, media relationships, and strategic messaging, this role is for you.',
               jobEssence:
                 'The role focuses on managing brand communication and media presence to strengthen reputation and positioning. This includes drafting press releases, coordinating with media houses, ensuring consistent brand messaging, and supporting external and internal communication strategies.',
               keyRequirements: [
@@ -336,7 +336,7 @@ export const CAREERS_DEPARTMENT_GROUPS: CareersDepartmentGroup[] = [
     ],
   },
 
-  // ─── ADAC — AI Decision and Acceleration Centre ───────────────────────
+  // ─── ADAC - AI Decision and Acceleration Centre ───────────────────────
   {
     id: 'adac',
     code: 'ADAC',
@@ -346,7 +346,7 @@ export const CAREERS_DEPARTMENT_GROUPS: CareersDepartmentGroup[] = [
     subDepartments: [
       {
         id: 'project-management-group',
-        title: 'PMG — Project Management Group',
+        title: 'PMG - Project Management Group',
         jobsLabel: 'Explore Open Roles',
         tone: 'teal',
         roles: [
@@ -402,7 +402,7 @@ export const CAREERS_DEPARTMENT_GROUPS: CareersDepartmentGroup[] = [
     ],
   },
 
-  // ─── AMG — Account Management Group ───────────────────────────────────
+  // ─── AMG - Account Management Group ───────────────────────────────────
   {
     id: 'amg',
     code: 'AMG',
@@ -442,7 +442,7 @@ export const CAREERS_DEPARTMENT_GROUPS: CareersDepartmentGroup[] = [
     ],
   },
 
-  // ─── MAP — Marketing Asset Production ─────────────────────────────────
+  // ─── MAP - Marketing Asset Production ─────────────────────────────────
   {
     id: 'map',
     code: 'MAP',
@@ -452,7 +452,7 @@ export const CAREERS_DEPARTMENT_GROUPS: CareersDepartmentGroup[] = [
     subDepartments: [
       {
         id: 'web-essentials-management',
-        title: 'WEM — Web Essentials Management',
+        title: 'WEM - Web Essentials Management',
         jobsLabel: 'Explore Open Roles',
         tone: 'red',
         roles: [
@@ -461,7 +461,7 @@ export const CAREERS_DEPARTMENT_GROUPS: CareersDepartmentGroup[] = [
             title: 'Full Stack Developer',
             description: {
               intro:
-                'Turning code into high-impact brand experiences. In a world where digital performance defines perception, this role goes beyond building websites — it’s about engineering fast, scalable, and conversion-focused platforms. If you think in systems, care about performance, and build with ownership, you’ll fit right in.',
+                'Turning code into high-impact brand experiences. In a world where digital performance defines perception, this role goes beyond building websites - it’s about engineering fast, scalable, and conversion-focused platforms. If you think in systems, care about performance, and build with ownership, you’ll fit right in.',
               jobEssence:
                 'The role focuses on building end-to-end web applications using modern frontend and backend technologies. This includes developing scalable architectures, optimizing performance and SEO readiness, integrating APIs and databases, and managing deployments to ensure stability, speed, and long-term reliability.',
               keyRequirements: [
@@ -512,7 +512,7 @@ export const CAREERS_DEPARTMENT_GROUPS: CareersDepartmentGroup[] = [
       },
       {
         id: 'visual-impact-management',
-        title: 'VIM — Visual Impact Management',
+        title: 'VIM - Visual Impact Management',
         jobsLabel: 'Explore Open Roles',
         tone: 'teal',
         roles: [
@@ -576,7 +576,7 @@ export const CAREERS_DEPARTMENT_GROUPS: CareersDepartmentGroup[] = [
     ],
   },
 
-  // ─── HR — Human Resources ─────────────────────────────────────────────
+  // ─── HR - Human Resources ─────────────────────────────────────────────
   {
     id: 'hr',
     code: 'HR',
@@ -650,7 +650,7 @@ export function getGroupsForMode(mode: CareersMode): CareersDepartmentGroup[] {
 export type SearchablePosition = {
   /** Stable unique id (used as a React key and as aria-activedescendant). */
   id: string;
-  /** Text shown in the dropdown — either an individual opening or the role title. */
+  /** Text shown in the dropdown - either an individual opening or the role title. */
   title: string;
   /** Parent role title (used as a secondary label when title === an opening). */
   roleTitle: string;

@@ -4,7 +4,7 @@ export const siteConfig = {
   siteName: 'DigitallyNext',
   siteUrl: 'https://www.digitallynext.com',
   defaultDescription:
-    'DigitallyNext is an AD agency offering end-to-end digital marketing solutions — SEO, performance marketing, content, social, and UX.',
+    'DigitallyNext is an AD agency offering end-to-end digital marketing solutions - SEO, performance marketing, content, social, and UX.',
   defaultKeywords: [
     'DigitallyNext',
     'digital marketing',

@@ -37,7 +37,7 @@ export default function CaseStudyFocusArea({ detail, theme }: CaseStudyFocusArea
       <div className="mx-auto w-full max-w-[1280px] px-4 flex flex-col items-center gap-4 md:gap-[16px]">
         {/* Top row */}
         <div className="max-w-[1280px] w-full grid grid-cols-1 lg:grid-cols-[minmax(0,844px)_1fr] gap-4 md:gap-[16px]">
-          {/* Heading card — always teal */}
+          {/* Heading card - always teal */}
           <div className="rounded-[10px] bg-[#0EC8C5] p-6 md:p-[34px_28px]">
             <div className="w-full flex flex-col justify-between gap-8 min-h-[240px]">
               <div className="uppercase text-[34px] sm:text-[44px] md:text-[56px] leading-[1.15] md:leading-[1.3] font-bold text-white">

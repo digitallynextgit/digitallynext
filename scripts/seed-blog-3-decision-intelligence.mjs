@@ -1,5 +1,5 @@
 /**
- * Seed script — Blog 3 of 3
+ * Seed script - Blog 3 of 3
  * "The Shift from Automation to Decision Intelligence in Marketing"
  *
  * Usage:
@@ -29,7 +29,7 @@ try {
     }
   }
 } catch {
-  console.warn('⚠  Could not read .env — make sure env vars are set in your shell.');
+  console.warn('⚠  Could not read .env - make sure env vars are set in your shell.');
 }
 
 // ── Sanity client ──
@@ -263,7 +263,7 @@ async function main() {
     };
     console.log('  ✓ Uploaded main image');
   } else {
-    console.log('  ⚠  Image not found at public/blog/decision-intelligence-marketing.jpg — skipping image');
+    console.log('  ⚠  Image not found at public/blog/decision-intelligence-marketing.jpg - skipping image');
   }
 
   // 4. Create post
@@ -278,7 +278,7 @@ async function main() {
     body,
     faqsJson,
     metaTitle: 'From Automation to Decision Intelligence in Marketing | Digitally Next',
-    metaDescription: "Marketing automation got us doing more, faster. Decision intelligence is the next leap — using AI to decide which tasks deserve to be done at all. Here is how to start.",
+    metaDescription: "Marketing automation got us doing more, faster. Decision intelligence is the next leap - using AI to decide which tasks deserve to be done at all. Here is how to start.",
     author: { _type: 'reference', _ref: authorId },
     categories: categoryIds.map((id) => ({ _type: 'reference', _ref: id })),
     ...(mainImage ? { mainImage } : {}),

@@ -43,9 +43,7 @@
       ],
       "print_stylesheet": null,
       "h1_count": 1,
-      "h1_texts": [
-        "CAMPAIGNS."
-      ],
+      "h1_texts": ["CAMPAIGNS."],
       "h1_bounding_box": {
         "x": 24,
         "y": 307.34375,
@@ -2471,9 +2469,7 @@
       ],
       "print_stylesheet": null,
       "h1_count": 1,
-      "h1_texts": [
-        "Performance,\nDistribution &\nDemand."
-      ],
+      "h1_texts": ["Performance,\nDistribution &\nDemand."],
       "h1_bounding_box": {
         "x": 24,
         "y": 234.171875,
@@ -2975,9 +2971,7 @@
       ],
       "print_stylesheet": null,
       "h1_count": 1,
-      "h1_texts": [
-        "Insights & Ideas."
-      ],
+      "h1_texts": ["Insights & Ideas."],
       "h1_bounding_box": {
         "x": 24,
         "y": 181.59375,

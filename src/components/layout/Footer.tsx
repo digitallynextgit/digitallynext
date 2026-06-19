@@ -28,7 +28,7 @@ export default function Footer() {
       <div className="w-full py-16 md:py-20 px-4">
         <div className="max-w-7xl mx-auto mb-12">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16 lg:gap-24 xl:gap-62">
-            {/* Left — Tagline */}
+            {/* Left - Tagline */}
             <div className="text-center md:text-left">
               <h3 className="text-3xl md:text-4xl text-white leading-snug" style={{ fontFamily: 'Stack Sans Text' }}>
                 <span className="font-bold xl:whitespace-nowrap">Modern DAD-enabled</span>
@@ -63,7 +63,7 @@ export default function Footer() {
               </div>
             </div>
 
-            {/* Center — Navigation */}
+            {/* Center - Navigation */}
             <div className="text-center md:text-left md:pl-8 lg:pl-12 xl:pl-16">
               <h4
                 className="text-2xl font-normal uppercase tracking-widest text-white mb-5"
@@ -86,7 +86,7 @@ export default function Footer() {
               </ul>
             </div>
 
-            {/* Right — Social Media */}
+            {/* Right - Social Media */}
             <div className="text-center md:text-left">
               <h4
                 className="text-2xl font-normal uppercase tracking-widest text-white mb-5"
@@ -116,7 +116,7 @@ export default function Footer() {
         {/* Divider + Bottom row */}
         <div className="border-t border-white/8 pt-6 max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16 lg:gap-24 xl:gap-72 items-center">
-            {/* Left — Copyright */}
+            {/* Left - Copyright */}
             <span
               className="lg:text-lg text-sm text-white/80 text-center md:text-left block xl:whitespace-nowrap"
               style={{ fontFamily: 'Stack Sans Text' }}
@@ -124,7 +124,7 @@ export default function Footer() {
               © {new Date().getFullYear()} Digitally Next. All Rights Reserved. Reserved.
             </span>
 
-            {/* Center — Terms of Use */}
+            {/* Center - Terms of Use */}
             <Link
               href="/terms-of-use"
               className="text-lg text-white/80 hover:text-white transition-colors duration-200 text-center md:text-left block md:pl-8 lg:pl-12 xl:pl-16 md:-ml-3.75"
@@ -133,7 +133,7 @@ export default function Footer() {
               Terms of Use
             </Link>
 
-            {/* Right — Privacy Policy + Arrow */}
+            {/* Right - Privacy Policy + Arrow */}
             <div className="flex items-center gap-2 justify-center md:justify-start md:-ml-4">
               <Link
                 href="/privacy-policy"

@@ -1,5 +1,5 @@
 /**
- * Seed script — Blog 7
+ * Seed script - Blog 7
  * "Why Hiring an Indian Digital Marketing Agency Is the Smartest Cost Decision a US or UK Brand Can Make"
  *
  * Usage:
@@ -26,7 +26,7 @@ try {
     }
   }
 } catch {
-  console.warn('⚠  Could not read .env — make sure env vars are set in your shell.');
+  console.warn('⚠  Could not read .env - make sure env vars are set in your shell.');
 }
 
 const client = createClient({
@@ -260,7 +260,7 @@ async function main() {
     };
     console.log('  ✓ Uploaded main image');
   } else {
-    console.log('  ⚠  Image not found at public/blog/indian-agency-us-uk.jpg — skipping image');
+    console.log('  ⚠  Image not found at public/blog/indian-agency-us-uk.jpg - skipping image');
   }
 
   const doc = {

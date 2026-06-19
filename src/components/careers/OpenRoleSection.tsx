@@ -71,9 +71,7 @@ export default function OpenRolesSection({ theme }: OpenRolesSectionProps) {
   // already-mounted components than useSearchParams reactivity.
   useEffect(() => {
     const handler = (event: Event) => {
-      const detail = (event as CustomEvent).detail as
-        | { mode?: 'full-time' | 'internship'; group?: string }
-        | undefined;
+      const detail = (event as CustomEvent).detail as { mode?: 'full-time' | 'internship'; group?: string } | undefined;
       if (!detail) return;
       if (detail.mode !== 'full-time' && detail.mode !== 'internship') return;
       setModalMode(detail.mode);
@@ -108,7 +106,7 @@ export default function OpenRolesSection({ theme }: OpenRolesSectionProps) {
     >
       <div className="w-full max-w-7xl mx-auto px-6 lg:px-10 py-12 md:py-16 lg:py-20">
         <div className="flex flex-col gap-8 md:gap-10">
-          {/* Top row — heading + tagline */}
+          {/* Top row - heading + tagline */}
           <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6 md:gap-10">
             {/* Heading + subtitle */}
             <div className="flex flex-col gap-4">
@@ -228,9 +226,7 @@ export default function OpenRolesSection({ theme }: OpenRolesSectionProps) {
         initialGroupId={initialGroupId}
         selectedDepartmentId={selectedDepartmentId}
         onSelectSubDepartment={(subDepartmentId) => {
-          const subDepartment = groups
-            .flatMap((g) => g.subDepartments)
-            .find((d) => d.id === subDepartmentId);
+          const subDepartment = groups.flatMap((g) => g.subDepartments).find((d) => d.id === subDepartmentId);
           if (!subDepartment) return;
           setSelectedDepartmentId(subDepartmentId);
           setModalOpen(false);

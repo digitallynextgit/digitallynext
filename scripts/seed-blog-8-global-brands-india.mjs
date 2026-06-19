@@ -1,6 +1,6 @@
 /**
- * Seed script — Blog 8
- * "Why Global Brands Entering India Fail at Digital Marketing — and the 4 Mistakes That Are Almost Always Responsible"
+ * Seed script - Blog 8
+ * "Why Global Brands Entering India Fail at Digital Marketing - and the 4 Mistakes That Are Almost Always Responsible"
  *
  * Usage:
  *   node scripts/seed-blog-8-global-brands-india.mjs
@@ -26,7 +26,7 @@ try {
     }
   }
 } catch {
-  console.warn('⚠  Could not read .env — make sure env vars are set in your shell.');
+  console.warn('⚠  Could not read .env - make sure env vars are set in your shell.');
 }
 
 // ── Sanity client ──
@@ -241,12 +241,12 @@ async function main() {
     };
     console.log('  ✓ Uploaded main image');
   } else {
-    console.log('  ⚠  Image not found at public/blog/global-brands-india.jpg — skipping image');
+    console.log('  ⚠  Image not found at public/blog/global-brands-india.jpg - skipping image');
   }
 
   const doc = {
     _type: 'post',
-    title: 'Why Global Brands Entering India Fail at Digital Marketing — and the 4 Mistakes That Are Almost Always Responsible',
+    title: 'Why Global Brands Entering India Fail at Digital Marketing - and the 4 Mistakes That Are Almost Always Responsible',
     slug: { _type: 'slug', current: 'global-brands-india-digital-marketing-failures-2026' },
     excerpt: "India is not a single market. It is 20+ distinct cultural and linguistic sub-markets operating simultaneously. Global brands fail here not because their product is wrong but because their digital go-to-market strategy is a Western template applied to a continent-scale civilisation.",
     publishedAt: '2026-05-07T14:00:00.000Z',
@@ -254,7 +254,7 @@ async function main() {
     readTime: 8,
     body,
     faqsJson,
-    metaTitle: 'Why Global Brands Fail in India\'s Digital Market — and the 4 Mistakes That Keep Repeating',
+    metaTitle: 'Why Global Brands Fail in India\'s Digital Market - and the 4 Mistakes That Keep Repeating',
     metaDescription: 'Most global brands enter India with a Western template and a translated website. Here is why that fails, what it costs, and what India-first digital strategy actually looks like in 2026.',
     author: { _type: 'reference', _ref: authorId },
     categories: categoryIds.map((id) => ({ _type: 'reference', _ref: id })),

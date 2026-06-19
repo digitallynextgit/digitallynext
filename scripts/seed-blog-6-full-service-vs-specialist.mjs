@@ -1,5 +1,5 @@
 /**
- * Seed script — Blog 6
+ * Seed script - Blog 6
  * "Full-Service Marketing Agency vs Specialist Agency: Which Is Right for Your Growth Stage?"
  *
  * Usage:
@@ -26,7 +26,7 @@ try {
     }
   }
 } catch {
-  console.warn('⚠  Could not read .env — make sure env vars are set in your shell.');
+  console.warn('⚠  Could not read .env - make sure env vars are set in your shell.');
 }
 
 // ── Sanity client ──
@@ -255,7 +255,7 @@ async function main() {
     };
     console.log('  ✓ Uploaded main image');
   } else {
-    console.log('  ⚠  Image not found at public/blog/full-service-vs-specialist.jpg — skipping image');
+    console.log('  ⚠  Image not found at public/blog/full-service-vs-specialist.jpg - skipping image');
   }
 
   const doc = {

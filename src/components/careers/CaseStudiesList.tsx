@@ -91,7 +91,7 @@ export default function CaseStudiesList({ theme }: CaseStudiesListProps) {
             </h2>
           </div>
 
-          {/* ── Full list — no featured card ── */}
+          {/* ── Full list - no featured card ── */}
           <div className="flex flex-col">
             {list.map((cs, index) => (
               <Link

@@ -36,7 +36,7 @@ export default function CareersCtaSection({ theme }: CareersCtaSectionProps) {
 
       {/* Content */}
       <div className="relative z-1 w-full h-full flex flex-col items-center justify-center text-center px-6 py-19 gap-12">
-        {/* Heading block — always white (bg image pe) */}
+        {/* Heading block - always white (bg image pe) */}
         <div className="flex flex-col items-center">
           <div className="font-light leading-[1.1] text-white" style={{ fontSize: 'clamp(2rem, 5vw, 4rem)' }}>
             Work that lasts.

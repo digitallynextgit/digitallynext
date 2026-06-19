@@ -1,13 +1,13 @@
 import Script from 'next/script';
 import { client } from '@/sanity/client';
-import { latestPostsByCategoryTitleQuery } from '@/sanity/queries';
+import { postsByCategoryTitleQuery } from '@/sanity/queries';
 import { buildMetadata, webPageJsonLd } from '@/app/utils/seo';
 import CareersPageClient, { type HrCornerPost } from './CareersPageClient';
 
 export const metadata = buildMetadata({
   title: 'Careers | Digitally Next',
   description:
-    'Join Digitally Next — a growth-driven global digital marketing agency. Explore open roles across strategy, performance, content, design, and engineering.',
+    'Join Digitally Next - a growth-driven global digital marketing agency. Explore open roles across strategy, performance, content, design, and engineering.',
   path: '/careers',
 });
 
@@ -15,7 +15,7 @@ export const metadata = buildMetadata({
 export const revalidate = 60;
 
 export default async function CareersPage() {
-  const hrCornerPosts: HrCornerPost[] = await client.fetch(latestPostsByCategoryTitleQuery, {
+  const hrCornerPosts: HrCornerPost[] = await client.fetch(postsByCategoryTitleQuery, {
     title: 'Career Talks - HR Corner',
   });
 
@@ -26,7 +26,7 @@ export default async function CareersPage() {
           webPageJsonLd({
             title: 'Careers | Digitally Next',
             description:
-              'Join Digitally Next — explore open roles across strategy, performance, content, design, and engineering.',
+              'Join Digitally Next - explore open roles across strategy, performance, content, design, and engineering.',
             path: '/careers',
           })
         )}

@@ -139,7 +139,7 @@ function MobileADAC({ isDark }: { isDark: boolean }) {
             isDark ? 'text-white/80' : 'text-[#1a1a1a]',
           ].join(' ')}
         >
-          <span className="font-bold">ADAC</span> ensures AI accelerates speed, quality, scale, and insight — without
+          <span className="font-bold">ADAC</span> ensures AI accelerates speed, quality, scale, and insight - without
           replacing human accountability or creative ownership.
         </p>
       </motion.div>
@@ -268,7 +268,7 @@ function DesktopADAC({ isDark }: { isDark: boolean }) {
             isDark ? 'text-white/80' : 'text-[#1a1a1a]',
           ].join(' ')}
         >
-          <span className="font-bold">ADAC</span> ensures AI accelerates speed, quality, scale, and insight — without
+          <span className="font-bold">ADAC</span> ensures AI accelerates speed, quality, scale, and insight - without
           replacing human accountability or creative ownership.
         </p>
       </motion.div>
