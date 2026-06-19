@@ -2,6 +2,8 @@
 
 # dependencies
 /node_modules
+# this repo uses pnpm (pnpm-lock.yaml); ignore the npm lockfile so it can't return
+package-lock.json
 /.pnp
 .pnp.*
 .yarn/*
@@ -23,6 +25,9 @@
 # misc
 .DS_Store
 *.pem
+
+# generated SEO audit artifacts
+/screenshots
 
 # debug
 npm-debug.log*
