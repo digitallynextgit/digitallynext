@@ -3,6 +3,7 @@
 import { useMemo, useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import Link from 'next/link';
+import { ExternalLink } from 'lucide-react';
 import { useSectionTheme } from '@/context/SectionThemeContext';
 import { getOrderedEmployeeStories } from '@/data/employeeStories';
 
@@ -164,7 +165,7 @@ export default function EmployeeStoriesSection({ theme }: EmployeeStoriesSection
                   className={[
                     // 504:669 matches LinkedIn's native embed dimensions so the post
                     // renders without cropping or excess whitespace.
-                    'relative w-full aspect-504/669 rounded overflow-hidden',
+                    'relative w-full aspect-504/669 rounded overflow-hidden group/card',
                     'transition-all duration-500 hover:shadow-lg',
                     isDark
                       ? 'border border-white/10 bg-white/5 hover:border-white/30'
@@ -178,6 +179,28 @@ export default function EmployeeStoriesSection({ theme }: EmployeeStoriesSection
                     loading="lazy"
                     title={story.title}
                   />
+                  {/* "View on LinkedIn" floating link — opens the actual post in a new tab.
+                      Positioned over the iframe in the top-right corner, intercepts clicks
+                      only in its own small area so the rest of the iframe stays interactive.
+                      Fades in on card hover to avoid covering the LinkedIn UI by default. */}
+                  <Link
+                    href={story.postUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`Open ${story.title} on LinkedIn in a new tab`}
+                    className={[
+                      'absolute top-2 right-2 z-10',
+                      'inline-flex items-center gap-1.5 rounded-full px-3 py-1.5',
+                      'bg-black/75 text-white text-[11px] font-semibold tracking-wide',
+                      'backdrop-blur-sm shadow-md',
+                      'opacity-0 group-hover/card:opacity-100 focus-visible:opacity-100',
+                      'transition-all duration-200 hover:bg-[#0A66C2]',
+                      'focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0A66C2] focus-visible:ring-offset-2',
+                    ].join(' ')}
+                  >
+                    View on LinkedIn
+                    <ExternalLink className="w-3 h-3" strokeWidth={2.5} aria-hidden="true" />
+                  </Link>
                 </div>
               </motion.div>
             ))}

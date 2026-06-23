@@ -21,6 +21,14 @@ export type EmployeeStory = {
   embedUrl: string;
   /** Accessible iframe title. Shown to screen readers. */
   title: string;
+  /**
+   * Optional. Direct LinkedIn post URL (linkedin.com/feed/update/...) opened
+   * in a new tab when the user clicks the "View on LinkedIn" link on a card.
+   * If omitted, it's auto-derived from `embedUrl` — only set this explicitly
+   * when you want to override the derived URL (e.g. to point to the post's
+   * /posts/<slug> form instead of /feed/update/<urn>).
+   */
+  postUrl?: string;
 };
 
 export const EMPLOYEE_STORIES: EmployeeStory[] = [
@@ -70,7 +78,33 @@ export const EMPLOYEE_STORIES: EmployeeStory[] = [
   },
 ];
 
-/** Returns the stories sorted by order_id (ascending). */
-export function getOrderedEmployeeStories(): EmployeeStory[] {
-  return [...EMPLOYEE_STORIES].sort((a, b) => a.order_id - b.order_id);
+/**
+ * Convert a LinkedIn embed URL into the direct post URL that opens the post
+ * in a new tab on linkedin.com. Strips `/embed` and the `?collapsed=1` param.
+ *
+ * Example:
+ *   https://www.linkedin.com/embed/feed/update/urn:li:share:7467910619585880064?collapsed=1
+ *   →  https://www.linkedin.com/feed/update/urn:li:share:7467910619585880064
+ */
+export function derivePostUrl(embedUrl: string): string {
+  try {
+    const url = new URL(embedUrl);
+    url.pathname = url.pathname.replace('/embed/feed/', '/feed/');
+    url.search = '';
+    return url.toString();
+  } catch {
+    return embedUrl;
+  }
+}
+
+/**
+ * Returns the stories sorted by order_id (ascending), with `postUrl` populated
+ * for every entry — either the explicit `postUrl` field if set, or auto-derived
+ * from `embedUrl`. The component layer can rely on `postUrl` always being a
+ * string, no fallback logic needed at the render site.
+ */
+export function getOrderedEmployeeStories(): Array<Required<Pick<EmployeeStory, 'postUrl'>> & EmployeeStory> {
+  return [...EMPLOYEE_STORIES]
+    .sort((a, b) => a.order_id - b.order_id)
+    .map((s) => ({ ...s, postUrl: s.postUrl ?? derivePostUrl(s.embedUrl) }));
 }
