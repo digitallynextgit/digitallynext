@@ -2,7 +2,16 @@ import type { MetadataRoute } from 'next';
 import { siteConfig } from '@/app/utils/seo';
 import { services } from '@/data/services';
 import { caseStudies } from '@/data/casestudy';
-import { getCareerDepartmentEntries, getCareerRoleEntries } from '@/data/careersDepartments';
+import {
+  CAREERS_DEPARTMENT_GROUPS,
+  CAREERS_INTERNSHIP_GROUPS,
+  getCareerDepartmentHref,
+  getCareerGroupHref,
+  getCareerModeHref,
+  getCareerRoleEntries,
+  getCareerRoleHref,
+  isCollapsedGroup,
+} from '@/data/careersDepartments';
 import { client } from '@/sanity/client';
 import { allPostsQuery } from '@/sanity/queries';
 
@@ -44,10 +53,35 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     changeFrequency: 'monthly',
   }));
 
-  // Career department + role pages, deduped by href (modes can share slugs).
+  // Career hierarchy:
+  //   /careers/<mode>                                            — mode landing
+  //   /careers/<mode>/<group>                                    — group page
+  //   /careers/<mode>/<group>/<department>                       — sub-department
+  //   /careers/<mode>/<group>/<department>/<role>                — role
   const careerPaths = new Set<string>();
-  for (const d of getCareerDepartmentEntries()) careerPaths.add(`/careers/${d.departmentSlug}`);
-  for (const r of getCareerRoleEntries()) careerPaths.add(`/careers/${r.departmentSlug}/${r.roleSlug}`);
+  // Mode landings
+  careerPaths.add(getCareerModeHref('full-time'));
+  careerPaths.add(getCareerModeHref('internship'));
+  // Group + department pages for both modes. Collapsed groups (1 sub-dept)
+  // don't get a separate department URL — the group URL is the dept URL.
+  for (const group of CAREERS_DEPARTMENT_GROUPS) {
+    careerPaths.add(getCareerGroupHref(group, 'full-time'));
+    if (!isCollapsedGroup(group)) {
+      for (const dept of group.subDepartments) {
+        careerPaths.add(getCareerDepartmentHref(dept, group, 'full-time'));
+      }
+    }
+  }
+  for (const group of CAREERS_INTERNSHIP_GROUPS) {
+    careerPaths.add(getCareerGroupHref(group, 'internship'));
+    if (!isCollapsedGroup(group)) {
+      for (const dept of group.subDepartments) {
+        careerPaths.add(getCareerDepartmentHref(dept, group, 'internship'));
+      }
+    }
+  }
+  // Role detail pages
+  for (const r of getCareerRoleEntries()) careerPaths.add(getCareerRoleHref(r));
   const careerRoutes: Entry[] = [...careerPaths].map((path) => ({
     path,
     priority: 0.5,

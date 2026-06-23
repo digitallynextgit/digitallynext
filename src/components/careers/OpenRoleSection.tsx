@@ -1,17 +1,8 @@
 'use client';
 
 import Image from 'next/image';
-import { useEffect, useMemo, useState } from 'react';
-import { useRouter } from 'next/navigation';
-import { useSectionTheme } from '@/context/SectionThemeContext';
-import DepartmentSelectionModal from '@/components/careers/DepartmentSelectionModal';
-import {
-  CAREERS_DEPARTMENT_GROUPS,
-  CAREERS_INTERNSHIP_GROUPS,
-  getCareerDepartmentSlug,
-  type CareersDepartmentGroup,
-} from '@/data/careersDepartments';
 import Link from 'next/link';
+import { useSectionTheme } from '@/context/SectionThemeContext';
 
 interface OpenRolesSectionProps {
   theme?: 'dark' | 'light';
@@ -22,82 +13,19 @@ const CARDS = [
     title: 'Full-Time Positions',
     desc: 'Join a team that values clarity, ownership, and craft. Roles across strategy, digital, data, and AI.',
     linkLabel: 'Full-Time Roles',
-    mode: 'full-time' as const,
+    href: '/careers/full-time',
   },
   {
     title: 'Internships',
     desc: 'Start with real work, real mentorship, and real expectations. Our internships are structured to build, not busy-work.',
     linkLabel: 'Internship Roles',
-    mode: 'internship' as const,
+    href: '/careers/internship',
   },
-];
+] as const;
 
 export default function OpenRolesSection({ theme }: OpenRolesSectionProps) {
   const { theme: contextTheme } = useSectionTheme();
-  const router = useRouter();
   const isDark = (theme ?? contextTheme) === 'dark';
-
-  const [modalOpen, setModalOpen] = useState(false);
-  const [modalMode, setModalMode] = useState<'full-time' | 'internship'>('full-time');
-  const [selectedDepartmentId, setSelectedDepartmentId] = useState<string | null>(null);
-  // When the modal is opened via URL with ?group=<id>, this pre-selects that group
-  // so the modal opens directly at step 2 (sub-departments). null = step 1 (groups).
-  const [initialGroupId, setInitialGroupId] = useState<string | null>(null);
-
-  // Auto-open the modal on initial mount when arriving via "Back to Departments"
-  // from a sub-department page (cross-page navigation). The URL carries
-  // ?openModal=<mode>[&group=<id>] which we read once, then strip.
-  useEffect(() => {
-    if (typeof window === 'undefined') return;
-    const params = new URLSearchParams(window.location.search);
-    const requested = params.get('openModal');
-    if (requested !== 'full-time' && requested !== 'internship') return;
-    const requestedGroup = params.get('group');
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    setModalMode(requested);
-    setSelectedDepartmentId(null);
-    setInitialGroupId(requestedGroup || null);
-    setModalOpen(true);
-    params.delete('openModal');
-    params.delete('group');
-    const search = params.toString();
-    const url = window.location.pathname + (search ? `?${search}` : '') + window.location.hash;
-    window.history.replaceState({}, '', url);
-  }, []);
-
-  // Listen for same-page modal-open requests dispatched as a window event.
-  // Other sections (e.g. "Open Roles in ADAC" in AdacSection) dispatch this
-  // event instead of relying on URL navigation, which is more reliable for
-  // already-mounted components than useSearchParams reactivity.
-  useEffect(() => {
-    const handler = (event: Event) => {
-      const detail = (event as CustomEvent).detail as { mode?: 'full-time' | 'internship'; group?: string } | undefined;
-      if (!detail) return;
-      if (detail.mode !== 'full-time' && detail.mode !== 'internship') return;
-      setModalMode(detail.mode);
-      setSelectedDepartmentId(null);
-      setInitialGroupId(detail.group ?? null);
-      setModalOpen(true);
-    };
-    window.addEventListener('careers:openModal', handler);
-    return () => window.removeEventListener('careers:openModal', handler);
-  }, []);
-
-  const groups = useMemo<CareersDepartmentGroup[]>(
-    () => (modalMode === 'internship' ? CAREERS_INTERNSHIP_GROUPS : CAREERS_DEPARTMENT_GROUPS),
-    [modalMode]
-  );
-
-  const openModal = (mode: 'full-time' | 'internship') => {
-    setModalMode(mode);
-    setSelectedDepartmentId(null);
-    // Clear any group pinned by a previous URL deep-link so manual button
-    // clicks always start at step 1 (groups overview).
-    setInitialGroupId(null);
-    setModalOpen(true);
-  };
-
-  const handleClose = () => setModalOpen(false);
 
   return (
     <section
@@ -108,7 +36,6 @@ export default function OpenRolesSection({ theme }: OpenRolesSectionProps) {
         <div className="flex flex-col gap-8 md:gap-10">
           {/* Top row - heading + tagline */}
           <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6 md:gap-10">
-            {/* Heading + subtitle */}
             <div className="flex flex-col gap-4">
               <h2
                 className={[
@@ -130,7 +57,6 @@ export default function OpenRolesSection({ theme }: OpenRolesSectionProps) {
               </p>
             </div>
 
-            {/* Tagline */}
             <div
               className={[
                 'text-[14px] font-bold leading-snug transition-colors duration-700 shrink-0',
@@ -142,14 +68,17 @@ export default function OpenRolesSection({ theme }: OpenRolesSectionProps) {
             </div>
           </div>
 
-          {/* Cards */}
+          {/* Cards — now direct Links to the new mode landing pages */}
           <div className="grid grid-cols-1 md:grid-cols-2">
-            {CARDS.map(({ title, desc, linkLabel, mode }, index) => (
-              <div
+            {CARDS.map(({ title, desc, linkLabel, href }, index) => (
+              <Link
                 key={title}
+                href={href}
                 className={[
-                  'flex flex-col gap-4 p-8 sm:p-10 transition-colors duration-700',
-                  isDark ? 'bg-[#111111] border border-[#2a2a2a]' : 'bg-white border border-[#E5E5E5]',
+                  'group flex flex-col gap-4 p-8 sm:p-10 transition-colors duration-700',
+                  isDark
+                    ? 'bg-[#111111] border border-[#2a2a2a] hover:border-[#E21F26]'
+                    : 'bg-white border border-[#E5E5E5] hover:border-[#E21F26]',
                   index === 1 ? 'border-t-0 md:border-t md:border-l-0' : '',
                 ].join(' ')}
               >
@@ -169,26 +98,24 @@ export default function OpenRolesSection({ theme }: OpenRolesSectionProps) {
                 >
                   {desc}
                 </p>
-                <button
-                  type="button"
-                  onClick={() => openModal(mode)}
+                <span
                   className={[
-                    'group mt-2 inline-flex items-center gap-3 w-fit cursor-pointer',
+                    'mt-2 inline-flex items-center gap-3 w-fit',
                     'text-[14px] font-normal transition-colors duration-300',
                     isDark ? 'text-white' : 'text-black',
                   ].join(' ')}
                 >
                   <Image
                     src="/figma/careers/careers-arrow-link.svg"
-                    alt={`${linkLabel} arrow`}
+                    alt=""
                     width={19}
                     height={10}
                     style={{ width: 'auto', height: 'auto' }}
                     className="group-hover:translate-x-1 transition-transform duration-300"
                   />
                   <span className="group-hover:text-[#E21F26] transition-colors duration-300">{linkLabel}</span>
-                </button>
-              </div>
+                </span>
+              </Link>
             ))}
           </div>
 
@@ -218,26 +145,6 @@ export default function OpenRolesSection({ theme }: OpenRolesSectionProps) {
           </div>
         </div>
       </div>
-
-      <DepartmentSelectionModal
-        open={modalOpen}
-        mode={modalMode}
-        groups={groups}
-        initialGroupId={initialGroupId}
-        selectedDepartmentId={selectedDepartmentId}
-        onSelectSubDepartment={(subDepartmentId) => {
-          const subDepartment = groups.flatMap((g) => g.subDepartments).find((d) => d.id === subDepartmentId);
-          if (!subDepartment) return;
-          setSelectedDepartmentId(subDepartmentId);
-          setModalOpen(false);
-          router.push(`/careers/${getCareerDepartmentSlug(subDepartment)}`);
-        }}
-        onSelectPosition={(href) => {
-          setModalOpen(false);
-          router.push(href);
-        }}
-        onClose={handleClose}
-      />
     </section>
   );
 }

@@ -641,8 +641,43 @@ export function getCareerGroupSlug(group: CareersDepartmentGroup) {
   return slugifyCareerRole(group.code);
 }
 
+/** URL slug for a mode — used as the first segment after /careers. */
+export function getCareerModeSlug(mode: CareersMode): string {
+  return mode; // already in slug form: 'full-time' | 'internship'
+}
+
+/** Parse a URL mode segment back into a CareersMode, or null if invalid. */
+export function parseCareerModeSlug(slug: string): CareersMode | null {
+  if (slug === 'full-time' || slug === 'internship') return slug;
+  return null;
+}
+
 export function getGroupsForMode(mode: CareersMode): CareersDepartmentGroup[] {
   return mode === 'internship' ? CAREERS_INTERNSHIP_GROUPS : CAREERS_DEPARTMENT_GROUPS;
+}
+
+/**
+ * "Collapsed" groups have only one sub-department, so the sub-department layer
+ * adds no navigation value (it would just be one card pointing to itself).
+ * For these — currently Internships, AMG (Key Account Managers), and HR —
+ * the URL skips the redundant department segment entirely:
+ *
+ *   non-collapsed:  /careers/full-time/smg/msg-marketing-services-group/<role>
+ *   collapsed:      /careers/full-time/hr/<role>
+ *
+ * The group page itself renders the role list directly when the group is
+ * collapsed, instead of showing a single sub-department card.
+ */
+export function isCollapsedGroup(group: CareersDepartmentGroup): boolean {
+  return group.subDepartments.length === 1;
+}
+
+/** The single sub-department of a collapsed group. Throws on multi-dept groups. */
+export function getCollapsedSubDepartment(group: CareersDepartmentGroup): CareersDepartment {
+  if (group.subDepartments.length !== 1) {
+    throw new Error(`getCollapsedSubDepartment: group "${group.id}" has ${group.subDepartments.length} sub-departments, expected exactly 1.`);
+  }
+  return group.subDepartments[0];
 }
 
 // ─── Searchable positions (for the modal search bar) ────────────────────────
@@ -670,15 +705,28 @@ export type SearchablePosition = {
  * Flattens groups → departments → roles → currentOpenings into a single list of
  * searchable positions. Roles without currentOpenings contribute a single entry
  * (the role title itself). All entries link to the parent role detail page.
+ *
+ * `mode` is required so URLs include the full 4-level path:
+ *   /careers/<mode>/<group>/<department>/<role>
  */
-export function getSearchablePositions(groups: CareersDepartmentGroup[]): SearchablePosition[] {
+export function getSearchablePositions(
+  groups: CareersDepartmentGroup[],
+  mode: CareersMode
+): SearchablePosition[] {
   const items: SearchablePosition[] = [];
+  const modeSlug = getCareerModeSlug(mode);
   for (const group of groups) {
+    const groupSlug = getCareerGroupSlug(group);
+    const collapsed = isCollapsedGroup(group);
     for (const dept of group.subDepartments) {
       const departmentSlug = getCareerDepartmentSlug(dept);
       for (const role of dept.roles) {
         const roleSlug = getCareerRoleSlug(role);
-        const href = `/careers/${departmentSlug}/${roleSlug}`;
+        // Collapsed groups skip the department segment in the URL since the
+        // sub-department layer carries no information when there's only one.
+        const href = collapsed
+          ? `/careers/${modeSlug}/${groupSlug}/${roleSlug}`
+          : `/careers/${modeSlug}/${groupSlug}/${departmentSlug}/${roleSlug}`;
         const openings = role.description?.currentOpenings ?? [];
         if (openings.length === 0) {
           items.push({
@@ -785,14 +833,46 @@ export function getCareerDepartmentEntries() {
   return entries;
 }
 
-export function getCareerDepartmentBySlug(departmentSlug: string) {
-  return getCareerDepartmentEntries().find((entry) => entry.departmentSlug === departmentSlug) ?? null;
+// ─── Slug-based lookups (now scoped by mode + group for accurate matching) ──
+
+export function getCareerGroupBySlugs(modeSlug: string, groupSlug: string) {
+  const mode = parseCareerModeSlug(modeSlug);
+  if (!mode) return null;
+  const groups = getGroupsForMode(mode);
+  const group = groups.find((g) => getCareerGroupSlug(g) === groupSlug);
+  if (!group) return null;
+  return { group, mode, modeSlug, groupSlug };
 }
 
-export function getCareerDepartmentById(mode: CareersMode, departmentId: string) {
-  return (
-    getCareerDepartmentEntries().find((entry) => entry.mode === mode && entry.department.id === departmentId) ?? null
+export function getCareerDepartmentBySlugs(
+  modeSlug: string,
+  groupSlug: string,
+  departmentSlug: string
+) {
+  const groupHit = getCareerGroupBySlugs(modeSlug, groupSlug);
+  if (!groupHit) return null;
+  const department = groupHit.group.subDepartments.find(
+    (d) => getCareerDepartmentSlug(d) === departmentSlug
   );
+  if (!department) return null;
+  return {
+    ...groupHit,
+    department,
+    departmentSlug,
+  };
+}
+
+export function getCareerRoleBySlugsFull(
+  modeSlug: string,
+  groupSlug: string,
+  departmentSlug: string,
+  roleSlug: string
+) {
+  const deptHit = getCareerDepartmentBySlugs(modeSlug, groupSlug, departmentSlug);
+  if (!deptHit) return null;
+  const role = deptHit.department.roles.find((r) => getCareerRoleSlug(r) === roleSlug);
+  if (!role) return null;
+  return { ...deptHit, role, roleSlug };
 }
 
 export function getCareerGroupById(mode: CareersMode, groupId: string) {
@@ -800,21 +880,49 @@ export function getCareerGroupById(mode: CareersMode, groupId: string) {
   return groups.find((g) => g.id === groupId) ?? null;
 }
 
-export function getCareerRoleBySlugs(departmentSlug: string, roleSlug: string) {
-  return (
-    getCareerRoleEntries().find((entry) => entry.departmentSlug === departmentSlug && entry.roleSlug === roleSlug) ??
-    null
-  );
-}
-
 export function getCareerRoleById(mode: CareersMode, roleId: string) {
   return getCareerRoleEntries().find((entry) => entry.mode === mode && entry.role.id === roleId) ?? null;
 }
 
-export function getCareerDepartmentHref(department: CareersDepartment) {
-  return `/careers/${getCareerDepartmentSlug(department)}`;
+// ─── URL builders ──────────────────────────────────────────────────────────
+//
+// URL hierarchy:
+//   /careers                                                   — main careers landing
+//   /careers/<mode>                                            — list of groups for that mode
+//   /careers/<mode>/<group>                                    — list of sub-departments in that group
+//   /careers/<mode>/<group>/<department>                       — list of roles in that sub-department
+//   /careers/<mode>/<group>/<department>/<role>                — role detail
+//
+// `<mode>` is 'full-time' or 'internship'; `<group>` is the group code slug
+// (e.g. 'smg', 'adac', 'amg', 'map', 'hr').
+
+export function getCareerModeHref(mode: CareersMode): string {
+  return `/careers/${getCareerModeSlug(mode)}`;
 }
 
-export function getCareerRoleHref(entry: CareerRoleEntry) {
-  return `/careers/${entry.departmentSlug}/${entry.roleSlug}`;
+export function getCareerGroupHref(group: CareersDepartmentGroup, mode: CareersMode): string {
+  return `/careers/${getCareerModeSlug(mode)}/${getCareerGroupSlug(group)}`;
+}
+
+export function getCareerDepartmentHref(
+  department: CareersDepartment,
+  group: CareersDepartmentGroup,
+  mode: CareersMode
+): string {
+  // For collapsed groups, the dept page IS the group page — there's no
+  // separate department URL, so we return the group URL itself. This keeps
+  // existing callers (e.g. role-page back link) pointing to a real URL.
+  if (isCollapsedGroup(group)) {
+    return getCareerGroupHref(group, mode);
+  }
+  return `/careers/${getCareerModeSlug(mode)}/${getCareerGroupSlug(group)}/${getCareerDepartmentSlug(department)}`;
+}
+
+export function getCareerRoleHref(entry: CareerRoleEntry): string {
+  const modeSlug = getCareerModeSlug(entry.mode);
+  // Collapsed groups skip the department segment entirely.
+  if (isCollapsedGroup(entry.group)) {
+    return `/careers/${modeSlug}/${entry.groupSlug}/${entry.roleSlug}`;
+  }
+  return `/careers/${modeSlug}/${entry.groupSlug}/${entry.departmentSlug}/${entry.roleSlug}`;
 }

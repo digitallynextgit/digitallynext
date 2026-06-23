@@ -46,13 +46,13 @@ export default function CareersPageClient({ hrCornerPosts }: CareersPageClientPr
         <GrowthCarouselSection />
       </ThemeSection>
 
-      <ThemeSection theme="dark">
+      {/* <ThemeSection theme="dark">
         <ModernDadSection />
-      </ThemeSection>
+      </ThemeSection> */}
 
-      <ThemeSection theme="light">
+      {/* <ThemeSection theme="light">
         <AdacSection />
-      </ThemeSection>
+      </ThemeSection> */}
 
       <ThemeSection theme="light">
         <WhoThrivesSection />

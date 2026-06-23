@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import Link from 'next/link';
 import { useState } from 'react';
 import { useSectionTheme } from '@/context/SectionThemeContext';
 
@@ -133,24 +134,12 @@ export default function AdacSection({ theme }: AdacSectionProps) {
               <span className="block">without becoming careless.</span>
             </p>
 
-            <button
-              type="button"
-              onClick={() => {
-                // Open the careers modal directly at the ADAC group's
-                // sub-departments (PMG + AI Enablement). OpenRolesSection
-                // listens for this event.
-                window.dispatchEvent(
-                  new CustomEvent('careers:openModal', {
-                    detail: { mode: 'full-time', group: 'adac' },
-                  })
-                );
-                document.getElementById('open-positions')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-              }}
+            <Link
+              href="/careers/full-time/adac"
               className={[
-                'group inline-flex items-center gap-3 shrink-0 cursor-pointer',
+                'group inline-flex items-center gap-3 shrink-0',
                 'text-xl sm:text-2xl font-normal leading-[1.3]',
                 'hover:text-[#E21F26] transition-colors duration-300',
-                'bg-transparent border-0 p-0 text-left',
                 'focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E21F26] focus-visible:ring-offset-2 rounded',
                 isDark ? 'text-white' : 'text-[#000000]',
               ].join(' ')}
@@ -164,7 +153,7 @@ export default function AdacSection({ theme }: AdacSectionProps) {
                 className="group-hover:translate-x-1 transition-transform duration-300"
               />
               Open Roles in ADAC
-            </button>
+            </Link>
           </div>
         </div>
       </div>

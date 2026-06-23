@@ -1,31 +1,54 @@
 'use client';
 
 import Link from 'next/link';
+import { ChevronLeft } from 'lucide-react';
 import {
   type CareersDepartment,
+  type CareersDepartmentGroup,
   type CareersMode,
+  getCareerGroupHref,
+  getCareerModeHref,
   getCareerRoleHref,
+  isCollapsedGroup,
   type CareerRoleEntry,
 } from '@/data/careersDepartments';
 
 interface CareerDepartmentPageClientProps {
   department: CareersDepartment;
   mode: CareersMode;
+  group: CareersDepartmentGroup;
   roleEntries: CareerRoleEntry[];
 }
 
-export default function CareerDepartmentPageClient({ department, mode, roleEntries }: CareerDepartmentPageClientProps) {
+export default function CareerDepartmentPageClient({
+  department,
+  mode,
+  group,
+  roleEntries,
+}: CareerDepartmentPageClientProps) {
+  // For collapsed groups (1 sub-dept) this client is rendered AT the group URL,
+  // so "back to group" would loop. Skip up one level to the mode landing instead.
+  const collapsed = isCollapsedGroup(group);
+  const backHref = collapsed ? getCareerModeHref(mode) : getCareerGroupHref(group, mode);
+  const backLabel = collapsed
+    ? mode === 'internship'
+      ? 'Back to Internships'
+      : 'Back to Full-Time Positions'
+    : `Back to ${group.code} departments`;
   return (
     <main className="bg-[#FAFAFA]">
       <section className="mx-auto flex w-full max-w-7xl flex-col gap-8 px-6 py-20 md:px-8 md:py-28 lg:gap-10 lg:px-10 lg:py-36">
         <div className="flex flex-col gap-4">
           <Link
-            href={`/careers?openModal=${mode}#open-positions`}
-            scroll={false}
-            className="inline-flex w-fit items-center gap-2 text-sm font-semibold text-black/60 transition-colors hover:text-[#E21F26]"
+            href={backHref}
+            className="group inline-flex w-fit items-center gap-2 rounded-full bg-[#E21F26] px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:bg-[#c41a20] hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E21F26] focus-visible:ring-offset-2"
           >
-            <span aria-hidden="true">←</span>
-            <span>Back to Departments</span>
+            <ChevronLeft
+              className="h-4 w-4 transition-transform duration-200 group-hover:-translate-x-0.5"
+              strokeWidth={2.5}
+              aria-hidden="true"
+            />
+            <span>{backLabel}</span>
           </Link>
 
           <div className="rounded border border-[#E5E5E5] bg-white px-7 py-7 shadow-[0_10px_30px_rgba(0,0,0,0.04)]">

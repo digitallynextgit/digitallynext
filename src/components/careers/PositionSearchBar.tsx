@@ -4,17 +4,20 @@ import { Search, X } from 'lucide-react';
 import { useEffect, useId, useMemo, useRef, useState } from 'react';
 import {
   type CareersDepartmentGroup,
+  type CareersMode,
   type SearchablePosition,
   getSearchablePositions,
 } from '@/data/careersDepartments';
 
 interface PositionSearchBarProps {
   groups: CareersDepartmentGroup[];
+  /** Mode determines the URL prefix for each search-result link. */
+  mode?: CareersMode;
   /** Called when the user picks a position. Receives the role page href. */
   onSelectPosition: (href: string) => void;
 }
 
-export default function PositionSearchBar({ groups, onSelectPosition }: PositionSearchBarProps) {
+export default function PositionSearchBar({ groups, mode = 'full-time', onSelectPosition }: PositionSearchBarProps) {
   const reactId = useId();
   const listboxId = `${reactId}-listbox`;
   const inputId = `${reactId}-input`;
@@ -27,7 +30,7 @@ export default function PositionSearchBar({ groups, onSelectPosition }: Position
   const [isOpen, setIsOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState(-1);
 
-  const allPositions = useMemo(() => getSearchablePositions(groups), [groups]);
+  const allPositions = useMemo(() => getSearchablePositions(groups, mode), [groups, mode]);
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
