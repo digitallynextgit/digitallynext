@@ -25,45 +25,46 @@ export type EmployeeStory = {
 
 export const EMPLOYEE_STORIES: EmployeeStory[] = [
   {
-    order_id: 1,
+    order_id: 1, //1
     id: 'story-1',
     embedUrl: 'https://www.linkedin.com/embed/feed/update/urn:li:share:7467910619585880064?collapsed=1',
     title: 'Employee story 1',
   },
   {
-    order_id: 2,
+    order_id: 2, //2
     id: 'story-2',
-    embedUrl: 'https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7463113248968581120?collapsed=1',
-    title: 'Employee story 2',
-  },
-  {
-    // Digitally Next company post - pinned to the end of the list.
-    order_id: 3,
-    id: 'story-3',
-    embedUrl: 'https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7423055126136954881?collapsed=1',
-    title: 'Employee story 3',
-  },
-  {
-    order_id: 4,
-    id: 'story-4',
-    embedUrl: 'https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7345339931210223616?collapsed=1',
-    title: 'Employee story 4',
-  },
-  {
-    order_id: 5,
-    id: 'story-5',
     embedUrl: 'https://www.linkedin.com/embed/feed/update/urn:li:share:7465413306984542209?collapsed=1',
     title: 'Employee story 5',
   },
   {
-    order_id: 6,
-    id: 'story-6',
+    order_id: 3, //3
+    id: 'story-3',
+    embedUrl: 'https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7463113248968581120?collapsed=1',
+    title: 'Employee story 2',
+  },
+  // {
+  //   // Digitally Next company post - pinned to the end of the list.
+  //   order_id: 3,
+  //   id: 'story-3',
+  //   embedUrl: 'https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7423055126136954881?collapsed=1',
+  //   title: 'Employee story 3',
+  // },
+  {
+    order_id: 4, //4
+    id: 'story-4',
+    embedUrl: 'https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7345339931210223616?collapsed=1',
+    title: 'Employee story 4',
+  },
+  
+  {
+    order_id: 5, //5
+    id: 'story-5',
     embedUrl: "https://www.linkedin.com/embed/feed/update/urn:li:share:7474362766976499713?collapsed=1",
     title: 'Employee story 6',
   },
   {
-    order_id: 7,
-    id: 'story-7',
+    order_id: 6, //6
+    id: 'story-6',
     embedUrl: "https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7474014932448067584?collapsed=1",
     title: 'Employee story 7',
   },
