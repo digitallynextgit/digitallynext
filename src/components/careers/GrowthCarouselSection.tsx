@@ -124,7 +124,7 @@ export default function GrowthCarouselSection({ theme }: GrowthCarouselSectionPr
                     width={360}
                     height={240}
                     loading="eager"
-                    className="block h-40 sm:h-45 md:h-50 lg:h-100 w-55 sm:w-65 md:w-72.5 lg:w-125 object-cover"
+                    className="block h-40 sm:h-45 md:h-50 lg:h-100 w-55 sm:w-65 md:w-72.5 lg:w-125 object-cover rounded-[5px]"
                   />
                 </div>
               ))}
