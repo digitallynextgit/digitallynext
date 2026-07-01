@@ -56,10 +56,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export function generateStaticParams() {
   const params: { mode: string; groupSlug: string; departmentSlug: string }[] = [];
-  const pushAll = (
-    groups: typeof CAREERS_DEPARTMENT_GROUPS,
-    mode: 'full-time' | 'internship'
-  ) => {
+  const pushAll = (groups: typeof CAREERS_DEPARTMENT_GROUPS, mode: 'full-time' | 'internship') => {
     for (const group of groups) {
       const groupSlug = getCareerGroupSlug(group);
       if (isCollapsedGroup(group)) {
@@ -130,19 +127,12 @@ export default async function CareerDepartmentOrRolePage({ params }: Props) {
   if (!deptHit) notFound();
 
   const roleEntries = getCareerRoleEntries().filter(
-    (entry) =>
-      entry.mode === deptHit.mode &&
-      entry.groupSlug === groupSlug &&
-      entry.departmentSlug === departmentSlug
+    (entry) => entry.mode === deptHit.mode && entry.groupSlug === groupSlug && entry.departmentSlug === departmentSlug
   );
 
   return (
     <>
-      <Script
-        id={`ld-dept-${groupSlug}-${departmentSlug}`}
-        type="application/ld+json"
-        strategy="afterInteractive"
-      >
+      <Script id={`ld-dept-${groupSlug}-${departmentSlug}`} type="application/ld+json" strategy="afterInteractive">
         {JSON.stringify(
           webPageJsonLd({
             title: `${deptHit.department.title} | Digitally Next Careers`,

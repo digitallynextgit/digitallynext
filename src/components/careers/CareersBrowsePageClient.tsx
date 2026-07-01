@@ -83,7 +83,11 @@ export default function CareersBrowsePageClient({
                   ) : (
                     <span className={isLast ? 'text-black' : ''}>{crumb.label}</span>
                   )}
-                  {!isLast && <span aria-hidden="true" className="text-black/30">/</span>}
+                  {!isLast && (
+                    <span aria-hidden="true" className="text-black/30">
+                      /
+                    </span>
+                  )}
                 </li>
               );
             })}
@@ -117,11 +121,7 @@ export default function CareersBrowsePageClient({
 
         {/* Search bar — same component used inside the old modal, now on the page */}
         <div className="w-full">
-          <PositionSearchBar
-            groups={searchGroups}
-            mode={mode}
-            onSelectPosition={(href) => router.push(href)}
-          />
+          <PositionSearchBar groups={searchGroups} mode={mode} onSelectPosition={(href) => router.push(href)} />
         </div>
 
         {/* Card grid */}
@@ -144,12 +144,7 @@ export default function CareersBrowsePageClient({
                   ].join(' ')}
                 >
                   <div className="flex flex-col gap-1.5">
-                    <div
-                      className={[
-                        'text-xs font-bold uppercase tracking-[0.16em] opacity-70',
-                        tone.text,
-                      ].join(' ')}
-                    >
+                    <div className={['text-xs font-bold uppercase tracking-[0.16em] opacity-70', tone.text].join(' ')}>
                       {card.group.code}
                     </div>
                     <div
@@ -162,9 +157,7 @@ export default function CareersBrowsePageClient({
                     </div>
                   </div>
                   <div className="text-sm font-semibold text-black/60">
-                    {subCount === 1
-                      ? card.group.jobsLabel
-                      : `${card.group.jobsLabel} · ${subCount} departments`}
+                    {subCount === 1 ? card.group.jobsLabel : `${card.group.jobsLabel} · ${subCount} departments`}
                   </div>
                 </Link>
               );
@@ -201,7 +194,6 @@ export default function CareersBrowsePageClient({
             );
           })}
         </div>
-
       </section>
     </main>
   );

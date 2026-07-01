@@ -123,12 +123,31 @@ export default function OpenRolesSection({ theme }: OpenRolesSectionProps) {
           <div className="flex flex-col items-center gap-4 pt-2">
             <p
               className={[
-                'text-[16px] font-normal leading-snug text-center transition-colors duration-700',
+                'text-[22px] md:text-[24px] font-semibold leading-relaxed text-center transition-colors duration-700',
                 isDark ? 'text-white' : 'text-black',
               ].join(' ')}
             >
-              Or send us your CV at
+              Didn&rsquo;t find the role you&rsquo;re looking for?
             </p>
+            <div
+              className={[
+                'flex w-full flex-col items-center gap-2',
+                'text-[15px] md:text-[18px] font-normal leading-tight text-center transition-colors duration-700',
+                isDark ? 'text-white/80' : 'text-black/50',
+              ].join(' ')}
+            >
+              <p>
+                No worries!! We&rsquo;re always on the lookout for talented marketers, designers, developers, creators,
+                strategists and problem solvers.
+              </p>
+              <p>
+                Drop your resume at{' '}
+                <span className={`font-bold ${isDark ? 'text-white' : 'text-black/70'}`}>
+                  careers@digitallynext.com
+                </span>
+                , and if there&rsquo;s a role that matches your vibe, we&rsquo;ll reach out.
+              </p>
+            </div>
             <Link
               href="mailto:careers@digitallynext.com"
               className={[

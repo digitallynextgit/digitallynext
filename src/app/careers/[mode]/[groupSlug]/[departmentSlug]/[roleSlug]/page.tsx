@@ -83,7 +83,11 @@ export default async function CareerRolePage({ params }: Props) {
 
   return (
     <>
-      <Script id={`ld-role-${groupSlug}-${departmentSlug}-${roleSlug}`} type="application/ld+json" strategy="afterInteractive">
+      <Script
+        id={`ld-role-${groupSlug}-${departmentSlug}-${roleSlug}`}
+        type="application/ld+json"
+        strategy="afterInteractive"
+      >
         {JSON.stringify(
           webPageJsonLd({
             title: `${hit.role.title} | Digitally Next Careers`,

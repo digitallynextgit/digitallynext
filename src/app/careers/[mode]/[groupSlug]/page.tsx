@@ -70,12 +70,7 @@ export default async function CareersGroupPage({ params }: Props) {
             })
           )}
         </Script>
-        <CareerDepartmentPageClient
-          department={dept}
-          mode={mode}
-          group={group}
-          roleEntries={roleEntries}
-        />
+        <CareerDepartmentPageClient department={dept} mode={mode} group={group} roleEntries={roleEntries} />
       </>
     );
   }

@@ -675,7 +675,9 @@ export function isCollapsedGroup(group: CareersDepartmentGroup): boolean {
 /** The single sub-department of a collapsed group. Throws on multi-dept groups. */
 export function getCollapsedSubDepartment(group: CareersDepartmentGroup): CareersDepartment {
   if (group.subDepartments.length !== 1) {
-    throw new Error(`getCollapsedSubDepartment: group "${group.id}" has ${group.subDepartments.length} sub-departments, expected exactly 1.`);
+    throw new Error(
+      `getCollapsedSubDepartment: group "${group.id}" has ${group.subDepartments.length} sub-departments, expected exactly 1.`
+    );
   }
   return group.subDepartments[0];
 }
@@ -709,10 +711,7 @@ export type SearchablePosition = {
  * `mode` is required so URLs include the full 4-level path:
  *   /careers/<mode>/<group>/<department>/<role>
  */
-export function getSearchablePositions(
-  groups: CareersDepartmentGroup[],
-  mode: CareersMode
-): SearchablePosition[] {
+export function getSearchablePositions(groups: CareersDepartmentGroup[], mode: CareersMode): SearchablePosition[] {
   const items: SearchablePosition[] = [];
   const modeSlug = getCareerModeSlug(mode);
   for (const group of groups) {
@@ -844,16 +843,10 @@ export function getCareerGroupBySlugs(modeSlug: string, groupSlug: string) {
   return { group, mode, modeSlug, groupSlug };
 }
 
-export function getCareerDepartmentBySlugs(
-  modeSlug: string,
-  groupSlug: string,
-  departmentSlug: string
-) {
+export function getCareerDepartmentBySlugs(modeSlug: string, groupSlug: string, departmentSlug: string) {
   const groupHit = getCareerGroupBySlugs(modeSlug, groupSlug);
   if (!groupHit) return null;
-  const department = groupHit.group.subDepartments.find(
-    (d) => getCareerDepartmentSlug(d) === departmentSlug
-  );
+  const department = groupHit.group.subDepartments.find((d) => getCareerDepartmentSlug(d) === departmentSlug);
   if (!department) return null;
   return {
     ...groupHit,
