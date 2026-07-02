@@ -189,6 +189,35 @@ export const CAREERS_DEPARTMENT_GROUPS: CareersDepartmentGroup[] = [
         tone: 'red',
         roles: [
           {
+            id: 'genetic-counsellor',
+            title: 'Genetic Counsellor',
+            description: {
+              intro:
+                'Every genetic report tells a story but it takes the right professional to translate complex science into meaningful guidance. As a Genetic Counsellor, you’ll support individuals and families through their genetic healthcare journey by providing accurate risk assessment, compassionate counselling, and clear interpretation of genomic information.',
+              jobEssence:
+                'The role focuses on providing pre- and post-test genetic counselling, evaluating family and medical histories, assessing inherited disease risks, interpreting genetic test reports, and helping patients make informed healthcare decisions. The role requires a combination of scientific expertise, clinical knowledge, strong communication skills, and empathy to deliver patient-centric care.',
+              keyRequirements: [
+                'M.Sc. in Genetic Counselling / Human Genetics (Mandatory)',
+                'Pre & Post-Test Genetic Counselling',
+                'Clinical Risk Assessment & Family History Analysis',
+                'Genetic Test Selection & Interpretation',
+                'Genomic Report Interpretation',
+                'Knowledge of Medical Genetics & Inherited Disorders',
+                'Patient Education & Communication Skills',
+                'Ability to explain complex genetic concepts in simple language',
+                'Clinical documentation & case management',
+                'Ethical, legal & confidentiality compliance in genetic counselling',
+                'Collaboration with clinicians, laboratories & multidisciplinary teams',
+                'Strong analytical thinking and empathetic counselling approach',
+                'Freshers with clinical internships & experienced professionals are welcome',
+              ],
+              currentOpenings: [
+                'Genetic Counsellor (1–2 Years Exp)',
+                'Senior Genetic Counsellor (4–5 Years Exp)',
+              ],
+            },
+          },
+          {
             id: 'content-writers',
             title: 'Content Writers / Copywriters',
             description: {
