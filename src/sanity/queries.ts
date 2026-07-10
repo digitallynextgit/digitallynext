@@ -70,6 +70,17 @@ export const postsByCategoryQuery = groq`
   }
 `;
 
+// Published employee stories in Studio-managed drag-to-reorder order.
+// Used by the careers page "Employee Stories" carousel.
+export const employeeStoriesQuery = groq`
+  *[_type == "employeeStory" && published == true] | order(orderRank asc) {
+    _id,
+    title,
+    embedUrl,
+    postUrl
+  }
+`;
+
 // All posts that carry a specific category title (e.g. "Career Talks - HR Corner"), newest first.
 // Used by the careers page "People Playbook" section.
 export const postsByCategoryTitleQuery = groq`

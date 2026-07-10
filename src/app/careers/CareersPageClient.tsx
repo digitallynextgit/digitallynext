@@ -7,19 +7,21 @@ import GrowthCarouselSection from '@/components/careers/GrowthCarouselSection';
 import ModernDadSection from '@/components/careers/ModernDadSection';
 import AdacSection from '@/components/careers/AdacSection';
 import WhoThrivesSection from '@/components/careers/WhoThrivesSection';
-import EmployeeStoriesSection from '@/components/careers/EmployeeStoriesSection';
+import EmployeeStoriesSection, { type EmployeeStory } from '@/components/careers/EmployeeStoriesSection';
 import PeoplePlaybookSection, { type PlaybookPost } from '@/components/careers/PeoplePlaybookSection';
 import OpenRolesSection from '@/components/careers/OpenRoleSection';
 import CareersCtaSection from '@/components/careers/CareersCtaSection';
 import { ThemeSection } from '@/components/ui/ThemeSection.tsx';
 
 export type HrCornerPost = PlaybookPost;
+export type { EmployeeStory };
 
 interface CareersPageClientProps {
   hrCornerPosts: HrCornerPost[];
+  employeeStories: EmployeeStory[];
 }
 
-export default function CareersPageClient({ hrCornerPosts }: CareersPageClientProps) {
+export default function CareersPageClient({ hrCornerPosts, employeeStories }: CareersPageClientProps) {
   return (
     <main>
       <ThemeSection theme="light">
@@ -31,7 +33,7 @@ export default function CareersPageClient({ hrCornerPosts }: CareersPageClientPr
       </ThemeSection>
 
       <ThemeSection theme="light">
-        <EmployeeStoriesSection />
+        <EmployeeStoriesSection stories={employeeStories} />
       </ThemeSection>
 
       <ThemeSection theme="light">

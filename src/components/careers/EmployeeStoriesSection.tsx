@@ -5,13 +5,41 @@ import { motion, useInView } from 'framer-motion';
 import Link from 'next/link';
 import { ExternalLink } from 'lucide-react';
 import { useSectionTheme } from '@/context/SectionThemeContext';
-import { getOrderedEmployeeStories } from '@/data/employeeStories';
+
+/**
+ * Employee stories now come from Sanity (drag-to-reorder in Studio).
+ * The parent page fetches them server-side and passes them down here.
+ */
+export type EmployeeStory = {
+  _id: string;
+  title: string;
+  embedUrl: string;
+  /** Optional override — if absent, derived from `embedUrl`. */
+  postUrl?: string | null;
+};
+
+/**
+ * Turn a LinkedIn embed URL into the direct post URL that opens in a new tab.
+ *   https://www.linkedin.com/embed/feed/update/urn:li:share:123?collapsed=1
+ *   → https://www.linkedin.com/feed/update/urn:li:share:123
+ */
+function derivePostUrl(embedUrl: string): string {
+  try {
+    const url = new URL(embedUrl);
+    url.pathname = url.pathname.replace('/embed/feed/', '/feed/');
+    url.search = '';
+    return url.toString();
+  } catch {
+    return embedUrl;
+  }
+}
 
 interface EmployeeStoriesSectionProps {
+  stories: EmployeeStory[];
   theme?: 'dark' | 'light';
 }
 
-export default function EmployeeStoriesSection({ theme }: EmployeeStoriesSectionProps) {
+export default function EmployeeStoriesSection({ stories: rawStories, theme }: EmployeeStoriesSectionProps) {
   const { theme: contextTheme } = useSectionTheme();
   const isDark = (theme ?? contextTheme) === 'dark';
 
@@ -19,7 +47,11 @@ export default function EmployeeStoriesSection({ theme }: EmployeeStoriesSection
   const isInView = useInView(sectionRef, { once: true, margin: '-80px' });
   const scrollRef = useRef<HTMLDivElement>(null);
 
-  const stories = useMemo(() => getOrderedEmployeeStories(), []);
+  // Fill in postUrl for every story so the render layer can rely on it.
+  const stories = useMemo(
+    () => rawStories.map((s) => ({ ...s, postUrl: s.postUrl ?? derivePostUrl(s.embedUrl) })),
+    [rawStories]
+  );
 
   const scroll = (dir: 'left' | 'right') => {
     if (!scrollRef.current) return;
@@ -127,7 +159,7 @@ export default function EmployeeStoriesSection({ theme }: EmployeeStoriesSection
           >
             {stories.map((story, index) => (
               <motion.div
-                key={story.id}
+                key={story._id}
                 className={[
                   'story-card shrink-0 snap-start perspective-[1000px]',
                   // 1 / 2 / 3 cards visible at sm / md / lg+ breakpoints

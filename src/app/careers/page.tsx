@@ -1,8 +1,9 @@
 import Script from 'next/script';
 import { client } from '@/sanity/client';
-import { postsByCategoryTitleQuery } from '@/sanity/queries';
+import { serverClient } from '@/sanity/serverClient';
+import { employeeStoriesQuery, postsByCategoryTitleQuery } from '@/sanity/queries';
 import { buildMetadata, webPageJsonLd } from '@/app/utils/seo';
-import CareersPageClient, { type HrCornerPost } from './CareersPageClient';
+import CareersPageClient, { type EmployeeStory, type HrCornerPost } from './CareersPageClient';
 
 export const metadata = buildMetadata({
   title: 'Careers | Digitally Next',
@@ -15,9 +16,10 @@ export const metadata = buildMetadata({
 export const revalidate = 60;
 
 export default async function CareersPage() {
-  const hrCornerPosts: HrCornerPost[] = await client.fetch(postsByCategoryTitleQuery, {
-    title: 'Career Talks - HR Corner',
-  });
+  const [hrCornerPosts, employeeStories] = await Promise.all([
+    client.fetch<HrCornerPost[]>(postsByCategoryTitleQuery, { title: 'Career Talks - HR Corner' }),
+    serverClient.fetch<EmployeeStory[]>(employeeStoriesQuery),
+  ]);
 
   return (
     <>
@@ -31,7 +33,7 @@ export default async function CareersPage() {
           })
         )}
       </Script>
-      <CareersPageClient hrCornerPosts={hrCornerPosts} />
+      <CareersPageClient hrCornerPosts={hrCornerPosts} employeeStories={employeeStories} />
     </>
   );
 }
