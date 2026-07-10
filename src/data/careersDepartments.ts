@@ -211,10 +211,7 @@ export const CAREERS_DEPARTMENT_GROUPS: CareersDepartmentGroup[] = [
                 'Strong analytical thinking and empathetic counselling approach',
                 'Freshers with clinical internships & experienced professionals are welcome',
               ],
-              currentOpenings: [
-                'Genetic Counsellor (1–2 Years Exp)',
-                'Senior Genetic Counsellor (4–5 Years Exp)',
-              ],
+              currentOpenings: ['Genetic Counsellor (1–2 Years Exp)', 'Senior Genetic Counsellor (4–5 Years Exp)'],
             },
           },
           {
