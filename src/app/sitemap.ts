@@ -54,16 +54,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }));
 
   // Career hierarchy:
-  //   /careers/<mode>                                            — mode landing
-  //   /careers/<mode>/<group>                                    — group page
-  //   /careers/<mode>/<group>/<department>                       — sub-department
-  //   /careers/<mode>/<group>/<department>/<role>                — role
+  //   /careers/<mode>                                            - mode landing
+  //   /careers/<mode>/<group>                                    - group page
+  //   /careers/<mode>/<group>/<department>                       - sub-department
+  //   /careers/<mode>/<group>/<department>/<role>                - role
   const careerPaths = new Set<string>();
   // Mode landings
   careerPaths.add(getCareerModeHref('full-time'));
   careerPaths.add(getCareerModeHref('internship'));
   // Group + department pages for both modes. Collapsed groups (1 sub-dept)
-  // don't get a separate department URL — the group URL is the dept URL.
+  // don't get a separate department URL - the group URL is the dept URL.
   for (const group of CAREERS_DEPARTMENT_GROUPS) {
     careerPaths.add(getCareerGroupHref(group, 'full-time'));
     if (!isCollapsedGroup(group)) {
@@ -97,7 +97,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     })
   );
 
-  // Blog posts from Sanity — the dynamic content the old static sitemap missed.
+  // Blog posts from Sanity - the dynamic content the old static sitemap missed.
   let blogEntries: MetadataRoute.Sitemap = [];
   try {
     const posts = await client.fetch<SanityPost[]>(allPostsQuery);

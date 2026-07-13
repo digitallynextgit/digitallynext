@@ -1,8 +1,8 @@
 /**
  * Generators for /llms.txt and /llms-full.txt (see https://llmstxt.org).
  *
- * llms.txt      — a concise, curated markdown index of the site for LLMs.
- * llms-full.txt — the same structure but with full article content inlined,
+ * llms.txt      - a concise, curated markdown index of the site for LLMs.
+ * llms-full.txt - the same structure but with full article content inlined,
  *                 so AI assistants can answer from Digitally Next's own words.
  *
  * Both pull live blog content from Sanity, so they stay current automatically.
@@ -50,10 +50,10 @@ const POSTS_FULL_QUERY = `*[_type == "post"] | order(publishedAt desc){
 
 /** Strip a trailing " | Digitally Next" suffix from meta titles for clean labels. */
 function cleanTitle(t: string): string {
-  return t.replace(/\s*[|\-–—]\s*Digitally\s*Next.*$/i, '').trim();
+  return t.replace(/\s*[|\-–-]\s*Digitally\s*Next.*$/i, '').trim();
 }
 
-/** ISO date (YYYY-MM-DD) — avoids locale variance. */
+/** ISO date (YYYY-MM-DD) - avoids locale variance. */
 function isoDate(d?: string): string {
   return d ? d.slice(0, 10) : '';
 }
@@ -184,7 +184,7 @@ export async function buildLlmsFullTxt(): Promise<string> {
     '',
     caseStudiesSection(),
     '',
-    '## Insights (Blog) — Full Articles',
+    '## Insights (Blog) - Full Articles',
     '',
     articles,
     '',

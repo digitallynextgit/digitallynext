@@ -28,7 +28,7 @@ export default defineConfig({
               context,
             }),
             S.divider(),
-            // Everything else — the auto-generated document lists for the other types.
+            // Everything else - the auto-generated document lists for the other types.
             ...S.documentTypeListItems().filter((item) => item.getId() !== 'employeeStory'),
           ]),
     }),

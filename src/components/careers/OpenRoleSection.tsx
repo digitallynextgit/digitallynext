@@ -68,7 +68,7 @@ export default function OpenRolesSection({ theme }: OpenRolesSectionProps) {
             </div>
           </div>
 
-          {/* Cards — now direct Links to the new mode landing pages */}
+          {/* Cards - now direct Links to the new mode landing pages */}
           <div className="grid grid-cols-1 md:grid-cols-2">
             {CARDS.map(({ title, desc, linkLabel, href }, index) => (
               <Link

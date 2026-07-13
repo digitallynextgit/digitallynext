@@ -61,7 +61,7 @@ export function generateStaticParams() {
       const groupSlug = getCareerGroupSlug(group);
       if (isCollapsedGroup(group)) {
         // For collapsed groups, the [departmentSlug] segment is actually a role
-        // slug — pre-render one entry per role in the single sub-dept.
+        // slug - pre-render one entry per role in the single sub-dept.
         const dept = getCollapsedSubDepartment(group);
         for (const role of dept.roles) {
           params.push({ mode, groupSlug, departmentSlug: getCareerRoleSlug(role) });

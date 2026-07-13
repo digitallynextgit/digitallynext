@@ -119,7 +119,7 @@ export default function CareersBrowsePageClient({
           </div>
         </div>
 
-        {/* Search bar — same component used inside the old modal, now on the page */}
+        {/* Search bar - same component used inside the old modal, now on the page */}
         <div className="w-full">
           <PositionSearchBar groups={searchGroups} mode={mode} onSelectPosition={(href) => router.push(href)} />
         </div>

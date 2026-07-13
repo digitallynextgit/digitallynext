@@ -14,7 +14,7 @@ export type EmployeeStory = {
   _id: string;
   title: string;
   embedUrl: string;
-  /** Optional override — if absent, derived from `embedUrl`. */
+  /** Optional override - if absent, derived from `embedUrl`. */
   postUrl?: string | null;
 };
 
@@ -211,7 +211,7 @@ export default function EmployeeStoriesSection({ stories: rawStories, theme }: E
                     loading="lazy"
                     title={story.title}
                   />
-                  {/* "View on LinkedIn" floating link — opens the actual post in a new tab.
+                  {/* "View on LinkedIn" floating link - opens the actual post in a new tab.
                       Positioned over the iframe in the top-right corner, intercepts clicks
                       only in its own small area so the rest of the iframe stays interactive.
                       Fades in on card hover to avoid covering the LinkedIn UI by default. */}

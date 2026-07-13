@@ -667,7 +667,7 @@ export function getCareerGroupSlug(group: CareersDepartmentGroup) {
   return slugifyCareerRole(group.code);
 }
 
-/** URL slug for a mode — used as the first segment after /careers. */
+/** URL slug for a mode - used as the first segment after /careers. */
 export function getCareerModeSlug(mode: CareersMode): string {
   return mode; // already in slug form: 'full-time' | 'internship'
 }
@@ -685,7 +685,7 @@ export function getGroupsForMode(mode: CareersMode): CareersDepartmentGroup[] {
 /**
  * "Collapsed" groups have only one sub-department, so the sub-department layer
  * adds no navigation value (it would just be one card pointing to itself).
- * For these — currently Internships, AMG (Key Account Managers), and HR —
+ * For these - currently Internships, AMG (Key Account Managers), and HR -
  * the URL skips the redundant department segment entirely:
  *
  *   non-collapsed:  /careers/full-time/smg/msg-marketing-services-group/<role>
@@ -906,11 +906,11 @@ export function getCareerRoleById(mode: CareersMode, roleId: string) {
 // ─── URL builders ──────────────────────────────────────────────────────────
 //
 // URL hierarchy:
-//   /careers                                                   — main careers landing
-//   /careers/<mode>                                            — list of groups for that mode
-//   /careers/<mode>/<group>                                    — list of sub-departments in that group
-//   /careers/<mode>/<group>/<department>                       — list of roles in that sub-department
-//   /careers/<mode>/<group>/<department>/<role>                — role detail
+//   /careers                                                   - main careers landing
+//   /careers/<mode>                                            - list of groups for that mode
+//   /careers/<mode>/<group>                                    - list of sub-departments in that group
+//   /careers/<mode>/<group>/<department>                       - list of roles in that sub-department
+//   /careers/<mode>/<group>/<department>/<role>                - role detail
 //
 // `<mode>` is 'full-time' or 'internship'; `<group>` is the group code slug
 // (e.g. 'smg', 'adac', 'amg', 'map', 'hr').
@@ -928,7 +928,7 @@ export function getCareerDepartmentHref(
   group: CareersDepartmentGroup,
   mode: CareersMode
 ): string {
-  // For collapsed groups, the dept page IS the group page — there's no
+  // For collapsed groups, the dept page IS the group page - there's no
   // separate department URL, so we return the group URL itself. This keeps
   // existing callers (e.g. role-page back link) pointing to a real URL.
   if (isCollapsedGroup(group)) {

@@ -4,7 +4,7 @@ import { defineField, defineType } from 'sanity';
  * LinkedIn embed post shown in the Employee Stories carousel on /careers.
  *
  * Manual order numbers were retired in favor of drag-to-reorder via the
- * `orderable-document-list` plugin — the plugin writes to `orderRank` behind
+ * `orderable-document-list` plugin - the plugin writes to `orderRank` behind
  * the scenes; you only ever drag rows in Studio.
  */
 export default defineType({
@@ -35,7 +35,7 @@ export default defineType({
             if (!value) return true;
             return /^https:\/\/www\.linkedin\.com\/embed\/feed\/update\/urn:li:(share|ugcPost):\d+/.test(value)
               ? true
-              : 'Must be a LinkedIn embed URL — /embed/feed/update/urn:li:share:… or …:ugcPost:…';
+              : 'Must be a LinkedIn embed URL - /embed/feed/update/urn:li:share:… or …:ugcPost:…';
           }),
     }),
     defineField({
@@ -53,7 +53,7 @@ export default defineType({
       description: 'Uncheck to hide this story from the site without deleting it.',
       initialValue: true,
     }),
-    // Managed by @sanity/orderable-document-list — drag rows in Studio to change order.
+    // Managed by @sanity/orderable-document-list - drag rows in Studio to change order.
     defineField({
       name: 'orderRank',
       type: 'string',

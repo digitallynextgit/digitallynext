@@ -14,7 +14,7 @@ const MODE_COPY: Record<CareersMode, { title: string; subtitle: string; metaTitl
     'full-time': {
       title: 'Full-Time Positions',
       subtitle:
-        'Pick a group to explore the departments inside it. Each group is built around a different part of how we deliver work — strategy, AI, accounts, production, or people.',
+        'Pick a group to explore the departments inside it. Each group is built around a different part of how we deliver work - strategy, AI, accounts, production, or people.',
       metaTitle: 'Full-Time Careers | Digitally Next',
       metaDescription:
         'Explore full-time openings at Digitally Next across strategy, AI, account management, marketing production, and HR. Pick a group to drill into its departments and roles.',

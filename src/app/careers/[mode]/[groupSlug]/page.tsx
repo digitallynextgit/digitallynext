@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!hit) return { title: 'Not Found | Digitally Next Careers' };
 
   return buildMetadata({
-    title: `${hit.group.code} — ${hit.group.title} | Digitally Next Careers`,
+    title: `${hit.group.code} - ${hit.group.title} | Digitally Next Careers`,
     description: `Departments inside ${hit.group.code} (${hit.group.title}) at Digitally Next. Pick a department to explore the open roles inside it.`,
     path: `/careers/${modeSlug}/${groupSlug}`,
   });
@@ -51,7 +51,7 @@ export default async function CareersGroupPage({ params }: Props) {
   const path = `/careers/${modeSlug}/${groupSlug}`;
   const modeLabel = mode === 'internship' ? 'Internships' : 'Full-Time Positions';
 
-  // ── Collapsed group (1 sub-dept) — render the dept's role list directly ──
+  // ── Collapsed group (1 sub-dept) - render the dept's role list directly ──
   // No separate "pick a department" card view; the URL collapses too.
   if (isCollapsedGroup(group)) {
     const dept = getCollapsedSubDepartment(group);
@@ -64,7 +64,7 @@ export default async function CareersGroupPage({ params }: Props) {
         <Script id={`ld-careers-${modeSlug}-${groupSlug}`} type="application/ld+json" strategy="afterInteractive">
           {JSON.stringify(
             webPageJsonLd({
-              title: `${group.code} — ${group.title} | Digitally Next Careers`,
+              title: `${group.code} - ${group.title} | Digitally Next Careers`,
               description: `Open roles in ${group.title} at Digitally Next.`,
               path,
             })
@@ -75,14 +75,14 @@ export default async function CareersGroupPage({ params }: Props) {
     );
   }
 
-  // ── Multi-dept group — show sub-department cards ────────────────────────
+  // ── Multi-dept group - show sub-department cards ────────────────────────
   const allGroupsForMode = getGroupsForMode(mode);
   return (
     <>
       <Script id={`ld-careers-${modeSlug}-${groupSlug}`} type="application/ld+json" strategy="afterInteractive">
         {JSON.stringify(
           webPageJsonLd({
-            title: `${group.code} — ${group.title} | Digitally Next Careers`,
+            title: `${group.code} - ${group.title} | Digitally Next Careers`,
             description: `Departments inside ${group.code} (${group.title}) at Digitally Next.`,
             path,
           })
@@ -94,7 +94,7 @@ export default async function CareersGroupPage({ params }: Props) {
         breadcrumbs={[
           { label: 'Careers', href: '/careers' },
           { label: modeLabel, href: `/careers/${modeSlug}` },
-          { label: `${group.code} — ${group.title}` },
+          { label: `${group.code} - ${group.title}` },
         ]}
         backLink={{ href: `/careers/${modeSlug}`, label: `Back to ${modeLabel}` }}
         searchGroups={allGroupsForMode}
