@@ -1,8 +1,10 @@
 import { groq } from 'next-sanity';
 
-// All posts for blog listing page
+// All posts for blog listing page (hidden posts filtered out).
+// `visible != false` treats posts without the field as visible — no migration
+// needed for existing docs.
 export const allPostsQuery = groq`
-  *[_type == "post"] | order(publishedAt desc) {
+  *[_type == "post" && visible != false] | order(publishedAt desc) {
     _id,
     title,
     slug,
@@ -16,9 +18,9 @@ export const allPostsQuery = groq`
   }
 `;
 
-// Single post by slug
+// Single post by slug (returns null if the post is hidden — page shows 404).
 export const postBySlugQuery = groq`
-  *[_type == "post" && slug.current == $slug][0] {
+  *[_type == "post" && slug.current == $slug && visible != false][0] {
     _id,
     title,
     slug,
@@ -36,9 +38,9 @@ export const postBySlugQuery = groq`
   }
 `;
 
-// Latest 3 posts for homepage Insights section
+// Latest 3 posts for homepage Insights section (hidden posts filtered out).
 export const latestPostsQuery = groq`
-  *[_type == "post"] | order(publishedAt desc)[0...3] {
+  *[_type == "post" && visible != false] | order(publishedAt desc)[0...3] {
     _id,
     title,
     slug,
@@ -56,9 +58,9 @@ export const allCategoriesQuery = groq`
   }
 `;
 
-// Posts by category
+// Posts by category (hidden posts filtered out).
 export const postsByCategoryQuery = groq`
-  *[_type == "post" && $categoryId in categories[]._ref] | order(publishedAt desc) {
+  *[_type == "post" && visible != false && $categoryId in categories[]._ref] | order(publishedAt desc) {
     _id,
     title,
     slug,
@@ -82,9 +84,9 @@ export const employeeStoriesQuery = groq`
 `;
 
 // All posts that carry a specific category title (e.g. "Career Talks - HR Corner"), newest first.
-// Used by the careers page "People Playbook" section.
+// Used by the careers page "People Playbook" section. Hidden posts filtered out.
 export const postsByCategoryTitleQuery = groq`
-  *[_type == "post" && $title in categories[]->title] | order(publishedAt desc) {
+  *[_type == "post" && visible != false && $title in categories[]->title] | order(publishedAt desc) {
     _id,
     title,
     slug,

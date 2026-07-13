@@ -36,12 +36,12 @@ type PostFull = PostLite & {
 };
 
 // GROQ as plain strings (client.fetch accepts a string query).
-const POSTS_LITE_QUERY = `*[_type == "post"] | order(publishedAt desc){
+const POSTS_LITE_QUERY = `*[_type == "post" && visible != false] | order(publishedAt desc){
   title, "slug": slug.current, excerpt, publishedAt,
   "categories": categories[]->title
 }`;
 
-const POSTS_FULL_QUERY = `*[_type == "post"] | order(publishedAt desc){
+const POSTS_FULL_QUERY = `*[_type == "post" && visible != false] | order(publishedAt desc){
   title, "slug": slug.current, excerpt, publishedAt, faqsJson,
   "categories": categories[]->title,
   "author": author->name,

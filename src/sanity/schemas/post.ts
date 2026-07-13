@@ -81,6 +81,15 @@ export default defineType({
       description: 'Pin this post to the top of the listing.',
     }),
     defineField({
+      name: 'visible',
+      title: 'Visible on website',
+      type: 'boolean',
+      group: 'content',
+      initialValue: true,
+      description:
+        'Uncheck to hide this post from the site (blog listing, homepage insights, sitemap, category pages, direct URL) without deleting it.',
+    }),
+    defineField({
       name: 'readTime',
       title: 'Estimated Read Time (minutes)',
       type: 'number',
@@ -116,10 +125,14 @@ export default defineType({
       title: 'title',
       author: 'author.name',
       media: 'mainImage',
+      visible: 'visible',
     },
     prepare(selection) {
-      const { author } = selection;
-      return { ...selection, subtitle: author && `by ${author}` };
+      const { author, visible } = selection;
+      const authorLine = author ? `by ${author}` : '';
+      const hiddenTag = visible === false ? '(hidden)' : '';
+      const subtitle = [hiddenTag, authorLine].filter(Boolean).join(' ');
+      return { ...selection, subtitle: subtitle || undefined };
     },
   },
 });
