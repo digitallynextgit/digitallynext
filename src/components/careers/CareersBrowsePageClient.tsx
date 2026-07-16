@@ -34,8 +34,10 @@ interface CareersBrowsePageClientProps {
   searchGroups: CareersDepartmentGroup[];
   /** Mode (drives URL building for search results). */
   mode: CareersMode;
-  /** Cards rendered in the grid. */
+  /** Cards rendered in the grid. May be empty - see `emptyMessage`. */
   cards: CardConfig[];
+  /** Shown instead of the grid when `cards` is empty. */
+  emptyMessage?: string;
 }
 
 function toneClasses(tone: CareersTone) {
@@ -63,8 +65,10 @@ export default function CareersBrowsePageClient({
   searchGroups,
   mode,
   cards,
+  emptyMessage = 'No open roles right now.',
 }: CareersBrowsePageClientProps) {
   const router = useRouter();
+  const isEmpty = cards.length === 0;
 
   return (
     <main className="bg-[#FAFAFA]">
@@ -119,10 +123,26 @@ export default function CareersBrowsePageClient({
           </div>
         </div>
 
-        {/* Search bar - same component used inside the old modal, now on the page */}
-        <div className="w-full">
-          <PositionSearchBar groups={searchGroups} mode={mode} onSelectPosition={(href) => router.push(href)} />
-        </div>
+        {/* Search bar - hidden when there is nothing to search. */}
+        {searchGroups.length > 0 && (
+          <div className="w-full">
+            <PositionSearchBar groups={searchGroups} mode={mode} onSelectPosition={(href) => router.push(href)} />
+          </div>
+        )}
+
+        {/* Empty state - the HRMS publishes nothing for this branch right now. */}
+        {isEmpty && (
+          <div className="rounded border border-dashed border-[#D8D8D8] bg-white px-7 py-16 text-center">
+            <p className="text-lg font-semibold text-black/70">{emptyMessage}</p>
+            <p className="mt-2 text-sm text-black/50">
+              Check back soon, or write to us at{' '}
+              <a href="mailto:careers@digitallynext.com" className="font-semibold text-[#E21F26] hover:underline">
+                careers@digitallynext.com
+              </a>
+              .
+            </p>
+          </div>
+        )}
 
         {/* Card grid */}
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">

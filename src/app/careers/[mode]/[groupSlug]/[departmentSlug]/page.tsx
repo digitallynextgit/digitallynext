@@ -4,17 +4,24 @@ import { notFound } from 'next/navigation';
 import CareerDepartmentPageClient from '@/components/careers/CareerDepartmentPageClient';
 import CareerRolePageClient from '@/components/careers/CareerRolePageClient';
 import {
-  CAREERS_DEPARTMENT_GROUPS,
-  CAREERS_INTERNSHIP_GROUPS,
-  getCareerDepartmentBySlugs,
+  buildCareerRoleEntries,
+  CAREERS_MODES,
+  findCareerDepartmentBySlug,
+  findCareerGroupBySlug,
+  findCareerRoleBySlug,
   getCareerDepartmentSlug,
-  getCareerGroupBySlugs,
   getCareerGroupSlug,
-  getCareerRoleEntries,
   getCareerRoleSlug,
   getCollapsedSubDepartment,
   isCollapsedGroup,
+  parseCareerModeSlug,
 } from '@/data/careersDepartments';
+import {
+  fetchCareersOrFallback,
+  getCareerDepartmentBySlugs,
+  getCareerGroupBySlugs,
+  loadCareers,
+} from '@/data/careers.server';
 import { buildMetadata, webPageJsonLd } from '@/app/utils/seo';
 
 interface Props {
@@ -31,12 +38,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { mode: modeSlug, groupSlug, departmentSlug } = await params;
   const path = `/careers/${modeSlug}/${groupSlug}/${departmentSlug}`;
 
-  const groupHit = getCareerGroupBySlugs(modeSlug, groupSlug);
+  const groupHit = await getCareerGroupBySlugs(modeSlug, groupSlug);
   if (!groupHit) return { title: 'Not Found | Digitally Next Careers' };
 
-  if (isCollapsedGroup(groupHit.group)) {
-    const dept = getCollapsedSubDepartment(groupHit.group);
-    const role = dept.roles.find((r) => getCareerRoleSlug(r) === departmentSlug);
+  const collapsedDept = isCollapsedGroup(groupHit.group) ? getCollapsedSubDepartment(groupHit.group) : null;
+  if (collapsedDept) {
+    const role = findCareerRoleBySlug(collapsedDept, departmentSlug);
     if (!role) return { title: 'Role Not Found | Digitally Next Careers' };
     return buildMetadata({
       title: `${role.title} | Digitally Next Careers`,
@@ -45,7 +52,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     });
   }
 
-  const deptHit = getCareerDepartmentBySlugs(modeSlug, groupSlug, departmentSlug);
+  const deptHit = await getCareerDepartmentBySlugs(modeSlug, groupSlug, departmentSlug);
   if (!deptHit) return { title: 'Department Not Found | Digitally Next Careers' };
   return buildMetadata({
     title: `${deptHit.department.title} | Digitally Next Careers`,
@@ -54,16 +61,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   });
 }
 
-export function generateStaticParams() {
+export async function generateStaticParams() {
   const params: { mode: string; groupSlug: string; departmentSlug: string }[] = [];
-  const pushAll = (groups: typeof CAREERS_DEPARTMENT_GROUPS, mode: 'full-time' | 'internship') => {
-    for (const group of groups) {
+  for (const mode of CAREERS_MODES) {
+    for (const group of await fetchCareersOrFallback(mode)) {
       const groupSlug = getCareerGroupSlug(group);
-      if (isCollapsedGroup(group)) {
+      const collapsedDept = isCollapsedGroup(group) ? getCollapsedSubDepartment(group) : null;
+      if (collapsedDept) {
         // For collapsed groups, the [departmentSlug] segment is actually a role
         // slug - pre-render one entry per role in the single sub-dept.
-        const dept = getCollapsedSubDepartment(group);
-        for (const role of dept.roles) {
+        for (const role of collapsedDept.roles) {
           params.push({ mode, groupSlug, departmentSlug: getCareerRoleSlug(role) });
         }
       } else {
@@ -73,9 +80,7 @@ export function generateStaticParams() {
         }
       }
     }
-  };
-  pushAll(CAREERS_DEPARTMENT_GROUPS, 'full-time');
-  pushAll(CAREERS_INTERNSHIP_GROUPS, 'internship');
+  }
   return params;
 }
 
@@ -83,22 +88,26 @@ export default async function CareerDepartmentOrRolePage({ params }: Props) {
   const { mode: modeSlug, groupSlug, departmentSlug } = await params;
   const path = `/careers/${modeSlug}/${groupSlug}/${departmentSlug}`;
 
-  const groupHit = getCareerGroupBySlugs(modeSlug, groupSlug);
-  if (!groupHit) notFound();
+  const mode = parseCareerModeSlug(modeSlug);
+  if (!mode) notFound();
+
+  const { groups } = await loadCareers(mode);
+  const group = findCareerGroupBySlug(groups, groupSlug);
+  if (!group) notFound();
 
   // ── Collapsed group: this slug is a role slug → render role detail ──────
-  if (isCollapsedGroup(groupHit.group)) {
-    const dept = getCollapsedSubDepartment(groupHit.group);
-    const role = dept.roles.find((r) => getCareerRoleSlug(r) === departmentSlug);
+  const collapsedDept = isCollapsedGroup(group) ? getCollapsedSubDepartment(group) : null;
+  if (collapsedDept) {
+    const role = findCareerRoleBySlug(collapsedDept, departmentSlug);
     if (!role) notFound();
 
     const entry = {
-      group: groupHit.group,
-      department: dept,
+      group,
+      department: collapsedDept,
       role,
-      mode: groupHit.mode,
+      mode,
       groupSlug,
-      departmentSlug: getCareerDepartmentSlug(dept),
+      departmentSlug: getCareerDepartmentSlug(collapsedDept),
       roleSlug: getCareerRoleSlug(role),
     };
 
@@ -123,30 +132,23 @@ export default async function CareerDepartmentOrRolePage({ params }: Props) {
   }
 
   // ── Multi-dept group: this slug is a department slug → render dept page ─
-  const deptHit = getCareerDepartmentBySlugs(modeSlug, groupSlug, departmentSlug);
-  if (!deptHit) notFound();
+  const department = findCareerDepartmentBySlug(group, departmentSlug);
+  if (!department) notFound();
 
-  const roleEntries = getCareerRoleEntries().filter(
-    (entry) => entry.mode === deptHit.mode && entry.groupSlug === groupSlug && entry.departmentSlug === departmentSlug
-  );
+  const roleEntries = buildCareerRoleEntries([group], mode).filter((entry) => entry.departmentSlug === departmentSlug);
 
   return (
     <>
       <Script id={`ld-dept-${groupSlug}-${departmentSlug}`} type="application/ld+json" strategy="afterInteractive">
         {JSON.stringify(
           webPageJsonLd({
-            title: `${deptHit.department.title} | Digitally Next Careers`,
-            description: `Explore roles in ${deptHit.department.title} at Digitally Next.`,
+            title: `${department.title} | Digitally Next Careers`,
+            description: `Explore roles in ${department.title} at Digitally Next.`,
             path,
           })
         )}
       </Script>
-      <CareerDepartmentPageClient
-        department={deptHit.department}
-        mode={deptHit.mode}
-        group={deptHit.group}
-        roleEntries={roleEntries}
-      />
+      <CareerDepartmentPageClient department={department} mode={mode} group={group} roleEntries={roleEntries} />
     </>
   );
 }

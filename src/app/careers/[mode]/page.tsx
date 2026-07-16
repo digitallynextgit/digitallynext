@@ -2,7 +2,8 @@ import type { Metadata } from 'next';
 import Script from 'next/script';
 import { notFound } from 'next/navigation';
 import CareersBrowsePageClient from '@/components/careers/CareersBrowsePageClient';
-import { getGroupsForMode, parseCareerModeSlug, type CareersMode } from '@/data/careersDepartments';
+import { parseCareerModeSlug, type CareersMode } from '@/data/careersDepartments';
+import { loadCareers } from '@/data/careers.server';
 import { buildMetadata, webPageJsonLd } from '@/app/utils/seo';
 
 interface Props {
@@ -49,7 +50,9 @@ export default async function CareersModePage({ params }: Props) {
   const mode = parseCareerModeSlug(modeSlug);
   if (!mode) notFound();
 
-  const groups = getGroupsForMode(mode);
+  // Falls back to the committed snapshot if the HRMS is unreachable, so the
+  // page always has roles to show.
+  const { groups } = await loadCareers(mode);
   const copy = MODE_COPY[mode];
 
   return (
@@ -71,6 +74,7 @@ export default async function CareersModePage({ params }: Props) {
         searchGroups={groups}
         mode={mode}
         cards={groups.map((group) => ({ kind: 'group', group, mode }))}
+        emptyMessage="No open roles right now."
       />
     </>
   );

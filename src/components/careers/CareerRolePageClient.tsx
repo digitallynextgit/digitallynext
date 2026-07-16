@@ -30,10 +30,12 @@ function makeEmptyForm(): FormFields {
   };
 }
 
+/** `new URL()` alone accepts javascript:/data:, which the server and DNMS both
+ *  reject - so check the scheme here too and fail at the field, not at submit. */
 function isValidUrl(value: string) {
   try {
-    new URL(value);
-    return true;
+    const url = new URL(value);
+    return url.protocol === 'http:' || url.protocol === 'https:';
   } catch {
     return false;
   }
@@ -48,12 +50,23 @@ function validateForm(form: FormFields): FormErrors {
     errors.email = 'Enter a valid email address.';
   }
   if (!form.phone.trim()) errors.phone = 'Phone number is required.';
-  if (!form.linkedIn.trim()) errors.linkedIn = 'LinkedIn profile URL is required.';
-  if (!form.portfolio.trim()) errors.portfolio = 'Portfolio / work link is required.';
+
+  // All three links must be full http(s) URLs - the server and DNMS both reject
+  // anything else, so catch it at the field rather than as a generic submit error.
+  if (!form.linkedIn.trim()) {
+    errors.linkedIn = 'LinkedIn profile URL is required.';
+  } else if (!isValidUrl(form.linkedIn.trim())) {
+    errors.linkedIn = 'Enter a full URL, including https://';
+  }
+  if (!form.portfolio.trim()) {
+    errors.portfolio = 'Portfolio / work link is required.';
+  } else if (!isValidUrl(form.portfolio.trim())) {
+    errors.portfolio = 'Enter a full URL, including https://';
+  }
   if (!form.resumeUrl.trim()) {
     errors.resumeUrl = 'Resume URL is required.';
   } else if (!isValidUrl(form.resumeUrl.trim())) {
-    errors.resumeUrl = 'Enter a valid resume URL.';
+    errors.resumeUrl = 'Enter a full URL, including https://';
   }
   return errors;
 }
@@ -129,9 +142,17 @@ export default function CareerRolePageClient({ entry }: { entry: CareerRoleEntry
       data.append('portfolio', form.portfolio.trim());
       data.append('resumeUrl', form.resumeUrl.trim());
       data.append('message', form.message.trim());
-      data.append('track', mode === 'internship' ? 'Internship' : 'Full-time');
+      // Role identity. The ids are the slugs DNMS itself publishes, so it can
+      // link the application to the real role record instead of matching on
+      // titles; the titles ride along as what the candidate actually saw.
+      data.append('mode', mode);
+      data.append('groupId', group.id);
+      data.append('departmentId', department.id);
+      data.append('roleId', role.id);
+      data.append('groupCode', group.code);
       data.append('department', department.title);
       data.append('role', role.title);
+      data.append('sourceUrl', window.location.href);
 
       const res = await fetch('/api/careers', { method: 'POST', body: data });
       const json = (await res.json().catch(() => ({}))) as { error?: string };

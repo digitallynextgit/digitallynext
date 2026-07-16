@@ -4,15 +4,15 @@ import { notFound } from 'next/navigation';
 import CareerDepartmentPageClient from '@/components/careers/CareerDepartmentPageClient';
 import CareersBrowsePageClient from '@/components/careers/CareersBrowsePageClient';
 import {
-  CAREERS_DEPARTMENT_GROUPS,
-  CAREERS_INTERNSHIP_GROUPS,
-  getCareerGroupBySlugs,
+  buildCareerRoleEntries,
+  CAREERS_MODES,
+  findCareerGroupBySlug,
   getCareerGroupSlug,
-  getCareerRoleEntries,
   getCollapsedSubDepartment,
-  getGroupsForMode,
   isCollapsedGroup,
+  parseCareerModeSlug,
 } from '@/data/careersDepartments';
+import { fetchCareersOrFallback, getCareerGroupBySlugs, loadCareers } from '@/data/careers.server';
 import { buildMetadata, webPageJsonLd } from '@/app/utils/seo';
 
 interface Props {
@@ -21,7 +21,7 @@ interface Props {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { mode: modeSlug, groupSlug } = await params;
-  const hit = getCareerGroupBySlugs(modeSlug, groupSlug);
+  const hit = await getCareerGroupBySlugs(modeSlug, groupSlug);
   if (!hit) return { title: 'Not Found | Digitally Next Careers' };
 
   return buildMetadata({
@@ -31,33 +31,37 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   });
 }
 
-export function generateStaticParams() {
+export async function generateStaticParams() {
+  // Never fail the build over a careers outage - unlisted params still render
+  // on demand.
   const params: { mode: string; groupSlug: string }[] = [];
-  for (const group of CAREERS_DEPARTMENT_GROUPS) {
-    params.push({ mode: 'full-time', groupSlug: getCareerGroupSlug(group) });
-  }
-  for (const group of CAREERS_INTERNSHIP_GROUPS) {
-    params.push({ mode: 'internship', groupSlug: getCareerGroupSlug(group) });
+  for (const mode of CAREERS_MODES) {
+    for (const group of await fetchCareersOrFallback(mode)) {
+      params.push({ mode, groupSlug: getCareerGroupSlug(group) });
+    }
   }
   return params;
 }
 
 export default async function CareersGroupPage({ params }: Props) {
   const { mode: modeSlug, groupSlug } = await params;
-  const hit = getCareerGroupBySlugs(modeSlug, groupSlug);
-  if (!hit) notFound();
+  const mode = parseCareerModeSlug(modeSlug);
+  if (!mode) notFound();
 
-  const { group, mode } = hit;
+  // Falls back to the snapshot on an outage, so a 404 here means the group is
+  // genuinely gone rather than temporarily unreachable.
+  const { groups } = await loadCareers(mode);
+  const group = findCareerGroupBySlug(groups, groupSlug);
+  if (!group) notFound();
+
   const path = `/careers/${modeSlug}/${groupSlug}`;
   const modeLabel = mode === 'internship' ? 'Internships' : 'Full-Time Positions';
 
   // ── Collapsed group (1 sub-dept) - render the dept's role list directly ──
   // No separate "pick a department" card view; the URL collapses too.
-  if (isCollapsedGroup(group)) {
-    const dept = getCollapsedSubDepartment(group);
-    const roleEntries = getCareerRoleEntries().filter(
-      (e) => e.mode === mode && e.group.id === group.id && e.department.id === dept.id
-    );
+  const collapsedDept = isCollapsedGroup(group) ? getCollapsedSubDepartment(group) : null;
+  if (collapsedDept) {
+    const roleEntries = buildCareerRoleEntries([group], mode).filter((e) => e.department.id === collapsedDept.id);
 
     return (
       <>
@@ -70,13 +74,15 @@ export default async function CareersGroupPage({ params }: Props) {
             })
           )}
         </Script>
-        <CareerDepartmentPageClient department={dept} mode={mode} group={group} roleEntries={roleEntries} />
+        <CareerDepartmentPageClient department={collapsedDept} mode={mode} group={group} roleEntries={roleEntries} />
       </>
     );
   }
 
   // ── Multi-dept group - show sub-department cards ────────────────────────
-  const allGroupsForMode = getGroupsForMode(mode);
+  // (A group with zero published sub-departments also lands here and renders
+  // the empty state.)
+  const allGroupsForMode = groups;
   return (
     <>
       <Script id={`ld-careers-${modeSlug}-${groupSlug}`} type="application/ld+json" strategy="afterInteractive">
@@ -105,6 +111,7 @@ export default async function CareersGroupPage({ params }: Props) {
           group,
           mode,
         }))}
+        emptyMessage={`No open roles in ${group.code} right now.`}
       />
     </>
   );
