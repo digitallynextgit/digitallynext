@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import Script from 'next/script';
+import JsonLd from '@/components/seo/JsonLd';
 import { notFound } from 'next/navigation';
 import CareerRolePageClient from '@/components/careers/CareerRolePageClient';
 import {
@@ -73,19 +73,14 @@ export default async function CareerRolePage({ params }: Props) {
 
   return (
     <>
-      <Script
+      <JsonLd
         id={`ld-role-${groupSlug}-${departmentSlug}-${roleSlug}`}
-        type="application/ld+json"
-        strategy="afterInteractive"
-      >
-        {JSON.stringify(
-          webPageJsonLd({
-            title: `${role.title} | Digitally Next Careers`,
-            description: role.description?.intro ?? `Apply for ${role.title} at Digitally Next.`,
-            path,
-          })
-        )}
-      </Script>
+        data={webPageJsonLd({
+          title: `${role.title} | Digitally Next Careers`,
+          description: role.description?.intro ?? `Apply for ${role.title} at Digitally Next.`,
+          path,
+        })}
+      />
       <CareerRolePageClient entry={entry} />
     </>
   );

@@ -1,4 +1,4 @@
-import Script from 'next/script';
+import JsonLd from '@/components/seo/JsonLd';
 import DesignPortfolioClient from './DesignPortfolioClient';
 import { buildMetadata, webPageJsonLd } from '@/app/utils/seo';
 
@@ -12,15 +12,14 @@ export const metadata = buildMetadata({
 export default function DesignPortfolioPage() {
   return (
     <>
-      <Script id="ld-design-portfolio" type="application/ld+json" strategy="afterInteractive">
-        {JSON.stringify(
-          webPageJsonLd({
-            title: 'Design Portfolio | Digitally Next',
-            description: 'WordPress, Shopify, and Next.js web design and development projects delivered globally.',
-            path: '/design-portfolio',
-          })
-        )}
-      </Script>
+      <JsonLd
+        id="ld-design-portfolio"
+        data={webPageJsonLd({
+          title: 'Design Portfolio | Digitally Next',
+          description: 'WordPress, Shopify, and Next.js web design and development projects delivered globally.',
+          path: '/design-portfolio',
+        })}
+      />
       <DesignPortfolioClient />
     </>
   );

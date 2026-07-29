@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import Script from 'next/script';
+import JsonLd from '@/components/seo/JsonLd';
 import { notFound } from 'next/navigation';
 import CaseStudyDetailPage from '@/components/case-studies/CaseStudyDetailPage';
 import { getCaseStudyBySlug } from '@/data/casestudy';
@@ -34,15 +34,14 @@ export default async function CaseStudyPage({ params }: Props) {
 
   return (
     <>
-      <Script id={`ld-case-study-${slug}`} type="application/ld+json" strategy="afterInteractive">
-        {JSON.stringify(
-          caseStudyJsonLd({
-            title: cs.metaTitle,
-            description: cs.metaDescription,
-            path: `/case-studies/${slug}`,
-          })
-        )}
-      </Script>
+      <JsonLd
+        id={`ld-case-study-${slug}`}
+        data={caseStudyJsonLd({
+          title: cs.metaTitle,
+          description: cs.metaDescription,
+          path: `/case-studies/${slug}`,
+        })}
+      />
       <CaseStudyDetailPage caseStudy={cs} />
     </>
   );

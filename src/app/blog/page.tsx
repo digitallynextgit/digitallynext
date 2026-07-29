@@ -1,4 +1,4 @@
-import Script from 'next/script';
+import JsonLd from '@/components/seo/JsonLd';
 import { client } from '@/sanity/client';
 import { allPostsQuery, allCategoriesQuery } from '@/sanity/queries';
 import { buildMetadata, webPageJsonLd } from '@/app/utils/seo';
@@ -38,16 +38,15 @@ export default async function BlogPage() {
 
   return (
     <>
-      <Script id="ld-blog" type="application/ld+json" strategy="afterInteractive">
-        {JSON.stringify(
-          webPageJsonLd({
-            title: 'Blog | Digitally Next',
-            description:
-              'Insights, strategies, and thought leadership from Digitally Next - your growth-driven global digital marketing partner.',
-            path: '/blog',
-          })
-        )}
-      </Script>
+      <JsonLd
+        id="ld-blog"
+        data={webPageJsonLd({
+          title: 'Blog | Digitally Next',
+          description:
+            'Insights, strategies, and thought leadership from Digitally Next - your growth-driven global digital marketing partner.',
+          path: '/blog',
+        })}
+      />
       <BlogPageClient posts={posts} categories={categories} />
     </>
   );

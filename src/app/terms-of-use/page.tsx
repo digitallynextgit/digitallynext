@@ -1,4 +1,4 @@
-import Script from 'next/script';
+import JsonLd from '@/components/seo/JsonLd';
 import { buildMetadata, webPageJsonLd } from '@/app/utils/seo';
 import TermsOfUseClient from './TermsOfUseClient';
 
@@ -11,15 +11,14 @@ export const metadata = buildMetadata({
 export default function TermsOfUsePage() {
   return (
     <>
-      <Script id="ld-terms" type="application/ld+json" strategy="afterInteractive">
-        {JSON.stringify(
-          webPageJsonLd({
-            title: 'Terms of Use | Digitally Next',
-            description: 'Terms governing access to the Digitally Next website and services.',
-            path: '/terms-of-use',
-          })
-        )}
-      </Script>
+      <JsonLd
+        id="ld-terms"
+        data={webPageJsonLd({
+          title: 'Terms of Use | Digitally Next',
+          description: 'Terms governing access to the Digitally Next website and services.',
+          path: '/terms-of-use',
+        })}
+      />
       <TermsOfUseClient />
     </>
   );

@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import Script from 'next/script';
+import JsonLd from '@/components/seo/JsonLd';
 import { notFound } from 'next/navigation';
 import CareersBrowsePageClient from '@/components/careers/CareersBrowsePageClient';
 import { parseCareerModeSlug, type CareersMode } from '@/data/careersDepartments';
@@ -57,15 +57,14 @@ export default async function CareersModePage({ params }: Props) {
 
   return (
     <>
-      <Script id={`ld-careers-${modeSlug}`} type="application/ld+json" strategy="afterInteractive">
-        {JSON.stringify(
-          webPageJsonLd({
-            title: copy.metaTitle,
-            description: copy.metaDescription,
-            path: `/careers/${modeSlug}`,
-          })
-        )}
-      </Script>
+      <JsonLd
+        id={`ld-careers-${modeSlug}`}
+        data={webPageJsonLd({
+          title: copy.metaTitle,
+          description: copy.metaDescription,
+          path: `/careers/${modeSlug}`,
+        })}
+      />
       <CareersBrowsePageClient
         title={copy.title}
         subtitle={copy.subtitle}

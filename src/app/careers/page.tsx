@@ -1,4 +1,4 @@
-import Script from 'next/script';
+import JsonLd from '@/components/seo/JsonLd';
 import { client } from '@/sanity/client';
 import { serverClient } from '@/sanity/serverClient';
 import { employeeStoriesQuery, postsByCategoryTitleQuery } from '@/sanity/queries';
@@ -23,16 +23,15 @@ export default async function CareersPage() {
 
   return (
     <>
-      <Script id="ld-careers" type="application/ld+json" strategy="afterInteractive">
-        {JSON.stringify(
-          webPageJsonLd({
-            title: 'Careers | Digitally Next',
-            description:
-              'Join Digitally Next - explore open roles across strategy, performance, content, design, and engineering.',
-            path: '/careers',
-          })
-        )}
-      </Script>
+      <JsonLd
+        id="ld-careers"
+        data={webPageJsonLd({
+          title: 'Careers | Digitally Next',
+          description:
+            'Join Digitally Next - explore open roles across strategy, performance, content, design, and engineering.',
+          path: '/careers',
+        })}
+      />
       <CareersPageClient hrCornerPosts={hrCornerPosts} employeeStories={employeeStories} />
     </>
   );

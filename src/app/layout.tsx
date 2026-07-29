@@ -5,6 +5,7 @@ import ClientWrapper from '@/components/layout/ClientWrapper';
 import Footer from '@/components/layout/Footer';
 import { ThemeSection } from '@/components/ui/ThemeSection.tsx';
 import { ScrollToHash } from '@/components/layout/ScrollToHash';
+import JsonLd from '@/components/seo/JsonLd';
 import { organizationJsonLd, siteConfig } from '@/app/utils/seo';
 
 export const metadata: Metadata = {
@@ -92,10 +93,8 @@ export default function RootLayout({
             __html: `(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","wjq6d51bbm");`,
           }}
         />
-        {/* Organization JSON-LD */}
-        <Script id="ld-organization" type="application/ld+json" strategy="afterInteractive">
-          {JSON.stringify(organizationJsonLd())}
-        </Script>
+        {/* Organization JSON-LD - server-rendered so crawlers see it in the HTML */}
+        <JsonLd id="ld-organization" data={organizationJsonLd()} />
         <ScrollToHash delay={100} />
         <ClientWrapper>{children}</ClientWrapper>
         <ThemeSection theme="dark">

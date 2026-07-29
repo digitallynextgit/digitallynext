@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import Script from 'next/script';
+import JsonLd from '@/components/seo/JsonLd';
 import { notFound } from 'next/navigation';
 import CareerDepartmentPageClient from '@/components/careers/CareerDepartmentPageClient';
 import CareersBrowsePageClient from '@/components/careers/CareersBrowsePageClient';
@@ -65,15 +65,14 @@ export default async function CareersGroupPage({ params }: Props) {
 
     return (
       <>
-        <Script id={`ld-careers-${modeSlug}-${groupSlug}`} type="application/ld+json" strategy="afterInteractive">
-          {JSON.stringify(
-            webPageJsonLd({
-              title: `${group.code} - ${group.title} | Digitally Next Careers`,
-              description: `Open roles in ${group.title} at Digitally Next.`,
-              path,
-            })
-          )}
-        </Script>
+        <JsonLd
+          id={`ld-careers-${modeSlug}-${groupSlug}`}
+          data={webPageJsonLd({
+            title: `${group.code} - ${group.title} | Digitally Next Careers`,
+            description: `Open roles in ${group.title} at Digitally Next.`,
+            path,
+          })}
+        />
         <CareerDepartmentPageClient department={collapsedDept} mode={mode} group={group} roleEntries={roleEntries} />
       </>
     );
@@ -85,15 +84,14 @@ export default async function CareersGroupPage({ params }: Props) {
   const allGroupsForMode = groups;
   return (
     <>
-      <Script id={`ld-careers-${modeSlug}-${groupSlug}`} type="application/ld+json" strategy="afterInteractive">
-        {JSON.stringify(
-          webPageJsonLd({
-            title: `${group.code} - ${group.title} | Digitally Next Careers`,
-            description: `Departments inside ${group.code} (${group.title}) at Digitally Next.`,
-            path,
-          })
-        )}
-      </Script>
+      <JsonLd
+        id={`ld-careers-${modeSlug}-${groupSlug}`}
+        data={webPageJsonLd({
+          title: `${group.code} - ${group.title} | Digitally Next Careers`,
+          description: `Departments inside ${group.code} (${group.title}) at Digitally Next.`,
+          path,
+        })}
+      />
       <CareersBrowsePageClient
         title={group.title}
         subtitle={`${group.code} · pick a department to explore the open roles inside it.`}

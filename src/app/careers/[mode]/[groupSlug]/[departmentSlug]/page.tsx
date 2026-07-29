@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import Script from 'next/script';
+import JsonLd from '@/components/seo/JsonLd';
 import { notFound } from 'next/navigation';
 import CareerDepartmentPageClient from '@/components/careers/CareerDepartmentPageClient';
 import CareerRolePageClient from '@/components/careers/CareerRolePageClient';
@@ -113,19 +113,14 @@ export default async function CareerDepartmentOrRolePage({ params }: Props) {
 
     return (
       <>
-        <Script
+        <JsonLd
           id={`ld-role-${modeSlug}-${groupSlug}-${departmentSlug}`}
-          type="application/ld+json"
-          strategy="afterInteractive"
-        >
-          {JSON.stringify(
-            webPageJsonLd({
-              title: `${role.title} | Digitally Next Careers`,
-              description: role.description?.intro ?? `Apply for ${role.title} at Digitally Next.`,
-              path,
-            })
-          )}
-        </Script>
+          data={webPageJsonLd({
+            title: `${role.title} | Digitally Next Careers`,
+            description: role.description?.intro ?? `Apply for ${role.title} at Digitally Next.`,
+            path,
+          })}
+        />
         <CareerRolePageClient entry={entry} />
       </>
     );
@@ -139,15 +134,14 @@ export default async function CareerDepartmentOrRolePage({ params }: Props) {
 
   return (
     <>
-      <Script id={`ld-dept-${groupSlug}-${departmentSlug}`} type="application/ld+json" strategy="afterInteractive">
-        {JSON.stringify(
-          webPageJsonLd({
-            title: `${department.title} | Digitally Next Careers`,
-            description: `Explore roles in ${department.title} at Digitally Next.`,
-            path,
-          })
-        )}
-      </Script>
+      <JsonLd
+        id={`ld-dept-${groupSlug}-${departmentSlug}`}
+        data={webPageJsonLd({
+          title: `${department.title} | Digitally Next Careers`,
+          description: `Explore roles in ${department.title} at Digitally Next.`,
+          path,
+        })}
+      />
       <CareerDepartmentPageClient department={department} mode={mode} group={group} roleEntries={roleEntries} />
     </>
   );

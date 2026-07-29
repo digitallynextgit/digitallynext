@@ -1,4 +1,4 @@
-import Script from 'next/script';
+import JsonLd from '@/components/seo/JsonLd';
 import ContactFormClient from './ContactFormClient';
 import ContactHero from '@/components/contact/ContactHero';
 import ContactInfoBar from '@/components/contact/ContactInfoBar';
@@ -15,16 +15,15 @@ export const metadata = buildMetadata({
 export default function ContactPage() {
   return (
     <main id="contact" className="font-[Stack_Sans_Text]">
-      <Script id="ld-contact" type="application/ld+json" strategy="afterInteractive">
-        {JSON.stringify(
-          webPageJsonLd({
-            title: 'Contact Us | Digitally Next',
-            description:
-              "We work best with teams that value structure, clarity, and long-term thinking. Let's build something that lasts.",
-            path: '/contact',
-          })
-        )}
-      </Script>
+      <JsonLd
+        id="ld-contact"
+        data={webPageJsonLd({
+          title: 'Contact Us | Digitally Next',
+          description:
+            "We work best with teams that value structure, clarity, and long-term thinking. Let's build something that lasts.",
+          path: '/contact',
+        })}
+      />
       <ContactHero />
 
       <section id="contact-form" aria-label="Contact Form" className="bg-white">

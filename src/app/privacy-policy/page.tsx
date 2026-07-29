@@ -1,4 +1,4 @@
-import Script from 'next/script';
+import JsonLd from '@/components/seo/JsonLd';
 import { buildMetadata, webPageJsonLd } from '@/app/utils/seo';
 import PrivacyPolicyClient from './PrivacyPolicyClient';
 
@@ -12,15 +12,14 @@ export const metadata = buildMetadata({
 export default function PrivacyPolicyPage() {
   return (
     <>
-      <Script id="ld-privacy" type="application/ld+json" strategy="afterInteractive">
-        {JSON.stringify(
-          webPageJsonLd({
-            title: 'Privacy Policy | Digitally Next',
-            description: 'How Digitally Next collects, uses, and protects your information.',
-            path: '/privacy-policy',
-          })
-        )}
-      </Script>
+      <JsonLd
+        id="ld-privacy"
+        data={webPageJsonLd({
+          title: 'Privacy Policy | Digitally Next',
+          description: 'How Digitally Next collects, uses, and protects your information.',
+          path: '/privacy-policy',
+        })}
+      />
       <PrivacyPolicyClient />
     </>
   );

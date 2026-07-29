@@ -1,4 +1,4 @@
-import Script from 'next/script';
+import JsonLd from '@/components/seo/JsonLd';
 import CareersCtaSection from '@/components/careers/CareersCtaSection';
 import CaseStudiesList from '@/components/careers/CaseStudiesList';
 import CaseStudiesHero from '@/components/case-studies/CaseStudiesHero';
@@ -16,15 +16,14 @@ export const metadata = buildMetadata({
 export default function CaseStudiesPage() {
   return (
     <>
-      <Script id="ld-case-studies" type="application/ld+json" strategy="afterInteractive">
-        {JSON.stringify(
-          webPageJsonLd({
-            title: 'Case Studies | Digitally Next',
-            description: 'Proven client outcomes from Digitally Next across industries and channels.',
-            path: '/case-studies',
-          })
-        )}
-      </Script>
+      <JsonLd
+        id="ld-case-studies"
+        data={webPageJsonLd({
+          title: 'Case Studies | Digitally Next',
+          description: 'Proven client outcomes from Digitally Next across industries and channels.',
+          path: '/case-studies',
+        })}
+      />
       <ThemeSection theme="light">
         <CaseStudiesHero />
       </ThemeSection>

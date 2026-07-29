@@ -1,4 +1,4 @@
-import Script from 'next/script';
+import JsonLd from '@/components/seo/JsonLd';
 import { buildMetadata, webPageJsonLd } from '@/app/utils/seo';
 import HomePageClient from './HomePageClient';
 
@@ -12,16 +12,15 @@ export const metadata = buildMetadata({
 export default function HomePage() {
   return (
     <>
-      <Script id="ld-home" type="application/ld+json" strategy="afterInteractive">
-        {JSON.stringify(
-          webPageJsonLd({
-            title: 'Digitally Next | Growth-Driven Global Digital Marketing Agency',
-            description:
-              'Partner with Digitally Next for strategy, branding, performance marketing, content, web development, and AI-driven decisions.',
-            path: '/',
-          })
-        )}
-      </Script>
+      <JsonLd
+        id="ld-home"
+        data={webPageJsonLd({
+          title: 'Digitally Next | Growth-Driven Global Digital Marketing Agency',
+          description:
+            'Partner with Digitally Next for strategy, branding, performance marketing, content, web development, and AI-driven decisions.',
+          path: '/',
+        })}
+      />
       <HomePageClient />
     </>
   );

@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import Script from 'next/script';
+import JsonLd from '@/components/seo/JsonLd';
 import { notFound } from 'next/navigation';
 import ServiceDetailPage from '@/components/services/ServiceDetailPage';
 import { getServiceBySlug } from '@/data/services';
@@ -34,15 +34,14 @@ export default async function ServicePage({ params }: Props) {
 
   return (
     <>
-      <Script id={`ld-service-${slug}`} type="application/ld+json" strategy="afterInteractive">
-        {JSON.stringify(
-          webPageJsonLd({
-            title: service.metaTitle,
-            description: service.metaDescription,
-            path: `/services/${slug}`,
-          })
-        )}
-      </Script>
+      <JsonLd
+        id={`ld-service-${slug}`}
+        data={webPageJsonLd({
+          title: service.metaTitle,
+          description: service.metaDescription,
+          path: `/services/${slug}`,
+        })}
+      />
       <ServiceDetailPage service={service} />
     </>
   );

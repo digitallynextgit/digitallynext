@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import Script from 'next/script';
+import JsonLd from '@/components/seo/JsonLd';
 import { client } from '@/sanity/client';
 import { postBySlugQuery } from '@/sanity/queries';
 import { notFound } from 'next/navigation';
@@ -55,17 +55,16 @@ export default async function BlogPostPage({ params }: Props) {
 
   return (
     <>
-      <Script id={`ld-blog-${slug}`} type="application/ld+json" strategy="afterInteractive">
-        {JSON.stringify(
-          articleJsonLd({
-            title,
-            description,
-            path: `/blog/${slug}`,
-            datePublished: post.publishedAt,
-            authorName: post.author?.name,
-          })
-        )}
-      </Script>
+      <JsonLd
+        id={`ld-blog-${slug}`}
+        data={articleJsonLd({
+          title,
+          description,
+          path: `/blog/${slug}`,
+          datePublished: post.publishedAt,
+          authorName: post.author?.name,
+        })}
+      />
       <BlogPostClient post={post} />
     </>
   );
