@@ -57,6 +57,8 @@ type CareersPayload = {
   role: string;
   opening: string;
   sourceUrl: string;
+  /** Employee id of whoever referred them. Empty when nobody did. */
+  referrerEmployeeNo: string;
 };
 
 /**
@@ -108,6 +110,10 @@ function fromFormData(formData: FormData): CareersPayload {
     role: raw(formData, 'role', 200),
     opening: raw(formData, 'opening', 300),
     sourceUrl: raw(formData, 'sourceUrl', 1000),
+    // Optional, and never checked against the employee list - this site cannot
+    // see it. Passed through verbatim so DNMS can resolve it; a value matching
+    // nobody still tells HR who the candidate believed referred them.
+    referrerEmployeeNo: raw(formData, 'referrerEmployeeNo', 50, true),
   };
 }
 
@@ -160,6 +166,7 @@ function buildDnmsPayload(p: CareersPayload, envelope: { idempotencyKey: string;
       resumeUrl: p.resumeUrl,
       message: p.message || null,
     },
+    referrerEmployeeNo: p.referrerEmployeeNo || null,
     meta: {
       // ISO 8601 with a Z offset - DNMS rejects a bare local datetime.
       submittedAt: envelope.submittedAt,
