@@ -360,18 +360,19 @@ export default function CareerRolePageClient({ entry }: { entry: CareerRoleEntry
                 Placed after the candidate's own details because it is about
                 somebody else, and asked with a hint so a candidate who has no
                 referral is not left wondering what to put. */}
-            <Field label="Referred by (Employee ID) — optional" error={errors.referrerEmployeeNo}>
+            <Field label="Referred by — optional" error={errors.referrerEmployeeNo}>
               <input
                 type="text"
                 value={form.referrerEmployeeNo}
                 onChange={(event) => setForm((prev) => ({ ...prev, referrerEmployeeNo: event.target.value }))}
                 className={inputCls(!!errors.referrerEmployeeNo)}
-                placeholder="e.g. DN00007"
+                placeholder="Their employee ID or work email"
                 autoComplete="off"
                 disabled={submitStatus === 'submitting' || submitStatus === 'success'}
               />
               <p className="mt-1.5 text-xs text-black/50">
-                If someone at Digitally Next told you about this role, enter their employee ID so they get credit.
+                If someone at Digitally Next told you about this role, enter their employee ID or work email so they get
+                credit. Ask them if you are not sure — leaving this blank does not affect your application.
               </p>
             </Field>
 
