@@ -44,6 +44,8 @@ export interface CareersApplicationPayload {
   roleTitle: string;
   opening: string | null;
   applicant: CareersApplicationApplicant;
+  /** Employee id the candidate typed into "Referred by". Null when none. */
+  referrerEmployeeNo?: string | null;
   meta: {
     submittedAt: string;
     sourceUrl: string;

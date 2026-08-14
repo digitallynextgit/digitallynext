@@ -1,8 +1,8 @@
 // AUTO-GENERATED - do not edit by hand.
 // Regenerate with: node scripts/generate-careers-fallback.mjs
 //
-// Snapshot of the published DNMS careers tree, taken 2026-07-16.
-// Full-time: 5 groups / 17 roles.
+// Snapshot of the published DNMS careers tree, taken 2026-08-04.
+// Full-time: 5 groups / 18 roles.
 // Internship: 1 groups / 7 roles.
 //
 // This is NOT a source of truth. It renders only when the HRMS is unreachable,
@@ -13,7 +13,7 @@
 import type { CareersDepartmentGroup, CareersMode } from '@/data/careersDepartments';
 
 /** The date this snapshot was taken, surfaced in logs when it is served. */
-export const CAREERS_FALLBACK_CAPTURED_AT = '2026-07-16';
+export const CAREERS_FALLBACK_CAPTURED_AT = '2026-08-04';
 
 const FULL_TIME = [
   {
@@ -214,6 +214,34 @@ const FULL_TIME = [
                 'Familiarity with tools like Google Analytics, Search Console, and SEMrush',
               ],
               currentOpenings: ['Junior SEO Executive (1-2 Years Exp)', 'SEO Specialist', 'SEO Lead'],
+            },
+          },
+          {
+            id: 'genetic-counsellor',
+            title: 'Genetic Counsellor',
+            meta: null,
+            summary: null,
+            description: {
+              intro:
+                "Every genetic report tells a story but it takes the right professional to translate complex science into meaningful guidance. As a Genetic Counsellor, you'll support individuals and families through their genetic healthcare journey by providing accurate risk assessment, compassionate counselling, and clear interpretation of genomic information.",
+              jobEssence:
+                'The role focuses on providing pre- and post-test genetic counselling, evaluating family and medical histories, assessing inherited disease risks, interpreting genetic test reports, and helping patients make informed healthcare decisions. The role requires a combination of scientific expertise, clinical knowledge, strong communication skills, and empathy to deliver patient-centric care.',
+              keyRequirements: [
+                'M.Sc. in Genetic Counselling / Human Genetics (Mandatory)',
+                'Pre & Post-Test Genetic Counselling',
+                'Clinical Risk Assessment & Family History Analysis',
+                'Genetic Test Selection & Interpretation',
+                'Genomic Report Interpretation',
+                'Knowledge of Medical Genetics & Inherited Disorders',
+                'Patient Education & Communication Skills',
+                'Ability to explain complex genetic concepts in simple language',
+                'Clinical documentation & case management',
+                'Ethical, legal & confidentiality compliance in genetic counselling',
+                'Collaboration with clinicians, laboratories & multidisciplinary teams',
+                'Strong analytical thinking and empathetic counselling approach',
+                'Freshers with clinical internships & experienced professionals are welcome',
+              ],
+              currentOpenings: ['Genetic Counsellor (1-2 Years Exp)', 'Senior Genetic Counsellor (4-5 Years Exp)'],
             },
           },
         ],

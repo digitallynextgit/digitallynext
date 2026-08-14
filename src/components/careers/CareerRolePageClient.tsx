@@ -14,6 +14,14 @@ interface FormFields {
   portfolio: string;
   message: string;
   resumeUrl: string;
+  /**
+   * Optional employee id of whoever referred this candidate.
+   *
+   * Never validated here: this site cannot see the employee list, and a typo
+   * must not cost a real application. It is passed through verbatim and DNMS
+   * resolves it - an id matching nobody still tells HR who was meant.
+   */
+  referrerEmployeeNo: string;
 }
 
 type FormErrors = Partial<Record<keyof FormFields, string>>;
@@ -27,6 +35,7 @@ function makeEmptyForm(): FormFields {
     portfolio: '',
     message: '',
     resumeUrl: '',
+    referrerEmployeeNo: '',
   };
 }
 
@@ -142,6 +151,7 @@ export default function CareerRolePageClient({ entry }: { entry: CareerRoleEntry
       data.append('portfolio', form.portfolio.trim());
       data.append('resumeUrl', form.resumeUrl.trim());
       data.append('message', form.message.trim());
+      data.append('referrerEmployeeNo', form.referrerEmployeeNo.trim());
       // Role identity. The ids are the slugs DNMS itself publishes, so it can
       // link the application to the real role record instead of matching on
       // titles; the titles ride along as what the candidate actually saw.
@@ -344,6 +354,26 @@ export default function CareerRolePageClient({ entry }: { entry: CareerRoleEntry
                 inputMode="url"
                 disabled={submitStatus === 'submitting' || submitStatus === 'success'}
               />
+            </Field>
+
+            {/* Referral. Optional and unvalidated by design - see FormFields.
+                Placed after the candidate's own details because it is about
+                somebody else, and asked with a hint so a candidate who has no
+                referral is not left wondering what to put. */}
+            <Field label="Referred by — optional" error={errors.referrerEmployeeNo}>
+              <input
+                type="text"
+                value={form.referrerEmployeeNo}
+                onChange={(event) => setForm((prev) => ({ ...prev, referrerEmployeeNo: event.target.value }))}
+                className={inputCls(!!errors.referrerEmployeeNo)}
+                placeholder="Their employee ID or work email"
+                autoComplete="off"
+                disabled={submitStatus === 'submitting' || submitStatus === 'success'}
+              />
+              <p className="mt-1.5 text-xs text-black/50">
+                If someone at Digitally Next told you about this role, enter their employee ID or work email so they get
+                credit. Ask them if you are not sure — leaving this blank does not affect your application.
+              </p>
             </Field>
 
             <Field label="Message (optional)" error={errors.message} fullWidth>
