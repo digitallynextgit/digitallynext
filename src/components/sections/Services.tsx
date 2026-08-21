@@ -233,46 +233,57 @@ function DesktopServices({ isDark }: { isDark: boolean }) {
             >
               <Link
                 href={`/services/${service.slug}`}
-                className="group flex items-start gap-4 mb-6 w-full min-w-0 transition-transform duration-200 ease-out hover:translate-x-3"
+                className="group block mb-6 w-full min-w-0"
                 onMouseEnter={() => setHoveredIndex(i)}
                 onMouseLeave={() => setHoveredIndex(null)}
               >
-                {/* Arrow icon */}
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: hoveredIndex === i ? 1 : 0 }}
-                  transition={{ duration: 0.2, ease: 'easeOut' }}
-                  className="relative z-20 shrink-0 mt-2"
-                >
-                  <Image
-                    src="/icons/enter.svg"
-                    alt="arrow"
-                    width={52}
-                    quality={100}
-                    height={52}
-                    className="transition-transform duration-300 ease-out"
-                  />
-                </motion.div>
+                {/* The slide lives on this inner wrapper, NOT on the <Link>.
+                    Putting a transform on the element that owns :hover moves its
+                    own hit box out from under the cursor, which un-hovers it,
+                    which reverts the transform, which re-hovers it - a flicker
+                    loop running at frame rate. It only fires within 12px of the
+                    left edge, because that is the only band a 12px shift can
+                    strand the cursor outside. Keeping the <Link> box fixed and
+                    sliding its contents gives the identical visual with a stable
+                    hit area. */}
+                <div className="flex items-start gap-4 transition-transform duration-200 ease-out group-hover:translate-x-3">
+                  {/* Arrow icon */}
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: hoveredIndex === i ? 1 : 0 }}
+                    transition={{ duration: 0.2, ease: 'easeOut' }}
+                    className="relative z-20 shrink-0 mt-2"
+                  >
+                    <Image
+                      src="/icons/enter.svg"
+                      alt="arrow"
+                      width={52}
+                      quality={100}
+                      height={52}
+                      className="transition-transform duration-300 ease-out"
+                    />
+                  </motion.div>
 
-                {/* Service title */}
-                <h3
-                  className={[
-                    'min-w-0 whitespace-normal wrap-break-words',
-                    'text-3xl md:text-5xl font-bold leading-tight tracking-tight',
-                    'transition-colors duration-300',
-                    hoveredIndex === i || activeIndex === i
-                      ? 'text-[#E53935]'
-                      : activeIndex + 1 === i
-                        ? isDark
-                          ? 'text-white'
-                          : 'text-black'
-                        : isDark
-                          ? 'text-white/20'
-                          : 'text-black/20',
-                  ].join(' ')}
-                >
-                  {service.title}
-                </h3>
+                  {/* Service title */}
+                  <h3
+                    className={[
+                      'min-w-0 whitespace-normal wrap-break-words',
+                      'text-3xl md:text-5xl font-bold leading-tight tracking-tight',
+                      'transition-colors duration-300',
+                      hoveredIndex === i || activeIndex === i
+                        ? 'text-[#E53935]'
+                        : activeIndex + 1 === i
+                          ? isDark
+                            ? 'text-white'
+                            : 'text-black'
+                          : isDark
+                            ? 'text-white/20'
+                            : 'text-black/20',
+                    ].join(' ')}
+                  >
+                    {service.title}
+                  </h3>
+                </div>
               </Link>
 
               {/* Slider */}

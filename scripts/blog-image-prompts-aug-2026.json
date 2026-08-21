@@ -1,0 +1,513 @@
+{
+  "_readme": {
+    "purpose": "ChatGPT image-generation prompts for the 6-15 Aug 2026 blog batch, rewritten to match the existing Digitally Next design system as produced by the in-house designer.",
+    "how_to_use": "Paste ONE images[n] object into ChatGPT with: 'Generate this image exactly to this specification.' Generate one at a time. Batching makes the model blend briefs together.",
+    "canonical": "This file is the source of truth. scripts/push-dn-blogs-aug-2026.mjs carries a short prose version of each for reference only.",
+
+    "design_system_observed": {
+      "source": "Derived from five existing DN images: the Netflix iceberg case study, the customer-journey path render, the marketing-machine render, the review/word-of-mouth speech-bubble render, and the Shopify case study photo.",
+      "two_formats": {
+        "case_study": "Photographic or photorealistic base image, company logo top-left beside the words 'Case Study', the 'X | WORKPLACE DNA' lockup bottom-left, and short overlaid annotation lines with small teal or red marker dots and thin leader lines. Used for the Workplace DNA series. NOT used for any of the ten posts below.",
+        "concept_illustration": "Soft 3D rendered conceptual scene, no headline text, teal and red accents together, tactile rounded forms, gentle depth of field. This is the format for all ten posts below."
+      },
+      "medium": "Soft 3D render, claymorphism-adjacent: rounded tactile forms, matte-to-satin surfaces, gentle contact shadows, shallow depth of field with the background falling softly out of focus. Small floating badges and pins carry simple flat line icons.",
+      "camera": "Slight three-quarter or gentle isometric view, never flat-on. Objects sit on a subtly textured ground plane with soft contour or topographic detail.",
+      "palette": {
+        "mint_primary": "#6FD8CA",
+        "mint_glow": "#A8EDE2",
+        "mint_deep": "#3FB8A8",
+        "coral_red": "#E8434E",
+        "brand_red": "#E21F26",
+        "light_background": "warm off-white #F5F2EE falling to cool grey #E3E5E8, with a soft warm light source top-left",
+        "dark_background": "deep navy-black #0B1219 falling to #131C26, lit only by the emissive objects",
+        "neutrals": ["#FFFFFF", "#D8DCE0", "#8A9198", "#2A3138"]
+      },
+      "colour_rule": "Mint and coral red appear TOGETHER in every image. Mint carries the system, the flow, the working state. Red marks the single point of emphasis: the endpoint, the alert, the thing the reader should notice. Red is always the minority colour, roughly one part red to five parts mint.",
+      "icons": "Simple flat line icons inside rounded pins or circular badges are part of the language and are encouraged, but they must never form words or letters."
+    },
+
+    "technical_notes": {
+      "resolution": "Generate at 1920x1080 minimum. The blog hero renders at 1920 wide, so a 600px-wide image upscales badly and looks soft.",
+      "crop_warning": "The hero container is full-width at 520px tall using object-cover with object-top, so on desktop only roughly the TOP HALF of a 16:9 image survives. On mobile (~390x320) the sides are clipped and roughly the middle 68% of width shows. Keep the subject in the UPPER-CENTRE and leave the bottom third as quiet ground plane or background.",
+      "hotspot": "After uploading to Sanity, set the image hotspot on the main subject. The 600x340 card crop uses it, and without it the card crops from the middle and can pick up empty ground."
+    }
+  },
+
+  "images": [
+    {
+      "slug": "how-to-use-ai-in-digital-marketing-beginners-guide",
+      "publish_date": "2026-08-06",
+      "article_title": "How to Use AI in Digital Marketing: A Step-by-Step Guide for Beginners",
+      "image_name_alt_text": "How to Use AI in Digital Marketing: A Step-by-Step Guide for Beginners",
+      "core_idea": "Switch on one workflow properly before switching on the rest.",
+      "format": "concept_illustration",
+      "aspect_ratio": "16:9",
+      "resolution": "1920x1080",
+      "scene": "A row of six identical rounded 3D machine modules sitting on a low light-grey plinth, viewed from a gentle three-quarter angle. The first module on the left is powered on: its housing glows soft mint from within, a thin mint light-trail runs out of it along the plinth, and a small rounded badge floats just above it carrying a simple flat spark icon. The remaining five modules are matte pale grey, unlit and idle, their badges dark. A single small coral red indicator light sits on the powered module, marking it as the one that was started first.",
+      "style": {
+        "medium": "Soft 3D render, claymorphism-adjacent, rounded tactile forms with matte-to-satin surfaces",
+        "camera": "Gentle three-quarter view, slightly above eye level, mild perspective",
+        "depth_of_field": "Shallow. The leftmost modules are crisp, the far right of the row falls softly out of focus.",
+        "surface": "Matte plastic and brushed light metal, no chrome, no heavy reflections"
+      },
+      "composition": {
+        "subject_placement": "Run the module row across the UPPER-CENTRE of the frame, its centre line at roughly 40% of frame height",
+        "safe_area": "Keep the powered module and at least three of the idle ones inside the top 60% of the frame and the central 70% of the width. Leave the bottom third as quiet plinth surface and background.",
+        "negative_space": "Open, softly lit background above the row"
+      },
+      "palette": {
+        "background": "Warm off-white #F5F2EE falling to cool grey #E3E5E8, soft warm light from the upper left",
+        "primary_accent": "#6FD8CA mint, glowing #A8EDE2 where emissive",
+        "secondary_accent": "#E8434E coral red, used only for the single indicator light",
+        "neutrals": ["#D8DCE0 module housings", "#8A9198 shadow detail"],
+        "ratio": "Mint dominant, red as a single small point of emphasis"
+      },
+      "lighting": "Soft diffused studio light from the upper left, gentle contact shadows beneath each module, warm ambient bounce. The powered module casts its own soft mint glow onto the plinth.",
+      "mood": "Calm, methodical, encouraging. Not futuristic or intimidating.",
+      "must_include": [
+        "Exactly one module clearly powered on and glowing mint",
+        "The remaining modules visibly unlit and identical to each other",
+        "One small coral red indicator on the powered module",
+        "Soft contact shadows grounding every object"
+      ],
+      "must_avoid": [
+        "Any text, letters, numbers, or labels",
+        "Recognisable brand logos or product likenesses",
+        "Faces, people, or hands",
+        "Robots, humanoid AI, or brain imagery",
+        "Neon, cyberpunk, glitch, or matrix aesthetics",
+        "Pure black backgrounds and hard laser-beam lighting",
+        "Chrome, glossy reflections, or lens flare"
+      ],
+      "one_line_prompt": "Soft 3D rendered concept illustration, 16:9, on a warm off-white to cool grey gradient background: a row of six identical rounded machine modules on a low plinth seen from a gentle three-quarter angle, the first module powered on and glowing soft mint #6FD8CA with a small floating badge above it and a single coral red #E8434E indicator light, the other five matte pale grey and idle; claymorphism-adjacent tactile forms, soft diffused light from the upper left, gentle contact shadows, shallow depth of field, subject in the upper-centre with the bottom third left quiet; no text, no logos, no faces, no robots, no neon."
+    },
+
+    {
+      "slug": "experience-economy-2-0-why-customer-expectations-outpace-marketing",
+      "publish_date": "2026-08-07",
+      "article_title": "The Experience Economy 2.0: Why Customer Expectations Are Growing Faster Than Marketing Can Adapt",
+      "image_name_alt_text": "The Experience Economy 2.0: Why Customer Expectations Are Growing Faster Than Marketing Can Adapt",
+      "core_idea": "Two ascending paths from one starting block, the gap between them widening.",
+      "format": "concept_illustration",
+      "aspect_ratio": "16:9",
+      "resolution": "1920x1080",
+      "scene": "Two smooth 3D ribbon pathways rise from a shared rounded starting block on the left, climbing to the right at clearly different angles so a wide gap opens between them. The upper ribbon is mint, climbing steeply, glowing softly along its length, with a small coral red rounded map pin planted at its far end. The lower ribbon is pale matte grey, climbing far more gently, unlit, its end simply stopping in open air. The ground beneath carries soft topographic contour lines. A few small rounded rocks sit on the ground plane for scale.",
+      "style": {
+        "medium": "Soft 3D render, claymorphism-adjacent, rounded tactile ribbon forms with satin surfaces",
+        "camera": "Gentle isometric three-quarter view looking slightly down on the ground plane",
+        "depth_of_field": "Shallow, background softly defocused",
+        "surface": "Smooth matte ribbon material, soft rounded edges, no sharp corners"
+      },
+      "composition": {
+        "subject_placement": "Anchor the shared starting block at lower left and run both ribbons up into the UPPER-CENTRE, the mint ribbon's red pin sitting at roughly 20% of frame height",
+        "safe_area": "Keep the shared origin, both ribbons and the red pin inside the top 60% of the frame and the central 70% of the width. Leave the bottom third as contoured ground.",
+        "negative_space": "Open background in the widening gap between the two ribbons"
+      },
+      "palette": {
+        "background": "Warm off-white #F5F2EE falling to cool grey #E3E5E8, soft light from the upper right",
+        "primary_accent": "#6FD8CA mint for the upper ribbon, glowing #A8EDE2 along its top edge",
+        "secondary_accent": "#E8434E coral red for the single pin at the mint ribbon's end",
+        "neutrals": ["#D8DCE0 lower ribbon", "#8A9198 contour lines"],
+        "ratio": "Mint dominant, one red pin only"
+      },
+      "lighting": "Soft diffused studio light from the upper right, gentle shadows cast by both ribbons onto the ground plane, warm ambient bounce",
+      "mood": "Quietly urgent. The gap should feel like a problem without looking alarming.",
+      "must_include": [
+        "Exactly two ribbons sharing one origin block",
+        "A visibly widening gap from left to right",
+        "One coral red pin at the top of the mint ribbon",
+        "Soft topographic contour detail on the ground"
+      ],
+      "must_avoid": [
+        "Any text, letters, numbers, percentages, or axis labels",
+        "Chart furniture: axes, gridlines, tick marks, legends",
+        "Arrowheads on either ribbon",
+        "Faces, people, hands, or figures climbing the ribbons",
+        "Brand logos of any kind",
+        "Pure black backgrounds, neon, or laser-beam lighting"
+      ],
+      "one_line_prompt": "Soft 3D rendered concept illustration, 16:9, on a warm off-white to cool grey gradient background: two smooth ribbon pathways rising from one shared rounded starting block at lower left, the upper one mint #6FD8CA climbing steeply with a soft glow and a single coral red #E8434E map pin at its end, the lower one pale matte grey climbing gently and simply stopping, the widening gap between them as the subject; gentle isometric view, soft topographic ground contours, diffused light from the upper right, shallow depth of field, subject in the upper-centre; no text, no axes, no arrowheads, no people, no logos, no neon."
+    },
+
+    {
+      "slug": "marketing-memory-problem-why-businesses-repeat-mistakes",
+      "publish_date": "2026-08-08",
+      "article_title": "The Marketing Memory Problem: Why Most Businesses Keep Solving the Same Problems Again",
+      "image_name_alt_text": "The Marketing Memory Problem: Why Most Businesses Keep Solving the Same Problems Again",
+      "core_idea": "A journey path that loops back to a marker it already passed, without noticing.",
+      "format": "concept_illustration",
+      "aspect_ratio": "16:9",
+      "resolution": "1920x1080",
+      "scene": "A smooth 3D ribbon pathway laid out on a softly contoured ground plane, curving in a wide flattened loop that clearly returns to where it began. Rounded map pins stand along the path at even intervals. The pins on the most recent stretch are bright mint with crisp flat line icons and a glowing light trail running beneath them along the ribbon. Moving around the loop, the pins fade progressively to dull pale grey, their icons barely visible, several tipped slightly as if forgotten. At the point where the path rejoins itself, a single coral red pin stands where a faded grey pin already sits, the two occupying almost the same spot.",
+      "style": {
+        "medium": "Soft 3D render, claymorphism-adjacent, rounded tactile forms with satin surfaces",
+        "camera": "Gentle isometric three-quarter view looking down on the looping path",
+        "depth_of_field": "Shallow, the far side of the loop softly defocused",
+        "surface": "Smooth matte ribbon and glossy-capped rounded pins, soft edges throughout"
+      },
+      "composition": {
+        "subject_placement": "Centre the flattened loop in the UPPER-CENTRE, its centre at roughly 40% of frame height, drawn wide and shallow rather than circular",
+        "safe_area": "Keep the whole loop, and especially the red-and-grey pin pair, inside the top 60% of the frame and the central 70% of the width. Leave the bottom third as quiet contoured ground.",
+        "negative_space": "Open ground inside the loop"
+      },
+      "palette": {
+        "background": "Warm off-white #F5F2EE falling to cool grey #E3E5E8, soft light from the upper left",
+        "primary_accent": "#6FD8CA mint for the recent pins and the light trail, glowing #A8EDE2",
+        "secondary_accent": "#E8434E coral red for the single pin at the rejoin point",
+        "neutrals": ["#D8DCE0 faded pins", "#8A9198 contour lines"],
+        "ratio": "Mint dominant on the fresh stretch, red as one point, everything else desaturating to grey"
+      },
+      "lighting": "Soft diffused studio light from the upper left, gentle contact shadows under every pin, the mint light trail casting a faint glow on the ribbon",
+      "mood": "Quietly ironic. The viewer should spot the doubling-up before the business would.",
+      "must_include": [
+        "A closed loop that unmistakably rejoins itself",
+        "A clear brightness gradient from fresh mint pins to nearly forgotten grey ones",
+        "A coral red pin and a faded grey pin standing at almost the same point",
+        "Evenly spaced pins along the ribbon"
+      ],
+      "must_avoid": [
+        "Any text, letters, numbers, or labels",
+        "Clock, calendar, hourglass, or brain imagery",
+        "Arrowheads or directional chevrons on the path",
+        "Faces, people, hands, or walking figures",
+        "Brand logos of any kind",
+        "Pure black backgrounds, neon, or laser-beam lighting"
+      ],
+      "one_line_prompt": "Soft 3D rendered concept illustration, 16:9, on a warm off-white to cool grey gradient background: a smooth ribbon pathway curving in a wide flattened loop on softly contoured ground, rounded map pins standing along it, the most recent pins bright mint #6FD8CA with flat line icons and a glowing trail beneath, the rest fading progressively to dull grey around the loop, and one coral red #E8434E pin standing at almost the same spot as an already-faded grey pin where the path rejoins itself; gentle isometric view, diffused light from the upper left, shallow depth of field, subject in the upper-centre; no text, no clocks, no brains, no arrowheads, no people, no logos, no neon."
+    },
+
+    {
+      "slug": "marketing-complexity-trap-more-channels-not-more-growth",
+      "publish_date": "2026-08-09",
+      "article_title": "The Marketing Complexity Trap: Why Doing More Channels Isn't Creating More Growth",
+      "image_name_alt_text": "The Marketing Complexity Trap: Why Doing More Channels Isn't Creating More Growth",
+      "core_idea": "One strong flow entering a splitter, seven weak trickles leaving it.",
+      "format": "concept_illustration",
+      "aspect_ratio": "16:9",
+      "resolution": "1920x1080",
+      "scene": "A 3D machine assembly on a low dark plinth, seen from a gentle three-quarter angle. One thick rounded pipe enters from the left carrying a strong, bright mint flow, visible as a glowing channel of light inside translucent tubing. The pipe meets a compact splitter block in the centre, from which seven much thinner pipes fan out to the right, each carrying a visibly weaker, dimmer mint trickle, the outermost two barely lit at all. A small coral red warning indicator glows on the splitter block housing, and a short coral red bar sits low beside the output side, clearly shorter than the input flow. Small rounded gauge badges float above the assembly carrying simple flat line icons.",
+      "style": {
+        "medium": "Soft 3D render, satin machined surfaces with rounded corners, translucent tubing",
+        "camera": "Gentle three-quarter product view, slightly above the plinth",
+        "depth_of_field": "Shallow, the right end of the fan softly defocused",
+        "surface": "Matte dark metal housing, frosted translucent pipes, no chrome"
+      },
+      "composition": {
+        "subject_placement": "Place the splitter block just left of centre with the whole assembly across the UPPER-CENTRE, its centre line at roughly 40% of frame height",
+        "safe_area": "Keep the input pipe, the splitter and most of the seven outputs inside the top 60% of the frame and the central 70% of the width. Leave the bottom third as plinth and background.",
+        "negative_space": "Soft open background above the assembly"
+      },
+      "palette": {
+        "background": "Cool light grey #E8EAED falling to #DADDE1, soft light from the upper left",
+        "primary_accent": "#6FD8CA mint for the flow, glowing #A8EDE2 at the input and fading toward the outputs",
+        "secondary_accent": "#E8434E coral red for the warning indicator and the short output bar",
+        "neutrals": ["#2A3138 machine housings", "#D8DCE0 plinth"],
+        "ratio": "Mint dominant, two small red elements only"
+      },
+      "lighting": "Soft diffused studio light from the upper left, gentle contact shadows under the plinth, the mint flow providing internal glow that dims across the split",
+      "mood": "Engineering-honest. The machine works; it is simply being asked to do too much.",
+      "must_include": [
+        "Exactly one input pipe and seven output pipes",
+        "An obvious drop in both pipe thickness and flow brightness across the splitter",
+        "The two outermost outputs almost unlit",
+        "One coral red warning indicator on the splitter"
+      ],
+      "must_avoid": [
+        "Any text, letters, numbers, or gauge readings",
+        "Recognisable social-media or platform icons",
+        "Prism or rainbow dispersion; the flow stays one hue",
+        "Faces, people, or hands",
+        "Brand logos of any kind",
+        "Pure black backgrounds, neon, laser beams, or lens flare"
+      ],
+      "one_line_prompt": "Soft 3D rendered concept illustration, 16:9, on a cool light grey gradient background: a machine assembly on a low dark plinth seen at a gentle three-quarter angle, one thick translucent pipe entering from the left carrying a bright glowing mint #6FD8CA flow into a compact splitter block, from which seven much thinner pipes fan right carrying visibly weaker dimmer trickles with the outermost two barely lit, a small coral red #E8434E warning indicator on the splitter and a short red bar beside the outputs, small rounded gauge badges with flat line icons floating above; satin machined surfaces, frosted tubing, diffused light from the upper left, shallow depth of field, subject in the upper-centre; no text, no platform icons, no rainbow dispersion, no people, no logos, no neon."
+    },
+
+    {
+      "slug": "modern-marketing-signal-detection-problem",
+      "publish_date": "2026-08-10",
+      "article_title": "Why Modern Marketing Is Becoming a Signal Detection Problem",
+      "image_name_alt_text": "Why Modern Marketing Is Becoming a Signal Detection Problem",
+      "core_idea": "One clean readable signal resolving out of a dense field of noise.",
+      "format": "concept_illustration",
+      "aspect_ratio": "16:9",
+      "resolution": "1920x1080",
+      "scene": "A large floating translucent glass panel hovers above a dark reflective surface, seen at a gentle three-quarter angle. Inside the panel, a dense scatter of short broken grey waveform fragments drifts at random angles, dim and chaotic. Cutting cleanly through them, one continuous smooth mint waveform runs edge to edge, bright and unbroken, glowing softly and casting light onto the panel's glass and the surface below. A single small coral red marker dot sits on the mint waveform at its highest peak. Three small rounded badges float beside the panel carrying simple flat line icons.",
+      "style": {
+        "medium": "Soft 3D render with translucent frosted glass, emissive traces, satin dark base",
+        "camera": "Gentle three-quarter view looking slightly up at the floating panel",
+        "depth_of_field": "Shallow, the far edge of the panel softly defocused",
+        "surface": "Frosted translucent glass, soft-edged emissive lines, subtle reflection on the base"
+      },
+      "composition": {
+        "subject_placement": "Place the glass panel across the UPPER-CENTRE, its centre at roughly 38% of frame height",
+        "safe_area": "Keep the panel and the full readable stretch of the mint waveform inside the top 60% of the frame and the central 70% of the width. Leave the bottom third as dark reflective surface.",
+        "negative_space": "Dark open space around the panel, with the glow falling off into it"
+      },
+      "palette": {
+        "background": "Deep navy-black #0B1219 falling to #131C26, lit only by the emissive waveform and panel",
+        "primary_accent": "#6FD8CA mint for the clean signal, glowing #A8EDE2 along its length",
+        "secondary_accent": "#E8434E coral red for the single marker dot on the signal peak",
+        "neutrals": ["#8A9198 noise fragments", "#2A3138 panel frame"],
+        "ratio": "Mint dominant, one red dot only, everything else desaturated grey"
+      },
+      "lighting": "The mint waveform is the primary light source, with soft bloom onto the glass and a gentle reflection on the dark base. No external key light.",
+      "mood": "Precise and reassuring. Noise is present but the signal is clearly findable.",
+      "must_include": [
+        "A visibly continuous unbroken mint waveform running the full width of the panel",
+        "Noise fragments that are clearly broken and disconnected by comparison",
+        "One coral red marker dot on the signal",
+        "Enough separation that the signal reads instantly at thumbnail size"
+      ],
+      "must_avoid": [
+        "Any text, letters, numbers, readouts, or axis labels",
+        "A monitor bezel, device housing, or oscilloscope casing",
+        "Gridlines or graph-paper backgrounds",
+        "Faces, people, or hands",
+        "Brand logos of any kind",
+        "Noise so dense the mint signal becomes hard to follow",
+        "Cyberpunk, glitch, or matrix aesthetics"
+      ],
+      "one_line_prompt": "Soft 3D rendered concept illustration, 16:9, on a deep navy-black background: a large floating translucent frosted glass panel at a gentle three-quarter angle above a dark reflective surface, filled with a dense scatter of short broken dim grey waveform fragments, and one continuous smooth mint #6FD8CA waveform running unbroken edge to edge through them, glowing and casting light onto the glass and the surface below, with a single coral red #E8434E marker dot at its highest peak and three small rounded badges with flat line icons floating beside the panel; shallow depth of field, subject in the upper-centre, bottom third left as dark surface; no text, no bezel, no gridlines, no people, no logos, no glitch or cyberpunk styling."
+    },
+
+    {
+      "slug": "narrative-strategy-not-just-content-strategy",
+      "publish_date": "2026-08-11",
+      "article_title": "Why Every Business Needs a Narrative Strategy, Not Just a Content Strategy",
+      "image_name_alt_text": "Why Every Business Needs a Narrative Strategy, Not Just a Content Strategy",
+      "core_idea": "The same scattered pieces, gathered onto one continuous spine.",
+      "format": "concept_illustration",
+      "aspect_ratio": "16:9",
+      "resolution": "1920x1080",
+      "scene": "On the left of a softly contoured ground plane, eight small rounded 3D cards lie scattered at random angles, pale grey, tilted, some face down, clearly unrelated to one another. On the right, the same eight cards stand upright in a neat row, each threaded through its centre by one continuous mint ribbon that runs cleanly through all of them like beads on a wire, glowing softly along its length. The cards on the right catch a faint mint rim light. At the front of the threaded row, a single coral red bookmark tab rises above the first card. The transition between the two halves happens across the middle of the frame, with a couple of cards mid-turn as they align.",
+      "style": {
+        "medium": "Soft 3D render, claymorphism-adjacent, rounded tactile card forms with matte surfaces",
+        "camera": "Gentle isometric three-quarter view looking down on the ground plane",
+        "depth_of_field": "Shallow, the scattered left-hand cards slightly softer than the threaded right",
+        "surface": "Matte card stock with softly rounded corners, satin ribbon"
+      },
+      "composition": {
+        "subject_placement": "Run the scatter-to-thread transition left to right across the UPPER-CENTRE, the mint ribbon sitting at roughly 40% of frame height",
+        "safe_area": "IMPORTANT: this is a wide left-to-right composition and mobile clips the sides. Keep both the scattered group and the threaded row within the central 70% of the width, and inside the top 60% of the frame. Do not push the scatter to the far left edge.",
+        "negative_space": "Quiet contoured ground below and between the two groups"
+      },
+      "palette": {
+        "background": "Warm off-white #F5F2EE falling to cool grey #E3E5E8, soft light from the upper right",
+        "primary_accent": "#6FD8CA mint for the threading ribbon, glowing #A8EDE2 along its length",
+        "secondary_accent": "#E8434E coral red for the single bookmark tab",
+        "neutrals": ["#D8DCE0 card faces", "#8A9198 contour lines and shadows"],
+        "ratio": "Mint dominant, one red tab only, cards stay neutral grey on both sides"
+      },
+      "lighting": "Soft diffused studio light from the upper right, gentle contact shadows under every card, the mint ribbon casting a faint glow onto the cards it passes through",
+      "mood": "Satisfying resolution. Disorder becoming order without force.",
+      "must_include": [
+        "The same number of cards on both sides, so it reads as one set reorganised",
+        "One single unbroken ribbon, not several",
+        "A clear difference between scattered disorder and threaded alignment",
+        "One coral red bookmark tab at the front of the threaded row"
+      ],
+      "must_avoid": [
+        "Any text, letters, numbers, or content printed on the cards",
+        "Cards depicted as recognisable social posts, screens, or app UI",
+        "Arrowheads, motion streaks, or speed lines between the halves",
+        "Faces, people, or hands placing the cards",
+        "Brand logos of any kind",
+        "Making the cards mint or red; only the ribbon and tab carry colour",
+        "Pure black backgrounds or neon"
+      ],
+      "one_line_prompt": "Soft 3D rendered concept illustration, 16:9, on a warm off-white to cool grey gradient background: on the left eight small rounded pale grey cards scattered at random angles on softly contoured ground, on the right the same eight standing upright in a neat row threaded through their centres by one continuous glowing mint #6FD8CA ribbon like beads on a wire, with a single coral red #E8434E bookmark tab at the front of the row and a couple of cards mid-turn between the halves; gentle isometric view, diffused light from the upper right, shallow depth of field, whole composition kept within the central 70% width and upper-centre; no text, no app UI, no arrowheads, no people, no logos, no neon."
+    },
+
+    {
+      "slug": "best-marketing-teams-think-like-product-teams",
+      "publish_date": "2026-08-12",
+      "article_title": "Why the Best Marketing Teams Think Like Product Teams",
+      "image_name_alt_text": "Why the Best Marketing Teams Think Like Product Teams",
+      "core_idea": "A track that runs out, beside a track that comes back around.",
+      "format": "concept_illustration",
+      "aspect_ratio": "16:9",
+      "resolution": "1920x1080",
+      "scene": "Two 3D ribbon tracks sit on a softly contoured ground plane, seen from a gentle isometric angle. On the left, a straight pale grey track runs a short distance and simply stops at a blunt unfinished edge, with bare ground beyond it and a small rounded marker sitting motionless at the dead end. On the right, a track of identical width curves smoothly back into itself forming a closed mint loop, glowing softly along its inner edge, with a small coral red rounded marker part-way around it and a faint light trail behind the marker showing it has been round before. A few small rounded rocks sit on the ground for scale.",
+      "style": {
+        "medium": "Soft 3D render, claymorphism-adjacent, rounded tactile track forms with satin surfaces",
+        "camera": "Gentle isometric three-quarter view looking down on the ground plane",
+        "depth_of_field": "Shallow, the background falling softly out of focus",
+        "surface": "Smooth matte track material with softly rounded edges"
+      },
+      "composition": {
+        "subject_placement": "Place both tracks at the same depth across the UPPER-CENTRE, their centre line at roughly 40% of frame height, with clear separation between them",
+        "safe_area": "IMPORTANT: this is a side-by-side composition and mobile clips the sides. Keep both the dead-end track and the full loop within the central 70% of the width, and inside the top 60% of the frame.",
+        "negative_space": "Deliberate bare ground immediately beyond the grey track's blunt end, so the stop reads as a stop"
+      },
+      "palette": {
+        "background": "Warm off-white #F5F2EE falling to cool grey #E3E5E8, soft light from the upper left",
+        "primary_accent": "#6FD8CA mint for the closed loop, glowing #A8EDE2 along its inner edge",
+        "secondary_accent": "#E8434E coral red for the single marker travelling the loop",
+        "neutrals": ["#D8DCE0 dead-end track", "#8A9198 contour lines and the motionless marker"],
+        "ratio": "Mint dominant on the loop, one red marker, the dead-end track fully neutral"
+      },
+      "lighting": "Soft diffused studio light from the upper left, gentle contact shadows under both tracks, the mint loop casting a faint glow onto the ground inside it",
+      "mood": "Clear-eyed comparison, not a scolding. The loop simply looks alive where the line looks finished.",
+      "must_include": [
+        "A visibly blunt, deliberate ending on the grey track with bare ground beyond",
+        "A genuinely closed mint loop with no gap",
+        "Matching track width on both, so the difference reads as behaviour not importance",
+        "One coral red marker on the loop with a faint trail behind it"
+      ],
+      "must_avoid": [
+        "Any text, letters, numbers, or labels",
+        "Arrowheads, chevrons, or recycling-symbol iconography",
+        "Infinity symbols or figure-eight shapes",
+        "Gears, cogs, sprint boards, or kanban imagery",
+        "Faces, people, or hands",
+        "Brand logos of any kind",
+        "Pure black backgrounds or neon"
+      ],
+      "one_line_prompt": "Soft 3D rendered concept illustration, 16:9, on a warm off-white to cool grey gradient background: two ribbon tracks on softly contoured ground seen from a gentle isometric angle, on the left a straight pale grey track that runs briefly and stops at a blunt edge with bare ground beyond and a motionless grey marker at the dead end, on the right a track of identical width curving smoothly into a closed glowing mint #6FD8CA loop with a small coral red #E8434E marker part-way around it and a faint trail behind it; diffused light from the upper left, shallow depth of field, both kept within the central 70% width and upper-centre; no text, no arrowheads, no infinity symbol, no gears, no people, no logos, no neon."
+    },
+
+    {
+      "slug": "quick-commerce-media-blinkit-zepto-instamart-ad-platforms",
+      "publish_date": "2026-08-13",
+      "article_title": "Quick Commerce Media: Why Blinkit, Zepto, and Instamart Are Becoming India's New Ad Platforms",
+      "image_name_alt_text": "Quick Commerce Media: Why Blinkit, Zepto, and Instamart Are Becoming India's New Ad Platforms",
+      "core_idea": "Three advertisers bidding into the same basket at the moment it fills.",
+      "format": "concept_illustration",
+      "aspect_ratio": "16:9",
+      "resolution": "1920x1080",
+      "scene": "A rounded 3D shopping basket sits glowing at the centre of a dark reflective surface, its interior lit warm mint. Three slim mint light-trails curve in toward the basket from three floating rounded pin markers positioned above and around it, each pin carrying a simple flat line icon and each trail at a visibly different brightness, as if bidding at different strengths. The brightest of the three pins is coral red, its trail reaching the basket first and brightest. A small softly-lit 3D storefront building sits low and to the right, its windows warm. Faint mint node dots scatter into the dark background suggesting a wider network.",
+      "style": {
+        "medium": "Soft 3D render with emissive trails and warm interior lighting, rounded tactile forms",
+        "camera": "Gentle three-quarter view slightly above the basket",
+        "depth_of_field": "Shallow, the scattered background nodes softly defocused",
+        "surface": "Matte rounded plastic forms, soft emissive edges, gentle reflection on the dark base"
+      },
+      "composition": {
+        "subject_placement": "Place the basket and the three converging trails across the UPPER-CENTRE, the basket's centre at roughly 42% of frame height, with the storefront tucked lower right",
+        "safe_area": "Keep the basket, all three pins and their convergence inside the top 60% of the frame and the central 70% of the width. Leave the bottom third as dark reflective surface.",
+        "negative_space": "Dark open space around the basket, with glow falling off into it"
+      },
+      "palette": {
+        "background": "Deep navy-black #0B1219 falling to #131C26, lit only by the emissive elements",
+        "primary_accent": "#6FD8CA mint for two trails, the basket glow and the network nodes",
+        "secondary_accent": "#E8434E coral red for the winning pin and its trail",
+        "neutrals": ["#2A3138 basket and storefront bodies", "#8A9198 rim detail"],
+        "ratio": "Mint dominant, one red pin and trail as the point of emphasis"
+      },
+      "lighting": "The basket interior and the three trails are the light sources, with soft bloom and a gentle reflection on the dark base. Warm light spills from the storefront windows.",
+      "mood": "Competitive but not aggressive. A quiet auction happening in a single moment.",
+      "must_include": [
+        "Exactly three converging trails at three visibly different brightnesses",
+        "One of the three clearly coral red and clearly winning",
+        "A basket silhouette readable at thumbnail size",
+        "A small softly-lit generic storefront"
+      ],
+      "must_avoid": [
+        "Any text, letters, numbers, prices, or currency symbols",
+        "Any real brand logos, app icons, or delivery-service marks",
+        "Recognisable product packaging or identifiable groceries",
+        "Phone or app interface mockups",
+        "Faces, people, hands, or delivery riders",
+        "Cyberpunk or neon-city aesthetics"
+      ],
+      "one_line_prompt": "Soft 3D rendered concept illustration, 16:9, on a deep navy-black background: a rounded shopping basket glowing warm mint at the centre of a dark reflective surface, with three slim light-trails curving in from three floating rounded pin markers carrying simple flat line icons, two trails mint #6FD8CA and the brightest one coral red #E8434E arriving first, a small softly-lit generic storefront lower right and faint mint node dots scattered into the background; gentle three-quarter view, soft bloom and reflection, shallow depth of field, subject in the upper-centre, bottom third left dark; no text, no brand logos, no app icons, no product packaging, no people, no cyberpunk neon."
+    },
+
+    {
+      "slug": "whatsapp-sales-channel-india-commerce-platform",
+      "publish_date": "2026-08-14",
+      "article_title": "WhatsApp as a Sales Channel: Why India's Biggest Commerce Platform Isn't an App at All",
+      "image_name_alt_text": "WhatsApp as a Sales Channel: Why India's Biggest Commerce Platform Isn't an App at All",
+      "core_idea": "A whole purchase journey fitting inside one conversation.",
+      "format": "concept_illustration",
+      "aspect_ratio": "16:9",
+      "resolution": "1920x1080",
+      "scene": "One large rounded 3D speech bubble floats at the centre of a dark reflective surface, its outline glowing soft mint and its interior softly lit. Inside the bubble, four small rounded badges sit in a single row, each carrying a simple flat line icon in sequence: a grid, a basket, a coin, and a parcel. The third badge, the coin, is coral red while the other three are mint. Below and slightly right, a small softly-lit 3D storefront building sits with warm windows, connected up to the bubble by a slim mint light-trail. Faint mint node dots representing customers scatter across the dark background, several connected by thin glowing threads.",
+      "style": {
+        "medium": "Soft 3D render with emissive outlines and warm interior lighting, rounded tactile forms",
+        "camera": "Gentle three-quarter view slightly above the bubble",
+        "depth_of_field": "Shallow, the scattered background nodes softly defocused",
+        "surface": "Matte rounded forms, frosted translucent bubble body, soft emissive rim"
+      },
+      "composition": {
+        "subject_placement": "Centre the speech bubble in the UPPER-CENTRE, its centre at roughly 38% of frame height, drawn wide so the four badges sit comfortably in one row",
+        "safe_area": "Keep the whole bubble including its tail, and all four badges, inside the top 60% of the frame and the central 70% of the width. Leave the bottom third to the storefront and dark surface.",
+        "negative_space": "Dark open space surrounding the bubble"
+      },
+      "palette": {
+        "background": "Deep navy-black #0B1219 falling to #131C26, lit only by the emissive elements",
+        "primary_accent": "#6FD8CA mint for the bubble outline, three of the badges and the network threads",
+        "secondary_accent": "#E8434E coral red for the payment badge only",
+        "neutrals": ["#2A3138 storefront body", "#8A9198 node dots"],
+        "ratio": "Mint dominant, one red badge as the point of emphasis"
+      },
+      "lighting": "The bubble outline and badges are the light sources, with soft bloom and gentle reflection on the dark base. Warm light spills from the storefront windows.",
+      "mood": "Warm and human. A conversation, not a transaction terminal.",
+      "must_include": [
+        "Exactly four badges in a single row inside the bubble",
+        "A visible bubble tail so the shape reads as conversation",
+        "Exactly one badge in coral red, the rest mint",
+        "Icons simple enough to stay distinct at thumbnail size"
+      ],
+      "must_avoid": [
+        "Any text, letters, numbers, timestamps, or message previews",
+        "The colour green anywhere in the image",
+        "The WhatsApp logo, phone-handset icon, or any recognisable messaging-app branding",
+        "Chat interface elements: message threads, read receipts, double tick marks, avatars, input bars",
+        "Phone or device mockups",
+        "Faces, people, or hands",
+        "Cyberpunk or neon aesthetics"
+      ],
+      "one_line_prompt": "Soft 3D rendered concept illustration, 16:9, on a deep navy-black background: one large rounded speech bubble floating above a dark reflective surface, its outline glowing soft mint #6FD8CA and its interior softly lit, containing a single row of four small rounded badges with simple flat line icons for grid, basket, coin and parcel, the coin badge coral red #E8434E and the rest mint, with a small warm-windowed generic storefront below right connected up by a slim mint trail and faint mint customer node dots scattered across the background; gentle three-quarter view, soft bloom, shallow depth of field, subject in the upper-centre; absolutely no green, no messaging-app branding, no chat interface, no tick marks, no text, no people, no neon."
+    },
+
+    {
+      "slug": "tier-2-tier-3-india-next-wave-digital-growth",
+      "publish_date": "2026-08-15",
+      "article_title": "Tier 2 and Tier 3 India: Why the Next Wave of Digital Growth Isn't Coming From Metro Cities",
+      "image_name_alt_text": "Tier 2 and Tier 3 India: Why the Next Wave of Digital Growth Isn't Coming From Metro Cities",
+      "core_idea": "The lights have come on away from the few big centres.",
+      "format": "concept_illustration",
+      "aspect_ratio": "16:9",
+      "resolution": "1920x1080",
+      "scene": "A softly contoured 3D ground plane with gentle topographic lines, seen from a gentle isometric angle. Near the centre stand four large rounded map pins, tall but dull matte grey, unlit, their icons dark. Spread widely across the surrounding ground are around twenty smaller rounded pins, brightly lit in mint with crisp flat line icons, several of them capped in coral red, each casting a soft glow and a small contact shadow onto the ground. A few slim mint light-trails run outward from the centre toward the smaller pins, thinning as they go. The visual weight sits clearly away from the middle.",
+      "style": {
+        "medium": "Soft 3D render, claymorphism-adjacent, rounded tactile pin forms with satin surfaces",
+        "camera": "Gentle isometric three-quarter view looking down on the ground plane",
+        "depth_of_field": "Shallow, the far pins softly defocused",
+        "surface": "Matte ground with soft contour relief, glossy-capped rounded pins"
+      },
+      "composition": {
+        "subject_placement": "Centre the whole pin field in the UPPER-CENTRE of the frame, its centre at roughly 40% of frame height, spread wide and shallow",
+        "safe_area": "Keep the four large centre pins and the great majority of the small bright pins inside the top 60% of the frame and the central 70% of the width. Leave the bottom third as quiet contoured ground.",
+        "negative_space": "Open contoured ground between pin groups"
+      },
+      "palette": {
+        "background": "Warm off-white #F5F2EE falling to cool grey #E3E5E8, soft light from the upper left",
+        "primary_accent": "#6FD8CA mint for the small lit pins and the outward trails, glowing #A8EDE2",
+        "secondary_accent": "#E8434E coral red capping several of the small pins",
+        "neutrals": ["#8A9198 the four large unlit centre pins", "#D8DCE0 ground contours"],
+        "ratio": "Mint dominant across the periphery, red on a handful of small pins, the large centre pins fully neutral"
+      },
+      "lighting": "Soft diffused studio light from the upper left, gentle contact shadows under every pin, the small lit pins casting their own faint glow onto the ground",
+      "mood": "Optimistic discovery. The map has more life in it than expected.",
+      "must_include": [
+        "A clear size inversion: the large pins are dull, the small pins are bright",
+        "Visibly more pins outside the centre cluster than inside it",
+        "Irregular organic scatter rather than a regular grid",
+        "Several small pins capped in coral red"
+      ],
+      "must_avoid": [
+        "Any text, letters, numbers, city names, or labels",
+        "A recognisable outline of India or any country, coastline, or national border",
+        "Real map features: roads, rivers, state boundaries, latitude grids",
+        "Flags or national symbols of any kind",
+        "Faces, people, or hands",
+        "Brand logos",
+        "Pure black backgrounds or neon"
+      ],
+      "one_line_prompt": "Soft 3D rendered concept illustration, 16:9, on a warm off-white to cool grey gradient background: a softly contoured ground plane seen from a gentle isometric angle with four large dull matte grey unlit map pins clustered near the centre and around twenty smaller brightly lit mint #6FD8CA pins with flat line icons scattered widely across the surrounding ground, several capped coral red #E8434E, each glowing softly with a contact shadow, and a few slim mint trails running outward and thinning; visual weight clearly away from the centre, diffused light from the upper left, shallow depth of field, subject in the upper-centre; no text, no country outline, no borders, no roads or rivers, no flags, no people, no logos, no neon."
+    }
+  ]
+}
