@@ -50,7 +50,7 @@ const nextConfig: NextConfig = {
   reactCompiler: true,
 
   // Allow local network devices (phones, tablets on same WiFi) to access the dev server
-  allowedDevOrigins: ['192.168.29.103'],
+  allowedDevOrigins: ['192.168.29.*', '192.168.29.66'],
 
   images: {
     qualities: [100, 75],

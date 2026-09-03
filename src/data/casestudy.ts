@@ -1447,6 +1447,180 @@ export const caseStudies: CaseStudy[] = [
       },
     },
   },
+  {
+    id: 9,
+    slug: 'hard2soft',
+    metaTitle: 'Hard2Soft Case Study | Digitally Next',
+    metaDescription:
+      'D2C brand and e-commerce launch for an Indian hard-water solutions company. Built the Hard2Soft brand, Shopify store and digital go-to-market from the ground up.',
+    listing: {
+      introText:
+        'From ambitious startups to scaling enterprises – Digitally Next builds performance-driven creative systems that turn attention into measurable growth.',
+      title: 'Hard<span style="color:#E21F26">2</span>Soft',
+      imageSrc: '/case/hard2soft.webp',
+      caption:
+        'D2C brand and e-commerce launch for an Indian hard water solutions company. Built the brand, Shopify store and digital go-to-market from scratch.',
+      highlightKeywords: ['D2C brand', 'e-commerce launch', 'hard water solutions', 'Shopify store'],
+      buttonLabel: 'View Case Study',
+      pillLabel: 'Water Treatment',
+    },
+    detail: {
+      theme: 'light',
+      hero: {
+        eyebrow: 'HARD2SOFT',
+        title:
+          'D2C brand and e-commerce launch for an Indian hard water solutions company. Built the brand, Shopify store and digital go-to-market from scratch',
+        heroImageSrc: '/case/hard2soft.webp',
+        metrics: [
+          {
+            value: '₹11',
+            description: 'Per Day Value Positioning',
+            color: '#E21F26',
+            background: 'rgba(226,31,38,0.05)',
+          },
+          {
+            value: '9+',
+            description: 'States Covered Pan-India',
+            color: '#0EC8C5',
+            background: 'rgba(14,200,197,0.05)',
+          },
+        ],
+      },
+      about: {
+        logoSrc: '/case/hard2soft-logo.png',
+        quote:
+          '"Digitally Next took us from a product idea to a live, selling D2C brand - identity, store and marketing, all in one motion."',
+        fields: [
+          { label: 'Industry', value: 'Consumer Durables' },
+          { label: 'Category', value: 'Water Treatment / D2C E-commerce' },
+          { label: 'Region', value: 'India' },
+        ],
+      },
+      intro:
+        'End-to-end D2C launch for Hard2Soft - a Nagpur-based hard water conditioner brand - covering brand identity, Shopify e-commerce store, product content and digital go-to-market across India.',
+      objective: {
+        heading: 'objective goal',
+        body: 'Launch a credible, conversion-ready D2C brand for a new-category product (no-electricity, no-salt hard water conditioner) and establish awareness, trust and direct online sales across hard water-affected regions of India',
+      },
+      approach: {
+        heading: 'Approach',
+        body: 'Mix of Strategy',
+        cards: [
+          {
+            iconSrc: '/figma/case-study/icon-cloud-lightning.svg',
+            label: 'Functional',
+          },
+          {
+            iconSrc: '/figma/case-study/icon-trending-up.svg',
+            label: 'Operational pursuits',
+          },
+        ],
+      },
+      focusArea: {
+        heading: 'Focus Area',
+        body: 'Built the Hard2Soft brand from the ground up for a first-of-its-kind cartridge-based water conditioner that needs no electricity, no salt and no installation. The work spanned brand identity and the "Live Scale Free" positioning, a Shopify D2C store with multi-pack product architecture, education-led content that converts a low-awareness category into a clear household problem worth ₹40,000 a year, and a pan-India go-to-market covering residential, commercial, institutional and industrial segments.',
+        cards: [
+          {
+            title: 'Brand Identity & Positioning',
+            description:
+              'Created the Hard2Soft name system, logo, packaging language and the "Live Scale Free" promise - translating a technical ion-conditioning product into a simple, trust-led consumer brand.',
+          },
+          {
+            title: 'Shopify D2C Store',
+            description:
+              'Designed and launched the e-commerce store with pack-of-2 to pack-of-10 product architecture, before/after proof, certifications, FAQs and a pan-India coverage map built to convert first-time buyers.',
+          },
+          {
+            title: 'Education-Led Demand Generation',
+            description:
+              'Framed hard water as a ₹40,000-a-year household problem and the product as a ₹11-a-day fix - powering content, creatives and campaigns across Maharashtra, Karnataka, Telangana, Tamil Nadu, Gujarat, Rajasthan, Delhi NCR, UP and Haryana.',
+          },
+        ],
+      },
+      strategicMarketing: {
+        headingPrefix: 'Strategic Marketing',
+        headingHighlight: 'Support',
+        menuItems: [
+          {
+            link: '#',
+            text: 'Go-To-Market Strategy',
+            image: 'https://images.pexels.com/photos/212286/pexels-photo-212286.jpeg',
+          },
+          {
+            link: '#',
+            text: 'Brand Identity & Packaging',
+            image: 'https://images.pexels.com/photos/8970684/pexels-photo-8970684.jpeg',
+          },
+          {
+            link: '#',
+            text: 'E-commerce Store Build',
+            image: 'https://images.pexels.com/photos/7818107/pexels-photo-7818107.jpeg',
+          },
+          {
+            link: '#',
+            text: 'Product Content & Creatives',
+            image: 'https://images.pexels.com/photos/716276/pexels-photo-716276.jpeg',
+          },
+          {
+            link: '#',
+            text: 'Social Media Planning',
+            image: 'https://images.pexels.com/photos/7679733/pexels-photo-7679733.jpeg',
+          },
+          {
+            link: '#',
+            text: 'Performance Marketing',
+            image: 'https://images.pexels.com/photos/9051118/pexels-photo-9051118.jpeg',
+          },
+          {
+            link: '#',
+            text: 'Data & Analytics',
+            image: 'https://images.pexels.com/photos/97080/pexels-photo-97080.jpeg',
+          },
+        ],
+      },
+      coreDigitalAssets: {
+        headingPrefix: 'Core',
+        headingHighlight: 'Digital Assets',
+        subheading:
+          'All frameworks are powered by Modern DAD thinking and governed by the AI Decision & Acceleration Center.',
+        items: [
+          'Brand Identity & Packaging System',
+          'Shopify D2C Store (h2s.co.in)',
+          'Product Photography & Before/After Creatives',
+          'Segment Landing Content (Residential, Commercial, Institutional, Industrial)',
+          'Social Media & Performance Campaign Setup',
+        ],
+      },
+      otherTeams: {
+        heading: 'Digitally next',
+        linkLabel: 'Case Studies',
+        linkHref: '/case-studies',
+      },
+      relatedCaseStudies: [
+        {
+          imageSrc: '/case/c3.webp',
+          title: 'Advent Global',
+          description:
+            'From ambitious startups to scaling enterprises – Digitally Next builds performance-driven creative systems that turn attention into measurable growth.',
+          tag: 'IT & ITES',
+          href: '/case-studies/advent-global',
+        },
+      ],
+      cta: {
+        backgroundImageSrc: '/figma/case-study/cta-bg-4ff61d.webp',
+        headingLines: ["Let's Build Something", 'That Lasts.'],
+        bodyLines: [
+          'We work best with teams that value structure, clarity, and long-term thinking.',
+          '',
+          "If you're looking for shortcuts, quick hacks, or transactional execution, we may not be the right fit.",
+          '',
+          "If you're building something meant to scale, let's talk.",
+        ],
+        buttonLabel: 'Get In Touch',
+        buttonHref: '/contact',
+      },
+    },
+  },
 ];
 
 export function getCaseStudyBySlug(slug: string): CaseStudy | undefined {
