@@ -2,11 +2,37 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Calendar, Clock, ChevronDown, User } from 'lucide-react';
 import { PortableText, PortableTextComponents } from '@portabletext/react';
 import { urlFor } from '@/sanity/image';
+import { siteConfig } from '@/app/utils/seo';
+
+// Hosts that count as "this site", with and without www.
+const SITE_HOST = new URL(siteConfig.siteUrl).hostname.replace(/^www\./, '');
+const SITE_HOSTS = new Set([SITE_HOST, `www.${SITE_HOST}`]);
+
+/**
+ * Classify a body link. Internal links (relative, #hash, or absolute on our own
+ * domain) open in the same tab and are reduced to a path so Next.js can route
+ * them client-side. Only links to other sites open in a new tab.
+ * Absolute URLs are common because the Studio's `url` field rejects relative ones.
+ */
+function resolveLink(raw = ''): { href: string; internal: boolean } {
+  if ((raw.startsWith('/') && !raw.startsWith('//')) || raw.startsWith('#')) {
+    return { href: raw, internal: true };
+  }
+  try {
+    const url = new URL(raw);
+    if (SITE_HOSTS.has(url.hostname)) {
+      return { href: `${url.pathname}${url.search}${url.hash}`, internal: true };
+    }
+  } catch {
+    /* not a parseable URL; treat as external */
+  }
+  return { href: raw, internal: false };
+}
 
 interface FaqItem {
   question: string;
@@ -100,10 +126,24 @@ function makePortableComponents(isDummy: boolean): PortableTextComponents {
     },
     marks: {
       link: ({ children, value }) => {
-        const rel = !value.href?.startsWith('/') ? 'noopener noreferrer' : undefined;
-        const target = !value.href?.startsWith('/') ? '_blank' : undefined;
+        const { href, internal } = resolveLink(value?.href);
+        const className = 'text-[#E21F26] underline underline-offset-2';
+        // mailto:/tel: links hand off to another app, so they don't need a new tab either.
+        const sameTab = internal || /^(mailto|tel):/i.test(href);
+        if (internal) {
+          return (
+            <Link href={href} className={className}>
+              {children}
+            </Link>
+          );
+        }
         return (
-          <a href={value.href} target={target} rel={rel} className="text-[#E21F26] underline underline-offset-2">
+          <a
+            href={href}
+            target={sameTab ? undefined : '_blank'}
+            rel={sameTab ? undefined : 'noopener noreferrer'}
+            className={className}
+          >
             {children}
           </a>
         );
@@ -185,26 +225,65 @@ function FaqAccordionItem({ faq, index }: { faq: FaqItem; index: number }) {
 export default function BlogPostClient({ post }: { post: Post }) {
   const headings = post.body ? extractHeadings(post.body) : [];
   const [activeId, setActiveId] = useState<string>('');
+  const tocRef = useRef<HTMLElement>(null);
+  const tocListRef = useRef<HTMLDivElement>(null);
+  const [tocOverflows, setTocOverflows] = useState(false);
   const isDummy = !post.mainImage?.asset;
   const faqs = parseFaqs(post.faqsJson);
 
+  // Scroll-spy: the active heading is the last one whose top has passed the
+  // line just below the fixed navbar.
   useEffect(() => {
     if (!headings.length) return;
     const OFFSET = 140; // navbar height + buffer
-    const onScroll = () => {
-      const scrollY = window.scrollY + OFFSET;
+    let frame = 0;
+    const update = () => {
+      frame = 0;
       let current = headings[0].id;
       for (const h of headings) {
         const el = document.getElementById(h.id);
-        if (el && el.offsetTop <= scrollY) current = h.id;
+        if (el && el.getBoundingClientRect().top <= OFFSET) current = h.id;
       }
       setActiveId(current);
     };
+    const onScroll = () => {
+      if (!frame) frame = requestAnimationFrame(update);
+    };
     window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
-    return () => window.removeEventListener('scroll', onScroll);
+    update();
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      if (frame) cancelAnimationFrame(frame);
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [post.body]);
+
+  // Track whether the contents list is taller than its capped box. Only then
+  // does it scroll, and only then do we add the bottom spacer (below) that lets
+  // the last few entries scroll up to the centre too.
+  useEffect(() => {
+    const nav = tocRef.current;
+    const list = tocListRef.current;
+    if (!nav || !list) return;
+    const check = () => setTocOverflows(list.offsetHeight > nav.clientHeight + 1);
+    const ro = new ResizeObserver(check);
+    ro.observe(nav);
+    ro.observe(list);
+    check();
+    return () => ro.disconnect();
+  }, [headings.length]);
+
+  // Keep the active entry centred in the contents list. Long posts have more
+  // headings than fit on screen, so the list scrolls on its own; scrolling the
+  // list (not the window) avoids fighting the reader's page scroll.
+  useEffect(() => {
+    const nav = tocRef.current;
+    if (!nav || !activeId) return;
+    const item = nav.querySelector<HTMLElement>(`[data-toc-id="${CSS.escape(activeId)}"]`);
+    if (!item) return;
+    const top = item.offsetTop - nav.clientHeight / 2 + item.offsetHeight / 2;
+    nav.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
+  }, [activeId]);
 
   // Pull natural width - height is allowed to vary so Sanity doesn't force a crop
   // at the CDN level. The container's fixed height + object-cover handles the
@@ -312,24 +391,42 @@ export default function BlogPostClient({ post }: { post: Post }) {
           <div className="grid grid-cols-1 lg:grid-cols-[220px_1fr] gap-10 lg:gap-16 items-start">
             {/* Table of Contents */}
             {headings.length > 0 && (
-              <aside className="hidden lg:block sticky top-32 self-start">
-                <p className="text-[10px] font-bold tracking-[0.2em] uppercase text-[#A1A1A1] mb-4">Contents</p>
-                <nav className="flex flex-col">
-                  {headings.map((h) => (
-                    <button
-                      key={h.id}
-                      onClick={() => document.getElementById(h.id)?.scrollIntoView({ behavior: 'smooth' })}
-                      className={[
-                        'text-left py-1.5 border-l-2 transition-all duration-200 cursor-pointer',
-                        h.level === 3 ? 'pl-5 text-[13px]' : 'pl-3 text-[13px] font-medium',
-                        activeId === h.id
-                          ? 'border-[#E21F26] text-[#E21F26]'
-                          : 'border-black/10 text-[#A1A1A1] hover:border-black/30 hover:text-black',
-                      ].join(' ')}
-                    >
-                      {h.text}
-                    </button>
-                  ))}
+              // Height is capped to the viewport (top-32 = 8rem, plus 2rem breathing
+              // room) so a long contents list scrolls inside itself instead of
+              // running off the bottom of the screen.
+              <aside className="hidden lg:flex flex-col sticky top-32 self-start max-h-[calc(100vh-10rem)]">
+                <p className="text-[10px] font-bold tracking-[0.2em] uppercase text-[#A1A1A1] mb-4 shrink-0">
+                  Contents
+                </p>
+                <nav
+                  ref={tocRef}
+                  aria-label="Table of contents"
+                  className="relative flex flex-col min-h-0 overflow-y-auto overscroll-contain pr-2 [scrollbar-width:thin]"
+                >
+                  <div ref={tocListRef} className="flex flex-col shrink-0">
+                    {headings.map((h, i) => {
+                      const active = activeId === h.id;
+                      return (
+                        <button
+                          key={`${h.id}-${i}`}
+                          data-toc-id={h.id}
+                          aria-current={active ? 'location' : undefined}
+                          onClick={() => document.getElementById(h.id)?.scrollIntoView({ behavior: 'smooth' })}
+                          className={[
+                            'text-left py-1.5 border-l-2 transition-all duration-200 cursor-pointer rounded-r',
+                            h.level === 3 ? 'pl-5 text-[13px]' : 'pl-3 text-[13px] font-medium',
+                            active
+                              ? 'border-[#E21F26] text-[#E21F26] bg-[#E21F26]/6 font-semibold'
+                              : 'border-black/10 text-[#A1A1A1] hover:border-black/30 hover:text-black',
+                          ].join(' ')}
+                        >
+                          {h.text}
+                        </button>
+                      );
+                    })}
+                  </div>
+                  {/* About half the list's height, so the final entries can reach the centre. */}
+                  {tocOverflows && <div aria-hidden="true" className="shrink-0 h-[calc(50vh-6rem)]" />}
                 </nav>
               </aside>
             )}
